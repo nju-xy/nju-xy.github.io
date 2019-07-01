@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="XY&#39;s blog">
 <meta property="og:description" content="启发性算法 非常狭义定义： 用来设计最优化问题的随机算法的鲁棒性技术； 不能保证解的效率和质量 没有有界常数概率    模拟退火 Simulated Annealing概念 局部搜索+跳出局部最优的随机决策  局部搜索：找到一个可行解；找到邻域中的最优解替换并且循环这一步  多起点局部搜索  threshold local search：允许移动到较差解  模拟退火的基本思想: +  初始化：初始">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-01T04:00:16.693Z">
+<meta property="og:updated_time" content="2019-07-01T07:16:38.908Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="启发性算法">
 <meta name="twitter:description" content="启发性算法 非常狭义定义： 用来设计最优化问题的随机算法的鲁棒性技术； 不能保证解的效率和质量 没有有界常数概率    模拟退火 Simulated Annealing概念 局部搜索+跳出局部最优的随机决策  局部搜索：找到一个可行解；找到邻域中的最优解替换并且循环这一步  多起点局部搜索  threshold local search：允许移动到较差解  模拟退火的基本思想: +  初始化：初始">
@@ -329,7 +329,7 @@
                 
               
 
-              <time title="Created: 2019-07-01 11:59:49 / Modified: 12:00:16" itemprop="dateCreated datePublished" datetime="2019-07-01T11:59:49+08:00">2019-07-01</time>
+              <time title="Created: 2019-07-01 11:59:49 / Modified: 15:16:38" itemprop="dateCreated datePublished" datetime="2019-07-01T11:59:49+08:00">2019-07-01</time>
             </span>
           
 
@@ -464,8 +464,8 @@
 <li>$t:=t+1$; $P:=P’$; 满足停止条件则输出, 不然重复上述步骤</li>
 </ul>
 </li>
-<li><p>定义: M(x)的计划为任意向量$s=(s_1, s_2,…,s_n)\in {0,1,<em>}^n$(</em>表示free); 对于计划s的可行解集合为</p>
-<p>$Schema(s_1, …, s_n) = {\gamma_1, …, \gamma_n\in M(x)|\gamma_i = s_i \text{ for all }i \in {1,…,n} \ \text{ such that }s_i\in {0,1}; \gamma_i \in{0,1}\text{ for all }j\in {1,2,…,n}\text{ such that }s_j=*  }$</p>
+<li><p>定义: M(x)的计划为任意向量$s=(s_1, s_2,…,s_n)\in \{0,1,* \} ^ n$(*表示free); 对于计划s的可行解集合为</p>
+<p>$Schema(s_1, …, s_n) = \{ \gamma_1, …, \gamma_n\in M(x)|\gamma_i = s_i \text{ for all }i \in \{1,…,n\} $<br>$\text{ such that }s_i\in \{0,1\};\gamma_i \in\{0,1\}\text{ for all }j\in \{1,2,…,n \}\text{ such that }s_j=*  \}$</p>
 </li>
 <li><p>length(s): s中第一个和最后一个非*位置间的距离;</p>
 <p>order(s): 非*位置数</p>
