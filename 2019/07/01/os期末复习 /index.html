@@ -94,18 +94,20 @@
 
 
 
-  <meta name="description" content="启发性算法 非常狭义定义： 用来设计最优化问题的随机算法的鲁棒性技术； 不能保证解的效率和质量 没有有界常数概率    模拟退火 Simulated Annealing概念 局部搜索+跳出局部最优的随机决策  局部搜索：找到一个可行解；找到邻域中的最优解替换并且循环这一步  多起点局部搜索  threshold local search：允许移动到较差解  模拟退火的基本思想: +  初始化：初始">
-<meta name="keywords" content="问题求解四">
+  <meta name="description" content="Hello World的故事: Hello World的一生是从execve()开始的  继承父进程的文件描述符(./a.out &amp;gt; /dev/null; ./.a.out | cat, …) 内核会为a.out创建代码、数据、堆栈   执行的第一条指令  从ELF的entry开始执行 静态链接：a.out的entry 动态链接：ld.so的entry (动态链接器) 动态链接libc：链接">
+<meta name="keywords" content="操作系统">
 <meta property="og:type" content="article">
-<meta property="og:title" content="启发性算法">
-<meta property="og:url" content="http://yoursite.com/2019/07/01/启发性算法/index.html">
+<meta property="og:title" content="OS期末复习">
+<meta property="og:url" content="http://yoursite.com/2019/07/01/os期末复习 /index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="启发性算法 非常狭义定义： 用来设计最优化问题的随机算法的鲁棒性技术； 不能保证解的效率和质量 没有有界常数概率    模拟退火 Simulated Annealing概念 局部搜索+跳出局部最优的随机决策  局部搜索：找到一个可行解；找到邻域中的最优解替换并且循环这一步  多起点局部搜索  threshold local search：允许移动到较差解  模拟退火的基本思想: +  初始化：初始">
+<meta property="og:description" content="Hello World的故事: Hello World的一生是从execve()开始的  继承父进程的文件描述符(./a.out &amp;gt; /dev/null; ./.a.out | cat, …) 内核会为a.out创建代码、数据、堆栈   执行的第一条指令  从ELF的entry开始执行 静态链接：a.out的entry 动态链接：ld.so的entry (动态链接器) 动态链接libc：链接">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-01T04:00:16.693Z">
+<meta property="og:image" content="http://yoursite.com/figs/callgraph.png">
+<meta property="og:updated_time" content="2019-07-01T06:42:03.404Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="启发性算法">
-<meta name="twitter:description" content="启发性算法 非常狭义定义： 用来设计最优化问题的随机算法的鲁棒性技术； 不能保证解的效率和质量 没有有界常数概率    模拟退火 Simulated Annealing概念 局部搜索+跳出局部最优的随机决策  局部搜索：找到一个可行解；找到邻域中的最优解替换并且循环这一步  多起点局部搜索  threshold local search：允许移动到较差解  模拟退火的基本思想: +  初始化：初始">
+<meta name="twitter:title" content="OS期末复习">
+<meta name="twitter:description" content="Hello World的故事: Hello World的一生是从execve()开始的  继承父进程的文件描述符(./a.out &amp;gt; /dev/null; ./.a.out | cat, …) 内核会为a.out创建代码、数据、堆栈   执行的第一条指令  从ELF的entry开始执行 静态链接：a.out的entry 动态链接：ld.so的entry (动态链接器) 动态链接libc：链接">
+<meta name="twitter:image" content="http://yoursite.com/figs/callgraph.png">
 
 
 
@@ -113,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/07/01/启发性算法/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/01/os期末复习 /">
 
 
 
@@ -123,7 +125,7 @@
   };
 </script>
 
-  <title>启发性算法 | Hexo</title>
+  <title>OS期末复习 | Hexo</title>
   
 
 
@@ -286,7 +288,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/01/启发性算法/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/01/os期末复习 /">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -303,7 +305,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">启发性算法
+          <h1 class="post-title" itemprop="name headline">OS期末复习
 
               
             
@@ -329,7 +331,7 @@
                 
               
 
-              <time title="Created: 2019-07-01 11:59:49 / Modified: 12:00:16" itemprop="dateCreated datePublished" datetime="2019-07-01T11:59:49+08:00">2019-07-01</time>
+              <time title="Created: 2019-07-01 14:41:24 / Modified: 14:42:03" itemprop="dateCreated datePublished" datetime="2019-07-01T14:41:24+08:00">2019-07-01</time>
             </span>
           
 
@@ -371,161 +373,195 @@
       
 
       
-        <h1 id="启发性算法"><a href="#启发性算法" class="headerlink" title="启发性算法"></a>启发性算法</h1><ul>
-<li>非常狭义定义：<ul>
-<li>用来设计最优化问题的随机算法的鲁棒性技术；</li>
-<li>不能保证解的效率和质量</li>
-<li>没有有界常数概率</li>
+        <h3 id="Hello-World的故事"><a href="#Hello-World的故事" class="headerlink" title="Hello World的故事:"></a>Hello World的故事:</h3><ul>
+<li><p>Hello World的一生是从execve()开始的</p>
+<ul>
+<li>继承父进程的文件描述符(<code>./a.out &gt; /dev/null</code>; <code>./.a.out | cat</code>, …)</li>
+<li>内核会为<code>a.out</code>创建代码、数据、堆栈</li>
+</ul>
+</li>
+<li><p>执行的第一条指令</p>
+<ul>
+<li>从ELF的entry开始执行<ul>
+<li>静态链接：<code>a.out</code>的entry</li>
+<li>动态链接：<code>ld.so</code>的entry (动态链接器)</li>
+<li>动态链接libc：链接器使用一系列mmap把libc链接进进程地址空间</li>
 </ul>
 </li>
 </ul>
-<h2 id="模拟退火-Simulated-Annealing"><a href="#模拟退火-Simulated-Annealing" class="headerlink" title="模拟退火 Simulated Annealing"></a>模拟退火 Simulated Annealing</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul>
-<li><p>局部搜索+跳出局部最优的随机决策</p>
 </li>
-<li><p>局部搜索：找到一个可行解；找到邻域中的最优解替换并且循环这一步</p>
-</li>
-<li><p>多起点局部搜索</p>
-</li>
-<li><p>threshold local search：允许移动到较差解</p>
-</li>
-<li><p>模拟退火的基本思想:</p>
-<pre><code>+  初始化：初始温度T，初始可行解$\alpha \in M(x)$(是算法迭代的起点)，温度关于温度和时间的下降函数f</code></pre><ul>
-<li>时间$I=0$，当温度大于0(或不太靠近0)时，重复一下操作：<ul>
-<li>随机选取$\alpha$邻域中的解$\beta$</li>
-<li>如果$cost(\beta)\le cost(\beta)$, $\alpha:=\beta$; </li>
-<li>否则生成一个(0, 1)间的随机数r<ul>
-<li>如果$r&lt;\exp(-\frac{cost(\beta)-cost(\alpha)}{T})$, 则$\alpha:=\beta$; </li>
+<li><p>main() 执行之前</p>
+<ul>
+<li><code>ld.so</code>会调用<code>_init()</code>；之后会调用<code>_start</code>, <code>__libc_start_main</code>, …<ul>
+<li>但都是普通的“用户代码”，libc也是一个普通的C程序</li>
+<li>完成整个C runtime的初始化，其中可能调用系统调用<ul>
+<li>一个有趣的系统调用: ioctl, 判断是否是tty</li>
 </ul>
 </li>
-<li>$I =I+1$</li>
-<li>$T=f(T,I)$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>main()的执行</p>
+<ul>
+<li>printf(…)<ul>
+<li>如果有缓冲区，写入缓冲区 (fork会复制缓冲区)，否则直接用write写入<code>STDOUT_FILENO</code></li>
+<li>如果缓冲区满足flush条件，则用write写入</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>main执行结束后，libc代码依然会执行(exit()也进行这些操作)</p>
+<ul>
+<li>调用<code>atexit()</code>注册的回调函数</li>
+<li>清空缓冲区、释放资源</li>
+<li>执行<code>_exit()</code>退出</li>
+<li>如果结束前调用了_exit(), 则直接结束, 不进行上述操作</li>
+</ul>
+</li>
+</ul>
+<h3 id="进程-操作系统视角"><a href="#进程-操作系统视角" class="headerlink" title="进程: 操作系统视角"></a>进程: 操作系统视角</h3><ul>
+<li>操作系统就是个中断处理程序<ul>
+<li>系统启动时完成初始化</li>
+<li>然后等待中断到来(打开中断，死循环或<code>yield()</code></li>
+<li>在中断返回时，精心设计一个进程的上下文(context)<ul>
+<li>在CR3寄存器中配置好虚拟内存的地址映射和权限</li>
+<li>设置好寄存器的值：CS:EIP; SS:ESIP; …</li>
+<li>执行<code>iret</code>让进程暂时占有CPU执行</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>“进程”只是操作系统中的一些数据，操作系统代码维护了代表“进程”的对象，以及和进程相关的对象<ul>
+<li>进程上下文(寄存器的数值)</li>
+<li>文件描述符(指向操作系统内对象的指针；文件访问的偏移量)</li>
+<li>内存映射区域</li>
+<li>进程的地址空间(页表、地址空间中的页面)</li>
+</ul>
+</li>
+</ul>
+<h3 id="重新理解系统调用"><a href="#重新理解系统调用" class="headerlink" title="重新理解系统调用"></a>重新理解系统调用</h3><ul>
+<li><p>操作系统为用户进程提供的一组API，通常在内核空间中实现，实现用户进程对操作系统对象/物理硬件访问的请求。</p>
+</li>
+<li><p>在刚才的视角上理解系统调用</p>
+<ul>
+<li>进程 = 操作系统中的数据</li>
+<li>系统调用 = 这些数据上的操作</li>
+<li>例子：write()向某个操作系统的对象写入数据</li>
+<li>例子：mmap()创建一个映射区域</li>
+</ul>
+</li>
+<li><p>文件访问的偏移量问题:</p>
+<ul>
+<li>系统中所有以O_APPEND的文件描述符共享一个offset</li>
+<li>每次单独的open都有一个独立的offset</li>
+<li>fork()后父子进程在复制的文件描述符上共享一个offset</li>
+</ul>
+</li>
+</ul>
+<h3 id="操作系统与并发"><a href="#操作系统与并发" class="headerlink" title="操作系统与并发"></a>操作系统与并发</h3><ul>
+<li>操作系统中的对象是在处理器之间共享的</li>
+<li>多处理器系统：原子性、顺序、可见性的丧失</li>
+<li>系统调用执行需要协调系统中的各个部分<ul>
+<li>例子：read()管道时，需要等数据；write()管道时，需要等待管道的空位，否则阻塞</li>
+<li>例子：read()终端时，需要等缓冲区中的数据；按下按键时，向缓冲区中写入数据</li>
+<li>例子：使用DMA完成磁盘I/O，等待DMA中断的到来</li>
+</ul>
+</li>
+<li>操作系统中有大量的同步问题<ul>
+<li>条件变量</li>
+<li>信号量</li>
+</ul>
+</li>
+</ul>
+<h2 id="OS期末复习"><a href="#OS期末复习" class="headerlink" title="OS期末复习"></a>OS期末复习</h2><h3 id="Hello-OS-world"><a href="#Hello-OS-world" class="headerlink" title="Hello, OS world"></a>Hello, OS world</h3><h4 id="编译-链接"><a href="#编译-链接" class="headerlink" title="编译, 链接"></a>编译, 链接</h4><ul>
+<li>strace -f查看进程和他的子进程的所有系统调用</li>
+<li>gcc -o hello hello.c<ul>
+<li>子进程1: 编译器compiler写入a.s汇编代码</li>
+<li>子进程2: 汇编器assembler写入a.o(ELF…)</li>
+<li>子进程3: 链接器linker写入a.out(ELF…)</li>
+</ul>
+</li>
+<li>readelf: hello中有什么</li>
+</ul>
+<h4 id="终端与shell"><a href="#终端与shell" class="headerlink" title="终端与shell"></a>终端与shell</h4><ul>
+<li>==I/O设备模型==: 设备是三种操作的集合: <ul>
+<li>发送命令、读取状态、传输数据</li>
+</ul>
+</li>
+<li>==设备驱动==: os中负责与设备交互的程序. 根据设备类型不同, 给每一类设备以统一的接口访问, 实现这个接口的就是设备驱动程序.</li>
+<li>shell用read从0号文件描述符读入, 按下回车read返回</li>
+</ul>
+<ul>
+<li><p>./hello如何被执行</p>
+<ul>
+<li>fork-execve</li>
+<li>execve保留绝大部分进程状态,如文件描述符, 管道和重定向是改变文件描述符</li>
+<li>sudo echo hello &gt; /etc/a没用的原因: 在execve之前open就已经失败了,还没有sudo</li>
 </ul>
 </li>
 </ul>
 <ul>
-<li>输出$\alpha$</li>
-</ul>
-</li>
-</ul>
-<h3 id="理论和经验"><a href="#理论和经验" class="headerlink" title="理论和经验"></a>理论和经验</h3><ul>
-<li>如果下列条件成立, 模拟退火是渐进收敛的, 即取全局最优解的概率随迭代次数的增加趋向于1<ul>
-<li>每个可行解都是任意其他可行解可达的</li>
-<li>初始温度T至少为最深的非全局最优的局部最优解的深度</li>
-</ul>
-</li>
-<li>初始温度选择:<ul>
-<li>cost的最大差值</li>
-<li>或者任选T, 过程中增大T值保证接受概率小于1</li>
-</ul>
-</li>
-<li>温度下降函数选择:<ul>
-<li>通常选取常数r, $0.8\le r \le 0.99$, $T := r\cdot T$</li>
-<li>或者选取$T_k:=\frac{T}{\log_2(k+2)}$</li>
-<li>每个固定温度的迭代次数d为邻域的大小</li>
-</ul>
-</li>
-<li>终止条件:<ul>
-<li>一段时间cost不变</li>
-<li>T &lt; term, 通常$term\le \frac{\epsilon}{\ln [(|M(x)|-1)/p]}$</li>
-</ul>
-</li>
-<li>观察结果:<ul>
-<li>可能解质量好但是计算开销极大</li>
-<li>解的质量实际上未必和初始解选取有关</li>
-<li>最重要的参数是邻域和温度下降率</li>
-<li>平均时间接近最坏时间</li>
-<li>相同邻域下效果比局部搜索好</li>
-</ul>
-</li>
-<li>应用: MAX-CUT, MIN-CUT; (TSP效果很差)</li>
-</ul>
-<h3 id="随机禁忌搜索"><a href="#随机禁忌搜索" class="headerlink" title="随机禁忌搜索"></a>随机禁忌搜索</h3><ul>
-<li>模拟退火推广版</li>
-<li>记录搜索过的最优解, 并且在邻域和TABU的差集中搜索, 搜索后更新TABU</li>
-<li>TABU有多种选择策略, 可以前k步搜索过的解以免重复</li>
-<li>随机禁忌搜索算法:<ul>
-<li>选初始解$\alpha$, TABU = {$\alpha$}, STOP = FALSE, BEST = $\alpha$</li>
-<li>选$Neigh_x(\alpha)-TABU$中最优解$\beta$, 同模拟退火选择是否接受$\beta$</li>
-<li>更新TABU和STOP</li>
-<li>重复直至STOP</li>
-</ul>
-</li>
-</ul>
-<h2 id="遗传算法-genetic-algorithm"><a href="#遗传算法-genetic-algorithm" class="headerlink" title="遗传算法 genetic algorithm"></a>遗传算法 genetic algorithm</h2><h3 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h3><ul>
-<li><p>遗传算法:</p>
+<li><p>==hello的第一条指令在哪里?==</p>
 <ul>
-<li>创造一个初始化人口$P={\alpha_1, \cdots, \alpha_k}$; 已经创造的人口数$t=0$</li>
-<li>计算fitness($\alpha_i$), i = 1, 2, …, k, 据此评估P的分布律$Prob_P$, 满足高fitness有较高概率</li>
-<li>根据$Prob_P$随机选取$k/2$对可行解$(\beta_1^1, \beta_1^1)$, …, $(\beta_{k/2}^1, \beta_{k/2}^1)$</li>
-<li>计算每一对的crossover生成新个体, 加入P</li>
-<li>对P中每个个体随机使用变异mutation</li>
-<li>对于P中每个个体再次计算fitness, 据此选择k个组成P’ $\subseteq$P</li>
-<li>可能对于P’中元素在邻域中搜索最优解来替代</li>
-<li>$t:=t+1$; $P:=P’$; 满足停止条件则输出, 不然重复上述步骤</li>
+<li>ld.so的_start()</li>
 </ul>
 </li>
-<li><p>定义: M(x)的计划为任意向量$s=(s_1, s_2,…,s_n)\in {0,1,<em>}^n$(</em>表示free); 对于计划s的可行解集合为</p>
-<p>$Schema(s_1, …, s_n) = {\gamma_1, …, \gamma_n\in M(x)|\gamma_i = s_i \text{ for all }i \in {1,…,n} \ \text{ such that }s_i\in {0,1}; \gamma_i \in{0,1}\text{ for all }j\in {1,2,…,n}\text{ such that }s_j=*  }$</p>
-</li>
-<li><p>length(s): s中第一个和最后一个非*位置间的距离;</p>
-<p>order(s): 非*位置数</p>
-<p>$Fitness(s, P) = \frac{1}{|Schema(s)\cap P|}\cdot \sum_{\gamma\in Schema(s)\cap P}cost(\gamma)$</p>
-<p>$Fit-ratio(s, P) = \frac{Fitness(s, P)}{\sum_{\beta \in P}cost(\beta)/|P|}$, 分母为平均fitness</p>
-</li>
-<li><p>The Schema Thm for GAS: 对任意Schema s 和任意 t= 1, 2, …, Schema(s)在(t+1)-st人口的期望个体数为</p>
-<p>$E[Z_{t+1}]=Fit-ratio(s, P_t)\cdot \frac{n-length(s)}{n}\cdot (1-order(s)\cdot pr_m)\cdot |P_t\cap Schema(s)|$</p>
-</li>
-</ul>
-<h3 id="参数选择"><a href="#参数选择" class="headerlink" title="参数选择"></a>参数选择</h3><ul>
-<li><p>人口大小: </p>
+<li><p>==hello的main函数执行之前, 系统中发生了什么?==</p>
 <ul>
-<li>太小容易局部最优, 太大计算开销大</li>
-<li>30或者区间[n, 2n]内(n为实例的大小)</li>
+<li>加载器的$_$start, $_$init, 之后调用hello的 $_$start, $__$libc$_$start$_$main…</li>
+</ul>
+<p><img src="/figs/callgraph.png" alt="callgraph"></p>
+<ul>
+<li>gdb: starti <ul>
+<li>发现在加载器的$_$start()(这是动态链接, 对于静态链接就是在程序里)</li>
 </ul>
 </li>
-<li><p>初始人口选择:</p>
-<ul>
-<li>随机选择</li>
-<li>选择较高质量的初始人口会增快收敛速度, 但容易收敛到局部最优</li>
+<li>info inferiors + pmap<ul>
+<li>有hello, ld-xxx.so</li>
+<li>没有看到libc代码</li>
 </ul>
 </li>
-<li><p>fitness选择:</p>
-<ul>
-<li>最大化问题直接选取cost作为fitness, 或再减去一个小于最小值的常数; 减去的值越接近最小cost, 越偏向于高cost个体</li>
+<li>b $_$start() + 再次pmap<ul>
+<li>有了libc(加载器做的mmap)</li>
 </ul>
 </li>
-<li><p>父母的选择:</p>
-<ul>
-<li>选最好的一半和剩下的随机组合</li>
-<li>或者按照从小到大排序后, 根据$Prob(\alpha_i)=\frac{2i}{n(n+1)}$的概率选择</li>
+<li>最后到main()</li>
+<li>constructor函数: 可以在main之前执行</li>
+<li>printf可能会被优化为puts</li>
 </ul>
 </li>
-<li><p>个体的表示和crossover</p>
+<li><p>printf()代码位置</p>
 <ul>
-<li>例如TSP中个体表示为1-n的排列, crossover可以选择为一个排列中的某部分按照另一个排列中的顺序重排</li>
-<li>或者将父母的某些特征crossover, 然后选择满足crossover后性质的解作为孩子</li>
+<li>动态链接细节不考, 如got plt</li>
 </ul>
 </li>
-<li><p>突变概率:</p>
+<li><p>printf()是线程安全的吗?==如何实现线程安全的printf?==</p>
 <ul>
-<li>1/100</li>
-<li>或1/n</li>
-<li>或$\frac{1}{k^{0.93}\sqrt{n}}$</li>
-<li>如果人口数量k较小, 就要增大突变率防止局部最优</li>
+<li>并发编程题目: <strong>条件变量</strong>, 信号量</li>
+<li>复习生产者消费者问题</li>
 </ul>
 </li>
-<li><p>新人口选择机制</p>
+<li><p>printf字符串末尾没有换行:</p>
 <ul>
-<li>en block strategy: 孩子完全替代父母</li>
-<li>elite model: 选一小部分父母中的高fitness个体, 其余的大部分选孩子</li>
-<li>父母孩子放一起, 选择高fitness的</li>
-<li>选完之后可以在小邻域中提升个体fitness</li>
+<li>printf有libc的缓冲区<ul>
+<li>setbuf(); fork的神坑(连缓冲区一起复制fork+printf两次, 6 or 8)</li>
+<li>到文件:总是缓冲; 到中断: 换行</li>
 </ul>
 </li>
-<li><p>停止策略:</p>
+<li>ltrace有printf</li>
+</ul>
+</li>
+<li><p>printf背后的系统调用: write</p>
+</li>
+<li><p>write写到哪: 文件描述符对应的文件, 例如一个设备/dev/ttyx, 或者是文件系统中的一个文件</p>
+</li>
+<li><p>==文件系统如何实现== ==FAT==, ==ext2==(inode)</p>
+</li>
+<li><p>==如何保护数据不受损坏==:</p>
 <ul>
-<li>确定的代数</li>
-<li>根据平均fitness(不怎么变)和个体差异(小)</li>
+<li>把不可靠的磁盘变可靠: RAID; 奇偶校验允许一块盘坏; 校验位均匀分布在各个盘上</li>
+<li>实现崩溃一致性: fsck, 日志</li>
 </ul>
 </li>
 </ul>
@@ -555,7 +591,7 @@
         
         <div class="post-tags">
           
-            <a href="/tags/问题求解四/" rel="tag"># 问题求解四</a>
+            <a href="/tags/操作系统/" rel="tag"># 操作系统</a>
           
         </div>
       
@@ -568,8 +604,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/01/随机算法/" rel="next" title="随机算法">
-                <i class="fa fa-chevron-left"></i> 随机算法
+              <a href="/2019/07/01/os期中复习/" rel="next" title="OS期中复习">
+                <i class="fa fa-chevron-left"></i> OS期中复习
               </a>
             
           </div>
@@ -577,10 +613,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/01/os虚拟化/" rel="prev" title="OS虚拟化">
-                OS虚拟化 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -712,7 +744,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#启发性算法"><span class="nav-number">1.</span> <span class="nav-text">启发性算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模拟退火-Simulated-Annealing"><span class="nav-number">1.1.</span> <span class="nav-text">模拟退火 Simulated Annealing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念"><span class="nav-number">1.1.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#理论和经验"><span class="nav-number">1.1.2.</span> <span class="nav-text">理论和经验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随机禁忌搜索"><span class="nav-number">1.1.3.</span> <span class="nav-text">随机禁忌搜索</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遗传算法-genetic-algorithm"><span class="nav-number">1.2.</span> <span class="nav-text">遗传算法 genetic algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数选择"><span class="nav-number">1.2.2.</span> <span class="nav-text">参数选择</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hello-World的故事"><span class="nav-number">1.</span> <span class="nav-text">Hello World的故事:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程-操作系统视角"><span class="nav-number">2.</span> <span class="nav-text">进程: 操作系统视角</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重新理解系统调用"><span class="nav-number">3.</span> <span class="nav-text">重新理解系统调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作系统与并发"><span class="nav-number">4.</span> <span class="nav-text">操作系统与并发</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#OS期末复习"><span class="nav-number"></span> <span class="nav-text">OS期末复习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hello-OS-world"><span class="nav-number">1.</span> <span class="nav-text">Hello, OS world</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#编译-链接"><span class="nav-number">1.1.</span> <span class="nav-text">编译, 链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#终端与shell"><span class="nav-number">1.2.</span> <span class="nav-text">终端与shell</span></a></li></ol></li></ol></li></div>
             
 
           </div>
