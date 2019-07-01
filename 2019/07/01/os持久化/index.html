@@ -108,7 +108,7 @@
 <meta property="og:image" content="http://yoursite.com/figs/fat32-dirent.png">
 <meta property="og:image" content="http://yoursite.com/figs/ext2-inode.gif">
 <meta property="og:image" content="http://yoursite.com/figs/ext2-groups.png">
-<meta property="og:updated_time" content="2019-07-01T06:46:43.678Z">
+<meta property="og:updated_time" content="2019-07-01T06:58:38.154Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OS持久化">
 <meta name="twitter:description" content="存储介质 磁: 磁铁方向, 磁盘 光: 挖坑填坑, 光盘 电: SSD 存储介质相当于是一个字节数组bool bits[CAPACITY];  I/O设备与驱动 I/O设备: 设备是三种操作的集合:  (别人)发送命令(给他)、(别人)读取(他的)状态、(互相)传输数据      键盘: 按键信息会存储到键盘内置的缓冲数据区  缓冲区通常大小是有限的  如果缓冲区满，后续按键将会丢失 (可能会发出">
@@ -336,7 +336,7 @@
                 
               
 
-              <time title="Created: 2019-07-01 14:38:46 / Modified: 14:46:43" itemprop="dateCreated datePublished" datetime="2019-07-01T14:38:46+08:00">2019-07-01</time>
+              <time title="Created: 2019-07-01 14:38:46 / Modified: 14:58:38" itemprop="dateCreated datePublished" datetime="2019-07-01T14:38:46+08:00">2019-07-01</time>
             </span>
           
 
@@ -378,13 +378,13 @@
       
 
       
-        <h2 id="存储介质"><a href="#存储介质" class="headerlink" title="存储介质"></a>存储介质</h2><ul>
+        <h1 id="存储介质"><a href="#存储介质" class="headerlink" title="存储介质"></a>存储介质</h1><ul>
 <li>磁: 磁铁方向, 磁盘</li>
 <li>光: 挖坑填坑, 光盘</li>
 <li>电: SSD</li>
 <li>存储介质相当于是一个字节数组<code>bool bits[CAPACITY];</code></li>
 </ul>
-<h2 id="I-O设备与驱动"><a href="#I-O设备与驱动" class="headerlink" title="I/O设备与驱动"></a>I/O设备与驱动</h2><ul>
+<h1 id="I-O设备与驱动"><a href="#I-O设备与驱动" class="headerlink" title="I/O设备与驱动"></a>I/O设备与驱动</h1><ul>
 <li>I/O设备: 设备是三种操作的集合: <ul>
 <li>(别人)发送命令(给他)、(别人)读取(他的)状态、(互相)传输数据</li>
 </ul>
@@ -470,7 +470,7 @@
 <li><p>性能不够, 处理器来凑</p>
 </li>
 </ul>
-<h2 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h2><h3 id="文件系统概念"><a href="#文件系统概念" class="headerlink" title="文件系统概念"></a>文件系统概念</h3><ul>
+<h1 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h1><h2 id="文件系统概念"><a href="#文件系统概念" class="headerlink" title="文件系统概念"></a>文件系统概念</h2><ul>
 <li><p><strong>磁盘</strong> (I/O设备)：一个可以读/写的定长字节序列</p>
 <ul>
 <li>虚拟磁盘(文件)：一个可以读/写/的动态字节序列</li>
@@ -780,7 +780,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="实现文件系统"><a href="#实现文件系统" class="headerlink" title="实现文件系统"></a>实现文件系统</h3><ul>
+<h2 id="实现文件系统"><a href="#实现文件系统" class="headerlink" title="实现文件系统"></a>实现文件系统</h2><ul>
 <li>实现文件系统需要考虑以下因素：<ul>
 <li>虚拟磁盘的数据结构 (链表、树、……)</li>
 <li>目录文件的数据结构</li>
@@ -868,8 +868,7 @@
 </ul>
 <p><img src="/figs/ext2-groups.png" alt="ext2-groups"></p>
 <ul>
-<li><p>为什么要分组？</p>
-<ul>
+<li>为什么要分组？<ul>
 <li>把分配分为成了两级 (组级、块级)<ul>
 <li>不用管理全局的bitmaps (inode/block)</li>
 </ul>
@@ -885,16 +884,15 @@
 <li>对于更大的文件(但更少)，使用更多级别的索引</li>
 </ul>
 </li>
-<li><p>与FAT类似，ext2的目录中按顺序存储其中文件/子目录的名字和inode编号。</p>
-</li>
-<li><p>我理解的FAT和ext2的区别: </p>
-<ul>
+<li>与FAT类似，ext2的目录中按顺序存储其中文件/子目录的名字和inode编号。</li>
+</ul>
+<h3 id="我理解的FAT和ext2的区别"><a href="#我理解的FAT和ext2的区别" class="headerlink" title="我理解的FAT和ext2的区别:"></a>我理解的FAT和ext2的区别:</h3><ul>
 <li>ext2的inode集中储存, 而FAT的存在目录项中, 因此不支持链接</li>
 <li>对于单个文件, FAT是用链表链接的, 每一块的下一个存在文件分配表中; 而ext2是树状结构</li>
 </ul>
+<h1 id="持久数据可靠性"><a href="#持久数据可靠性" class="headerlink" title="持久数据可靠性"></a>持久数据可靠性</h1><h2 id="RAID-创建副本"><a href="#RAID-创建副本" class="headerlink" title="RAID: 创建副本"></a>RAID: 创建副本</h2><ul>
+<li><p>廉价冗余磁盘阵列</p>
 </li>
-</ul>
-<h2 id="持久数据可靠性"><a href="#持久数据可靠性" class="headerlink" title="持久数据可靠性"></a>持久数据可靠性</h2><h4 id="RAID-创建副本"><a href="#RAID-创建副本" class="headerlink" title="RAID: 创建副本"></a>RAID: 创建副本</h4><ul>
 <li><p>把多个磁盘虚拟成一块磁盘</p>
 </li>
 <li><p>用两块磁盘(redundancy)实现容错</p>
@@ -913,11 +911,11 @@
 </ul>
 </li>
 </ul>
-<h4 id="RAID-0-Striping-没有冗余"><a href="#RAID-0-Striping-没有冗余" class="headerlink" title="RAID-0(Striping) = 没有冗余"></a>RAID-0(Striping) = 没有冗余</h4><ul>
+<h3 id="RAID-0-Striping-没有冗余"><a href="#RAID-0-Striping-没有冗余" class="headerlink" title="RAID-0(Striping) = 没有冗余"></a>RAID-0(Striping) = 没有冗余</h3><ul>
 <li>无冗余, 不容错, 性能2X、容量2倍, 连续的块轮流分布在不同的Disk上(加快连续读写速度)</li>
 <li>和chunk size有关, 小了读写的并行性增加, 但是跨越chunk读取可能性增加, 增加了access时间</li>
 </ul>
-<h4 id="RAID-1-mirror"><a href="#RAID-1-mirror" class="headerlink" title="RAID-1:(mirror)"></a>RAID-1:(mirror)</h4><ul>
+<h3 id="RAID-1-mirror"><a href="#RAID-1-mirror" class="headerlink" title="RAID-1:(mirror)"></a>RAID-1:(mirror)</h3><ul>
 <li><p>维护两块数据完全一样的磁盘实现容错</p>
 </li>
 <li><p>纠错码:</p>
@@ -930,7 +928,7 @@
 </ul>
 </li>
 </ul>
-<h4 id="RAID-4-奇偶校验"><a href="#RAID-4-奇偶校验" class="headerlink" title="RAID-4(奇偶校验)"></a>RAID-4(奇偶校验)</h4><table>
+<h3 id="RAID-4-奇偶校验"><a href="#RAID-4-奇偶校验" class="headerlink" title="RAID-4(奇偶校验)"></a>RAID-4(奇偶校验)</h3><table>
 <thead>
 <tr>
 <th align="center">Block</th>
@@ -990,7 +988,7 @@
 <li><p>恢复一块盘: 其他盘异或</p>
 </li>
 </ul>
-<h4 id="RAID-5"><a href="#RAID-5" class="headerlink" title="RAID-5"></a>RAID-5</h4><p>Parity盘是整个系统的瓶颈！因此将Party盘分散开.</p>
+<h3 id="RAID-5"><a href="#RAID-5" class="headerlink" title="RAID-5"></a>RAID-5</h3><p>Parity盘是整个系统的瓶颈！因此将Party盘分散开.</p>
 <table>
 <thead>
 <tr>
@@ -1397,7 +1395,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#存储介质"><span class="nav-number">1.</span> <span class="nav-text">存储介质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#I-O设备与驱动"><span class="nav-number">2.</span> <span class="nav-text">I/O设备与驱动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件系统"><span class="nav-number">3.</span> <span class="nav-text">文件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件系统概念"><span class="nav-number">3.1.</span> <span class="nav-text">文件系统概念</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件系统API"><span class="nav-number">4.</span> <span class="nav-text">文件系统API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#挂载"><span class="nav-number">4.1.</span> <span class="nav-text">挂载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目录管理"><span class="nav-number">4.2.</span> <span class="nav-text">目录管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件管理：打开文件"><span class="nav-number">4.3.</span> <span class="nav-text">文件管理：打开文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#打开目录"><span class="nav-number">4.4.</span> <span class="nav-text">打开目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件描述符"><span class="nav-number">4.5.</span> <span class="nav-text">文件描述符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#保存文件"><span class="nav-number">4.6.</span> <span class="nav-text">保存文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件系统实现"><span class="nav-number">5.</span> <span class="nav-text">文件系统实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#块设备"><span class="nav-number">5.1.</span> <span class="nav-text">块设备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现文件系统1-虚拟磁盘"><span class="nav-number">5.2.</span> <span class="nav-text">实现文件系统1: 虚拟磁盘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现文件系统2-目录文件"><span class="nav-number">5.3.</span> <span class="nav-text">实现文件系统2: 目录文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现文件系统3-元数据inode"><span class="nav-number">5.4.</span> <span class="nav-text">实现文件系统3: 元数据inode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现文件系统"><span class="nav-number">5.5.</span> <span class="nav-text">实现文件系统</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FAT和ext2"><span class="nav-number">6.</span> <span class="nav-text">FAT和ext2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题分析"><span class="nav-number">6.1.</span> <span class="nav-text">问题分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FAT32"><span class="nav-number">6.2.</span> <span class="nav-text">FAT32</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ext2文件系统"><span class="nav-number">6.3.</span> <span class="nav-text">ext2文件系统</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#持久数据可靠性"><span class="nav-number">7.</span> <span class="nav-text">持久数据可靠性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RAID-创建副本"><span class="nav-number">7.0.1.</span> <span class="nav-text">RAID: 创建副本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RAID-0-Striping-没有冗余"><span class="nav-number">7.0.2.</span> <span class="nav-text">RAID-0(Striping) = 没有冗余</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RAID-1-mirror"><span class="nav-number">7.0.3.</span> <span class="nav-text">RAID-1:(mirror)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RAID-4-奇偶校验"><span class="nav-number">7.0.4.</span> <span class="nav-text">RAID-4(奇偶校验)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RAID-5"><span class="nav-number">7.0.5.</span> <span class="nav-text">RAID-5</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#崩溃恢复和日志"><span class="nav-number">8.</span> <span class="nav-text">崩溃恢复和日志</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#磁盘上的数据结构"><span class="nav-number">8.1.</span> <span class="nav-text">磁盘上的数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统崩溃-原子性的丧失"><span class="nav-number">8.2.</span> <span class="nav-text">系统崩溃: 原子性的丧失</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fsck"><span class="nav-number">8.3.</span> <span class="nav-text">fsck</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日志-write-ahead-logging-journaling"><span class="nav-number">8.4.</span> <span class="nav-text">日志(write-ahead logging, journaling)</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#存储介质"><span class="nav-number">1.</span> <span class="nav-text">存储介质</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#I-O设备与驱动"><span class="nav-number">2.</span> <span class="nav-text">I/O设备与驱动</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件系统"><span class="nav-number">3.</span> <span class="nav-text">文件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件系统概念"><span class="nav-number">3.1.</span> <span class="nav-text">文件系统概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件系统API"><span class="nav-number">3.2.</span> <span class="nav-text">文件系统API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#挂载"><span class="nav-number">3.2.1.</span> <span class="nav-text">挂载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目录管理"><span class="nav-number">3.2.2.</span> <span class="nav-text">目录管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件管理：打开文件"><span class="nav-number">3.2.3.</span> <span class="nav-text">文件管理：打开文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#打开目录"><span class="nav-number">3.2.4.</span> <span class="nav-text">打开目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件描述符"><span class="nav-number">3.2.5.</span> <span class="nav-text">文件描述符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#保存文件"><span class="nav-number">3.2.6.</span> <span class="nav-text">保存文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件系统实现"><span class="nav-number">3.3.</span> <span class="nav-text">文件系统实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#块设备"><span class="nav-number">3.3.1.</span> <span class="nav-text">块设备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现文件系统1-虚拟磁盘"><span class="nav-number">3.3.2.</span> <span class="nav-text">实现文件系统1: 虚拟磁盘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现文件系统2-目录文件"><span class="nav-number">3.3.3.</span> <span class="nav-text">实现文件系统2: 目录文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现文件系统3-元数据inode"><span class="nav-number">3.3.4.</span> <span class="nav-text">实现文件系统3: 元数据inode</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现文件系统"><span class="nav-number">3.4.</span> <span class="nav-text">实现文件系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FAT和ext2"><span class="nav-number">3.5.</span> <span class="nav-text">FAT和ext2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题分析"><span class="nav-number">3.5.1.</span> <span class="nav-text">问题分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FAT32"><span class="nav-number">3.5.2.</span> <span class="nav-text">FAT32</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ext2文件系统"><span class="nav-number">3.5.3.</span> <span class="nav-text">ext2文件系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#我理解的FAT和ext2的区别"><span class="nav-number">3.5.4.</span> <span class="nav-text">我理解的FAT和ext2的区别:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#持久数据可靠性"><span class="nav-number">4.</span> <span class="nav-text">持久数据可靠性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#RAID-创建副本"><span class="nav-number">4.1.</span> <span class="nav-text">RAID: 创建副本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RAID-0-Striping-没有冗余"><span class="nav-number">4.1.1.</span> <span class="nav-text">RAID-0(Striping) = 没有冗余</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RAID-1-mirror"><span class="nav-number">4.1.2.</span> <span class="nav-text">RAID-1:(mirror)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RAID-4-奇偶校验"><span class="nav-number">4.1.3.</span> <span class="nav-text">RAID-4(奇偶校验)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RAID-5"><span class="nav-number">4.1.4.</span> <span class="nav-text">RAID-5</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#崩溃恢复和日志"><span class="nav-number">4.2.</span> <span class="nav-text">崩溃恢复和日志</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#磁盘上的数据结构"><span class="nav-number">4.2.1.</span> <span class="nav-text">磁盘上的数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统崩溃-原子性的丧失"><span class="nav-number">4.2.2.</span> <span class="nav-text">系统崩溃: 原子性的丧失</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fsck"><span class="nav-number">4.2.3.</span> <span class="nav-text">fsck</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日志-write-ahead-logging-journaling"><span class="nav-number">4.2.4.</span> <span class="nav-text">日志(write-ahead logging, journaling)</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

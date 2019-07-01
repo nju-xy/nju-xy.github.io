@@ -327,7 +327,7 @@
                 
               
 
-              <time title="Created: 2019-07-01 14:41:24 / Modified: 14:42:03" itemprop="dateCreated datePublished" datetime="2019-07-01T14:41:24+08:00">2019-07-01</time>
+              <time title="Created: 2019-07-01 14:41:24 / Modified: 14:49:18" itemprop="dateCreated datePublished" datetime="2019-07-01T14:41:24+08:00">2019-07-01</time>
             </span>
           
 
@@ -372,17 +372,12 @@
         
           
             <p>
-              Hello World的故事:
-Hello World的一生是从execve()开始的
-
-继承父进程的文件描述符(./a.out &gt; /dev/null; ./.a.out | cat, …)
-内核会为a.out创建代码、数据、堆栈
-
-
-执行的第一条指令
-
-从ELF的entry开始执行
-静态链
+              Hello, OS world编译, 链接
+strace -f查看进程和他的子进程的所有系统调用
+gcc -o hello hello.c
+子进程1: 编译器compiler写入a.s汇编代码
+子进程2: 汇编器assembler写入a.o(ELF…)
+子进程3: 链接器linker写入a.out(
               ...
             </p>
           <!--noindex-->
@@ -822,7 +817,7 @@ pthread_join() 等待某线程结束
                 
               
 
-              <time title="Created: 2019-07-01 14:38:46 / Modified: 14:46:43" itemprop="dateCreated datePublished" datetime="2019-07-01T14:38:46+08:00">2019-07-01</time>
+              <time title="Created: 2019-07-01 14:38:46 / Modified: 14:58:38" itemprop="dateCreated datePublished" datetime="2019-07-01T14:38:46+08:00">2019-07-01</time>
             </span>
           
 

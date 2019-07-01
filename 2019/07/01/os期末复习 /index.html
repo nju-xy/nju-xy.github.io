@@ -94,19 +94,19 @@
 
 
 
-  <meta name="description" content="Hello World的故事: Hello World的一生是从execve()开始的  继承父进程的文件描述符(./a.out &amp;gt; /dev/null; ./.a.out | cat, …) 内核会为a.out创建代码、数据、堆栈   执行的第一条指令  从ELF的entry开始执行 静态链接：a.out的entry 动态链接：ld.so的entry (动态链接器) 动态链接libc：链接">
+  <meta name="description" content="Hello, OS world编译, 链接 strace -f查看进程和他的子进程的所有系统调用 gcc -o hello hello.c 子进程1: 编译器compiler写入a.s汇编代码 子进程2: 汇编器assembler写入a.o(ELF…) 子进程3: 链接器linker写入a.out(ELF…)   readelf: hello中有什么  终端与shell ==I/O设备模型==:">
 <meta name="keywords" content="操作系统">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OS期末复习">
 <meta property="og:url" content="http://yoursite.com/2019/07/01/os期末复习 /index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Hello World的故事: Hello World的一生是从execve()开始的  继承父进程的文件描述符(./a.out &amp;gt; /dev/null; ./.a.out | cat, …) 内核会为a.out创建代码、数据、堆栈   执行的第一条指令  从ELF的entry开始执行 静态链接：a.out的entry 动态链接：ld.so的entry (动态链接器) 动态链接libc：链接">
+<meta property="og:description" content="Hello, OS world编译, 链接 strace -f查看进程和他的子进程的所有系统调用 gcc -o hello hello.c 子进程1: 编译器compiler写入a.s汇编代码 子进程2: 汇编器assembler写入a.o(ELF…) 子进程3: 链接器linker写入a.out(ELF…)   readelf: hello中有什么  终端与shell ==I/O设备模型==:">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/figs/callgraph.png">
-<meta property="og:updated_time" content="2019-07-01T06:42:03.404Z">
+<meta property="og:updated_time" content="2019-07-01T06:49:18.964Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OS期末复习">
-<meta name="twitter:description" content="Hello World的故事: Hello World的一生是从execve()开始的  继承父进程的文件描述符(./a.out &amp;gt; /dev/null; ./.a.out | cat, …) 内核会为a.out创建代码、数据、堆栈   执行的第一条指令  从ELF的entry开始执行 静态链接：a.out的entry 动态链接：ld.so的entry (动态链接器) 动态链接libc：链接">
+<meta name="twitter:description" content="Hello, OS world编译, 链接 strace -f查看进程和他的子进程的所有系统调用 gcc -o hello hello.c 子进程1: 编译器compiler写入a.s汇编代码 子进程2: 汇编器assembler写入a.o(ELF…) 子进程3: 链接器linker写入a.out(ELF…)   readelf: hello中有什么  终端与shell ==I/O设备模型==:">
 <meta name="twitter:image" content="http://yoursite.com/figs/callgraph.png">
 
 
@@ -331,7 +331,7 @@
                 
               
 
-              <time title="Created: 2019-07-01 14:41:24 / Modified: 14:42:03" itemprop="dateCreated datePublished" datetime="2019-07-01T14:41:24+08:00">2019-07-01</time>
+              <time title="Created: 2019-07-01 14:41:24 / Modified: 14:49:18" itemprop="dateCreated datePublished" datetime="2019-07-01T14:41:24+08:00">2019-07-01</time>
             </span>
           
 
@@ -373,108 +373,7 @@
       
 
       
-        <h3 id="Hello-World的故事"><a href="#Hello-World的故事" class="headerlink" title="Hello World的故事:"></a>Hello World的故事:</h3><ul>
-<li><p>Hello World的一生是从execve()开始的</p>
-<ul>
-<li>继承父进程的文件描述符(<code>./a.out &gt; /dev/null</code>; <code>./.a.out | cat</code>, …)</li>
-<li>内核会为<code>a.out</code>创建代码、数据、堆栈</li>
-</ul>
-</li>
-<li><p>执行的第一条指令</p>
-<ul>
-<li>从ELF的entry开始执行<ul>
-<li>静态链接：<code>a.out</code>的entry</li>
-<li>动态链接：<code>ld.so</code>的entry (动态链接器)</li>
-<li>动态链接libc：链接器使用一系列mmap把libc链接进进程地址空间</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>main() 执行之前</p>
-<ul>
-<li><code>ld.so</code>会调用<code>_init()</code>；之后会调用<code>_start</code>, <code>__libc_start_main</code>, …<ul>
-<li>但都是普通的“用户代码”，libc也是一个普通的C程序</li>
-<li>完成整个C runtime的初始化，其中可能调用系统调用<ul>
-<li>一个有趣的系统调用: ioctl, 判断是否是tty</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>main()的执行</p>
-<ul>
-<li>printf(…)<ul>
-<li>如果有缓冲区，写入缓冲区 (fork会复制缓冲区)，否则直接用write写入<code>STDOUT_FILENO</code></li>
-<li>如果缓冲区满足flush条件，则用write写入</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>main执行结束后，libc代码依然会执行(exit()也进行这些操作)</p>
-<ul>
-<li>调用<code>atexit()</code>注册的回调函数</li>
-<li>清空缓冲区、释放资源</li>
-<li>执行<code>_exit()</code>退出</li>
-<li>如果结束前调用了_exit(), 则直接结束, 不进行上述操作</li>
-</ul>
-</li>
-</ul>
-<h3 id="进程-操作系统视角"><a href="#进程-操作系统视角" class="headerlink" title="进程: 操作系统视角"></a>进程: 操作系统视角</h3><ul>
-<li>操作系统就是个中断处理程序<ul>
-<li>系统启动时完成初始化</li>
-<li>然后等待中断到来(打开中断，死循环或<code>yield()</code></li>
-<li>在中断返回时，精心设计一个进程的上下文(context)<ul>
-<li>在CR3寄存器中配置好虚拟内存的地址映射和权限</li>
-<li>设置好寄存器的值：CS:EIP; SS:ESIP; …</li>
-<li>执行<code>iret</code>让进程暂时占有CPU执行</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>“进程”只是操作系统中的一些数据，操作系统代码维护了代表“进程”的对象，以及和进程相关的对象<ul>
-<li>进程上下文(寄存器的数值)</li>
-<li>文件描述符(指向操作系统内对象的指针；文件访问的偏移量)</li>
-<li>内存映射区域</li>
-<li>进程的地址空间(页表、地址空间中的页面)</li>
-</ul>
-</li>
-</ul>
-<h3 id="重新理解系统调用"><a href="#重新理解系统调用" class="headerlink" title="重新理解系统调用"></a>重新理解系统调用</h3><ul>
-<li><p>操作系统为用户进程提供的一组API，通常在内核空间中实现，实现用户进程对操作系统对象/物理硬件访问的请求。</p>
-</li>
-<li><p>在刚才的视角上理解系统调用</p>
-<ul>
-<li>进程 = 操作系统中的数据</li>
-<li>系统调用 = 这些数据上的操作</li>
-<li>例子：write()向某个操作系统的对象写入数据</li>
-<li>例子：mmap()创建一个映射区域</li>
-</ul>
-</li>
-<li><p>文件访问的偏移量问题:</p>
-<ul>
-<li>系统中所有以O_APPEND的文件描述符共享一个offset</li>
-<li>每次单独的open都有一个独立的offset</li>
-<li>fork()后父子进程在复制的文件描述符上共享一个offset</li>
-</ul>
-</li>
-</ul>
-<h3 id="操作系统与并发"><a href="#操作系统与并发" class="headerlink" title="操作系统与并发"></a>操作系统与并发</h3><ul>
-<li>操作系统中的对象是在处理器之间共享的</li>
-<li>多处理器系统：原子性、顺序、可见性的丧失</li>
-<li>系统调用执行需要协调系统中的各个部分<ul>
-<li>例子：read()管道时，需要等数据；write()管道时，需要等待管道的空位，否则阻塞</li>
-<li>例子：read()终端时，需要等缓冲区中的数据；按下按键时，向缓冲区中写入数据</li>
-<li>例子：使用DMA完成磁盘I/O，等待DMA中断的到来</li>
-</ul>
-</li>
-<li>操作系统中有大量的同步问题<ul>
-<li>条件变量</li>
-<li>信号量</li>
-</ul>
-</li>
-</ul>
-<h2 id="OS期末复习"><a href="#OS期末复习" class="headerlink" title="OS期末复习"></a>OS期末复习</h2><h3 id="Hello-OS-world"><a href="#Hello-OS-world" class="headerlink" title="Hello, OS world"></a>Hello, OS world</h3><h4 id="编译-链接"><a href="#编译-链接" class="headerlink" title="编译, 链接"></a>编译, 链接</h4><ul>
+        <h3 id="Hello-OS-world"><a href="#Hello-OS-world" class="headerlink" title="Hello, OS world"></a>Hello, OS world</h3><h4 id="编译-链接"><a href="#编译-链接" class="headerlink" title="编译, 链接"></a>编译, 链接</h4><ul>
 <li>strace -f查看进程和他的子进程的所有系统调用</li>
 <li>gcc -o hello hello.c<ul>
 <li>子进程1: 编译器compiler写入a.s汇编代码</li>
@@ -744,7 +643,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hello-World的故事"><span class="nav-number">1.</span> <span class="nav-text">Hello World的故事:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程-操作系统视角"><span class="nav-number">2.</span> <span class="nav-text">进程: 操作系统视角</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重新理解系统调用"><span class="nav-number">3.</span> <span class="nav-text">重新理解系统调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作系统与并发"><span class="nav-number">4.</span> <span class="nav-text">操作系统与并发</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#OS期末复习"><span class="nav-number"></span> <span class="nav-text">OS期末复习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hello-OS-world"><span class="nav-number">1.</span> <span class="nav-text">Hello, OS world</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#编译-链接"><span class="nav-number">1.1.</span> <span class="nav-text">编译, 链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#终端与shell"><span class="nav-number">1.2.</span> <span class="nav-text">终端与shell</span></a></li></ol></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hello-OS-world"><span class="nav-number">1.</span> <span class="nav-text">Hello, OS world</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#编译-链接"><span class="nav-number">1.1.</span> <span class="nav-text">编译, 链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#终端与shell"><span class="nav-number">1.2.</span> <span class="nav-text">终端与shell</span></a></li></ol></li></ol></div>
             
 
           </div>
