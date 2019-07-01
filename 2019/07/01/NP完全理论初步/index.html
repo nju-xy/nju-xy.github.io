@@ -94,18 +94,18 @@
 
 
 
-  <meta name="description" content="NP完全性 下列每队问题, 一个是可用多项式时间算法解决的, 一个是NP完全问题  最短和最长简单路径 欧拉回路和哈密顿圈 2-CNF可满足性问题和3-CNF可满足性问题   证书: 如哈密顿圈问题中的|V|个顶点序列, 3-CNF可满足性问题中的一组变量的赋值  可被证明: 已知一个问题的证书, 可以证明此问题在该输入规模下能在多项式时间内解决  所有P类问题同时也是NP问题, P类问题不用任何">
+  <meta name="description" content="下列每对问题, 一个是可用多项式时间算法解决的, 一个是NP完全问题  最短和最长简单路径 欧拉回路和哈密顿圈 2-CNF可满足性问题和3-CNF可满足性问题   证书: 如哈密顿圈问题中的|V|个顶点序列, 3-CNF可满足性问题中的一组变量的赋值  可被证明: 已知一个问题的证书, 可以证明此问题在该输入规模下能在多项式时间内解决  所有P类问题同时也是NP问题, P类问题不用任何证书就可以">
 <meta name="keywords" content="问题求解四">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NP完全理论初步">
 <meta property="og:url" content="http://yoursite.com/2019/07/01/NP完全理论初步/index.html">
 <meta property="og:site_name" content="XY&#39;s blog">
-<meta property="og:description" content="NP完全性 下列每队问题, 一个是可用多项式时间算法解决的, 一个是NP完全问题  最短和最长简单路径 欧拉回路和哈密顿圈 2-CNF可满足性问题和3-CNF可满足性问题   证书: 如哈密顿圈问题中的|V|个顶点序列, 3-CNF可满足性问题中的一组变量的赋值  可被证明: 已知一个问题的证书, 可以证明此问题在该输入规模下能在多项式时间内解决  所有P类问题同时也是NP问题, P类问题不用任何">
+<meta property="og:description" content="下列每对问题, 一个是可用多项式时间算法解决的, 一个是NP完全问题  最短和最长简单路径 欧拉回路和哈密顿圈 2-CNF可满足性问题和3-CNF可满足性问题   证书: 如哈密顿圈问题中的|V|个顶点序列, 3-CNF可满足性问题中的一组变量的赋值  可被证明: 已知一个问题的证书, 可以证明此问题在该输入规模下能在多项式时间内解决  所有P类问题同时也是NP问题, P类问题不用任何证书就可以">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-01T03:57:46.606Z">
+<meta property="og:updated_time" content="2019-07-01T07:45:22.929Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NP完全理论初步">
-<meta name="twitter:description" content="NP完全性 下列每队问题, 一个是可用多项式时间算法解决的, 一个是NP完全问题  最短和最长简单路径 欧拉回路和哈密顿圈 2-CNF可满足性问题和3-CNF可满足性问题   证书: 如哈密顿圈问题中的|V|个顶点序列, 3-CNF可满足性问题中的一组变量的赋值  可被证明: 已知一个问题的证书, 可以证明此问题在该输入规模下能在多项式时间内解决  所有P类问题同时也是NP问题, P类问题不用任何">
+<meta name="twitter:description" content="下列每对问题, 一个是可用多项式时间算法解决的, 一个是NP完全问题  最短和最长简单路径 欧拉回路和哈密顿圈 2-CNF可满足性问题和3-CNF可满足性问题   证书: 如哈密顿圈问题中的|V|个顶点序列, 3-CNF可满足性问题中的一组变量的赋值  可被证明: 已知一个问题的证书, 可以证明此问题在该输入规模下能在多项式时间内解决  所有P类问题同时也是NP问题, P类问题不用任何证书就可以">
 
 
 
@@ -329,7 +329,7 @@
                 
               
 
-              <time title="Created: 2019-07-01 11:56:57 / Modified: 11:57:46" itemprop="dateCreated datePublished" datetime="2019-07-01T11:56:57+08:00">2019-07-01</time>
+              <time title="Created: 2019-07-01 11:56:57 / Modified: 15:45:22" itemprop="dateCreated datePublished" datetime="2019-07-01T11:56:57+08:00">2019-07-01</time>
             </span>
           
 
@@ -371,8 +371,8 @@
       
 
       
-        <h1 id="NP完全性"><a href="#NP完全性" class="headerlink" title="NP完全性"></a>NP完全性</h1><ul>
-<li><p>下列每队问题, 一个是可用多项式时间算法解决的, 一个是NP完全问题</p>
+        <ul>
+<li><p>下列每对问题, 一个是可用多项式时间算法解决的, 一个是NP完全问题</p>
 <ul>
 <li>最短和最长简单路径</li>
 <li>欧拉回路和哈密顿圈</li>
@@ -437,7 +437,7 @@
 <li>Q是顶一个在一个实例集I上的一个抽象判定问题, $e_1$和$e_2$是I上多项式相关的编码, 则$e_1(Q)\in P$当且仅当$e_2(Q)\in P$</li>
 <li>形式语言体系:<ul>
 <li>字母表, 语言, 交, 并, 补, 连结, …</li>
-<li>闭包$L^* = {\epsilon }\cup L \cup L^2 \cup L^3 \cup \cdots$, 其中$L^k$是L与其自身进行k次连结运算后得到的语言</li>
+<li>闭包$L^* = \{\epsilon \}\cup L \cup L^2 \cup L^3 \cup \cdots$, 其中$L^k$是L与其自身进行k次连结运算后得到的语言</li>
 <li>复杂类P的另一种定义: $P ={L \subseteq {0, 1}^*: 存在一个算法A, 可以在多项式时间内判定L}$ </li>
 <li>$P = {L: L被一个多项式时间算法所接受 }$</li>
 </ul>
@@ -471,7 +471,7 @@
 <li>定义: 语言$L_1$在多项式时间内可以归约为语言$L_2$, 记作$L_1 \le_p L_2$, 如果存在一个多项式时间可计算的函数$f: {0, 1}^* \to {0, 1}^<em>$, 满足对于所有的$x\in{0, 1}^</em>$, $x\in L_1$当且仅当$f(x) \in L_2 $, 则称函数f为<strong>归约函数</strong>, 计算f的多项式时间算法F为<strong>归约算法</strong></li>
 <li>如果$L_1, L_2\subseteq {0,1}^*$满足$L_1\le_p L_2$, 则$L_2\in P$蕴含$L_1\in P$</li>
 </ul>
-<h3 id="NP完全性-1"><a href="#NP完全性-1" class="headerlink" title="NP完全性"></a>NP完全性</h3><ul>
+<h3 id="NP完全性"><a href="#NP完全性" class="headerlink" title="NP完全性"></a>NP完全性</h3><ul>
 <li><p>语言$L\in {0,1}^<em>$是*</em>NP完全**的, 如果:</p>
 <ul>
 <li>$L\in NP$</li>
@@ -525,8 +525,7 @@
 </ul>
 </li>
 </ul>
-<p>##　NP完全问题</p>
-<h3 id="团问题"><a href="#团问题" class="headerlink" title="团问题"></a>团问题</h3><ul>
+<h2 id="NP完全问题"><a href="#NP完全问题" class="headerlink" title="NP完全问题"></a>NP完全问题</h2><h3 id="团问题"><a href="#团问题" class="headerlink" title="团问题"></a>团问题</h3><ul>
 <li><p>证明3-CNF-SAT$\le_P$CLIQUE</p>
 <ul>
 <li><p>设$\phi = C_1 \land C_2 \land \cdots \land C_k$是3-CNF形式中一个有k个子句的布尔公式</p>
@@ -759,7 +758,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#NP完全性"><span class="nav-number">1.</span> <span class="nav-text">NP完全性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#多项式时间"><span class="nav-number">1.1.</span> <span class="nav-text">多项式时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多项式时间的验证"><span class="nav-number">1.2.</span> <span class="nav-text">多项式时间的验证</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#复杂类NP"><span class="nav-number">1.2.1.</span> <span class="nav-text">复杂类NP</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NP完全性与可归约性"><span class="nav-number">1.3.</span> <span class="nav-text">NP完全性与可归约性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#可归约性"><span class="nav-number">1.3.1.</span> <span class="nav-text">可归约性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NP完全性-1"><span class="nav-number">1.3.2.</span> <span class="nav-text">NP完全性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NP完全性证明"><span class="nav-number">1.4.</span> <span class="nav-text">NP完全性证明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#公式可满足性"><span class="nav-number">1.4.1.</span> <span class="nav-text">公式可满足性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-CNF可满足性"><span class="nav-number">1.4.2.</span> <span class="nav-text">3-CNF可满足性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#团问题"><span class="nav-number">1.4.3.</span> <span class="nav-text">团问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#顶点覆盖问题"><span class="nav-number">1.4.4.</span> <span class="nav-text">顶点覆盖问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#哈密顿回路问题"><span class="nav-number">1.4.5.</span> <span class="nav-text">哈密顿回路问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#旅行商问题"><span class="nav-number">1.4.6.</span> <span class="nav-text">旅行商问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子集和问题"><span class="nav-number">1.4.7.</span> <span class="nav-text">子集和问题</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#多项式时间"><span class="nav-number">1.</span> <span class="nav-text">多项式时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多项式时间的验证"><span class="nav-number">2.</span> <span class="nav-text">多项式时间的验证</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#复杂类NP"><span class="nav-number">2.1.</span> <span class="nav-text">复杂类NP</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NP完全性与可归约性"><span class="nav-number">3.</span> <span class="nav-text">NP完全性与可归约性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#可归约性"><span class="nav-number">3.1.</span> <span class="nav-text">可归约性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NP完全性"><span class="nav-number">3.2.</span> <span class="nav-text">NP完全性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NP完全性证明"><span class="nav-number">4.</span> <span class="nav-text">NP完全性证明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#公式可满足性"><span class="nav-number">4.1.</span> <span class="nav-text">公式可满足性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-CNF可满足性"><span class="nav-number">4.2.</span> <span class="nav-text">3-CNF可满足性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NP完全问题"><span class="nav-number">5.</span> <span class="nav-text">NP完全问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#团问题"><span class="nav-number">5.1.</span> <span class="nav-text">团问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#顶点覆盖问题"><span class="nav-number">5.2.</span> <span class="nav-text">顶点覆盖问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#哈密顿回路问题"><span class="nav-number">5.3.</span> <span class="nav-text">哈密顿回路问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#旅行商问题"><span class="nav-number">5.4.</span> <span class="nav-text">旅行商问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子集和问题"><span class="nav-number">5.5.</span> <span class="nav-text">子集和问题</span></a></li></ol></li></ol></div>
             
 
           </div>
