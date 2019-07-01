@@ -2,14 +2,23 @@
 
 
 
+
+
+
+
+
+
+
+
+
   
 
 
-<html class="theme-next gemini use-motion" lang>
+<html class="theme-next muse use-motion" lang>
 <head><meta name="generator" content="Hexo 3.9.0">
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +29,6 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -35,40 +42,21 @@
 
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
 
 
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
 
 
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
 
 
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
 
 
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.jpg?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.jpg?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
 
 
 
@@ -76,33 +64,20 @@
 
 
 
-
-
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="default">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
+    scheme: 'Muse',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: 'Author'
-    },
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -114,14 +89,36 @@
 </script>
 
 
+  
 
+
+
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+
+
+
+
+
+  
+  
   <link rel="canonical" href="http://yoursite.com/">
 
 
 
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
-
-  <title>Hexo</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Hexo</title>
   
 
 
@@ -130,6 +127,35 @@
 
 
 
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
@@ -146,7 +172,7 @@
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
@@ -156,13 +182,12 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
+    
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -170,45 +195,53 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            Home
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            Tags
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            Archives
-          </a>
-        </li>
+          
+          <li class="menu-item menu-item-home menu-item-active">
+
+    
+    
       
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
 
       
+      
     </ul>
+  
+
+  
+    
+
   
 
   
@@ -216,12 +249,20 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -234,6 +275,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -244,7 +287,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -258,37 +301,55 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/07/01/NP完全理论初步/" itemprop="url">NP完全理论初步</a></h1>
+                
+                <a href="/2019/07/01/NP完全理论初步/" class="post-title-link" itemprop="url">NP完全理论初步</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
-          <span class="post-time">
-            
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-01T10:22:18+08:00">
-                2019-07-01
-              </time>
-            
 
-            
+              
+                
+              
 
-            
-          </span>
-
+              <time title="Created: 2019-07-01 10:22:18 / Modified: 10:22:41" itemprop="dateCreated datePublished" datetime="2019-07-01T10:22:18+08:00">2019-07-01</time>
+            </span>
           
 
           
             
+
+            
+          
+
+          
+
+          
+            
+            
           
 
           
           
 
+          
+
+          <br>
           
 
           
@@ -310,32 +371,200 @@
       
         
           
-          NP完全性
-下列每队问题, 一个是可用多项式时间算法解决的, 一个是NP完全问题
-最短和最长简单路径
-欧拉回路和哈密顿圈
-2-CNF可满足性问题和3-CNF可满足性问题
+            <h1 id="NP完全性"><a href="#NP完全性" class="headerlink" title="NP完全性"></a>NP完全性</h1><ul>
+<li>下列每队问题, 一个是可用多项式时间算法解决的, 一个是NP完全问题<ul>
+<li>最短和最长简单路径</li>
+<li>欧拉回路和哈密顿圈</li>
+<li>2-CNF可满足性问题和3-CNF可满足性问题</li>
+</ul>
+</li>
+<li><strong>证书</strong>: 如哈密顿圈问题中的|V|个顶点序列, 3-CNF可满足性问题中的一组变量的赋值</li>
+<li><strong>可被证明</strong>: 已知一个问题的证书, 可以证明此问题在该输入规模下能在多项式时间内解决</li>
+<li>所有P类问题同时也是NP问题, P类问题不用任何证书就可以在多项式时间内解决 </li>
+<li>判定问题和最优化问题</li>
+<li><strong>归约</strong>: <ul>
+<li>某一特定问题的输入为该问题的<strong>实例</strong>.</li>
+<li>对于一个判定问题A, 假设有另一个不同的判定问题B, 我们知道如果在多项式时间内解决</li>
+<li>有一个过程, 可将A的任意实例$\alpha$转化为B的具有以下特征的某个实例$\beta$:<ul>
+<li>转换操作需要多项式时间</li>
+<li>两个实例的解是相同的, $\alpha$的解为”是”当且仅当$\beta$的解为”是”</li>
+<li>称这一过程为<strong>多项式时间归约算法</strong></li>
+</ul>
+</li>
+<li>一种多项式时间解决A的方法: <ul>
+<li>给定问题A的实例$\alpha$, 利用多项式时间归约算法, 将他转化为问题B的一个实例$\beta$</li>
+<li>在实例$\beta$上, 运行B的多项式时间判定算法</li>
+<li>将$\beta$的解作为$\alpha$的解</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>相反的, 利用多项式时间归约, 说明一个问题是NP完全的:<ul>
+<li>假设有一个判定问题A, 已知它不可能存在多项式时间算法</li>
+<li>假设有一个多项式时间的归约, 将A的一个实例转化为一个B的实例</li>
+<li>如果B存在多项式时间算法, 那么A也存在多项式时间算法, 矛盾</li>
+<li>类似的, 可以在问题A是NP完全的假设下, 证明问题B是NP完全的</li>
+</ul>
+</li>
+<li>第一个NP完全问题<ul>
+<li>电路可满足性问题</li>
+</ul>
+</li>
+</ul>
+<h2 id="多项式时间"><a href="#多项式时间" class="headerlink" title="多项式时间"></a>多项式时间</h2><ul>
+<li><strong>抽象问题</strong>Q: 在问题实例集合I和问题解集合S上的一个二元关系</li>
+<li>编码: 抽象对象集合S的编码是从S到二进制串集合的映射e</li>
+<li><strong>具体问题</strong>: 以二进制串集合为实例集的问题</li>
+<li><strong>多项式时间可解</strong>: 对于常数k, 存在一个能在$O(n^k)$时间内求解出某具体问题的算法</li>
+<li><strong>复杂类P</strong>: 在多项式时间内可解的具体判定问题的集合</li>
+<li>编码会影响算法运行时间</li>
+<li>对于某个问题的实例集I, 如果存在两个多项式时间可计算的函数$f_{12}$和$f_{21}$满足对于任意$i\in I$, 有$f_{12}(e_1(i)) = e_2(i)$, 且$f_{21}(e_2(i)) = e_1(i)$, 那么这两种编码$e_1$和$e_2$是<strong>多项式相关</strong>的.</li>
+<li>Q是顶一个在一个实例集I上的一个抽象判定问题, $e_1$和$e_2$是I上多项式相关的编码, 则$e_1(Q)\in P$当且仅当$e_2(Q)\in P$</li>
+<li>形式语言体系:<ul>
+<li>字母表, 语言, 交, 并, 补, 连结, …</li>
+<li>闭包$L^* = {\epsilon }\cup L \cup L^2 \cup L^3 \cup \cdots$, 其中$L^k$是L与其自身进行k次连结运算后得到的语言</li>
+<li>复杂类P的另一种定义: $P ={L \subseteq {0, 1}^*: 存在一个算法A, 可以在多项式时间内判定L}$ </li>
+<li>$P = {L: L被一个多项式时间算法所接受 }$</li>
+</ul>
+</li>
+</ul>
+<h2 id="多项式时间的验证"><a href="#多项式时间的验证" class="headerlink" title="多项式时间的验证"></a>多项式时间的验证</h2><ul>
+<li><strong>验证算法</strong>: <ul>
+<li>含两个自变量的算法A, 其中一个自变量是普通输入串x, 另一个是称为证书的二进制串y. </li>
+<li>如果存在一个证书y满足$A(x, y)= 1$, 则该含两个自变量的算法A验证了输入串x. </li>
+<li>由一个验证算法A锁验证的语言是: $L={x\in {0, 1}^<em>: 存在y\in {0,1}^</em>, 满足A(x, y)=1}$</li>
+<li>如果对任意串$x\in L$, 都存在一个证书y, 且算法A可以用y来证明$x\in L$, 则算法A就验证了语言L.</li>
+</ul>
+</li>
+</ul>
+<h3 id="复杂类NP"><a href="#复杂类NP" class="headerlink" title="复杂类NP"></a>复杂类NP</h3><ul>
+<li><p>复杂类NP是能被一个多项式时间算法验证的语言类</p>
+</li>
+<li><p>一个语言$L\in NP$, 当且仅当存在一个2输入的多项式时间算法A和常数c, 满足</p>
+<p>$L = {x\in {0,1}^* : 存在一个证书y, |y|= O(|x|^c), 满足A(x,y)=1}$</p>
+</li>
+<li><p>$P\subseteq NP$</p>
+</li>
+</ul>
+<h2 id="NP完全性与可归约性"><a href="#NP完全性与可归约性" class="headerlink" title="NP完全性与可归约性"></a>NP完全性与可归约性</h2><ul>
+<li>如果任何一个NP完全问题能在多项式时间内得到解决, 那么NP中每一个问题都存在一个多项式时间解, 即P = NP</li>
+<li>HAM-CYCLE为NP完全问题</li>
+</ul>
+<h3 id="可归约性"><a href="#可归约性" class="headerlink" title="可归约性"></a>可归约性</h3><ul>
+<li>问题Q可以被归约为另一个问题Q’: Q的任何实例都可以被”容易地重新描述”为Q’的实例, 而Q’的实例的解也是Q的实例的解</li>
+<li>Q可以转化为Q’, 则Q并不比Q’更难解决</li>
+<li>定义: 语言$L_1$在多项式时间内可以归约为语言$L_2$, 记作$L_1 \le_p L_2$, 如果存在一个多项式时间可计算的函数$f: {0, 1}^* \to {0, 1}^<em>$, 满足对于所有的$x\in{0, 1}^</em>$, $x\in L_1$当且仅当$f(x) \in L_2 $, 则称函数f为<strong>归约函数</strong>, 计算f的多项式时间算法F为<strong>归约算法</strong></li>
+<li>如果$L_1, L_2\subseteq {0,1}^*$满足$L_1\le_p L_2$, 则$L_2\in P$蕴含$L_1\in P$</li>
+</ul>
+<h3 id="NP完全性-1"><a href="#NP完全性-1" class="headerlink" title="NP完全性"></a>NP完全性</h3><ul>
+<li>语言$L\in {0,1}^<em>$是*</em>NP完全**的, 如果:<ul>
+<li>$L\in NP$</li>
+<li>对每一个$L’ \in NP$,  有$L’\le_p L$</li>
+</ul>
+</li>
+<li>如果语言L满足性质2, 但不满足性质1, 则称L是<strong>NP难度</strong>的</li>
+<li><strong>NPC</strong>为NP完全语言类</li>
+<li>电路可满足性问题CIRCUIT-SAT = {&lt;C&gt;: C是一个可满足的不二组合电路}是NP完全的</li>
+</ul>
+<h2 id="NP完全性证明"><a href="#NP完全性证明" class="headerlink" title="NP完全性证明"></a>NP完全性证明</h2><ul>
+<li>如果语言L是一种满足对任意$L’ \in NPC$都有$L’\le_P L$的语言, 则L是NP难度的. 此外如果$L\in NP$, 则$L \in NPC$</li>
+<li>证明一种语言L是NP完全语言的方法:<ul>
+<li>证明$L\in NP$</li>
+<li>选取一种一致的NP完全语言L’</li>
+<li>描述一种可计算函数$f(x)$的算法, 其中$f$可将L’中每一个实例$x\in {0,1}^*$映射为L中的实例$f(x)$</li>
+<li>证明函数$f$满足对于所有的$x\in {0,1}^*$都有 $x\in L’$当且仅当$f(x)\in L$</li>
+<li>证明计算函数$f$的算法具有多项式运行时间</li>
+</ul>
+</li>
+</ul>
+<h3 id="公式可满足性"><a href="#公式可满足性" class="headerlink" title="公式可满足性"></a>公式可满足性</h3><ul>
+<li>布尔公式可满足性问题是NP完全的:<ul>
+<li>$SAT\in NP$: <ul>
+<li>对于输入$\phi$, 由它的一个可满足性赋值组成的证书可以在多项式时间内得到验证</li>
+<li>方法为: 将公式中每个变量替换为其对应的值, 再求解</li>
+</ul>
+</li>
+<li>CIRCUIT-SAT$\le_P$ SAT:<ul>
+<li>给定一个电路C, 可以直接在多项式时间内产生一个公式: 电路输出变量与描述每个门的操作的子句合取式的”与”</li>
+<li>如果电路C有一个可满足性复制, 那么电路的每条线路都有一个良定义的值且输出为1, 赋值后$\phi$的每个子句的值为1, 合取值也为1. 反之存在一个赋值使$\phi = 1$, 则类似可证C可满足</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-CNF可满足性"><a href="#3-CNF可满足性" class="headerlink" title="3-CNF可满足性"></a>3-CNF可满足性</h3><ul>
+<li>3合取范式形式的布尔公式的可满足性问题是NP完全的<ul>
+<li>易证3-CNF-SAT $\in$ NP</li>
+<li>SAT $\le_P$ 3-CNF-SAT:</li>
+<li>为输入公式$\phi$构造一棵二叉”语法分析”树, 将蚊子作为树叶, 连接词作为内部顶点, 从而把二叉语法分析树视作计算该函数的一个电路</li>
+<li>为每个内部顶点的输出引入一个变量$y_i$, 把$\phi$ 改写为根变量与描述每个顶点操作的子句的合取的与, 每一个子句至多3个文字.</li>
+<li>把所有子句转换为合取范式, 使子句都是CNF且至多包含3个文字</li>
+<li>使用辅助变量p和q把每个CNF转为3-CNF</li>
+</ul>
+</li>
+</ul>
+<h2 id="NP完全问题"><a href="#NP完全问题" class="headerlink" title="NP完全问题"></a>NP完全问题</h2><h3 id="团问题"><a href="#团问题" class="headerlink" title="团问题"></a>团问题</h3><ul>
+<li><p>证明3-CNF-SAT$\le_P$CLIQUE</p>
+<ul>
+<li><p>设$\phi = C_1 \land C_2 \land \cdots \land C_k$是3-CNF形式中一个有k个子句的布尔公式</p>
+</li>
+<li><p>构造图G: 对$\phi$中的每个字句$G_r = (l_1^r \lor l_2^r \lor l_3^r)$, 把3个顶点$v_1^r, v_2^r, v_3^r$三元组放入V中.如果</p>
+<ul>
+<li>$v_i^r$和$v_j^s$处在不同的三元组中, 即$r\ne s$</li>
+<li>他们相应的文字是一致的, 即$l_i^r$不是$l_j^s$的非</li>
+</ul>
+<p>则用一条边连接顶点$v_i^r$和$v_j^s$</p>
+</li>
+<li><p>假设$\phi$有一个可满足性复制, 那么每个字句至少有一个文字$l_i^r$, 赋值为1, 对应顶点构成集合$V’$, 为团. </p>
+</li>
+<li><p>反之亦然</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="顶点覆盖问题"><a href="#顶点覆盖问题" class="headerlink" title="顶点覆盖问题"></a>顶点覆盖问题</h3><ul>
+<li>VERTEX-COVER = {&lt;G, k&gt;: 图G有一个规模为k的顶点覆盖}</li>
+<li>CLIQUE $\le_P$ VERTEX-COVER<ul>
+<li>包含团V’的无向图G, $\overline G$包含顶点覆盖V - V’</li>
+</ul>
+</li>
+</ul>
+<h3 id="哈密顿回路问题"><a href="#哈密顿回路问题" class="headerlink" title="哈密顿回路问题"></a>哈密顿回路问题</h3><ul>
+<li>VERTEX-COVER $\le_P$ HAM-CYCLE</li>
+</ul>
+<h3 id="旅行商问题"><a href="#旅行商问题" class="headerlink" title="旅行商问题"></a>旅行商问题</h3><ul>
+<li>TSP = {&lt;G, c, k&gt;: G = (V, E)是一个完全图, c是V $\times$ V $\to$ Z的一个函数, $k\in Z$, G中包含一个最大花费为k的旅行回路}</li>
+<li>HAM-CYCLE $\le_P$ TSP<ul>
+<li>G(V, E)是HAM-CYCLE的一个实例, , 构造TSP如下:<ul>
+<li>完全图G’ = (V, E’)</li>
+<li>费用函数c(i, j) = 1若$(i, j) \in E$, 否则为0</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="子集和问题"><a href="#子集和问题" class="headerlink" title="子集和问题"></a>子集和问题</h3><ul>
+<li>subset-sum problem </li>
+<li>SUBSET-SUM = {&lt;S, t&gt;: 存在一个子集$S’ \subseteq S$, 使得$t = \sum_{s\in S’}s$</li>
+<li>3-CNF-SAT $\le_P$ SUBSET-SUM:</li>
+</ul>
 
-
-证书: 如哈密顿圈问题中的|V|个顶点序列, 3-CNF可满足性问题中的一组变量的赋值
-可被证明: 已知一个问题的证书, 可以
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/07/01/NP完全理论初步/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -368,6 +597,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -378,7 +609,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -392,37 +623,51 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/07/01/hello-world/" itemprop="url">Hello World</a></h1>
+                
+                <a href="/2019/07/01/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
-          <span class="post-time">
-            
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-01T10:08:23+08:00">
-                2019-07-01
-              </time>
-            
 
-            
+              
+                
+              
 
-            
-          </span>
+              <time title="Created: 2019-07-01 10:08:23" itemprop="dateCreated datePublished" datetime="2019-07-01T10:08:23+08:00">2019-07-01</time>
+            </span>
+          
+
+          
 
           
 
           
             
+            
           
 
           
           
 
+          
+
+          <br>
           
 
           
@@ -444,24 +689,36 @@
       
         
           
-          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/07/01/hello-world/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+          
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -494,9 +751,6 @@
           </div>
           
 
-
-          
-
         </div>
         
           
@@ -510,56 +764,57 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="John Doe">
-            
               <p class="site-author-name" itemprop="name">John Doe</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <div class="site-description motion-element" itemprop="description"></div>
           </div>
 
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
+          
+            <nav class="site-state motion-element">
               
-                <a href="/archives/">
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
               
-                  <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">posts</span>
-                </a>
-              </div>
+
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
             
-
-            
-
-            
-
-          </nav>
-
           
-
-          
-
-          
-          
-
-          
-          
-
           
 
         </div>
-      </section>
+      </div>
 
       
 
@@ -567,6 +822,7 @@
 
     </div>
   </aside>
+  
 
 
         
@@ -576,16 +832,18 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">John Doe</span>
 
   
+
+  
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
 
 
 
@@ -593,12 +851,13 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.2</div>
 
 
 
 
         
+
 
 
 
@@ -619,11 +878,14 @@
 
     
 
+    
+
+    
   </div>
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -637,99 +899,11 @@
 
 
 
-  
 
 
 
 
 
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
 
 
 
@@ -743,7 +917,68 @@
 
 
   
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.2"></script>
+
+
+
+  
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
 
 
 
@@ -755,31 +990,22 @@
   
 
   
+
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
 
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
+  
+
+  
+
+  
+
+  
+
+  
 
   
 
