@@ -94,18 +94,18 @@
 
 
 
-  <meta name="description" content="RSA公钥加密系统 公钥$P_A$, 私钥$S_A$  对于Bob给Alice的加密消息M: 发送方式: Bob取得Alice公钥$P_A$  Bob计算出相应于M的密文$C=P_A(M)$   接收过程: Alice收到密文C后, 她用自己的密钥$S_A$恢复原始信息: $S_A(C) = S_A(P_A(M)) = M$ $S_A()$和$P_A()$互为反函数     数字签名: Alice">
+  <meta name="description" content="近似算法概念 提供不比最优解差太多的可行解  定义: 对于最优化问题 $U = {\Sigma_I, \Sigma_O, L, L_I, M, cost, goal}$ , A是U的一个一致性算法. 对于所有问题实例$x\in L_I$, A对于x的相对误差$\epsilon_A(x)$定义为$$\epsilon_A(x) = \frac{|cost(A(x)) - Opt_U(x)|}{Opt_">
 <meta name="keywords" content="问题求解四">
 <meta property="og:type" content="article">
-<meta property="og:title" content="密码算法">
-<meta property="og:url" content="http://yoursite.com/2019/07/01/密码算法/index.html">
+<meta property="og:title" content="近似算法">
+<meta property="og:url" content="http://yoursite.com/2019/07/01/近似算法/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="RSA公钥加密系统 公钥$P_A$, 私钥$S_A$  对于Bob给Alice的加密消息M: 发送方式: Bob取得Alice公钥$P_A$  Bob计算出相应于M的密文$C=P_A(M)$   接收过程: Alice收到密文C后, 她用自己的密钥$S_A$恢复原始信息: $S_A(C) = S_A(P_A(M)) = M$ $S_A()$和$P_A()$互为反函数     数字签名: Alice">
+<meta property="og:description" content="近似算法概念 提供不比最优解差太多的可行解  定义: 对于最优化问题 $U = {\Sigma_I, \Sigma_O, L, L_I, M, cost, goal}$ , A是U的一个一致性算法. 对于所有问题实例$x\in L_I$, A对于x的相对误差$\epsilon_A(x)$定义为$$\epsilon_A(x) = \frac{|cost(A(x)) - Opt_U(x)|}{Opt_">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-01T03:52:22.896Z">
+<meta property="og:updated_time" content="2019-07-01T03:58:43.882Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="密码算法">
-<meta name="twitter:description" content="RSA公钥加密系统 公钥$P_A$, 私钥$S_A$  对于Bob给Alice的加密消息M: 发送方式: Bob取得Alice公钥$P_A$  Bob计算出相应于M的密文$C=P_A(M)$   接收过程: Alice收到密文C后, 她用自己的密钥$S_A$恢复原始信息: $S_A(C) = S_A(P_A(M)) = M$ $S_A()$和$P_A()$互为反函数     数字签名: Alice">
+<meta name="twitter:title" content="近似算法">
+<meta name="twitter:description" content="近似算法概念 提供不比最优解差太多的可行解  定义: 对于最优化问题 $U = {\Sigma_I, \Sigma_O, L, L_I, M, cost, goal}$ , A是U的一个一致性算法. 对于所有问题实例$x\in L_I$, A对于x的相对误差$\epsilon_A(x)$定义为$$\epsilon_A(x) = \frac{|cost(A(x)) - Opt_U(x)|}{Opt_">
 
 
 
@@ -113,7 +113,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/07/01/密码算法/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/01/近似算法/">
 
 
 
@@ -123,7 +123,7 @@
   };
 </script>
 
-  <title>密码算法 | Hexo</title>
+  <title>近似算法 | Hexo</title>
   
 
 
@@ -286,7 +286,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/01/密码算法/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/01/近似算法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -303,7 +303,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">密码算法
+          <h1 class="post-title" itemprop="name headline">近似算法
 
               
             
@@ -329,7 +329,7 @@
                 
               
 
-              <time title="Created: 2019-07-01 11:50:15 / Modified: 11:52:22" itemprop="dateCreated datePublished" datetime="2019-07-01T11:50:15+08:00">2019-07-01</time>
+              <time title="Created: 2019-07-01 11:58:19 / Modified: 11:58:43" itemprop="dateCreated datePublished" datetime="2019-07-01T11:58:19+08:00">2019-07-01</time>
             </span>
           
 
@@ -371,52 +371,173 @@
       
 
       
-        <h2 id="RSA公钥加密系统"><a href="#RSA公钥加密系统" class="headerlink" title="RSA公钥加密系统"></a>RSA公钥加密系统</h2><ul>
-<li>公钥$P_A$, 私钥$S_A$ </li>
-<li>对于Bob给Alice的加密消息M:<ul>
-<li>发送方式:<ul>
-<li>Bob取得Alice公钥$P_A$ </li>
-<li>Bob计算出相应于M的密文$C=P_A(M)$</li>
-</ul>
+        <h1 id="近似算法"><a href="#近似算法" class="headerlink" title="近似算法"></a>近似算法</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ul>
+<li><p>提供不比最优解差太多的可行解</p>
 </li>
-<li>接收过程:<ul>
-<li>Alice收到密文C后, 她用自己的密钥$S_A$恢复原始信息: $S_A(C) = S_A(P_A(M)) = M$</li>
-<li>$S_A()$和$P_A()$互为反函数</li>
-</ul>
+<li><p>定义: 对于最优化问题 $U = {\Sigma_I, \Sigma_O, L, L_I, M, cost, goal}$ , A是U的一个一致性算法. 对于所有问题实例$x\in L_I$, A对于x的相对误差$\epsilon_A(x)$定义为<br>$$<br>\epsilon_A(x) = \frac{|cost(A(x)) - Opt_U(x)|}{Opt_U(x)}<br>$$<br>其中, $Opt_U(x)$是x的最优cost.</p>
+</li>
+<li><p>对于任意$n\in \mathbb{N}$, 我们定义A的相对误差为<br>$$<br>\epsilon_A(n) = \max{\epsilon_A(x)| x \in L_I \cap (\Sigma_I)^n}<br>$$</p>
+</li>
+<li><p>A关于x的近似率$R_A(x)$定义为</p>
 </li>
 </ul>
+<p>$$<br>R_A(x) = \max{\frac{cost(A(x))}{Opt_U(x)}, \frac{Opt_U(x)}{cost(A(x))}}<br>$$</p>
+<ul>
+<li><p>对于任意$n\in \mathbb{N}$, 我们定义A的相对近似率为<br>$$<br>R_A(x) = \max{R_A(x)| x \in L_I\cap(\Sigma_I)^n}<br>$$</p>
 </li>
-<li>数字签名:<ul>
-<li>Alice运用她的密钥$S_A$和等式$\sigma=S_A(M’)$计算出信息$M’$的<strong>数字签名</strong>$\sigma$</li>
-<li>Alice把消息/签名对$(M’, \sigma)$发送给Bob</li>
-<li>当Bob收到$(M’, \sigma)$时, 他可以利用Alice的公钥, 通过验证等式$M’=P_A(\sigma)$来证实该消息的确来自Alice.</li>
+<li><p>对于任意正实数$\delta&gt;1$, 如果对任意$x\in L_I$, $R_A(x)\le \delta$, 定义A为U的<strong>$\delta-$近似算法</strong>.</p>
+</li>
+<li><p>对于任意函数$f:\mathbb{N}\to \mathbb{R^+}$, 如果对任意$n \in \mathbb{N}$, $R_A(x)\le f(n)$, 定义A为U的<strong>$f(n)-$近似算法</strong>.</p>
+</li>
+<li><p>对于最小化问题, 有</p>
+</li>
+</ul>
+<p>$$<br>R_A(x) = \frac{cost(A(x))}{Opt_U(x)}=1 + \epsilon_A(x)<br>$$</p>
+<ul>
+<li><p>对于最大化问题, 有<br>$$<br>R_A(x) = \frac{Opt_U(x)}{cost(A(x))}<br>$$</p>
+</li>
+<li><p>Greedy Makespan Schedule:</p>
+<ul>
+<li><p>对于处理时间$p_i$排序, 从最大的开始, 依次将每个任务分配给最先空闲的机器.</p>
+</li>
+<li><p>证明这个算法是MS的2-近似算法:</p>
+<ul>
+<li><p>$I = (p_1, p_2, \cdots, p_n, m)$, $p_1&gt;p_2&gt;\cdots&gt;p_n$, 显然有<br>$$<br>Opt_{MS}(I) \ge p_1\ge p_2 \ge \cdots \ge p_n<br>$$<br>还有<br>$$<br>Opt_{MS}(I) \ge \frac{\sum_{i=1}^np_i}{m}<br>$$</p>
+</li>
+<li><p>对于任意$k = 1, 2, \cdots, n$, 因为$p_k$是$p_1$到$p_k$中最小的, 所以有<br>$$<br>p_k \le \frac{\sum_{i=1}^k p_i}{k}<br>$$</p>
+</li>
+<li><p>分类讨论:</p>
+<ul>
+<li><p>当$n\le m$时, 显然</p>
+</li>
+<li><p>当$n&gt;m$时, 设$T_l$满足$cost(T_l)=\sum_{r\in T_l}p_r = cost(GMS(I))$, 而k是$T_l$中最大的下标</p>
+<ul>
+<li><p>如果$k\le m$, $|T_l|=1$, 所以$Opt_{MS}(I) = p_1 = p_k$, $GMS(I)$是最优解.</p>
+</li>
+<li><p>如果$k&gt;m$, 因为其他机器的cost肯定不小于$cost(GMS(I)) - p_k$, 不然$p_k$就不会安排在这个机器, 所以<br>$$<br>\sum_{i=1}^{k-1}p_i\ge m\cdot [cost(GMS(I)) - p_k]<br>$$<br>再根据上面的式子2, 有<br>$$<br>Opt_{MS}(I)\ge cost(GMS(I))-p_k<br>$$<br>因此<br>$$<br>cost(GMS(I)) - Opt_{MS}(I)\le p_k\le \frac{\sum_{i=1}^k p_i}{k}<br>$$<br>最终有<br>$$<br>\frac{cost(GMS(I)) - Opt_{MS}(I)}{Opt_{MS}(I)}\le \frac{(\sum_{i=1}^k p_i)/k}{(\sum_{i=1}^n p_i)/m}\le \frac{m}{k} &lt; 1<br>$$<br>因此GMS是MS的2-近似算法.</p>
+</li>
 </ul>
 </li>
-<li>RSA加密系统中, 一个参与者按下列过程创建他的公钥和密钥:<ul>
-<li>随机选取两个大素数$p$和$q$, 使得$p\ne q$, 例如各1024位.</li>
-<li>计算$n=pq$</li>
-<li>选取一个和$\phi(n)=(p-1)(q-1)$互素的小奇数e</li>
-<li>对模$\phi(n)$, 计算出e的乘法逆元d的值</li>
-<li>将对$P=(e, n)$公开, 并作为参与者的<strong>RSA公钥</strong></li>
-<li>将$S=(d,n)$保密, 作为参与者的<strong>RSA密钥</strong></li>
-<li>$$P(M)=M^e\mod n$$</li>
-<li>$$P(C)=C^d\mod n$$</li>
 </ul>
 </li>
-<li>应用公钥$O(1)$次模乘法, $O(\beta^2)$次位操作</li>
-<li>应用密钥$O(\beta)$次模乘法, $O(\beta^3)$次位操作</li>
-<li>RSA加密系统的安全性来源于对大整数进行因数分解的困难性</li>
 </ul>
-<h1 id="整数的因子分解"><a href="#整数的因子分解" class="headerlink" title="整数的因子分解"></a>整数的因子分解</h1><ul>
-<li><p>Pollard的rho启发式方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">POLLARD-RHO(n)</span><br><span class="line">i = 1</span><br><span class="line">x_1 = RANDOM(0, n-1)</span><br><span class="line">y = x_1</span><br><span class="line">k = 2</span><br><span class="line">while True</span><br><span class="line">	i = i + 1</span><br><span class="line">	x_i = (x_&#123;i-1&#125;^2 - 1) mod n</span><br><span class="line">	d = gcd(y-x_i, n)</span><br><span class="line">	if d != 1 and d != n</span><br><span class="line">		print d</span><br><span class="line">	if i == k</span><br><span class="line">		y == x_i</span><br><span class="line">		k = 2k</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>可以在期望的$\theta(\sqrt n)$次算数运算内找到n的一个小因子p.</p>
+</ul>
 </li>
-<li><p>如果p是合数, 则在大约经过$n^{1/4}$ 次更新之后, 可以预计该过程已经找到了足够多的约数</p>
+<li><p>定义: 对于最优化问题 $U = {\Sigma_I, \Sigma_O, L, L_I, M, cost, goal}$ , 如果对于所有的输入对$(x, \epsilon)\in L_I\times \mathbb{R^+}$, A可以计算出一个相对误差不大于$\epsilon$的可行解A(x), 而且$Time_A(x, \epsilon^{-1})$有$|x|$的多项式函数上界, 那么A被称为U的<strong>多项式时间近似方案(PTAS)$</strong>.而如果$Time_A(x, \epsilon^{-1})$有$|x|$和$\epsilon^{-1}$的多项式函数上界, 那么A被称为U的<strong>完全多项式时间近似方案(FPTAS)$.</strong></p>
 </li>
-<li><p>函数$f(x)=(x^2-1)\mod n$生成的序列在出现回路之前预计要执行的步数为$\theta (\sqrt n)$</p>
+<li><p>PTAS: 任意输入, 想要多小误差都可以在|x|线性时间求解. </p>
+<p>FPTAS: 任意输入, 想要多小误差都可以在|x|和$\epsilon^{-1}$线性时间求解(误差越小越慢)</p>
 </li>
+</ul>
+<h2 id="最优化问题分类"><a href="#最优化问题分类" class="headerlink" title="最优化问题分类"></a>最优化问题分类</h2><ul>
+<li><p>NPO问题可以分为下列5类:</p>
+<ul>
+<li>NPO(I): 存在FPTAS的NPO最优化问题<ul>
+<li>例如背包问题</li>
+</ul>
+</li>
+<li>NPO(II): 存在PTAS的NPO最优化问题<ul>
+<li>例如Makespan Schedule</li>
+</ul>
+</li>
+<li>NPO(III):  $U\in NPO$满足<ul>
+<li>存在$\delta &gt; 1$, 有多项式时间$\delta-$近似算法</li>
+<li>没有PTAS. (即存在$d&lt;\delta$, U无$d-$近似算法)</li>
+<li>例如最小顶点覆盖, $\Delta-$TSP, MAX-SAT</li>
+</ul>
+</li>
+<li>NPO(IV): $U\in NPO$满足<ul>
+<li>存在多项式时间$f(n)$近似算法, 且f有多项式上界</li>
+<li>在某些假设下, 不存在任何$\delta-$近似算法</li>
+</ul>
+</li>
+<li>NPO(V): $U\in NPO$满足对于所有可能存在的$f(n)-$近似算法, $f(n)$都没有多项式上界<ul>
+<li>例如TSP, 最大团</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>在$P\ne NP$的前提下, 每一类都非空</p>
+</li>
+</ul>
+<h2 id="近似算法的稳定性"><a href="#近似算法的稳定性" class="headerlink" title="近似算法的稳定性"></a>近似算法的稳定性</h2><ul>
+<li><p>一般认为NPO(V)中的问题是不可求解的, 但是可以将$U\in NPO(V)$的输入$L_I$根据难度划分.</p>
+</li>
+<li><p>对于最优化问题 $U = {\Sigma_I, \Sigma_O, L, L_I, M, cost, goal}$ 和 $\overline U = {\Sigma_I, \Sigma_O, L, L, M, cost, goal}$ , $L_I\subseteq L$, $\overline U$关于$L_I$的<strong>距离函数</strong>$h_L:L\to \mathbb{R^{\ge 0}}$满足如下性质:</p>
+<ul>
+<li>对于所有$x\in L_I$, 有$h_L(x)=0$</li>
+<li>h是多项式时间可计算的</li>
+</ul>
+</li>
+<li><p>对于$\overline U$关于$L_I$的距离函数$h$, 对于任意$r\in \mathbb{R}$, 定义<br>$$<br>Ball_{r,h}(L_I) = {w\in L| h(w)\le r}<br>$$</p>
+</li>
+<li><p>A是$\overline U$的一致性算法, 也是$U$的$\epsilon-$近似算法($\epsilon \in \mathbb{R^{&gt;1}}$). 令p为正实数, 当对于所有实数$0&lt;r\le p$, 存在$\delta_{r, \epsilon}\in \mathbb{R^{&gt;1}}$满足A是$U_r= {\Sigma_I, \Sigma_O, L, Ball_{r,h}(L_I), M, cost, goal}$的$\delta_{r, \epsilon}-$近似算法, 我们定义<strong>A关于h是p-稳定的</strong> </p>
+</li>
+<li><p>如果对于所有正实数p, A都是p-稳定的, 那么A关于h是<strong>稳定</strong>的; 如果对于任意正实数p, A都不是p-稳定的, 那么A关于h是<strong>不稳定</strong>的</p>
+</li>
+<li><p>TSP和$\Delta-$TSP:</p>
+<ul>
+<li><p>对于任意输入实例(G, c), 定义<br>$$<br>dist(G,c)=\max{0, \max{\frac{c({u, v})}{c({u, v})+c({p,v})}-1|u, v, p\in V(G), u\ne v, u\ne p, v\ne p   }}<br>$$</p>
+<p>$$<br>dist_k(G,c)=\max{0, \max{\frac{c({u, v})}{\sum_{i=1}^m c({p_i,p_{i+1}})}-1|u, v\in V(G), u=p_1, p_2, \cdots, p_m=v\ \text{ is a simple path between u and v of length at most }k(m + 1\le k)    }}<br>$$</p>
+<p>对于任意整数$k&gt;2$,<br>$$<br>distance(G,c) = \max{disk_k(G,c)|2\le k\le|V(G)|-1  }<br>$$<br>$Ball_{r, dist}(L_\Delta)$包含满足下面条件的带权图<br>$$<br>c({(u,v)})\le (1+r)(c({(u,p)}) + c({(p,v)}))<br>$$</p>
+</li>
+</ul>
+</li>
+<li><p>只有在h合理划分问题实例的时候才是有意义的</p>
+</li>
+<li><p>U和$\overline U$, h, $U_r$定义同上, 令$A={A_\epsilon}_{\epsilon&gt;0}$是U的一个PTAS</p>
+<ul>
+<li><p>如果对所有的$r&gt;0$和$\epsilon&gt;0$, $A_\epsilon$是一个$U_r $的$\delta_{r,\epsilon}-$近似算法, 那么A关于h是<strong>稳定</strong>的</p>
+</li>
+<li><p>如果$\delta_{r,\epsilon}\le f(\epsilon)\cdot g(r)$, 其中</p>
+<ul>
+<li>f和g是从$\mathbb R^{\ge 0}$到$\mathbb {R^+}$的函数, </li>
+<li>$\lim_{\epsilon\to 0}f(\epsilon) = 0$</li>
+</ul>
+<p>那么A关于h是<strong>超稳定</strong>的</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="对偶近似算法"><a href="#对偶近似算法" class="headerlink" title="对偶近似算法"></a>对偶近似算法</h3><ul>
+<li><p>当限制条件不明确时, 可以找一个不比$Opt_U(I)$差的解, 允许$S\not\in M(I)$, 但是S离M(I)”不太远”</p>
+</li>
+<li><p>对于最优化问题U, 定义<strong>限制条件距离函数</strong>为满足如下性质的函数$h: L_I \times \Sigma^*_O\to \mathbb R^{\ge 0}$</p>
+<ul>
+<li><p>对于$S\in M(x)$, $h(x, S)=0$</p>
+</li>
+<li><p>对于$S\not\in M(x)$, $h(x, S)&gt;0$</p>
+</li>
+<li><p>h是多项式时间可计算的</p>
+</li>
+</ul>
+</li>
+<li><p>例如01背包问题中, 定义<br>$$<br>h(I, T)=\max{0, \max{\sum_{l\in T_i}p_l|i=1,2,…,m  }-1}<br>$$<br>如果存在$\epsilon$满足对任何$i=1,2,…,m$有$\sum_{l\in T_i}p_l\le 1 + \epsilon$, 则$T\in M_\epsilon^h(I)$</p>
+</li>
+<li><p>定义满足如下条件的算法A为U的<strong>$h-$对偶$\epsilon-$近似算法</strong>: 对所有$x\in L_I$, 有</p>
+<ul>
+<li><p>$A(x)\in M_\epsilon^h(x)$</p>
+</li>
+<li><p>如果目标是最大化, 则$cost(A(x))\ge Opt_U(x)$, 如果目标是最小化, 则$cost(A(x))\le Opt_U(x)$</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>定义满足如下条件的算法A为U的<strong>$h-$对偶多项式时间近似方案(h-dual PTAS for U)</strong>:</p>
+<ul>
+<li><p>对于任意输入$(x,\epsilon)\in L_I\times \mathbb R^+$, $A(x, \epsilon)\in M_\epsilon^h(x)$</p>
+</li>
+<li><p>如果目标是最大化, 则$cost(A(x,\epsilon))\ge Opt_U(x)$, 如果目标是最小化, 则$cost(A(x,\epsilon))\le Opt_U(x)$</p>
+</li>
+<li><p>$Time_A(x, \epsilon^{-1})$有$|x|$的多项式函数上界</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>如果$Time_A(x, \epsilon^{-1})$有$|x|$和$\epsilon$的多项式函数上界, 则A为U的<strong>$h-$对偶完全多项式时间近似方案(h-dual FPTAS for U)</strong></li>
 </ul>
 
       
@@ -457,8 +578,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/01/数论/" rel="next" title="数论">
-                <i class="fa fa-chevron-left"></i> 数论
+              <a href="/2019/07/01/NP完全理论初步/" rel="next" title="NP完全理论初步">
+                <i class="fa fa-chevron-left"></i> NP完全理论初步
               </a>
             
           </div>
@@ -467,8 +588,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/07/01/代数编码/" rel="prev" title="代数编码">
-                代数编码 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/07/01/随机算法/" rel="prev" title="随机算法">
+                随机算法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -599,7 +720,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#RSA公钥加密系统"><span class="nav-number">1.</span> <span class="nav-text">RSA公钥加密系统</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#整数的因子分解"><span class="nav-number"></span> <span class="nav-text">整数的因子分解</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#近似算法"><span class="nav-number">1.</span> <span class="nav-text">近似算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最优化问题分类"><span class="nav-number">1.2.</span> <span class="nav-text">最优化问题分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#近似算法的稳定性"><span class="nav-number">1.3.</span> <span class="nav-text">近似算法的稳定性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对偶近似算法"><span class="nav-number">1.3.1.</span> <span class="nav-text">对偶近似算法</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

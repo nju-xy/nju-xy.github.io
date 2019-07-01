@@ -94,18 +94,18 @@
 
 
 
-  <meta name="description" content="RSA公钥加密系统 公钥$P_A$, 私钥$S_A$  对于Bob给Alice的加密消息M: 发送方式: Bob取得Alice公钥$P_A$  Bob计算出相应于M的密文$C=P_A(M)$   接收过程: Alice收到密文C后, 她用自己的密钥$S_A$恢复原始信息: $S_A(C) = S_A(P_A(M)) = M$ $S_A()$和$P_A()$互为反函数     数字签名: Alice">
+  <meta name="description" content="启发性算法 非常狭义定义： 用来设计最优化问题的随机算法的鲁棒性技术； 不能保证解的效率和质量 没有有界常数概率    模拟退火 Simulated Annealing概念 局部搜索+跳出局部最优的随机决策  局部搜索：找到一个可行解；找到邻域中的最优解替换并且循环这一步  多起点局部搜索  threshold local search：允许移动到较差解  模拟退火的基本思想: +  初始化：初始">
 <meta name="keywords" content="问题求解四">
 <meta property="og:type" content="article">
-<meta property="og:title" content="密码算法">
-<meta property="og:url" content="http://yoursite.com/2019/07/01/密码算法/index.html">
+<meta property="og:title" content="启发性算法">
+<meta property="og:url" content="http://yoursite.com/2019/07/01/启发性算法/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="RSA公钥加密系统 公钥$P_A$, 私钥$S_A$  对于Bob给Alice的加密消息M: 发送方式: Bob取得Alice公钥$P_A$  Bob计算出相应于M的密文$C=P_A(M)$   接收过程: Alice收到密文C后, 她用自己的密钥$S_A$恢复原始信息: $S_A(C) = S_A(P_A(M)) = M$ $S_A()$和$P_A()$互为反函数     数字签名: Alice">
+<meta property="og:description" content="启发性算法 非常狭义定义： 用来设计最优化问题的随机算法的鲁棒性技术； 不能保证解的效率和质量 没有有界常数概率    模拟退火 Simulated Annealing概念 局部搜索+跳出局部最优的随机决策  局部搜索：找到一个可行解；找到邻域中的最优解替换并且循环这一步  多起点局部搜索  threshold local search：允许移动到较差解  模拟退火的基本思想: +  初始化：初始">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-01T03:52:22.896Z">
+<meta property="og:updated_time" content="2019-07-01T04:00:16.693Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="密码算法">
-<meta name="twitter:description" content="RSA公钥加密系统 公钥$P_A$, 私钥$S_A$  对于Bob给Alice的加密消息M: 发送方式: Bob取得Alice公钥$P_A$  Bob计算出相应于M的密文$C=P_A(M)$   接收过程: Alice收到密文C后, 她用自己的密钥$S_A$恢复原始信息: $S_A(C) = S_A(P_A(M)) = M$ $S_A()$和$P_A()$互为反函数     数字签名: Alice">
+<meta name="twitter:title" content="启发性算法">
+<meta name="twitter:description" content="启发性算法 非常狭义定义： 用来设计最优化问题的随机算法的鲁棒性技术； 不能保证解的效率和质量 没有有界常数概率    模拟退火 Simulated Annealing概念 局部搜索+跳出局部最优的随机决策  局部搜索：找到一个可行解；找到邻域中的最优解替换并且循环这一步  多起点局部搜索  threshold local search：允许移动到较差解  模拟退火的基本思想: +  初始化：初始">
 
 
 
@@ -113,7 +113,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/07/01/密码算法/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/01/启发性算法/">
 
 
 
@@ -123,7 +123,7 @@
   };
 </script>
 
-  <title>密码算法 | Hexo</title>
+  <title>启发性算法 | Hexo</title>
   
 
 
@@ -286,7 +286,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/01/密码算法/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/01/启发性算法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -303,7 +303,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">密码算法
+          <h1 class="post-title" itemprop="name headline">启发性算法
 
               
             
@@ -329,7 +329,7 @@
                 
               
 
-              <time title="Created: 2019-07-01 11:50:15 / Modified: 11:52:22" itemprop="dateCreated datePublished" datetime="2019-07-01T11:50:15+08:00">2019-07-01</time>
+              <time title="Created: 2019-07-01 11:59:49 / Modified: 12:00:16" itemprop="dateCreated datePublished" datetime="2019-07-01T11:59:49+08:00">2019-07-01</time>
             </span>
           
 
@@ -371,51 +371,162 @@
       
 
       
-        <h2 id="RSA公钥加密系统"><a href="#RSA公钥加密系统" class="headerlink" title="RSA公钥加密系统"></a>RSA公钥加密系统</h2><ul>
-<li>公钥$P_A$, 私钥$S_A$ </li>
-<li>对于Bob给Alice的加密消息M:<ul>
-<li>发送方式:<ul>
-<li>Bob取得Alice公钥$P_A$ </li>
-<li>Bob计算出相应于M的密文$C=P_A(M)$</li>
-</ul>
-</li>
-<li>接收过程:<ul>
-<li>Alice收到密文C后, 她用自己的密钥$S_A$恢复原始信息: $S_A(C) = S_A(P_A(M)) = M$</li>
-<li>$S_A()$和$P_A()$互为反函数</li>
+        <h1 id="启发性算法"><a href="#启发性算法" class="headerlink" title="启发性算法"></a>启发性算法</h1><ul>
+<li>非常狭义定义：<ul>
+<li>用来设计最优化问题的随机算法的鲁棒性技术；</li>
+<li>不能保证解的效率和质量</li>
+<li>没有有界常数概率</li>
 </ul>
 </li>
 </ul>
+<h2 id="模拟退火-Simulated-Annealing"><a href="#模拟退火-Simulated-Annealing" class="headerlink" title="模拟退火 Simulated Annealing"></a>模拟退火 Simulated Annealing</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul>
+<li><p>局部搜索+跳出局部最优的随机决策</p>
 </li>
-<li>数字签名:<ul>
-<li>Alice运用她的密钥$S_A$和等式$\sigma=S_A(M’)$计算出信息$M’$的<strong>数字签名</strong>$\sigma$</li>
-<li>Alice把消息/签名对$(M’, \sigma)$发送给Bob</li>
-<li>当Bob收到$(M’, \sigma)$时, 他可以利用Alice的公钥, 通过验证等式$M’=P_A(\sigma)$来证实该消息的确来自Alice.</li>
+<li><p>局部搜索：找到一个可行解；找到邻域中的最优解替换并且循环这一步</p>
+</li>
+<li><p>多起点局部搜索</p>
+</li>
+<li><p>threshold local search：允许移动到较差解</p>
+</li>
+<li><p>模拟退火的基本思想:</p>
+<pre><code>+  初始化：初始温度T，初始可行解$\alpha \in M(x)$(是算法迭代的起点)，温度关于温度和时间的下降函数f</code></pre><ul>
+<li>时间$I=0$，当温度大于0(或不太靠近0)时，重复一下操作：<ul>
+<li>随机选取$\alpha$邻域中的解$\beta$</li>
+<li>如果$cost(\beta)\le cost(\beta)$, $\alpha:=\beta$; </li>
+<li>否则生成一个(0, 1)间的随机数r<ul>
+<li>如果$r&lt;\exp(-\frac{cost(\beta)-cost(\alpha)}{T})$, 则$\alpha:=\beta$; </li>
 </ul>
 </li>
-<li>RSA加密系统中, 一个参与者按下列过程创建他的公钥和密钥:<ul>
-<li>随机选取两个大素数$p$和$q$, 使得$p\ne q$, 例如各1024位.</li>
-<li>计算$n=pq$</li>
-<li>选取一个和$\phi(n)=(p-1)(q-1)$互素的小奇数e</li>
-<li>对模$\phi(n)$, 计算出e的乘法逆元d的值</li>
-<li>将对$P=(e, n)$公开, 并作为参与者的<strong>RSA公钥</strong></li>
-<li>将$S=(d,n)$保密, 作为参与者的<strong>RSA密钥</strong></li>
-<li>$$P(M)=M^e\mod n$$</li>
-<li>$$P(C)=C^d\mod n$$</li>
+<li>$I =I+1$</li>
+<li>$T=f(T,I)$</li>
 </ul>
 </li>
-<li>应用公钥$O(1)$次模乘法, $O(\beta^2)$次位操作</li>
-<li>应用密钥$O(\beta)$次模乘法, $O(\beta^3)$次位操作</li>
-<li>RSA加密系统的安全性来源于对大整数进行因数分解的困难性</li>
 </ul>
-<h1 id="整数的因子分解"><a href="#整数的因子分解" class="headerlink" title="整数的因子分解"></a>整数的因子分解</h1><ul>
-<li><p>Pollard的rho启发式方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">POLLARD-RHO(n)</span><br><span class="line">i = 1</span><br><span class="line">x_1 = RANDOM(0, n-1)</span><br><span class="line">y = x_1</span><br><span class="line">k = 2</span><br><span class="line">while True</span><br><span class="line">	i = i + 1</span><br><span class="line">	x_i = (x_&#123;i-1&#125;^2 - 1) mod n</span><br><span class="line">	d = gcd(y-x_i, n)</span><br><span class="line">	if d != 1 and d != n</span><br><span class="line">		print d</span><br><span class="line">	if i == k</span><br><span class="line">		y == x_i</span><br><span class="line">		k = 2k</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出$\alpha$</li>
+</ul>
 </li>
-<li><p>可以在期望的$\theta(\sqrt n)$次算数运算内找到n的一个小因子p.</p>
+</ul>
+<h3 id="理论和经验"><a href="#理论和经验" class="headerlink" title="理论和经验"></a>理论和经验</h3><ul>
+<li>如果下列条件成立, 模拟退火是渐进收敛的, 即取全局最优解的概率随迭代次数的增加趋向于1<ul>
+<li>每个可行解都是任意其他可行解可达的</li>
+<li>初始温度T至少为最深的非全局最优的局部最优解的深度</li>
+</ul>
 </li>
-<li><p>如果p是合数, 则在大约经过$n^{1/4}$ 次更新之后, 可以预计该过程已经找到了足够多的约数</p>
+<li>初始温度选择:<ul>
+<li>cost的最大差值</li>
+<li>或者任选T, 过程中增大T值保证接受概率小于1</li>
+</ul>
 </li>
-<li><p>函数$f(x)=(x^2-1)\mod n$生成的序列在出现回路之前预计要执行的步数为$\theta (\sqrt n)$</p>
+<li>温度下降函数选择:<ul>
+<li>通常选取常数r, $0.8\le r \le 0.99$, $T := r\cdot T$</li>
+<li>或者选取$T_k:=\frac{T}{\log_2(k+2)}$</li>
+<li>每个固定温度的迭代次数d为邻域的大小</li>
+</ul>
+</li>
+<li>终止条件:<ul>
+<li>一段时间cost不变</li>
+<li>T &lt; term, 通常$term\le \frac{\epsilon}{\ln [(|M(x)|-1)/p]}$</li>
+</ul>
+</li>
+<li>观察结果:<ul>
+<li>可能解质量好但是计算开销极大</li>
+<li>解的质量实际上未必和初始解选取有关</li>
+<li>最重要的参数是邻域和温度下降率</li>
+<li>平均时间接近最坏时间</li>
+<li>相同邻域下效果比局部搜索好</li>
+</ul>
+</li>
+<li>应用: MAX-CUT, MIN-CUT; (TSP效果很差)</li>
+</ul>
+<h3 id="随机禁忌搜索"><a href="#随机禁忌搜索" class="headerlink" title="随机禁忌搜索"></a>随机禁忌搜索</h3><ul>
+<li>模拟退火推广版</li>
+<li>记录搜索过的最优解, 并且在邻域和TABU的差集中搜索, 搜索后更新TABU</li>
+<li>TABU有多种选择策略, 可以前k步搜索过的解以免重复</li>
+<li>随机禁忌搜索算法:<ul>
+<li>选初始解$\alpha$, TABU = {$\alpha$}, STOP = FALSE, BEST = $\alpha$</li>
+<li>选$Neigh_x(\alpha)-TABU$中最优解$\beta$, 同模拟退火选择是否接受$\beta$</li>
+<li>更新TABU和STOP</li>
+<li>重复直至STOP</li>
+</ul>
+</li>
+</ul>
+<h2 id="遗传算法-genetic-algorithm"><a href="#遗传算法-genetic-algorithm" class="headerlink" title="遗传算法 genetic algorithm"></a>遗传算法 genetic algorithm</h2><h3 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h3><ul>
+<li><p>遗传算法:</p>
+<ul>
+<li>创造一个初始化人口$P={\alpha_1, \cdots, \alpha_k}$; 已经创造的人口数$t=0$</li>
+<li>计算fitness($\alpha_i$), i = 1, 2, …, k, 据此评估P的分布律$Prob_P$, 满足高fitness有较高概率</li>
+<li>根据$Prob_P$随机选取$k/2$对可行解$(\beta_1^1, \beta_1^1)$, …, $(\beta_{k/2}^1, \beta_{k/2}^1)$</li>
+<li>计算每一对的crossover生成新个体, 加入P</li>
+<li>对P中每个个体随机使用变异mutation</li>
+<li>对于P中每个个体再次计算fitness, 据此选择k个组成P’ $\subseteq$P</li>
+<li>可能对于P’中元素在邻域中搜索最优解来替代</li>
+<li>$t:=t+1$; $P:=P’$; 满足停止条件则输出, 不然重复上述步骤</li>
+</ul>
+</li>
+<li><p>定义: M(x)的计划为任意向量$s=(s_1, s_2,…,s_n)\in {0,1,<em>}^n$(</em>表示free); 对于计划s的可行解集合为</p>
+<p>$Schema(s_1, …, s_n) = {\gamma_1, …, \gamma_n\in M(x)|\gamma_i = s_i \text{ for all }i \in {1,…,n} \ \text{ such that }s_i\in {0,1}; \gamma_i \in{0,1}\text{ for all }j\in {1,2,…,n}\text{ such that }s_j=*  }$</p>
+</li>
+<li><p>length(s): s中第一个和最后一个非*位置间的距离;</p>
+<p>order(s): 非*位置数</p>
+<p>$Fitness(s, P) = \frac{1}{|Schema(s)\cap P|}\cdot \sum_{\gamma\in Schema(s)\cap P}cost(\gamma)$</p>
+<p>$Fit-ratio(s, P) = \frac{Fitness(s, P)}{\sum_{\beta \in P}cost(\beta)/|P|}$, 分母为平均fitness</p>
+</li>
+<li><p>The Schema Thm for GAS: 对任意Schema s 和任意 t= 1, 2, …, Schema(s)在(t+1)-st人口的期望个体数为</p>
+<p>$E[Z_{t+1}]=Fit-ratio(s, P_t)\cdot \frac{n-length(s)}{n}\cdot (1-order(s)\cdot pr_m)\cdot |P_t\cap Schema(s)|$</p>
+</li>
+</ul>
+<h3 id="参数选择"><a href="#参数选择" class="headerlink" title="参数选择"></a>参数选择</h3><ul>
+<li><p>人口大小: </p>
+<ul>
+<li>太小容易局部最优, 太大计算开销大</li>
+<li>30或者区间[n, 2n]内(n为实例的大小)</li>
+</ul>
+</li>
+<li><p>初始人口选择:</p>
+<ul>
+<li>随机选择</li>
+<li>选择较高质量的初始人口会增快收敛速度, 但容易收敛到局部最优</li>
+</ul>
+</li>
+<li><p>fitness选择:</p>
+<ul>
+<li>最大化问题直接选取cost作为fitness, 或再减去一个小于最小值的常数; 减去的值越接近最小cost, 越偏向于高cost个体</li>
+</ul>
+</li>
+<li><p>父母的选择:</p>
+<ul>
+<li>选最好的一半和剩下的随机组合</li>
+<li>或者按照从小到大排序后, 根据$Prob(\alpha_i)=\frac{2i}{n(n+1)}$的概率选择</li>
+</ul>
+</li>
+<li><p>个体的表示和crossover</p>
+<ul>
+<li>例如TSP中个体表示为1-n的排列, crossover可以选择为一个排列中的某部分按照另一个排列中的顺序重排</li>
+<li>或者将父母的某些特征crossover, 然后选择满足crossover后性质的解作为孩子</li>
+</ul>
+</li>
+<li><p>突变概率:</p>
+<ul>
+<li>1/100</li>
+<li>或1/n</li>
+<li>或$\frac{1}{k^{0.93}\sqrt{n}}$</li>
+<li>如果人口数量k较小, 就要增大突变率防止局部最优</li>
+</ul>
+</li>
+<li><p>新人口选择机制</p>
+<ul>
+<li>en block strategy: 孩子完全替代父母</li>
+<li>elite model: 选一小部分父母中的高fitness个体, 其余的大部分选孩子</li>
+<li>父母孩子放一起, 选择高fitness的</li>
+<li>选完之后可以在小邻域中提升个体fitness</li>
+</ul>
+</li>
+<li><p>停止策略:</p>
+<ul>
+<li>确定的代数</li>
+<li>根据平均fitness(不怎么变)和个体差异(小)</li>
+</ul>
 </li>
 </ul>
 
@@ -457,8 +568,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/01/数论/" rel="next" title="数论">
-                <i class="fa fa-chevron-left"></i> 数论
+              <a href="/2019/07/01/随机算法/" rel="next" title="随机算法">
+                <i class="fa fa-chevron-left"></i> 随机算法
               </a>
             
           </div>
@@ -466,10 +577,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/01/代数编码/" rel="prev" title="代数编码">
-                代数编码 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -599,7 +706,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#RSA公钥加密系统"><span class="nav-number">1.</span> <span class="nav-text">RSA公钥加密系统</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#整数的因子分解"><span class="nav-number"></span> <span class="nav-text">整数的因子分解</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#启发性算法"><span class="nav-number">1.</span> <span class="nav-text">启发性算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模拟退火-Simulated-Annealing"><span class="nav-number">1.1.</span> <span class="nav-text">模拟退火 Simulated Annealing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念"><span class="nav-number">1.1.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#理论和经验"><span class="nav-number">1.1.2.</span> <span class="nav-text">理论和经验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随机禁忌搜索"><span class="nav-number">1.1.3.</span> <span class="nav-text">随机禁忌搜索</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遗传算法-genetic-algorithm"><span class="nav-number">1.2.</span> <span class="nav-text">遗传算法 genetic algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数选择"><span class="nav-number">1.2.2.</span> <span class="nav-text">参数选择</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
