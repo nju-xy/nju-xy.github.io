@@ -94,17 +94,18 @@
 
 
 
-  <meta name="description" content="title: 串匹配tags:   问题求解四comments: false // 评论功能，默认开启mathjax: true  串匹配朴素字符串匹配算法 检测每一个位置开始的字符串是否符合要求. 最坏$\Theta((n-m+1)m)$  Rabin-Karp算法123456789101112131415RABIN-KARP-MATCHER(T, P, d, q)n = T.lengthm =">
+  <meta name="description" content="串匹配朴素字符串匹配算法 检测每一个位置开始的字符串是否符合要求. 最坏$\Theta((n-m+1)m)$  Rabin-Karp算法123456789101112131415RABIN-KARP-MATCHER(T, P, d, q)n = T.lengthm = P.lengthh = d^&amp;#123;m-1&amp;#125; mod qp = 0t_0 = 0for i = 1 to m //">
+<meta name="keywords" content="问题求解四">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="串匹配">
 <meta property="og:url" content="http://yoursite.com/2019/07/01/串匹配/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="title: 串匹配tags:   问题求解四comments: false // 评论功能，默认开启mathjax: true  串匹配朴素字符串匹配算法 检测每一个位置开始的字符串是否符合要求. 最坏$\Theta((n-m+1)m)$  Rabin-Karp算法123456789101112131415RABIN-KARP-MATCHER(T, P, d, q)n = T.lengthm =">
+<meta property="og:description" content="串匹配朴素字符串匹配算法 检测每一个位置开始的字符串是否符合要求. 最坏$\Theta((n-m+1)m)$  Rabin-Karp算法123456789101112131415RABIN-KARP-MATCHER(T, P, d, q)n = T.lengthm = P.lengthh = d^&amp;#123;m-1&amp;#125; mod qp = 0t_0 = 0for i = 1 to m //">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-01T03:26:53.256Z">
+<meta property="og:updated_time" content="2019-07-01T03:36:09.655Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="title: 串匹配tags:   问题求解四comments: false // 评论功能，默认开启mathjax: true  串匹配朴素字符串匹配算法 检测每一个位置开始的字符串是否符合要求. 最坏$\Theta((n-m+1)m)$  Rabin-Karp算法123456789101112131415RABIN-KARP-MATCHER(T, P, d, q)n = T.lengthm =">
+<meta name="twitter:title" content="串匹配">
+<meta name="twitter:description" content="串匹配朴素字符串匹配算法 检测每一个位置开始的字符串是否符合要求. 最坏$\Theta((n-m+1)m)$  Rabin-Karp算法123456789101112131415RABIN-KARP-MATCHER(T, P, d, q)n = T.lengthm = P.lengthh = d^&amp;#123;m-1&amp;#125; mod qp = 0t_0 = 0for i = 1 to m //">
 
 
 
@@ -122,7 +123,7 @@
   };
 </script>
 
-  <title> | Hexo</title>
+  <title>串匹配 | Hexo</title>
   
 
 
@@ -302,7 +303,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">串匹配
 
               
             
@@ -328,7 +329,7 @@
                 
               
 
-              <time title="Created: 2019-07-01 11:25:53 / Modified: 11:26:53" itemprop="dateCreated datePublished" datetime="2019-07-01T11:25:53+08:00">2019-07-01</time>
+              <time title="Created: 2019-07-01 11:25:53 / Modified: 11:36:09" itemprop="dateCreated datePublished" datetime="2019-07-01T11:25:53+08:00">2019-07-01</time>
             </span>
           
 
@@ -370,15 +371,11 @@
       
 
       
-        <p>title: 串匹配<br>tags: </p>
-<ul>
-<li>问题求解四<br>comments: false // 评论功能，默认开启<br>mathjax: true</li>
-</ul>
-<h2 id="串匹配"><a href="#串匹配" class="headerlink" title="串匹配"></a>串匹配</h2><h3 id="朴素字符串匹配算法"><a href="#朴素字符串匹配算法" class="headerlink" title="朴素字符串匹配算法"></a>朴素字符串匹配算法</h3><ul>
+        <h1 id="串匹配"><a href="#串匹配" class="headerlink" title="串匹配"></a>串匹配</h1><h2 id="朴素字符串匹配算法"><a href="#朴素字符串匹配算法" class="headerlink" title="朴素字符串匹配算法"></a>朴素字符串匹配算法</h2><ul>
 <li>检测每一个位置开始的字符串是否符合要求.</li>
 <li>最坏$\Theta((n-m+1)m)$</li>
 </ul>
-<h3 id="Rabin-Karp算法"><a href="#Rabin-Karp算法" class="headerlink" title="Rabin-Karp算法"></a>Rabin-Karp算法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">RABIN-KARP-MATCHER(T, P, d, q)</span><br><span class="line">n = T.length</span><br><span class="line">m = P.length</span><br><span class="line">h = d^&#123;m-1&#125; mod q</span><br><span class="line">p = 0</span><br><span class="line">t_0 = 0</span><br><span class="line">for i = 1 to m // preprocessing</span><br><span class="line">    p = (dp + P[i]) mod q</span><br><span class="line">    t_0 = (dt_0 + T[i]) mod q</span><br><span class="line">for s = 0 to n - m</span><br><span class="line">    if p == t_s</span><br><span class="line">        if P[1..m] == T[s+1..s+m]</span><br><span class="line">            print &quot;Pattern occurs with shift&quot; s</span><br><span class="line">    if s &lt; n - m</span><br><span class="line">        t_&#123;s+1&#125; = (d(t_s-T[s+1]h) + T[s+m+1]) mod q</span><br></pre></td></tr></table></figure>
+<h2 id="Rabin-Karp算法"><a href="#Rabin-Karp算法" class="headerlink" title="Rabin-Karp算法"></a>Rabin-Karp算法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">RABIN-KARP-MATCHER(T, P, d, q)</span><br><span class="line">n = T.length</span><br><span class="line">m = P.length</span><br><span class="line">h = d^&#123;m-1&#125; mod q</span><br><span class="line">p = 0</span><br><span class="line">t_0 = 0</span><br><span class="line">for i = 1 to m // preprocessing</span><br><span class="line">    p = (dp + P[i]) mod q</span><br><span class="line">    t_0 = (dt_0 + T[i]) mod q</span><br><span class="line">for s = 0 to n - m</span><br><span class="line">    if p == t_s</span><br><span class="line">        if P[1..m] == T[s+1..s+m]</span><br><span class="line">            print &quot;Pattern occurs with shift&quot; s</span><br><span class="line">    if s &lt; n - m</span><br><span class="line">        t_&#123;s+1&#125; = (d(t_s-T[s+1]h) + T[s+m+1]) mod q</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>预处理$O(m)$, 最坏运行时间$\Theta((n-m+1)m)$, 平均情况下较好.</li>
@@ -388,7 +385,7 @@
 <li>mod q是为了防止p和$t_s$的值太大, 导致每次算术运算需要的时间不是常数. 因为有mod q, 所以遇到伪命中点还需要进一步判断.</li>
 <li>期望运行时间为$O(n) + O(m(v+n/q))$, v为有效偏移量.</li>
 </ul>
-<h3 id="利用有限自动机进行字符串匹配"><a href="#利用有限自动机进行字符串匹配" class="headerlink" title="利用有限自动机进行字符串匹配"></a>利用有限自动机进行字符串匹配</h3><h4 id="有限自动机"><a href="#有限自动机" class="headerlink" title="有限自动机"></a>有限自动机</h4><ul>
+<h2 id="利用有限自动机进行字符串匹配"><a href="#利用有限自动机进行字符串匹配" class="headerlink" title="利用有限自动机进行字符串匹配"></a>利用有限自动机进行字符串匹配</h2><h3 id="有限自动机"><a href="#有限自动机" class="headerlink" title="有限自动机"></a>有限自动机</h3><ul>
 <li><p>一个有限自动机M是一个5元组$(Q, q_0, A, \Sigma, \delta)$.</p>
 <ul>
 <li>Q是<strong>状态</strong>的有限集合</li>
@@ -422,9 +419,11 @@
 <li><p>匹配时间$\Theta(n)$</p>
 </li>
 </ul>
-<h3 id="Knuth-Morris-Pratt-算法-KMP"><a href="#Knuth-Morris-Pratt-算法-KMP" class="headerlink" title="Knuth-Morris-Pratt 算法(KMP)"></a>Knuth-Morris-Pratt 算法(KMP)</h3><ul>
+<h2 id="Knuth-Morris-Pratt-算法-KMP"><a href="#Knuth-Morris-Pratt-算法-KMP" class="headerlink" title="Knuth-Morris-Pratt 算法(KMP)"></a>Knuth-Morris-Pratt 算法(KMP)</h2><ul>
 <li>预处理$\Theta(m)$, 匹配$\Theta(n)$.</li>
-<li>P的前缀函数$\pi: {1, 2, …, m}\to {0, 1, …, m - 1}$满足<br> $\pi[q] = max{k: k &lt; q且P_k\sqsupset P_q}$<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">KMP-MATCHER(T, P)</span><br><span class="line">n = T.length </span><br><span class="line">m = P.length</span><br><span class="line">pi = COMPUTE-PREFIX-FUNCTION(P)</span><br><span class="line">q = <span class="number">0</span> <span class="comment">// number of characters matched</span></span><br><span class="line"><span class="keyword">for</span> i = <span class="number">1</span> to n <span class="comment">// scan the text from left to right</span></span><br><span class="line">    <span class="keyword">while</span> q &gt; <span class="number">0</span> <span class="keyword">and</span> P[q+<span class="number">1</span>] != T[i] <span class="comment">// next character does not match</span></span><br><span class="line">        q = pi[q] </span><br><span class="line">    <span class="keyword">if</span> P[q+<span class="number">1</span>] == T[i] <span class="comment">//next character matches</span></span><br><span class="line">        q = q + <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> q == m</span><br><span class="line">        print <span class="string">"Pattern occurs with shift "</span> i - m</span><br><span class="line">    q = pi[q] <span class="comment">// look for the next match</span></span><br><span class="line"></span><br><span class="line">COMPUTE-PREFIX-FUNCTION(P)</span><br><span class="line">m = P.length</span><br><span class="line">pi[<span class="number">1</span>] = <span class="number">0</span></span><br><span class="line">k = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> q = <span class="number">2</span> to m</span><br><span class="line">    <span class="keyword">while</span> k &gt; <span class="number">0</span> <span class="keyword">and</span> P[k+<span class="number">1</span>] != P[q]</span><br><span class="line">        k = pi[k]</span><br><span class="line">    <span class="keyword">if</span> P[k+<span class="number">1</span>] == P[q]</span><br><span class="line">        k = k + <span class="number">1</span></span><br><span class="line">        pi[q] = k</span><br><span class="line"><span class="keyword">return</span> pi</span><br></pre></td></tr></table></figure></li>
+<li>P的前缀函数$\pi: {1, 2, …, m}\to {0, 1, …, m - 1}$满足<br> $\pi[q] = max{k: k &lt; q且P_k\sqsupset P_q}$<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">KMP-MATCHER(T, P)</span><br><span class="line">n = T.length </span><br><span class="line">m = P.length</span><br><span class="line">pi = COMPUTE-PREFIX-FUNCTION(P)</span><br><span class="line">q = <span class="number">0</span> <span class="comment">// number of characters matched</span></span><br><span class="line"><span class="keyword">for</span> i = <span class="number">1</span> to n <span class="comment">// scan the text from left to right</span></span><br><span class="line">    <span class="keyword">while</span> q &gt; <span class="number">0</span> <span class="keyword">and</span> P[q+<span class="number">1</span>] != T[i] <span class="comment">// next character does not match</span></span><br><span class="line">        q = pi[q] </span><br><span class="line">    <span class="keyword">if</span> P[q+<span class="number">1</span>] == T[i] <span class="comment">//next character matches</span></span><br><span class="line">        q = q + <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> q == m</span><br><span class="line">        print <span class="string">"Pattern occurs with shift "</span> i - m</span><br><span class="line">    q = pi[q] <span class="comment">// look for the next match</span></span><br><span class="line"></span><br><span class="line">COMPUTE-PREFIX-FUNCTION(P)</span><br><span class="line">m = P.length</span><br><span class="line">pi[<span class="number">1</span>] = <span class="number">0</span></span><br><span class="line">k = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> q = <span class="number">2</span> to m</span><br><span class="line">    <span class="keyword">while</span> k &gt; <span class="number">0</span> <span class="keyword">and</span> P[k+<span class="number">1</span>] != P[q]</span><br><span class="line">        k = pi[k]</span><br><span class="line">    <span class="keyword">if</span> P[k+<span class="number">1</span>] == P[q]</span><br><span class="line">        k = k + <span class="number">1</span></span><br><span class="line">        pi[q] = k</span><br><span class="line"><span class="keyword">return</span> pi</span><br></pre></td></tr></table></figure>
+
+</li>
 </ul>
 
       
@@ -447,6 +446,15 @@
 
     <footer class="post-footer">
       
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/问题求解四/" rel="tag"># 问题求解四</a>
+          
+        </div>
+      
 
       
       
@@ -465,6 +473,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/01/数论/" rel="prev" title="数论">
+                数论 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -533,7 +545,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -554,7 +566,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">tags</span>
                   
                 </div>
@@ -592,7 +606,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#串匹配"><span class="nav-number">1.</span> <span class="nav-text">串匹配</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#朴素字符串匹配算法"><span class="nav-number">1.1.</span> <span class="nav-text">朴素字符串匹配算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rabin-Karp算法"><span class="nav-number">1.2.</span> <span class="nav-text">Rabin-Karp算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#利用有限自动机进行字符串匹配"><span class="nav-number">1.3.</span> <span class="nav-text">利用有限自动机进行字符串匹配</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#有限自动机"><span class="nav-number">1.3.1.</span> <span class="nav-text">有限自动机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串匹配自动机"><span class="nav-number">1.3.2.</span> <span class="nav-text">字符串匹配自动机</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Knuth-Morris-Pratt-算法-KMP"><span class="nav-number">1.4.</span> <span class="nav-text">Knuth-Morris-Pratt 算法(KMP)</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#串匹配"><span class="nav-number">1.</span> <span class="nav-text">串匹配</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#朴素字符串匹配算法"><span class="nav-number">1.1.</span> <span class="nav-text">朴素字符串匹配算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rabin-Karp算法"><span class="nav-number">1.2.</span> <span class="nav-text">Rabin-Karp算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用有限自动机进行字符串匹配"><span class="nav-number">1.3.</span> <span class="nav-text">利用有限自动机进行字符串匹配</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#有限自动机"><span class="nav-number">1.3.1.</span> <span class="nav-text">有限自动机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串匹配自动机"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">字符串匹配自动机</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Knuth-Morris-Pratt-算法-KMP"><span class="nav-number">1.4.</span> <span class="nav-text">Knuth-Morris-Pratt 算法(KMP)</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -734,7 +748,74 @@
   
 
 
-  <script src="/js/next-boot.js?v=7.1.2"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>
@@ -753,34 +834,7 @@
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
 
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-
-  
-
-
-
-
-  
-
-  
-
-  
-  
-
-  
-  
-
+    
   
 
 

@@ -94,17 +94,18 @@
 
 
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="RSA公钥加密系统 公钥$P_A$, 私钥$S_A$  对于Bob给Alice的加密消息M: 发送方式: Bob取得Alice公钥$P_A$  Bob计算出相应于M的密文$C=P_A(M)$   接收过程: Alice收到密文C后, 她用自己的密钥$S_A$恢复原始信息: $S_A(C) = S_A(P_A(M)) = M$ $S_A()$和$P_A()$互为反函数     数字签名: Alice">
+<meta name="keywords" content="问题求解四">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2019/07/01/hello-world/index.html">
+<meta property="og:title" content="密码算法">
+<meta property="og:url" content="http://yoursite.com/2019/07/01/密码算法/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="RSA公钥加密系统 公钥$P_A$, 私钥$S_A$  对于Bob给Alice的加密消息M: 发送方式: Bob取得Alice公钥$P_A$  Bob计算出相应于M的密文$C=P_A(M)$   接收过程: Alice收到密文C后, 她用自己的密钥$S_A$恢复原始信息: $S_A(C) = S_A(P_A(M)) = M$ $S_A()$和$P_A()$互为反函数     数字签名: Alice">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-01T02:08:23.497Z">
+<meta property="og:updated_time" content="2019-07-01T03:52:22.896Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="密码算法">
+<meta name="twitter:description" content="RSA公钥加密系统 公钥$P_A$, 私钥$S_A$  对于Bob给Alice的加密消息M: 发送方式: Bob取得Alice公钥$P_A$  Bob计算出相应于M的密文$C=P_A(M)$   接收过程: Alice收到密文C后, 她用自己的密钥$S_A$恢复原始信息: $S_A(C) = S_A(P_A(M)) = M$ $S_A()$和$P_A()$互为反函数     数字签名: Alice">
 
 
 
@@ -112,7 +113,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/07/01/hello-world/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/01/密码算法/">
 
 
 
@@ -122,7 +123,7 @@
   };
 </script>
 
-  <title>Hello World | Hexo</title>
+  <title>密码算法 | Hexo</title>
   
 
 
@@ -285,7 +286,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/01/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/01/密码算法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -302,7 +303,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World
+          <h1 class="post-title" itemprop="name headline">密码算法
 
               
             
@@ -328,10 +329,14 @@
                 
               
 
-              <time title="Created: 2019-07-01 10:08:23" itemprop="dateCreated datePublished" datetime="2019-07-01T10:08:23+08:00">2019-07-01</time>
+              <time title="Created: 2019-07-01 11:50:15 / Modified: 11:52:22" itemprop="dateCreated datePublished" datetime="2019-07-01T11:50:15+08:00">2019-07-01</time>
             </span>
           
 
+          
+            
+
+            
           
 
           
@@ -366,19 +371,53 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h2 id="RSA公钥加密系统"><a href="#RSA公钥加密系统" class="headerlink" title="RSA公钥加密系统"></a>RSA公钥加密系统</h2><ul>
+<li>公钥$P_A$, 私钥$S_A$ </li>
+<li>对于Bob给Alice的加密消息M:<ul>
+<li>发送方式:<ul>
+<li>Bob取得Alice公钥$P_A$ </li>
+<li>Bob计算出相应于M的密文$C=P_A(M)$</li>
+</ul>
+</li>
+<li>接收过程:<ul>
+<li>Alice收到密文C后, 她用自己的密钥$S_A$恢复原始信息: $S_A(C) = S_A(P_A(M)) = M$</li>
+<li>$S_A()$和$P_A()$互为反函数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>数字签名:<ul>
+<li>Alice运用她的密钥$S_A$和等式$\sigma=S_A(M’)$计算出信息$M’$的<strong>数字签名</strong>$\sigma$</li>
+<li>Alice把消息/签名对$(M’, \sigma)$发送给Bob</li>
+<li>当Bob收到$(M’, \sigma)$时, 他可以利用Alice的公钥, 通过验证等式$M’=P_A(\sigma)$来证实该消息的确来自Alice.</li>
+</ul>
+</li>
+<li>RSA加密系统中, 一个参与者按下列过程创建他的公钥和密钥:<ul>
+<li>随机选取两个大素数$p$和$q$, 使得$p\ne q$, 例如各1024位.</li>
+<li>计算$n=pq$</li>
+<li>选取一个和$\phi(n)=(p-1)(q-1)$互素的小奇数e</li>
+<li>对模$\phi(n)$, 计算出e的乘法逆元d的值</li>
+<li>将对$P=(e, n)$公开, 并作为参与者的<strong>RSA公钥</strong></li>
+<li>将$S=(d,n)$保密, 作为参与者的<strong>RSA密钥</strong></li>
+<li>$$P(M)=M^e\mod n$$</li>
+<li>$$P(C)=C^d\mod n$$</li>
+</ul>
+</li>
+<li>应用公钥$O(1)$次模乘法, $O(\beta^2)$次位操作</li>
+<li>应用密钥$O(\beta)$次模乘法, $O(\beta^3)$次位操作</li>
+<li>RSA加密系统的安全性来源于对大整数进行因数分解的困难性</li>
+</ul>
+<h1 id="整数的因子分解"><a href="#整数的因子分解" class="headerlink" title="整数的因子分解"></a>整数的因子分解</h1><ul>
+<li><p>Pollard的rho启发式方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">POLLARD-RHO(n)</span><br><span class="line">i = 1</span><br><span class="line">x_1 = RANDOM(0, n-1)</span><br><span class="line">y = x_1</span><br><span class="line">k = 2</span><br><span class="line">while True</span><br><span class="line">	i = i + 1</span><br><span class="line">	x_i = (x_&#123;i-1&#125;^2 - 1) mod n</span><br><span class="line">	d = gcd(y-x_i, n)</span><br><span class="line">	if d != 1 and d != n</span><br><span class="line">		print d</span><br><span class="line">	if i == k</span><br><span class="line">		y == x_i</span><br><span class="line">		k = 2k</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以在期望的$\theta(\sqrt n)$次算数运算内找到n的一个小因子p.</p>
+</li>
+<li><p>如果p是合数, 则在大约经过$n^{1/4}$ 次更新之后, 可以预计该过程已经找到了足够多的约数</p>
+</li>
+<li><p>函数$f(x)=(x^2-1)\mod n$生成的序列在出现回路之前预计要执行的步数为$\theta (\sqrt n)$</p>
+</li>
+</ul>
 
       
     </div>
@@ -400,6 +439,15 @@
 
     <footer class="post-footer">
       
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/问题求解四/" rel="tag"># 问题求解四</a>
+          
+        </div>
+      
 
       
       
@@ -409,14 +457,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/07/01/数论/" rel="next" title="数论">
+                <i class="fa fa-chevron-left"></i> 数论
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/07/01/CZ/" rel="prev" title="图论定理整理">
-                图论定理整理 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/07/01/代数编码/" rel="prev" title="代数编码">
+                代数编码 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -547,7 +599,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#RSA公钥加密系统"><span class="nav-number">1.</span> <span class="nav-text">RSA公钥加密系统</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#整数的因子分解"><span class="nav-number"></span> <span class="nav-text">整数的因子分解</span></a></li></div>
             
 
           </div>
@@ -689,7 +741,74 @@
   
 
 
-  <script src="/js/next-boot.js?v=7.1.2"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>
@@ -708,34 +827,7 @@
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
 
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-
-  
-
-
-
-
-  
-
-  
-
-  
-  
-
-  
-  
-
+    
   
 
 
