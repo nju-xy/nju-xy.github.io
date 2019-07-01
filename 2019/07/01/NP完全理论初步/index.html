@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="NP完全性 下列每队问题, 一个是可用多项式时间算法解决的, 一个是NP完全问题 最短和最长简单路径 欧拉回路和哈密顿圈 2-CNF可满足性问题和3-CNF可满足性问题   证书: 如哈密顿圈问题中的|V|个顶点序列, 3-CNF可满足性问题中的一组变量的赋值 可被证明: 已知一个问题的证书, 可以证明此问题在该输入规模下能在多项式时间内解决 所有P类问题同时也是NP问题, P类问题不用任何证书就">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-01T02:22:41.265Z">
+<meta property="og:updated_time" content="2019-07-01T02:52:37.196Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NP完全理论初步">
 <meta name="twitter:description" content="NP完全性 下列每队问题, 一个是可用多项式时间算法解决的, 一个是NP完全问题 最短和最长简单路径 欧拉回路和哈密顿圈 2-CNF可满足性问题和3-CNF可满足性问题   证书: 如哈密顿圈问题中的|V|个顶点序列, 3-CNF可满足性问题中的一组变量的赋值 可被证明: 已知一个问题的证书, 可以证明此问题在该输入规模下能在多项式时间内解决 所有P类问题同时也是NP问题, P类问题不用任何证书就">
@@ -328,7 +328,7 @@
                 
               
 
-              <time title="Created: 2019-07-01 10:22:18 / Modified: 10:22:41" itemprop="dateCreated datePublished" datetime="2019-07-01T10:22:18+08:00">2019-07-01</time>
+              <time title="Created: 2019-07-01 10:22:18 / Modified: 10:52:37" itemprop="dateCreated datePublished" datetime="2019-07-01T10:22:18+08:00">2019-07-01</time>
             </span>
           
 
@@ -838,7 +838,74 @@
   
 
 
-  <script src="/js/next-boot.js?v=7.1.2"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>
@@ -857,29 +924,9 @@
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
 
-
+    
   
 
-  
-
-  
-
-  
-
-
-  
-
-
-  
-
-
-
-
-  
-
-  
-
-  
 
   
 
