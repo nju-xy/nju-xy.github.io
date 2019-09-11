@@ -94,18 +94,18 @@
 
 
 
-  <meta name="description" content="概念 提供不比最优解差太多的可行解  定义: 对于最优化问题 $U = \{\Sigma_I, \Sigma_O, L, L_I, M, cost, goal\}$ , A是U的一个一致性算法. 对于所有问题实例$x\in L_I$, A对于x的相对误差$\epsilon_A(x)$定义为$$\epsilon_A(x) = \frac{|cost(A(x)) - Opt_U(x)|}{Opt_U(">
-<meta name="keywords" content="问题求解四">
+  <meta name="description" content="最小割和最大割最小割 Contraction操作: $Contract(G, uv)$表示将图G中点u和v合并, uv之间的边删除  RandomContract算法 RandomContract算法:   while |V| &amp;gt; 2 do 随机选择边$uv\in E$ $G=Contract(G, uv)$   return $C=E$   复杂度: 运行$n-2$次Contract, 每">
+<meta name="keywords" content="高级算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="近似算法">
-<meta property="og:url" content="http://yoursite.com/2019/07/01/近似算法/index.html">
+<meta property="og:title" content="高级算法之最小割和最大割">
+<meta property="og:url" content="http://yoursite.com/2019/09/11/Cut/index.html">
 <meta property="og:site_name" content="XY&#39;s blog">
-<meta property="og:description" content="概念 提供不比最优解差太多的可行解  定义: 对于最优化问题 $U = \{\Sigma_I, \Sigma_O, L, L_I, M, cost, goal\}$ , A是U的一个一致性算法. 对于所有问题实例$x\in L_I$, A对于x的相对误差$\epsilon_A(x)$定义为$$\epsilon_A(x) = \frac{|cost(A(x)) - Opt_U(x)|}{Opt_U(">
+<meta property="og:description" content="最小割和最大割最小割 Contraction操作: $Contract(G, uv)$表示将图G中点u和v合并, uv之间的边删除  RandomContract算法 RandomContract算法:   while |V| &amp;gt; 2 do 随机选择边$uv\in E$ $G=Contract(G, uv)$   return $C=E$   复杂度: 运行$n-2$次Contract, 每">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-01T07:39:34.321Z">
+<meta property="og:updated_time" content="2019-09-11T14:28:57.370Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="近似算法">
-<meta name="twitter:description" content="概念 提供不比最优解差太多的可行解  定义: 对于最优化问题 $U = \{\Sigma_I, \Sigma_O, L, L_I, M, cost, goal\}$ , A是U的一个一致性算法. 对于所有问题实例$x\in L_I$, A对于x的相对误差$\epsilon_A(x)$定义为$$\epsilon_A(x) = \frac{|cost(A(x)) - Opt_U(x)|}{Opt_U(">
+<meta name="twitter:title" content="高级算法之最小割和最大割">
+<meta name="twitter:description" content="最小割和最大割最小割 Contraction操作: $Contract(G, uv)$表示将图G中点u和v合并, uv之间的边删除  RandomContract算法 RandomContract算法:   while |V| &amp;gt; 2 do 随机选择边$uv\in E$ $G=Contract(G, uv)$   return $C=E$   复杂度: 运行$n-2$次Contract, 每">
 
 
 
@@ -113,7 +113,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/07/01/近似算法/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/11/Cut/">
 
 
 
@@ -123,7 +123,7 @@
   };
 </script>
 
-  <title>近似算法 | XY's blog</title>
+  <title>高级算法之最小割和最大割 | XY's blog</title>
   
 
 
@@ -286,7 +286,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/01/近似算法/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/11/Cut/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="XY">
@@ -303,7 +303,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">近似算法
+          <h1 class="post-title" itemprop="name headline">高级算法之最小割和最大割
 
               
             
@@ -329,7 +329,7 @@
                 
               
 
-              <time title="Created: 2019-07-01 11:58:19 / Modified: 15:39:34" itemprop="dateCreated datePublished" datetime="2019-07-01T11:58:19+08:00">2019-07-01</time>
+              <time title="Created: 2019-09-11 22:24:16 / Modified: 22:28:57" itemprop="dateCreated datePublished" datetime="2019-09-11T22:24:16+08:00">2019-09-11</time>
             </span>
           
 
@@ -371,173 +371,186 @@
       
 
       
-        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ul>
-<li><p>提供不比最优解差太多的可行解</p>
-</li>
-<li><p>定义: 对于最优化问题 $U = \{\Sigma_I, \Sigma_O, L, L_I, M, cost, goal\}$ , A是U的一个一致性算法. 对于所有问题实例$x\in L_I$, A对于x的相对误差$\epsilon_A(x)$定义为<br>$$<br>\epsilon_A(x) = \frac{|cost(A(x)) - Opt_U(x)|}{Opt_U(x)}<br>$$<br>其中, $Opt_U(x)$是x的最优cost.</p>
-</li>
-<li><p>对于任意$n\in \mathbb{N}$, 我们定义A的相对误差为<br>$$<br>\epsilon_A(n) = \max\{\epsilon_A(x)| x \in L_I \cap (\Sigma_I)^n\}<br>$$</p>
-</li>
-<li><p>A关于x的近似率$R_A(x)$定义为</p>
-</li>
+        <h1 id="最小割和最大割"><a href="#最小割和最大割" class="headerlink" title="最小割和最大割"></a>最小割和最大割</h1><h2 id="最小割"><a href="#最小割" class="headerlink" title="最小割"></a>最小割</h2><ul>
+<li>Contraction操作: $Contract(G, uv)$表示将图G中点u和v合并, uv之间的边删除</li>
 </ul>
-<p>$$<br>R_A(x) = \max\{\frac{cost(A(x))}{Opt_U(x)}, \frac{Opt_U(x)}{cost(A(x))}\}<br>$$</p>
+<h4 id="RandomContract算法"><a href="#RandomContract算法" class="headerlink" title="RandomContract算法"></a>RandomContract算法</h4><ul>
+<li><p>RandomContract算法: </p>
 <ul>
-<li><p>对于任意$n\in \mathbb{N}$, 我们定义A的相对近似率为<br>$$<br>R_A(x) = \max\{R_A(x)| x \in L_I\cap(\Sigma_I)^n\}<br>$$</p>
-</li>
-<li><p>对于任意正实数$\delta&gt;1$, 如果对任意$x\in L_I$, $R_A(x)\le \delta$, 定义A为U的<strong>$\delta-$近似算法</strong>.</p>
-</li>
-<li><p>对于任意函数$f:\mathbb{N}\to \mathbb{R^+}$, 如果对任意$n \in \mathbb{N}$, $R_A(x)\le f(n)$, 定义A为U的<strong>$f(n)-$近似算法</strong>.</p>
-</li>
-<li><p>对于最小化问题, 有</p>
-</li>
+<li>while |V| &gt; 2 do<ul>
+<li>随机选择边$uv\in E$</li>
+<li>$G=Contract(G, uv)$</li>
 </ul>
-<p>$$<br>R_A(x) = \frac{cost(A(x))}{Opt_U(x)}=1 + \epsilon_A(x)<br>$$</p>
+</li>
+<li>return $C=E$</li>
+</ul>
+</li>
+<li><p>复杂度: 运行$n-2$次Contract, 每次Contract为$O(n)$, RandomContract为$O(n^2)$</p>
+</li>
+<li><p>准确率分析:</p>
 <ul>
-<li><p>对于最大化问题, 有<br>$$<br>R_A(x) = \frac{Opt_U(x)}{cost(A(x))}<br>$$</p>
+<li>对于某一特定最小割C, $p_c=Pr[C~ is <del>returned</del>by~RandomContract]\ge \frac{2}{n(n-1)}$</li>
+<li>证明要点:<ul>
+<li>C为G的最小割, $e\not\in C$, 则C是$G’=Contract(G,e)$的最小割<ul>
+<li>因为G’中的割都是G中的割, 且C在G’中”存活”, 所以C是G’的最小割</li>
+</ul>
 </li>
-<li><p>Greedy Makespan Schedule:</p>
+<li>C被RandomContract返回当且仅当对于任意$i=1,2,…,n-2, e_i\not\in C$</li>
+<li>链法则, $p_C$转化为$\Pi_{i=1}^n Pr[e_i\not\in C|\forall  j &lt; i, e_j\not\in C]$</li>
+<li>证明$|E|\ge \frac{|V||C|}{2}$<ul>
+<li>每个点的度至少为$|C|$</li>
+<li>所有点度之和为$2|E|$</li>
+</ul>
+</li>
+<li>$p_i=1-\frac{|C|}{|E_i|}\ge 1-\frac{2}{V_i}=1-\frac{2}{n-i+1}$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>运行RandomContract算法$t=\frac{n(n-1)\ln n}{2}$次, 就可以达到$1-\frac{1}{n}$的准确率, 称为with high probability</p>
+</li>
+<li><p>总复杂度$O(n^4\log n)$</p>
+</li>
+</ul>
+<h4 id="推论"><a href="#推论" class="headerlink" title="推论"></a>推论</h4><ul>
+<li><p>对于n度图G, 不同的割的数量最多为$\frac{n(n-1)}{2}$</p>
+</li>
+<li><p>$1\ge p_{correct}=\sum_{C\in \mathcal C}p_c\ge |\mathcal C|\frac{2}{n(n-1)}$</p>
+</li>
+<li><p>得证</p>
+</li>
+</ul>
+<h4 id="Fast-Min-Cut"><a href="#Fast-Min-Cut" class="headerlink" title="Fast Min-Cut"></a>Fast Min-Cut</h4><ul>
+<li><p>观察发现, 当图太Contract时, 成功率才低</p>
+</li>
+<li><p>改进思路: 先将顶点数Contract到一个相对小的值, 利用递归找到更小的那个割</p>
+</li>
+<li><p>改进方法:</p>
 <ul>
-<li><p>对于处理时间$p_i$排序, 从最大的开始, 依次将每个任务分配给最先空闲的机器.</p>
+<li>将RandomContract中的终止条件$|V|\ge 2$改为$|V|\ge t$, 后面发现$t=\lceil1+n/\sqrt 2 \rceil$较合适</li>
+<li>FastCut(G):<ul>
+<li>if $|V|\le 6$穷举得到最小割</li>
+<li>else <ul>
+<li>G1 = RandomContract(G, t)</li>
+<li>G2 = RandomContract(G, t)</li>
+<li>返回FastCut(G1)和FastCut(G2)中较小的那个</li>
+</ul>
 </li>
-<li><p>证明这个算法是MS的2-近似算法:</p>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>易证RandomContract后最小割大小不变的概率大于等于1/2</p>
+</li>
+<li><p>FastCut返回的不是最小割的概率为$\Omega(1/\log n)$</p>
+</li>
+<li><p>一次FastCut时间复杂度$O(n^2\log n)$</p>
+</li>
+<li><p>运行FastCut算法$O((\log n)^2)$次, 准确率达到$1-O(1/n)$, 总复杂度$O(n^2\log^3 n)$</p>
+</li>
+</ul>
+<h2 id="最大割"><a href="#最大割" class="headerlink" title="最大割"></a>最大割</h2><ul>
+<li>NPC</li>
+</ul>
+<h4 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h4><ul>
+<li><p>贪心算法:</p>
 <ul>
-<li><p>$I = (p_1, p_2, \cdots, p_n, m)$, $p_1&gt;p_2&gt;\cdots&gt;p_n$, 显然有<br>$$<br>Opt_{MS}(I) \ge p_1\ge p_2 \ge \cdots \ge p_n<br>$$<br>还有<br>$$<br>Opt_{MS}(I) \ge \frac{\sum_{i=1}^np_i}{m}<br>$$</p>
+<li>初始$S=T=\emptyset$</li>
+<li>for i = 1, 2, …, n<ul>
+<li>$v_i$加入S或者T, 以最大化当前的$|E(S, T)|$</li>
+</ul>
 </li>
-<li><p>对于任意$k = 1, 2, \cdots, n$, 因为$p_k$是$p_1$到$p_k$中最小的, 所以有<br>$$<br>p_k \le \frac{\sum_{i=1}^k p_i}{k}<br>$$</p>
+</ul>
 </li>
-<li><p>分类讨论:</p>
+<li><p>多项式时间</p>
+</li>
+<li><p>近似度分析</p>
 <ul>
-<li><p>当$n\le m$时, 显然</p>
+<li>$OPT_G$上界为|E|</li>
+<li>引理1: $|E|=\sum_{i=1}^n(|E(S_i, {v_i})| + |E(T_i, {v_i}|)$<ul>
+<li>可以理解为每条边遍历一次</li>
+</ul>
 </li>
-<li><p>当$n&gt;m$时, 设$T_l$满足$cost(T_l)=\sum_{r\in T_l}p_r = cost(GMS(I))$, 而k是$T_l$中最大的下标</p>
+<li>引理2: $SOL_G=\sum_{i=1}^n max(|E(S_i, {v_i})| , |E(T_i, {v_i}|)$<ul>
+<li>理解为每次选择和S或T相连的边较多的</li>
+</ul>
+</li>
+<li>因此$SOL_G\ge \frac{1}{2}OPT_G$</li>
+<li>近似比为0.5</li>
+</ul>
+</li>
+</ul>
+<h4 id="利用条件概率去随机化"><a href="#利用条件概率去随机化" class="headerlink" title="利用条件概率去随机化"></a>利用条件概率去随机化</h4><ul>
+<li><p>用$X_v$为0或1表示$v$属于S还是T</p>
+</li>
+<li><p>$\mathbb E[|E(S,T)|]=\sum_{uv\in E}\mathbb E[I[X_u\neq X_v]] = \frac{|E|}{2}\ge \frac{OPT_G}{2}$</p>
+</li>
+<li><p>因此至少有一组分割满足$E(S,T)\ge\frac{OPT_G}{2}$</p>
+</li>
+<li><p>可以作一棵决策树, 第i层表示$v_i$的选择</p>
+</li>
+<li><p>对于$x_{v_1}$, 因为$\mathbb E[E(S, T)]=\frac{1}{2}\mathbb E[E(S, T)|x_{v_1}=0]+\frac{1}{2}\mathbb E[E(S, T)|x_{v_1}=1]$, 所以存在$x_1\in{0,1}$, 满足$\mathbb E[E(S, T)|x_{v_1}=x_1]\ge \mathbb E[E(S,T)]$</p>
+</li>
+<li><p>同理存在一系列$x_i$满足$\mathbb E[E(S, T)|x_{v_1}=x_1, x_{v_2}=x_2, …, x_{v_i}=x_i]\ge $</p>
+<p>$\mathbb E[E(S,T)|x_{v_1}=x_1, x_{v_2}=x_2, …, x_{v_{i-1}}=x_{i-1}]$</p>
+</li>
+<li><p>综上存在$x_1, x_2, …, x_n$的01序列使得$\mathbb E[E(S, T)|]\le \mathbb E[E(S, T)|x_{v_1}=x_1, x_{v_2}=x_2, …, x_{v_n}=x_n]$</p>
+</li>
+<li><p>也就是存在$\hat S, \hat T$满足$\mathbb E[\hat S, \hat T]\ge \frac{OPT_G}{2}$</p>
+</li>
+<li><p>寻找这样的$S, T$的算法:</p>
 <ul>
-<li><p>如果$k\le m$, $|T_l|=1$, 所以$Opt_{MS}(I) = p_1 = p_k$, $GMS(I)$是最优解.</p>
-</li>
-<li><p>如果$k&gt;m$, 因为其他机器的cost肯定不小于$cost(GMS(I)) - p_k$, 不然$p_k$就不会安排在这个机器, 所以<br>$$<br>\sum_{i=1}^{k-1}p_i\ge m\cdot [cost(GMS(I)) - p_k]<br>$$<br>再根据上面的式子2, 有<br>$$<br>Opt_{MS}(I)\ge cost(GMS(I))-p_k<br>$$<br>因此<br>$$<br>cost(GMS(I)) - Opt_{MS}(I)\le p_k\le \frac{\sum_{i=1}^k p_i}{k}<br>$$<br>最终有<br>$$<br>\frac{cost(GMS(I)) - Opt_{MS}(I)}{Opt_{MS}(I)}\le \frac{(\sum_{i=1}^k p_i)/k}{(\sum_{i=1}^n p_i)/m}\le \frac{m}{k} &lt; 1<br>$$<br>因此GMS是MS的2-近似算法.</p>
-</li>
+<li>初始$S=T=\emptyset$</li>
 </ul>
 </li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>定义: 对于最优化问题 $U = {\Sigma_I, \Sigma_O, L, L_I, M, cost, goal}$ , 如果对于所有的输入对$(x, \epsilon)\in L_I\times \mathbb{R^+}$, A可以计算出一个相对误差不大于$\epsilon$的可行解A(x), 而且$Time_A(x, \epsilon^{-1})$有$|x|$的多项式函数上界, 那么A被称为U的<strong>多项式时间近似方案(PTAS)$</strong>.而如果$Time_A(x, \epsilon^{-1})$有$|x|$和$\epsilon^{-1}$的多项式函数上界, 那么A被称为U的<strong>完全多项式时间近似方案(FPTAS)$.</strong></p>
-</li>
-<li><p>PTAS: 任意输入, 想要多小误差都可以在|x|线性时间求解. </p>
-<p>FPTAS: 任意输入, 想要多小误差都可以在|x|和$\epsilon^{-1}$线性时间求解(误差越小越慢)</p>
-</li>
-</ul>
-<h2 id="最优化问题分类"><a href="#最优化问题分类" class="headerlink" title="最优化问题分类"></a>最优化问题分类</h2><ul>
-<li><p>NPO问题可以分为下列5类:</p>
+<li><p>for i = 1, 2, …, n</p>
 <ul>
-<li>NPO(I): 存在FPTAS的NPO最优化问题<ul>
-<li>例如背包问题</li>
+<li>$v_i$加入S或T, 满足在前面选择的基础上最大化割的均值, 也就是使得$\mathbb E[E(S,T)|x_{v_1}=x_1, x_{v_2}=x_2, …, x_{v_{i}}=x_{i}]$最大(计算该期望只需要计算还没完全确定的边)</li>
 </ul>
 </li>
-<li>NPO(II): 存在PTAS的NPO最优化问题<ul>
-<li>例如Makespan Schedule</li>
-</ul>
-</li>
-<li>NPO(III):  $U\in NPO$满足<ul>
-<li>存在$\delta &gt; 1$, 有多项式时间$\delta-$近似算法</li>
-<li>没有PTAS. (即存在$d&lt;\delta$, U无$d-$近似算法)</li>
-<li>例如最小顶点覆盖, $\Delta-$TSP, MAX-SAT</li>
-</ul>
-</li>
-<li>NPO(IV): $U\in NPO$满足<ul>
-<li>存在多项式时间$f(n)$近似算法, 且f有多项式上界</li>
-<li>在某些假设下, 不存在任何$\delta-$近似算法</li>
-</ul>
-</li>
-<li>NPO(V): $U\in NPO$满足对于所有可能存在的$f(n)-$近似算法, $f(n)$都没有多项式上界<ul>
-<li>例如TSP, 最大团</li>
-</ul>
+<li><p>实际上算法和上面的贪心完全一致</p>
 </li>
 </ul>
+<h4 id="利用成对独立性去随机化"><a href="#利用成对独立性去随机化" class="headerlink" title="利用成对独立性去随机化"></a>利用成对独立性去随机化</h4><ul>
+<li><p>注意上面算法实际上只要求成对独立, 因此可以优化</p>
 </li>
-<li><p>在$P\ne NP$的前提下, 每一类都非空</p>
+<li><p>用$Y_v$表示v属于S还是T</p>
 </li>
-</ul>
-<h2 id="近似算法的稳定性"><a href="#近似算法的稳定性" class="headerlink" title="近似算法的稳定性"></a>近似算法的稳定性</h2><ul>
-<li><p>一般认为NPO(V)中的问题是不可求解的, 但是可以将$U\in NPO(V)$的输入$L_I$根据难度划分.</p>
-</li>
-<li><p>对于最优化问题 $U = \{\Sigma_I, \Sigma_O, L, L_I, M, cost, goal\}$ 和 $\overline U = \{\Sigma_I, \Sigma_O, L, L, M, cost, goal\}$ , $L_I\subseteq L$, $\overline U$关于$L_I$的<strong>距离函数</strong>$h_L:L\to \mathbb{R^{\ge 0}}$满足如下性质:</p>
+<li><p>定理:</p>
 <ul>
-<li>对于所有$x\in L_I$, 有$h_L(x)=0$</li>
-<li>h是多项式时间可计算的</li>
+<li>01随机变量$X_1, X_2, …, X_k$</li>
+<li>$S_1, S_2, …, S_{2^k-1}\subseteq {1,2,…,k}$为${1,2,…,k}$的非空子集的枚举</li>
+<li>对任意i, $Y_i=\oplus_{j\in S_i} X_j$</li>
+<li>$Y_1, Y_2,…,Y_{2^k-1}$就是成对独立均匀随机位</li>
 </ul>
 </li>
-<li><p>对于$\overline U$关于$L_I$的距离函数$h$, 对于任意$r\in \mathbb{R}$, 定义<br>$$<br>Ball_{r,h}(L_I) = \{w\in L| h(w)\le r\}<br>$$</p>
+<li><p>如果$Y_v$是按照上面方式构造, $k=\lceil\log(n+1)\rceil$</p>
+<p>有$\mathbb E[|E(S,T)|]=\sum_{uv\in E} Pr[Y_u\neq Y_v=|E|/2$</p>
 </li>
-<li><p>A是$\overline U$的一致性算法, 也是$U$的$\epsilon-$近似算法($\epsilon \in \mathbb{R^{&gt;1}}$). 令p为正实数, 当对于所有实数$0&lt;r\le p$, 存在$\delta_{r, \epsilon}\in \mathbb{R^{&gt;1}}$满足A是$U_r= \{\Sigma_I, \Sigma_O, L, Ball_{r,h}(L_I), M, cost, goal\}$的$\delta_{r, \epsilon}-$近似算法, 我们定义<strong>A关于h是p-稳定的</strong> </p>
+<li><p>因此存在S, T满足$|E(S,T)|\ge |E|/2\ge OPT/2$</p>
 </li>
-<li><p>如果对于所有正实数p, A都是p-稳定的, 那么A关于h是<strong>稳定</strong>的; 如果对于任意正实数p, A都不是p-稳定的, 那么A关于h是<strong>不稳定</strong>的</p>
+<li><p>搜索空间降低为$2^k-1=O(n^2)$</p>
 </li>
-<li><p>TSP和$\Delta-$TSP:</p>
+<li><p>算法:</p>
 <ul>
-<li><p>对于任意输入实例(G, c), 定义<br>$$<br>dist(G,c)=\max\{0, \max\{\frac{c({u, v})}{c({u, v})+c({p,v})}-1|u, v, p\in V(G), u\ne v, u\ne p, v\ne p   \}\}<br>$$</p>
-<p>$$<br>dist_k(G,c)=\max\{0, \max\{\frac{c({u, v})}{\sum_{i=1}^m c({p_i,p_{i+1}})}-1|u, v\in V(G), u=p_1, p_2, \cdots, p_m=v$$<br>$$\text{ is a simple path between u and v of length at most }k(m + 1\le k)    \}\}<br>$$</p>
-<p>对于任意整数$k&gt;2$,<br>$$<br>distance(G,c) = \max\{disk_k(G,c)|2\le k\le|V(G)|-1  \}<br>$$<br>$Ball_{r, dist}(L_\Delta)$包含满足下面条件的带权图<br>$$<br>c({(u,v)})\le (1+r)(c({(u,p)}) + c({(p,v)}))<br>$$</p>
-</li>
+<li>$k=\lceil\log(n+1)\rceil$</li>
+<li>对所有$\vec x\in {0,1}^k$<ul>
+<li>初始$S_{\vec x}=T_{\vec x}=\emptyset$</li>
+<li>for i = 1, 2, …, n<ul>
+<li>if $\oplus_{j: \lfloor i/2^j\rfloor \mod 2 = 1} x_j=1$(即i二进制下为1的位都异或起来),  $v_i$加入$S_{\vec x}$</li>
+<li>else  $v_i$加入$T_{\vec x}$</li>
 </ul>
-</li>
-<li><p>只有在h合理划分问题实例的时候才是有意义的</p>
-</li>
-<li><p>U和$\overline U$, h, $U_r$定义同上, 令$A={A_\epsilon}_{\epsilon&gt;0}$是U的一个PTAS</p>
-<ul>
-<li><p>如果对所有的$r&gt;0$和$\epsilon&gt;0$, $A_\epsilon$是一个$U_r $的$\delta_{r,\epsilon}-$近似算法, 那么A关于h是<strong>稳定</strong>的</p>
-</li>
-<li><p>如果$\delta_{r,\epsilon}\le f(\epsilon)\cdot g(r)$, 其中</p>
-<ul>
-<li>f和g是从$\mathbb R^{\ge 0}$到$\mathbb {R^+}$的函数, </li>
-<li>$\lim_{\epsilon\to 0}f(\epsilon) = 0$</li>
-</ul>
-<p>那么A关于h是<strong>超稳定</strong>的</p>
 </li>
 </ul>
 </li>
 </ul>
-<h3 id="对偶近似算法"><a href="#对偶近似算法" class="headerlink" title="对偶近似算法"></a>对偶近似算法</h3><ul>
-<li><p>当限制条件不明确时, 可以找一个不比$Opt_U(I)$差的解, 允许$S\not\in M(I)$, 但是S离M(I)”不太远”</p>
 </li>
-<li><p>对于最优化问题U, 定义<strong>限制条件距离函数</strong>为满足如下性质的函数$h: L_I \times \Sigma^*_O\to \mathbb R^{\ge 0}$</p>
-<ul>
-<li><p>对于$S\in M(x)$, $h(x, S)=0$</p>
+<li><p>返回${S_{\vec x}, T_{\vec x}}$有最大$|E(S_{\vec x}, T_{\vec x})|$</p>
 </li>
-<li><p>对于$S\not\in M(x)$, $h(x, S)&gt;0$</p>
+<li><p>该算法的实质是遍历解空间, 但是解空间比之前小得多</p>
 </li>
-<li><p>h是多项式时间可计算的</p>
+<li><p>近似比也是1/2</p>
 </li>
-</ul>
-</li>
-<li><p>例如01背包问题中, 定义<br>$$<br>h(I, T)=\max\{0, \max\{\sum_{l\in T_i}p_l|i=1,2,…,m  \}-1\}<br>$$<br>如果存在$\epsilon$满足对任何$i=1,2,…,m$有$\sum_{l\in T_i}p_l\le 1 + \epsilon$, 则$T\in M_\epsilon^h(I)$</p>
-</li>
-<li><p>定义满足如下条件的算法A为U的<strong>$h-$对偶$\epsilon-$近似算法</strong>: 对所有$x\in L_I$, 有</p>
-<ul>
-<li><p>$A(x)\in M_\epsilon^h(x)$</p>
-</li>
-<li><p>如果目标是最大化, 则$cost(A(x))\ge Opt_U(x)$, 如果目标是最小化, 则$cost(A(x))\le Opt_U(x)$</p>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>定义满足如下条件的算法A为U的<strong>$h-$对偶多项式时间近似方案(h-dual PTAS for U)</strong>:</p>
-<ul>
-<li><p>对于任意输入$(x,\epsilon)\in L_I\times \mathbb R^+$, $A(x, \epsilon)\in M_\epsilon^h(x)$</p>
-</li>
-<li><p>如果目标是最大化, 则$cost(A(x,\epsilon))\ge Opt_U(x)$, 如果目标是最小化, 则$cost(A(x,\epsilon))\le Opt_U(x)$</p>
-</li>
-<li><p>$Time_A(x, \epsilon^{-1})$有$|x|$的多项式函数上界</p>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>如果$Time_A(x, \epsilon^{-1})$有$|x|$和$\epsilon$的多项式函数上界, 则A为U的<strong>$h-$对偶完全多项式时间近似方案(h-dual FPTAS for U)</strong></li>
 </ul>
 
       
@@ -565,7 +578,7 @@
         
         <div class="post-tags">
           
-            <a href="/tags/问题求解四/" rel="tag"># 问题求解四</a>
+            <a href="/tags/高级算法/" rel="tag"># 高级算法</a>
           
         </div>
       
@@ -578,8 +591,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/01/NP完全理论初步/" rel="next" title="NP完全理论初步">
-                <i class="fa fa-chevron-left"></i> NP完全理论初步
+              <a href="/2019/07/01/os期末复习 /" rel="next" title="OS期末复习">
+                <i class="fa fa-chevron-left"></i> OS期末复习
               </a>
             
           </div>
@@ -587,10 +600,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/01/随机算法/" rel="prev" title="随机算法">
-                随机算法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -724,7 +733,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最优化问题分类"><span class="nav-number">2.</span> <span class="nav-text">最优化问题分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#近似算法的稳定性"><span class="nav-number">3.</span> <span class="nav-text">近似算法的稳定性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对偶近似算法"><span class="nav-number">3.1.</span> <span class="nav-text">对偶近似算法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#最小割和最大割"><span class="nav-number">1.</span> <span class="nav-text">最小割和最大割</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#最小割"><span class="nav-number">1.1.</span> <span class="nav-text">最小割</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RandomContract算法"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">RandomContract算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#推论"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">推论</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Fast-Min-Cut"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">Fast Min-Cut</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最大割"><span class="nav-number">1.2.</span> <span class="nav-text">最大割</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#贪心算法"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">贪心算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#利用条件概率去随机化"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">利用条件概率去随机化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#利用成对独立性去随机化"><span class="nav-number">1.2.0.3.</span> <span class="nav-text">利用成对独立性去随机化</span></a></li></ol></li></ol></div>
             
 
           </div>
