@@ -94,18 +94,18 @@
 
 
 
-  <meta name="description" content="最小割和最大割最小割 Contraction操作: $Contract(G, uv)$表示将图G中点u和v合并, uv之间的边删除  RandomContract算法 RandomContract算法:   while |V| &amp;gt; 2 do 随机选择边$uv\in E$ $G=Contract(G, uv)$   return $C=E$   复杂度: 运行$n-2$次Contract, 每">
+  <meta name="description" content="最小割和最大割最小割 Contraction操作: $Contract(G, uv)$表示将图G中点u和v合并, uv之间的边删除  RandomContract算法 RandomContract算法:  while |V| &amp;gt; 2 do 随机选择边$uv\in E$ $G=Contract(G, uv)$   return $C=E$   复杂度: 运行$n-2$次Contract, 每次">
 <meta name="keywords" content="高级算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="高级算法之最小割和最大割">
 <meta property="og:url" content="http://yoursite.com/2019/09/11/Cut/index.html">
 <meta property="og:site_name" content="XY&#39;s blog">
-<meta property="og:description" content="最小割和最大割最小割 Contraction操作: $Contract(G, uv)$表示将图G中点u和v合并, uv之间的边删除  RandomContract算法 RandomContract算法:   while |V| &amp;gt; 2 do 随机选择边$uv\in E$ $G=Contract(G, uv)$   return $C=E$   复杂度: 运行$n-2$次Contract, 每">
+<meta property="og:description" content="最小割和最大割最小割 Contraction操作: $Contract(G, uv)$表示将图G中点u和v合并, uv之间的边删除  RandomContract算法 RandomContract算法:  while |V| &amp;gt; 2 do 随机选择边$uv\in E$ $G=Contract(G, uv)$   return $C=E$   复杂度: 运行$n-2$次Contract, 每次">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-11T14:28:57.370Z">
+<meta property="og:updated_time" content="2019-09-11T14:34:23.409Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高级算法之最小割和最大割">
-<meta name="twitter:description" content="最小割和最大割最小割 Contraction操作: $Contract(G, uv)$表示将图G中点u和v合并, uv之间的边删除  RandomContract算法 RandomContract算法:   while |V| &amp;gt; 2 do 随机选择边$uv\in E$ $G=Contract(G, uv)$   return $C=E$   复杂度: 运行$n-2$次Contract, 每">
+<meta name="twitter:description" content="最小割和最大割最小割 Contraction操作: $Contract(G, uv)$表示将图G中点u和v合并, uv之间的边删除  RandomContract算法 RandomContract算法:  while |V| &amp;gt; 2 do 随机选择边$uv\in E$ $G=Contract(G, uv)$   return $C=E$   复杂度: 运行$n-2$次Contract, 每次">
 
 
 
@@ -329,7 +329,7 @@
                 
               
 
-              <time title="Created: 2019-09-11 22:24:16 / Modified: 22:28:57" itemprop="dateCreated datePublished" datetime="2019-09-11T22:24:16+08:00">2019-09-11</time>
+              <time title="Created: 2019-09-11 22:24:16 / Modified: 22:34:23" itemprop="dateCreated datePublished" datetime="2019-09-11T22:24:16+08:00">2019-09-11</time>
             </span>
           
 
@@ -375,8 +375,7 @@
 <li>Contraction操作: $Contract(G, uv)$表示将图G中点u和v合并, uv之间的边删除</li>
 </ul>
 <h4 id="RandomContract算法"><a href="#RandomContract算法" class="headerlink" title="RandomContract算法"></a>RandomContract算法</h4><ul>
-<li><p>RandomContract算法: </p>
-<ul>
+<li>RandomContract算法: <ul>
 <li>while |V| &gt; 2 do<ul>
 <li>随机选择边$uv\in E$</li>
 <li>$G=Contract(G, uv)$</li>
@@ -385,18 +384,22 @@
 <li>return $C=E$</li>
 </ul>
 </li>
-<li><p>复杂度: 运行$n-2$次Contract, 每次Contract为$O(n)$, RandomContract为$O(n^2)$</p>
+<li>复杂度: 运行$n-2$次Contract, 每次Contract为$O(n)$, RandomContract为$O(n^2)$</li>
+<li>准确率分析:<ul>
+<li>对于某一特定最小割C,<br>$$<br>p_c=Pr[C ~ is ~ returned ~ by ~ RandomContract]\ge \frac{2}{n(n-1)}<br>$$</li>
+</ul>
 </li>
-<li><p>准确率分析:</p>
+</ul>
 <ul>
-<li>对于某一特定最小割C, $p_c=Pr[C~ is <del>returned</del>by~RandomContract]\ge \frac{2}{n(n-1)}$</li>
 <li>证明要点:<ul>
 <li>C为G的最小割, $e\not\in C$, 则C是$G’=Contract(G,e)$的最小割<ul>
 <li>因为G’中的割都是G中的割, 且C在G’中”存活”, 所以C是G’的最小割</li>
 </ul>
 </li>
 <li>C被RandomContract返回当且仅当对于任意$i=1,2,…,n-2, e_i\not\in C$</li>
-<li>链法则, $p_C$转化为$\Pi_{i=1}^n Pr[e_i\not\in C|\forall  j &lt; i, e_j\not\in C]$</li>
+</ul>
+</li>
+<li>链法则, $p_C$转化为$\Pi_{i=1}^n Pr[e_i\not\in C|\forall  j &lt; i, e_j\not\in C]$<ul>
 <li>证明$|E|\ge \frac{|V||C|}{2}$<ul>
 <li>每个点的度至少为$|C|$</li>
 <li>所有点度之和为$2|E|$</li>
@@ -406,11 +409,9 @@
 </ul>
 </li>
 </ul>
-</li>
-<li><p>运行RandomContract算法$t=\frac{n(n-1)\ln n}{2}$次, 就可以达到$1-\frac{1}{n}$的准确率, 称为with high probability</p>
-</li>
-<li><p>总复杂度$O(n^4\log n)$</p>
-</li>
+<ul>
+<li>运行RandomContract算法$t=\frac{n(n-1)\ln n}{2}$次, 就可以达到$1-\frac{1}{n}$的准确率, 称为with high probability</li>
+<li>总复杂度$O(n^4\log n)$</li>
 </ul>
 <h4 id="推论"><a href="#推论" class="headerlink" title="推论"></a>推论</h4><ul>
 <li><p>对于n度图G, 不同的割的数量最多为$\frac{n(n-1)}{2}$</p>
@@ -504,9 +505,8 @@
 </ul>
 </li>
 <li><p>for i = 1, 2, …, n</p>
-<ul>
-<li>$v_i$加入S或T, 满足在前面选择的基础上最大化割的均值, 也就是使得$\mathbb E[E(S,T)|x_{v_1}=x_1, x_{v_2}=x_2, …, x_{v_{i}}=x_{i}]$最大(计算该期望只需要计算还没完全确定的边)</li>
-</ul>
+<p>​    $v_i$加入S或T, 满足在前面选择的基础上最大化割的均值, 也就是使得</p>
+<p>​    $\mathbb     E[E(S,T)|x_{v_1}=x_1, x_{v_2}=x_2, …, x_{v_{i}}=x_{i}]$最大(计算该期望只需要计算还没完全确定的边)</p>
 </li>
 <li><p>实际上算法和上面的贪心完全一致</p>
 </li>
