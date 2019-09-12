@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="XY&#39;s blog">
 <meta property="og:description" content="最小割和最大割1 最小割1.1 Karger’s Contraction algorithmContraction操作: $Contract(G, uv)$表示将图G中点u和v合并, uv之间的边删除 RandomContract算法RandomContract算法:  while |V| &amp;gt; 2 do  随机选择边$uv\in E$ $G=Contract(G, uv)$  return">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-12T02:27:26.157Z">
+<meta property="og:updated_time" content="2019-09-12T12:23:29.408Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高级算法之最小割和最大割">
 <meta name="twitter:description" content="最小割和最大割1 最小割1.1 Karger’s Contraction algorithmContraction操作: $Contract(G, uv)$表示将图G中点u和v合并, uv之间的边删除 RandomContract算法RandomContract算法:  while |V| &amp;gt; 2 do  随机选择边$uv\in E$ $G=Contract(G, uv)$  return">
@@ -344,7 +344,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-09-12 10:27:26" itemprop="dateModified" datetime="2019-09-12T10:27:26+08:00">2019-09-12</time>
+                <time title="Modified: 2019-09-12 20:23:29" itemprop="dateModified" datetime="2019-09-12T20:23:29+08:00">2019-09-12</time>
               </span>
             
           
@@ -482,11 +482,11 @@
 </ul>
 <h4 id="近似度分析"><a href="#近似度分析" class="headerlink" title="近似度分析"></a>近似度分析</h4><ul>
 <li>$OPT_G$上界为|E|</li>
-<li>引理1: $|E|=\sum_{i=1}^n(|E(S_i, {v_i})| + |E(T_i, {v_i}|)$<ul>
+<li>引理1: $|E|=\sum_{i=1}^n(|E(S_i, \{v_i\})| + |E(T_i, \{v_i\}|)$<ul>
 <li>可以理解为每条边遍历一次</li>
 </ul>
 </li>
-<li>引理2: $SOL_G=\sum_{i=1}^n max(|E(S_i, {v_i})| , |E(T_i, {v_i}|)$<ul>
+<li>引理2: $SOL_G=\sum_{i=1}^n max(|E(S_i, \{v_i\})| , |E(T_i, \{v_i\}|)$<ul>
 <li>理解为每次选择和S或T相连的边较多的</li>
 </ul>
 </li>
@@ -543,7 +543,7 @@
 </ul>
 <h4 id="算法-1"><a href="#算法-1" class="headerlink" title="算法"></a>算法</h4><ul>
 <li>$k=\lceil\log(n+1)\rceil$</li>
-<li>对所有$\vec x\in {0,1}^k$<ul>
+<li>对所有$\vec x\in \{0,1\}^k$<ul>
 <li>初始$S_{\vec x}=T_{\vec x}=\emptyset$</li>
 <li>for i = 1, 2, …, n<ul>
 <li>if $\oplus_{j: \lfloor i/2^j\rfloor \mod 2 = 1} x_j=1$(即i二进制下为1的位都异或起来),  $v_i$加入$S_{\vec x}$</li>
@@ -552,7 +552,7 @@
 </li>
 </ul>
 </li>
-<li>返回${S_{\vec x}, T_{\vec x}}$有最大$|E(S_{\vec x}, T_{\vec x})|$</li>
+<li>返回$\{S_{\vec x}, T_{\vec x}\}$有最大$|E(S_{\vec x}, T_{\vec x})|$</li>
 </ul>
 <h4 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h4><ul>
 <li>该算法的实质是遍历解空间, 但是解空间比之前小得多</li>
