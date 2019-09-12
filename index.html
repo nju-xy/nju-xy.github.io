@@ -562,15 +562,21 @@
       
         
           
-            <h1 id="最小割和最大割"><a href="#最小割和最大割" class="headerlink" title="最小割和最大割"></a>最小割和最大割</h1><h2 id="1-最小割"><a href="#1-最小割" class="headerlink" title="1 最小割"></a>1 最小割</h2><h3 id="1-1-Karger’s-Contraction-algorithm"><a href="#1-1-Karger’s-Contraction-algorithm" class="headerlink" title="1.1 Karger’s Contraction algorithm"></a>1.1 Karger’s <em>Contraction</em> algorithm</h3><p>Contraction操作: $Contract(G, uv)$表示将图G中点u和v合并, uv之间的边删除</p>
-<h4 id="RandomContract算法"><a href="#RandomContract算法" class="headerlink" title="RandomContract算法"></a>RandomContract算法</h4><p>RandomContract算法: </p>
-<p>while |V| &gt; 2 do</p>
+            <h1 id="最小割和最大割"><a href="#最小割和最大割" class="headerlink" title="最小割和最大割"></a>最小割和最大割</h1><h2 id="1-最小割"><a href="#1-最小割" class="headerlink" title="1 最小割"></a>1 最小割</h2><h3 id="1-1-Karger’s-Contraction-algorithm"><a href="#1-1-Karger’s-Contraction-algorithm" class="headerlink" title="1.1 Karger’s Contraction algorithm"></a>1.1 Karger’s <em>Contraction</em> algorithm</h3><ul>
+<li>Contraction操作: $Contract(G, uv)$表示将图G中点u和v合并, uv之间的边删除</li>
+</ul>
+<h4 id="RandomContract算法"><a href="#RandomContract算法" class="headerlink" title="RandomContract算法"></a>RandomContract算法</h4><ul>
+<li><p>while |V| &gt; 2 do</p>
 <ul>
 <li>随机选择边$uv\in E$</li>
 <li>$G=Contract(G, uv)$</li>
 </ul>
-<p>return $C=E$</p>
-<p>复杂度: 运行$n-2$次Contract, 每次Contract为$O(n)$, RandomContract为$O(n^2)$</p>
+</li>
+<li><p>return $C=E$</p>
+</li>
+<li><p>复杂度: 运行$n-2$次Contract, 每次Contract为$O(n)$, RandomContract为$O(n^2)$</p>
+</li>
+</ul>
 <h3 id="1-2-Analysis-of-accuracy"><a href="#1-2-Analysis-of-accuracy" class="headerlink" title="1.2 Analysis of accuracy"></a>1.2 Analysis of accuracy</h3><table>
 <thead>
 <tr>
