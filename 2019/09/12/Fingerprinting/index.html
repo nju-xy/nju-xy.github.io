@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="XY&#39;s blog">
 <meta property="og:description" content="1. Polynomial Identity Testing (PIT) Polynomial Identity Testing (PIT): 给定两个多项式, 确定他们是否相同  单变量情形 问题  输入: 两个多项式$f$, $g\in \mathbb F [x]$(单变量域(filed)), 度都为$d$(最高次项次数) 确定是否有$f\equiv g$   多项式$f\in \mathbb">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-12T12:16:33.748Z">
+<meta property="og:updated_time" content="2019-09-12T14:22:01.257Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高级算法之指纹">
 <meta name="twitter:description" content="1. Polynomial Identity Testing (PIT) Polynomial Identity Testing (PIT): 给定两个多项式, 确定他们是否相同  单变量情形 问题  输入: 两个多项式$f$, $g\in \mathbb F [x]$(单变量域(filed)), 度都为$d$(最高次项次数) 确定是否有$f\equiv g$   多项式$f\in \mathbb">
@@ -429,13 +429,15 @@
 </li>
 </ul>
 <ul>
-<li><p>$$<br>Pr[f(r_1,r_2,\cdots,r_n)=0]\= Pr[f(\vec r)=0|f_k(r_1,r_2,\cdots, r_{n-1})=0]  \cdot Pr[f_k(r_1,r_2,\cdots, r_{n-1})=0]\</p>
-<ul>
-<li>Pr[f(\vec r)=0|f_k(r_1,r_2,\cdots, r_{n-1})\ne 0]  \cdot Pr[f_k(r_1,r_2,\cdots, r_{n-1})\ne 0]<br>$$</li>
+<li><p>$Pr[f(r_1,r_2,\cdots,r_n)=0]= Pr[f(\vec r)=0|f_k(r_1,r_2,\cdots, r_{n-1})=0]\cdot Pr[f_k(r_1,r_2,\cdots, r_{n-1})=0]$</p>
+<p>$+ Pr[f(\vec r)= 0|f_k(r_1,r_2,\cdots, r_{n-1})\ne 0]  \cdot Pr[f_k(r_1,r_2,\cdots, r_{n-1})\ne 0]$</p>
+</li>
 </ul>
-</li>
-<li><p>其中$f_k(r_1,r_2,\cdots, r_{n-1})$是$n-1$变量$d-k$阶多项式, 且$f_k\not\equiv 0$. 根据猜想, 我们有<br>$$<br>Pr[f_k(r_1,r_2\cdots,r_{n-1})=0]\le \frac{d-k}{|S|}<br>$$</p>
-</li>
+<ul>
+<li>其中$f_k(r_1,r_2,\cdots, r_{n-1})$是$n-1$变量$d-k$阶多项式, 且$f_k\not\equiv 0$. 根据猜想, 我们有</li>
+</ul>
+<p>$$<br>Pr[f_k(r_1,r_2\cdots,r_{n-1})=0]\le \frac{d-k}{|S|}<br>$$</p>
+<ul>
 <li><p>考虑条件$f_k(r_1,r_2, \cdots, r_{n-1})\ne 0$.该条件保证了<br>$$<br>f(r_1,\cdots, r_{n-1},x_n)=x_n^kf_k(r_1,r_2,\cdots,r_{n-1})+\bar f(r_1,r_2,\cdots,r_{n-1},x_n)=g_{r_1\cdots r_{n-1}}(x_n)<br>$$<br>是一个非0的单变量$x_n$的多项式, 且度为k, 且$g_{r_1\cdots r_{n-1}}\not\equiv 0$. 因此$g_{r_1\cdots r_{n-1}}(r_n) =0$的概率至多$\frac{k}{|S|}$</p>
 </li>
 <li><p>因此<br>$$<br>Pr[f(\vec r)=0|f_k(r_1,r_2,\cdots, r_{n-1})\ne 0] \=Pr[g_{r_1\cdots r_{n-1}}(r_n) =0|f_k(r_1,r_2,\cdots, r_{n-1})\ne 0] \le \frac{k}{|S|}<br>$$</p>
