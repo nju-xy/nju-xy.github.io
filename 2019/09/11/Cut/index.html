@@ -94,18 +94,18 @@
 
 
 
-  <meta name="description" content="最小割和最大割最小割 Contraction操作: $Contract(G, uv)$表示将图G中点u和v合并, uv之间的边删除  RandomContract算法 RandomContract算法:  while |V| &amp;gt; 2 do 随机选择边$uv\in E$ $G=Contract(G, uv)$   return $C=E$   复杂度: 运行$n-2$次Contract, 每次">
+  <meta name="description" content="最小割和最大割1 最小割1.1 Karger’s Contraction algorithmContraction操作: $Contract(G, uv)$表示将图G中点u和v合并, uv之间的边删除 RandomContract算法RandomContract算法:  while |V| &amp;gt; 2 do  随机选择边$uv\in E$ $G=Contract(G, uv)$  return">
 <meta name="keywords" content="高级算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="高级算法之最小割和最大割">
 <meta property="og:url" content="http://yoursite.com/2019/09/11/Cut/index.html">
 <meta property="og:site_name" content="XY&#39;s blog">
-<meta property="og:description" content="最小割和最大割最小割 Contraction操作: $Contract(G, uv)$表示将图G中点u和v合并, uv之间的边删除  RandomContract算法 RandomContract算法:  while |V| &amp;gt; 2 do 随机选择边$uv\in E$ $G=Contract(G, uv)$   return $C=E$   复杂度: 运行$n-2$次Contract, 每次">
+<meta property="og:description" content="最小割和最大割1 最小割1.1 Karger’s Contraction algorithmContraction操作: $Contract(G, uv)$表示将图G中点u和v合并, uv之间的边删除 RandomContract算法RandomContract算法:  while |V| &amp;gt; 2 do  随机选择边$uv\in E$ $G=Contract(G, uv)$  return">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-11T14:34:23.409Z">
+<meta property="og:updated_time" content="2019-09-12T01:27:31.171Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高级算法之最小割和最大割">
-<meta name="twitter:description" content="最小割和最大割最小割 Contraction操作: $Contract(G, uv)$表示将图G中点u和v合并, uv之间的边删除  RandomContract算法 RandomContract算法:  while |V| &amp;gt; 2 do 随机选择边$uv\in E$ $G=Contract(G, uv)$   return $C=E$   复杂度: 运行$n-2$次Contract, 每次">
+<meta name="twitter:description" content="最小割和最大割1 最小割1.1 Karger’s Contraction algorithmContraction操作: $Contract(G, uv)$表示将图G中点u和v合并, uv之间的边删除 RandomContract算法RandomContract算法:  while |V| &amp;gt; 2 do  随机选择边$uv\in E$ $G=Contract(G, uv)$  return">
 
 
 
@@ -329,13 +329,23 @@
                 
               
 
-              <time title="Created: 2019-09-11 22:24:16 / Modified: 22:34:23" itemprop="dateCreated datePublished" datetime="2019-09-11T22:24:16+08:00">2019-09-11</time>
+              <time title="Created: 2019-09-11 22:24:16" itemprop="dateCreated datePublished" datetime="2019-09-11T22:24:16+08:00">2019-09-11</time>
             </span>
           
 
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-09-12 09:27:31" itemprop="dateModified" datetime="2019-09-12T09:27:31+08:00">2019-09-12</time>
+              </span>
             
           
 
@@ -371,57 +381,67 @@
       
 
       
-        <h1 id="最小割和最大割"><a href="#最小割和最大割" class="headerlink" title="最小割和最大割"></a>最小割和最大割</h1><h2 id="最小割"><a href="#最小割" class="headerlink" title="最小割"></a>最小割</h2><ul>
-<li>Contraction操作: $Contract(G, uv)$表示将图G中点u和v合并, uv之间的边删除</li>
-</ul>
-<h4 id="RandomContract算法"><a href="#RandomContract算法" class="headerlink" title="RandomContract算法"></a>RandomContract算法</h4><ul>
-<li>RandomContract算法: <ul>
-<li>while |V| &gt; 2 do<ul>
+        <h1 id="最小割和最大割"><a href="#最小割和最大割" class="headerlink" title="最小割和最大割"></a>最小割和最大割</h1><h2 id="1-最小割"><a href="#1-最小割" class="headerlink" title="1 最小割"></a>1 最小割</h2><h3 id="1-1-Karger’s-Contraction-algorithm"><a href="#1-1-Karger’s-Contraction-algorithm" class="headerlink" title="1.1 Karger’s Contraction algorithm"></a>1.1 Karger’s <em>Contraction</em> algorithm</h3><p>Contraction操作: $Contract(G, uv)$表示将图G中点u和v合并, uv之间的边删除</p>
+<h4 id="RandomContract算法"><a href="#RandomContract算法" class="headerlink" title="RandomContract算法"></a>RandomContract算法</h4><p>RandomContract算法: </p>
+<p>while |V| &gt; 2 do</p>
+<ul>
 <li>随机选择边$uv\in E$</li>
 <li>$G=Contract(G, uv)$</li>
 </ul>
-</li>
-<li>return $C=E$</li>
-</ul>
-</li>
-<li>复杂度: 运行$n-2$次Contract, 每次Contract为$O(n)$, RandomContract为$O(n^2)$</li>
-<li>准确率分析:<ul>
-<li>对于某一特定最小割C,<br>$$<br>p_c=Pr[C ~ is ~ returned ~ by ~ RandomContract]\ge \frac{2}{n(n-1)}<br>$$</li>
-</ul>
-</li>
-</ul>
+<p>return $C=E$</p>
+<p>复杂度: 运行$n-2$次Contract, 每次Contract为$O(n)$, RandomContract为$O(n^2)$</p>
+<h3 id="1-2-Analysis-of-accuracy"><a href="#1-2-Analysis-of-accuracy" class="headerlink" title="1.2 Analysis of accuracy"></a>1.2 Analysis of accuracy</h3><table>
+<thead>
+<tr>
+<th>引理</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>对于某一特定最小割C, $$p_c=Pr[C ~ is ~ returned ~ by ~ RandomContract]\ge \frac{2}{n(n-1)}$$</td>
+</tr>
+</tbody></table>
+<p>证明要点:</p>
 <ul>
-<li>证明要点:<ul>
-<li>C为G的最小割, $e\not\in C$, 则C是$G’=Contract(G,e)$的最小割<ul>
+<li><p>C为G的最小割, $e\not\in C$, 则C是$G’=Contract(G,e)$的最小割</p>
+<ul>
 <li>因为G’中的割都是G中的割, 且C在G’中”存活”, 所以C是G’的最小割</li>
 </ul>
 </li>
-<li>C被RandomContract返回当且仅当对于任意$i=1,2,…,n-2, e_i\not\in C$</li>
-</ul>
+<li><p>C被RandomContract返回当且仅当对于任意$i=1,2,…,n-2, e_i\not\in C$</p>
 </li>
-<li>链法则, $p_C$转化为$\Pi_{i=1}^n Pr[e_i\not\in C|\forall  j &lt; i, e_j\not\in C]$<ul>
-<li>证明$|E|\ge \frac{|V||C|}{2}$<ul>
+<li><p>根据链法则, $p_C$转化为$\Pi_{i=1}^n Pr[e_i\not\in C|\forall  j &lt; i, e_j\not\in C]$</p>
+</li>
+<li><p>证明$|E|\ge \frac{|V||C|}{2}$</p>
+<ul>
 <li>每个点的度至少为$|C|$</li>
 <li>所有点度之和为$2|E|$</li>
 </ul>
 </li>
-<li>$p_i=1-\frac{|C|}{|E_i|}\ge 1-\frac{2}{V_i}=1-\frac{2}{n-i+1}$</li>
-</ul>
+<li><p>$p_i=1-\frac{|C|}{|E_i|}\ge 1-\frac{2}{V_i}=1-\frac{2}{n-i+1}$</p>
+</li>
+<li><p>运行RandomContract算法$t=\frac{n(n-1)\ln n}{2}$次, 就可以达到$1-\frac{1}{n}$的准确率, 称为with high probability</p>
+</li>
+<li><p>总复杂度$O(n^4\log n)$</p>
 </li>
 </ul>
-<ul>
-<li>运行RandomContract算法$t=\frac{n(n-1)\ln n}{2}$次, 就可以达到$1-\frac{1}{n}$的准确率, 称为with high probability</li>
-<li>总复杂度$O(n^4\log n)$</li>
-</ul>
-<h4 id="推论"><a href="#推论" class="headerlink" title="推论"></a>推论</h4><ul>
-<li><p>对于n度图G, 不同的割的数量最多为$\frac{n(n-1)}{2}$</p>
+<h3 id="1-3-A-Corollary-by-the-Probabilistic-Method"><a href="#1-3-A-Corollary-by-the-Probabilistic-Method" class="headerlink" title="1.3 A Corollary by the Probabilistic Method"></a>1.3 A Corollary by the Probabilistic Method</h3><ul>
+<li><table>
+<thead>
+<tr>
+<th>推论</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>对于n度图G, 不同的割的数量最多为$\frac{n(n-1)}{2}$</td>
+</tr>
+</tbody></table>
 </li>
 <li><p>$1\ge p_{correct}=\sum_{C\in \mathcal C}p_c\ge |\mathcal C|\frac{2}{n(n-1)}$</p>
 </li>
 <li><p>得证</p>
 </li>
 </ul>
-<h4 id="Fast-Min-Cut"><a href="#Fast-Min-Cut" class="headerlink" title="Fast Min-Cut"></a>Fast Min-Cut</h4><ul>
+<h3 id="1-4-Fast-Min-Cut"><a href="#1-4-Fast-Min-Cut" class="headerlink" title="1.4 Fast Min-Cut"></a>1.4 Fast Min-Cut</h3><ul>
 <li><p>观察发现, 当图太Contract时, 成功率才低</p>
 </li>
 <li><p>改进思路: 先将顶点数Contract到一个相对小的值, 利用递归找到更小的那个割</p>
@@ -450,23 +470,21 @@
 <li><p>运行FastCut算法$O((\log n)^2)$次, 准确率达到$1-O(1/n)$, 总复杂度$O(n^2\log^3 n)$</p>
 </li>
 </ul>
-<h2 id="最大割"><a href="#最大割" class="headerlink" title="最大割"></a>最大割</h2><ul>
+<h2 id="2-最大割"><a href="#2-最大割" class="headerlink" title="2 最大割"></a>2 最大割</h2><ul>
 <li>NPC</li>
 </ul>
-<h4 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h4><ul>
-<li><p>贪心算法:</p>
-<ul>
-<li>初始$S=T=\emptyset$</li>
-<li>for i = 1, 2, …, n<ul>
-<li>$v_i$加入S或者T, 以最大化当前的$|E(S, T)|$</li>
-</ul>
+<h3 id="2-1-Greedy-algorithm"><a href="#2-1-Greedy-algorithm" class="headerlink" title="2.1 Greedy algorithm"></a>2.1 Greedy algorithm</h3><h4 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法:"></a>贪心算法:</h4><ul>
+<li><p>初始$S=T=\emptyset$</p>
 </li>
+<li><p>for i = 1, 2, …, n</p>
+<ul>
+<li>$v_i$加入S或者T, 以最大化当前的$|E(S, T)|$</li>
 </ul>
 </li>
 <li><p>多项式时间</p>
 </li>
-<li><p>近似度分析</p>
-<ul>
+</ul>
+<h4 id="近似度分析"><a href="#近似度分析" class="headerlink" title="近似度分析"></a>近似度分析</h4><ul>
 <li>$OPT_G$上界为|E|</li>
 <li>引理1: $|E|=\sum_{i=1}^n(|E(S_i, {v_i})| + |E(T_i, {v_i}|)$<ul>
 <li>可以理解为每条边遍历一次</li>
@@ -479,9 +497,7 @@
 <li>因此$SOL_G\ge \frac{1}{2}OPT_G$</li>
 <li>近似比为0.5</li>
 </ul>
-</li>
-</ul>
-<h4 id="利用条件概率去随机化"><a href="#利用条件概率去随机化" class="headerlink" title="利用条件概率去随机化"></a>利用条件概率去随机化</h4><ul>
+<h3 id="2-2-Derandomazation-by-conditional-expectation"><a href="#2-2-Derandomazation-by-conditional-expectation" class="headerlink" title="2.2 Derandomazation by conditional expectation"></a>2.2 Derandomazation by conditional expectation</h3><ul>
 <li><p>用$X_v$为0或1表示$v$属于S还是T</p>
 </li>
 <li><p>$\mathbb E[|E(S,T)|]=\sum_{uv\in E}\mathbb E[I[X_u\neq X_v]] = \frac{|E|}{2}\ge \frac{OPT_G}{2}$</p>
@@ -499,19 +515,21 @@
 </li>
 <li><p>也就是存在$\hat S, \hat T$满足$\mathbb E[\hat S, \hat T]\ge \frac{OPT_G}{2}$</p>
 </li>
-<li><p>寻找这样的$S, T$的算法:</p>
-<ul>
-<li>初始$S=T=\emptyset$</li>
 </ul>
+<h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><ul>
+<li><p>初始$S=T=\emptyset$</p>
 </li>
 <li><p>for i = 1, 2, …, n</p>
-<p>​    $v_i$加入S或T, 满足在前面选择的基础上最大化割的均值, 也就是使得</p>
-<p>​    $\mathbb     E[E(S,T)|x_{v_1}=x_1, x_{v_2}=x_2, …, x_{v_{i}}=x_{i}]$最大(计算该期望只需要计算还没完全确定的边)</p>
+<ul>
+<li>$v_i$选择加入S或T, 满足在前面选择的基础上最大化割的均值, 也就是使得</li>
+</ul>
+<p>​       $\mathbb     E[E(S,T)|x_{v_1}=x_1, x_{v_2}=x_2, …, x_{v_{i}}=x_{i}]$最大</p>
+<p>​       (计算该期望只需要计算还没完全确定的边)</p>
 </li>
 <li><p>实际上算法和上面的贪心完全一致</p>
 </li>
 </ul>
-<h4 id="利用成对独立性去随机化"><a href="#利用成对独立性去随机化" class="headerlink" title="利用成对独立性去随机化"></a>利用成对独立性去随机化</h4><ul>
+<h3 id="2-3-Derandomazation-by-pairwise-independence"><a href="#2-3-Derandomazation-by-pairwise-independence" class="headerlink" title="2.3 Derandomazation by pairwise independence"></a>2.3 Derandomazation by pairwise independence</h3><ul>
 <li><p>注意上面算法实际上只要求成对独立, 因此可以优化</p>
 </li>
 <li><p>用$Y_v$表示v属于S还是T</p>
@@ -531,8 +549,8 @@
 </li>
 <li><p>搜索空间降低为$2^k-1=O(n^2)$</p>
 </li>
-<li><p>算法:</p>
-<ul>
+</ul>
+<h4 id="算法-1"><a href="#算法-1" class="headerlink" title="算法"></a>算法</h4><ul>
 <li>$k=\lceil\log(n+1)\rceil$</li>
 <li>对所有$\vec x\in {0,1}^k$<ul>
 <li>初始$S_{\vec x}=T_{\vec x}=\emptyset$</li>
@@ -543,14 +561,11 @@
 </li>
 </ul>
 </li>
+<li>返回${S_{\vec x}, T_{\vec x}}$有最大$|E(S_{\vec x}, T_{\vec x})|$</li>
 </ul>
-</li>
-<li><p>返回${S_{\vec x}, T_{\vec x}}$有最大$|E(S_{\vec x}, T_{\vec x})|$</p>
-</li>
-<li><p>该算法的实质是遍历解空间, 但是解空间比之前小得多</p>
-</li>
-<li><p>近似比也是1/2</p>
-</li>
+<h4 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h4><ul>
+<li>该算法的实质是遍历解空间, 但是解空间比之前小得多</li>
+<li>近似比也是1/2</li>
 </ul>
 
       
@@ -733,7 +748,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#最小割和最大割"><span class="nav-number">1.</span> <span class="nav-text">最小割和最大割</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#最小割"><span class="nav-number">1.1.</span> <span class="nav-text">最小割</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RandomContract算法"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">RandomContract算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#推论"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">推论</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Fast-Min-Cut"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">Fast Min-Cut</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最大割"><span class="nav-number">1.2.</span> <span class="nav-text">最大割</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#贪心算法"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">贪心算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#利用条件概率去随机化"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">利用条件概率去随机化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#利用成对独立性去随机化"><span class="nav-number">1.2.0.3.</span> <span class="nav-text">利用成对独立性去随机化</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#最小割和最大割"><span class="nav-number">1.</span> <span class="nav-text">最小割和最大割</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-最小割"><span class="nav-number">1.1.</span> <span class="nav-text">1 最小割</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Karger’s-Contraction-algorithm"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 Karger’s Contraction algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RandomContract算法"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">RandomContract算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Analysis-of-accuracy"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 Analysis of accuracy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-A-Corollary-by-the-Probabilistic-Method"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 A Corollary by the Probabilistic Method</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-Fast-Min-Cut"><span class="nav-number">1.1.4.</span> <span class="nav-text">1.4 Fast Min-Cut</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-最大割"><span class="nav-number">1.2.</span> <span class="nav-text">2 最大割</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Greedy-algorithm"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 Greedy algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#贪心算法"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">贪心算法:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#近似度分析"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">近似度分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Derandomazation-by-conditional-expectation"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 Derandomazation by conditional expectation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-Derandomazation-by-pairwise-independence"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 Derandomazation by pairwise independence</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-1"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法分析"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">算法分析</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
