@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="XY&#39;s blog">
 <meta property="og:description" content="1. Polynomial Identity Testing (PIT) Polynomial Identity Testing (PIT): 给定两个多项式, 确定他们是否相同  单变量情形 问题  输入: 两个多项式$f$, $g\in \mathbb F [x]$(单变量域(filed)), 度都为$d$(最高次项次数) 确定是否有$f\equiv g$   多项式$f\in \mathbb">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-12T12:02:56.769Z">
+<meta property="og:updated_time" content="2019-09-12T12:06:47.543Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高级算法之指纹">
 <meta name="twitter:description" content="1. Polynomial Identity Testing (PIT) Polynomial Identity Testing (PIT): 给定两个多项式, 确定他们是否相同  单变量情形 问题  输入: 两个多项式$f$, $g\in \mathbb F [x]$(单变量域(filed)), 度都为$d$(最高次项次数) 确定是否有$f\equiv g$   多项式$f\in \mathbb">
@@ -329,7 +329,7 @@
                 
               
 
-              <time title="Created: 2019-09-12 10:25:50 / Modified: 20:02:56" itemprop="dateCreated datePublished" datetime="2019-09-12T10:25:50+08:00">2019-09-12</time>
+              <time title="Created: 2019-09-12 10:25:50 / Modified: 20:06:47" itemprop="dateCreated datePublished" datetime="2019-09-12T10:25:50+08:00">2019-09-12</time>
             </span>
           
 
@@ -471,21 +471,9 @@
 </li>
 </ul>
 <h3 id="1-2-Schwartz-Zippel-Theorem"><a href="#1-2-Schwartz-Zippel-Theorem" class="headerlink" title="1.2 Schwartz-Zippel Theorem"></a>1.2 Schwartz-Zippel Theorem</h3><ul>
-<li><table>
-<thead>
-<tr>
-<th><strong>Schwartz-Zippel Theorem</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>令$f\in \mathbb [x_1,x_2, \cdots, x_n]$为$\mathbb F$中度为$d$的多元多项式. 如果$f\not\equiv 0$, 那么对于任意有限集合$S\subset F$, 随机选取$r_1, r_2, \cdots, r_n\in S$, $Pr[f(r_1, r_2, \cdots, r_n)=0]\le \frac{d}{</td>
-</tr>
-</tbody></table>
-</li>
-<li><p><strong>Schwartz-Zippel Theorem</strong>定理说明对于任何非0的$n$变量度为$d$的多项式, 在任意立方体$S^n$中的根的数量至多为$d\cdot |S|^{n-1}$</p>
-</li>
-<li><p>注意多元多项式中的度为所有变量的指数之和</p>
-</li>
+<li><strong>Schwartz-Zippel Theorem</strong>: 令$f\in \mathbb [x_1,x_2, \cdots, x_n]$为$\mathbb F$中度为$d$的多元多项式. 如果$f\not\equiv 0$, 那么对于任意有限集合$S\subset F$, 随机选取$r_1, r_2, \cdots, r_n\in S$, $Pr[f(r_1, r_2, \cdots, r_n)=0]\le \frac{d}{|S|}$.</li>
+<li>Schwartz-Zippel Theorem**定理说明对于任何非0的$n$变量度为$d$的多项式, 在任意立方体$S^n$中的根的数量至多为$d\cdot |S|^{n-1}$</li>
+<li>注意多元多项式中的度为所有变量的指数之和</li>
 </ul>
 <h4 id="证明-数归"><a href="#证明-数归" class="headerlink" title="证明(数归)"></a>证明(数归)</h4><ul>
 <li><p>Induction basis: </p>
