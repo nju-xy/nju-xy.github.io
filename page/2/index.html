@@ -2,15 +2,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
   
 
 
@@ -18,7 +9,7 @@
 <head><meta name="generator" content="Hexo 3.9.0">
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -29,6 +20,8 @@
 
 
 
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -42,21 +35,12 @@
 
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
-
-<link rel="stylesheet" href="/css/main.css?v=7.1.2">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
 
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -64,20 +48,61 @@
 
 
 
-<script id="hexo.configurations">
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="XY&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:site_name" content="XY&#39;s blog">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="XY&#39;s blog">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    version: '7.1.2',
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
-    back2top: true,
-    back2top_sidebar: false,
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -89,36 +114,14 @@
 </script>
 
 
-  
 
-
-
-
-  <meta property="og:type" content="website">
-<meta property="og:title" content="XY&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
-<meta property="og:site_name" content="XY&#39;s blog">
-<meta property="og:locale" content="default">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="XY&#39;s blog">
-
-
-
-
-
-  
-  
   <link rel="canonical" href="http://yoursite.com/page/2/">
 
 
 
-<script id="page.configurations">
-  CONFIG.page = {
-    sidebar: "",
-  };
-</script>
 
-  <title>XY's blog</title>
+
+  <title>XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -127,35 +130,6 @@
 
 
 
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .motion-element,
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
-
-  .use-motion .logo,
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
@@ -172,7 +146,7 @@
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
+  <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
@@ -182,12 +156,13 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-    
-    
+      
+        <p class="site-subtitle"></p>
+      
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
+    <button>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -195,53 +170,35 @@
   </div>
 </div>
 
-
-
 <nav class="site-nav">
+  
+
   
     <ul id="menu" class="menu">
       
         
-        
-        
-          
-          <li class="menu-item menu-item-home">
-
-    
-    
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
       
-    
-
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
-
-  </li>
         
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-
-    
-    
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
       
-    
 
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
-
-  </li>
-
-      
       
     </ul>
-  
-
-  
-    
-
   
 
   
@@ -249,20 +206,12 @@
 
 
 
-  
-
-
-
-</div>
+ </div>
     </header>
-
-    
-
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -273,8 +222,6 @@
 
   
   
-  
-
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -301,55 +248,37 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2019/07/01/NP完全理论初步/" class="post-title-link" itemprop="url">NP完全理论初步</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2019/07/01/NP完全理论初步/" itemprop="url">NP完全理论初步</a></h1>
         
 
         <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
+          <span class="post-time">
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
                 <span class="post-meta-item-text">Posted on</span>
               
-
-              
-                
-              
-
-              <time title="Created: 2019-07-01 11:56:57 / Modified: 16:40:51" itemprop="dateCreated datePublished" datetime="2019-07-01T11:56:57+08:00">2019-07-01</time>
-            </span>
-          
-
-          
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-01T11:56:57+08:00">
+                2019-07-01
+              </time>
             
 
             
-          
 
-          
-
-          
             
+          </span>
+
+          
+
+          
             
           
 
           
           
 
-          
-
-          <br>
           
 
           
@@ -371,44 +300,221 @@
       
         
           
-            <p>
-              
-下列每对问题, 一个是可用多项式时间算法解决的, 一个是NP完全问题
+            <ul>
+<li><p>下列每对问题, 一个是可用多项式时间算法解决的, 一个是NP完全问题</p>
+<ul>
+<li>最短和最长简单路径</li>
+<li>欧拉回路和哈密顿圈</li>
+<li>2-CNF可满足性问题和3-CNF可满足性问题</li>
+</ul>
+</li>
+<li><p><strong>证书</strong>: 如哈密顿圈问题中的|V|个顶点序列, 3-CNF可满足性问题中的一组变量的赋值</p>
+</li>
+<li><p><strong>可被证明</strong>: 已知一个问题的证书, 可以证明此问题在该输入规模下能在多项式时间内解决</p>
+</li>
+<li><p>所有P类问题同时也是NP问题, P类问题不用任何证书就可以在多项式时间内解决 </p>
+</li>
+<li><p>判定问题和最优化问题</p>
+</li>
+<li><p><strong>归约</strong>: </p>
+<ul>
+<li><p>某一特定问题的输入为该问题的<strong>实例</strong>.</p>
+</li>
+<li><p>对于一个判定问题A, 假设有另一个不同的判定问题B, 我们知道如果在多项式时间内解决</p>
+</li>
+<li><p>有一个过程, 可将A的任意实例$\alpha$转化为B的具有以下特征的某个实例$\beta$:</p>
+<ul>
+<li><p>转换操作需要多项式时间</p>
+</li>
+<li><p>两个实例的解是相同的, $\alpha$的解为”是”当且仅当$\beta$的解为”是”</p>
+</li>
+<li><p>称这一过程为<strong>多项式时间归约算法</strong></p>
+</li>
+</ul>
+</li>
+<li><p>一种多项式时间解决A的方法: </p>
+<ul>
+<li>给定问题A的实例$\alpha$, 利用多项式时间归约算法, 将他转化为问题B的一个实例$\beta$</li>
+<li>在实例$\beta$上, 运行B的多项式时间判定算法</li>
+<li>将$\beta$的解作为$\alpha$的解</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>相反的, 利用多项式时间归约, 说明一个问题是NP完全的:</p>
+<ul>
+<li>假设有一个判定问题A, 已知它不可能存在多项式时间算法</li>
+<li>假设有一个多项式时间的归约, 将A的一个实例转化为一个B的实例</li>
+<li>如果B存在多项式时间算法, 那么A也存在多项式时间算法, 矛盾</li>
+<li>类似的, 可以在问题A是NP完全的假设下, 证明问题B是NP完全的</li>
+</ul>
+</li>
+<li><p>第一个NP完全问题</p>
+<ul>
+<li>电路可满足性问题</li>
+</ul>
+</li>
+</ul>
+<h2 id="多项式时间"><a href="#多项式时间" class="headerlink" title="多项式时间"></a>多项式时间</h2><ul>
+<li><strong>抽象问题</strong>Q: 在问题实例集合I和问题解集合S上的一个二元关系</li>
+<li>编码: 抽象对象集合S的编码是从S到二进制串集合的映射e</li>
+<li><strong>具体问题</strong>: 以二进制串集合为实例集的问题</li>
+<li><strong>多项式时间可解</strong>: 对于常数k, 存在一个能在$O(n^k)$时间内求解出某具体问题的算法</li>
+<li><strong>复杂类P</strong>: 在多项式时间内可解的具体判定问题的集合</li>
+<li>编码会影响算法运行时间</li>
+<li>对于某个问题的实例集I, 如果存在两个多项式时间可计算的函数$f_{12}$和$f_{21}$满足对于任意$i\in I$, 有$f_{12}(e_1(i)) = e_2(i)$, 且$f_{21}(e_2(i)) = e_1(i)$, 那么这两种编码$e_1$和$e_2$是<strong>多项式相关</strong>的.</li>
+<li>Q是顶一个在一个实例集I上的一个抽象判定问题, $e_1$和$e_2$是I上多项式相关的编码, 则$e_1(Q)\in P$当且仅当$e_2(Q)\in P$</li>
+<li>形式语言体系:<ul>
+<li>字母表, 语言, 交, 并, 补, 连结, …</li>
+<li>闭包$L^* = \{\epsilon \}\cup L \cup L^2 \cup L^3 \cup \cdots$, 其中$L^k$是L与其自身进行k次连结运算后得到的语言</li>
+<li>复杂类P的另一种定义: $P ={L \subseteq {0, 1}^*: 存在一个算法A, 可以在多项式时间内判定L}$ </li>
+<li>$P = {L: L被一个多项式时间算法所接受 }$</li>
+</ul>
+</li>
+</ul>
+<h2 id="多项式时间的验证"><a href="#多项式时间的验证" class="headerlink" title="多项式时间的验证"></a>多项式时间的验证</h2><ul>
+<li><strong>验证算法</strong>: <ul>
+<li>含两个自变量的算法A, 其中一个自变量是普通输入串x, 另一个是称为证书的二进制串y. </li>
+<li>如果存在一个证书y满足$A(x, y)= 1$, 则该含两个自变量的算法A验证了输入串x. </li>
+<li>由一个验证算法A锁验证的语言是: $L={x\in {0, 1}^<em>: 存在y\in {0,1}^</em>, 满足A(x, y)=1}$</li>
+<li>如果对任意串$x\in L$, 都存在一个证书y, 且算法A可以用y来证明$x\in L$, 则算法A就验证了语言L.</li>
+</ul>
+</li>
+</ul>
+<h3 id="复杂类NP"><a href="#复杂类NP" class="headerlink" title="复杂类NP"></a>复杂类NP</h3><ul>
+<li><p>复杂类NP是能被一个多项式时间算法验证的语言类</p>
+</li>
+<li><p>一个语言$L\in NP$, 当且仅当存在一个2输入的多项式时间算法A和常数c, 满足</p>
+<p>$L = {x\in {0,1}^* : 存在一个证书y, |y|= O(|x|^c), 满足A(x,y)=1}$</p>
+</li>
+<li><p>$P\subseteq NP$</p>
+</li>
+</ul>
+<h2 id="NP完全性与可归约性"><a href="#NP完全性与可归约性" class="headerlink" title="NP完全性与可归约性"></a>NP完全性与可归约性</h2><ul>
+<li>如果任何一个NP完全问题能在多项式时间内得到解决, 那么NP中每一个问题都存在一个多项式时间解, 即P = NP</li>
+<li>HAM-CYCLE为NP完全问题</li>
+</ul>
+<h3 id="可归约性"><a href="#可归约性" class="headerlink" title="可归约性"></a>可归约性</h3><ul>
+<li>问题Q可以被归约为另一个问题Q’: Q的任何实例都可以被”容易地重新描述”为Q’的实例, 而Q’的实例的解也是Q的实例的解</li>
+<li>Q可以转化为Q’, 则Q并不比Q’更难解决</li>
+<li>定义: 语言$L_1$在多项式时间内可以归约为语言$L_2$, 记作$L_1 \le_p L_2$, 如果存在一个多项式时间可计算的函数$f: {0, 1}^* \to {0, 1}^<em>$, 满足对于所有的$x\in{0, 1}^</em>$, $x\in L_1$当且仅当$f(x) \in L_2 $, 则称函数f为<strong>归约函数</strong>, 计算f的多项式时间算法F为<strong>归约算法</strong></li>
+<li>如果$L_1, L_2\subseteq {0,1}^*$满足$L_1\le_p L_2$, 则$L_2\in P$蕴含$L_1\in P$</li>
+</ul>
+<h3 id="NP完全性"><a href="#NP完全性" class="headerlink" title="NP完全性"></a>NP完全性</h3><ul>
+<li><p>语言$L\in {0,1}^<em>$是*</em>NP完全**的, 如果:</p>
+<ul>
+<li>$L\in NP$</li>
+<li>对每一个$L’ \in NP$,  有$L’\le_p L$</li>
+</ul>
+</li>
+<li><p>如果语言L满足性质2, 但不满足性质1, 则称L是<strong>NP难度</strong>的</p>
+</li>
+<li><p><strong>NPC</strong>为NP完全语言类</p>
+</li>
+<li><p>电路可满足性问题CIRCUIT-SAT = {&lt;C&gt;: C是一个可满足的不二组合电路}是NP完全的</p>
+</li>
+</ul>
+<h2 id="NP完全性证明"><a href="#NP完全性证明" class="headerlink" title="NP完全性证明"></a>NP完全性证明</h2><ul>
+<li>如果语言L是一种满足对任意$L’ \in NPC$都有$L’\le_P L$的语言, 则L是NP难度的. 此外如果$L\in NP$, 则$L \in NPC$</li>
+<li>证明一种语言L是NP完全语言的方法:<ul>
+<li>证明$L\in NP$</li>
+<li>选取一种一致的NP完全语言L’</li>
+<li>描述一种可计算函数$f(x)$的算法, 其中$f$可将L’中每一个实例$x\in {0,1}^*$映射为L中的实例$f(x)$</li>
+<li>证明函数$f$满足对于所有的$x\in {0,1}^*$都有 $x\in L’$当且仅当$f(x)\in L$</li>
+<li>证明计算函数$f$的算法具有多项式运行时间</li>
+</ul>
+</li>
+</ul>
+<h3 id="公式可满足性"><a href="#公式可满足性" class="headerlink" title="公式可满足性"></a>公式可满足性</h3><ul>
+<li><p>布尔公式可满足性问题是NP完全的:</p>
+<ul>
+<li><p>$SAT\in NP$: </p>
+<ul>
+<li>对于输入$\phi$, 由它的一个可满足性赋值组成的证书可以在多项式时间内得到验证</li>
+<li>方法为: 将公式中每个变量替换为其对应的值, 再求解</li>
+</ul>
+</li>
+<li><p>CIRCUIT-SAT$\le_P$ SAT:</p>
+<ul>
+<li>给定一个电路C, 可以直接在多项式时间内产生一个公式: 电路输出变量与描述每个门的操作的子句合取式的”与”</li>
+<li>如果电路C有一个可满足性复制, 那么电路的每条线路都有一个良定义的值且输出为1, 赋值后$\phi$的每个子句的值为1, 合取值也为1. 反之存在一个赋值使$\phi = 1$, 则类似可证C可满足</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-CNF可满足性"><a href="#3-CNF可满足性" class="headerlink" title="3-CNF可满足性"></a>3-CNF可满足性</h3><ul>
+<li>3合取范式形式的布尔公式的可满足性问题是NP完全的<ul>
+<li>易证3-CNF-SAT $\in$ NP</li>
+<li>SAT $\le_P$ 3-CNF-SAT:</li>
+<li>为输入公式$\phi$构造一棵二叉”语法分析”树, 将蚊子作为树叶, 连接词作为内部顶点, 从而把二叉语法分析树视作计算该函数的一个电路</li>
+<li>为每个内部顶点的输出引入一个变量$y_i$, 把$\phi$ 改写为根变量与描述每个顶点操作的子句的合取的与, 每一个子句至多3个文字.</li>
+<li>把所有子句转换为合取范式, 使子句都是CNF且至多包含3个文字</li>
+<li>使用辅助变量p和q把每个CNF转为3-CNF</li>
+</ul>
+</li>
+</ul>
+<h2 id="NP完全问题"><a href="#NP完全问题" class="headerlink" title="NP完全问题"></a>NP完全问题</h2><h3 id="团问题"><a href="#团问题" class="headerlink" title="团问题"></a>团问题</h3><ul>
+<li><p>证明3-CNF-SAT$\le_P$CLIQUE</p>
+<ul>
+<li><p>设$\phi = C_1 \land C_2 \land \cdots \land C_k$是3-CNF形式中一个有k个子句的布尔公式</p>
+</li>
+<li><p>构造图G: 对$\phi$中的每个字句$G_r = (l_1^r \lor l_2^r \lor l_3^r)$, 把3个顶点$v_1^r, v_2^r, v_3^r$三元组放入V中.如果</p>
+<ul>
+<li>$v_i^r$和$v_j^s$处在不同的三元组中, 即$r\ne s$</li>
+<li>他们相应的文字是一致的, 即$l_i^r$不是$l_j^s$的非</li>
+</ul>
+<p>则用一条边连接顶点$v_i^r$和$v_j^s$</p>
+</li>
+<li><p>假设$\phi$有一个可满足性复制, 那么每个字句至少有一个文字$l_i^r$, 赋值为1, 对应顶点构成集合$V’$, 为团. </p>
+</li>
+<li><p>反之亦然</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="顶点覆盖问题"><a href="#顶点覆盖问题" class="headerlink" title="顶点覆盖问题"></a>顶点覆盖问题</h3><ul>
+<li>VERTEX-COVER = {&lt;G, k&gt;: 图G有一个规模为k的顶点覆盖}</li>
+<li>CLIQUE $\le_P$ VERTEX-COVER<ul>
+<li>包含团V’的无向图G, $\overline G$包含顶点覆盖V - V’</li>
+</ul>
+</li>
+</ul>
+<h3 id="哈密顿回路问题"><a href="#哈密顿回路问题" class="headerlink" title="哈密顿回路问题"></a>哈密顿回路问题</h3><ul>
+<li>VERTEX-COVER $\le_P$ HAM-CYCLE</li>
+</ul>
+<h3 id="旅行商问题"><a href="#旅行商问题" class="headerlink" title="旅行商问题"></a>旅行商问题</h3><ul>
+<li><p>TSP = {&lt;G, c, k&gt;: G = (V, E)是一个完全图, c是V $\times$ V $\to$ Z的一个函数, $k\in Z$, G中包含一个最大花费为k的旅行回路}</p>
+</li>
+<li><p>HAM-CYCLE $\le_P$ TSP</p>
+<ul>
+<li><p>G(V, E)是HAM-CYCLE的一个实例, , 构造TSP如下:</p>
+<ul>
+<li><p>完全图G’ = (V, E’)</p>
+</li>
+<li><p>费用函数c(i, j) = 1若$(i, j) \in E$, 否则为0</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="子集和问题"><a href="#子集和问题" class="headerlink" title="子集和问题"></a>子集和问题</h3><ul>
+<li>subset-sum problem </li>
+<li>SUBSET-SUM = {&lt;S, t&gt;: 存在一个子集$S’ \subseteq S$, 使得$t = \sum_{s\in S’}s$</li>
+<li>3-CNF-SAT $\le_P$ SUBSET-SUM:</li>
+</ul>
 
-最短和最长简单路径
-欧拉回路和哈密顿圈
-2-CNF可满足性问题和3-CNF可满足性问题
-
-
-证书: 如哈密顿圈问题中的|V|个顶点序列, 3-CNF可满足性问题中的一组变量的赋值
-
-可被证明: 已知一个问题的证书, 可以证明此
-              ...
-            </p>
-          <!--noindex-->
           
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/07/01/NP完全理论初步/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -439,8 +545,6 @@
 
   
   
-  
-
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -467,55 +571,37 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2019/07/01/代数编码/" class="post-title-link" itemprop="url">代数编码</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2019/07/01/代数编码/" itemprop="url">代数编码</a></h1>
         
 
         <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
+          <span class="post-time">
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
                 <span class="post-meta-item-text">Posted on</span>
               
-
-              
-                
-              
-
-              <time title="Created: 2019-07-01 11:51:43 / Modified: 11:52:09" itemprop="dateCreated datePublished" datetime="2019-07-01T11:51:43+08:00">2019-07-01</time>
-            </span>
-          
-
-          
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-01T11:51:43+08:00">
+                2019-07-01
+              </time>
             
 
             
-          
 
-          
-
-          
             
+          </span>
+
+          
+
+          
             
           
 
           
           
 
-          
-
-          <br>
           
 
           
@@ -537,48 +623,103 @@
       
         
           
-            <p>
-              代数编码检错码和纠错码奇偶校验
-校验位 parity check bit
+            <h1 id="代数编码"><a href="#代数编码" class="headerlink" title="代数编码"></a>代数编码</h1><h2 id="检错码和纠错码"><a href="#检错码和纠错码" class="headerlink" title="检错码和纠错码"></a>检错码和纠错码</h2><h4 id="奇偶校验"><a href="#奇偶校验" class="headerlink" title="奇偶校验"></a>奇偶校验</h4><ul>
+<li><p>校验位 parity check bit</p>
+</li>
+<li><p>不检验多错, 不纠错</p>
+</li>
+</ul>
+<h4 id="最大似然编码"><a href="#最大似然编码" class="headerlink" title="最大似然编码"></a>最大似然编码</h4><ul>
+<li><p>Maximum-Likelihood Decoding</p>
+</li>
+<li><p>假设收到的n元组被解码成最接近的编码</p>
+</li>
+</ul>
+<h4 id="Block-Codes"><a href="#Block-Codes" class="headerlink" title="Block Codes"></a>Block Codes</h4><ul>
+<li>(n, m)-block code: <ul>
+<li>编码函数$E: \mathbb Z_2^m \to \mathbb Z_2^n$</li>
+<li>译码函数$E: \mathbb Z_2^n \to \mathbb Z_2^m$</li>
+</ul>
+</li>
+<li>距离</li>
+<li>权weight: 1的个数</li>
+<li>$\omega (x) = d(x, 0)$</li>
+<li>$d(x, y) = \omega(x + y)$</li>
+<li>$d_{min} = 2n + 1$的编码可以纠任意小于等于n的错</li>
+</ul>
+<h2 id="线性编码"><a href="#线性编码" class="headerlink" title="线性编码"></a>线性编码</h2><ul>
+<li>group code: 编码为$\mathbb Z_2^n$的子群</li>
+<li>验证group code: 只需检查任意两个编码之和仍然是合法编码</li>
+<li>如果x和y都是二元组, 那么$\omega(x+y)=d(x, y)$</li>
+<li>在<strong>group code</strong> C中, $d_{min}=\min{\omega(x): x \ne 0}$</li>
+<li>x和y的内积: $x \cdot y = x_1y_1 + \cdots + x_ny_n = x^{\top}y$</li>
+<li>null space: 所有x满足$Hx=0$. 记作$Null(H)$</li>
+<li>$H\in \mathbb M _{m\times n}(\mathbb Z_2)$, $Null(H)$ is a group code, 称为<strong>线性编码</strong></li>
+<li>理想的编码过程: 构造一个$n \times (n-m)$的01矩阵$G$, 对于每个信息$x$, $Gx$可以得到一个$y$, $y$是群码字. 这里的m是校验位个数.</li>
+</ul>
+<h2 id="奇偶校验矩阵和生成矩阵"><a href="#奇偶校验矩阵和生成矩阵" class="headerlink" title="奇偶校验矩阵和生成矩阵"></a>奇偶校验矩阵和生成矩阵</h2><ul>
+<li><p>奇偶校验矩阵$H$:</p>
+<ul>
+<li>$m\times n$矩阵$H$最后m列为$I_m$, 那么这个矩阵就是<strong>奇偶校验矩阵</strong>(canonical parity-check matrix), $H=(A|I_m)$.</li>
+<li>$C$为$G$生成的编码, 则$y\in C$当且仅当$Hy = 0$. 而且$C$是$H$的线性编码.</li>
+<li>若$y\in Null(H)$, 则$y$前$n - m$位任意, 后$m$位由$Hy = 0$计算得</li>
+</ul>
+</li>
+<li><p>生成矩阵$G$:</p>
+<ul>
+<li>$H=(A|I_m)$, ($A$是任取的), 则<strong>标准生成矩阵</strong>(standard generator matrix)$G = (\frac{I_{n-m}}{A})$, $G$是$n\times (n-m)$矩阵.</li>
+<li>$G$是$n\times k$标准生成阵, 则$C= {y:Gx=y ~for ~x \in \mathbb Z_2^k}$为$(n, k)$-block code, $C$也为group code.</li>
+</ul>
+</li>
+<li><p>codeword 计算:</p>
+<ul>
+<li>计算$Null(H)$</li>
+<li>计算$Gx$</li>
+</ul>
+</li>
+<li><p>$H$和$G$关系:</p>
+<ul>
+<li>$HG = 0$</li>
+<li>存在$x$满足 $Gx=y$ 当且仅当 $Hy = 0$</li>
+</ul>
+</li>
+<li><p>纠错和检错能力:</p>
+<ul>
+<li>检错能力: $Null(H)$是单检错码当且仅当$H$中任意一列都不全$0$</li>
+</ul>
+<ul>
+<li>纠错能力: $Null(H)$是单纠错码当且仅当$H$无$0$列, 且没有相同列</li>
+<li>==$d(c) =$ H中最小的线性相关的列向量的数量== </li>
+</ul>
+</li>
+</ul>
+<h2 id="高效解码"><a href="#高效解码" class="headerlink" title="高效解码"></a>高效解码</h2><ul>
+<li>检验是否是codeword: $Hx$是否为0; $Hx$定义为$x$的$syndrome$.</li>
+<li>$x=c+e$, $c$为正确编码, $e$为传播错误, 则$x$和$e$的$syndrome$相同.</li>
+<li>单纠错方法: $H$的线性编码是单纠错的, 接受的$n$元组为$r$. <ul>
+<li>若$r$的$syndrome$为0, 则$r$正确; </li>
+<li>否则$r$的$syndrome$和$H$的哪一列相同就说明哪一位错误; </li>
+<li>如果没有相同的, 说明错误位数大于1, 则无法纠错.</li>
+</ul>
+</li>
+</ul>
+<h4 id="陪集解码"><a href="#陪集解码" class="headerlink" title="陪集解码"></a>陪集解码</h4><ul>
+<li><p>两个$n$元组属于同一个陪集当且仅当它们的$syndrome$相同</p>
+</li>
+<li><p>解码表: $syndrome$和$Coset Leader$的对应表</p>
+</li>
+</ul>
 
-不检验多错, 不纠错
-
-
-最大似然编码
-Maximum-Likelihood Decoding
-
-假设收到的n元组被解码成最接近的编码
-
-
-Block Codes
-(n, m)-block code: 
-编码函数$E: \m
-              ...
-            </p>
-          <!--noindex-->
           
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/07/01/代数编码/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -609,8 +750,6 @@ Block Codes
 
   
   
-  
-
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -637,55 +776,37 @@ Block Codes
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2019/07/01/密码算法/" class="post-title-link" itemprop="url">密码算法</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2019/07/01/密码算法/" itemprop="url">密码算法</a></h1>
         
 
         <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
+          <span class="post-time">
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
                 <span class="post-meta-item-text">Posted on</span>
               
-
-              
-                
-              
-
-              <time title="Created: 2019-07-01 11:50:15 / Modified: 11:52:22" itemprop="dateCreated datePublished" datetime="2019-07-01T11:50:15+08:00">2019-07-01</time>
-            </span>
-          
-
-          
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-01T11:50:15+08:00">
+                2019-07-01
+              </time>
             
 
             
-          
 
-          
-
-          
             
+          </span>
+
+          
+
+          
             
           
 
           
           
 
-          
-
-          <br>
           
 
           
@@ -707,43 +828,64 @@ Block Codes
       
         
           
-            <p>
-              RSA公钥加密系统
-公钥$P_A$, 私钥$S_A$ 
-对于Bob给Alice的加密消息M:
-发送方式:
-Bob取得Alice公钥$P_A$ 
-Bob计算出相应于M的密文$C=P_A(M)$
+            <h2 id="RSA公钥加密系统"><a href="#RSA公钥加密系统" class="headerlink" title="RSA公钥加密系统"></a>RSA公钥加密系统</h2><ul>
+<li>公钥$P_A$, 私钥$S_A$ </li>
+<li>对于Bob给Alice的加密消息M:<ul>
+<li>发送方式:<ul>
+<li>Bob取得Alice公钥$P_A$ </li>
+<li>Bob计算出相应于M的密文$C=P_A(M)$</li>
+</ul>
+</li>
+<li>接收过程:<ul>
+<li>Alice收到密文C后, 她用自己的密钥$S_A$恢复原始信息: $S_A(C) = S_A(P_A(M)) = M$</li>
+<li>$S_A()$和$P_A()$互为反函数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>数字签名:<ul>
+<li>Alice运用她的密钥$S_A$和等式$\sigma=S_A(M’)$计算出信息$M’$的<strong>数字签名</strong>$\sigma$</li>
+<li>Alice把消息/签名对$(M’, \sigma)$发送给Bob</li>
+<li>当Bob收到$(M’, \sigma)$时, 他可以利用Alice的公钥, 通过验证等式$M’=P_A(\sigma)$来证实该消息的确来自Alice.</li>
+</ul>
+</li>
+<li>RSA加密系统中, 一个参与者按下列过程创建他的公钥和密钥:<ul>
+<li>随机选取两个大素数$p$和$q$, 使得$p\ne q$, 例如各1024位.</li>
+<li>计算$n=pq$</li>
+<li>选取一个和$\phi(n)=(p-1)(q-1)$互素的小奇数e</li>
+<li>对模$\phi(n)$, 计算出e的乘法逆元d的值</li>
+<li>将对$P=(e, n)$公开, 并作为参与者的<strong>RSA公钥</strong></li>
+<li>将$S=(d,n)$保密, 作为参与者的<strong>RSA密钥</strong></li>
+<li>$$P(M)=M^e\mod n$$</li>
+<li>$$P(C)=C^d\mod n$$</li>
+</ul>
+</li>
+<li>应用公钥$O(1)$次模乘法, $O(\beta^2)$次位操作</li>
+<li>应用密钥$O(\beta)$次模乘法, $O(\beta^3)$次位操作</li>
+<li>RSA加密系统的安全性来源于对大整数进行因数分解的困难性</li>
+</ul>
+<h1 id="整数的因子分解"><a href="#整数的因子分解" class="headerlink" title="整数的因子分解"></a>整数的因子分解</h1><ul>
+<li><p>Pollard的rho启发式方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">POLLARD-RHO(n)</span><br><span class="line">i = 1</span><br><span class="line">x_1 = RANDOM(0, n-1)</span><br><span class="line">y = x_1</span><br><span class="line">k = 2</span><br><span class="line">while True</span><br><span class="line">	i = i + 1</span><br><span class="line">	x_i = (x_&#123;i-1&#125;^2 - 1) mod n</span><br><span class="line">	d = gcd(y-x_i, n)</span><br><span class="line">	if d != 1 and d != n</span><br><span class="line">		print d</span><br><span class="line">	if i == k</span><br><span class="line">		y == x_i</span><br><span class="line">		k = 2k</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以在期望的$\theta(\sqrt n)$次算数运算内找到n的一个小因子p.</p>
+</li>
+<li><p>如果p是合数, 则在大约经过$n^{1/4}$ 次更新之后, 可以预计该过程已经找到了足够多的约数</p>
+</li>
+<li><p>函数$f(x)=(x^2-1)\mod n$生成的序列在出现回路之前预计要执行的步数为$\theta (\sqrt n)$</p>
+</li>
+</ul>
 
-
-接收过程:
-Alice收到密文C后, 她用自己的密钥$S_A$恢复原始信息: $S_A(C) = S_A
-              ...
-            </p>
-          <!--noindex-->
           
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/07/01/密码算法/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -774,8 +916,6 @@ Alice收到密文C后, 她用自己的密钥$S_A$恢复原始信息: $S_A(C) = S
 
   
   
-  
-
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -802,55 +942,37 @@ Alice收到密文C后, 她用自己的密钥$S_A$恢复原始信息: $S_A(C) = S
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2019/07/01/数论/" class="post-title-link" itemprop="url">数论</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2019/07/01/数论/" itemprop="url">数论</a></h1>
         
 
         <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
+          <span class="post-time">
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
                 <span class="post-meta-item-text">Posted on</span>
               
-
-              
-                
-              
-
-              <time title="Created: 2019-07-01 11:37:14 / Modified: 16:31:15" itemprop="dateCreated datePublished" datetime="2019-07-01T11:37:14+08:00">2019-07-01</time>
-            </span>
-          
-
-          
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-01T11:37:14+08:00">
+                2019-07-01
+              </time>
             
 
             
-          
 
-          
-
-          
             
+          </span>
+
+          
+
+          
             
           
 
           
           
 
-          
-
-          <br>
           
 
           
@@ -872,43 +994,137 @@ Alice收到密文C后, 她用自己的密钥$S_A$恢复原始信息: $S_A(C) = S
       
         
           
-            <p>
-              整数
-第一/第二数学归纳法
+            <h2 id="整数"><a href="#整数" class="headerlink" title="整数"></a>整数</h2><ul>
+<li><p>第一/第二数学归纳法</p>
+</li>
+<li><p>良序公理: 每个自然数集的子集都是良定义的, 即有最小元素</p>
+</li>
+<li><p>数学归纳法可推出良序公理</p>
+</li>
+<li><p>对于整数a和b, b &gt; 0, 存在唯一的整数q和r, 满足$a=bq+r$, 其中$0\le e&lt;b$.</p>
+</li>
+<li><p>对于非0整数a和b, 存在整数r和s, 满足<br>$$<br>\gcd(a, b) = ar+bs<br>$$<br>进一步, $gcd(a, b)$是唯一的.</p>
+</li>
+<li><p>欧几里得算法: 求最大公因数gcd. (辗转相除)</p>
+</li>
+<li><p>素数有无限个.</p>
+</li>
+<li><p>算数基本定理: n是大于1的整数, 存在n的唯一素数分解<br>$$<br>n = p_1^{e_1}p_2^{e_2}…p_r^{e_r}<br>$$<br>其中$p_i$是素数, $p_1 &lt; p_2 &lt; … &lt; p_r$, 且$e_i$为正整数.</p>
+</li>
+</ul>
+<h2 id="逆元和最大公约数"><a href="#逆元和最大公约数" class="headerlink" title="逆元和最大公约数"></a>逆元和最大公约数</h2><ul>
+<li><p>乘法逆元: $a’\cdot_n a = 1$, 则$a’$是$a$的乘法<strong>逆元</strong>.</p>
+</li>
+<li><p>如果$a$在$Z_n$中有乘法逆元$a’$, 那么对于任意$b\in Z_n$, 方程$a\cdot_n x = b$有唯一解$x=a’   \cdot _n b $.</p>
+</li>
+<li><p>对于$a$, $b\in Z_n$, 如果方程$a\cdot_n x = b$无解, 那么$a$没有乘法逆元.</p>
+</li>
+<li><p>逆元唯一.</p>
+</li>
+<li><p>方程$a\cdot_n x = 1$有解(即有$a$在$Z_n$中逆元)当且仅当存在整数$x$和$y$满足$ax+ny=1$, 而$a$的逆元就是$x \mod n$.</p>
+</li>
+<li><p>如果存在整数$x$和$y$满足$ax+ny=1$, 那么a和n互素.</p>
+</li>
+<li><p>如果$j, k, q, r$是满足$k=jq+r$的正整数, 那么$\gcd(j, k) = \gcd(r, j)$.</p>
+</li>
+<li><p>Euclid’s extended GCD algorithm: 返回$gcd(j, k)$和整数$x$和$y$满足$\gcd(j, k) = jx+ky$.</p>
+</li>
+<li><p>正整数$j$和$k$互素当且仅当存在整数$x$和$y$满足$jx+ky=1$.</p>
+</li>
+<li><p>对于正整数$n$, $Z_n$中元素$a$有乘法逆元当且仅当$\gcd(a, n) = 1$.</p>
+</li>
+<li><p>对于素数p, $Z_p$中每个非0元素$a$都有逆元.</p>
+</li>
+<li><p>求逆元: 用Euclid’s extended GCD algorithm求得$\gcd(a, n), x, y$. 如果$\gcd(a, n)==1$, 逆元是 $x\mod n$. 否则没有逆元.</p>
+</li>
+<li><p>Euclid / Extended Euclid 算法递归调用次数: $O(\lg b)$ (a &gt; b &gt; 0).</p>
+</li>
+<li><p>对于任意非0整数a, g, gcd(a, b)是a和b的线性组合集${ax+by: x, y \in Z}$中的最小元素.</p>
+</li>
+<li><p>对于所有整数a, b以及非负整数n, 有<br>$$<br>\gcd(an, bn) = n\gcd(a, b)<br>$$</p>
+</li>
+<li><p>对于正整数n, a, b, 如果$n | ab$且$\gcd(a, n) = 1$, 则$n|b$.</p>
+</li>
+</ul>
+<h2 id="模运算"><a href="#模运算" class="headerlink" title="模运算"></a>模运算</h2><ul>
+<li><p>$Z_n ^ * $的规模表示为$ \phi(n)$ , 称为<strong>欧拉phi函数</strong></p>
+</li>
+<li><p>欧拉函数下界:<br>$$<br>\phi(n) &gt; \frac{n}{e^\gamma\ln\ln n + \frac{3}{\ln \ln n}}<br>$$<br>其中$n \ge 3$, $\gamma = 0.5772156649…$ 为欧拉常数.</p>
+</li>
+<li><p>一个有限群的非空封闭子集是一个子群</p>
+</li>
+<li><p>拉格朗日定理: 如果$(S, \oplus)$ 是一个有限群, $(S, \oplus)$ 是$(S, \oplus)$ 的一个子群, 则$|S’| $ 是$|S|$ 的一个约数. </p>
+</li>
+<li><p>对于任意有限群$(S, \oplus)$ 和任意$a \in S$ , $ord(a) = |\langle a\rangle|$.</p>
+</li>
+</ul>
+<h2 id="求解线性方程"><a href="#求解线性方程" class="headerlink" title="求解线性方程"></a>求解线性方程</h2><ul>
+<li><p>考虑求解下列方程的问题:<br>$$<br>ax \equiv b \mod n<br>$$<br>其中$a &gt; 0, n &gt; 0$. </p>
+</li>
+<li><p>令$\langle a \rangle$表示由a生成的$\mathbb{Z}_n$的子群. 所以当且仅当$[b] \in \langle a \rangle$时, 方程上述有一个解.</p>
+</li>
+<li><p>对于任意正整数a和n, 如果$d=\gcd(a, n)$, 则在$\mathbb{Z}_n$中,<br>$$<br>\langle a \rangle = \langle d \rangle<br>$$<br>因此<br>$$<br>|\langle a \rangle | = n / d<br>$$</p>
+</li>
+<li><p>当且仅当$d|b$时, 方程$ax\equiv b \mod n$对于未知量x有解, 这里$d = \gcd(a, n)$.</p>
+</li>
+<li><p>方程$ax\equiv b \mod n$ 要么对模n有d个解, 要么无解, 这里$d = \gcd(a, n)$.</p>
+</li>
+<li><p>令$d=\gcd(a, n)$, 假设对某些整数$x’$和$y’$, 有$d = ax’+ny’$. 如果 $d | b$ , 则方程 $ax\equiv b \mod n$有一个解的值为<br>$$<br>x_0 = x’ (b / d) \mod n<br>$$</p>
+</li>
+</ul>
+<ul>
+<li><p>假设方程$ ax \equiv b \mod n$ 有解(即$d = \gcd(a, n) , d | b$ ), 且$x_0$是该方程的任意一个解. 则改方程对模n有d个不同的解, 分别为$x_i = x_0 + i(n/d)$, 这里$ i = 0, 1, …, d - 1$.</p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">MODULAR-LINEAR-RQUATION-SOLVE(a, b, n)</span><br><span class="line">(d, x&apos;, y&apos;) = EXTENDED-EUCLID(A, n)</span><br><span class="line">if d|b</span><br><span class="line">	x_0 = x&apos; (b / d) mod n</span><br><span class="line">	for i = 0 to d - 1</span><br><span class="line">		print (x_0 + i(n / d) mod n)</span><br><span class="line">else print &quot;no solutions&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对任意n &gt; 1, 如果$\gcd(a, n) = 1$, 则方程$ax \equiv b \mod n$对模n有唯一解.</p>
+</li>
+<li><p>对任意n &gt; 1, 如果$\gcd(a, n) = 1$, 则方程$ax \equiv 1 \mod n$对模n有唯一解; 否则无解.</p>
+</li>
+</ul>
+<h2 id="中国剩余定理"><a href="#中国剩余定理" class="headerlink" title="中国剩余定理"></a>中国剩余定理</h2><ul>
+<li><p>(<strong>中国剩余定理</strong>) 令$n=n_1n_2 \cdots n_k$, 其中因子$n_i$两两互质. 考虑一下对应关系:<br>$$<br>a \leftrightarrow (a_1, a_2, \cdots a_k)<br>$$<br>这里$a\in Z_n$, $a_i \in Z_{n_i}$,<br>而且对$i = 1, 2, \cdots, k$,<br>$$<br>a_i \equiv a \mod n_i<br>$$<br>因此, 上述映射是一个在$Z_n$和笛卡尔积$Z_{n_1} \times Z_{n_2} \times \cdots Z_{n_k}$之间的一一映射. 通过在合适的系统中对每个坐标位置独立执行操作, 对$Z_{n}$中元素所执行的运算可以等价地作用与对应的k元组. 也就是说, 如果<br>$$<br>a \leftrightarrow (a_1, a_2, \cdots a_k)<br>$$</p>
+<p>$$<br>b \leftrightarrow (b_1, b_2, \cdots b_k)<br>$$</p>
+<p>那么<br>$$<br>(a + b) \mod n \leftrightarrow ((a_1 + b_1)\mod n_1, \cdots, (a_k + b_k) \mod n_k)<br>$$</p>
+<p>$$<br>(a - b) \mod n \leftrightarrow ((a_1 - b_1)\mod n_1, \cdots, (a_k - b_k) \mod n_k)<br>$$</p>
+<p>$$<br>ab \mod n \leftrightarrow (a_1b_1\mod n_1, \cdots, a_kb_k \mod n_k)<br>$$</p>
+</li>
+<li><p>如果$n_1, n_2, \cdots, n_k$两两互质, 且$n = n_1, n_2, \cdots, n_k$, 则对任意整数$a_1, a_2, \cdots, a_k$, 关于未知量x的联立方程组<br>$$<br>x \equiv a_i \mod n_i, i = 1, 2, \cdots, k<br>$$<br>对模n有唯一解.</p>
+</li>
+<li><p>如果$n_1, n_2, \cdots, n_k$两两互质, 且$n = n_1, n_2, \cdots, n_k$, 则对任意整数x和a,<br>$$<br>x \equiv a \mod n_i, i = 1, 2, \cdots, k<br>$$<br>当且仅当<br>$$<br>x \equiv a \mod n<br>$$<br>.</p>
+</li>
+<li><p>根据$(a_1, a_2, \cdots, a_k)$求a: 定义$m_i = n / n_i $, $c_i = m_i (m_i^{-1} \mod n_i)$, 则<br>$$<br>a \equiv (a_1c_1 + a_2c_2 + \cdots + a_kc_k)\mod n<br>$$</p>
+</li>
+</ul>
+<h2 id="元素的幂"><a href="#元素的幂" class="headerlink" title="元素的幂"></a>元素的幂</h2><ul>
+<li><p>欧拉定理: 对于任意整数n &gt; 1, $a^{\phi(n)} \equiv 1 \mod n$ 对所有$a \in \mathbb{Z}_n^*$ 都成立.</p>
+</li>
+<li><p>费马定理: 如果p是素数, 那么$a^{p-1} \equiv 1 \mod p $ 对所有$a \in \mathbb{Z}_p^*$ 都成立.</p>
+</li>
+<li><p>对于所有素数p &gt; 2和所有正整数e, 使得$\mathbb{Z}_n^*$ 是循环群的n &gt; 1的值为2, 4, $p^e$和$2p^e$. </p>
+</li>
+<li><p>离散对数定理: 如果g是$\mathbb{Z}_n^*$的一个原根(生成元), 则当且仅当灯饰$x\equiv y\mod \phi(n)$成立时, 有等式$g^{x}\equiv g^y \mod n$成立.</p>
+</li>
+<li><p>如果p是一个奇素数且$e \ge 1$, 则方程<br>$$<br>x^2 \equiv 1 \mod p^e<br>$$<br>仅有两个解, 即$x = 1$和$x = -1$.</p>
+</li>
+<li><p>如果对模n存在1的非平凡平方根, 则n是合数.</p>
+</li>
+<li><p>用反复平方法求数的幂:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">MODULAR-EXPONENTIATION(a, b, n)</span><br><span class="line">c = 0</span><br><span class="line">d = 1</span><br><span class="line">let &lt;b_k, b_&#123;k-1&#125;, ..., b_0&gt; be the binary representation of b</span><br><span class="line">for i = k downto 0</span><br><span class="line">	c = 2c</span><br><span class="line">	d = (d * d)mod n</span><br><span class="line">    if b_i == 1</span><br><span class="line">    	c = c + 1</span><br><span class="line">    	d = (d * a) mod n</span><br><span class="line">return d</span><br></pre></td></tr></table></figure>
 
-良序公理: 每个自然数集的子集都是良定义的, 即有最小元素
+</li>
+</ul>
 
-数学归纳法可推出良序公理
-
-对于整数a和b, b &gt; 0, 存在唯一的整数q和r, 满足$a=bq+r$, 其中$0\le e&lt;b$.
-
-对于非0整数a和b, 存在整数r和s, 满足$$\gcd(
-              ...
-            </p>
-          <!--noindex-->
           
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/07/01/数论/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -939,8 +1155,6 @@ Alice收到密文C后, 她用自己的密钥$S_A$恢复原始信息: $S_A(C) = S
 
   
   
-  
-
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -967,55 +1181,37 @@ Alice收到密文C后, 她用自己的密钥$S_A$恢复原始信息: $S_A(C) = S
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2019/07/01/串匹配/" class="post-title-link" itemprop="url">串匹配</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2019/07/01/串匹配/" itemprop="url">串匹配</a></h1>
         
 
         <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
+          <span class="post-time">
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
                 <span class="post-meta-item-text">Posted on</span>
               
-
-              
-                
-              
-
-              <time title="Created: 2019-07-01 11:25:53 / Modified: 11:36:09" itemprop="dateCreated datePublished" datetime="2019-07-01T11:25:53+08:00">2019-07-01</time>
-            </span>
-          
-
-          
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-01T11:25:53+08:00">
+                2019-07-01
+              </time>
             
 
             
-          
 
-          
-
-          
             
+          </span>
+
+          
+
+          
             
           
 
           
           
 
-          
-
-          <br>
           
 
           
@@ -1037,38 +1233,71 @@ Alice收到密文C后, 她用自己的密钥$S_A$恢复原始信息: $S_A(C) = S
       
         
           
-            <p>
-              串匹配朴素字符串匹配算法
-检测每一个位置开始的字符串是否符合要求.
-最坏$\Theta((n-m+1)m)$
+            <h1 id="串匹配"><a href="#串匹配" class="headerlink" title="串匹配"></a>串匹配</h1><h2 id="朴素字符串匹配算法"><a href="#朴素字符串匹配算法" class="headerlink" title="朴素字符串匹配算法"></a>朴素字符串匹配算法</h2><ul>
+<li>检测每一个位置开始的字符串是否符合要求.</li>
+<li>最坏$\Theta((n-m+1)m)$</li>
+</ul>
+<h2 id="Rabin-Karp算法"><a href="#Rabin-Karp算法" class="headerlink" title="Rabin-Karp算法"></a>Rabin-Karp算法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">RABIN-KARP-MATCHER(T, P, d, q)</span><br><span class="line">n = T.length</span><br><span class="line">m = P.length</span><br><span class="line">h = d^&#123;m-1&#125; mod q</span><br><span class="line">p = 0</span><br><span class="line">t_0 = 0</span><br><span class="line">for i = 1 to m // preprocessing</span><br><span class="line">    p = (dp + P[i]) mod q</span><br><span class="line">    t_0 = (dt_0 + T[i]) mod q</span><br><span class="line">for s = 0 to n - m</span><br><span class="line">    if p == t_s</span><br><span class="line">        if P[1..m] == T[s+1..s+m]</span><br><span class="line">            print &quot;Pattern occurs with shift&quot; s</span><br><span class="line">    if s &lt; n - m</span><br><span class="line">        t_&#123;s+1&#125; = (d(t_s-T[s+1]h) + T[s+m+1]) mod q</span><br></pre></td></tr></table></figure>
 
-Rabin-Karp算法RABIN-KARP-MATCHER(T, P, d, q)n = T.lengthm = P.lengthh = d^&#123;m-1&#125; mod qp
-              ...
-            </p>
-          <!--noindex-->
+<ul>
+<li>预处理$O(m)$, 最坏运行时间$\Theta((n-m+1)m)$, 平均情况下较好.</li>
+<li>将P和T都转化为数字$p$和$t_s$, 左边是高位. t下标可去掉.</li>
+<li>$p= P[m] + d(P[m-1] + d(P[m-2] + … + d(P[2] + dP[1])…)) \mod q$</li>
+<li>$t_{s+1} = (d(t_s-T[s+1]h) + T[s+m+1]) \mod q$</li>
+<li>mod q是为了防止p和$t_s$的值太大, 导致每次算术运算需要的时间不是常数. 因为有mod q, 所以遇到伪命中点还需要进一步判断.</li>
+<li>期望运行时间为$O(n) + O(m(v+n/q))$, v为有效偏移量.</li>
+</ul>
+<h2 id="利用有限自动机进行字符串匹配"><a href="#利用有限自动机进行字符串匹配" class="headerlink" title="利用有限自动机进行字符串匹配"></a>利用有限自动机进行字符串匹配</h2><h3 id="有限自动机"><a href="#有限自动机" class="headerlink" title="有限自动机"></a>有限自动机</h3><ul>
+<li><p>一个有限自动机M是一个5元组$(Q, q_0, A, \Sigma, \delta)$.</p>
+<ul>
+<li>Q是<strong>状态</strong>的有限集合</li>
+<li>$q_0$是<strong>初始状态</strong></li>
+<li>$A\subseteq Q$是一个特殊的<strong>接收状态</strong>集合</li>
+<li>$\Sigma$是有限字符输入表</li>
+<li>$\delta$是一个从$Q\times \Sigma$到Q的函数, 称为M的<strong>转移函数</strong></li>
+</ul>
+</li>
+<li><p>有限自动机从$q_0$开始每次读入输入字符串的一个字符. 于状态q读入a则状态变为$\sigma(q, a)$. 当前状态$q\in A$则M<strong>接受</strong>了迄今为止读入的字符串. 未被接受的输入称为<strong>被拒绝</strong>的字符串.</p>
+</li>
+<li><p><strong>终态函数</strong>$\phi$: $\Sigma^* \to Q$, 满足$\phi(w)$是M在扫描字符串w后终止时的状态. 当且仅当$\phi(w)\in A$, M接受字符串w. </p>
+<ul>
+<li>$\phi(\epsilon) = q_0$</li>
+<li>$\phi(wa) = \delta(\phi(w), a)$<h4 id="字符串匹配自动机"><a href="#字符串匹配自动机" class="headerlink" title="字符串匹配自动机"></a>字符串匹配自动机</h4></li>
+</ul>
+</li>
+<li><p>P的后缀函数$\sigma: \Sigma^*\to {0,1,…,m}$: $\sigma(x) = max{k: P_k \sqsupset x}$</p>
+</li>
+<li><p><strong>字符串匹配自动机</strong>: </p>
+<ul>
+<li>状态集合为${0,1,…,m}$. $q_0$是0状态, m是唯一被接受状态.</li>
+<li>对任意状态q和字符a<br>$\delta(q, a) = \sigma(P_qa)$</li>
+</ul>
+</li>
+<li><p>$\phi(T_i) = \sigma(T_i)$</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">FINITE-AUTOMATON-MATCHER(T, delta, m)</span><br><span class="line">n = T.length</span><br><span class="line">q = 0</span><br><span class="line">for i = 1 to n</span><br><span class="line">    q = delta(q, T[i])</span><br><span class="line">    if q == m</span><br><span class="line">        print &quot;Pattern occurs with shift &quot; i - m</span><br><span class="line"></span><br><span class="line">COMPUTE-TRANSITION-FUNCTION(P, Sigma)</span><br><span class="line">m = P.length</span><br><span class="line">for q = 0 to m</span><br><span class="line">    for each character a in Sigma</span><br><span class="line">        k = min(m + 1, q + 2)</span><br><span class="line">        repeat</span><br><span class="line">            k = k - 1</span><br><span class="line">        until P_k is suffix of P_q a</span><br><span class="line">        delta(q, a) = k</span><br><span class="line">return delta</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>预处理时间可以改进到$O(m|\Sigma|)$.</p>
+</li>
+<li><p>匹配时间$\Theta(n)$</p>
+</li>
+</ul>
+<h2 id="Knuth-Morris-Pratt-算法-KMP"><a href="#Knuth-Morris-Pratt-算法-KMP" class="headerlink" title="Knuth-Morris-Pratt 算法(KMP)"></a>Knuth-Morris-Pratt 算法(KMP)</h2><ul>
+<li>预处理$\Theta(m)$, 匹配$\Theta(n)$.</li>
+<li>P的前缀函数$\pi: {1, 2, …, m}\to {0, 1, …, m - 1}$满足<br> $\pi[q] = max{k: k &lt; q且P_k\sqsupset P_q}$<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">KMP-MATCHER(T, P)</span><br><span class="line">n = T.length </span><br><span class="line">m = P.length</span><br><span class="line">pi = COMPUTE-PREFIX-FUNCTION(P)</span><br><span class="line">q = <span class="number">0</span> <span class="comment">// number of characters matched</span></span><br><span class="line"><span class="keyword">for</span> i = <span class="number">1</span> to n <span class="comment">// scan the text from left to right</span></span><br><span class="line">    <span class="keyword">while</span> q &gt; <span class="number">0</span> <span class="keyword">and</span> P[q+<span class="number">1</span>] != T[i] <span class="comment">// next character does not match</span></span><br><span class="line">        q = pi[q] </span><br><span class="line">    <span class="keyword">if</span> P[q+<span class="number">1</span>] == T[i] <span class="comment">//next character matches</span></span><br><span class="line">        q = q + <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> q == m</span><br><span class="line">        print <span class="string">"Pattern occurs with shift "</span> i - m</span><br><span class="line">    q = pi[q] <span class="comment">// look for the next match</span></span><br><span class="line"></span><br><span class="line">COMPUTE-PREFIX-FUNCTION(P)</span><br><span class="line">m = P.length</span><br><span class="line">pi[<span class="number">1</span>] = <span class="number">0</span></span><br><span class="line">k = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> q = <span class="number">2</span> to m</span><br><span class="line">    <span class="keyword">while</span> k &gt; <span class="number">0</span> <span class="keyword">and</span> P[k+<span class="number">1</span>] != P[q]</span><br><span class="line">        k = pi[k]</span><br><span class="line">    <span class="keyword">if</span> P[k+<span class="number">1</span>] == P[q]</span><br><span class="line">        k = k + <span class="number">1</span></span><br><span class="line">        pi[q] = k</span><br><span class="line"><span class="keyword">return</span> pi</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
           
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/07/01/串匹配/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -1099,8 +1328,6 @@ Rabin-Karp算法RABIN-KARP-MATCHER(T, P, d, q)n = T.lengthm = P.lengthh = d^&#12
 
   
   
-  
-
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -1127,65 +1354,37 @@ Rabin-Karp算法RABIN-KARP-MATCHER(T, P, d, q)n = T.lengthm = P.lengthh = d^&#12
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2019/07/01/TC/" class="post-title-link" itemprop="url">算法导论整理</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2019/07/01/TC/" itemprop="url">算法导论整理</a></h1>
         
 
         <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
+          <span class="post-time">
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
                 <span class="post-meta-item-text">Posted on</span>
               
-
-              
-                
-              
-
-              <time title="Created: 2019-07-01 10:55:42" itemprop="dateCreated datePublished" datetime="2019-07-01T10:55:42+08:00">2019-07-01</time>
-            </span>
-          
-
-          
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-01T10:55:42+08:00">
+                2019-07-01
+              </time>
             
 
             
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-01-17 10:29:16" itemprop="dateModified" datetime="2019-01-17T10:29:16+08:00">2019-01-17</time>
-              </span>
+
             
-          
+          </span>
 
           
 
           
-            
             
           
 
           
           
 
-          
-
-          <br>
           
 
           
@@ -1207,37 +1406,492 @@ Rabin-Karp算法RABIN-KARP-MATCHER(T, P, d, q)n = T.lengthm = P.lengthh = d^&#12
       
         
           
-            <p>
-              问题求解3算法导论整理动态规划动态规划方法通常用来求解最优化问题。这类问题可以有很多可行解，每个解都有一个值，我们希望寻找具有最优值（最小值或最大值）的解。我们成这样的解为问题的一个最优解，而不是最优解。
-最优子结构：问题的最优解由相关子问题的最优解构成，而这些子问题可以独立求解。
-实现：
-自顶向下
-              ...
-            </p>
-          <!--noindex-->
+            <h1 id="问题求解3算法导论整理"><a href="#问题求解3算法导论整理" class="headerlink" title="问题求解3算法导论整理"></a>问题求解3算法导论整理</h1><h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><p>动态规划方法通常用来求解最优化问题。这类问题可以有很多可行解，每个解都有一个值，我们希望寻找具有最优值（最小值或最大值）的解。我们成这样的解为问题的一个最优解，而不是最优解。</p>
+<h3 id="最优子结构："><a href="#最优子结构：" class="headerlink" title="最优子结构："></a>最优子结构：</h3><p>问题的最优解由相关子问题的最优解构成，而这些子问题可以独立求解。</p>
+<h3 id="实现："><a href="#实现：" class="headerlink" title="实现："></a>实现：</h3><ul>
+<li>自顶向下的备忘算法（递归）</li>
+<li>自底向上的动态规划算法（循环）</li>
+</ul>
+<h3 id="重构解"><a href="#重构解" class="headerlink" title="重构解"></a>重构解</h3><p>每一次记录下子问题的最优解的结构</p>
+<h3 id="解题思考过程"><a href="#解题思考过程" class="headerlink" title="解题思考过程"></a>解题思考过程</h3><ul>
+<li>状态的表示</li>
+<li>状态间的转移（转移方程）</li>
+<li>解的表达</li>
+<li>边界条件</li>
+<li>计算顺序</li>
+</ul>
+<h3 id="例："><a href="#例：" class="headerlink" title="例："></a>例：</h3><ul>
+<li>钢材切割问题（左边第一刀和右边剩下的）</li>
+<li>矩阵链乘法</li>
+<li>最长公共子序列问题（LCS）（考虑X和Y对后一个是否相等）</li>
+<li>最优二叉搜索树（伪关键字）</li>
+<li>最长递增子列（LIS）（LCS（A，SORT（A））；或者dp计算以A[i]结尾的子列的最大长度）</li>
+</ul>
+<h2 id="贪心"><a href="#贪心" class="headerlink" title="贪心"></a>贪心</h2><p>贪心算法每一步都作出当时看起来最佳的最优解，希望这样的选择能得到全局最优解。</p>
+<h3 id="最优子结构（同上）"><a href="#最优子结构（同上）" class="headerlink" title="最优子结构（同上）"></a>最优子结构（同上）</h3><h3 id="贪心选择性质"><a href="#贪心选择性质" class="headerlink" title="贪心选择性质"></a>贪心选择性质</h3><p>我们可以通过做出局部最优（贪心）选择来构造全局最优。即进行选择的时候，我们直接作出在当前问题汇总看来最优的选择，而不必考虑子问题的解。</p>
+<h3 id="算法设计步骤"><a href="#算法设计步骤" class="headerlink" title="算法设计步骤"></a>算法设计步骤</h3><ul>
+<li>将最优化问题转化为这样的形式：对齐作出一次选择之后，只剩下一个子问题需要求解。</li>
+<li>证明作出贪心选择后，原问题总是存在最优解，即贪心选择是安全的。（替换法）</li>
+<li>证明作出贪心选择后，剩余的子问题满足性质：其最优解和贪心选择组合即可得到原问题的最优解，这样就得到了最优子结构。</li>
+</ul>
+<h3 id="例：-1"><a href="#例：-1" class="headerlink" title="例："></a>例：</h3><ul>
+<li>活动选择问题（总是选择最早结束的）</li>
+<li>分数背包问题（01背包问题不行）</li>
+<li>赫夫曼编码（找当前频率最低的两个合成一个新的结点）</li>
+</ul>
+<h2 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h2><h3 id="三个基本操作"><a href="#三个基本操作" class="headerlink" title="三个基本操作"></a>三个基本操作</h3><ul>
+<li>MAKE-SET(x)：建立一个新的集合，唯一成员（因而是代表）是x；</li>
+<li>UNION(x, y)：将包含x和y的两个动态几何合并为一个新的集合；</li>
+<li>FIND-SET(x)：返回一个指针，指向包含x的唯一集合的代表。</li>
+</ul>
+<h3 id="链表表示"><a href="#链表表示" class="headerlink" title="链表表示"></a>链表表示</h3><p>每个链表有head和tail；</p>
+<p>链表中每个成员有key，prev（指向head），next</p>
+<p>时间复杂度：</p>
+<ul>
+<li>MAKE-SET O(1)</li>
+<li>FIND-SET O(1)</li>
+<li>UNION（简单实现） O(n)</li>
+</ul>
+<h3 id="简单加权合并启发式策略"><a href="#简单加权合并启发式策略" class="headerlink" title="简单加权合并启发式策略"></a>简单加权合并启发式策略</h3><ul>
+<li>将较小的链表挂到较大的链表上</li>
+</ul>
+<h3 id="不相交集合森林"><a href="#不相交集合森林" class="headerlink" title="不相交集合森林"></a>不相交集合森林</h3><p>使用有根树来表示集合。<br>每棵树表示一个集合，树的根结点是该集合的代表元。<br>执行UNION操作时将两棵树的树根合并。<br>实现时可以用到两种改进运行时间的启发式策略。</p>
+<p>（一）按秩合并</p>
+<p>类似链表的加权合并启发式策略。为了易于分析，对于每个结点，维护一个秩，表示该结点高度的一个上界。</p>
+<p>UNION操作</p>
+<ul>
+<li>如果根的秩不同，则让较大秩的根成为较小秩的根的父结点，但秩本身保持不变；</li>
+<li>如果根的秩相同，则任意选择两个中的一个作为父结点，并使它的秩+1</li>
+</ul>
+<p>（二）路径压缩</p>
+<ul>
+<li>在FIND-SET操作中是查找路径中的每个结点直接指向根，不改变任何结点的秩。</li>
+</ul>
+<p>伪代码：</p>
+<pre><code>MAKE-SET(x)
+x.p = x
+x.rank = 0
+
+//摊还代价O(\alpha(n))
+FIND-SET(x)
+if x != x.p
+    x.p = FIND-SET(x.p)
+return x.p
+
+UNION(x, y)
+LINK(FIND-SET(x), FIND-SET(y))
+
+//摊还代价O(\alpha(n))
+LINK(x, y)
+if(x.rank &gt; y.rank)
+    y.p = x
+else x.p = y
+if(x.rank == y.rank)
+    y.rank ++</code></pre><h3 id="例：-2"><a href="#例：-2" class="headerlink" title="例："></a>例：</h3><ul>
+<li>确定无向图的连通分量</li>
+</ul>
+<h2 id="树"><a href="#树" class="headerlink" title="树"></a>树</h2><h3 id="最小生成树问题"><a href="#最小生成树问题" class="headerlink" title="最小生成树问题"></a>最小生成树问题</h3><ul>
+<li><p>每个连通图都含有一个生成树。</p>
+</li>
+<li><p>Kruskal算法：对于一个连通赋权图$G$，$G$的生成树$T$按下述方法构造：对于$T$的第一条边$e_1$，选择$G$的任一权值最小的边；对于$T$的第二条边$e_2$，在G剩下的边中选择权值最小的边；对于T的第三条边$e_3$，在$G$剩下的边中选择权值最小的边，且不与前面所选的边构成圈。继续这种做法，直至产生一个生成树。</p>
+<pre><code>MST-KRUSKAL(G, w)
+A = empty set
+for each vertex v in G.V
+    MAKE-SET(v)
+sort the edges of G.E into  nondecreasing order by weight w
+for each edge (u, v) in G.E, taken in nondecreasing order by weight
+    if FIND-SET(v) != FIND-SET(u)
+        A = A \cup {(u, v)}
+        UNION(u, v)
+return A</code></pre></li>
+<li><p>Prim算法：对于一个连通赋权图$G$，$G$的一个生成树$T$由下述方法构造：对于$G$的任一顶点$u$，选择与$u$关联的且权值最小的边作为$T$的第一条边$e_1$。对于接下来的边$e_2$, $e_3$, …, $e_{n-1}$，在与一条已选边只有一个公共顶点的所有边中选择权值最小的边。</p>
+<pre><code>MST-PRIM(G, w, r)
+for each u in G.V
+    u.key = $\infty$
+    u.p = NIL
+r.key = 0
+Q = G.V
+while Q != $\emptyset$
+    u = EXTRACT-MIN(Q)
+    for each v in G.Adj[u]
+        if v in Q and w(u, v) &lt; v.key
+            v.p = u
+            v.key = w(u, v)</code></pre></li>
+</ul>
+<ul>
+<li>两种算法都是贪心算法，Kruskal时间复杂度为$O(E\lg E)$, Prim时间复杂度用二叉最小堆为$O(E\lg V)$，用斐波那契堆为$O(E + V\lg V)$.</li>
+</ul>
+<h2 id="图的表示和遍历"><a href="#图的表示和遍历" class="headerlink" title="图的表示和遍历"></a>图的表示和遍历</h2><h3 id="图的表示"><a href="#图的表示" class="headerlink" title="图的表示"></a>图的表示</h3><ul>
+<li><p>邻接链表 和 邻接矩阵</p>
+<h3 id="图的遍历"><a href="#图的遍历" class="headerlink" title="图的遍历"></a>图的遍历</h3><h4 id="广度优先-bfs"><a href="#广度优先-bfs" class="headerlink" title="广度优先 bfs"></a>广度优先 bfs</h4></li>
+<li><p>从一个源结点s开始，每次从已发现的结点向未发现的结点扩展</p>
+</li>
+<li><p>算法需要在发现所有距离源结点s为k的所有结点之后，才会发现距离源结点s为k+1的其他结点</p>
+</li>
+<li><p>用三种颜色标记结点的访问状态：<br>白色：未被发现<br>黑色：本身被发现且所有与之相连的结点都已经被发现<br>灰色：本身被发现且与之相连的结点中存在未被发现的</p>
+</li>
+<li><p>总时间复杂度： O(V+E)</p>
+</li>
+<li><p>伪代码</p>
+<pre><code>BFS(G, s)
+for each vertex u in G.V - {s}
+    u.color = WHITE
+    u.d = \infty
+    u.p = NIL
+s.color = GRAY
+s.d = 0
+s.p = NIL
+Q = \emptyset
+ENQUEUE(Q, s)
+while Q isn&apos;t empty
+    u = DEQUEUE(Q)
+    for each v in G.Adj[u]
+        if v.color == WHITE
+            v.color = GREY
+            v.d = u.d + 1
+            v.p = u
+            ENQUEUE(Q, v)
+        u.color = BLACK</code></pre><h4 id="深度优先-dfs"><a href="#深度优先-dfs" class="headerlink" title="深度优先 dfs"></a>深度优先 dfs</h4></li>
+<li><p>时间戳： 每个结点v有两个时间戳</p>
+<ul>
+<li>第一个时间戳v.d记录结点v第一次被发现的时间（染上灰色的时候）</li>
+<li>第二个时间戳v.f记录搜索完成对v的邻接链表扫描的时间（图上黑色的时候）<br>时间戳都是处于1和2|V|之间的整数<br>u.d &lt; u.f</li>
+</ul>
+</li>
+<li><p>代码 </p>
+<pre><code>DFS(G)
+for each vertex u in G.V
+     u.color = WHITE
+     u.p = NIL
+time = 0
+for each vertex u in G.V
+    if u.color == WHITE
+        DFS-VISIT(G, u)
+
+DFS-VISIT(G, u)
+time ++
+u.d = time
+u.color = GRAY
+for each v in G.Adj[u] 
+    if v.color == WHITE
+        v.p = u
+        DFS-VISIT(G, v)
+u.color = BLACK
+time ++
+u.f = time</code></pre></li>
+<li><p>括号化定理，后代区间嵌套，白色路径定理</p>
+</li>
+<li><p>边的分类</p>
+<ul>
+<li>树边：深度优先森林中的边</li>
+<li>前向边F：从祖先指向后代</li>
+<li>后向边B：从后代指向祖先（包括有向图中的自循环）</li>
+<li>横向边C：两端点无血缘关系</li>
+</ul>
+</li>
+<li><p>dfs中每条边要么是树边，要么是后向边</p>
+</li>
+</ul>
+<h4 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h4><ul>
+<li><p>有向无环图</p>
+</li>
+<li><p>如果图$G$包含边$(u, v)$，则结点$u$在拓扑排序中处于结点$v$的前面。</p>
+</li>
+<li><p>伪代码</p>
+<pre><code>TOPOLOGICAL-SORT
+1 call DFS(G) to compute finishing times v.f for each vertex v
+2 as each vertex is finished, insert it onto the front of a linked list
+3 return the linked list</code></pre></li>
+<li><p>引理22.11 一个有向图$G$是无环的当且仅当对齐进行深度优先搜索不产生后向边。</p>
+</li>
+</ul>
+<h4 id="强连通分量"><a href="#强连通分量" class="headerlink" title="强连通分量"></a>强连通分量</h4><ul>
+<li><p>有向图$G$的强连通分量是一个最大结点集合 $C\subset V$，对于该集合中任意一对结点u和v来说，路径u-&gt;v和路径v-&gt;u同时存在，也就是说，结点u和结点v可以互相到达。</p>
+</li>
+<li><p>算法伪代码：</p>
+<pre><code>STRONGLY-CONNECTED-COMPONENTS(G)
+1 call DFS(G) to compute finishing times u.f for each vertex u
+2 compute G^T
+3 call DFS(G^T), but in the main loop of DFS, consider the verteces
+  in order of decreasing u.f
+4 output the verteces of each tree in the depth-first forest 
+  in line 3 as a seperate strongly connected component</code></pre></li>
+<li><p>时间复杂度：$\theta(V+E)$</p>
+</li>
+<li><p>分量图的关键性质：是一个有向无环图</p>
+</li>
+<li><p>半连通：u-&gt;v 或 v-&gt;u</p>
+</li>
+</ul>
+<h2 id="单源最短路径算法"><a href="#单源最短路径算法" class="headerlink" title="单源最短路径算法"></a>单源最短路径算法</h2><pre><code>INITIALIZE-SINGLE-SOURCE(G, s)
+1 for each vertex v in G.V
+2     v.d = \infty
+3     v.p = NIL
+4 s.d = 0
+
+RELAX(u, v, w)
+1 if v.d &gt; u.d + w(u, v)
+2     v.d = u.d + w(u, v)
+3     v.p = u</code></pre><ul>
+<li><p>最短路径和松弛操作的性质</p>
+<ul>
+<li>三角不等式性质：对任何边$(u, v) \in E$, 有$\delta (s, v)\le \delta (s, u) + w(u, v)$.</li>
+<li>上界性质：<br>对所有点v，有$v.d\ge \delta(s, v)$, 一旦$v.d$取值达到$\delta(s, v)$，就不会再变化。</li>
+<li>非路径性质：如果s和v之间不存在路径，则总是有$v.d = \delta(s, v) = \infty$.</li>
+<li>收敛性质：对于结点$v$，若有s~&gt;u-&gt;v是图$G$中的一条最短路径，并且在对边$(u, v)$进行松弛前的任意时间有$u.d=\delta (s, u)$，则在之后的所有时间有$u.d = \delta(s, v)$.</li>
+<li>路径松弛性质：如果$p=&lt;v_0, v_1, …, v_k&gt;$是从源结点$s=v_0$到结点$v_k$的一条最短路径，并且我们队p中的边所进行的松弛的次序为$(v_0, v_1)$, $(v_1, v_2)$, …, $(v_{k-1}, v_k)$，则$v_k.d =\delta(s,v_k)$.</li>
+<li>前驱子图性质：对于所有节点$v\in V$, 一旦$v.d = \delta(s, v)$，则前驱子图为一颗根结点为$s$的最短路径树。<h3 id="BELLMAN-FORD算法"><a href="#BELLMAN-FORD算法" class="headerlink" title="BELLMAN-FORD算法"></a>BELLMAN-FORD算法</h3></li>
+</ul>
+</li>
+<li><p>代码</p>
+<pre><code>BELLMAN-FORD(G, w, s)
+1 INITIALIZE-SINGLE-SOURCE(G, s)
+2 for i = 1 to |G.V| - 1
+3     for each edge (u, v) in G.E
+4         RELAX(u, v, w)
+5 for each edge (u, v) in G.E
+6     if v.d &gt; u.d + w(u, v)
+7         return false
+8 return true</code></pre></li>
+<li><p>时间复杂度$O(VE)$</p>
+</li>
+</ul>
+<h3 id="有向无环图中的单源最短路径"><a href="#有向无环图中的单源最短路径" class="headerlink" title="有向无环图中的单源最短路径"></a>有向无环图中的单源最短路径</h3><ul>
+<li><p>代码</p>
+<pre><code>DAG-SHORTEST-PATH(G, w, s)
+1 topologically sort the vertices of G
+2 INITIALIZE-SINGLE-SOURCE(G, s)
+3 for each vertex u, taken in topologically sorted order
+    for each vertex v in G.Adj[u]
+        RELAX(u, v, w)</code></pre></li>
+<li><p>时间复杂度 $O(V+E)$</p>
+</li>
+<li><p>找最长路径，则将所有权重变成负的，或者初始化为负无穷，RELAX过程 &gt; 变为 &lt;</p>
+</li>
+</ul>
+<h3 id="Dijkstra算法"><a href="#Dijkstra算法" class="headerlink" title="Dijkstra算法"></a>Dijkstra算法</h3><ul>
+<li><p>有向图中单源最短路径问题，要求所有边的权重非负</p>
+</li>
+<li><p>代码</p>
+<pre><code>DIJKSTRA(G, w, s)
+1 INITIALIZE-SINGLE-SOURCE(G, s)
+2 S = \emptyset
+3 Q = G.V
+4 while Q != \emptyset
+5    u = EXTRACT-MIN(Q)
+6    S = S \cup {u}
+7    for each vertex v in G.Adj[u]
+8        RELAX(u, v, w)</code></pre></li>
+<li><p>时间复杂度：$O((V+E)\lg V)$; 若源结点可达所有点，则为$O(E\lg V)$. 用斐波那契堆可以达到$O(VlgV + E)$.</p>
+</li>
+<li><p>实际用C++实现的时候，因为优先队列不能直接decrease_key，不需要一次性push所有的点，到达之后再push，同时记录每个点有没有遍历过。</p>
+</li>
+</ul>
+<h2 id="多源最短路径算法"><a href="#多源最短路径算法" class="headerlink" title="多源最短路径算法"></a>多源最短路径算法</h2><h3 id="“矩阵乘法”"><a href="#“矩阵乘法”" class="headerlink" title="“矩阵乘法”"></a>“矩阵乘法”</h3><ul>
+<li><p>每次将最短路径拓展了一条边！</p>
+</li>
+<li><p>代码</p>
+<pre><code>EXTEND-SHORTEST-PATHES(L, W)
+n = L.rows
+for i = 1 to n
+    for j = 1 to n 
+        l&apos;_{ij} = \infty
+        for k = 1 to n
+            l&apos;_{ij} = min(l&apos;_{ij}, l_{ik} + w_{kj})
+return L&apos;</code></pre></li>
+<li><p>类似于矩阵乘法</p>
+</li>
+<li><p>每一步拓展时间复杂度$O(n^3)$</p>
+</li>
+<li><p>用类似快速幂计算，时间复杂度$\Theta(n^3\lg n)$</p>
+</li>
+<li><p>垃圾算法基本不用</p>
+</li>
+</ul>
+<h3 id="Floyd-Warshall算法"><a href="#Floyd-Warshall算法" class="headerlink" title="Floyd-Warshall算法"></a>Floyd-Warshall算法</h3><ul>
+<li><p>递归定义$d_{ij}^k$如下：<br>$$d_{ij}^k = \begin{cases}<br>w_{ij}, &amp;\text{k = 0}\\<br>min(d_{ij}^{k-1}, d_{ik}^{k-1} + d_{kj}^{k-1}), &amp;\text{k &gt; 0}<br>\end{cases}$$</p>
+</li>
+<li><p>代码</p>
+<pre><code>FLOYD-WARSHALL(W)
+n = W.rows
+for k = 1 to n
+    for i = 1 to n
+        for j = 1 to n
+            d_{ij} = min(d_{ij}, d_{ik} + d_{kj})</code></pre></li>
+<li><p>注：书上初始代码是用n个矩阵来记录的，但是实际上没必要。</p>
+</li>
+<li><p>时间复杂度$\Theta (n^3)$.</p>
+</li>
+<li><p>构建最短路径：</p>
+<ul>
+<li>递归公式：<br>$$\pi_{ij}^0 = \begin{cases}<br>NIL, &amp;i = j ; or ; w_{ij} = \infty\\<br>i, &amp;else<br>\end{cases}$$<br>$$\pi_{ij}^k = \begin{cases}<br>\pi_{ij}^{k-1}, &amp;d_{ij}^{k-1} \le d_{ik}^{k-1} + d_{kj}^{k-1}\\<br>\pi_{kj}^{k-1}, &amp;else<br>\end{cases}$$</li>
+</ul>
+</li>
+<li><p>计算有向图的传递闭包也用类似的算法（略）</p>
+</li>
+<li><p>对于负权环，检查对角线上的值是否为负即可。</p>
+</li>
+</ul>
+<h3 id="用于稀疏图的Johnson算法"><a href="#用于稀疏图的Johnson算法" class="headerlink" title="用于稀疏图的Johnson算法"></a>用于稀疏图的Johnson算法</h3><ul>
+<li>技术：重新赋予权重使新的图满足<ul>
+<li>所有权重都为非负值</li>
+<li>新图中的最短路径就是旧图中的最短路径</li>
+</ul>
+</li>
+<li>赋值方法：</li>
+</ul>
+<p>$$\hat{w}(u,v) = w(u,v)+h(u)-h(v)$$<br>$$h(u) = \delta(s, u)$$</p>
+<ul>
+<li>解释：<ul>
+<li>先增加一个新结点 s，该点到原先各结点都有边相连，权重为 0</li>
+<li>对新图进行一次Bellman-Ford算法，寻找是否有负权重环路</li>
+<li>没有负权重环，就给每条边重新赋值。</li>
+<li>然后对每个点进行Dijkstra</li>
+<li>最后将最短路径的权重恢复，并存入矩阵D中返回</li>
+</ul>
+</li>
+<li>时间复杂度：<ul>
+<li>二叉最小优先队列实现Dijkstra：$O(VE\lg V)$</li>
+<li>斐波那契堆：$O(V^2 \lg V + VE)$</li>
+<li>稀疏图中比Floyd好</li>
+</ul>
+</li>
+</ul>
+<h2 id="最大流算法"><a href="#最大流算法" class="headerlink" title="最大流算法"></a>最大流算法</h2><h3 id="流网络"><a href="#流网络" class="headerlink" title="流网络"></a>流网络</h3><ul>
+<li>有向图$G=(V,E)$</li>
+<li>图中，每条边<br>$(u,v)\in E$ 有一个非负的容量值$c(u,v)\ge 0$</li>
+<li>如果$(u,v) \notin E$，定义 $c(u,v)=0$</li>
+<li>如果边集合$E$包含一条边$(u,v)$，则图中不存在反方向的边$(v,u)$</li>
+<li>有源结点s和汇点t</li>
+<li>流网络图是连通的</li>
+<li>除源结点外的每个结点都至少有一条进入的边，$|E| \ge |V| - 1$.</li>
+</ul>
+<h3 id="流"><a href="#流" class="headerlink" title="流"></a>流</h3><p>设$G=(V,E)$ 为一个流网络，其容量函数为c。设$s$为网络的源结点，$t$为汇点。$G$中的流是一个实值函数$f:V×V→R$，满足下面两条性质：</p>
+<ul>
+<li>流量限制：对于所有节点$u, v \in V$，要求 $0\le f(u, v) \le c(u, v)$.</li>
+<li>流量守恒：对于所有的结点 $u \in V - {s, t}$，要求<br>$$\sum _{v\in V} f(v, u) = \sum _{v\in V} f(u, v)$$</li>
+<li>去掉反平行边：将其中一条分为两条，加入一个新的结点。</li>
+<li>多个源结点和多个汇点：超级源结点和超级汇点。</li>
+<li>点容量限制：把一个点拆成两个点（入点和出点），其中用一条容量为原来的点容量的边连接。</li>
+</ul>
+<h3 id="Ford-Fulkerson方法"><a href="#Ford-Fulkerson方法" class="headerlink" title="Ford-Fulkerson方法"></a>Ford-Fulkerson方法</h3><pre><code>FORD-FULEKERSON-METHOD(G, s, t)
+initialize flow f to 0
+while there exists an augmenting path p in the residual network G_f
+    augment flow f along p
+return f</code></pre><ul>
+<li>残存网络<ul>
+<li>给定流网络$G$和流量$f$，残存网络$G_f$由那些仍有空间对流量进行调整的边构成。</li>
+<li>残存容量定义：</li>
+</ul>
+</li>
+</ul>
+<p>$$c_f(u, v) = \begin{cases}<br>c(u,v) - f(u,v), &amp;(u, v)\in E\\<br>f(v,u), &amp;(v, u)\in E\\<br>0, &amp;else<br>\end{cases}<br>$$</p>
+<ul>
+<li><p>给定一个流网络$G$ 和一个流 $f$，则有$f$ 所诱导的图$G$ 的残存网络为 $G_f = (V, E_f)$，$E_f = {(u,v)\in V \times V: c_f(u, v) &gt; 0}$. 有 $|E_f| \le 2|E|$.  </p>
+<ul>
+<li>递增</li>
+<li>抵消操作</li>
+<li>增广路径</li>
+</ul>
+</li>
+<li><p>增广路径p：残存网络 $G_f$中一条从源结点 s 到汇点 t 的简单路径。</p>
+</li>
+<li><p>残存容量：在一条增广路径p上能够为每条边增加的流量的最大值。</p>
+<ul>
+<li>流网络的切割</li>
+</ul>
+</li>
+<li><p>流网络的切割：<br>将结点集合$V$ 划分为 $S$ 和 $T = V- S$，</p>
+<ul>
+<li>横跨切割的净流量 $f(S, T) = \sum_{u \in S}\sum <em>{v \in T}f(u, v) -  \sum</em>{u \in S}\sum _{v \in T}f(v, u)$</li>
+<li>切割的容量：$c(S, T) =  \sum_{u \in S}\sum _{v \in T}c(u, v)$</li>
+<li>最小切割：整个网络中容量最小的切割</li>
+<li>整个流网络的流量与横跨某一个切割的流量相等</li>
+</ul>
+</li>
+<li><p>最大流最小割定理：下列等价：</p>
+<ul>
+<li><p>$f$ 是 $G$ 的一个最大流。</p>
+</li>
+<li><p>残存网络 $G_f$ 不包含任何增广路径。</p>
+</li>
+<li><p>$|f| = c(S, T)$，其中 $(S, T)$ 是流网络 $G$ 中的某个切割</p>
+</li>
+<li><p>基本的Ford-Fulkerson算法</p>
+<p>  FORD-FULEKERSON(G, s, t)<br>  for each edge (u, v) in G.E</p>
+<pre><code>(u, v).f = 0</code></pre><p>  while there exists a path p from s to t in the residual network G_f</p>
+<pre><code>c_f(p) = min{c_f(u, v)|(u, v) is in p}
+for each edge (u, v) in p
+    if(u, v) in E
+        (u, v).f = (u, v).f + c_f(p)
+    else 
+        (v, u).f = (v, u).f + c_f(p)</code></pre></li>
+</ul>
+</li>
+</ul>
+<h3 id="Edmonds-Karp算法"><a href="#Edmonds-Karp算法" class="headerlink" title="Edmonds-Karp算法"></a>Edmonds-Karp算法</h3><ul>
+<li><p>在Ford-Fulkerson算法的第三行使用广度优先搜索来寻找增广路径。<br>每次在残存网络中选择的增广路径是一条从源结点$s$到汇点$t$的最短路径，其中每条边的权重为单位距离。</p>
+</li>
+<li><p>时间复杂度：$O(VE^2)$</p>
+</li>
+<li><p>快的原因：使用Edmonds-Karp算法，对于除源结点和汇点外的所有结点 $v$，残存网络 $G_f$ 中的最短路径距离 $\delta f(s,v)$ 随着每次流量的递增而单调递增。</p>
+</li>
+<li><p>Edmonds-Karp算法所执行的流量递增操作的总次数为 $O(VE)$.</p>
+</li>
+<li><p>关键边：在残存网络中，一条路径 $p$ 的残存容量是该条路径上边 $(u,v)$ 的残存容量，即 $c_f(p)=c_f(u,v)$.</p>
+</li>
+<li><p>对于$E$中每条边来说，其成为关键边的次数最多为 $|V|/2$ 次。</p>
+</li>
+</ul>
+<h3 id="dinic算法（oj补充）"><a href="#dinic算法（oj补充）" class="headerlink" title="dinic算法（oj补充）"></a>dinic算法（oj补充）</h3><ul>
+<li>通过bfs构造层次网络，然后在层次网络中用dfs进行增广，增广的时候加上条件depth[v] == depth[u] + 1</li>
+<li>弧优化：dfs的for循环不从i = Head[u]开始，而从i = Cur[u]，而通过写&amp;i = Cur[u]来实时更新Cur。注意在dinic的外层主循环中要恢复Cur数组。</li>
+<li>时间复杂度：$O(V^2E)$</li>
+</ul>
+<h3 id="最大二分匹配"><a href="#最大二分匹配" class="headerlink" title="最大二分匹配"></a>最大二分匹配</h3><ul>
+<li>二分图中，结点划分为不相交的集合 L 和 R，$E$中所有的边都横跨 L 和 R.</li>
+<li>构造一个流网络 $G = (V’, E’)$，其中 $V’ = V \cup {s, t}$，$E’ = {(s, u): u\in L} \cup {(u, v): (u, v)\in E} \cup {(v, t): v\in R}$，$E’$中每条边的容量都是 1.</li>
+<li>二分图 $G$ 中的一个最大匹配 $M$ 的基数等于其对应的流网络 $G’$ 中某一最大流 $f$ 的值。</li>
+<li>时间复杂度：$O(VE)$</li>
+</ul>
+<h3 id="匈牙利算法（oj补充）"><a href="#匈牙利算法（oj补充）" class="headerlink" title="匈牙利算法（oj补充）"></a>匈牙利算法（oj补充）</h3><ul>
+<li>求二部图最大匹配或最小覆盖</li>
+<li>在任何一个二分图中，最大匹配中的边数等于最小顶点覆盖中的顶点数。</li>
+<li>算法解释：对于每个S中的点，寻找是否有T中的点可以相连；对于T中的点v，如果没有和别的点相连，就连上；如果和S中的u相连，那就看看u能否和别的点相连。</li>
+<li>时间复杂度：$O(VE)$</li>
+<li>有向无环图的最小路径覆盖：拆点变为二部图，最小路径覆盖 = 顶点数（拆点前） – 最大二分匹配数</li>
+<li>无向图的最小路径覆盖=拆点前点的数量-最大匹配数/2</li>
+</ul>
+<h2 id="其余oj补充部分"><a href="#其余oj补充部分" class="headerlink" title="其余oj补充部分"></a>其余oj补充部分</h2><h3 id="图的连通性"><a href="#图的连通性" class="headerlink" title="图的连通性"></a>图的连通性</h3><p>Tarjan算法</p>
+<ul>
+<li>可以用来求有向图和无向图中的强\双连通分量，割点和割边</li>
+<li>dfn数组记录第一次到达该结点的时间戳</li>
+<li>low数组记录该点可以到达的时间戳最小的祖先结点的时间戳</li>
+<li>有向图中需要用一个栈保存tarjan遍历的点，一旦dfn[i] = low[i] 就出栈直到点i，这些点就属于同一个强连通分量</li>
+<li>常用技巧：缩点<h3 id="图上的游走"><a href="#图上的游走" class="headerlink" title="图上的游走"></a>图上的游走</h3></li>
+<li>无向图含欧拉回路&lt;==&gt;全部顶点在同一个连通分量，且度均为偶数</li>
+<li>有向图含欧拉迹&lt;==&gt;全部顶点在同一个连通分量，且度均为偶数或有且仅有两个为奇数</li>
+<li>有向图含欧拉回路&lt;==&gt;全部顶点在同一个强连通分量，且任意顶点入度等于出度</li>
+<li>有向图含欧拉迹&lt;==&gt;全部顶点在底图的同一个连通分量，且 至多一顶点出度=入度+1，至多一顶点出度=入度-1，其余：出度=入度</li>
+<li>中国邮递员问题：<ul>
+<li>欧拉图走欧拉回路</li>
+<li>不是欧拉图则走距离最短的重复路，而走重复路相当于在原图上加边，加权值最小的边使原图变为欧拉图即可</li>
+<li>求奇度点之间的最小距离</li>
+<li>寻找奇度点的最小权完美匹配</li>
+</ul>
+</li>
+</ul>
+
           
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/07/01/TC/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -1268,8 +1922,6 @@ Rabin-Karp算法RABIN-KARP-MATCHER(T, P, d, q)n = T.lengthm = P.lengthh = d^&#12
 
   
   
-  
-
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -1296,65 +1948,37 @@ Rabin-Karp算法RABIN-KARP-MATCHER(T, P, d, q)n = T.lengthm = P.lengthh = d^&#12
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2019/07/01/CZ/" class="post-title-link" itemprop="url">图论定理整理</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2019/07/01/CZ/" itemprop="url">图论定理整理</a></h1>
         
 
         <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
+          <span class="post-time">
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
                 <span class="post-meta-item-text">Posted on</span>
               
-
-              
-                
-              
-
-              <time title="Created: 2019-07-01 10:55:42" itemprop="dateCreated datePublished" datetime="2019-07-01T10:55:42+08:00">2019-07-01</time>
-            </span>
-          
-
-          
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-01T10:55:42+08:00">
+                2019-07-01
+              </time>
             
 
             
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-01-17 10:30:51" itemprop="dateModified" datetime="2019-01-17T10:30:51+08:00">2019-01-17</time>
-              </span>
+
             
-          
+          </span>
 
           
 
           
-            
             
           
 
           
           
 
-          
-
-          <br>
           
 
           
@@ -1376,37 +2000,253 @@ Rabin-Karp算法RABIN-KARP-MATCHER(T, P, d, q)n = T.lengthm = P.lengthh = d^&#12
       
         
           
-            <p>
-              图论部分整理注：本部分源自ytr和hw的整理，我就加了一点
-图的基本定理一、引言图与图模型
-图(graph)G是由有限非空集合V及其二元子集E构成,其中V中元素称为顶点(vertex), E中元素称为边(edge)；集合V和E分别称为G的顶点集(vertex set)和边集(edge set)。
-如
-              ...
-            </p>
-          <!--noindex-->
+            <h1 id="图论部分整理"><a href="#图论部分整理" class="headerlink" title="图论部分整理"></a>图论部分整理</h1><p>注：本部分源自ytr和hw的整理，我就加了一点</p>
+<h2 id="图的基本定理"><a href="#图的基本定理" class="headerlink" title="图的基本定理"></a>图的基本定理</h2><h2 id="一、引言"><a href="#一、引言" class="headerlink" title="一、引言"></a>一、引言</h2><h3 id="图与图模型"><a href="#图与图模型" class="headerlink" title="图与图模型"></a>图与图模型</h3><ul>
+<li>图(graph)G是由有限非空集合V及其二元子集E构成,其中V中元素称为顶点(vertex), E中元素称为边(edge)；集合V和E分别称为G的顶点集(vertex set)和边集(edge set)。</li>
+<li>如果uv是图G的边, 那么就称u和v在G中是邻接的(adjacent). G中的顶点数和边数分别称为该图的阶(order)和边数(size) .</li>
+</ul>
+<h3 id="连通图"><a href="#连通图" class="headerlink" title="连通图"></a>连通图</h3><ul>
+<li><p>诱导子图(induced subgraph):设图F是图G的一个子图． 对于F中的任意顶点u和v, 只要uv是G 中的边, 则uv一定是F中的边,</p>
+</li>
+<li><p><strong>链</strong>(walk):G中一条u-v链(walk) W 即为G 的一个顶点序列,满足:从u出发,到v结束,且图的顶点是邻接的．换句话说,可以把W表述成:<br>$$ W: u=v _0 , v_1, ….., v_k=v $$</p>
+</li>
+<li><p>链的长度(length): 一条链所经过的边的总数(包括边重复出现的次数)</p>
+</li>
+<li><p>平凡链(trivial walk):长度为0;</p>
+</li>
+<li><p><strong>迹</strong>(trail): 边没有被多次经过的u－v链．</p>
+</li>
+<li><p><strong>路</strong>(path):链中没有重复的顶点,显然每条路都是迹。</p>
+</li>
+<li><p>定理1.6:<br>  若因G包含一条长为$l$的$u-v$链, 则G包含一条长至多为$l$的<br>$u - v$ 路．(反证法证明)</p>
+</li>
+<li><p><strong>回路</strong>(circuit):长至少为3的闭迹.(顶点可以重复)</p>
+</li>
+<li><p><strong>圈</strong>(cycle):没有顶点重复的回路 </p>
+</li>
+<li><p>(边)连通(connected):如果G 包含一条u-v路, 那么就称u 和ν 是连通的<br>(connected)。(注意是path,不是walk;但是有walk可以用定理1.6推出有path)</p>
+</li>
+<li><p>(图)连通(connected):如果对于G中每对不同顶点u,υ,G 都包含一条u-υ 路, 那么G称为是连通的(connected) .</p>
+</li>
+<li><p>不连通的(disconnected):一个不是连通的图G 称为不连通的(disconnected) .</p>
+</li>
+<li><p>连通分支(component): 若G的一个连通子图不是G的其他任何连通子图的真子图, 则称它为G的一个连通分支(component).(图G是连通的当且仅当G恰好有1个连通分支)</p>
+</li>
+<li><p>定理1.8:<br>  设G是一个阶至少为3的图若G包含两个不同的顶点u和v,使得G-u与G-v是连通的, 则G是连通的．(设x,y 是G的两个顶点．分情形讨论:$1.{x,y}\neq {u,v}~2.{x,y}={u,v}$)</p>
+</li>
+<li><p>距离(distance): G 为n阶连通图, u和v为G 的两个顶点. u和v之间的距寓(distance)定义为G中包u-v路的最小长度,记为$d_{G}(u,v)$或$d(u,v)$</p>
+</li>
+<li><p>测地线(geodesic):长为$d(u,v)$的u－v路称为u-v测地线(geodesic)</p>
+</li>
+<li><p>直径(diameter) :连通图G 的所有顶点之间的最大距离称为G 的直径(diameter),记为diam(G).</p>
+</li>
+<li><p>定理1.9:<br>  若G是一个阶至少为3的连通图, 则G包含两个不同的顶点u和v,使得G-u和G-v是连通的．(反证:考虑d(u,v)=diam(G), G-v假设不连通,然后找x,y$\in G-v$,假设x-u测地线,u-y测地线找矛盾)</p>
+</li>
+<li><p><strong>定理1.10</strong>:<br>   <strong>设G是一个阶至少为3的图则G是连通的当且仅当G包含两个不同的顶点u和v,使得G-u和G-v都是连通的．(1.9+1.8得)</strong></p>
+</li>
+</ul>
+<h3 id="若干常见的图类"><a href="#若干常见的图类" class="headerlink" title="若干常见的图类"></a>若干常见的图类</h3><ul>
+<li>完全的(complete):如果图G的任何两个不同顶点都是邻接的,则称G是完全的,记为$K_{n}$,边数为$C_{n}^{2}$</li>
+<li>补图(complement)$\bar{G}$:$\bar{G}$的顶点集为V($G$), 且对于$G$的每对顶点u,v, uv是$G$的边当且仅当uv不是$G$的边．</li>
+<li>定理1.11:<br>  若$G$是一个不连通图,则$\bar{G}$是连通的.(直接证明)</li>
+<li>二部图(bipartite graph): 若V(G)能够被划分为两个子集U和W(称为部集(partite set)) , 使得G的每条边必然连接U中一个顶点和W中一个顶点.</li>
+<li>定理1.12:<br>  <strong>非平凡图G是二部的当且仅当G不含奇圈．</strong>(等价于逆否命题:设G是一个不含奇圈的非平凡图, 则G是二部的．,反证之,挺麻烦的放了)</li>
+<li>完全二部图:二部图和完全图合体啦！|U|=s和|W|=t的完全二部图记做$K_{s,t}$或者$K_{t,s}$,当其中有一个是1的时候称为星(star)图 </li>
+<li>多部图,完全多部图和二部图完全二部图相似,e.g.$k_{1,1,1}$</li>
+<li><strong>联(join)</strong> $G+H$:由$G\cup U$通过连接G的每一个顶点与H的每一个顶点而获得</li>
+<li><strong>笛卡儿乘积</strong>(Cartesian product) $G\times H$:$V(G\times H)=V(G)\times V(H)$,$G\times H$的每一个顶点都是有序对$(u,v),u\in V(G),V\in V(H)$(不难发现总点数是两个图order的乘积)</li>
+<li><strong>n方体</strong>(n-cube):$Q_{N}=Q_{N-1}\times K_{2},N\geq 2$; $Q_{1}=K_{2}$</li>
+</ul>
+<h3 id="多重图与有向图"><a href="#多重图与有向图" class="headerlink" title="多重图与有向图"></a>多重图与有向图</h3><ul>
+<li>环(loop):在多重图中, 允许连接顶点到其自身的边, 这样的边称为环(loop)</li>
+<li>平行边(parallel edge):若两条或两条以上的边连接同一对(不同的) 顶点。</li>
+</ul>
+<h2 id="二、度"><a href="#二、度" class="headerlink" title="二、度"></a>二、度</h2><h3 id="顶点的度"><a href="#顶点的度" class="headerlink" title="顶点的度"></a>顶点的度</h3><ul>
+<li>度(degree):顶点u 相关联的边的总数称为是u 的度(degree)记做$deg_{G}v$</li>
+<li>度为0位孤立顶点,度为1为端点(end-vertex)</li>
+<li>G的最小度记做$\delta (G)$,最大度记做$Δ(G)$,若G为n阶图,有<br>$$ 0 \leq δ(G) \le \deg~v\leq \Delta (G) \leq n-1$$</li>
+<li><strong>定理2.1(图论第一定理):<br>  若图G的边数为m, 则$$\sum _{v\in V(G)}deg~v=2m$$</strong></li>
+<li>推论2.3:<br>  每一个图都有偶数个奇点。</li>
+<li><strong>定理2.4:<br>  设G为n阶图,若对于G中任意两个不邻接的顶点u和v, 都满足:<br>  $$deg<del>u+deg</del>v\geq n-1$$<br>  则G是连通的且diam(G)$\leq$2</strong></li>
+<li><strong>推论2.5:<br>  设G是阶为n的图,若$δ(G)≥ (n-1)/2$,则$G$是连通的(根据2.4找两个点直接证明)</strong></li>
+<li>有向图中:<br>出度(outdegree) : od v 定义为D 中以v为起点的有向边个数,<br>入度(indegree) : id v 则定义为D中以v为终点的有向边个数．</li>
+</ul>
+<h3 id="正则图"><a href="#正则图" class="headerlink" title="正则图"></a>正则图</h3><ul>
+<li><strong>正则的</strong>(regular):若G的顶点有相同的度即$δ(G)=Δ(G)$,称G是正则的；r-正则(r-regular)指:G中的每一个点的度为r。3-正则图被称为立方图(cubic graph)</li>
+<li>定理2.6<br>  设r和n为满足$0\leq r \leq n-1$的整数． 则存在n阶的r正则图当且仅当r和n 中至少有一个为偶数．</li>
+<li>定理2.7<br>  对于任意图G和任意整数$r\geq\Delta(G)$, 都存在r正则图H, 它包含G作为诱导子图．(构造法证明,对于G,找G’,连接不是最大度的边构成G1,对于G1,找G1’…..一直构造直到$\Delta(G)=\delta (G)$;也可以另外加点,同理构造,(e.g.2.8))<h3 id="度序列"><a href="#度序列" class="headerlink" title="度序列"></a>度序列</h3></li>
+<li>度序列(degree sequence):若把图G所有顶点的度排成一个序列s,则s称为G 的度序列(degree sequence).</li>
+<li>可图的(graphical): 一个由非负整数组成的有限序列称为是可图的(graphical) , 如果它是某个图的度序列.</li>
+<li><strong>定理2.10:<br>  由非负整数构成的非增序列$s:d_1,d_2…d_n$是可图的当且仅当序列<br>  $$s1: d_2-1,d_3-1,…,d_{d_{1}+1}-1,d_{d_{1}+2},…,d_{n}$$<br>  是可图的.(就是对非增序列删除首项,假设为a,然后对后面的a项每项减一判断可不可图,如果判断不出来,继续……)</strong></li>
+</ul>
+<h2 id="三、同构"><a href="#三、同构" class="headerlink" title="三、同构"></a>三、同构</h2><h3 id="同构的定义"><a href="#同构的定义" class="headerlink" title="同构的定义"></a>同构的定义</h3><ul>
+<li>同构的(isomorphic):如果存在一个从V$(G_1)$到V($G_{2}$)的一一对应$ϕ$,使得:$u_1v_1∈E(G_1)$当且仅当$\phi(u_1)\phi(v_1)\in E(G_2)$,此时$ϕ$称为从$G_1$到$G_2$的一个同构(isomorphism).</li>
+<li>定理3.1:<br>  两个图$G_1$和$G_2$是同构的当且仅当它们的补图$\bar{G_1}$和$\bar{G_{2}}$是同构的．</li>
+<li>自补的(selιcomplementary):当$G≅ \bar{G} $,称G是自补的。</li>
+<li>定理3.2:<br>  <strong>如果G和H是同构图,则它们对应的顶点有相同的度．</strong></li>
+<li>因此判断同构可以先看看有没有一样的度序列;然后看看里面的结构关系,比如度3的点连了啥,G中所有的结构性质它的同构图H也都应该有</li>
+<li>定理3.5:<br>  设G和H为同构图,则:<br>  (a) G是二部的当且仅当H是二部的,<br>  (b) G是连通的当且仅当H是连通的．</li>
+</ul>
+<h3 id="同构关系"><a href="#同构关系" class="headerlink" title="同构关系"></a>同构关系</h3><ul>
+<li>定理3.6:<br>  在图的集合中,同构是一种等价关系．</li>
+</ul>
+<h2 id="四、树"><a href="#四、树" class="headerlink" title="四、树"></a>四、树</h2><h3 id="割边"><a href="#割边" class="headerlink" title="割边"></a>割边</h3><ul>
+<li><p>割边：连通图G的一条边e=uv称为割边(bridge)，如果G−e是不连通的。</p>
+</li>
+<li><p><strong>定理4.1：图G的边e是割边当且仅当e不在G的任一个圈上。</strong></p>
+</li>
+</ul>
+<h3 id="树"><a href="#树" class="headerlink" title="树"></a>树</h3><ul>
+<li><strong>树</strong>：树(tree)是无圈的连通图。</li>
+<li>双星：恰好包含两个非端点的树称为双星，这里两个点必然是邻接的。</li>
+<li>有根树： 在有些情形下，选择树T的一个顶点，并指令它为T的根，此时T就成为一个有根树。</li>
+<li>森林：无圈图称为森林。</li>
+<li><strong>定理4.2：图G是树当且仅当G的任何两个顶点都被唯一的路连接。</strong></li>
+<li>定理4.3：每个非平凡树至少有两个端点。</li>
+<li>定理4.4：每个n阶树的边数是n−1。</li>
+<li>推论4.5：阶位n且有k个连通分支的每个森林有n−k条边。</li>
+<li>定理4.7：每个n阶连通图的边数至少为n−1。</li>
+<li><strong>定理4.8：设G是阶为n且边数为m的图，若G满足如下性质中的任意两个:<br>(1)G是连通的，(2)G是无圈的，(3)m=n−1，则G是树。</strong></li>
+<li>定理4.9：设T为k阶树，若图G满足δ(G)≥k−1，则T同构于G的某个子图。<h3 id="最小生成树算法"><a href="#最小生成树算法" class="headerlink" title="最小生成树算法"></a>最小生成树算法</h3></li>
+<li>定理4.10：每个连通图都含有一个生成树。</li>
+<li>见算法导论整理</li>
+</ul>
+<h3 id="生成树的个数"><a href="#生成树的个数" class="headerlink" title="生成树的个数"></a>生成树的个数</h3><ul>
+<li>定理4.15：(Gayley公式)具有指定顶点集的$n$阶不同树的个数是$n^{n-2}$</li>
+<li>矩阵树定理：设$G$是顶点集为$V(G)={v_1, v_2, …, v_n}$的图，设$A$=[$a_{ij}$]是G的邻接矩阵，$C$=[$c_{ij}$]为 $n\times n$ 矩阵，其中<br>$$c_{ij} = \begin{cases}<br>\deg v_i, &amp;\text{i = j}\\</li>
+</ul>
+<p>-a_{ij}, &amp;\text{i != j}<br>\end{cases}$$<br>则$G$的生成树的个数为$C$的任一余子式的值。</p>
+<h2 id="五、图的连通度"><a href="#五、图的连通度" class="headerlink" title="五、图的连通度"></a>五、图的连通度</h2><h3 id="割点"><a href="#割点" class="headerlink" title="割点"></a>割点</h3><ol>
+<li>割点的定义：去掉这个点后，原图不再连通</li>
+<li><strong>定理5.1：设$v$是图$G$中与一条割边相关联的顶点，则$v$是$G$的割点当且仅当$deg v\geq 2$ 。</strong></li>
+<li>推论5.2：设$G$是一个阶至少为3的连通图。若$G$包含一条割边，则$G$一定包含一个割点。</li>
+<li>定理5.3：设$v$是连通图$G$的一个割点，$u$和$w$是$G-v$不同连通分支中的两个顶点，则$v$位于$G$的任意一条$u-w$路上。</li>
+<li><strong>推论5.4：顶点$v$是连通图$G$的一个割点当且仅当存在与$v$不同的两个顶点$u$和$w$，使得$v$位于$G$的任意一条$u-w$路上。</strong></li>
+<li><strong>定理5.5：设$G$是非平凡的连通图，$u\in V(G)$。若$v$是$G$中距离$u$最远的顶点，则$v$不是$G$的割点。</strong></li>
+<li>推论5.6：任意非平凡的连通图至少包含两个非割点的顶点。</li>
+</ol>
+<h3 id="块"><a href="#块" class="headerlink" title="块"></a>块</h3><ol>
+<li><p>不含割点的非平凡连通图称为是<strong>不可分图</strong>。</p>
+</li>
+<li><p><strong>定理5.7：阶至少为3的图是不可分的当且仅当任意两个顶点都位于某个圈上。</strong></p>
+</li>
+<li><p>若图$G$的一个不可分子图不是其他任一不可分子图的真子图，则称该子图是$G$的一个<strong>块</strong>。</p>
+</li>
+<li><p>定理5.8：设$R$是定义在非平凡连通图$G$的边集上的如下关系：对于$e,f\in E(G)$，若$e=f$或$e,f$位于$G$的同一个圈上，则$e,f$有关系$R$，记为$e;R;f$。则$R$是等价关系。</p>
+</li>
+<li><p>推论5.9：非平凡连通图$G$的任意两个不同的块$B_1$和$B_2$具有下面性质：</p>
+<ul>
+<li>$B_1$和$B_2$是边不相交；</li>
+</ul>
+<ul>
+<li><p>$B_1$和$B_2$至多有一个公共顶点；</p>
+</li>
+<li><p><strong>若$B_1$和$B_2$有一个公共顶点$v$，则$v$是$G$的割点。</strong></p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="连通度"><a href="#连通度" class="headerlink" title="连通度"></a>连通度</h3><ol>
+<li>对于完全图$G$，$G$的最小顶点割的基数称为是$G$的<strong>点连通度</strong>，简称为$G$的<strong>连通度</strong>，用$\kappa(G)$表示。</li>
+<li>$\kappa(K_n)=n-1$</li>
+<li><strong>定理5.11：对于任意图$G$，点连通度$\le$边连通度$\le$最小度，<br>$$\kappa(G)\leq\lambda(G)\leq\delta(G)$$</strong></li>
+<li>定理5.12：<strong>若$G$是一个立方图，则$\kappa(G)=\lambda(G)$.</strong></li>
+<li>定理5.13：若$G$是一个阶为$n$且边数为$m(m\geq n-1)$的图，则<br> $\kappa(G)\leq\lfloor\frac{2m}{n}\rfloor$  </li>
+<li>定理5.14：对于任意两个整数$r$和$n(2\leq r &lt; n)$,<br><strong>$$\kappa(H_{r,n})=r$$</strong><br>其中H(r, n)表示每个点度都为r的n阶连通图。  </li>
+</ol>
+<h3 id="Menger定理"><a href="#Menger定理" class="headerlink" title="Menger定理"></a>Menger定理</h3><ol>
+<li>设$S$是图$G$的顶点集的一个子集，$u$和$v$是$G$的两个顶点，若$G-S$是不连通的，且$u$和$v$属于$G-S$的不同连通分支，则称$S$<strong>分离</strong>$u$和$v$。</li>
+<li><strong>定理5.16：设$u$和$v$是图$G$的不邻接的两个顶点，则$u-v$分离集中顶点的最小个数等于$G$中不相交的$u-v$路的最大个数。</strong></li>
+<li><strong>定理5.17：一个非平凡图$G$是$k$联通的$(k\geq2)$当且仅当对于$G$的任意顶点$u,v$，$G$至少有$k$条内部不相交的$u-v$路。</strong></li>
+<li>推论5.18：设$G$为$k$连通图，$S$是由$G$中任意$k$个顶点构成的集合。若图$H$是由$G$通过添加一个新的顶点$w$以及连接$w$到$S$中所有顶点所得，则$H$也是$k$联通的。</li>
+<li><strong>推论5.19：若$G$为$k$连通图，$u,v_1,v_2,…,v_k$为$G$中$k+1$个不同顶点，则$G$有内部不相交的$u-v_i$路$(1\leq i\leq k)$.</strong></li>
+<li><strong>定理5.20：若$G$为$k$连通图$(k\geq 2)$，则$G$中任意$k$个顶点均位于某个圈上。</strong></li>
+<li><strong>定理5.21：对于图$G$的两个不同的顶点$u$和$v$,$G$中分离$u,v$的边的最小个数等于$G$中边不相交$u-v$路的最大个数。</strong></li>
+<li><strong>定理5.22：一个非凡图$G$是$k$边连通的当且仅当对于$G$中任意两个不同的顶点$u,v$,$G$包含$k$条边不相交的$u-v$路。</strong></li>
+</ol>
+<h2 id="六、旅行问题（可遍历性）"><a href="#六、旅行问题（可遍历性）" class="headerlink" title="六、旅行问题（可遍历性）"></a>六、旅行问题（可遍历性）</h2><h3 id="Euler图"><a href="#Euler图" class="headerlink" title="Euler图"></a>Euler图</h3><ol>
+<li>迹：无重边</li>
+<li>图$G$的一条回路称为是<strong>Euler回路</strong>,如果$C$包含$G$的每一条边.</li>
+<li>含有<strong>Euler回路</strong>的图成为是<strong>Euler图</strong>.</li>
+<li>对于一个连通图$G$,含有$G$的每一条边的开迹称为是$Euler$迹.</li>
+<li><strong>定理6.1:一个非平凡图$G$是$Euler$的当且仅当$G$的每个顶点的度都为偶数.</strong></li>
+<li><strong>推论6.2:一个连通图$G$含有一条$Euler$迹当且仅当$G$且有两个度为奇数的定点.而且,$G$的每一条$Euler$迹始于一个度为技术的顶点而终止于另一个度为奇数的顶点.</strong></li>
+<li>设$G$和$H$是两个非平凡图.则$G\times H$是Euler的当且仅当$G$和$H$都是$Euler$的或者$G$和$H$的每个顶点度均为奇数.</li>
+</ol>
+<h3 id="Hamilton图"><a href="#Hamilton图" class="headerlink" title="Hamilton图"></a>Hamilton图</h3><ol>
+<li>一个含图$G$每个定点的圈称为是$G$的一个<strong>Hamilton圈</strong>.</li>
+<li>一个含有<strong>Hamilton圈</strong>的图称为是一个<strong>Hamilton图</strong>.</li>
+<li>定理6.4: <strong>$Petersen$图不是$Hamilton$图.</strong></li>
+<li><strong>定理6.5: 如果$G$ 是一个$Hamilton$图,则对$G$顶点的任一个非空子集$S$,都有<br> $k(G-S)\leq|S|$.</strong></li>
+<li><strong>设$G$为一个图,如果对$V(G)$的某个非空真子集$S$,有$k(G-S)&gt;|S|$,则$G$不是$Hamilton$的.</strong> 此处k(G)表示G的连通分量的个数。</li>
+<li>如果$G$含有一个割点,则$G$不是$Hamilton$的.</li>
+<li>定理6.6:<strong>(Ore 定理)设$G$为一个$n(\geq 3)$阶的图,如果对于$G$的每对不邻接的顶点$u,v$,有<br>​    $degu+degv\geq n$,则$G$是$Hamilton$的.</strong></li>
+<li>推论6.7:设$G$为一个$n\geq 3$阶的图,如果对于$G$中的每个顶点$v$,均有$degv\geq n/2$,则$G$是$Hamilton$的.</li>
+<li><strong>定理6.8: 设$u$和$v$是一个$n$阶图$G$的两个不邻接的顶点,并且$degv+degu\geq n$,则$G+uv$是$Hamilton$的当且仅当$G$是$Hamilton$的.</strong></li>
+<li>定理6.9:一个图是$Hamilton$的当且仅当它的闭包是$Hamilton$的.</li>
+<li>推论6.10:如果$G$是一个阶至少为3的图,且它的闭包$C(G)$是一个完全图,则$G$是一个$Hamilton$图.</li>
+<li>定理6.11:设$G$是一个$n\geq 3$阶的图,如果对于每个整数$j(1\leq j&lt; n/2)$,$G$中度至少为$j$的顶点数小于$j$,则$G$是$Hamilton$的.</li>
+<li>设G是一个 $n(n \ge 3)$阶的图。如果对于每个整数 j ($1\le j &lt; n/2$)，G中度至多为j的顶点数小于j，则G是Hamilton的。</li>
+</ol>
+<h3 id="Hamilton链与Hamilton数"><a href="#Hamilton链与Hamilton数" class="headerlink" title="Hamilton链与Hamilton数"></a>Hamilton链与Hamilton数</h3><h2 id="八、图中的匹配与分解"><a href="#八、图中的匹配与分解" class="headerlink" title="八、图中的匹配与分解"></a>八、图中的匹配与分解</h2><ol>
+<li><p>独立的: 图中边的集合称为是<strong>独立的</strong>,如该集合中任意两条边不邻接.</p>
+</li>
+<li><p>图$G$中边的一个独立集合成为是$G$的一个<strong>匹配</strong>.</p>
+</li>
+<li><p><strong>邻域</strong>:设$G$为二部图,其部集为$U$和$W$,且$|U|\leq|W|$.对于$U$的非空子集$X$,$X$的<strong>邻域</strong>$N(X)$是指$X$中所有顶点邻域的并.</p>
+</li>
+<li><p><strong>部集$U$称为是友好的,若对于$U$的任意非空子集$X$,均有$|N(X)|\geq X$.$(Hall’s condition)$</strong></p>
+</li>
+<li><p><strong>定理8.3: 设$G$为二部图,其部集为$U$和$W$,且$r=|U|\leq|W|$,则$G$包含一个基数为$r$的匹配当且仅当$U$是友好的.</strong></p>
+</li>
+<li><p>定理8.4: 非空有限集族${S_1,S_2,…,S_n}$有一个互异代表元系当且仅当对于任一整数$k(1\leq k\leq n)$,集族中任意$k$个集合的并至少包含$k$个元素.</p>
+</li>
+<li><p><strong>婚姻定理: 在一个由$r$个女人和$s$个男人构成的人群中,$1\leq r\leq s$.在熟识的男女之间可能出现$r$对婚姻当且仅当对每个整数$k(1\leq k\leq r)$,任意$k$个女人共认识至少$k$个男人.</strong></p>
+</li>
+<li><p>最大基数的匹配为<strong>最大匹配</strong>.</p>
+</li>
+<li><p>若阶为$2k$的图$G$存在一个基数为$k$的匹配$M$,则称该匹配$M$为<strong>完美匹配</strong>.</p>
+</li>
+<li><p>定理8.6: 任意$r$正则二部图$(r\geq1)$均有一个完美匹配.</p>
+<hr>
+<p>接下来都是按照英文书的定义</p>
+</li>
+<li><p><strong>定理8.7: 对于n阶无孤立点图 $G$，$\alpha’(G)+\beta’(G)=n$</strong></p>
+</li>
+<li><p><strong>定理8.8: 对于n阶无孤立点图 $G$， ​$\alpha(G)+\beta(G)=n$</strong></p>
+</li>
+<li><ul>
+<li><strong>$\alpha(G)$</strong>  　点独立数</li>
+<li><strong>$\beta(G)$</strong> 　点覆盖数</li>
+<li><strong>$\alpha’(G)$</strong> 　边独立数</li>
+<li><strong>$\beta’(G)$</strong> 　边覆盖数</li>
+</ul>
+</li>
+</ol>
+<h3 id="因子分解"><a href="#因子分解" class="headerlink" title="因子分解"></a>因子分解</h3><ol>
+<li>图G的1正则生成子图成为G的1因子。1因子的边集为完美匹配。</li>
+<li><strong>定理8.10（Tutte定理）: 图G包含1因子当且仅当对于V(G)的任意真子集S，$k_0(G-S) \le |S|$. 其中$k_0$表示奇连通分支的数量。</strong></li>
+<li><strong>定理8.11(Petersen’s 定理): 每个3正则无割边图包含1因子。</strong></li>
+<li>定理8.12: 任一至多含有两条割边的3正则图包含1因子。</li>
+<li>称图G是<strong>可1因子分解</strong>的，若图G有1因子$F_1,F_2,…,F_r$ of $G$ 使得${E(F_1),E(F_2),…,E(F_r)}$是 $E(G)$的一个划分.此时我们成$G$被因子分解为1因子$F_1,F_2,…,F_r$，这些因子构成了$G$的1因子分解。</li>
+<li>定理8.13: Petersen不可1因子分解。</li>
+<li>定理8.14: 对于任意整数$k$, $K_{2k}$可1因子分解.</li>
+<li>定理8.17: 对于任意整数可 Hamiltonian因子分解. Hamiltonian因子分解指满足所有2因子都是哈密顿圈的一个2因子分解。</li>
+<li>定理8.18: $K_9$可 $3K_3$因子分解.</li>
+<li>定理8.19: $n\geq3$ 阶的Kirkman三元系存在当且仅当$n\equiv3(mod,6)$</li>
+<li>定理8.20: 对于所有整数$k\geq1$, $K_{2k}$可因子分解为k-1个哈密顿圈和一个1因子。</li>
+</ol>
+
           
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/07/01/CZ/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -1439,8 +2279,6 @@ Rabin-Karp算法RABIN-KARP-MATCHER(T, P, d, q)n = T.lengthm = P.lengthh = d^&#12
   
   
 
-  
-
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1465,51 +2303,37 @@ Rabin-Karp算法RABIN-KARP-MATCHER(T, P, d, q)n = T.lengthm = P.lengthh = d^&#12
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2019/07/01/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2019/07/01/hello-world/" itemprop="url">Hello World</a></h1>
         
 
         <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
+          <span class="post-time">
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
                 <span class="post-meta-item-text">Posted on</span>
               
-
-              
-                
-              
-
-              <time title="Created: 2019-07-01 10:08:23" itemprop="dateCreated datePublished" datetime="2019-07-01T10:08:23+08:00">2019-07-01</time>
-            </span>
-          
-
-          
-
-          
-
-          
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-01T10:08:23+08:00">
+                2019-07-01
+              </time>
             
+
+            
+
+            
+          </span>
+
+          
+
+          
             
           
 
           
           
 
-          
-
-          <br>
           
 
           
@@ -1531,34 +2355,30 @@ Rabin-Karp算法RABIN-KARP-MATCHER(T, P, d, q)n = T.lengthm = P.lengthh = d^&#12
       
         
           
-            <p>
-              Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
-              ...
-            </p>
-          <!--noindex-->
+            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
           
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/07/01/hello-world/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -1587,12 +2407,15 @@ Rabin-Karp算法RABIN-KARP-MATCHER(T, P, d, q)n = T.lengthm = P.lengthh = d^&#12
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
   </nav>
 
 
 
           </div>
+          
+
+
           
 
         </div>
@@ -1608,80 +2431,63 @@ Rabin-Karp算法RABIN-KARP-MATCHER(T, P, d, q)n = T.lengthm = P.lengthh = d^&#12
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">XY</p>
-              <div class="site-description motion-element" itemprop="description"></div>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">18</span>
-                    <span class="site-state-item-name">posts</span>
-                  </a>
-                </div>
-              
+          <nav class="site-state motion-element">
 
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">6</span>
-                    <span class="site-state-item-name">tags</span>
-                  
-                </div>
-              
-            </nav>
-          
-
-          
-
-          
-
-          
-
-          
-
-          
-          
-
-          
             
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
           
+
+          
+
+          
+          
+
+          
+          
+
           
 
         </div>
-      </div>
+      </section>
 
       
 
@@ -1689,7 +2495,6 @@ Rabin-Karp算法RABIN-KARP-MATCHER(T, P, d, q)n = T.lengthm = P.lengthh = d^&#12
 
     </div>
   </aside>
-  
 
 
         
@@ -1699,18 +2504,16 @@ Rabin-Karp算法RABIN-KARP-MATCHER(T, P, d, q)n = T.lengthm = P.lengthh = d^&#12
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
+  <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">XY</span>
 
   
-
-  
 </div>
 
 
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
@@ -1718,13 +2521,12 @@ Rabin-Karp算法RABIN-KARP-MATCHER(T, P, d, q)n = T.lengthm = P.lengthh = d^&#12
 
 
 
-  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.2</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
 
 
 
 
         
-
 
 
 
@@ -1745,14 +2547,11 @@ Rabin-Karp算法RABIN-KARP-MATCHER(T, P, d, q)n = T.lengthm = P.lengthh = d^&#12
 
     
 
-    
-
-    
   </div>
 
   
 
-<script>
+<script type="text/javascript">
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -1766,11 +2565,7 @@ Rabin-Karp算法RABIN-KARP-MATCHER(T, P, d, q)n = T.lengthm = P.lengthh = d^&#12
 
 
 
-
-
-
-
-
+  
 
 
 
@@ -1784,53 +2579,94 @@ Rabin-Karp算法RABIN-KARP-MATCHER(T, P, d, q)n = T.lengthm = P.lengthh = d^&#12
 
 
   
-  <script src="/lib/jquery/index.js?v=3.4.1"></script>
-
   
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-
-  
-
-
-  <script src="/js/utils.js?v=7.1.2"></script>
-
-  <script src="/js/motion.js?v=7.1.2"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/schemes/muse.js?v=7.1.2"></script>
-
-
-
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
   
 
   
-
-
-  <script src="/js/next-boot.js?v=7.1.2"></script>
-
-
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
   
 
   
-
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
   
 
   
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
 
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
 
 
   
 
 
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
 
 
   
@@ -1838,69 +2674,31 @@ Rabin-Karp算法RABIN-KARP-MATCHER(T, P, d, q)n = T.lengthm = P.lengthh = d^&#12
   
 
   
+
+  
   
 
   
   
-    
-      
-        
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
 
-  
-    
-      <script type="text/x-mathjax-config">
-  
-
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-      
-      equationNumbers: {
-        autoNumber: 'AMS'
-      }
-    }
-  });
-  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
-    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
-      if (data.display) {
-        var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
-        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
-      }
-    });
-  });
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i = 0; i < all.length; i += 1) {
-      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
-    }
-  });
-</script>
-<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>
@@ -1918,28 +2716,8 @@ Rabin-Karp算法RABIN-KARP-MATCHER(T, P, d, q)n = T.lengthm = P.lengthh = d^&#12
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
-
-    
   
 
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
   
 
