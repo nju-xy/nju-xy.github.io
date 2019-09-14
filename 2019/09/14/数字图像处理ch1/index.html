@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="XY&#39;s blog">
 <meta property="og:description" content="概论 数字图像是指由被称作像素的小块区域组成的二维矩阵  将物理图像行列划分后,每个小块区域称为像素(pixel)(也称为图像元素、画面元素等)  每个像素包括两个属性:位置和亮度(也称为强度、灰度、幅值等)   严格数学定义:一幅数字图像是个二维函数$f(x, y)$  矩阵形式: 略  灰度级:每个像素的亮度用一个数值来表示,通常数值范围在0到255之间,即可用一个字节来表示  0表示全黑、2">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-14T12:21:45.827Z">
+<meta property="og:updated_time" content="2019-09-14T12:34:13.896Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数字图像处理之概论">
 <meta name="twitter:description" content="概论 数字图像是指由被称作像素的小块区域组成的二维矩阵  将物理图像行列划分后,每个小块区域称为像素(pixel)(也称为图像元素、画面元素等)  每个像素包括两个属性:位置和亮度(也称为强度、灰度、幅值等)   严格数学定义:一幅数字图像是个二维函数$f(x, y)$  矩阵形式: 略  灰度级:每个像素的亮度用一个数值来表示,通常数值范围在0到255之间,即可用一个字节来表示  0表示全黑、2">
@@ -401,38 +401,27 @@
 <li><p>故</p>
 <p>$$<br>Z_2 = \frac{1}{2}(q_1+q_2)<br>$$</p>
 </li>
+<li><p>因此</p>
+<p>$$<br>Z_k=\frac{1}{2}(q_{k-1}+q_k), k=2,3,…,K<br>$$</p>
+</li>
 </ul>
+</li>
+<li><p>对$q_k$求导:</p>
+<ul>
+<li><p>$$<br>0=\int <em>{Z_k}^{Z</em>{k+1}}p(Z)(-2Z+2q_k)dZ<br>$$</p>
+</li>
+<li><p>$$<br>q_k=\frac{\int <em>{Z_k}^{Z</em>{k+1}}Zp(Z)dZ}{\int_{Z_k}^{Z_{k+1}}p(Z)dZ}<br>$$</p>
+</li>
+<li><p>若$p(Z)$为常数, 则<br>$$<br>q_k=\frac{1}{2}(Z_k+Z_{k+1})<br>$$</p>
+</li>
+</ul>
+</li>
+<li><p>此时量化误差为$\frac{(H_2-H_1)^2}{12K^2}$</p>
 </li>
 </ul>
 </li>
 </ul>
-<pre><code>  + 因此
 
-    $$
-    Z_k=\frac{1}{2}(q_{k-1}+q_k), k=2,3,...,K
-    $$
-
-
-
-
-+ 对$q_k$求导:
-  + $$
-    0=\int _{Z_k}^{Z_{k+1}}p(Z)(-2Z+2q_k)dZ
-    $$
-
-
-
-  + $$
-    q_k=\frac{\int _{Z_k}^{Z_{k+1}}Zp(Z)dZ}{\int_{Z_k}^{Z_{k+1}}p(Z)dZ}
-    $$
-
-  + 若$p(Z)$为常数, 则
-    $$
-    q_k=\frac{1}{2}(Z_k+Z_{k+1})
-    $$
-
-
-+ 此时量化误差为$\frac{(H_2-H_1)^2}{12K^2}$</code></pre>
       
     </div>
     
