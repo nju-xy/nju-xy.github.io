@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="计算机网络,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1 什么是网络 什么是网络  端系统(host) 包括手机, PC… 基站/访问点(access point) 交换机(switch) 路由器(router)特指运行IP协议的交换机   通信链路: 光纤(fiber), 铜缆(Copper), 无线电(Radio), 卫星通信(Satellite), 双绞线(使用的以太网)   构建网络 – 服务视角  Communication infrast">
+<meta name="keywords" content="计算机网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络之网络介绍">
+<meta property="og:url" content="http://yoursite.com/2019/09/14/Ch1网络介绍/index.html">
+<meta property="og:site_name" content="XY&#39;s blog">
+<meta property="og:description" content="1 什么是网络 什么是网络  端系统(host) 包括手机, PC… 基站/访问点(access point) 交换机(switch) 路由器(router)特指运行IP协议的交换机   通信链路: 光纤(fiber), 铜缆(Copper), 无线电(Radio), 卫星通信(Satellite), 双绞线(使用的以太网)   构建网络 – 服务视角  Communication infrast">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/figs/%E8%AE%A1%E7%BD%91/ch1/%E7%8E%B0%E4%BB%A3%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C.png">
+<meta property="og:image" content="http://yoursite.com/figs/计网/ch1/web1.png">
+<meta property="og:image" content="http://yoursite.com/figs/计网/ch1/web2.png">
+<meta property="og:image" content="http://yoursite.com/figs/计网/ch1/邮件.png">
+<meta property="og:image" content="http://yoursite.com/figs/计网/ch1/OSI.png">
+<meta property="og:image" content="http://yoursite.com/figs/计网/ch1/OSI结构.png">
+<meta property="og:image" content="http://yoursite.com/figs/计网/ch1/服务早期.png">
+<meta property="og:updated_time" content="2019-09-14T08:50:19.681Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机网络之网络介绍">
+<meta name="twitter:description" content="1 什么是网络 什么是网络  端系统(host) 包括手机, PC… 基站/访问点(access point) 交换机(switch) 路由器(router)特指运行IP协议的交换机   通信链路: 光纤(fiber), 铜缆(Copper), 无线电(Radio), 卫星通信(Satellite), 双绞线(使用的以太网)   构建网络 – 服务视角  Communication infrast">
+<meta name="twitter:image" content="http://yoursite.com/figs/%E8%AE%A1%E7%BD%91/ch1/%E7%8E%B0%E4%BB%A3%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/09/14/Ch1网络介绍/">
+
+
+
+
+
+  <title>计算机网络之网络介绍 | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XY's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/14/Ch1网络介绍/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XY">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XY's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">计算机网络之网络介绍</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-14T16:45:48+08:00">
+                2019-09-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-什么是网络"><a href="#1-什么是网络" class="headerlink" title="1 什么是网络"></a>1 什么是网络</h2><ul>
+<li><p>什么是网络</p>
+<ul>
+<li>端系统(host) 包括手机, PC…</li>
+<li>基站/访问点(access point)</li>
+<li>交换机(switch)<ul>
+<li>路由器(router)特指运行IP协议的交换机</li>
+</ul>
+</li>
+<li>通信链路: 光纤(fiber), 铜缆(Copper), 无线电(Radio), 卫星通信(Satellite), 双绞线(使用的以太网)</li>
+</ul>
+</li>
+<li><p>构建网络 – 服务视角</p>
+<ul>
+<li>Communication infrastructure(下部构造)<ul>
+<li>Enables distributed applications应用</li>
+<li>Web, VoIP, email, on-line games, e-commerce, file sharing </li>
+</ul>
+</li>
+<li>通讯服务提供<ul>
+<li>高效但不可靠的数据传输 – IP</li>
+<li>从源到目的地的可靠数据传输 – TCP</li>
+<li>可保障的延迟和吞吐量 – QoS</li>
+</ul>
+</li>
+<li>协议架构 Network Protocols<ul>
+<li>控制报文的发送和接收</li>
+<li>e.g. HTTP, Skype, TCP, IP, PPP, Ethernet</li>
+</ul>
+</li>
+<li>网络标准<ul>
+<li>IETF: Internet Engineering Task Force</li>
+<li>RFC: Request for comments</li>
+</ul>
+</li>
+<li>互联网: 网络的网络<ul>
+<li>私有网络和公共网络</li>
+<li>大致上阶级化</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-网络边缘"><a href="#2-网络边缘" class="headerlink" title="2 网络边缘"></a>2 网络边缘</h2><ul>
+<li>网络边缘:<ul>
+<li>端系统End system(主机hosts): 运行应用程序: web, e-mail</li>
+<li>客户/服务器模型 Client/server model<ul>
+<li>上行(客户端向服务器发出请求)</li>
+<li>下行(服务器给客户端提供服务), 有瓶颈</li>
+</ul>
+</li>
+<li>Peer-to-peer model<ul>
+<li>少用复杂的服务器, 如Skype, BitTorrent</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-1-接入网"><a href="#2-1-接入网" class="headerlink" title="2.1 接入网"></a>2.1 接入网</h3><ul>
+<li>接入网 Access Network<ul>
+<li>连接端系统和边缘路由器</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li><p>家庭接入Residential Access:</p>
+<ul>
+<li>拨号上网Dialup via modem<ul>
+<li>类似于DSL, 速度慢</li>
+</ul>
+</li>
+<li>数字用户线接入 DSL: digital subscriber line <ul>
+<li>使用现有的电话线(双绞铜线)</li>
+</ul>
+</li>
+<li>电缆英特网接入: HFC: hybrid fiber coax 混合光纤同轴电缆<ul>
+<li>利用有线电视公司的基础设施</li>
+<li>不对称: 下载快, 上传慢</li>
+<li>家庭共享接入ISP路由器</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>企业接入 company access</p>
+<ul>
+<li>局域网LAN连接端系统到端路由器</li>
+<li>以太网Ethernet</li>
+</ul>
+</li>
+<li><p>无线接入</p>
+<ul>
+<li>共享无限媒体连接端系统到路由器<ul>
+<li>通过基站或者访问点</li>
+</ul>
+</li>
+<li>无线局域网(Wireless LANs)<ul>
+<li>WiFi</li>
+</ul>
+</li>
+<li>广域无线接入<ul>
+<li>LTE/WiMAX(4G)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>现代家庭网络包括<ul>
+<li>DSL或者电缆调制解调器</li>
+<li>路由器/防火墙/NAT</li>
+<li>以太网交换器/无限访问点</li>
+</ul>
+</li>
+</ul>
+<p><img src="/figs/%E8%AE%A1%E7%BD%91/ch1/%E7%8E%B0%E4%BB%A3%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C.png" alt="现代家庭网络"></p>
+<h3 id="2-2-物理媒体"><a href="#2-2-物理媒体" class="headerlink" title="2.2 物理媒体"></a>2.2 物理媒体</h3><ul>
+<li><p>分类:</p>
+<ul>
+<li>导引型媒体<ul>
+<li>电波沿固体媒体前行</li>
+</ul>
+</li>
+<li>非导引型媒体<ul>
+<li>电波在空气或外层空间中传播</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>双绞铜线</p>
+</li>
+<li><p>同轴电缆</p>
+</li>
+<li><p>光纤</p>
+</li>
+<li><p>陆地无线电信道</p>
+</li>
+<li><p>卫星无线电信道</p>
+</li>
+</ul>
+<h2 id="3-网络核心"><a href="#3-网络核心" class="headerlink" title="3 网络核心"></a>3 网络核心</h2><ul>
+<li>The Network core<ul>
+<li>分组交换机和链路构成的网状网络, Mesh of interconnected routers</li>
+<li>核心问题:<ul>
+<li>数据如何通过网络传播</li>
+</ul>
+</li>
+<li>分类<ul>
+<li>电路交换(面向连接, 固定的)</li>
+<li>分组交换(面向无连接, 到了每个路口自己决定怎么走)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-1-分组交换"><a href="#3-1-分组交换" class="headerlink" title="3.1 分组交换"></a>3.1 分组交换</h3><ul>
+<li>类似于公路网, 或者打的</li>
+<li>源将报文(message)划分为较小的数据块, 称为分组(packet). 在源和目的地之间, 每个分组都通过通信链路和分组交换机传送</li>
+<li>无固定路线</li>
+<li>应用A, B的分组共享网络资源</li>
+<li>不分配资源</li>
+<li>分组每次前进一步虚电路: 后在交换机处存储(排队)</li>
+<li>每个包用满的带宽</li>
+<li>有拥塞问题, 排队</li>
+</ul>
+<h3 id="3-2-电路交换"><a href="#3-2-电路交换" class="headerlink" title="3.2 电路交换"></a>3.2 电路交换</h3><ul>
+<li><p>类似于铁路网</p>
+</li>
+<li><p>端到端的资源为”call”保留, 专用资源, 无共享</p>
+</li>
+<li><p>面向连接, 固定路线</p>
+</li>
+<li><p>路由器分配资源: 带宽固定</p>
+</li>
+<li><p>线路分配资源: 频分复用/时分复用/码分复用</p>
+</li>
+<li><p>性能有保障</p>
+</li>
+<li><p>有Call setup和teardown, 不灵活</p>
+</li>
+</ul>
+<h3 id="3-3-虚电路"><a href="#3-3-虚电路" class="headerlink" title="3.3 虚电路"></a>3.3 虚电路</h3><ul>
+<li>分组交换 + 电路交换, 分组交换和电路交换的中间形式(类似于公交车)<ul>
+<li>路由器或者主要通路固定</li>
+<li>资源共享, 需要拥塞控制</li>
+<li>资源可被保留, 导致不同的性能</li>
+<li>需要连接setup/teardown</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-4-网络的网络"><a href="#3-4-网络的网络" class="headerlink" title="3.4 网络的网络"></a>3.4 网络的网络</h3><ul>
+<li>粗略分等级:<ul>
+<li>中心(1级): 国际ISPs(网络服务提供者)</li>
+<li>2级ISPs: 较小的(一般地区性的)ISPs</li>
+<li>3级ISPs和局部/端ISPs, 连接接入网 </li>
+</ul>
+</li>
+</ul>
+<h2 id="4-传统网络应用"><a href="#4-传统网络应用" class="headerlink" title="4 传统网络应用"></a>4 传统网络应用</h2><ul>
+<li>体系结构分类:<ul>
+<li>客户-服务器体系结构 Client/Server Applications</li>
+<li>P2P体系结构</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-1-客户-服务器体系结构"><a href="#4-1-客户-服务器体系结构" class="headerlink" title="4.1 客户-服务器体系结构"></a>4.1 客户-服务器体系结构</h3><ul>
+<li>服务器:<ul>
+<li>总是开着的主机</li>
+<li>IP地址固定</li>
+<li>Server farms for scaling</li>
+</ul>
+</li>
+<li>客户端<ul>
+<li>和服务器交流</li>
+<li>间歇连接</li>
+<li>可能动态IP</li>
+<li>不直接和其他客户端通信</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-1-1-Web和HTTP"><a href="#4-1-1-Web和HTTP" class="headerlink" title="4.1.1 Web和HTTP"></a>4.1.1 Web和HTTP</h4><ul>
+<li>客户用浏览器通过HTTP发送URL给服务器, 请求网页</li>
+<li>网页用HTML建立, 用URL相互连接</li>
+<li>服务器(或cache)回应网页请求</li>
+<li>客户端浏览器显示返回的网页</li>
+<li>来自多个服务器的会话(session): 超链接</li>
+<li>HTTP: 传输, HTML: 表示</li>
+</ul>
+<img src="/figs/计网/ch1/web1.png" alt="web1" style="zoom:67%;">
+
+<img src="/figs/计网/ch1/web2.png" alt="web2" style="zoom:80%;">
+
+
+
+<h4 id="4-1-2-FTP"><a href="#4-1-2-FTP" class="headerlink" title="4.1.2 FTP"></a>4.1.2 FTP</h4><ul>
+<li><p>从/向远程主机传输文件</p>
+</li>
+<li><p>控制连接</p>
+<ul>
+<li>login/logout, 文件传输命令和回应</li>
+</ul>
+</li>
+<li><p>数据连接</p>
+<ul>
+<li>传输文件内容</li>
+<li>客户端开始文件传输</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-1-3-电子邮件"><a href="#4-1-3-电子邮件" class="headerlink" title="4.1.3 电子邮件"></a>4.1.3 电子邮件</h4><ul>
+<li>MIME表示协议<ul>
+<li>非文本数据表示</li>
+</ul>
+</li>
+<li>SMTP简单邮件传输协议<ul>
+<li>传输简单文本邮件</li>
+</ul>
+</li>
+<li>POP邮箱访问协议<ul>
+<li>从服务器取回邮件, 包括授权和下载</li>
+</ul>
+</li>
+<li>IMAP网络邮件访问协议<ul>
+<li>操作服务器上存储的邮件</li>
+</ul>
+</li>
+</ul>
+<img src="/figs/计网/ch1/邮件.png" alt="邮件" style="zoom:80%;">
+
+
+
+<h3 id="4-2-P2P体系结构"><a href="#4-2-P2P体系结构" class="headerlink" title="4.2 P2P体系结构"></a>4.2 P2P体系结构</h3><h4 id="4-2-1-BitTorrent-文件共享"><a href="#4-2-1-BitTorrent-文件共享" class="headerlink" title="4.2.1 BitTorrent(文件共享)"></a>4.2.1 BitTorrent(文件共享)</h4><ul>
+<li><p>文件文成256kB的文件块(chunks)</p>
+</li>
+<li><p>torrent: 一群交换文件块的peers</p>
+</li>
+<li><p>tracker: 追踪torrent中的peers</p>
+</li>
+<li><p>Peer(Alice)加入torrent:</p>
+<ul>
+<li>向tracker登记, 得到peers列表, 连接部分peers(邻居)</li>
+<li>Alice发送缺失文件块的请求</li>
+</ul>
+</li>
+<li><p>下载的同时, Alice向其他peers上传文件块</p>
+<ul>
+<li>同时最快速向4个邻居发送她的文件块</li>
+</ul>
+</li>
+<li><p>Peers可以加入或者退出</p>
+</li>
+</ul>
+<h4 id="4-2-2-Skype-因特网电话和视频会议"><a href="#4-2-2-Skype-因特网电话和视频会议" class="headerlink" title="4.2.2 Skype(因特网电话和视频会议)"></a>4.2.2 Skype(因特网电话和视频会议)</h4><ul>
+<li><p>P2P Voice-Over-IP(VoIP)应用</p>
+<ul>
+<li>pc-to-pc, pc-to-phone, phone-to-pc</li>
+<li>私人应用层协议</li>
+<li>结构: Skype clients(SC), Supernode(SN), Skype登录服务器</li>
+</ul>
+</li>
+<li><p>Skype: Makeing a call</p>
+<ul>
+<li>alice打开Skype</li>
+<li>SC先在supernode上注册</li>
+<li>SC登录(鉴别)</li>
+<li>SC把Bob地址发送给supernode</li>
+<li>supernode联系其他supernode来找到bob的地址</li>
+<li>alice直接连接bob, 通过UDP/TCP</li>
+</ul>
+</li>
+</ul>
+<h2 id="5-协议层和服务器模型"><a href="#5-协议层和服务器模型" class="headerlink" title="5 协议层和服务器模型"></a>5 协议层和服务器模型</h2><ul>
+<li><p>一个为文件传输应用的分层结构</p>
+</li>
+<li><p>协议: 处理同层实体之间的通信问题</p>
+</li>
+<li><p>三层的功能</p>
+<ul>
+<li>网络层<ul>
+<li>将数据从源传到目的地</li>
+<li>源和目的地的地址</li>
+<li>通过网络路由数据</li>
+</ul>
+</li>
+<li>传输层<ul>
+<li>端主机之间的可靠数据传输</li>
+<li>错误修复, 流控制(防止传输太快)</li>
+</ul>
+</li>
+<li>应用层<ul>
+<li>处理不同主机之间的文件传输</li>
+<li>登录/登出; session控制; 格式转换</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>地址需求</p>
+<ul>
+<li>至少两个地址<ul>
+<li>网络地址用来标识主机</li>
+<li>标识应用</li>
+</ul>
+</li>
+<li>sockets套接字</li>
+<li>4级地址: 主机IP, 端口号, MAC地址, 应用标识 </li>
+</ul>
+</li>
+<li><p>标准协议体系</p>
+<ul>
+<li>OSI(过时)</li>
+<li>TCP/IP</li>
+<li>Signaling System</li>
+<li>…</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-1-OSI"><a href="#5-1-OSI" class="headerlink" title="5.1 OSI"></a>5.1 OSI</h3><ul>
+<li><p>Open Systems Interconnection</p>
+</li>
+<li><p>由International Organization for Standardization (ISO)制定</p>
+</li>
+<li><p>总共7层</p>
+</li>
+<li><p>只是理论系统, 出现太晚</p>
+</li>
+<li><p>TCP/IP才是现在实际上的标准</p>
+</li>
+<li><p>特点</p>
+<ul>
+<li>分层模型, 流结构</li>
+<li>每层是需要的通信功能的一个子集</li>
+<li>每层依赖下一层(更低的那层)来实现功能</li>
+<li>一层的变化不应该影响别的层</li>
+</ul>
+</li>
+</ul>
+<img src="/figs/计网/ch1/OSI.png" alt="OSI" style="zoom:80%;">
+
+<ul>
+<li><p>物理层(搬运)</p>
+<ul>
+<li>通过物理介质传输比特</li>
+<li>详述:<ul>
+<li>机械上: cable, plugs, pins</li>
+<li>电的/光学的</li>
+<li>功能/程序</li>
+</ul>
+</li>
+<li>不同设备的物理界面<ul>
+<li>以太网, DSL, 电缆调制解调器…</li>
+<li>双绞电缆, 同轴电缆, 光纤, 无线电, 红外线…</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>数字链路层(装拆箱)</p>
+<ul>
+<li>把比特分组成帧(frames), 维持连接, 通过直接连接传递数据</li>
+<li>multiple access则需要Medium access control(MAC)</li>
+<li>检错, 重传</li>
+<li>流控制</li>
+<li>更高层或许需要无错传输</li>
+</ul>
+</li>
+<li><p>网络层(排序工人)</p>
+<ul>
+<li>通过多重连接/多重网络传输分组(packets)</li>
+<li>寻址必须扩展到大型网络</li>
+<li>结点执行路由算法, 决定网络路径</li>
+<li>推进分组穿过结点传播</li>
+<li>拥塞控制</li>
+<li>连接建立\保持\取消</li>
+</ul>
+</li>
+<li><p>传输层</p>
+<ul>
+<li>数据在端系统直接交换<ul>
+<li>端到端传输数据, 从一个主机的进程到另一个主机的进程</li>
+</ul>
+</li>
+<li>可靠的流传递, 或者快而简单的单块传递<ul>
+<li>无错, 依次, 无丢失, 无副本</li>
+</ul>
+</li>
+<li>连接的建立, 保持和释放</li>
+</ul>
+</li>
+<li><p>会话层, 表示层, 应用层</p>
+<ul>
+<li>现在总称为应用层</li>
+</ul>
+</li>
+</ul>
+<img src="/figs/计网/ch1/OSI结构.png" alt="OSI结构" style="zoom:80%;">
+
+
+
+<ul>
+<li>服务早期<ul>
+<li>connect.request -&gt; connect.indication -&gt; connect.response -&gt; connect.confirm</li>
+</ul>
+</li>
+</ul>
+<img src="/figs/计网/ch1/服务早期.png" alt="服务早期" style="zoom:67%;">
+
+<h3 id="5-2-TCP-IP"><a href="#5-2-TCP-IP" class="headerlink" title="5.2 TCP/IP"></a>5.2 TCP/IP</h3><ul>
+<li>应用层(application): 支持网络应用<ul>
+<li>FTP, SMTP, HTTP</li>
+</ul>
+</li>
+<li>传输层(transport): 进程间数据传输<ul>
+<li>TCP, UDP</li>
+</ul>
+</li>
+<li>网络层(Internetwork): 将称为数据报(datagram)的网络层分组从一台主机移动到另一台主机<ul>
+<li>IP, routing protocols</li>
+</ul>
+</li>
+<li>链路层(Link): 网络层通过源和目的地直接的一系列路由器路由数据报, 链路层分组为帧<ul>
+<li>PPP, Ethernet</li>
+</ul>
+</li>
+<li>物理层(Physical): 将帧中的一个个比特从一个结点移动到另一个结点</li>
+</ul>
+<h3 id="5-3-协议数据单元-Protocol-Data-Units-PDU"><a href="#5-3-协议数据单元-Protocol-Data-Units-PDU" class="headerlink" title="5.3 协议数据单元 (Protocol Data Units PDU)"></a>5.3 协议数据单元 (Protocol Data Units PDU)</h3><ul>
+<li>在每一层, 为了便于通信, 控制信息被加入用户数据</li>
+<li>每一segment加上一个传输头<ul>
+<li>目标SAP</li>
+<li>序列号</li>
+<li>检错码</li>
+</ul>
+</li>
+<li>这就产生了传输协议数据单元(PDU)</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/计算机网络/" rel="tag"># 计算机网络</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/12/Fingerprinting/" rel="next" title="高级算法之指纹">
+                <i class="fa fa-chevron-left"></i> 高级算法之指纹
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XY</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-什么是网络"><span class="nav-number">1.</span> <span class="nav-text">1 什么是网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-网络边缘"><span class="nav-number">2.</span> <span class="nav-text">2 网络边缘</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-接入网"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 接入网</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-物理媒体"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 物理媒体</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-网络核心"><span class="nav-number">3.</span> <span class="nav-text">3 网络核心</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-分组交换"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 分组交换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-电路交换"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 电路交换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-虚电路"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 虚电路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-网络的网络"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 网络的网络</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-传统网络应用"><span class="nav-number">4.</span> <span class="nav-text">4 传统网络应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-客户-服务器体系结构"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 客户-服务器体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-1-Web和HTTP"><span class="nav-number">4.1.1.</span> <span class="nav-text">4.1.1 Web和HTTP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-2-FTP"><span class="nav-number">4.1.2.</span> <span class="nav-text">4.1.2 FTP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-3-电子邮件"><span class="nav-number">4.1.3.</span> <span class="nav-text">4.1.3 电子邮件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-P2P体系结构"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 P2P体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-1-BitTorrent-文件共享"><span class="nav-number">4.2.1.</span> <span class="nav-text">4.2.1 BitTorrent(文件共享)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-2-Skype-因特网电话和视频会议"><span class="nav-number">4.2.2.</span> <span class="nav-text">4.2.2 Skype(因特网电话和视频会议)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-协议层和服务器模型"><span class="nav-number">5.</span> <span class="nav-text">5 协议层和服务器模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-OSI"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 OSI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-TCP-IP"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 TCP/IP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-协议数据单元-Protocol-Data-Units-PDU"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 协议数据单元 (Protocol Data Units PDU)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

@@ -87,17 +87,17 @@
 <meta property="og:site_name" content="XY&#39;s blog">
 <meta property="og:description" content="存储介质 磁: 磁铁方向, 磁盘 光: 挖坑填坑, 光盘 电: SSD 存储介质相当于是一个字节数组bool bits[CAPACITY];  I/O设备与驱动 I/O设备: 设备是三种操作的集合:  (别人)发送命令(给他)、(别人)读取(他的)状态、(互相)传输数据      键盘: 按键信息会存储到键盘内置的缓冲数据区  缓冲区通常大小是有限的  如果缓冲区满，后续按键将会丢失 (可能会发出">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/figs/iodev-model.png">
+<meta property="og:image" content="http://yoursite.com/figs/os/iodev-model.png">
 <meta property="og:image" content="http://yoursite.com/figs/fat32-pbr.jpg">
-<meta property="og:image" content="http://yoursite.com/figs/FAT32.png">
+<meta property="og:image" content="http://yoursite.com/figs/os/FAT32.png">
 <meta property="og:image" content="http://yoursite.com/figs/fat32-dirent.png">
-<meta property="og:image" content="http://yoursite.com/figs/ext2-inode.gif">
-<meta property="og:image" content="http://yoursite.com/figs/ext2-groups.png">
-<meta property="og:updated_time" content="2019-07-01T06:58:38.154Z">
+<meta property="og:image" content="http://yoursite.com/figs/os/ext2-inode.gif">
+<meta property="og:image" content="http://yoursite.com/figs/os/ext2-groups.png">
+<meta property="og:updated_time" content="2019-09-14T08:42:59.865Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OS持久化">
 <meta name="twitter:description" content="存储介质 磁: 磁铁方向, 磁盘 光: 挖坑填坑, 光盘 电: SSD 存储介质相当于是一个字节数组bool bits[CAPACITY];  I/O设备与驱动 I/O设备: 设备是三种操作的集合:  (别人)发送命令(给他)、(别人)读取(他的)状态、(互相)传输数据      键盘: 按键信息会存储到键盘内置的缓冲数据区  缓冲区通常大小是有限的  如果缓冲区满，后续按键将会丢失 (可能会发出">
-<meta name="twitter:image" content="http://yoursite.com/figs/iodev-model.png">
+<meta name="twitter:image" content="http://yoursite.com/figs/os/iodev-model.png">
 
 
 
@@ -319,7 +319,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="/figs/iodev-model.png" alt="iodev-model"></p>
+<p><img src="/figs/os/iodev-model.png" alt="iodev-model"></p>
 <ul>
 <li><p>键盘: 按键信息会存储到键盘内置的缓冲数据区</p>
 <ul>
@@ -750,7 +750,7 @@
 <li><p>文件分配表</p>
 </li>
 </ul>
-<p><img src="/figs/FAT32.png" alt="FAT32"></p>
+<p><img src="/figs/os/FAT32.png" alt="FAT32"></p>
 <ul>
 <li><p>FAT32目录项</p>
 <ul>
@@ -781,7 +781,7 @@
 <li><p>文件小的时候，立即能找到它的块</p>
 </li>
 <li><p>文件大的时候，才用索引</p>
-<p><img src="/figs/ext2-inode.gif" alt="ext2-inode"></p>
+<p><img src="/figs/os/ext2-inode.gif" alt="ext2-inode"></p>
 </li>
 </ul>
 </li>
@@ -795,7 +795,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="/figs/ext2-groups.png" alt="ext2-groups"></p>
+<p><img src="/figs/os/ext2-groups.png" alt="ext2-groups"></p>
 <ul>
 <li>为什么要分组？<ul>
 <li>把分配分为成了两级 (组级、块级)<ul>
@@ -1260,7 +1260,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1273,7 +1273,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
