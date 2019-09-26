@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="1 不同元素的个数问题: 输入一系列(未必不同)的元素$x_1,x_2\cdots,x_n\in Omega$, 输出不同元素的个数$z=|{x_1,x_2,\cdots,x_n}|$  通常算法需要维护字典结构, 需要至少$O(n)$空间, 现在想要更小的空间复杂度  $(\epsilon,\delta)$estimator:  若$Pr[(1-\epsilon)z\le \hat Z\le (">
+<meta name="description" content="1 不同元素的个数问题: 输入一系列(未必不同)的元素$x_1,x_2\cdots,x_n\in \Omega$, 输出不同元素的个数$z=|{x_1,x_2,\cdots,x_n}|$  通常算法需要维护字典结构, 需要至少$O(n)$空间, 现在想要更小的空间复杂度  $(\epsilon,\delta)$estimator:  若$Pr[(1-\epsilon)z\le \hat Z\le">
 <meta name="keywords" content="高级算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="高级算法之Hashing and Sketching">
 <meta property="og:url" content="http://yoursite.com/2019/09/26/高算hashing/index.html">
 <meta property="og:site_name" content="XY&#39;s blog">
-<meta property="og:description" content="1 不同元素的个数问题: 输入一系列(未必不同)的元素$x_1,x_2\cdots,x_n\in Omega$, 输出不同元素的个数$z=|{x_1,x_2,\cdots,x_n}|$  通常算法需要维护字典结构, 需要至少$O(n)$空间, 现在想要更小的空间复杂度  $(\epsilon,\delta)$estimator:  若$Pr[(1-\epsilon)z\le \hat Z\le (">
+<meta property="og:description" content="1 不同元素的个数问题: 输入一系列(未必不同)的元素$x_1,x_2\cdots,x_n\in \Omega$, 输出不同元素的个数$z=|{x_1,x_2,\cdots,x_n}|$  通常算法需要维护字典结构, 需要至少$O(n)$空间, 现在想要更小的空间复杂度  $(\epsilon,\delta)$estimator:  若$Pr[(1-\epsilon)z\le \hat Z\le">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-26T03:46:33.647Z">
+<meta property="og:updated_time" content="2019-09-26T03:48:22.263Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高级算法之Hashing and Sketching">
-<meta name="twitter:description" content="1 不同元素的个数问题: 输入一系列(未必不同)的元素$x_1,x_2\cdots,x_n\in Omega$, 输出不同元素的个数$z=|{x_1,x_2,\cdots,x_n}|$  通常算法需要维护字典结构, 需要至少$O(n)$空间, 现在想要更小的空间复杂度  $(\epsilon,\delta)$estimator:  若$Pr[(1-\epsilon)z\le \hat Z\le (">
+<meta name="twitter:description" content="1 不同元素的个数问题: 输入一系列(未必不同)的元素$x_1,x_2\cdots,x_n\in \Omega$, 输出不同元素的个数$z=|{x_1,x_2,\cdots,x_n}|$  通常算法需要维护字典结构, 需要至少$O(n)$空间, 现在想要更小的空间复杂度  $(\epsilon,\delta)$estimator:  若$Pr[(1-\epsilon)z\le \hat Z\le">
 
 
 
@@ -300,7 +300,7 @@
       
 
       
-        <h2 id="1-不同元素的个数"><a href="#1-不同元素的个数" class="headerlink" title="1 不同元素的个数"></a>1 不同元素的个数</h2><p>问题: 输入一系列(未必不同)的元素$x_1,x_2\cdots,x_n\in Omega$, 输出不同元素的个数$z=|{x_1,x_2,\cdots,x_n}|$</p>
+        <h2 id="1-不同元素的个数"><a href="#1-不同元素的个数" class="headerlink" title="1 不同元素的个数"></a>1 不同元素的个数</h2><p>问题: 输入一系列(未必不同)的元素$x_1,x_2\cdots,x_n\in \Omega$, 输出不同元素的个数$z=|{x_1,x_2,\cdots,x_n}|$</p>
 <ul>
 <li><p>通常算法需要维护字典结构, 需要至少$O(n)$空间, 现在想要更小的空间复杂度</p>
 </li>
