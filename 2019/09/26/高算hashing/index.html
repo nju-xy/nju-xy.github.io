@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="操作系统,">
+  <meta name="keywords" content="高级算法,">
 
 
 
@@ -79,20 +79,18 @@
 
 
 
-<meta name="description" content="Hello, OS world编译, 链接 strace -f查看进程和他的子进程的所有系统调用 gcc -o hello hello.c 子进程1: 编译器compiler写入a.s汇编代码 子进程2: 汇编器assembler写入a.o(ELF…) 子进程3: 链接器linker写入a.out(ELF…)   readelf: hello中有什么  终端与shell ==I/O设备模型==:">
-<meta name="keywords" content="操作系统">
+<meta name="description" content="1 不同元素的个数问题: 输入一系列(未必不同)的元素$x_1,x_2\cdots,x_n\in Omega$, 输出不同元素的个数$z=|{x_1,x_2,\cdots,x_n}|$  通常算法需要维护字典结构, 需要至少$O(n)$空间, 现在想要更小的空间复杂度  $(\epsilon,\delta)$estimator:  若$Pr[(1-\epsilon)z\le \hat Z\le (">
+<meta name="keywords" content="高级算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OS期末复习">
-<meta property="og:url" content="http://yoursite.com/2019/07/01/os期末复习 /index.html">
+<meta property="og:title" content="高级算法之Hashing and Sketching">
+<meta property="og:url" content="http://yoursite.com/2019/09/26/高算hashing/index.html">
 <meta property="og:site_name" content="XY&#39;s blog">
-<meta property="og:description" content="Hello, OS world编译, 链接 strace -f查看进程和他的子进程的所有系统调用 gcc -o hello hello.c 子进程1: 编译器compiler写入a.s汇编代码 子进程2: 汇编器assembler写入a.o(ELF…) 子进程3: 链接器linker写入a.out(ELF…)   readelf: hello中有什么  终端与shell ==I/O设备模型==:">
+<meta property="og:description" content="1 不同元素的个数问题: 输入一系列(未必不同)的元素$x_1,x_2\cdots,x_n\in Omega$, 输出不同元素的个数$z=|{x_1,x_2,\cdots,x_n}|$  通常算法需要维护字典结构, 需要至少$O(n)$空间, 现在想要更小的空间复杂度  $(\epsilon,\delta)$estimator:  若$Pr[(1-\epsilon)z\le \hat Z\le (">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/figs/callgraph.png">
-<meta property="og:updated_time" content="2019-07-01T06:49:18.964Z">
+<meta property="og:updated_time" content="2019-09-26T03:46:33.647Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OS期末复习">
-<meta name="twitter:description" content="Hello, OS world编译, 链接 strace -f查看进程和他的子进程的所有系统调用 gcc -o hello hello.c 子进程1: 编译器compiler写入a.s汇编代码 子进程2: 汇编器assembler写入a.o(ELF…) 子进程3: 链接器linker写入a.out(ELF…)   readelf: hello中有什么  终端与shell ==I/O设备模型==:">
-<meta name="twitter:image" content="http://yoursite.com/figs/callgraph.png">
+<meta name="twitter:title" content="高级算法之Hashing and Sketching">
+<meta name="twitter:description" content="1 不同元素的个数问题: 输入一系列(未必不同)的元素$x_1,x_2\cdots,x_n\in Omega$, 输出不同元素的个数$z=|{x_1,x_2,\cdots,x_n}|$  通常算法需要维护字典结构, 需要至少$O(n)$空间, 现在想要更小的空间复杂度  $(\epsilon,\delta)$estimator:  若$Pr[(1-\epsilon)z\le \hat Z\le (">
 
 
 
@@ -122,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/01/os期末复习 /">
+  <link rel="canonical" href="http://yoursite.com/2019/09/26/高算hashing/">
 
 
 
 
 
-  <title>OS期末复习 | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>高级算法之Hashing and Sketching | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -235,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/01/os期末复习 /">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/26/高算hashing/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="XY">
@@ -252,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">OS期末复习</h1>
+          <h1 class="post-title" itemprop="name headline">高级算法之Hashing and Sketching</h1>
         
 
         <div class="post-meta">
@@ -264,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-01T14:41:24+08:00">
-                2019-07-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-26T11:44:05+08:00">
+                2019-09-26
               </time>
             
 
@@ -302,95 +300,107 @@
       
 
       
-        <h3 id="Hello-OS-world"><a href="#Hello-OS-world" class="headerlink" title="Hello, OS world"></a>Hello, OS world</h3><h4 id="编译-链接"><a href="#编译-链接" class="headerlink" title="编译, 链接"></a>编译, 链接</h4><ul>
-<li>strace -f查看进程和他的子进程的所有系统调用</li>
-<li>gcc -o hello hello.c<ul>
-<li>子进程1: 编译器compiler写入a.s汇编代码</li>
-<li>子进程2: 汇编器assembler写入a.o(ELF…)</li>
-<li>子进程3: 链接器linker写入a.out(ELF…)</li>
-</ul>
-</li>
-<li>readelf: hello中有什么</li>
-</ul>
-<h4 id="终端与shell"><a href="#终端与shell" class="headerlink" title="终端与shell"></a>终端与shell</h4><ul>
-<li>==I/O设备模型==: 设备是三种操作的集合: <ul>
-<li>发送命令、读取状态、传输数据</li>
-</ul>
-</li>
-<li>==设备驱动==: os中负责与设备交互的程序. 根据设备类型不同, 给每一类设备以统一的接口访问, 实现这个接口的就是设备驱动程序.</li>
-<li>shell用read从0号文件描述符读入, 按下回车read返回</li>
-</ul>
+        <h2 id="1-不同元素的个数"><a href="#1-不同元素的个数" class="headerlink" title="1 不同元素的个数"></a>1 不同元素的个数</h2><p>问题: 输入一系列(未必不同)的元素$x_1,x_2\cdots,x_n\in Omega$, 输出不同元素的个数$z=|{x_1,x_2,\cdots,x_n}|$</p>
 <ul>
-<li><p>./hello如何被执行</p>
+<li><p>通常算法需要维护字典结构, 需要至少$O(n)$空间, 现在想要更小的空间复杂度</p>
+</li>
+<li><p>$(\epsilon,\delta)$estimator: </p>
+<p>若$Pr[(1-\epsilon)z\le \hat Z\le (1+\epsilon)z]\ge 1-\delta$, 则$\hat Z$是$z$的$(\epsilon, \delta)$估计;</p>
+<p>若$\mathbb E[\hat Z]=z$则为无偏估计.</p>
+</li>
+</ul>
+<h3 id="1-1-哈希估计器"><a href="#1-1-哈希估计器" class="headerlink" title="1.1 哈希估计器"></a>1.1 哈希估计器</h3><ul>
+<li><p>假设有理想的均匀随机哈希函数$h:\Omega \to [0,1]$</p>
+</li>
+<li><p>$$<br>\mathbb E[\min _{1\le i\le n}h(x_i)]=\frac{1}{z+1}<br>$$</p>
 <ul>
-<li>fork-execve</li>
-<li>execve保留绝大部分进程状态,如文件描述符, 管道和重定向是改变文件描述符</li>
-<li>sudo echo hello &gt; /etc/a没用的原因: 在execve之前open就已经失败了,还没有sudo</li>
+<li>证明概要: 有$z$个均匀随机的哈希值, 将$[0,1]$分成$z+1$份</li>
+</ul>
+</li>
+<li><p>这样估计太不稳定</p>
+</li>
+</ul>
+<h3 id="1-2-Flajolet-Martin算法"><a href="#1-2-Flajolet-Martin算法" class="headerlink" title="1.2 Flajolet-Martin算法"></a>1.2 Flajolet-Martin算法</h3><ul>
+<li>$h_1,h_2,\cdots,h_k: \Omega\to [0,1]$是k个均匀独立随机哈希函数</li>
+<li>扫描一遍所有$x$, 计算$Y_j=\min_{1\le i\le n}h_j(x_i)$, $j=1,2,\cdots,k$</li>
+<li>计算$Y_j$平均值$\bar Y$</li>
+<li>$\hat Z=\frac{1}{\bar Y}-1$</li>
+</ul>
+<h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><ul>
+<li>适合数据流模型, 只需要存$k$个值</li>
+<li>对于任意$\epsilon,\delta &lt; 1/2$, 若$k\ge \lceil \frac{4}{\epsilon^2\delta}\rceil$, 则$\hat Z$是$z$的$(\epsilon,\delta)$估计</li>
+<li>证明思路: <ul>
+<li>若$\bar Y$是$\frac{1}{1+z}$的$(\epsilon/2, \delta)$估计, 则$\hat Z$是$z$的$(\epsilon, \delta)$估计</li>
+<li>$\mathbb E[\bar Y] = \mathbb E[Y_j]=\frac{1}{z+1}$</li>
+<li>$Var[Y_j]\le \frac{1}{(z+1)^2}$, 因此$Var[\bar Y]\le \frac{1}{k(z+1)^2}$</li>
+<li>根据切比雪夫不等式, $Pr[|\bar Y-\mathbb E[\bar Y|&gt;\frac{\epsilon/2}{z+1}]\le \frac{4}{\epsilon^2}(z+1)^2Var[\bar Y]\le \frac{4}{\epsilon^2k}$</li>
+<li>因此取$k\ge \lceil \frac{4}{\epsilon^2\delta}\rceil$即可</li>
 </ul>
 </li>
 </ul>
+<h3 id="1-3-均匀哈希假设UHA"><a href="#1-3-均匀哈希假设UHA" class="headerlink" title="1.3 均匀哈希假设UHA"></a>1.3 均匀哈希假设UHA</h3><ul>
+<li>均匀随机函数$h: [N]\to[M]$是可获得的, 并且计算高效</li>
+</ul>
+<h2 id="2-集合元素"><a href="#2-集合元素" class="headerlink" title="2 集合元素"></a>2 集合元素</h2><ul>
+<li>基础问题: 是否$x\in S$ ?</li>
+<li>数据的有损失的表达称为<strong>sketch</strong></li>
+</ul>
+<h3 id="2-1-Bloom-filter"><a href="#2-1-Bloom-filter" class="headerlink" title="2.1 Bloom filter"></a>2.1 Bloom filter</h3><ul>
+<li>$h_1,h_2,\cdots,h_k:\Omega\to[cn]$是独立的均匀随机哈希函数</li>
+<li>数据结构建立<ul>
+<li>初始化布尔数列$A$的所有$cn$个bits为0</li>
+<li>对于每一个$x\in S$, 令$A[h_i(x)]=1$, $1\le i\le k$</li>
+</ul>
+</li>
+<li>查询过程: <ul>
+<li>对于任意$x\in \Omega$, 如果对于所有$1\le i\le k$, $A[h_i(x)]=1$, 则回答”是”; 否则回答”否”.</li>
+</ul>
+</li>
+</ul>
+<h4 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h4><ul>
+<li><p>空间: $cn$ bits, 时间: $O(k)$</p>
+</li>
+<li><p>没有假反例</p>
+</li>
+<li><p>假正例: $x\not\in S$但是对所有$1\le i\le k$都有$A[h_i(x)]=0$ </p>
 <ul>
-<li><p>==hello的第一条指令在哪里?==</p>
+<li><p>$$<br>\begin{aligned}<br>Pr[wrong ~ answer ~ ‘yes’] = &amp;Pr[\forall 1\le i\le k, A[h_i(x)=1]]\\<br>&amp;= Pr[A[h1(x)=1]]^k\\<br>&amp;= (1-Pr[A[h_1(x)]=0])^k\\<br>&amp;= (1-(1-\frac{1}{cn})^{kn})^k\\<br>&amp;\approx (1-e^{-k/c})^k<br>\end{aligned}<br>$$</p>
+</li>
+<li><p>$k$取$c\ln 2$时结果为$(0.6185)^c$</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-频率估计"><a href="#3-频率估计" class="headerlink" title="3 频率估计"></a>3 频率估计</h2><p>问题: 对于一个序列$x_1,x_2,\cdots,x_n\in \Omega$, 查询$x$出现的次数$f_x$.</p>
 <ul>
-<li>ld.so的_start()</li>
+<li>需要一个加法误差而不是乘法误差($Pr[|\hat f_x-f_x|\le \epsilon n]\ge 1-\delta$)</li>
+</ul>
+<h3 id="3-1-Count-min-sketch"><a href="#3-1-Count-min-sketch" class="headerlink" title="3.1 Count-min sketch"></a>3.1 Count-min sketch</h3><ul>
+<li>$h_1,h_2,\cdots,h_k:\Omega\to[m]$是独立的均匀随机哈希函数</li>
+<li>数据结构建立(一个$k\times m$的整数数列$CMS$)<ul>
+<li>初始化布尔数列$CMS$的所有元素为0</li>
+<li>对于每一个$x_i$, 令$CMS[j][h_j(x_i)]++$, $1\le j\le k$</li>
 </ul>
 </li>
-<li><p>==hello的main函数执行之前, 系统中发生了什么?==</p>
-<ul>
-<li>加载器的$_$start, $_$init, 之后调用hello的 $_$start, $__$libc$_$start$_$main…</li>
-</ul>
-<p><img src="/figs/callgraph.png" alt="callgraph"></p>
-<ul>
-<li>gdb: starti <ul>
-<li>发现在加载器的$_$start()(这是动态链接, 对于静态链接就是在程序里)</li>
+<li>查询过程: <ul>
+<li>对于任意$x\in \Omega$, 返回$\hat f_x=\min_{1\le j\le k}CMS[j][h_j(x)]$</li>
 </ul>
 </li>
-<li>info inferiors + pmap<ul>
-<li>有hello, ld-xxx.so</li>
-<li>没有看到libc代码</li>
 </ul>
+<h4 id="分析-2"><a href="#分析-2" class="headerlink" title="分析"></a>分析</h4><ul>
+<li><p>空间$O(km)$, 每次查询时间$O(k)$</p>
 </li>
-<li>b $_$start() + 再次pmap<ul>
-<li>有了libc(加载器做的mmap)</li>
-</ul>
+<li><p>显然$CMS[j][h_j(x)]\ge f_x$, 因此$\hat f_x\ge f_x$</p>
 </li>
-<li>最后到main()</li>
-<li>constructor函数: 可以在main之前执行</li>
-<li>printf可能会被优化为puts</li>
-</ul>
+<li><p>$$<br>Pr[|\hat f_x -f_x|\ge \epsilon n]=Pr[\hat f_x-f_x\ge \epsilon n]=\prod_{j=1}^k<br>Pr[CMS[j][h_j(x)]-f_x\ge \epsilon n]<br>$$</p>
 </li>
-<li><p>printf()代码位置</p>
-<ul>
-<li>动态链接细节不考, 如got plt</li>
-</ul>
+<li><p>对于任意$x\in \Omega$和$1\le j\le k$, 有$\mathbb E[CMS[j][h_j(x)]]\le f_x+\frac{n}{m}$<br>$$<br>\begin{aligned}<br>\mathbb E[CMS[j][h_j(x)]]<br>&amp;=f_x+\sum_{y\in{x_1,x_2,\cdots,x_n}\setminus {x}}f_yPr[h_j(y)=h_j(x)]\\<br>&amp;=f_x+\frac{1}{m}\sum_{y\in{x_1,x_2,\cdots,x_n}\setminus {x}}f_x\\<br>&amp;\le f_x+\frac{1}{m}\sum_{y\in{x_1,x_2,\cdots,x_n}}f_x\\<br>&amp;\le f_x+\frac{n}{m}<br>\end{aligned}<br>$$</p>
 </li>
-<li><p>printf()是线程安全的吗?==如何实现线程安全的printf?==</p>
-<ul>
-<li>并发编程题目: <strong>条件变量</strong>, 信号量</li>
-<li>复习生产者消费者问题</li>
-</ul>
+<li><p>马尔科夫不等式得$Pr[CMS[j][h_j(x)-f_x]\ge \epsilon n]\le \frac{1}{\epsilon m}$</p>
 </li>
-<li><p>printf字符串末尾没有换行:</p>
-<ul>
-<li>printf有libc的缓冲区<ul>
-<li>setbuf(); fork的神坑(连缓冲区一起复制fork+printf两次, 6 or 8)</li>
-<li>到文件:总是缓冲; 到中断: 换行</li>
-</ul>
+<li><p>综上, $Pr[|\hat f_x -f_x|\le \frac{1}{(\epsilon m)^k}$</p>
 </li>
-<li>ltrace有printf</li>
-</ul>
-</li>
-<li><p>printf背后的系统调用: write</p>
-</li>
-<li><p>write写到哪: 文件描述符对应的文件, 例如一个设备/dev/ttyx, 或者是文件系统中的一个文件</p>
-</li>
-<li><p>==文件系统如何实现== ==FAT==, ==ext2==(inode)</p>
-</li>
-<li><p>==如何保护数据不受损坏==:</p>
-<ul>
-<li>把不可靠的磁盘变可靠: RAID; 奇偶校验允许一块盘坏; 校验位均匀分布在各个盘上</li>
-<li>实现崩溃一致性: fsck, 日志</li>
-</ul>
+<li><p>取$m=\lceil \frac{e}{\epsilon}\rceil$, $k=\lceil \ln \frac{1}{\delta}\rceil$, 则上述概率上界$\frac{1}{(\epsilon m)^k}\le \delta$</p>
 </li>
 </ul>
 
@@ -410,7 +420,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/操作系统/" rel="tag"># 操作系统</a>
+            <a href="/tags/高级算法/" rel="tag"># 高级算法</a>
           
         </div>
       
@@ -423,8 +433,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/01/os期中复习/" rel="next" title="OS期中复习">
-                <i class="fa fa-chevron-left"></i> OS期中复习
+              <a href="/2019/09/16/数字图像处理ch2/" rel="next" title="数字图像处理之空间域图像增强Part 1">
+                <i class="fa fa-chevron-left"></i> 数字图像处理之空间域图像增强Part 1
               </a>
             
           </div>
@@ -432,10 +442,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/11/高算Cut/" rel="prev" title="高级算法之最小割和最大割">
-                高级算法之最小割和最大割 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -558,7 +564,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hello-OS-world"><span class="nav-number">1.</span> <span class="nav-text">Hello, OS world</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#编译-链接"><span class="nav-number">1.1.</span> <span class="nav-text">编译, 链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#终端与shell"><span class="nav-number">1.2.</span> <span class="nav-text">终端与shell</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-不同元素的个数"><span class="nav-number">1.</span> <span class="nav-text">1 不同元素的个数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-哈希估计器"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 哈希估计器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Flajolet-Martin算法"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Flajolet-Martin算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分析"><span class="nav-number">1.2.1.</span> <span class="nav-text">分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-均匀哈希假设UHA"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 均匀哈希假设UHA</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-集合元素"><span class="nav-number">2.</span> <span class="nav-text">2 集合元素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Bloom-filter"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Bloom filter</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分析-1"><span class="nav-number">2.1.1.</span> <span class="nav-text">分析</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-频率估计"><span class="nav-number">3.</span> <span class="nav-text">3 频率估计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Count-min-sketch"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 Count-min sketch</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分析-2"><span class="nav-number">3.1.1.</span> <span class="nav-text">分析</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
