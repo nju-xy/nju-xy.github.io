@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="问题求解四,">
+  <meta name="keywords" content="高级算法,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="启发性算法 非常狭义定义： 用来设计最优化问题的随机算法的鲁棒性技术； 不能保证解的效率和质量 没有有界常数概率    模拟退火 Simulated Annealing概念 局部搜索+跳出局部最优的随机决策  局部搜索：找到一个可行解；找到邻域中的最优解替换并且循环这一步  多起点局部搜索  threshold local search：允许移动到较差解  模拟退火的基本思想: +  初始化：初始">
-<meta name="keywords" content="问题求解四">
+<meta name="description" content="Balls into Bins 背景: 将$m$个球独立均匀随机地扔进$n$个盒子, 等价于随机映射$f:[m]\to[n]$.  1 生日问题 问题: $m$个学生生日独立随机均匀分布于一年365天. 求没有两人同一天生日的概率  等价于: 将$m$个不同的球扔进365个盒子. 更一般的, 盒子数为$n$. 事件$\epsilon$: 没有盒子里面有多于1个球   总共$n^m$中扔法, 其中没">
+<meta name="keywords" content="高级算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="启发性算法">
-<meta property="og:url" content="http://yoursite.com/2019/07/01/启发性算法/index.html">
+<meta property="og:title" content="高级算法之Balls into Bins">
+<meta property="og:url" content="http://yoursite.com/2019/09/27/高算Balls_into_bins/index.html">
 <meta property="og:site_name" content="XY&#39;s blog">
-<meta property="og:description" content="启发性算法 非常狭义定义： 用来设计最优化问题的随机算法的鲁棒性技术； 不能保证解的效率和质量 没有有界常数概率    模拟退火 Simulated Annealing概念 局部搜索+跳出局部最优的随机决策  局部搜索：找到一个可行解；找到邻域中的最优解替换并且循环这一步  多起点局部搜索  threshold local search：允许移动到较差解  模拟退火的基本思想: +  初始化：初始">
+<meta property="og:description" content="Balls into Bins 背景: 将$m$个球独立均匀随机地扔进$n$个盒子, 等价于随机映射$f:[m]\to[n]$.  1 生日问题 问题: $m$个学生生日独立随机均匀分布于一年365天. 求没有两人同一天生日的概率  等价于: 将$m$个不同的球扔进365个盒子. 更一般的, 盒子数为$n$. 事件$\epsilon$: 没有盒子里面有多于1个球   总共$n^m$中扔法, 其中没">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-01T07:16:38.908Z">
+<meta property="og:updated_time" content="2019-09-27T01:54:44.792Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="启发性算法">
-<meta name="twitter:description" content="启发性算法 非常狭义定义： 用来设计最优化问题的随机算法的鲁棒性技术； 不能保证解的效率和质量 没有有界常数概率    模拟退火 Simulated Annealing概念 局部搜索+跳出局部最优的随机决策  局部搜索：找到一个可行解；找到邻域中的最优解替换并且循环这一步  多起点局部搜索  threshold local search：允许移动到较差解  模拟退火的基本思想: +  初始化：初始">
+<meta name="twitter:title" content="高级算法之Balls into Bins">
+<meta name="twitter:description" content="Balls into Bins 背景: 将$m$个球独立均匀随机地扔进$n$个盒子, 等价于随机映射$f:[m]\to[n]$.  1 生日问题 问题: $m$个学生生日独立随机均匀分布于一年365天. 求没有两人同一天生日的概率  等价于: 将$m$个不同的球扔进365个盒子. 更一般的, 盒子数为$n$. 事件$\epsilon$: 没有盒子里面有多于1个球   总共$n^m$中扔法, 其中没">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/01/启发性算法/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/27/高算Balls_into_bins/">
 
 
 
 
 
-  <title>启发性算法 | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>高级算法之Balls into Bins | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/01/启发性算法/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/27/高算Balls_into_bins/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="XY">
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">启发性算法</h1>
+          <h1 class="post-title" itemprop="name headline">高级算法之Balls into Bins</h1>
         
 
         <div class="post-meta">
@@ -262,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-01T11:59:49+08:00">
-                2019-07-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-27T09:53:32+08:00">
+                2019-09-27
               </time>
             
 
@@ -300,162 +300,74 @@
       
 
       
-        <h1 id="启发性算法"><a href="#启发性算法" class="headerlink" title="启发性算法"></a>启发性算法</h1><ul>
-<li>非常狭义定义：<ul>
-<li>用来设计最优化问题的随机算法的鲁棒性技术；</li>
-<li>不能保证解的效率和质量</li>
-<li>没有有界常数概率</li>
+        <h1 id="Balls-into-Bins"><a href="#Balls-into-Bins" class="headerlink" title="Balls into Bins"></a>Balls into Bins</h1><ul>
+<li>背景: 将$m$个球独立均匀随机地扔进$n$个盒子, 等价于随机映射$f:[m]\to[n]$.</li>
 </ul>
-</li>
-</ul>
-<h2 id="模拟退火-Simulated-Annealing"><a href="#模拟退火-Simulated-Annealing" class="headerlink" title="模拟退火 Simulated Annealing"></a>模拟退火 Simulated Annealing</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul>
-<li><p>局部搜索+跳出局部最优的随机决策</p>
-</li>
-<li><p>局部搜索：找到一个可行解；找到邻域中的最优解替换并且循环这一步</p>
-</li>
-<li><p>多起点局部搜索</p>
-</li>
-<li><p>threshold local search：允许移动到较差解</p>
-</li>
-<li><p>模拟退火的基本思想:</p>
-<pre><code>+  初始化：初始温度T，初始可行解$\alpha \in M(x)$(是算法迭代的起点)，温度关于温度和时间的下降函数f</code></pre><ul>
-<li>时间$I=0$，当温度大于0(或不太靠近0)时，重复一下操作：<ul>
-<li>随机选取$\alpha$邻域中的解$\beta$</li>
-<li>如果$cost(\beta)\le cost(\beta)$, $\alpha:=\beta$; </li>
-<li>否则生成一个(0, 1)间的随机数r<ul>
-<li>如果$r&lt;\exp(-\frac{cost(\beta)-cost(\alpha)}{T})$, 则$\alpha:=\beta$; </li>
-</ul>
-</li>
-<li>$I =I+1$</li>
-<li>$T=f(T,I)$</li>
-</ul>
-</li>
-</ul>
+<h2 id="1-生日问题"><a href="#1-生日问题" class="headerlink" title="1 生日问题"></a>1 生日问题</h2><ul>
+<li><p>问题: $m$个学生生日独立随机均匀分布于一年365天. 求没有两人同一天生日的概率</p>
 <ul>
-<li>输出$\alpha$</li>
+<li>等价于: 将$m$个不同的球扔进365个盒子. 更一般的, 盒子数为$n$.</li>
+<li>事件$\epsilon$: 没有盒子里面有多于1个球</li>
 </ul>
 </li>
-</ul>
-<h3 id="理论和经验"><a href="#理论和经验" class="headerlink" title="理论和经验"></a>理论和经验</h3><ul>
-<li>如果下列条件成立, 模拟退火是渐进收敛的, 即取全局最优解的概率随迭代次数的增加趋向于1<ul>
-<li>每个可行解都是任意其他可行解可达的</li>
-<li>初始温度T至少为最深的非全局最优的局部最优解的深度</li>
-</ul>
+<li><p>总共$n^m$中扔法, 其中没有一个盒子有多于1个球的扔法有$\binom{n}{m}m!$种, 因此<br>$$<br>Pr[\epsilon]=\frac{\binom{n}{m}m!}{n^m}=\frac{n!}{n^m(n-m)!}=\prod_{k=1}^{m-1}(1-\frac{k}{n})<br>$$</p>
 </li>
-<li>初始温度选择:<ul>
-<li>cost的最大差值</li>
-<li>或者任选T, 过程中增大T值保证接受概率小于1</li>
-</ul>
+<li><p>另一解释: 一个学生按顺序来算</p>
 </li>
-<li>温度下降函数选择:<ul>
-<li>通常选取常数r, $0.8\le r \le 0.99$, $T := r\cdot T$</li>
-<li>或者选取$T_k:=\frac{T}{\log_2(k+2)}$</li>
-<li>每个固定温度的迭代次数d为邻域的大小</li>
-</ul>
+<li><p>根据泰勒展开$e^{-k/n}\approx1-k/n$, 有<br>$$<br>\begin{aligned}<br>\prod_{k=1}^{m-1}(1-\frac{k}{n})&amp;\approx\prod_{k=1}^{m-1}e^{-k/n}\\<br>&amp;=\exp(-\sum_{k=1}^{m-1}\frac{k}{n})\\<br>&amp;=e^{-m(m-1)/2n}\\<br>&amp;\approx e^{-m^2/2n}<br>\end{aligned}<br>$$</p>
 </li>
-<li>终止条件:<ul>
-<li>一段时间cost不变</li>
-<li>T &lt; term, 通常$term\le \frac{\epsilon}{\ln [(|M(x)|-1)/p]}$</li>
-</ul>
+<li><p>取$m=\sqrt{2n\ln\frac{1}{\epsilon}}$, 有$Pr[\epsilon]\approx \epsilon$</p>
 </li>
-<li>观察结果:<ul>
-<li>可能解质量好但是计算开销极大</li>
-<li>解的质量实际上未必和初始解选取有关</li>
-<li>最重要的参数是邻域和温度下降率</li>
-<li>平均时间接近最坏时间</li>
-<li>相同邻域下效果比局部搜索好</li>
-</ul>
-</li>
-<li>应用: MAX-CUT, MIN-CUT; (TSP效果很差)</li>
-</ul>
-<h3 id="随机禁忌搜索"><a href="#随机禁忌搜索" class="headerlink" title="随机禁忌搜索"></a>随机禁忌搜索</h3><ul>
-<li>模拟退火推广版</li>
-<li>记录搜索过的最优解, 并且在邻域和TABU的差集中搜索, 搜索后更新TABU</li>
-<li>TABU有多种选择策略, 可以前k步搜索过的解以免重复</li>
-<li>随机禁忌搜索算法:<ul>
-<li>选初始解$\alpha$, TABU = {$\alpha$}, STOP = FALSE, BEST = $\alpha$</li>
-<li>选$Neigh_x(\alpha)-TABU$中最优解$\beta$, 同模拟退火选择是否接受$\beta$</li>
-<li>更新TABU和STOP</li>
-<li>重复直至STOP</li>
-</ul>
+<li><p>实际上没有两人同一天生日的概率很小</p>
 </li>
 </ul>
-<h2 id="遗传算法-genetic-algorithm"><a href="#遗传算法-genetic-algorithm" class="headerlink" title="遗传算法 genetic algorithm"></a>遗传算法 genetic algorithm</h2><h3 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h3><ul>
-<li><p>遗传算法:</p>
+<h2 id="2-Coupon-Collector"><a href="#2-Coupon-Collector" class="headerlink" title="2 Coupon Collector"></a>2 Coupon Collector</h2><ul>
+<li><p>问题: $n$种票, 随机获取. 多少次才能集齐</p>
 <ul>
-<li>创造一个初始化人口$P={\alpha_1, \cdots, \alpha_k}$; 已经创造的人口数$t=0$</li>
-<li>计算fitness($\alpha_i$), i = 1, 2, …, k, 据此评估P的分布律$Prob_P$, 满足高fitness有较高概率</li>
-<li>根据$Prob_P$随机选取$k/2$对可行解$(\beta_1^1, \beta_1^1)$, …, $(\beta_{k/2}^1, \beta_{k/2}^1)$</li>
-<li>计算每一对的crossover生成新个体, 加入P</li>
-<li>对P中每个个体随机使用变异mutation</li>
-<li>对于P中每个个体再次计算fitness, 据此选择k个组成P’ $\subseteq$P</li>
-<li>可能对于P’中元素在邻域中搜索最优解来替代</li>
-<li>$t:=t+1$; $P:=P’$; 满足停止条件则输出, 不然重复上述步骤</li>
+<li>等价于: 随机扔球进$n$个盒子, 扔多少个才能没有盒子是空的</li>
 </ul>
 </li>
-<li><p>定义: M(x)的计划为任意向量$s=(s_1, s_2,…,s_n)\in \{0,1,* \} ^ n$(*表示free); 对于计划s的可行解集合为</p>
-<p>$Schema(s_1, …, s_n) = \{ \gamma_1, …, \gamma_n\in M(x)|\gamma_i = s_i \text{ for all }i \in \{1,…,n\} $<br>$\text{ such that }s_i\in \{0,1\};\gamma_i \in\{0,1\}\text{ for all }j\in \{1,2,…,n \}\text{ such that }s_j=*  \}$</p>
-</li>
-<li><p>length(s): s中第一个和最后一个非*位置间的距离;</p>
-<p>order(s): 非*位置数</p>
-<p>$Fitness(s, P) = \frac{1}{|Schema(s)\cap P|}\cdot \sum_{\gamma\in Schema(s)\cap P}cost(\gamma)$</p>
-<p>$Fit-ratio(s, P) = \frac{Fitness(s, P)}{\sum_{\beta \in P}cost(\beta)/|P|}$, 分母为平均fitness</p>
-</li>
-<li><p>The Schema Thm for GAS: 对任意Schema s 和任意 t= 1, 2, …, Schema(s)在(t+1)-st人口的期望个体数为</p>
-<p>$E[Z_{t+1}]=Fit-ratio(s, P_t)\cdot \frac{n-length(s)}{n}\cdot (1-order(s)\cdot pr_m)\cdot |P_t\cap Schema(s)|$</p>
-</li>
-</ul>
-<h3 id="参数选择"><a href="#参数选择" class="headerlink" title="参数选择"></a>参数选择</h3><ul>
-<li><p>人口大小: </p>
+<li><p>记录扔的次数为$X$, 则$\mathbb E[X]=nH(x)$, $H(x)$是第$n$个调和数</p>
+<p>证明: </p>
 <ul>
-<li>太小容易局部最优, 太大计算开销大</li>
-<li>30或者区间[n, 2n]内(n为实例的大小)</li>
+<li><p>记恰好有$i-1$个非空盒子时候, 再扔一个球进非空盒子需要的球数为$X_i$, $X=\sum_{i=1}^nX_i$</p>
+</li>
+<li><p>恰好有$i-1$个非空盒子时候, 再扔一个球进非空盒子的概率是$p_i=1-\frac{i-1}{n}$</p>
+</li>
+<li><p>$X_i$服从几何分布, $Pr[X_i=k]=(1-p_i)^{k-1}p_i$, $\mathbb E[X_i]=\frac{1}{p_i}=\frac{n}{n-i+1}$</p>
+</li>
+<li><p>$$<br>\begin{aligned}<br>\mathbb E[X]&amp;=\mathbb E[\sum_{i=1}^n X_i]\\<br>&amp;= \sum_{i=1}^n \mathbb E[X_i]\\<br>&amp;=\sum_{i=1}^n\frac{n}{n-i+1}\\<br>&amp;= n\sum_{i=1}^n\frac{1}{i}\\<br>&amp;=nH(n)<br>\end{aligned}<br>$$</p>
+</li>
+<li><p>$H(n)=\ln n+O(1)$, 因此$\mathbb E[X]=n\ln n+O(n)$</p>
+</li>
 </ul>
 </li>
-<li><p>初始人口选择:</p>
+<li><p>对于任意$c&gt;0$, $Pr[X\ge n\ln n+cn]&lt;e^{-c}$</p>
+<p>证明</p>
 <ul>
-<li>随机选择</li>
-<li>选择较高质量的初始人口会增快收敛速度, 但容易收敛到局部最优</li>
+<li><p>对于任意盒子$i$, 在扔了$n\ln n+cn$个球之后为空的概率为</p>
+<p>$(1-\frac{1}{n})^{n\ln n+cn}&lt;e^{-(\ln n + c)}=\frac{1}{ne^c}$</p>
+</li>
+<li><p>$Pr[X\ge n\ln n+cn]&lt;n\frac{1}{ne^c}=e^{-c}$</p>
+</li>
 </ul>
 </li>
-<li><p>fitness选择:</p>
+</ul>
+<h2 id="3-Occupancy-Problem"><a href="#3-Occupancy-Problem" class="headerlink" title="3 Occupancy Problem"></a>3 Occupancy Problem</h2><ul>
+<li><p>考虑盒子的装载量, 显然$\mathbb E[X_i]=m/n$</p>
+</li>
+<li><p>因此$\sum_{i=1}^n\mathbb E[X_i]=\mathbb E[\sum_{i=1}^n X_i]=\mathbb E[m]=m$</p>
+</li>
+<li><p>下面考虑最大装载量$\max_{1\le i\le n}X_i$:<br>$$<br>Pr[\max_{1\le i\le n} X_i\ge \frac{3\ln n}{\ln\ln n}]&lt;\frac{1}{n}<br>$$<br>证明:</p>
 <ul>
-<li>最大化问题直接选取cost作为fitness, 或再减去一个小于最小值的常数; 减去的值越接近最小cost, 越偏向于高cost个体</li>
+<li><p>对于任意$M$个球, 全都扔进盒子1的概率为$(1/n)^M$, 而$M$个球的选择有$\binom{n}{m}$种<br>$$<br>\begin{aligned}<br>Pr[X_1\ge M]&amp;\le \binom{n}{m}\left(\frac{1}{n}\right)^M\\<br>&amp;=\frac{n!}{M!(n-M)!n^M}\\<br>&amp;=\frac{1}{M!}\cdot \frac{n(n-1)(n-2)\cdots(n-M+1)}{n^M}\\<br>&amp;=\frac{1}{M!}\cdot \prod_{i=0}^{M-1}(1-i/n)\\<br>&amp;\le \frac{1}{M!}\\<br>&amp;\le\left(\frac{e}{M}\right)^M<br>\end{aligned}<br>$$<br>注意这里第一步为$\le$是因为后面的计算方法有计算重复的, 最后一步是因为斯特林近似$M!\approx\sqrt{2\pi M}\left(\frac{M}{e}\right)^M$</p>
+</li>
+<li><p>$$<br>\begin{aligned}<br>Pr[\max_{1\le i\le n}X_i\ge M]&amp;=Pr[(X_1\ge M)\lor(X_2\ge M)\lor\cdots\lor(X_n\ge M)]\\<br>&amp;\le nPr[X_1\ge M]\\<br>&amp;\le n\left(\frac{e}{M}\right)^M\\<br>&amp;=n\left(\frac{e\ln\ln n}{3\ln n}\right)^{\frac{3\ln n}{\ln\ln n}}\\<br>&amp;&lt;n\left(\frac{\ln\ln n}{\ln n}\right)^{\frac{3\ln n}{\ln\ln n}}\\<br>&amp;=n \exp(3(\ln\ln\ln n-\ln\ln n)\ln n/\ln\ln n)\\<br>&amp;=n \exp(-3\ln n+3\ln\ln\ln n\ln n/\ln \ln n)\\<br>&amp;\le n \exp(-2\ln n)\\<br>&amp;=n\cdot\frac{1}{n^2}\\<br>&amp;=\frac{1}{n}<br>\end{aligned}<br>$$</p>
+<p>注意这里倒数第二步的那个$\le$我认为只有在$n$不小的时候成立</p>
+</li>
 </ul>
 </li>
-<li><p>父母的选择:</p>
-<ul>
-<li>选最好的一半和剩下的随机组合</li>
-<li>或者按照从小到大排序后, 根据$Prob(\alpha_i)=\frac{2i}{n(n+1)}$的概率选择</li>
-</ul>
-</li>
-<li><p>个体的表示和crossover</p>
-<ul>
-<li>例如TSP中个体表示为1-n的排列, crossover可以选择为一个排列中的某部分按照另一个排列中的顺序重排</li>
-<li>或者将父母的某些特征crossover, 然后选择满足crossover后性质的解作为孩子</li>
-</ul>
-</li>
-<li><p>突变概率:</p>
-<ul>
-<li>1/100</li>
-<li>或1/n</li>
-<li>或$\frac{1}{k^{0.93}\sqrt{n}}$</li>
-<li>如果人口数量k较小, 就要增大突变率防止局部最优</li>
-</ul>
-</li>
-<li><p>新人口选择机制</p>
-<ul>
-<li>en block strategy: 孩子完全替代父母</li>
-<li>elite model: 选一小部分父母中的高fitness个体, 其余的大部分选孩子</li>
-<li>父母孩子放一起, 选择高fitness的</li>
-<li>选完之后可以在小邻域中提升个体fitness</li>
-</ul>
-</li>
-<li><p>停止策略:</p>
-<ul>
-<li>确定的代数</li>
-<li>根据平均fitness(不怎么变)和个体差异(小)</li>
-</ul>
+<li><p>对于$m=\Omega(n\log n)$, 有大概率最大装载量为$O(m/n)$</p>
 </li>
 </ul>
 
@@ -475,7 +387,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/问题求解四/" rel="tag"># 问题求解四</a>
+            <a href="/tags/高级算法/" rel="tag"># 高级算法</a>
           
         </div>
       
@@ -488,8 +400,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/01/随机算法/" rel="next" title="随机算法">
-                <i class="fa fa-chevron-left"></i> 随机算法
+              <a href="/2019/09/26/高算hashing/" rel="next" title="高级算法之Hashing and Sketching">
+                <i class="fa fa-chevron-left"></i> 高级算法之Hashing and Sketching
               </a>
             
           </div>
@@ -497,10 +409,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/01/os虚拟化/" rel="prev" title="OS虚拟化">
-                OS虚拟化 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -623,7 +531,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#启发性算法"><span class="nav-number">1.</span> <span class="nav-text">启发性算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模拟退火-Simulated-Annealing"><span class="nav-number">1.1.</span> <span class="nav-text">模拟退火 Simulated Annealing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念"><span class="nav-number">1.1.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#理论和经验"><span class="nav-number">1.1.2.</span> <span class="nav-text">理论和经验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随机禁忌搜索"><span class="nav-number">1.1.3.</span> <span class="nav-text">随机禁忌搜索</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遗传算法-genetic-algorithm"><span class="nav-number">1.2.</span> <span class="nav-text">遗传算法 genetic algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数选择"><span class="nav-number">1.2.2.</span> <span class="nav-text">参数选择</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Balls-into-Bins"><span class="nav-number">1.</span> <span class="nav-text">Balls into Bins</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-生日问题"><span class="nav-number">1.1.</span> <span class="nav-text">1 生日问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Coupon-Collector"><span class="nav-number">1.2.</span> <span class="nav-text">2 Coupon Collector</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Occupancy-Problem"><span class="nav-number">1.3.</span> <span class="nav-text">3 Occupancy Problem</span></a></li></ol></li></ol></div>
             
 
           </div>
