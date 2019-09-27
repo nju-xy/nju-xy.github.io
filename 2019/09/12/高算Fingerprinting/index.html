@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="XY&#39;s blog">
 <meta property="og:description" content="1. Polynomial Identity Testing (PIT) Polynomial Identity Testing (PIT): 给定两个多项式, 确定他们是否相同  单变量情形 问题  输入: 两个多项式$f$, $g\in \mathbb F [x]$(单变量域(filed)), 度都为$d$(最高次项次数) 确定是否有$f\equiv g$   多项式$f\in \mathbb">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-26T12:22:08.988Z">
+<meta property="og:updated_time" content="2019-09-27T09:57:53.078Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高级算法之指纹">
 <meta name="twitter:description" content="1. Polynomial Identity Testing (PIT) Polynomial Identity Testing (PIT): 给定两个多项式, 确定他们是否相同  单变量情形 问题  输入: 两个多项式$f$, $g\in \mathbb F [x]$(单变量域(filed)), 度都为$d$(最高次项次数) 确定是否有$f\equiv g$   多项式$f\in \mathbb">
@@ -470,7 +470,7 @@
 </li>
 </ul>
 <h2 id="3-Checking-distinctness"><a href="#3-Checking-distinctness" class="headerlink" title="3 Checking distinctness"></a>3 Checking distinctness</h2><h3 id="3-1-Fingerprinting-multisets"><a href="#3-1-Fingerprinting-multisets" class="headerlink" title="3.1 Fingerprinting multisets"></a>3.1 Fingerprinting multisets</h3><ul>
-<li><p>问题: 两个多重集$A={a_1,a_2,\cdots,a_n}$, $B={b_1,b_2,\cdots, b_n}$, $a_i,b_i\in{1,2,\cdots,n}$ , 判断是否$A=B$</p>
+<li><p>问题: 两个多重集$A=\{a_1,a_2,\cdots,a_n\}$, $B=\{b_1,b_2,\cdots, b_n\}$, $a_i,b_i\in\{1,2,\cdots,n\}$ , 判断是否$A=B$</p>
 </li>
 <li><p>选择素数$p\in [(n\log n)^2, 2(n\log n)^2]$. $Z_p=[p]$. 对于多重集$A$, 定义$\mathbb Z_p$上单变量多项式<br>$$<br>f_A\in\mathbb Z_p[x]: f_A(x)=\prod_{i=1}^n(x-a_i)<br>$$<br>其中运算都是$\mathbb Z_p$中的. </p>
 <p>定义<br>$$<br>FING(A)=f_A(r)=\prod_{i=1}^n(r-a_i)<br>$$<br>其中$r$是$\mathbb Z_p$中随机数.</p>
