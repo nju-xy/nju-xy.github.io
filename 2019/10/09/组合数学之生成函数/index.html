@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="操作系统,">
+  <meta name="keywords" content="组合数学,">
 
 
 
@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="Hello World的故事: Hello World的一生是从execve()开始的  继承父进程的文件描述符(./a.out &amp;gt; /dev/null; ./.a.out | cat, …) 内核会为a.out创建代码、数据、堆栈   执行的第一条指令  从ELF的entry开始执行 静态链接：a.out的entry 动态链接：ld.so的entry (动态链接器) 动态链接libc：链接">
-<meta name="keywords" content="操作系统">
+<meta name="description" content="1 生成函数 $a_n$的ordinary generating function(ODF):$$G(x)=\sum_{n\ge 0}a_nx^n$$  1.1 组合 例1: $(x_0+x_1)^3$的展开式表示了3元集的所有子集, $(1+x)^3$的展开式的$x_k$系数表示了$k-$子集的数量 例2: 3红4蓝5绿球, 选$k$球的方法, 即$(1+x+x^2+x^3)(1+x+x^2+x">
+<meta name="keywords" content="组合数学">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OS期中复习">
-<meta property="og:url" content="http://yoursite.com/2019/07/01/os期中复习/index.html">
+<meta property="og:title" content="组合数学之计数基础">
+<meta property="og:url" content="http://yoursite.com/2019/10/09/组合数学之生成函数/index.html">
 <meta property="og:site_name" content="XY&#39;s blog">
-<meta property="og:description" content="Hello World的故事: Hello World的一生是从execve()开始的  继承父进程的文件描述符(./a.out &amp;gt; /dev/null; ./.a.out | cat, …) 内核会为a.out创建代码、数据、堆栈   执行的第一条指令  从ELF的entry开始执行 静态链接：a.out的entry 动态链接：ld.so的entry (动态链接器) 动态链接libc：链接">
+<meta property="og:description" content="1 生成函数 $a_n$的ordinary generating function(ODF):$$G(x)=\sum_{n\ge 0}a_nx^n$$  1.1 组合 例1: $(x_0+x_1)^3$的展开式表示了3元集的所有子集, $(1+x)^3$的展开式的$x_k$系数表示了$k-$子集的数量 例2: 3红4蓝5绿球, 选$k$球的方法, 即$(1+x+x^2+x^3)(1+x+x^2+x">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-01T06:42:22.276Z">
+<meta property="og:image" content="http://yoursite.com/figs/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/figs1/%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E7%AE%97%E6%9C%AF%E6%93%8D%E4%BD%9C.png">
+<meta property="og:updated_time" content="2019-10-09T08:56:39.703Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OS期中复习">
-<meta name="twitter:description" content="Hello World的故事: Hello World的一生是从execve()开始的  继承父进程的文件描述符(./a.out &amp;gt; /dev/null; ./.a.out | cat, …) 内核会为a.out创建代码、数据、堆栈   执行的第一条指令  从ELF的entry开始执行 静态链接：a.out的entry 动态链接：ld.so的entry (动态链接器) 动态链接libc：链接">
+<meta name="twitter:title" content="组合数学之计数基础">
+<meta name="twitter:description" content="1 生成函数 $a_n$的ordinary generating function(ODF):$$G(x)=\sum_{n\ge 0}a_nx^n$$  1.1 组合 例1: $(x_0+x_1)^3$的展开式表示了3元集的所有子集, $(1+x)^3$的展开式的$x_k$系数表示了$k-$子集的数量 例2: 3红4蓝5绿球, 选$k$球的方法, 即$(1+x+x^2+x^3)(1+x+x^2+x">
+<meta name="twitter:image" content="http://yoursite.com/figs/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/figs1/%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E7%AE%97%E6%9C%AF%E6%93%8D%E4%BD%9C.png">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/01/os期中复习/">
+  <link rel="canonical" href="http://yoursite.com/2019/10/09/组合数学之生成函数/">
 
 
 
 
 
-  <title>OS期中复习 | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>组合数学之计数基础 | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -233,7 +235,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/01/os期中复习/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/09/组合数学之生成函数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="XY">
@@ -250,7 +252,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">OS期中复习</h1>
+          <h1 class="post-title" itemprop="name headline">组合数学之计数基础</h1>
         
 
         <div class="post-meta">
@@ -262,8 +264,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-01T14:38:50+08:00">
-                2019-07-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-09T16:54:53+08:00">
+                2019-10-09
               </time>
             
 
@@ -300,106 +302,83 @@
       
 
       
-        <h3 id="Hello-World的故事"><a href="#Hello-World的故事" class="headerlink" title="Hello World的故事:"></a>Hello World的故事:</h3><ul>
-<li><p>Hello World的一生是从execve()开始的</p>
+        <h1 id="1-生成函数"><a href="#1-生成函数" class="headerlink" title="1 生成函数"></a>1 生成函数</h1><ul>
+<li>$a_n$的<strong>ordinary generating function(ODF)</strong>:<br>$$<br>G(x)=\sum_{n\ge 0}a_nx^n<br>$$</li>
+</ul>
+<h2 id="1-1-组合"><a href="#1-1-组合" class="headerlink" title="1.1 组合"></a>1.1 组合</h2><ul>
+<li>例1: $(x_0+x_1)^3$的展开式表示了3元集的所有子集, $(1+x)^3$的展开式的$x_k$系数表示了$k-$子集的数量</li>
+<li>例2: 3红4蓝5绿球, 选$k$球的方法, 即$(1+x+x^2+x^3)(1+x+x^2+x^3+x^4)(1+x+x^2+x^3+x^4+x^5)$展开式中$x^k$的系数</li>
+</ul>
+<h2 id="1-2-斐波那契数"><a href="#1-2-斐波那契数" class="headerlink" title="1.2 斐波那契数"></a>1.2 斐波那契数</h2><ul>
+<li><p>$$<br>\begin{aligned}<br>G(x)&amp;=\sum_{n\ge 0}F_nx^n\<br>&amp;= F_0+F_1x+\sum_{n\ge 2}F_nx^n\<br>&amp;=x+ \sum_{n\ge 2}(F_{n-1}+F_{n-2})x^n\<br>\end{aligned}<br>$$</p>
+</li>
+<li><p>$$<br>xG(x)=\sum_{n\ge 0}F_nx^{n+1}=\sum_{n\ge 1}F_{n-1}x^{n}=\sum_{n\ge 2}F_{n-1}x^{n+1}<br>$$</p>
+</li>
+<li><p>$$<br>x^2G(x)=\sum_{n\ge 0}F_nx^{n+2}=\sum_{n\ge 2}F_{n-2}x^{n}<br>$$</p>
+</li>
+<li><p>$$<br>G(x)=x+(x+x^2)G(x)<br>$$</p>
+</li>
+<li><p>$$<br>\begin{aligned}<br>G(x)&amp;=\frac{x}{1-x-x^2}\<br>&amp;=\frac{1}{\sqrt 5}\cdot \frac{1}{1-\phi x}-\frac{1}{\sqrt 5}\cdot \frac{1}{1-\hat\phi x}\<br>&amp;= \frac{1}{\sqrt 5}\sum_{n\ge 0}(\phi x)^n-\frac{1}{\sqrt 5}\sum_{n\ge 0}(\hat\phi x)^n\<br>&amp;= \sum_{n\ge 0}\frac{1}{\sqrt 5}(\phi^n-\hat \phi^n )x^n<br>\end{aligned}<br>$$</p>
+<p>其中$\phi = \frac{1+\sqrt 5}{2}$, $\phi = \frac{1-\sqrt 5}{2}$</p>
+</li>
+<li><p>因此<br>$$<br>F_n=\frac{1}{\sqrt 5}(\phi^n - \hat\phi^n)=\frac{1}{\sqrt 5}(\frac{1+\sqrt 5}{2})^n -\frac{1}{\sqrt 5} (\frac{1-\sqrt 5}{2})^n<br>$$</p>
+</li>
+</ul>
+<h1 id="2-解递归式"><a href="#2-解递归式" class="headerlink" title="2 解递归式"></a>2 解递归式</h1><ul>
+<li>步骤如下:<ul>
+<li>给出$a_n$递归式: </li>
+<li>求$G(x)=\sum_{n\ge 0}a_nx^n$, 将右侧处理至含$G(x)$</li>
+<li>解出$G(x)$的表达式</li>
+<li>展开后, $x_n$的系数为$a_n$</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-1-生成函数的代数操作"><a href="#2-1-生成函数的代数操作" class="headerlink" title="2.1 生成函数的代数操作"></a>2.1 生成函数的代数操作</h2><p><img src="/figs/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/figs1/%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E7%AE%97%E6%9C%AF%E6%93%8D%E4%BD%9C.png" alt="生成函数算术操作"></p>
+<h2 id="2-2-展开生成函数"><a href="#2-2-展开生成函数" class="headerlink" title="2.2 展开生成函数"></a>2.2 展开生成函数</h2><h3 id="2-2-1-泰勒展开"><a href="#2-2-1-泰勒展开" class="headerlink" title="2.2.1 泰勒展开"></a>2.2.1 泰勒展开</h3><p>$$<br>G(x)=\sum_{n\ge 0}\frac{G^{(n)}(0)}{n!}x^n<br>$$</p>
+<h3 id="2-2-2-几何序列"><a href="#2-2-2-几何序列" class="headerlink" title="2.2.2 几何序列"></a>2.2.2 几何序列</h3><p>$$<br>\frac{1}{1-x}=\sum_{n\ge 0}x^n<br>$$</p>
 <ul>
-<li>继承父进程的文件描述符(<code>./a.out &gt; /dev/null</code>; <code>./.a.out | cat</code>, …)</li>
-<li>内核会为<code>a.out</code>创建代码、数据、堆栈</li>
+<li>例如$G(x)=\sum_{i=1}^k\frac{a_i}{1-b_ix}$, 因此$a_n=\sum_{i=1}^k a_ib_i^n$</li>
 </ul>
-</li>
-<li><p>执行的第一条指令</p>
-<ul>
-<li>从ELF的entry开始执行<ul>
-<li>静态链接：<code>a.out</code>的entry</li>
-<li>动态链接：<code>ld.so</code>的entry (动态链接器)</li>
-<li>动态链接libc：链接器使用一系列mmap把libc链接进进程地址空间</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>main() 执行之前</p>
-<ul>
-<li><code>ld.so</code>会调用<code>_init()</code>；之后会调用<code>_start</code>, <code>__libc_start_main</code>, …<ul>
-<li>但都是普通的“用户代码”，libc也是一个普通的C程序</li>
-<li>完成整个C runtime的初始化，其中可能调用系统调用<ul>
-<li>一个有趣的系统调用: ioctl, 判断是否是tty</li>
+<h3 id="2-2-3-二项式定理"><a href="#2-2-3-二项式定理" class="headerlink" title="2.2.3 二项式定理"></a>2.2.3 二项式定理</h3><p>$$<br>(1+x)^\alpha = \sum_{n\ge 0}\binom{\alpha}{n}x^n<br>$$</p>
+<p>例子: 多重集$S={x_1,x_2,\cdots, x_n}$<br>$$<br>(1+x_1+x_1^2+\cdots)(1+x_2+x_2^2+\cdots)\cdots(1+x_n+x_n^2+\cdots)=\sum_{m:S\to \mathbb N}\prod_{x_i\in S}x_i^{m(x_i)}<br>$$<br>其中$m$是$S$中可能的多重集中的$x_i$的重数<br>$$<br>\begin{aligned}<br>(1+x+x^2+\cdots)^n&amp;=\sum_{m:S\to \mathbb N}x_i^{m(x_1)+m(x_2)+\cdots+m(x_n)}\<br>&amp;=\sum_{multiset ~ M ~ on ~ S}x^{|M|}\<br>&amp;=\sum_{k\ge 0}\left(\binom{n}{k}\right)x^k<br>\end{aligned}<br>$$<br>而<br>$$<br>(1+x+x^2+\cdots)^n=(1-x)^{-n}=\sum_{k\ge 0}\binom{-n}{k}(-x)^k<br>$$<br>因此<br>$$<br>\left(\binom{n}{k}\right)=(-1)^k\binom{-n}{k}=\binom{n+k-1}{k}<br>$$</p>
+<h1 id="3-卡特兰数"><a href="#3-卡特兰数" class="headerlink" title="3 卡特兰数"></a>3 卡特兰数</h1><ul>
+<li>$C_n$例子:<ul>
+<li>$n$对括号合法匹配的个数</li>
+<li>$n+1$个数相乘, 不同的加括号方法</li>
+<li>$n+1$叶节点的full binary tree的数量</li>
+<li>$n\times n$方格中不超过对角线上方的monotonic paths的数量</li>
+<li>$n+2$边凸多边形的三角形分割数</li>
+<li>stack-sortable permutations of ${1,\cdots, n}$</li>
+<li>tile a stairstep shape of height n with n rectangles</li>
 </ul>
 </li>
 </ul>
+<h2 id="3-1-解卡特兰数"><a href="#3-1-解卡特兰数" class="headerlink" title="3.1 解卡特兰数"></a>3.1 解卡特兰数</h2><ul>
+<li><p>卡特兰数递归式: $C_0=1$, 对于$n\ge 1$, $C_n=\sum_{k=0}^{n-1}C_kC_{n-1-k}$</p>
+</li>
+<li><p>$$<br>G(x)=\sum_{n\ge 0}C_n x^n<br>$$</p>
+</li>
+<li><p>$$<br>G(x)^2=\sum_{n\ge 0}\sum_{k=0}^nC_kC_{n-k}x^n<br>$$</p>
+</li>
+<li><p>$$<br>xG(x)^2=\sum_{n\ge 0}\sum_{k=0}^nC_kC_{n-k}x^{n+1}=<br>\sum_{n\ge 1}\sum_{k=0}^nC_kC_{n-1-k}x^{n}<br>$$</p>
+</li>
+<li><p>$$<br>G(x)=sum_{n\ge 0}C_nx^n=C_0+\sum_{n\ge 1}\sum_{k=0}^nC_kC_{n-1-k}x^{n}=1+xG(x)^2<br>$$</p>
+</li>
+<li><p>$$<br>G(x)=\frac{1\pm(1-4x)^{1/2}}{2x}<br>$$</p>
+</li>
+<li><p>因为$\lim _{x\to 0}G(x)=C_0=1$</p>
+<p>所以<br>$$<br>G(x)=\frac{1-(1-4x)^{1/2}}{2x}<br>$$</p>
+</li>
+<li><p>$$<br>\begin{aligned}<br>(1-4x)^{1/2}&amp;=\sum_{n\ge 0}\binom{1/2}{n}(-4x)^n\<br>&amp;=1+\sum_{n\ge 1}\binom{1/2}{n}(-4x)^n\<br>&amp;=1-4x\sum_{n\ge 0}\binom{1/2}{n+1}(-4x)^n<br>\end{aligned}<br>$$</p>
+</li>
+<li><p>$$<br>G(x)=\frac{1-(1-4x)^{1/2}}{2x}=2\sum_{n\ge 0}\binom{1/2}{n+1}(-4x)^n<br>$$</p>
+</li>
+<li><p>$$<br>\begin{aligned}<br>C_n&amp;=2\binom{1/2}{n+1}(-4)^n\<br>&amp;=2\cdot (\frac{1}{2}\cdot\frac{-1}{2}\cdot\frac{-3}{2}\cdots\frac{-(2n-1)}{2})\cdot\frac{1}{(n+1)!}(-4)^n\<br>&amp;=\frac{2^n}{(n+1)!}\prod_{k=1}^n(2k-1)\<br>&amp;=\frac{2^n}{(n+1)!}\prod_{k=1}^n\frac{(2k-1)2k}{2k}\<br>&amp;=\frac{1}{(n+1)!n!}\prod_{k=1}^n(2k-1)2k\<br>&amp;=\frac{(2n)!}{n!(n+1)!}\<br>&amp;=\frac{1}{n+1}\binom{2n}{n}<br>\end{aligned}<br>$$</p>
 </li>
 </ul>
-</li>
-<li><p>main()的执行</p>
-<ul>
-<li>printf(…)<ul>
-<li>如果有缓冲区，写入缓冲区 (fork会复制缓冲区)，否则直接用write写入<code>STDOUT_FILENO</code></li>
-<li>如果缓冲区满足flush条件，则用write写入</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>main执行结束后，libc代码依然会执行(exit()也进行这些操作)</p>
-<ul>
-<li>调用<code>atexit()</code>注册的回调函数</li>
-<li>清空缓冲区、释放资源</li>
-<li>执行<code>_exit()</code>退出</li>
-<li>如果结束前调用了_exit(), 则直接结束, 不进行上述操作</li>
-</ul>
-</li>
-</ul>
-<h3 id="进程-操作系统视角"><a href="#进程-操作系统视角" class="headerlink" title="进程: 操作系统视角"></a>进程: 操作系统视角</h3><ul>
-<li>操作系统就是个中断处理程序<ul>
-<li>系统启动时完成初始化</li>
-<li>然后等待中断到来(打开中断，死循环或<code>yield()</code></li>
-<li>在中断返回时，精心设计一个进程的上下文(context)<ul>
-<li>在CR3寄存器中配置好虚拟内存的地址映射和权限</li>
-<li>设置好寄存器的值：CS:EIP; SS:ESIP; …</li>
-<li>执行<code>iret</code>让进程暂时占有CPU执行</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>“进程”只是操作系统中的一些数据，操作系统代码维护了代表“进程”的对象，以及和进程相关的对象<ul>
-<li>进程上下文(寄存器的数值)</li>
-<li>文件描述符(指向操作系统内对象的指针；文件访问的偏移量)</li>
-<li>内存映射区域</li>
-<li>进程的地址空间(页表、地址空间中的页面)</li>
-</ul>
-</li>
-</ul>
-<h3 id="重新理解系统调用"><a href="#重新理解系统调用" class="headerlink" title="重新理解系统调用"></a>重新理解系统调用</h3><ul>
-<li><p>操作系统为用户进程提供的一组API，通常在内核空间中实现，实现用户进程对操作系统对象/物理硬件访问的请求。</p>
-</li>
-<li><p>在刚才的视角上理解系统调用</p>
-<ul>
-<li>进程 = 操作系统中的数据</li>
-<li>系统调用 = 这些数据上的操作</li>
-<li>例子：write()向某个操作系统的对象写入数据</li>
-<li>例子：mmap()创建一个映射区域</li>
-</ul>
-</li>
-<li><p>文件访问的偏移量问题:</p>
-<ul>
-<li>系统中所有以O_APPEND的文件描述符共享一个offset</li>
-<li>每次单独的open都有一个独立的offset</li>
-<li>fork()后父子进程在复制的文件描述符上共享一个offset</li>
-</ul>
-</li>
-</ul>
-<h3 id="操作系统与并发"><a href="#操作系统与并发" class="headerlink" title="操作系统与并发"></a>操作系统与并发</h3><ul>
-<li>操作系统中的对象是在处理器之间共享的</li>
-<li>多处理器系统：原子性、顺序、可见性的丧失</li>
-<li>系统调用执行需要协调系统中的各个部分<ul>
-<li>例子：read()管道时，需要等数据；write()管道时，需要等待管道的空位，否则阻塞</li>
-<li>例子：read()终端时，需要等缓冲区中的数据；按下按键时，向缓冲区中写入数据</li>
-<li>例子：使用DMA完成磁盘I/O，等待DMA中断的到来</li>
-</ul>
-</li>
-<li>操作系统中有大量的同步问题<ul>
-<li>条件变量</li>
-<li>信号量</li>
-</ul>
-</li>
+<h1 id="4-快排分析"><a href="#4-快排分析" class="headerlink" title="4 快排分析"></a>4 快排分析</h1><h4 id="递归式"><a href="#递归式" class="headerlink" title="递归式"></a>递归式</h4><p>$T_0=T_1=0$,  而 $T_n = \frac{1}{n}\sum_{k=1}^n(n-1+T_{k-1}+T_{n-k})$</p>
+<h4 id="解OGF"><a href="#解OGF" class="headerlink" title="解OGF"></a>解OGF</h4><ul>
+<li>详见讲义, 注意卷积的使用</li>
 </ul>
 
       
@@ -418,7 +397,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/操作系统/" rel="tag"># 操作系统</a>
+            <a href="/tags/组合数学/" rel="tag"># 组合数学</a>
           
         </div>
       
@@ -431,8 +410,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/01/os并发/" rel="next" title="OS并发">
-                <i class="fa fa-chevron-left"></i> OS并发
+              <a href="/2019/10/05/计网Ch1计算机网络和因特网/" rel="next" title="计算机网络之计算机网络和因特网">
+                <i class="fa fa-chevron-left"></i> 计算机网络之计算机网络和因特网
               </a>
             
           </div>
@@ -440,10 +419,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/01/os期末复习 /" rel="prev" title="OS期末复习">
-                OS期末复习 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -566,7 +541,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hello-World的故事"><span class="nav-number">1.</span> <span class="nav-text">Hello World的故事:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程-操作系统视角"><span class="nav-number">2.</span> <span class="nav-text">进程: 操作系统视角</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重新理解系统调用"><span class="nav-number">3.</span> <span class="nav-text">重新理解系统调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作系统与并发"><span class="nav-number">4.</span> <span class="nav-text">操作系统与并发</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-生成函数"><span class="nav-number">1.</span> <span class="nav-text">1 生成函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-组合"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 组合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-斐波那契数"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 斐波那契数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-解递归式"><span class="nav-number">2.</span> <span class="nav-text">2 解递归式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-生成函数的代数操作"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 生成函数的代数操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-展开生成函数"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 展开生成函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-泰勒展开"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 泰勒展开</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-几何序列"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.2 几何序列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3-二项式定理"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.2.3 二项式定理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-卡特兰数"><span class="nav-number">3.</span> <span class="nav-text">3 卡特兰数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-解卡特兰数"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 解卡特兰数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-快排分析"><span class="nav-number">4.</span> <span class="nav-text">4 快排分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#递归式"><span class="nav-number">4.0.0.1.</span> <span class="nav-text">递归式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解OGF"><span class="nav-number">4.0.0.2.</span> <span class="nav-text">解OGF</span></a></li></ol></li></ol></div>
             
 
           </div>
