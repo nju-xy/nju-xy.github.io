@@ -82,17 +82,17 @@
 <meta name="description" content="1 生成函数 $a_n$的ordinary generating function(ODF):$$G(x)=\sum_{n\ge 0}a_nx^n$$  1.1 组合 例1: $(x_0+x_1)^3$的展开式表示了3元集的所有子集, $(1+x)^3$的展开式的$x_k$系数表示了$k-$子集的数量 例2: 3红4蓝5绿球, 选$k$球的方法, 即$(1+x+x^2+x^3)(1+x+x^2+x">
 <meta name="keywords" content="组合数学">
 <meta property="og:type" content="article">
-<meta property="og:title" content="组合数学之计数基础">
+<meta property="og:title" content="组合数学之生成函数">
 <meta property="og:url" content="http://yoursite.com/2019/10/09/组合数学之生成函数/index.html">
 <meta property="og:site_name" content="XY&#39;s blog">
 <meta property="og:description" content="1 生成函数 $a_n$的ordinary generating function(ODF):$$G(x)=\sum_{n\ge 0}a_nx^n$$  1.1 组合 例1: $(x_0+x_1)^3$的展开式表示了3元集的所有子集, $(1+x)^3$的展开式的$x_k$系数表示了$k-$子集的数量 例2: 3红4蓝5绿球, 选$k$球的方法, 即$(1+x+x^2+x^3)(1+x+x^2+x">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/figs/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/figs1/%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E7%AE%97%E6%9C%AF%E6%93%8D%E4%BD%9C.png">
-<meta property="og:updated_time" content="2019-10-09T08:56:39.703Z">
+<meta property="og:image" content="http://yoursite.com/figs/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/figs2/%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E7%AE%97%E6%9C%AF%E6%93%8D%E4%BD%9C.png">
+<meta property="og:updated_time" content="2019-10-09T09:56:38.979Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="组合数学之计数基础">
+<meta name="twitter:title" content="组合数学之生成函数">
 <meta name="twitter:description" content="1 生成函数 $a_n$的ordinary generating function(ODF):$$G(x)=\sum_{n\ge 0}a_nx^n$$  1.1 组合 例1: $(x_0+x_1)^3$的展开式表示了3元集的所有子集, $(1+x)^3$的展开式的$x_k$系数表示了$k-$子集的数量 例2: 3红4蓝5绿球, 选$k$球的方法, 即$(1+x+x^2+x^3)(1+x+x^2+x">
-<meta name="twitter:image" content="http://yoursite.com/figs/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/figs1/%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E7%AE%97%E6%9C%AF%E6%93%8D%E4%BD%9C.png">
+<meta name="twitter:image" content="http://yoursite.com/figs/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/figs2/%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E7%AE%97%E6%9C%AF%E6%93%8D%E4%BD%9C.png">
 
 
 
@@ -128,7 +128,7 @@
 
 
 
-  <title>组合数学之计数基础 | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>组合数学之生成函数 | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -252,7 +252,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">组合数学之计数基础</h1>
+          <h1 class="post-title" itemprop="name headline">组合数学之生成函数</h1>
         
 
         <div class="post-meta">
@@ -309,21 +309,13 @@
 <li>例1: $(x_0+x_1)^3$的展开式表示了3元集的所有子集, $(1+x)^3$的展开式的$x_k$系数表示了$k-$子集的数量</li>
 <li>例2: 3红4蓝5绿球, 选$k$球的方法, 即$(1+x+x^2+x^3)(1+x+x^2+x^3+x^4)(1+x+x^2+x^3+x^4+x^5)$展开式中$x^k$的系数</li>
 </ul>
-<h2 id="1-2-斐波那契数"><a href="#1-2-斐波那契数" class="headerlink" title="1.2 斐波那契数"></a>1.2 斐波那契数</h2><ul>
-<li><p>$$<br>\begin{aligned}<br>G(x)&amp;=\sum_{n\ge 0}F_nx^n\<br>&amp;= F_0+F_1x+\sum_{n\ge 2}F_nx^n\<br>&amp;=x+ \sum_{n\ge 2}(F_{n-1}+F_{n-2})x^n\<br>\end{aligned}<br>$$</p>
-</li>
-<li><p>$$<br>xG(x)=\sum_{n\ge 0}F_nx^{n+1}=\sum_{n\ge 1}F_{n-1}x^{n}=\sum_{n\ge 2}F_{n-1}x^{n+1}<br>$$</p>
-</li>
-<li><p>$$<br>x^2G(x)=\sum_{n\ge 0}F_nx^{n+2}=\sum_{n\ge 2}F_{n-2}x^{n}<br>$$</p>
-</li>
-<li><p>$$<br>G(x)=x+(x+x^2)G(x)<br>$$</p>
-</li>
-<li><p>$$<br>\begin{aligned}<br>G(x)&amp;=\frac{x}{1-x-x^2}\<br>&amp;=\frac{1}{\sqrt 5}\cdot \frac{1}{1-\phi x}-\frac{1}{\sqrt 5}\cdot \frac{1}{1-\hat\phi x}\<br>&amp;= \frac{1}{\sqrt 5}\sum_{n\ge 0}(\phi x)^n-\frac{1}{\sqrt 5}\sum_{n\ge 0}(\hat\phi x)^n\<br>&amp;= \sum_{n\ge 0}\frac{1}{\sqrt 5}(\phi^n-\hat \phi^n )x^n<br>\end{aligned}<br>$$</p>
-<p>其中$\phi = \frac{1+\sqrt 5}{2}$, $\phi = \frac{1-\sqrt 5}{2}$</p>
-</li>
-<li><p>因此<br>$$<br>F_n=\frac{1}{\sqrt 5}(\phi^n - \hat\phi^n)=\frac{1}{\sqrt 5}(\frac{1+\sqrt 5}{2})^n -\frac{1}{\sqrt 5} (\frac{1-\sqrt 5}{2})^n<br>$$</p>
-</li>
-</ul>
+<h2 id="1-2-斐波那契数"><a href="#1-2-斐波那契数" class="headerlink" title="1.2 斐波那契数"></a>1.2 斐波那契数</h2><p>$$<br>  \begin{aligned}<br>  G(x)&amp;=\sum_{n\ge 0}F_nx^n\<br>  &amp;= F_0+F_1x+\sum_{n\ge 2}F_nx^n\<br>  &amp;=x+ \sum_{n\ge 2}(F_{n-1}+F_{n-2})x^n\<br>  \end{aligned}<br>$$</p>
+<p>$$<br>  xG(x)=\sum_{n\ge 0}F_nx^{n+1}=\sum_{n\ge 1}F_{n-1}x^{n}=\sum_{n\ge 2}F_{n-1}x^{n+1}<br>$$</p>
+<p>$$<br>  x^2G(x)=\sum_{n\ge 0}F_nx^{n+2}=\sum_{n\ge 2}F_{n-2}x^{n}<br>$$</p>
+<p>$$<br>  G(x)=x+(x+x^2)G(x)<br>$$</p>
+<p>$$<br>\begin{align}<br>  G(x)&amp;=\frac{x}{1-x-x^2}\<br>  &amp;=\frac{1}{\sqrt 5}\cdot \frac{1}{1-\phi x}-\frac{1}{\sqrt 5}\cdot \frac{1}{1-\hat\phi x}\<br>  &amp;= \frac{1}{\sqrt 5}\sum_{n\ge 0}(\phi x)^n-\frac{1}{\sqrt 5}\sum_{n\ge 0}(\hat\phi x)^n\<br>  &amp;= \sum_{n\ge 0}\frac{1}{\sqrt 5}(\phi^n-\hat \phi^n )x^n<br>  \end{align}<br>$$</p>
+<p>  其中$\phi = \frac{1+\sqrt 5}{2}$, $\phi = \frac{1-\sqrt 5}{2}$</p>
+<p>因此<br>$$<br>  F_n=\frac{1}{\sqrt 5}(\phi^n - \hat\phi^n)=\frac{1}{\sqrt 5}(\frac{1+\sqrt 5}{2})^n -\frac{1}{\sqrt 5} (\frac{1-\sqrt 5}{2})^n<br>$$</p>
 <h1 id="2-解递归式"><a href="#2-解递归式" class="headerlink" title="2 解递归式"></a>2 解递归式</h1><ul>
 <li>步骤如下:<ul>
 <li>给出$a_n$递归式: </li>
@@ -333,7 +325,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="2-1-生成函数的代数操作"><a href="#2-1-生成函数的代数操作" class="headerlink" title="2.1 生成函数的代数操作"></a>2.1 生成函数的代数操作</h2><p><img src="/figs/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/figs1/%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E7%AE%97%E6%9C%AF%E6%93%8D%E4%BD%9C.png" alt="生成函数算术操作"></p>
+<h2 id="2-1-生成函数的代数操作"><a href="#2-1-生成函数的代数操作" class="headerlink" title="2.1 生成函数的代数操作"></a>2.1 生成函数的代数操作</h2><p><img src="/figs/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/figs2/%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E7%AE%97%E6%9C%AF%E6%93%8D%E4%BD%9C.png" alt="生成函数算术操作"></p>
 <h2 id="2-2-展开生成函数"><a href="#2-2-展开生成函数" class="headerlink" title="2.2 展开生成函数"></a>2.2 展开生成函数</h2><h3 id="2-2-1-泰勒展开"><a href="#2-2-1-泰勒展开" class="headerlink" title="2.2.1 泰勒展开"></a>2.2.1 泰勒展开</h3><p>$$<br>G(x)=\sum_{n\ge 0}\frac{G^{(n)}(0)}{n!}x^n<br>$$</p>
 <h3 id="2-2-2-几何序列"><a href="#2-2-2-几何序列" class="headerlink" title="2.2.2 几何序列"></a>2.2.2 几何序列</h3><p>$$<br>\frac{1}{1-x}=\sum_{n\ge 0}x^n<br>$$</p>
 <ul>
@@ -354,28 +346,18 @@
 </li>
 </ul>
 <h2 id="3-1-解卡特兰数"><a href="#3-1-解卡特兰数" class="headerlink" title="3.1 解卡特兰数"></a>3.1 解卡特兰数</h2><ul>
-<li><p>卡特兰数递归式: $C_0=1$, 对于$n\ge 1$, $C_n=\sum_{k=0}^{n-1}C_kC_{n-1-k}$</p>
-</li>
-<li><p>$$<br>G(x)=\sum_{n\ge 0}C_n x^n<br>$$</p>
-</li>
-<li><p>$$<br>G(x)^2=\sum_{n\ge 0}\sum_{k=0}^nC_kC_{n-k}x^n<br>$$</p>
-</li>
-<li><p>$$<br>xG(x)^2=\sum_{n\ge 0}\sum_{k=0}^nC_kC_{n-k}x^{n+1}=<br>\sum_{n\ge 1}\sum_{k=0}^nC_kC_{n-1-k}x^{n}<br>$$</p>
-</li>
-<li><p>$$<br>G(x)=sum_{n\ge 0}C_nx^n=C_0+\sum_{n\ge 1}\sum_{k=0}^nC_kC_{n-1-k}x^{n}=1+xG(x)^2<br>$$</p>
-</li>
-<li><p>$$<br>G(x)=\frac{1\pm(1-4x)^{1/2}}{2x}<br>$$</p>
-</li>
-<li><p>因为$\lim _{x\to 0}G(x)=C_0=1$</p>
-<p>所以<br>$$<br>G(x)=\frac{1-(1-4x)^{1/2}}{2x}<br>$$</p>
-</li>
-<li><p>$$<br>\begin{aligned}<br>(1-4x)^{1/2}&amp;=\sum_{n\ge 0}\binom{1/2}{n}(-4x)^n\<br>&amp;=1+\sum_{n\ge 1}\binom{1/2}{n}(-4x)^n\<br>&amp;=1-4x\sum_{n\ge 0}\binom{1/2}{n+1}(-4x)^n<br>\end{aligned}<br>$$</p>
-</li>
-<li><p>$$<br>G(x)=\frac{1-(1-4x)^{1/2}}{2x}=2\sum_{n\ge 0}\binom{1/2}{n+1}(-4x)^n<br>$$</p>
-</li>
-<li><p>$$<br>\begin{aligned}<br>C_n&amp;=2\binom{1/2}{n+1}(-4)^n\<br>&amp;=2\cdot (\frac{1}{2}\cdot\frac{-1}{2}\cdot\frac{-3}{2}\cdots\frac{-(2n-1)}{2})\cdot\frac{1}{(n+1)!}(-4)^n\<br>&amp;=\frac{2^n}{(n+1)!}\prod_{k=1}^n(2k-1)\<br>&amp;=\frac{2^n}{(n+1)!}\prod_{k=1}^n\frac{(2k-1)2k}{2k}\<br>&amp;=\frac{1}{(n+1)!n!}\prod_{k=1}^n(2k-1)2k\<br>&amp;=\frac{(2n)!}{n!(n+1)!}\<br>&amp;=\frac{1}{n+1}\binom{2n}{n}<br>\end{aligned}<br>$$</p>
-</li>
+<li>卡特兰数递归式: $C_0=1$, 对于$n\ge 1$, $C_n=\sum_{k=0}^{n-1}C_kC_{n-1-k}$</li>
 </ul>
+<p>$$<br>  G(x)=\sum_{n\ge 0}C_n x^n<br>$$</p>
+<p>$$<br>  G(x)^2=\sum_{n\ge 0}\sum_{k=0}^nC_kC_{n-k}x^n<br>$$</p>
+<p>$$<br>  xG(x)^2=\sum_{n\ge 0}\sum_{k=0}^nC_kC_{n-k}x^{n+1}=<br>  \sum_{n\ge 1}\sum_{k=0}^nC_kC_{n-1-k}x^{n}<br>$$</p>
+<p>$$<br>  G(x)=sum_{n\ge 0}C_nx^n=C_0+\sum_{n\ge 1}\sum_{k=0}^nC_kC_{n-1-k}x^{n}=1+xG(x)^2<br>$$</p>
+<p>$$<br>  G(x)=\frac{1\pm(1-4x)^{1/2}}{2x}<br>$$</p>
+<p>因为$\lim _{x\to 0}G(x)=C_0=1$</p>
+<p>所以<br>$$<br>  G(x)=\frac{1-(1-4x)^{1/2}}{2x}<br>$$</p>
+<p>$$<br>  \begin{aligned}<br>  (1-4x)^{1/2}&amp;=\sum_{n\ge 0}\binom{1/2}{n}(-4x)^n\<br>  &amp;=1+\sum_{n\ge 1}\binom{1/2}{n}(-4x)^n\<br>  &amp;=1-4x\sum_{n\ge 0}\binom{1/2}{n+1}(-4x)^n<br>  \end{aligned}<br>$$</p>
+<p>$$<br>  G(x)=\frac{1-(1-4x)^{1/2}}{2x}=2\sum_{n\ge 0}\binom{1/2}{n+1}(-4x)^n<br>$$</p>
+<p>$$<br>  \begin{aligned}<br>  C_n&amp;=2\binom{1/2}{n+1}(-4)^n\<br>  &amp;=2\cdot (\frac{1}{2}\cdot\frac{-1}{2}\cdot\frac{-3}{2}\cdots\frac{-(2n-1)}{2})\cdot\frac{1}{(n+1)!}(-4)^n\<br>  &amp;=\frac{2^n}{(n+1)!}\prod_{k=1}^n(2k-1)\<br>  &amp;=\frac{2^n}{(n+1)!}\prod_{k=1}^n\frac{(2k-1)2k}{2k}\<br>  &amp;=\frac{1}{(n+1)!n!}\prod_{k=1}^n(2k-1)2k\<br>  &amp;=\frac{(2n)!}{n!(n+1)!}\<br>  &amp;=\frac{1}{n+1}\binom{2n}{n}<br>  \end{aligned}<br>$$</p>
 <h1 id="4-快排分析"><a href="#4-快排分析" class="headerlink" title="4 快排分析"></a>4 快排分析</h1><h4 id="递归式"><a href="#递归式" class="headerlink" title="递归式"></a>递归式</h4><p>$T_0=T_1=0$,  而 $T_n = \frac{1}{n}\sum_{k=1}^n(n-1+T_{k-1}+T_{n-k})$</p>
 <h4 id="解OGF"><a href="#解OGF" class="headerlink" title="解OGF"></a>解OGF</h4><ul>
 <li>详见讲义, 注意卷积的使用</li>
