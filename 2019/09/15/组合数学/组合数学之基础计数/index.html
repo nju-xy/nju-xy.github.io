@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="组合数学,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="The twelvefold way $f: N\to M$, $|N|=n$, $|M|=m$    等价于   Basic EnumationTuples $[m]=\\{0,1,2,\cdots, m-1\\}$  $n$-tuple of $[m]$: $[m]^n$  $|[m]^n|=m^n$, 可以通过The product rule严格证明  The product rule: 对">
+<meta name="keywords" content="组合数学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="组合数学之生成函数">
+<meta property="og:url" content="http://yoursite.com/2019/09/15/组合数学/组合数学之基础计数/index.html">
+<meta property="og:site_name" content="XY&#39;s blog">
+<meta property="og:description" content="The twelvefold way $f: N\to M$, $|N|=n$, $|M|=m$    等价于   Basic EnumationTuples $[m]=\\{0,1,2,\cdots, m-1\\}$  $n$-tuple of $[m]$: $[m]^n$  $|[m]^n|=m^n$, 可以通过The product rule严格证明  The product rule: 对">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/figs/组合数学/figs1/12foldway1.png">
+<meta property="og:image" content="http://yoursite.com/figs/组合数学/figs1/12foldway2.png">
+<meta property="og:image" content="http://yoursite.com/figs/组合数学/figs1/Ferrer1.png">
+<meta property="og:image" content="http://yoursite.com/figs/组合数学/figs1/Ferrer2.png">
+<meta property="og:updated_time" content="2019-10-09T09:53:52.111Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="组合数学之生成函数">
+<meta name="twitter:description" content="The twelvefold way $f: N\to M$, $|N|=n$, $|M|=m$    等价于   Basic EnumationTuples $[m]=\\{0,1,2,\cdots, m-1\\}$  $n$-tuple of $[m]$: $[m]^n$  $|[m]^n|=m^n$, 可以通过The product rule严格证明  The product rule: 对">
+<meta name="twitter:image" content="http://yoursite.com/figs/组合数学/figs1/12foldway1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/09/15/组合数学/组合数学之基础计数/">
+
+
+
+
+
+  <title>组合数学之生成函数 | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XY's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/15/组合数学/组合数学之基础计数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XY">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XY's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">组合数学之生成函数</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-15T17:22:41+08:00">
+                2019-09-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="The-twelvefold-way"><a href="#The-twelvefold-way" class="headerlink" title="The twelvefold way"></a>The twelvefold way</h1><ul>
+<li>$f: N\to M$, $|N|=n$, $|M|=m$</li>
+</ul>
+<p><img src="/figs/组合数学/figs1/12foldway1.png" alt="12foldway1" style="zoom:90%;"></p>
+<ul>
+<li>等价于</li>
+</ul>
+<p><img src="/figs/组合数学/figs1/12foldway2.png" alt="12foldway2" style="zoom:80%;"></p>
+<h1 id="Basic-Enumation"><a href="#Basic-Enumation" class="headerlink" title="Basic Enumation"></a>Basic Enumation</h1><h2 id="Tuples"><a href="#Tuples" class="headerlink" title="Tuples"></a>Tuples</h2><ul>
+<li><p>$[m]=\\{0,1,2,\cdots, m-1\\}$</p>
+</li>
+<li><p>$n$-tuple of $[m]$: $[m]^n$</p>
+</li>
+<li><p>$|[m]^n|=m^n$, 可以通过<strong>The product rule</strong>严格证明</p>
+</li>
+<li><p><strong>The product rule</strong>: 对于任意有限集$S$和$T$, $|S\times T|=|S|\cdot|T|$</p>
+</li>
+</ul>
+<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><p>考虑计算$[n]$到$[m]$的映射数问题.</p>
+<ul>
+<li>等价于数$[m]$的$n$-tuple数</li>
+<li>对于任意$f:[n]\to[n]$, 定义一个tuple$v_f\in [m]^n$, $v_f(i)=f(i-1)$, $i=1,2,\cdots, n$. 易证这是个双射.</li>
+<li><strong>The bijection rule</strong>: 如果在有限集$|S|$和$|T|$之间存在双射, 则$|S|=|T|$</li>
+<li>因此$[n]$到$[m]$的映射数等于$[m]^n$的tuple数, 即$m^n$</li>
+</ul>
+<h2 id="Subsets"><a href="#Subsets" class="headerlink" title="Subsets"></a>Subsets</h2><p>数一个集合的子集数.</p>
+<ul>
+<li><p>$S=\\{x_1,x_2,\cdots, x_n\\}$为$n$元集, $2^S=\\{T|T\subset 2^S\\}$为$S$所有子集的集合, 即$S$的幂集.</p>
+</li>
+<li><p>下证$|2^S|=2^n$:</p>
+<ul>
+<li><p>每个$T\in 2^S$对应一个独特的位向量$v\in \\{0,1\\}^S$, $v_i$对应是否$x_i\in T$. </p>
+</li>
+<li><p>定义映射$\phi: 2^S\to \\{0,1\\}^n$, $\phi(T)=(v_1,v_2\cdots,v_n)$, 其中</p>
+<script type="math/tex; mode=display">
+v_i=\begin{cases}
+1 & if & x_i\in T\\\\
+0 & if & x_i \not\in T
+\end{cases}</script></li>
+<li><p>易证$\phi$也是双射</p>
+</li>
+<li><p>因此$|2^S|=|\\{0,1\\}^n|=2^n$</p>
+</li>
+</ul>
+</li>
+<li><p>证法2:</p>
+<ul>
+<li>定义$f(n)=|2^{S_n}|$, $S_n=\\{x_1,x_2, \cdots, x_n\\}$. </li>
+<li>证明$f(n)=2f(n-1)$. (分含不含$x_n$的情况)</li>
+<li>$f(0)=1$</li>
+<li>因此$|2^S|=f(n)=2^n$</li>
+</ul>
+</li>
+</ul>
+<h2 id="Subsets-of-fixed-size"><a href="#Subsets-of-fixed-size" class="headerlink" title="Subsets of fixed size"></a>Subsets of fixed size</h2><p>某集合的固定大小的子集的数量</p>
+<ul>
+<li>定义$\left(\begin{array}{cc} S \\\\k \end{array}\right)$为$S$的$k$元子集. $\left(\begin{array}{cc} S \\\\k \end{array}\right)=\\{T\subseteq S||T|=k\\}$. $\left(\begin{array}{cc} n \\\\k \end{array}\right)=\left|\left(\begin{array}{cc} S \\\\k \end{array}\right)\right|$, 读作”n选k”</li>
+<li>定理: $\left(\begin{array}{cc} n \\\\k \end{array}\right)=\frac{n(n-1)\cdots(n-k+1)}{k(k-1)\cdots 1}=\frac{n!}{k!(n-k)!}$, 常记做$(n)_k$</li>
+</ul>
+<h2 id="Binomial-coefficient"><a href="#Binomial-coefficient" class="headerlink" title="Binomial coefficient"></a>Binomial coefficient</h2><ul>
+<li>$\left(\begin{array}{cc} n \\\\k \end{array}\right)=\left(\begin{array}{cc} n \\\\n-k \end{array}\right)$</li>
+<li><p>$\sum_{k=0}^n \left(\begin{array}{cc} n \\\\k \end{array}\right)=2^n$</p>
+</li>
+<li><p>二项式定理: $(1+x)^n=\sum_{k=0}^n \left(\begin{array}{cc} n \\\\k \end{array}\right)x^k$</p>
+</li>
+<li><p>推论: $n$元集的奇数势子集和偶数势子集数量相同</p>
+</li>
+</ul>
+<h2 id="Compositions-of-an-integer"><a href="#Compositions-of-an-integer" class="headerlink" title="Compositions of an integer"></a>Compositions of an integer</h2><ul>
+<li><p>$n$的composition为将$n$表示为有序的正整数的和. $n$的$k$-composition是将$n$表示为$k$个有序的正整数的和</p>
+</li>
+<li><p>形式化地, $n$的$k$-composition是一个$k$-tuple$(a_1,a_2,\cdots,a_k)\in\\{1,2,\cdots,n\\}^k$, 满足$a_1+a_2+\cdots +a_k=n$.</p>
+</li>
+<li><p>根据隔板法(略), $n$的$k$-composition数为$\left(\begin{array}{cc} n -1 \\\\k -1\end{array}\right)$</p>
+</li>
+<li><p>严格证明: 构建$n$的$k$-composition和$\left(\begin{array}{cc} \\{1,2,\cdots, n-1\\} \\\\k-1 \end{array}\right)$之间的双射:</p>
+<ul>
+<li>$\phi((a_1,a_2,\cdots,a_k))=\\{a_1,a_1+a_2,\cdots, a_1+a_2+\cdots+a_{k-1}\\}=\\{\sum_{i=1}^ja_i|1\le j&lt;k \\}$</li>
+<li>将每个$k$-composition映射到$\\{1,2,\cdots,n-1\\}$的一个$(k-1)$子集, 易证为双射, 得证.</li>
+</ul>
+</li>
+<li><p>$n$的$k$-composition等价于$x_1+x_2+\cdots+x_k=n$的正整数解的数量, 而$x_1+x_2+\cdots+x_k=n$的非负整数解称作$n$的弱$k$-composition.</p>
+<ul>
+<li>$n$的弱$k$-composition是tuple$(x_1,x_2,\cdots,x_k)\in [n+1]^k$满足$x_1+x_2+\cdots+x_k=n$</li>
+<li>对于一个$n$的弱$k$-composition$(x_1,x_2,\cdots, x_k)$, 我们定义$y_i=x_i+1&gt;0$, 则$y_1+y_2+\cdots+y_k=n+k$, $(y_1,y_2,\cdots,y_k)$是$n+k$的$k$-composition. </li>
+<li>因此$n$的弱$k$-composition数为$\left(\begin{array}{cc} n+k -1 \\\\k -1\end{array}\right)$</li>
+</ul>
+</li>
+<li><p>下面数$x_1+x_2+\cdots+x_k\le n$的非负整数解.</p>
+<ul>
+<li>令$x_{k+1}=n-(x_1+x_2+\cdots+x_k)\ge 0$. 因此$x_1+x_2+\cdots+x_{k+1}=n$.</li>
+<li>问题转化为上式的非负整数解的数量. 答案是$\left(\begin{array}{cc} n + k \\\\k\end{array}\right)$</li>
+</ul>
+</li>
+</ul>
+<h2 id="Multisets"><a href="#Multisets" class="headerlink" title="Multisets"></a>Multisets</h2><ul>
+<li>$n$的$k$子集也称为$k$-combination of $S$ without repetitions. 下面考虑$k$-combination of $S$ with repetitions. 也就是我们选择$S$中的$k$元素, 不管顺序, 允许重复. 也称为<strong>multisets</strong>.</li>
+<li>形式化地, 考虑映射$m: S\to \mathbb N$. 对于任意$x\in S$, $m(x)\ge 0$是$x$在$M$中的重复次数, 称为<strong>multiplicity</strong>. $|M|=\sum_{x\in S}m(x)$称为$M$的势. $k$-multiset满足$|M|=k$</li>
+<li><p>$S$的$k$-multisets表示为$\left(\left(\begin{array}{cc} S \\\\k \end{array}\right)\right)$. 记$n=|S|$, 表示$\left(\left(\begin{array}{cc} n \\\\k \end{array}\right)\right)=\left|\left(\left(\begin{array}{cc} S \\\\k \end{array}\right)\right)\right|$</p>
+</li>
+<li><p>$\left(\left(\begin{array}{cc} n \\\\k \end{array}\right)\right)=\left(\begin{array}{cc} n+k-1 \\\\n-1\end{array}\right)=\left(\begin{array}{cc} n+k-1 \\\\k\end{array}\right)$, 因为其实就是$m(x_1)+m(x_2)+\cdots+m(x_n)=k$的解的数量</p>
+</li>
+<li>直观解释:<ul>
+<li>给定一个$[n]$上的$k$-multiset $0\le a_0\le a_1 \le \cdots \le a_{k-1}\le n-1$, 定义$b_i=a_i+i$, 则$\\{b_0,b_1,\cdots,b_{k-1}\\}$是$[n+k-1]$的$k$-subset. 同样的, 给定$b_i$满足$0\le b_0\le b_1\le \cdots b_{k-1}\le n+k-2$, 也能定义对应的$a_i=b_i-i$, $\\{a_0,a_1,\cdots.a_{k-1}\\}$是$[n]$上的$k$-multiset. 因此就有了$\left(\left(\begin{array}{cc} [n] \\\\k \end{array}\right)\right)$到$\left(\begin{array}{cc} [n+k-1] \\\\k \end{array}\right)$的双射.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Multinomial-coefficients"><a href="#Multinomial-coefficients" class="headerlink" title="Multinomial coefficients"></a>Multinomial coefficients</h2><ul>
+<li><p>$\left(\begin{array}{cc} n \\\\k \end{array}\right)$理解为将$n$个元素分成两组, $k$个在第一组, 剩下的在第二组, 即下面说的$\left(\begin{array}{cc} n \\\\k,n-k \end{array}\right)$</p>
+</li>
+<li><p>$(a_1,a_2,\cdots, a_m)$为和为$n$的非负tuple. $\left(\begin{array}{cc} n \\\\a_1,a_2 ,\cdots, a_m\end{array}\right)$为把$n$元集的每个元素配分到$m$个组$G_1,G_2\cdots,G_m$之一的种数, 称为多项式系数. 也可以理解为$n$个标记了的球分配到$m$个标记了的箱子, 第$i$个箱子有$a_i$个球的种数</p>
+</li>
+<li><p>还可以被理解为multiset的排列数. $n$元集$S$的排列$\pi$可以用一下两种等价方法定义:</p>
+<ul>
+<li>双射$\pi: S\to S$</li>
+<li>tuple $\pi=(x_1,x_2,\cdots,x_n)\in S^n$, $x_i$不同</li>
+</ul>
+<p>$n$元集有$n!$中排列</p>
+</li>
+<li><p>A <strong>permutation of a multiset</strong>$M$是一个tuple $\pi=(x_1,x_2,\cdots,x_n)$满足$x_i\in M$出现$m(x_i)$次</p>
+</li>
+<li><p>例子: 某个单词重排的种数</p>
+</li>
+<li><p>因此$\left(\begin{array}{cc} n \\\\a_1,a_2 ,\cdots, a_m\end{array}\right)$也是multiset$M$的排列数, 其中$|M|=n$.</p>
+</li>
+<li><script type="math/tex; mode=display">
+\left(\begin{array}{cc} n \\\\a_1,a_2 ,\cdots, a_m\end{array}\right)=\frac{n!}{a_1!a_2!\cdots a_m!}</script></li>
+<li><p>$\left(\begin{array}{cc} n \\\\a_1,a_2 ,\cdots, a_m\end{array}\right)$是$(x_1+x_2+\cdots+x_m)^n$中$x_1^{a_1}x_2^{a_2}\cdots x_m^{a_m}$的系数</p>
+<ul>
+<li>证明: $n$因子中任意一个对应一个不同的球, $x_1,x_2,\cdots,x_m$对应$m$个组, $x_1^{a_1}x_2^{a_2}\cdots x_m^{a_m}$的系数等于把$n$个球放入$m$个不同的箱子, 其中第$i$个箱子有$x_i$个球, 也就是上面的式子.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Partitions-of-a-set"><a href="#Partitions-of-a-set" class="headerlink" title="Partitions of a set"></a>Partitions of a set</h2><ul>
+<li><p>有限集$S$的划分Partition是collection$P=\\{S_1,S_2,\cdots,S_k\\}$, 为$S$的子集, 满足</p>
+<ul>
+<li>对任意$i$, $S_i\ne\emptyset$</li>
+<li>任意$i\ne j$, $S_i\cap S_j=\emptyset$</li>
+<li>$S_1\cup S_2\cup \cdots S_k=S$</li>
+</ul>
+<p>每个$S_i$称为划分$P$的一个块block. $P$是$k$-partition如果$|P|=k$</p>
+</li>
+<li><p>定义$\left\\{\begin{array}{cc} n \\\\k\end{array}\right\\}$为$n$元集的$k$划分数量. 注意我们并不关心$S_1,S_2,\cdots,S_k$的顺序. 也称为<strong>第二型斯特林数</strong></p>
+</li>
+<li><p>递归式</p>
+<script type="math/tex; mode=display">
+\left\\{\begin{array}{cc} n \\\\k\end{array}\right\\}=k\left\\{\begin{array}{cc} n -1\\\\k\end{array}\right\\} + \left\\{\begin{array}{cc} n-1 \\\\k-1\end{array}\right\\}</script><ul>
+<li>证明时分两类:<ul>
+<li>$n$单独一个块</li>
+<li>$n$非单独一块</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>定义$B_n=\sum_{k=1}^n\left\\{\begin{array}{cc} n \\\\k\end{array}\right\\}$. 称作Bell数</p>
+</li>
+</ul>
+<h2 id="Partitions-of-a-number"><a href="#Partitions-of-a-number" class="headerlink" title="Partitions of a number"></a>Partitions of a number</h2><ul>
+<li><p>数$n$相同元素分到$k$无序集合的数量, 等价于数把数$n$划分到$k$个无序部分的种类</p>
+</li>
+<li><p>$n$的$k$划分是multiset$\\{x_1,x_2,\cdots,x_k\\}$满足$x_i\ge 1$, 且$x_1+x_2+\cdots+x_k=n$, 其数量定义为$p_k(n)$</p>
+</li>
+<li><p>等价地, 我们可以定义其为$k$-tuple $(x_1,x_2,\cdots,x_k)$满足</p>
+<ul>
+<li>$x_1\ge x_2\ge \cdots \ge x_k\ge 1$</li>
+<li>$x_1+x_2+\cdots+x_k=n$</li>
+</ul>
+<p>其数量为$p_k(n)$</p>
+</li>
+<li><p>$p(n)=\sum_{i=1}^n p_k(n)$是$n$的所有分割数, 称为<strong>partition number</strong>.</p>
+</li>
+<li><script type="math/tex; mode=display">
+p_k(n)=p_{k-1}(n-1)+p_k(n-k)</script><ul>
+<li>证明不妨设$x_1\ge x_2\ge \cdots \ge x_k\ge 1$</li>
+<li>分成$x_k=1$和$x_k&gt;1$两种</li>
+</ul>
+</li>
+<li><p>定理:</p>
+<script type="math/tex; mode=display">
+p_k(n)\sim \frac{n^{k-1}}{k!(k-1)!}</script><p>证明</p>
+<ul>
+<li>考虑$(x_1,x_2,\cdots, x_k)$为$n$的$k$-Partition. 则$x_1+x_2+\cdots+x_k=n$, $x_1\ge x_2\ge \cdots x_k\ge 1$</li>
+<li>因为每个$n$的$k$-composition都对应至少一个$(x_1,x_2,\cdots, x_k)$的$k!$个排列<ul>
+<li>$n$的$k$-composition有$\left(\begin{array}{cc} n -1 \\\\ k -1\end{array}\right)$个</li>
+<li>所以$k!p_k(n)\ge \left(\begin{array}{cc} n -1 \\\\k -1\end{array}\right)$</li>
+</ul>
+</li>
+<li>令$y_i=x_i+k-i$, 则一定有<ul>
+<li>$y_1 &gt; y_2 &gt; \cdots &gt; y_k \ge 1$</li>
+<li>$y_1+y_2+\cdots+ y_k=n+\frac{k(k-1)}{2}$</li>
+<li>$(y_1,y_2,\cdots,y_k)$的每个排列都落在不同的$n+\frac{k(k-1)}{2}$的$k$排列中, 因为所有的$y_i$都是不同的</li>
+<li>因此$k!p_k(n)\le  \left(\begin{array}{cc} n+\frac{k(k-1)}{2} -1 \\\\k -1\end{array}\right)$</li>
+</ul>
+</li>
+<li>综上$\frac{\left(\begin{array}{cc} n -1 \\\\k -1\end{array}\right)}{k!}\le p_k(n)\le \frac{\left(\begin{array}{cc} n+\frac{k(k-1)}{2} -1 \\\\k -1\end{array}\right)}{k!}$</li>
+</ul>
+</li>
+</ul>
+<h2 id="Ferrers-diagram"><a href="#Ferrers-diagram" class="headerlink" title="Ferrers diagram"></a>Ferrers diagram</h2><ul>
+<li>数字$n$的partition可以用Ferrers图表示. $(x_1,x_2,\cdots,x_k)$, $x_1\ge x_2 \ge \cdots \ge x_k\ge 1$是$n$的一个划分. 则对应的Ferrers图有$k$行, 第$i$行包含$x_i$个点(或方块). 如下图</li>
+</ul>
+<p><img src="/figs/组合数学/figs1/Ferrer1.png" alt="Ferrer1"></p>
+<ul>
+<li><p>对偶划分: 把Ferrers图的行和列交换, 如下图:</p>
+<p><img src="/figs/组合数学/figs1/Ferrer2.png" alt="Ferrer2"></p>
+</li>
+<li><p>显然:</p>
+<ul>
+<li>不同划分的对偶不同</li>
+<li>每个划分都有对偶</li>
+</ul>
+</li>
+<li><p>命题:</p>
+<ul>
+<li><p>$n$的每份至多为$k$的划分数为$p_k(n)$</p>
+<ul>
+<li>因为对于每个$k$-partition都有对应的每份至多为$k$的对偶partition, 反之亦然.</li>
+</ul>
+</li>
+<li><p>$n$划分成$k$份的种数等于把$n-k$划分成至多$n-k$份的种数, 即</p>
+<script type="math/tex; mode=display">
+p_k(n)=\sum_{j=1}^k p_j(n-k)</script><ul>
+<li>Ferrers图去掉左边一列</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/组合数学/" rel="tag"># 组合数学</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/11/高级算法/高级算法之最小割和最大割/" rel="next" title="高级算法之最小割和最大割">
+                <i class="fa fa-chevron-left"></i> 高级算法之最小割和最大割
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/18/高级算法/高级算法之指纹/" rel="prev" title="高级算法之指纹">
+                高级算法之指纹 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XY</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#The-twelvefold-way"><span class="nav-number">1.</span> <span class="nav-text">The twelvefold way</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Basic-Enumation"><span class="nav-number">2.</span> <span class="nav-text">Basic Enumation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tuples"><span class="nav-number">2.1.</span> <span class="nav-text">Tuples</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Functions"><span class="nav-number">2.2.</span> <span class="nav-text">Functions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Subsets"><span class="nav-number">2.3.</span> <span class="nav-text">Subsets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Subsets-of-fixed-size"><span class="nav-number">2.4.</span> <span class="nav-text">Subsets of fixed size</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Binomial-coefficient"><span class="nav-number">2.5.</span> <span class="nav-text">Binomial coefficient</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Compositions-of-an-integer"><span class="nav-number">2.6.</span> <span class="nav-text">Compositions of an integer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Multisets"><span class="nav-number">2.7.</span> <span class="nav-text">Multisets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Multinomial-coefficients"><span class="nav-number">2.8.</span> <span class="nav-text">Multinomial coefficients</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Partitions-of-a-set"><span class="nav-number">2.9.</span> <span class="nav-text">Partitions of a set</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Partitions-of-a-number"><span class="nav-number">2.10.</span> <span class="nav-text">Partitions of a number</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ferrers-diagram"><span class="nav-number">2.11.</span> <span class="nav-text">Ferrers diagram</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

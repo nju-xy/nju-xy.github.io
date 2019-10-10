@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="问题求解四,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="概念 提供不比最优解差太多的可行解  定义: 对于最优化问题 $U = \\{\Sigma_I, \Sigma_O, L, L_I, M, cost, goal\\}$ , A是U的一个一致性算法. 对于所有问题实例$x\in L_I$, A对于x的相对误差$\epsilon_A(x)$定义为  \epsilon_A(x) = \frac{|cost(A(x)) - Opt_U(x)|}{Opt_">
+<meta name="keywords" content="问题求解四">
+<meta property="og:type" content="article">
+<meta property="og:title" content="近似算法">
+<meta property="og:url" content="http://yoursite.com/2019/07/01/问题求解/近似算法/index.html">
+<meta property="og:site_name" content="XY&#39;s blog">
+<meta property="og:description" content="概念 提供不比最优解差太多的可行解  定义: 对于最优化问题 $U = \\{\Sigma_I, \Sigma_O, L, L_I, M, cost, goal\\}$ , A是U的一个一致性算法. 对于所有问题实例$x\in L_I$, A对于x的相对误差$\epsilon_A(x)$定义为  \epsilon_A(x) = \frac{|cost(A(x)) - Opt_U(x)|}{Opt_">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-01T07:39:34.321Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="近似算法">
+<meta name="twitter:description" content="概念 提供不比最优解差太多的可行解  定义: 对于最优化问题 $U = \\{\Sigma_I, \Sigma_O, L, L_I, M, cost, goal\\}$ , A是U的一个一致性算法. 对于所有问题实例$x\in L_I$, A对于x的相对误差$\epsilon_A(x)$定义为  \epsilon_A(x) = \frac{|cost(A(x)) - Opt_U(x)|}{Opt_">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/01/问题求解/近似算法/">
+
+
+
+
+
+  <title>近似算法 | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XY's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/01/问题求解/近似算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XY">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XY's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">近似算法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-01T11:58:19+08:00">
+                2019-07-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ul>
+<li><p>提供不比最优解差太多的可行解</p>
+</li>
+<li><p>定义: 对于最优化问题 $U = \\{\Sigma_I, \Sigma_O, L, L_I, M, cost, goal\\}$ , A是U的一个一致性算法. 对于所有问题实例$x\in L_I$, A对于x的相对误差$\epsilon_A(x)$定义为</p>
+<script type="math/tex; mode=display">
+\epsilon_A(x) = \frac{|cost(A(x)) - Opt_U(x)|}{Opt_U(x)}</script><p>其中, $Opt_U(x)$是x的最优cost.</p>
+</li>
+<li><p>对于任意$n\in \mathbb{N}$, 我们定义A的相对误差为</p>
+<script type="math/tex; mode=display">
+\epsilon_A(n) = \max\\{\epsilon_A(x)| x \in L_I \cap (\Sigma_I)^n\\}</script></li>
+<li><p>A关于x的近似率$R_A(x)$定义为</p>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+R_A(x) = \max\\{\frac{cost(A(x))}{Opt_U(x)}, \frac{Opt_U(x)}{cost(A(x))}\\}</script><ul>
+<li><p>对于任意$n\in \mathbb{N}$, 我们定义A的相对近似率为</p>
+<script type="math/tex; mode=display">
+R_A(x) = \max\\{R_A(x)| x \in L_I\cap(\Sigma_I)^n\\}</script></li>
+<li><p>对于任意正实数$\delta&gt;1$, 如果对任意$x\in L_I$, $R_A(x)\le \delta$, 定义A为U的<strong>$\delta-$近似算法</strong>.</p>
+</li>
+<li><p>对于任意函数$f:\mathbb{N}\to \mathbb{R^+}$, 如果对任意$n \in \mathbb{N}$, $R_A(x)\le f(n)$, 定义A为U的<strong>$f(n)-$近似算法</strong>.</p>
+</li>
+<li>对于最小化问题, 有</li>
+</ul>
+<script type="math/tex; mode=display">
+R_A(x) = \frac{cost(A(x))}{Opt_U(x)}=1 + \epsilon_A(x)</script><ul>
+<li><p>对于最大化问题, 有</p>
+<script type="math/tex; mode=display">
+R_A(x) = \frac{Opt_U(x)}{cost(A(x))}</script></li>
+<li><p>Greedy Makespan Schedule:</p>
+<ul>
+<li><p>对于处理时间$p_i$排序, 从最大的开始, 依次将每个任务分配给最先空闲的机器.</p>
+</li>
+<li><p>证明这个算法是MS的2-近似算法:</p>
+<ul>
+<li><p>$I = (p_1, p_2, \cdots, p_n, m)$, $p_1&gt;p_2&gt;\cdots&gt;p_n$, 显然有</p>
+<script type="math/tex; mode=display">
+Opt_{MS}(I) \ge p_1\ge p_2 \ge \cdots \ge p_n</script><p>还有</p>
+<script type="math/tex; mode=display">
+Opt_{MS}(I) \ge \frac{\sum_{i=1}^np_i}{m}</script></li>
+<li><p>对于任意$k = 1, 2, \cdots, n$, 因为$p_k$是$p_1$到$p_k$中最小的, 所以有</p>
+<script type="math/tex; mode=display">
+p_k \le \frac{\sum_{i=1}^k p_i}{k}</script></li>
+<li><p>分类讨论:</p>
+<ul>
+<li><p>当$n\le m$时, 显然</p>
+</li>
+<li><p>当$n&gt;m$时, 设$T_l$满足$cost(T_l)=\sum_{r\in T_l}p_r = cost(GMS(I))$, 而k是$T_l$中最大的下标</p>
+<ul>
+<li><p>如果$k\le m$, $|T_l|=1$, 所以$Opt_{MS}(I) = p_1 = p_k$, $GMS(I)$是最优解.</p>
+</li>
+<li><p>如果$k&gt;m$, 因为其他机器的cost肯定不小于$cost(GMS(I)) - p_k$, 不然$p_k$就不会安排在这个机器, 所以</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^{k-1}p_i\ge m\cdot [cost(GMS(I)) - p_k]</script><p>再根据上面的式子2, 有</p>
+<script type="math/tex; mode=display">
+Opt_{MS}(I)\ge cost(GMS(I))-p_k</script><p>因此</p>
+<script type="math/tex; mode=display">
+cost(GMS(I)) - Opt_{MS}(I)\le p_k\le \frac{\sum_{i=1}^k p_i}{k}</script><p>最终有</p>
+<script type="math/tex; mode=display">
+\frac{cost(GMS(I)) - Opt_{MS}(I)}{Opt_{MS}(I)}\le \frac{(\sum_{i=1}^k p_i)/k}{(\sum_{i=1}^n p_i)/m}\le \frac{m}{k} < 1</script><p>因此GMS是MS的2-近似算法.</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>定义: 对于最优化问题 $U = \{\Sigma_I, \Sigma_O, L, L_I, M, cost, goal\}$ , 如果对于所有的输入对$(x, \epsilon)\in L_I\times \mathbb{R^+}$, A可以计算出一个相对误差不大于$\epsilon$的可行解A(x), 而且$Time_A(x, \epsilon^{-1})$有$|x|$的多项式函数上界, 那么A被称为U的<strong>多项式时间近似方案(PTAS)$</strong>.而如果$Time_A(x, \epsilon^{-1})$有$|x|$和$\epsilon^{-1}$的多项式函数上界, 那么A被称为U的<strong>完全多项式时间近似方案(FPTAS)$.</strong></p>
+</li>
+<li><p>PTAS: 任意输入, 想要多小误差都可以在|x|线性时间求解. </p>
+<p>FPTAS: 任意输入, 想要多小误差都可以在|x|和$\epsilon^{-1}$线性时间求解(误差越小越慢)</p>
+</li>
+</ul>
+<h2 id="最优化问题分类"><a href="#最优化问题分类" class="headerlink" title="最优化问题分类"></a>最优化问题分类</h2><ul>
+<li><p>NPO问题可以分为下列5类:</p>
+<ul>
+<li>NPO(I): 存在FPTAS的NPO最优化问题<ul>
+<li>例如背包问题</li>
+</ul>
+</li>
+<li>NPO(II): 存在PTAS的NPO最优化问题<ul>
+<li>例如Makespan Schedule</li>
+</ul>
+</li>
+<li>NPO(III):  $U\in NPO$满足<ul>
+<li>存在$\delta &gt; 1$, 有多项式时间$\delta-$近似算法</li>
+<li>没有PTAS. (即存在$d&lt;\delta$, U无$d-$近似算法)</li>
+<li>例如最小顶点覆盖, $\Delta-$TSP, MAX-SAT</li>
+</ul>
+</li>
+<li>NPO(IV): $U\in NPO$满足<ul>
+<li>存在多项式时间$f(n)$近似算法, 且f有多项式上界</li>
+<li>在某些假设下, 不存在任何$\delta-$近似算法</li>
+</ul>
+</li>
+<li>NPO(V): $U\in NPO$满足对于所有可能存在的$f(n)-$近似算法, $f(n)$都没有多项式上界<ul>
+<li>例如TSP, 最大团</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>在$P\ne NP$的前提下, 每一类都非空</p>
+</li>
+</ul>
+<h2 id="近似算法的稳定性"><a href="#近似算法的稳定性" class="headerlink" title="近似算法的稳定性"></a>近似算法的稳定性</h2><ul>
+<li><p>一般认为NPO(V)中的问题是不可求解的, 但是可以将$U\in NPO(V)$的输入$L_I$根据难度划分.</p>
+</li>
+<li><p>对于最优化问题 $U = \\{\Sigma_I, \Sigma_O, L, L_I, M, cost, goal\\}$ 和 $\overline U = \\{\Sigma_I, \Sigma_O, L, L, M, cost, goal\\}$ , $L_I\subseteq L$, $\overline U$关于$L_I$的<strong>距离函数</strong>$h_L:L\to \mathbb{R^{\ge 0}}$满足如下性质:</p>
+<ul>
+<li>对于所有$x\in L_I$, 有$h_L(x)=0$</li>
+<li>h是多项式时间可计算的</li>
+</ul>
+</li>
+<li><p>对于$\overline U$关于$L_I$的距离函数$h$, 对于任意$r\in \mathbb{R}$, 定义</p>
+<script type="math/tex; mode=display">
+Ball_{r,h}(L_I) = \\{w\in L| h(w)\le r\\}</script></li>
+<li><p>A是$\overline U$的一致性算法, 也是$U$的$\epsilon-$近似算法($\epsilon \in \mathbb{R^{&gt;1}}$). 令p为正实数, 当对于所有实数$0<r\le p$, 存在$\delta_{r, \epsilon}\in \mathbb{r^{>1}}$满足A是$U_r= \\{\Sigma_I, \Sigma_O, L, Ball_{r,h}(L_I), M, cost, goal\\}$的$\delta_{r, \epsilon}-$近似算法, 我们定义<strong>A关于h是p-稳定的</strong> </r\le></p>
+</li>
+<li><p>如果对于所有正实数p, A都是p-稳定的, 那么A关于h是<strong>稳定</strong>的; 如果对于任意正实数p, A都不是p-稳定的, 那么A关于h是<strong>不稳定</strong>的</p>
+</li>
+<li><p>TSP和$\Delta-$TSP:</p>
+<ul>
+<li><p>对于任意输入实例(G, c), 定义</p>
+<script type="math/tex; mode=display">
+dist(G,c)=\max\\{0, \max\\{\frac{c(\{u, v\})}{c(\{u, v\})+c(\{p,v\})}-1|u, v, p\in V(G), u\ne v, u\ne p, v\ne p   \\}\\}</script><script type="math/tex; mode=display">
+dist_k(G,c)=\max\\{0, \max\\{\frac{c(\{u, v\})}{\sum_{i=1}^m c(\{p_i,p_{i+1}\})}-1|u, v\in V(G), u=p_1, p_2, \cdots, p_m=v</script><script type="math/tex; mode=display">\text{ is a simple path between u and v of length at most }k(m + 1\le k)    \\}\\}</script><p>对于任意整数$k&gt;2$, </p>
+<script type="math/tex; mode=display">
+distance(G,c) = \max\\{disk_k(G,c)|2\le k\le|V(G)|-1  \\}</script><p>$Ball_{r, dist}(L_\Delta)$包含满足下面条件的带权图</p>
+<script type="math/tex; mode=display">
+c(\{(u,v)\})\le (1+r)(c(\{(u,p)\}) + c(\{(p,v)\}))</script></li>
+</ul>
+</li>
+<li><p>只有在h合理划分问题实例的时候才是有意义的</p>
+</li>
+<li><p>U和$\overline U$, h, $U_r$定义同上, 令$A=\{A_\epsilon\}_{\epsilon&gt;0}$是U的一个PTAS</p>
+<ul>
+<li><p>如果对所有的$r&gt;0$和$\epsilon&gt;0$, $A_\epsilon$是一个$U_r $的$\delta_{r,\epsilon}-$近似算法, 那么A关于h是<strong>稳定</strong>的</p>
+</li>
+<li><p>如果$\delta_{r,\epsilon}\le f(\epsilon)\cdot g(r)$, 其中</p>
+<ul>
+<li>f和g是从$\mathbb R^{\ge 0}$到$\mathbb {R^+}$的函数, </li>
+<li>$\lim_{\epsilon\to 0}f(\epsilon) = 0$</li>
+</ul>
+<p>那么A关于h是<strong>超稳定</strong>的</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="对偶近似算法"><a href="#对偶近似算法" class="headerlink" title="对偶近似算法"></a>对偶近似算法</h3><ul>
+<li><p>当限制条件不明确时, 可以找一个不比$Opt_U(I)$差的解, 允许$S\not\in M(I)$, 但是S离M(I)”不太远”</p>
+</li>
+<li><p>对于最优化问题U, 定义<strong>限制条件距离函数</strong>为满足如下性质的函数$h: L_I \times \Sigma^*_O\to \mathbb R^{\ge 0}$</p>
+<ul>
+<li>对于$S\in M(x)$, $h(x, S)=0$</li>
+<li><p>对于$S\not\in M(x)$, $h(x, S)&gt;0$</p>
+</li>
+<li><p>h是多项式时间可计算的</p>
+</li>
+</ul>
+</li>
+<li><p>例如01背包问题中, 定义</p>
+<script type="math/tex; mode=display">
+h(I, T)=\max\\{0, \max\\{\sum_{l\in T_i}p_l|i=1,2,...,m  \\}-1\\}</script><p>如果存在$\epsilon$满足对任何$i=1,2,…,m$有$\sum_{l\in T_i}p_l\le 1 + \epsilon$, 则$T\in M_\epsilon^h(I)$</p>
+</li>
+<li><p>定义满足如下条件的算法A为U的<strong>$h-$对偶$\epsilon-$近似算法</strong>: 对所有$x\in L_I$, 有</p>
+<ul>
+<li><p>$A(x)\in M_\epsilon^h(x)$</p>
+</li>
+<li><p>如果目标是最大化, 则$cost(A(x))\ge Opt_U(x)$, 如果目标是最小化, 则$cost(A(x))\le Opt_U(x)$</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>定义满足如下条件的算法A为U的<strong>$h-$对偶多项式时间近似方案(h-dual PTAS for U)</strong>:</p>
+<ul>
+<li><p>对于任意输入$(x,\epsilon)\in L_I\times \mathbb R^+$, $A(x, \epsilon)\in M_\epsilon^h(x)$</p>
+</li>
+<li><p>如果目标是最大化, 则$cost(A(x,\epsilon))\ge Opt_U(x)$, 如果目标是最小化, 则$cost(A(x,\epsilon))\le Opt_U(x)$</p>
+</li>
+<li><p>$Time_A(x, \epsilon^{-1})$有$|x|$的多项式函数上界</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>如果$Time_A(x, \epsilon^{-1})$有$|x|$和$\epsilon$的多项式函数上界, 则A为U的<strong>$h-$对偶完全多项式时间近似方案(h-dual FPTAS for U)</strong></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/问题求解四/" rel="tag"># 问题求解四</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/01/问题求解/NP完全理论初步/" rel="next" title="NP完全理论初步">
+                <i class="fa fa-chevron-left"></i> NP完全理论初步
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/01/问题求解/随机算法/" rel="prev" title="随机算法">
+                随机算法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XY</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最优化问题分类"><span class="nav-number">2.</span> <span class="nav-text">最优化问题分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#近似算法的稳定性"><span class="nav-number">3.</span> <span class="nav-text">近似算法的稳定性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对偶近似算法"><span class="nav-number">3.1.</span> <span class="nav-text">对偶近似算法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
