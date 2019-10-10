@@ -305,7 +305,6 @@
 <li>最坏$\Theta((n-m+1)m)$</li>
 </ul>
 <h2 id="Rabin-Karp算法"><a href="#Rabin-Karp算法" class="headerlink" title="Rabin-Karp算法"></a>Rabin-Karp算法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">RABIN-KARP-MATCHER(T, P, d, q)</span><br><span class="line">n = T.length</span><br><span class="line">m = P.length</span><br><span class="line">h = d^&#123;m-1&#125; mod q</span><br><span class="line">p = 0</span><br><span class="line">t_0 = 0</span><br><span class="line">for i = 1 to m // preprocessing</span><br><span class="line">    p = (dp + P[i]) mod q</span><br><span class="line">    t_0 = (dt_0 + T[i]) mod q</span><br><span class="line">for s = 0 to n - m</span><br><span class="line">    if p == t_s</span><br><span class="line">        if P[1..m] == T[s+1..s+m]</span><br><span class="line">            print &quot;Pattern occurs with shift&quot; s</span><br><span class="line">    if s &lt; n - m</span><br><span class="line">        t_&#123;s+1&#125; = (d(t_s-T[s+1]h) + T[s+m+1]) mod q</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>预处理$O(m)$, 最坏运行时间$\Theta((n-m+1)m)$, 平均情况下较好.</li>
 <li>将P和T都转化为数字$p$和$t_s$, 左边是高位. t下标可去掉.</li>
@@ -315,8 +314,7 @@
 <li>期望运行时间为$O(n) + O(m(v+n/q))$, v为有效偏移量.</li>
 </ul>
 <h2 id="利用有限自动机进行字符串匹配"><a href="#利用有限自动机进行字符串匹配" class="headerlink" title="利用有限自动机进行字符串匹配"></a>利用有限自动机进行字符串匹配</h2><h3 id="有限自动机"><a href="#有限自动机" class="headerlink" title="有限自动机"></a>有限自动机</h3><ul>
-<li><p>一个有限自动机M是一个5元组$(Q, q_0, A, \Sigma, \delta)$.</p>
-<ul>
+<li>一个有限自动机M是一个5元组$(Q, q_0, A, \Sigma, \delta)$.<ul>
 <li>Q是<strong>状态</strong>的有限集合</li>
 <li>$q_0$是<strong>初始状态</strong></li>
 <li>$A\subseteq Q$是一个特殊的<strong>接收状态</strong>集合</li>
@@ -324,19 +322,15 @@
 <li>$\delta$是一个从$Q\times \Sigma$到Q的函数, 称为M的<strong>转移函数</strong></li>
 </ul>
 </li>
-<li><p>有限自动机从$q_0$开始每次读入输入字符串的一个字符. 于状态q读入a则状态变为$\sigma(q, a)$. 当前状态$q\in A$则M<strong>接受</strong>了迄今为止读入的字符串. 未被接受的输入称为<strong>被拒绝</strong>的字符串.</p>
-</li>
-<li><p><strong>终态函数</strong>$\phi$: $\Sigma^* \to Q$, 满足$\phi(w)$是M在扫描字符串w后终止时的状态. 当且仅当$\phi(w)\in A$, M接受字符串w. </p>
-<ul>
+<li>有限自动机从$q_0$开始每次读入输入字符串的一个字符. 于状态q读入a则状态变为$\sigma(q, a)$. 当前状态$q\in A$则M<strong>接受</strong>了迄今为止读入的字符串. 未被接受的输入称为<strong>被拒绝</strong>的字符串.</li>
+<li><strong>终态函数</strong>$\phi$: $\Sigma^* \to Q$, 满足$\phi(w)$是M在扫描字符串w后终止时的状态. 当且仅当$\phi(w)\in A$, M接受字符串w. <ul>
 <li>$\phi(\epsilon) = q_0$</li>
 <li>$\phi(wa) = \delta(\phi(w), a)$<h4 id="字符串匹配自动机"><a href="#字符串匹配自动机" class="headerlink" title="字符串匹配自动机"></a>字符串匹配自动机</h4></li>
 </ul>
 </li>
-<li><p>P的后缀函数$\sigma: \Sigma^*\to {0,1,…,m}$: $\sigma(x) = max{k: P_k \sqsupset x}$</p>
-</li>
-<li><p><strong>字符串匹配自动机</strong>: </p>
-<ul>
-<li>状态集合为${0,1,…,m}$. $q_0$是0状态, m是唯一被接受状态.</li>
+<li>P的后缀函数$\sigma: \Sigma^*\to \{0,1,…,m\}$: $\sigma(x) = max\{k: P_k \sqsupset x\}$</li>
+<li><strong>字符串匹配自动机</strong>: <ul>
+<li>状态集合为$\{0,1,…,m\}$. $q_0$是0状态, m是唯一被接受状态.</li>
 <li>对任意状态q和字符a<br>$\delta(q, a) = \sigma(P_qa)$</li>
 </ul>
 </li>
@@ -345,13 +339,11 @@
 </li>
 <li><p>预处理时间可以改进到$O(m|\Sigma|)$.</p>
 </li>
-<li><p>匹配时间$\Theta(n)$</p>
-</li>
+<li>匹配时间$\Theta(n)$</li>
 </ul>
 <h2 id="Knuth-Morris-Pratt-算法-KMP"><a href="#Knuth-Morris-Pratt-算法-KMP" class="headerlink" title="Knuth-Morris-Pratt 算法(KMP)"></a>Knuth-Morris-Pratt 算法(KMP)</h2><ul>
 <li>预处理$\Theta(m)$, 匹配$\Theta(n)$.</li>
-<li>P的前缀函数$\pi: {1, 2, …, m}\to {0, 1, …, m - 1}$满足<br> $\pi[q] = max{k: k &lt; q且P_k\sqsupset P_q}$<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">KMP-MATCHER(T, P)</span><br><span class="line">n = T.length </span><br><span class="line">m = P.length</span><br><span class="line">pi = COMPUTE-PREFIX-FUNCTION(P)</span><br><span class="line">q = <span class="number">0</span> <span class="comment">// number of characters matched</span></span><br><span class="line"><span class="keyword">for</span> i = <span class="number">1</span> to n <span class="comment">// scan the text from left to right</span></span><br><span class="line">    <span class="keyword">while</span> q &gt; <span class="number">0</span> <span class="keyword">and</span> P[q+<span class="number">1</span>] != T[i] <span class="comment">// next character does not match</span></span><br><span class="line">        q = pi[q] </span><br><span class="line">    <span class="keyword">if</span> P[q+<span class="number">1</span>] == T[i] <span class="comment">//next character matches</span></span><br><span class="line">        q = q + <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> q == m</span><br><span class="line">        print <span class="string">"Pattern occurs with shift "</span> i - m</span><br><span class="line">    q = pi[q] <span class="comment">// look for the next match</span></span><br><span class="line"></span><br><span class="line">COMPUTE-PREFIX-FUNCTION(P)</span><br><span class="line">m = P.length</span><br><span class="line">pi[<span class="number">1</span>] = <span class="number">0</span></span><br><span class="line">k = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> q = <span class="number">2</span> to m</span><br><span class="line">    <span class="keyword">while</span> k &gt; <span class="number">0</span> <span class="keyword">and</span> P[k+<span class="number">1</span>] != P[q]</span><br><span class="line">        k = pi[k]</span><br><span class="line">    <span class="keyword">if</span> P[k+<span class="number">1</span>] == P[q]</span><br><span class="line">        k = k + <span class="number">1</span></span><br><span class="line">        pi[q] = k</span><br><span class="line"><span class="keyword">return</span> pi</span><br></pre></td></tr></table></figure>
-
+<li>P的前缀函数$\pi: \{1, 2, …, m\}\to \{0, 1, …, m - 1\}$满足<br> $\pi[q] = max\{k: k &lt; q且P_k\sqsupset P_q\}$<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">KMP-MATCHER(T, P)</span><br><span class="line">n = T.length </span><br><span class="line">m = P.length</span><br><span class="line">pi = COMPUTE-PREFIX-FUNCTION(P)</span><br><span class="line">q = <span class="number">0</span> <span class="comment">// number of characters matched</span></span><br><span class="line"><span class="keyword">for</span> i = <span class="number">1</span> to n <span class="comment">// scan the text from left to right</span></span><br><span class="line">    <span class="keyword">while</span> q &gt; <span class="number">0</span> <span class="keyword">and</span> P[q+<span class="number">1</span>] != T[i] <span class="comment">// next character does not match</span></span><br><span class="line">        q = pi[q] </span><br><span class="line">    <span class="keyword">if</span> P[q+<span class="number">1</span>] == T[i] <span class="comment">//next character matches</span></span><br><span class="line">        q = q + <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> q == m</span><br><span class="line">        print <span class="string">"Pattern occurs with shift "</span> i - m</span><br><span class="line">    q = pi[q] <span class="comment">// look for the next match</span></span><br><span class="line"></span><br><span class="line">COMPUTE-PREFIX-FUNCTION(P)</span><br><span class="line">m = P.length</span><br><span class="line">pi[<span class="number">1</span>] = <span class="number">0</span></span><br><span class="line">k = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> q = <span class="number">2</span> to m</span><br><span class="line">    <span class="keyword">while</span> k &gt; <span class="number">0</span> <span class="keyword">and</span> P[k+<span class="number">1</span>] != P[q]</span><br><span class="line">        k = pi[k]</span><br><span class="line">    <span class="keyword">if</span> P[k+<span class="number">1</span>] == P[q]</span><br><span class="line">        k = k + <span class="number">1</span></span><br><span class="line">        pi[q] = k</span><br><span class="line"><span class="keyword">return</span> pi</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 
@@ -473,7 +465,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

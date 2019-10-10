@@ -316,10 +316,8 @@
 </li>
 <li><p>把处理器“拆下来”的机制就是中断/系统调用。</p>
 </li>
-<li><p>操作系统实际从一开始就驻留在内存中，并且配置了中断处理程序的入口地址，一旦进程发生中断/异常/系统调用，操作系统代码就立即接手执行。</p>
-</li>
-<li><p>每个进程有自己的R, 因此需要寄存器现场的保存.</p>
-</li>
+<li>操作系统实际从一开始就驻留在内存中，并且配置了中断处理程序的入口地址，一旦进程发生中断/异常/系统调用，操作系统代码就立即接手执行。</li>
+<li>每个进程有自己的R, 因此需要寄存器现场的保存.</li>
 </ul>
 <h3 id="操作系统：实现虚拟化"><a href="#操作系统：实现虚拟化" class="headerlink" title="操作系统：实现虚拟化"></a>操作系统：实现虚拟化</h3><ul>
 <li>现代计算机系统实现虚拟化里最重要的两个想法就是：<ol>
@@ -392,10 +390,8 @@
 <li>管道空，read将等数据</li>
 </ul>
 </li>
-<li><p><code>fork()</code> 不复制管道</p>
-</li>
-<li><p>Shell的主要功能是将执行命令的脚本翻译成系统调用的序列</p>
-<ul>
+<li><code>fork()</code> 不复制管道</li>
+<li>Shell的主要功能是将执行命令的脚本翻译成系统调用的序列<ul>
 <li><code>cmd &gt; file &lt; file</code> - 使用<code>fork-open-dup-execve</code></li>
 <li><code>cmd1; cmd2</code>, <code>cmd1 &amp;&amp; cmd2</code>, <code>cmd1 || cmd2</code> - 按顺序执行</li>
 <li><code>cmd1 | cmd2</code> - 使用<code>pipe-fork-dup-execve</code></li>
@@ -437,8 +433,7 @@
 </ul>
 <h2 id="进程调度"><a href="#进程调度" class="headerlink" title="进程调度"></a>进程调度</h2><ul>
 <li><p><strong>周转时间</strong> turnaround time: </p>
-<p>$$ T_{turnaround} = T_{completion} - T_{arrival}$$</p>
-</li>
+<script type="math/tex; mode=display">T_{turnaround} = T_{completion} - T_{arrival}</script></li>
 <li><p>First In, First Out(FIFO)</p>
 <ul>
 <li>在任务所需时间不同的时候效果很差</li>
@@ -456,8 +451,7 @@
 </ul>
 </li>
 <li><p><strong>响应时间</strong>response time:</p>
-<p>$$T_{response} = T_{firstrun} − T_{arrival}$$</p>
-</li>
+<script type="math/tex; mode=display">T_{response} = T_{firstrun} − T_{arrival}</script></li>
 <li><p>Round Robin (Good For Response Time)</p>
 <ul>
 <li>时间片time slice</li>
@@ -486,19 +480,16 @@
 </li>
 <li><p>规则4a: 一个任务用完了一整个时间片, 则降低优先级</p>
 </li>
-<li><p>规则4b: 一个任务在时间片用完之前放弃了CPU, 则优先级不变</p>
-</li>
+<li>规则4b: 一个任务在时间片用完之前放弃了CPU, 则优先级不变</li>
 </ul>
 </li>
-<li><p>避免starvation:</p>
-<ul>
+<li>避免starvation:<ul>
 <li>问题1：如果系统中有太多交互型的程序，他们的优先级高，会保持对CPU的占用，那么低优先级的程序就永远无法得到CPU时间(starve)</li>
 <li>问题2: 进程的行为可能随时间改变，一个计算型程序可能会变为交互型程序。此时这个程序无法重新获得优先级，响应时间高。</li>
 <li>规则5: 经过一段时间S, 系统中所有任务优先级提到最高</li>
 </ul>
 </li>
-<li><p>避免用户恶意利用调度规则</p>
-<ul>
+<li>避免用户恶意利用调度规则<ul>
 <li>问题: 恶心人的用户会破坏调度算法的合理性(game the scheduler)，在时间截止前进程发起一个（不关心结果的）I/O请求来放弃CPU，就可以保持在同一个优先级队列中，获得更多的CPU时间。</li>
 <li>改写规则4: 一旦一个任务用完了某个等级分配的所有时间, 优先级就降低.</li>
 </ul>
@@ -507,8 +498,7 @@
 </li>
 </ul>
 <h2 id="Proportional-Share"><a href="#Proportional-Share" class="headerlink" title="Proportional Share"></a>Proportional Share</h2><ul>
-<li><p>每个进程都有一定的tickets(彩票), 彩票越多中奖率越高, 用随机数来选择调度哪一个(中奖)</p>
-</li>
+<li>每个进程都有一定的tickets(彩票), 彩票越多中奖率越高, 用随机数来选择调度哪一个(中奖)</li>
 <li><p>ticket currency: </p>
 <ul>
 <li>每个user给自己的进程发tickets, 按比例兑换成global ticket</li>
@@ -520,14 +510,12 @@
 <li>尤其出现于 client/server</li>
 </ul>
 </li>
-<li><p>ticket inflation:</p>
-<ul>
+<li>ticket inflation:<ul>
 <li>一个进程可以暂时增加或者减少自己的彩票数.</li>
 <li>仅适用于互相信任的进程之间</li>
 </ul>
 </li>
-<li><p>stride scheduling: </p>
-<ul>
+<li>stride scheduling: <ul>
 <li>确定的.</li>
 <li>不好, 因为有global state. 当一个新进程进入的时候，pass的初始值决定了它是否能够霸占CPU；而在彩票方法中，添加一个新进程并不会影响其他进程的执行。彩票方法更容易处理新的进程。</li>
 </ul>
@@ -538,10 +526,8 @@
 </li>
 <li><p>进程运行的时候增加vruntime</p>
 </li>
-<li><p>每次选择vruntime最低的</p>
-</li>
-<li><p>切换进程的时间选择:</p>
-<ul>
+<li>每次选择vruntime最低的</li>
+<li>切换进程的时间选择:<ul>
 <li>sched_latency(48 ms): <ul>
 <li>决定多久后考虑是否要切换</li>
 <li>这个值 / 进程数 决定时间片的长度</li>
@@ -554,8 +540,7 @@
 </li>
 </ul>
 </li>
-<li><p><strong>Weighting (Niceness)</strong></p>
-<ul>
+<li><strong>Weighting (Niceness)</strong><ul>
 <li>UNIX世界允许用户调整进程的优先级(nice)<ul>
 <li>-20 (最高优先级)：非常不nice (是个坏人)</li>
 <li>19 (最低优先级)：非常nice (是个礼让的好人)</li>
@@ -565,10 +550,8 @@
 <li>vruntime 增加速度和weight相关, weight越大, 时间流逝越慢.</li>
 </ul>
 </li>
-<li><p>红黑树来了, 飘过</p>
-</li>
-<li><p>I / O 处理和长时间睡眠进程: 进程醒了以后, vruntime最小为运行进程的最小vruntime减一个定值</p>
-</li>
+<li>红黑树来了, 飘过</li>
+<li>I / O 处理和长时间睡眠进程: 进程醒了以后, vruntime最小为运行进程的最小vruntime减一个定值</li>
 </ul>
 <h3 id="多处理器"><a href="#多处理器" class="headerlink" title="多处理器"></a>多处理器</h3><ul>
 <li>进程是属于处理器的，只被某个处理器调度(最大化cache locality)</li>
@@ -606,8 +589,7 @@
 </li>
 </ul>
 <h3 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h3><ul>
-<li><p>页 (page)：可以以页为单位自由映射</p>
-<ul>
+<li>页 (page)：可以以页为单位自由映射<ul>
 <li>x86: “页目录-页表”数据结构描述内存映射</li>
 <li>内存越大，页表层数越多：PML4 (48bit)</li>
 </ul>
@@ -631,7 +613,6 @@
 <h3 id="mmap"><a href="#mmap" class="headerlink" title="mmap"></a>mmap</h3><ul>
 <li><p>操作系统应该如何为进程提供虚拟内存管理？因为<em>Everything is a File</em>，所以只要能把操作系统里的对象“映射”到进程地址空间，就足够了！</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">mmap</span><span class="params">(<span class="keyword">void</span> *addr, <span class="keyword">size_t</span> length, <span class="keyword">int</span> prot, <span class="keyword">int</span> flags,</span></span></span><br><span class="line"><span class="function"><span class="params">           <span class="keyword">int</span> fd, <span class="keyword">off_t</span> offset)</span></span>; <span class="comment">// 映射</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mprotect</span><span class="params">(<span class="keyword">void</span> *addr, <span class="keyword">size_t</span> length, <span class="keyword">int</span> prot)</span></span>; <span class="comment">// 修改映射权限</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>将文件fd从offset开始的length长度映射到进程地址空间中虚拟地址addr开始的部分</li>
 <li>如果addr == NULL, os选一个地址</li>
@@ -676,7 +657,6 @@
 <li>在指针背后，实际是进程的“地址空间”</li>
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">uintptr_t</span> value;</span><br><span class="line">*(<span class="keyword">char</span> *)value <span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li><code>value = 0</code> -&gt; Segmentation Fault</li>
 <li>代码：只读、可执行</li>
@@ -686,9 +666,6 @@
 <li><p>pmap查看</p>
 </li>
 <li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">00400000-004b6000                 r-xp  /tmp/a.out (代码)</span><br><span class="line">006b6000-006bc000                 rw-p  /tmp/a.out (数据)</span><br><span class="line">006bc000-006bd000                 rw-p  [bss](通过end查证)</span><br><span class="line">0131f000-01342000                 rw-p  [heap]</span><br><span class="line">7fff993c9000-7fff993ea000         rw-p  [stack]</span><br><span class="line">7fff993f4000-7fff993f7000         r--p  [vvar] </span><br><span class="line">7fff993f7000-7fff993f9000         r-xp  [vdso] </span><br><span class="line">ffffffffff600000-ffffffffff601000 r-xp  [vsyscall]</span><br></pre></td></tr></table></figure>
-
-
-
 </li>
 </ul>
 <ul>
@@ -837,7 +814,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

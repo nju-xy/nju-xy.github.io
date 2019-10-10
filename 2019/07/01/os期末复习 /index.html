@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="Hello, OS world编译, 链接 strace -f查看进程和他的子进程的所有系统调用 gcc -o hello hello.c 子进程1: 编译器compiler写入a.s汇编代码 子进程2: 汇编器assembler写入a.o(ELF…) 子进程3: 链接器linker写入a.out(ELF…)   readelf: hello中有什么  终端与shell ==I/O设备模型==:">
+<meta name="description" content="Hello, OS world编译, 链接 strace -f查看进程和他的子进程的所有系统调用 gcc -o hello hello.c 子进程1: 编译器compiler写入a.s汇编代码 子进程2: 汇编器assembler写入a.o(ELF…) 子进程3: 链接器linker写入a.out(ELF…)   readelf: hello中有什么  终端与shell I/O设备模型: 设备是三">
 <meta name="keywords" content="操作系统">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OS期末复习">
 <meta property="og:url" content="http://yoursite.com/2019/07/01/os期末复习 /index.html">
 <meta property="og:site_name" content="XY&#39;s blog">
-<meta property="og:description" content="Hello, OS world编译, 链接 strace -f查看进程和他的子进程的所有系统调用 gcc -o hello hello.c 子进程1: 编译器compiler写入a.s汇编代码 子进程2: 汇编器assembler写入a.o(ELF…) 子进程3: 链接器linker写入a.out(ELF…)   readelf: hello中有什么  终端与shell ==I/O设备模型==:">
+<meta property="og:description" content="Hello, OS world编译, 链接 strace -f查看进程和他的子进程的所有系统调用 gcc -o hello hello.c 子进程1: 编译器compiler写入a.s汇编代码 子进程2: 汇编器assembler写入a.o(ELF…) 子进程3: 链接器linker写入a.out(ELF…)   readelf: hello中有什么  终端与shell I/O设备模型: 设备是三">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/figs/callgraph.png">
-<meta property="og:updated_time" content="2019-07-01T06:49:18.964Z">
+<meta property="og:image" content="http://yoursite.com/figs/os/callgraph.png">
+<meta property="og:updated_time" content="2019-10-10T02:57:08.737Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OS期末复习">
-<meta name="twitter:description" content="Hello, OS world编译, 链接 strace -f查看进程和他的子进程的所有系统调用 gcc -o hello hello.c 子进程1: 编译器compiler写入a.s汇编代码 子进程2: 汇编器assembler写入a.o(ELF…) 子进程3: 链接器linker写入a.out(ELF…)   readelf: hello中有什么  终端与shell ==I/O设备模型==:">
-<meta name="twitter:image" content="http://yoursite.com/figs/callgraph.png">
+<meta name="twitter:description" content="Hello, OS world编译, 链接 strace -f查看进程和他的子进程的所有系统调用 gcc -o hello hello.c 子进程1: 编译器compiler写入a.s汇编代码 子进程2: 汇编器assembler写入a.o(ELF…) 子进程3: 链接器linker写入a.out(ELF…)   readelf: hello中有什么  终端与shell I/O设备模型: 设备是三">
+<meta name="twitter:image" content="http://yoursite.com/figs/os/callgraph.png">
 
 
 
@@ -313,11 +313,11 @@
 <li>readelf: hello中有什么</li>
 </ul>
 <h4 id="终端与shell"><a href="#终端与shell" class="headerlink" title="终端与shell"></a>终端与shell</h4><ul>
-<li>==I/O设备模型==: 设备是三种操作的集合: <ul>
+<li>I/O设备模型: 设备是三种操作的集合: <ul>
 <li>发送命令、读取状态、传输数据</li>
 </ul>
 </li>
-<li>==设备驱动==: os中负责与设备交互的程序. 根据设备类型不同, 给每一类设备以统一的接口访问, 实现这个接口的就是设备驱动程序.</li>
+<li>设备驱动: os中负责与设备交互的程序. 根据设备类型不同, 给每一类设备以统一的接口访问, 实现这个接口的就是设备驱动程序.</li>
 <li>shell用read从0号文件描述符读入, 按下回车read返回</li>
 </ul>
 <ul>
@@ -330,16 +330,16 @@
 </li>
 </ul>
 <ul>
-<li><p>==hello的第一条指令在哪里?==</p>
+<li><p>hello的第一条指令在哪里?</p>
 <ul>
 <li>ld.so的_start()</li>
 </ul>
 </li>
-<li><p>==hello的main函数执行之前, 系统中发生了什么?==</p>
+<li><p>hello的main函数执行之前, 系统中发生了什么?</p>
 <ul>
 <li>加载器的$_$start, $_$init, 之后调用hello的 $_$start, $__$libc$_$start$_$main…</li>
 </ul>
-<p><img src="/figs/callgraph.png" alt="callgraph"></p>
+<p><img src="/figs/os/callgraph.png" alt="callgraph"></p>
 <ul>
 <li>gdb: starti <ul>
 <li>发现在加载器的$_$start()(这是动态链接, 对于静态链接就是在程序里)</li>
@@ -364,7 +364,7 @@
 <li>动态链接细节不考, 如got plt</li>
 </ul>
 </li>
-<li><p>printf()是线程安全的吗?==如何实现线程安全的printf?==</p>
+<li><p>printf()是线程安全的吗?如何实现线程安全的printf?</p>
 <ul>
 <li>并发编程题目: <strong>条件变量</strong>, 信号量</li>
 <li>复习生产者消费者问题</li>
@@ -384,9 +384,9 @@
 </li>
 <li><p>write写到哪: 文件描述符对应的文件, 例如一个设备/dev/ttyx, 或者是文件系统中的一个文件</p>
 </li>
-<li><p>==文件系统如何实现== ==FAT==, ==ext2==(inode)</p>
+<li><p>文件系统如何实现 FAT, ext2(inode)</p>
 </li>
-<li><p>==如何保护数据不受损坏==:</p>
+<li><p>如何保护数据不受损坏:</p>
 <ul>
 <li>把不可靠的磁盘变可靠: RAID; 奇偶校验允许一块盘坏; 校验位均匀分布在各个盘上</li>
 <li>实现崩溃一致性: fsck, 日志</li>
@@ -433,7 +433,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/11/高算Cut/" rel="prev" title="高级算法之最小割和最大割">
+              <a href="/2019/09/11/高级算法之最小割和最大割/" rel="prev" title="高级算法之最小割和最大割">
                 高级算法之最小割和最大割 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -512,7 +512,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

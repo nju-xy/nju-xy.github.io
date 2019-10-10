@@ -316,22 +316,16 @@
 </ul>
 <p>因此需要锁.</p>
 <h2 id="锁和条件变量的使用"><a href="#锁和条件变量的使用" class="headerlink" title="锁和条件变量的使用"></a>锁和条件变量的使用</h2><h3 id="互斥锁"><a href="#互斥锁" class="headerlink" title="互斥锁"></a>互斥锁</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pthread_mutex_lock(&amp;lock);</span><br><span class="line">x = x + <span class="number">1</span>; </span><br><span class="line"><span class="comment">// or whatever your critical section is</span></span><br><span class="line">pthread_mutex_unlock(&amp;lock);</span><br></pre></td></tr></table></figure>
-
 <ul>
-<li><p>如果没有别的线程拥有这把锁, 那么当前线程得到锁, 继续运行;</p>
-</li>
-<li><p>如果别的线程持有该锁, 那么当前线程将一直等待直到得到锁.</p>
-</li>
+<li>如果没有别的线程拥有这把锁, 那么当前线程得到锁, 继续运行;</li>
+<li>如果别的线程持有该锁, 那么当前线程将一直等待直到得到锁.</li>
 <li><p>锁初始化:  </p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">pthread_mutex_t</span> lock = PTHREAD_MUTEX_INITIALIZER;</span><br></pre></td></tr></table></figure>
-
 <p>或者</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> rc = pthread_mutex_init(&amp;lock, <span class="literal">NULL</span>);</span><br><span class="line">assert(rc == <span class="number">0</span>); <span class="comment">// always check success!</span></span><br></pre></td></tr></table></figure>
-
 </li>
 </ul>
 <h3 id="条件变量"><a href="#条件变量" class="headerlink" title="条件变量"></a>条件变量</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_cond_wait</span><span class="params">(<span class="keyword">pthread_cond_t</span> *cond, <span class="keyword">pthread_mutex_t</span> *mutex)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_cond_signal</span><span class="params">(<span class="keyword">pthread_cond_t</span> *cond)</span></span>;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>pthread_cond_wait让线程睡眠, 等待其他线程发出信号</li>
 <li>pthread_cond_signal唤醒正在沉睡中的对应线程</li>
@@ -342,17 +336,13 @@
 </li>
 </ul>
 <h2 id="锁的实现"><a href="#锁的实现" class="headerlink" title="锁的实现"></a>锁的实现</h2><h3 id="硬件层"><a href="#硬件层" class="headerlink" title="硬件层"></a>硬件层</h3><h4 id="LOCK指令"><a href="#LOCK指令" class="headerlink" title="LOCK指令"></a>LOCK指令</h4><ul>
-<li><p>保证顺序, 原子性和可见性</p>
-<h4 id="LL-SC"><a href="#LL-SC" class="headerlink" title="LL/SC"></a>LL/SC</h4></li>
+<li>保证顺序, 原子性和可见性<h4 id="LL-SC"><a href="#LL-SC" class="headerlink" title="LL/SC"></a>LL/SC</h4></li>
 <li><p>把一对读-写实现成一对“可能失败”的操作</p>
 <ul>
-<li><p>Load Linked (LL)：先执行一次读操作，并且在地址上做一个“标记”</p>
-</li>
-<li><p>Store Conditional (SC)：试探性地写入LL相同的地址(通过对内存地址获得独占访问)。如果LL-SC之间没有其他到该地址的写操作，则写入内存，返回SUCC；否则不执行写入(进而不会污染任何内存)，并返回FAIL。</p>
-<h3 id="自旋锁"><a href="#自旋锁" class="headerlink" title="自旋锁"></a>自旋锁</h3></li>
+<li>Load Linked (LL)：先执行一次读操作，并且在地址上做一个“标记”</li>
+<li>Store Conditional (SC)：试探性地写入LL相同的地址(通过对内存地址获得独占访问)。如果LL-SC之间没有其他到该地址的写操作，则写入内存，返回SUCC；否则不执行写入(进而不会污染任何内存)，并返回FAIL。<h3 id="自旋锁"><a href="#自旋锁" class="headerlink" title="自旋锁"></a>自旋锁</h3></li>
 <li><p>开关中断</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">lock</span><span class="params">(<span class="keyword">lock_t</span> *lk)</span> </span>&#123;</span><br><span class="line">    pushcli();</span><br><span class="line">    <span class="keyword">while</span> (atomic_xchg(&amp;lk-&gt;locked, <span class="number">1</span>)) ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">unlock</span><span class="params">(<span class="keyword">lock_t</span> *lk)</span> </span>&#123;</span><br><span class="line">    atomic_xchg(&amp;lk-&gt;locked, <span class="number">0</span>);</span><br><span class="line">    popsti();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>注意ABBA类型, 不能过早地开中断. 可以将lock和unlock想成入栈和出栈的过程(处理器维护).<h3 id="能睡眠的互斥锁"><a href="#能睡眠的互斥锁" class="headerlink" title="能睡眠的互斥锁"></a>能睡眠的互斥锁</h3></li>
 </ul>
@@ -367,12 +357,6 @@
 </li>
 <li><p>例子: 游泳池的进入</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> __<span class="title">lock_t</span> &#123;</span></span><br><span class="line">  <span class="keyword">int</span> flag;</span><br><span class="line">  <span class="keyword">int</span> guard; <span class="comment">// 持有guard锁才能更改flag</span></span><br><span class="line">  <span class="keyword">queue_t</span> *q;</span><br><span class="line">&#125; <span class="keyword">lock_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">lock</span><span class="params">(<span class="keyword">lock_t</span> *m)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">while</span> (TestAndSet(&amp;m-&gt;guard, <span class="number">1</span>) == <span class="number">1</span>)</span><br><span class="line">    ; <span class="comment">// acquire guard lock by spinning</span></span><br><span class="line">  <span class="keyword">if</span> (m-&gt;flag == <span class="number">0</span>) &#123;</span><br><span class="line">    m-&gt;flag = <span class="number">1</span>; <span class="comment">// lock is acqured</span></span><br><span class="line">    m-&gt;guard = <span class="number">0</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    queue_add(m-&gt;q, gettid());</span><br><span class="line">    m-&gt;guard = <span class="number">0</span>; <span class="comment">// 解锁</span></span><br><span class="line">    park(); <span class="comment">// 睡眠</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">unlock</span><span class="params">(<span class="keyword">lock_t</span> *m)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">while</span> (TestAndSet(&amp;m-&gt;guard, <span class="number">1</span>) == <span class="number">1</span>)</span><br><span class="line">    ; <span class="comment">// acquire guard lock by spinning</span></span><br><span class="line">  <span class="keyword">if</span> (queue_empty(m-&gt;q))</span><br><span class="line">    m-&gt;flag = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    unpark(queue_remove(m-&gt;q)); <span class="comment">// 唤醒</span></span><br><span class="line">  m-&gt;guard = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
 </li>
 </ul>
 <h2 id="并发数据结构"><a href="#并发数据结构" class="headerlink" title="并发数据结构"></a>并发数据结构</h2><ul>
@@ -390,16 +374,13 @@
 <li>某个条件满足，<strong>唤醒所有</strong>正在等待的线程</li>
 </ul>
 </li>
-<li><p>pthread_cond_wait(pthread_cond_t *c, pthread_mutex_t *m);<br>pthread_cond_signal(pthread_cond_t *c);唤醒一个</p>
+<li><p>pthread_cond_wait(pthread_cond_t <em>c, pthread_mutex_t </em>m);<br>pthread_cond_signal(pthread_cond_t *c);唤醒一个</p>
 <p>pthread_cond_broadcast(pthread_cond_t *c);唤醒所有</p>
 </li>
 <li><p><code>wait()</code>函数还需要一个<strong>互斥锁</strong>作为参数。<code>wait()</code>会解开锁并且让调用者进入睡眠状态（这是一个原子操作）。当调用者被唤醒时，<code>wait()</code>必须重新上锁，然后才能返回到调用者。</p>
 </li>
 <li><p>实现join</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">worker</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">  mutex_lock(&amp;mutex);</span><br><span class="line">  done[id] = <span class="number">1</span>; <span class="comment">// 可能和read并发执行</span></span><br><span class="line">  signal(&amp;joins);</span><br><span class="line">  mutex_unlock(&amp;mutex);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nworkers; i++)</span><br><span class="line">    create(worker, i);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nworkers; i++) &#123;</span><br><span class="line">    lock(&amp;mutex);</span><br><span class="line">    <span class="keyword">if</span> (!done[i]) &#123;</span><br><span class="line">      wait(&amp;joins, &amp;mutex);</span><br><span class="line">    &#125;</span><br><span class="line">    unlock(&amp;mutex);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
 </li>
 </ul>
 <ul>
@@ -444,9 +425,6 @@
 <li><p>将生产者消费者问题中的互斥锁, 条件变量, 计数器合三为一.</p>
 </li>
 <li><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;semaphore.h&gt;</span></span></span><br><span class="line"><span class="keyword">sem_t</span> s;</span><br><span class="line">sem_init(&amp;s, <span class="number">0</span>, <span class="number">1</span>); <span class="comment">// 第三个参数是初始值</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sem_wait</span><span class="params">(<span class="keyword">sem_t</span> &amp;s)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// decrement the value of semaphore s by one</span></span><br><span class="line">  <span class="comment">// wait if value of semaphore s is negative</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sem_post</span><span class="params">(<span class="keyword">sem_t</span> &amp;s)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// increment the value of semaphore s by one</span></span><br><span class="line">  <span class="comment">// if there are one or more threads waiting, wake one</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
 </li>
 </ul>
 <ul>
@@ -484,7 +462,6 @@
 </li>
 <li><p>信号量解生产者消费者问题:</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sem_t</span> empty = SEM_INIT(n);</span><br><span class="line"><span class="keyword">sem_t</span> fill = SEM_INIT(<span class="number">0</span>);</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">producer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">    P(&amp;empty);</span><br><span class="line">    mutex_lock(&amp;mutex);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"("</span>);</span><br><span class="line">    mutex_unlock(&amp;mutex);</span><br><span class="line">    V(&amp;fill);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">consumer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">    P(&amp;fill);</span><br><span class="line">    mutex_lock(&amp;mutex);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">")"</span>);</span><br><span class="line">    mutex_unlock(&amp;mutex);</span><br><span class="line">    V(&amp;empty);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>注意生产者消费者问题中的线程安全性. (printf是安全的)</li>
 <li>解决方案：先等信号，再上锁。</li>
@@ -512,13 +489,11 @@
 </li>
 <li><p>死锁最基本的形式 (<strong>ABBA</strong>)</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">thread1      tread2</span><br><span class="line">lock(A);</span><br><span class="line">             lock(B);</span><br><span class="line"></span><br><span class="line">lock(B); <span class="comment">// 阻塞</span></span><br><span class="line">             lock(A); <span class="comment">// 阻塞</span></span><br><span class="line"><span class="comment">// 任何线程都不能进入临界区</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li><p>在一个线程连续的两次lock之间发生另一个lock事件，死锁才会能触发。</p>
 </li>
 <li><p>例子:</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">move_obj</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">  spin_lock(&amp;lock[i]);</span><br><span class="line">  spin_lock(&amp;lock[j]);</span><br><span class="line">  arr[i] = <span class="literal">NULL</span>;</span><br><span class="line">  arr[j] = arr[i];</span><br><span class="line">  spin_unlock(&amp;lock[j]);</span><br><span class="line">  spin_unlock(&amp;lock[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>同时move_obj(1, 2)<code>;</code>move_obj(2, 1).</p>
 </li>
 </ul>
@@ -677,7 +652,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

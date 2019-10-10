@@ -324,8 +324,7 @@
 </li>
 <li><p>有一个过程, 可将A的任意实例$\alpha$转化为B的具有以下特征的某个实例$\beta$:</p>
 <ul>
-<li><p>转换操作需要多项式时间</p>
-</li>
+<li>转换操作需要多项式时间</li>
 <li><p>两个实例的解是相同的, $\alpha$的解为”是”当且仅当$\beta$的解为”是”</p>
 </li>
 <li><p>称这一过程为<strong>多项式时间归约算法</strong></p>
@@ -366,9 +365,9 @@
 <li>Q是顶一个在一个实例集I上的一个抽象判定问题, $e_1$和$e_2$是I上多项式相关的编码, 则$e_1(Q)\in P$当且仅当$e_2(Q)\in P$</li>
 <li>形式语言体系:<ul>
 <li>字母表, 语言, 交, 并, 补, 连结, …</li>
-<li>闭包$L^* = \{\epsilon \}\cup L \cup L^2 \cup L^3 \cup \cdots$, 其中$L^k$是L与其自身进行k次连结运算后得到的语言</li>
-<li>复杂类P的另一种定义: $P ={L \subseteq {0, 1}^*: 存在一个算法A, 可以在多项式时间内判定L}$ </li>
-<li>$P = {L: L被一个多项式时间算法所接受 }$</li>
+<li>闭包$L^* = \\{\epsilon \\}\cup L \cup L^2 \cup L^3 \cup \cdots$, 其中$L^k$是L与其自身进行k次连结运算后得到的语言</li>
+<li>复杂类P的另一种定义: $P =\{L \subseteq \{0, 1\}^*: 存在一个算法A, 可以在多项式时间内判定L\}$ </li>
+<li>$P = \{L: L被一个多项式时间算法所接受 \}$</li>
 </ul>
 </li>
 </ul>
@@ -376,7 +375,7 @@
 <li><strong>验证算法</strong>: <ul>
 <li>含两个自变量的算法A, 其中一个自变量是普通输入串x, 另一个是称为证书的二进制串y. </li>
 <li>如果存在一个证书y满足$A(x, y)= 1$, 则该含两个自变量的算法A验证了输入串x. </li>
-<li>由一个验证算法A锁验证的语言是: $L={x\in {0, 1}^<em>: 存在y\in {0,1}^</em>, 满足A(x, y)=1}$</li>
+<li>由一个验证算法A锁验证的语言是: $L=\{x\in \{0, 1\}^<em>: 存在y\in \{0,1\}^</em>, 满足A(x, y)=1\}$</li>
 <li>如果对任意串$x\in L$, 都存在一个证书y, 且算法A可以用y来证明$x\in L$, 则算法A就验证了语言L.</li>
 </ul>
 </li>
@@ -385,7 +384,7 @@
 <li><p>复杂类NP是能被一个多项式时间算法验证的语言类</p>
 </li>
 <li><p>一个语言$L\in NP$, 当且仅当存在一个2输入的多项式时间算法A和常数c, 满足</p>
-<p>$L = {x\in {0,1}^* : 存在一个证书y, |y|= O(|x|^c), 满足A(x,y)=1}$</p>
+<p>$L = \{x\in \{0,1\}^* : 存在一个证书y, |y|= O(|x|^c), 满足A(x,y)=1\}$</p>
 </li>
 <li><p>$P\subseteq NP$</p>
 </li>
@@ -397,12 +396,11 @@
 <h3 id="可归约性"><a href="#可归约性" class="headerlink" title="可归约性"></a>可归约性</h3><ul>
 <li>问题Q可以被归约为另一个问题Q’: Q的任何实例都可以被”容易地重新描述”为Q’的实例, 而Q’的实例的解也是Q的实例的解</li>
 <li>Q可以转化为Q’, 则Q并不比Q’更难解决</li>
-<li>定义: 语言$L_1$在多项式时间内可以归约为语言$L_2$, 记作$L_1 \le_p L_2$, 如果存在一个多项式时间可计算的函数$f: {0, 1}^* \to {0, 1}^<em>$, 满足对于所有的$x\in{0, 1}^</em>$, $x\in L_1$当且仅当$f(x) \in L_2 $, 则称函数f为<strong>归约函数</strong>, 计算f的多项式时间算法F为<strong>归约算法</strong></li>
-<li>如果$L_1, L_2\subseteq {0,1}^*$满足$L_1\le_p L_2$, 则$L_2\in P$蕴含$L_1\in P$</li>
+<li>定义: 语言$L_1$在多项式时间内可以归约为语言$L_2$, 记作$L_1 \le_p L_2$, 如果存在一个多项式时间可计算的函数$f: \{0, 1\}^<em> \to \{0, 1\}^</em>$, 满足对于所有的$x\in\{0, 1\}^<em>$, $x\in L_1$当且仅当$f(x) \in L_2 $, 则称函数f为<strong>归约函数</strong>, 计算f的多项式时间算法F为<em>*归约算法</em></em></li>
+<li>如果$L_1, L_2\subseteq \{0,1\}^*$满足$L_1\le_p L_2$, 则$L_2\in P$蕴含$L_1\in P$</li>
 </ul>
 <h3 id="NP完全性"><a href="#NP完全性" class="headerlink" title="NP完全性"></a>NP完全性</h3><ul>
-<li><p>语言$L\in {0,1}^<em>$是*</em>NP完全**的, 如果:</p>
-<ul>
+<li>语言$L\in \{0,1\}^<em>$是<em>*NP完全</em></em>的, 如果:<ul>
 <li>$L\in NP$</li>
 <li>对每一个$L’ \in NP$,  有$L’\le_p L$</li>
 </ul>
@@ -411,7 +409,7 @@
 </li>
 <li><p><strong>NPC</strong>为NP完全语言类</p>
 </li>
-<li><p>电路可满足性问题CIRCUIT-SAT = {&lt;C&gt;: C是一个可满足的不二组合电路}是NP完全的</p>
+<li><p>电路可满足性问题CIRCUIT-SAT = {\<c\>: C是一个可满足的不二组合电路}是NP完全的</c\></p>
 </li>
 </ul>
 <h2 id="NP完全性证明"><a href="#NP完全性证明" class="headerlink" title="NP完全性证明"></a>NP完全性证明</h2><ul>
@@ -419,8 +417,8 @@
 <li>证明一种语言L是NP完全语言的方法:<ul>
 <li>证明$L\in NP$</li>
 <li>选取一种一致的NP完全语言L’</li>
-<li>描述一种可计算函数$f(x)$的算法, 其中$f$可将L’中每一个实例$x\in {0,1}^*$映射为L中的实例$f(x)$</li>
-<li>证明函数$f$满足对于所有的$x\in {0,1}^*$都有 $x\in L’$当且仅当$f(x)\in L$</li>
+<li>描述一种可计算函数$f(x)$的算法, 其中$f$可将L’中每一个实例$x\in \{0,1\}^*$映射为L中的实例$f(x)$</li>
+<li>证明函数$f$满足对于所有的$x\in \{0,1\}^*$都有 $x\in L’$当且仅当$f(x)\in L$</li>
 <li>证明计算函数$f$的算法具有多项式运行时间</li>
 </ul>
 </li>
@@ -474,7 +472,7 @@
 </li>
 </ul>
 <h3 id="顶点覆盖问题"><a href="#顶点覆盖问题" class="headerlink" title="顶点覆盖问题"></a>顶点覆盖问题</h3><ul>
-<li>VERTEX-COVER = {&lt;G, k&gt;: 图G有一个规模为k的顶点覆盖}</li>
+<li>VERTEX-COVER = {\<g, k\>: 图G有一个规模为k的顶点覆盖}</g,></li>
 <li>CLIQUE $\le_P$ VERTEX-COVER<ul>
 <li>包含团V’的无向图G, $\overline G$包含顶点覆盖V - V’</li>
 </ul>
@@ -484,7 +482,7 @@
 <li>VERTEX-COVER $\le_P$ HAM-CYCLE</li>
 </ul>
 <h3 id="旅行商问题"><a href="#旅行商问题" class="headerlink" title="旅行商问题"></a>旅行商问题</h3><ul>
-<li><p>TSP = {&lt;G, c, k&gt;: G = (V, E)是一个完全图, c是V $\times$ V $\to$ Z的一个函数, $k\in Z$, G中包含一个最大花费为k的旅行回路}</p>
+<li><p>TSP = {\<g, c, k\>: G = (V, E)是一个完全图, c是V $\times$ V $\to$ Z的一个函数, $k\in Z$, G中包含一个最大花费为k的旅行回路}</g,></p>
 </li>
 <li><p>HAM-CYCLE $\le_P$ TSP</p>
 <ul>
@@ -501,7 +499,7 @@
 </ul>
 <h3 id="子集和问题"><a href="#子集和问题" class="headerlink" title="子集和问题"></a>子集和问题</h3><ul>
 <li>subset-sum problem </li>
-<li>SUBSET-SUM = {&lt;S, t&gt;: 存在一个子集$S’ \subseteq S$, 使得$t = \sum_{s\in S’}s$</li>
+<li>SUBSET-SUM = {\<s, t\>: 存在一个子集$S’ \subseteq S$, 使得$t = \sum_{s\in S’}s$</s,></li>
 <li>3-CNF-SAT $\le_P$ SUBSET-SUM:</li>
 </ul>
 
@@ -623,7 +621,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

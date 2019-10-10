@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="组合数学,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1 生成函数 $a_n$的ordinary generating function(ODF):  G(x)=\sum_{n\ge 0}a_nx^n  1.1 组合 例1: $(x_0+x_1)^3$的展开式表示了3元集的所有子集, $(1+x)^3$的展开式的$x_k$系数表示了$k-$子集的数量 例2: 3红4蓝5绿球, 选$k$球的方法, 即$(1+x+x^2+x^3)(1+x+x^2+x^3">
+<meta name="keywords" content="组合数学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="组合数学之生成函数">
+<meta property="og:url" content="http://yoursite.com/2019/09/18/组合数学之生成函数/index.html">
+<meta property="og:site_name" content="XY&#39;s blog">
+<meta property="og:description" content="1 生成函数 $a_n$的ordinary generating function(ODF):  G(x)=\sum_{n\ge 0}a_nx^n  1.1 组合 例1: $(x_0+x_1)^3$的展开式表示了3元集的所有子集, $(1+x)^3$的展开式的$x_k$系数表示了$k-$子集的数量 例2: 3红4蓝5绿球, 选$k$球的方法, 即$(1+x+x^2+x^3)(1+x+x^2+x^3">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/home/xy/Documents/大三上/组合数学/figs1/生成函数算术操作.png">
+<meta property="og:updated_time" content="2019-10-10T02:43:58.282Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="组合数学之生成函数">
+<meta name="twitter:description" content="1 生成函数 $a_n$的ordinary generating function(ODF):  G(x)=\sum_{n\ge 0}a_nx^n  1.1 组合 例1: $(x_0+x_1)^3$的展开式表示了3元集的所有子集, $(1+x)^3$的展开式的$x_k$系数表示了$k-$子集的数量 例2: 3红4蓝5绿球, 选$k$球的方法, 即$(1+x+x^2+x^3)(1+x+x^2+x^3">
+<meta name="twitter:image" content="http://yoursite.com/home/xy/Documents/大三上/组合数学/figs1/生成函数算术操作.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/09/18/组合数学之生成函数/">
+
+
+
+
+
+  <title>组合数学之生成函数 | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XY's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/18/组合数学之生成函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XY">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XY's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">组合数学之生成函数</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-18T20:00:00+08:00">
+                2019-09-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-生成函数"><a href="#1-生成函数" class="headerlink" title="1 生成函数"></a>1 生成函数</h1><ul>
+<li>$a_n$的<strong>ordinary generating function(ODF)</strong>: <script type="math/tex; mode=display">
+G(x)=\sum_{n\ge 0}a_nx^n</script></li>
+</ul>
+<h2 id="1-1-组合"><a href="#1-1-组合" class="headerlink" title="1.1 组合"></a>1.1 组合</h2><ul>
+<li>例1: $(x_0+x_1)^3$的展开式表示了3元集的所有子集, $(1+x)^3$的展开式的$x_k$系数表示了$k-$子集的数量</li>
+<li>例2: 3红4蓝5绿球, 选$k$球的方法, 即$(1+x+x^2+x^3)(1+x+x^2+x^3+x^4)(1+x+x^2+x^3+x^4+x^5)$展开式中$x^k$的系数</li>
+</ul>
+<h2 id="1-2-斐波那契数"><a href="#1-2-斐波那契数" class="headerlink" title="1.2 斐波那契数"></a>1.2 斐波那契数</h2><script type="math/tex; mode=display">
+  \begin{aligned}
+  G(x)&=\sum_{n\ge 0}F_nx^n\\
+  &= F_0+F_1x+\sum_{n\ge 2}F_nx^n\\
+  &=x+ \sum_{n\ge 2}(F_{n-1}+F_{n-2})x^n\\
+  \end{aligned}</script><script type="math/tex; mode=display">
+  xG(x)=\sum_{n\ge 0}F_nx^{n+1}=\sum_{n\ge 1}F_{n-1}x^{n}=\sum_{n\ge 2}F_{n-1}x^{n+1}</script><script type="math/tex; mode=display">
+  x^2G(x)=\sum_{n\ge 0}F_nx^{n+2}=\sum_{n\ge 2}F_{n-2}x^{n}</script><script type="math/tex; mode=display">
+  G(x)=x+(x+x^2)G(x)</script><script type="math/tex; mode=display">
+  \begin{aligned}
+  G(x)&=\frac{x}{1-x-x^2}\\
+  &=\frac{1}{\sqrt 5}\cdot \frac{1}{1-\phi x}-\frac{1}{\sqrt 5}\cdot \frac{1}{1-\hat\phi x}\\
+  &= \frac{1}{\sqrt 5}\sum_{n\ge 0}(\phi x)^n-\frac{1}{\sqrt 5}\sum_{n\ge 0}(\hat\phi x)^n\\
+  &= \sum_{n\ge 0}\frac{1}{\sqrt 5}(\phi^n-\hat \phi^n )x^n
+  \end{aligned}</script><p>  其中$\phi = \frac{1+\sqrt 5}{2}$, $\phi = \frac{1-\sqrt 5}{2}$</p>
+<p>因此</p>
+<script type="math/tex; mode=display">
+  F_n=\frac{1}{\sqrt 5}(\phi^n - \hat\phi^n)=\frac{1}{\sqrt 5}(\frac{1+\sqrt 5}{2})^n -\frac{1}{\sqrt 5} (\frac{1-\sqrt 5}{2})^n</script><h1 id="2-解递归式"><a href="#2-解递归式" class="headerlink" title="2 解递归式"></a>2 解递归式</h1><ul>
+<li>步骤如下:<ul>
+<li>给出$a_n$递归式: </li>
+<li>求$G(x)=\sum_{n\ge 0}a_nx^n$, 将右侧处理至含$G(x)$</li>
+<li>解出$G(x)$的表达式</li>
+<li>展开后, $x_n$的系数为$a_n$</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-1-生成函数的代数操作"><a href="#2-1-生成函数的代数操作" class="headerlink" title="2.1 生成函数的代数操作"></a>2.1 生成函数的代数操作</h2><p><img src="/home/xy/Documents/大三上/组合数学/figs1/生成函数算术操作.png" alt="生成函数算术操作"></p>
+<h2 id="2-2-展开生成函数"><a href="#2-2-展开生成函数" class="headerlink" title="2.2 展开生成函数"></a>2.2 展开生成函数</h2><h3 id="2-2-1-泰勒展开"><a href="#2-2-1-泰勒展开" class="headerlink" title="2.2.1 泰勒展开"></a>2.2.1 泰勒展开</h3><script type="math/tex; mode=display">
+G(x)=\sum_{n\ge 0}\frac{G^{(n)}(0)}{n!}x^n</script><h3 id="2-2-2-几何序列"><a href="#2-2-2-几何序列" class="headerlink" title="2.2.2 几何序列"></a>2.2.2 几何序列</h3><script type="math/tex; mode=display">
+\frac{1}{1-x}=\sum_{n\ge 0}x^n</script><ul>
+<li>例如$G(x)=\sum_{i=1}^k\frac{a_i}{1-b_ix}$, 因此$a_n=\sum_{i=1}^k a_ib_i^n$</li>
+</ul>
+<h3 id="2-2-3-二项式定理"><a href="#2-2-3-二项式定理" class="headerlink" title="2.2.3 二项式定理"></a>2.2.3 二项式定理</h3><script type="math/tex; mode=display">
+(1+x)^\alpha = \sum_{n\ge 0}\binom{\alpha}{n}x^n</script><p>例子: 多重集$S=\{x_1,x_2,\cdots, x_n\}$</p>
+<script type="math/tex; mode=display">
+(1+x_1+x_1^2+\cdots)(1+x_2+x_2^2+\cdots)\cdots(1+x_n+x_n^2+\cdots)=\sum_{m:S\to \mathbb N}\prod_{x_i\in S}x_i^{m(x_i)}</script><p>其中$m$是$S$中可能的多重集中的$x_i$的重数</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+(1+x+x^2+\cdots)^n&=\sum_{m:S\to \mathbb N}x_i^{m(x_1)+m(x_2)+\cdots+m(x_n)}\\
+&=\sum_{multiset ~ M ~ on ~ S}x^{|M|}\\
+&=\sum_{k\ge 0}\left(\binom{n}{k}\right)x^k
+\end{aligned}</script><p>而</p>
+<script type="math/tex; mode=display">
+(1+x+x^2+\cdots)^n=(1-x)^{-n}=\sum_{k\ge 0}\binom{-n}{k}(-x)^k</script><p>因此</p>
+<script type="math/tex; mode=display">
+\left(\binom{n}{k}\right)=(-1)^k\binom{-n}{k}=\binom{n+k-1}{k}</script><h1 id="3-卡特兰数"><a href="#3-卡特兰数" class="headerlink" title="3 卡特兰数"></a>3 卡特兰数</h1><ul>
+<li>$C_n$例子:<ul>
+<li>$n$对括号合法匹配的个数</li>
+<li>$n+1$个数相乘, 不同的加括号方法</li>
+<li>$n+1$叶节点的full binary tree的数量</li>
+<li>$n\times n$方格中不超过对角线上方的monotonic paths的数量</li>
+<li>$n+2$边凸多边形的三角形分割数</li>
+<li>stack-sortable permutations of $\{1,\cdots, n\}$</li>
+<li>tile a stairstep shape of height n with n rectangles</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-1-解卡特兰数"><a href="#3-1-解卡特兰数" class="headerlink" title="3.1 解卡特兰数"></a>3.1 解卡特兰数</h2><p>卡特兰数递归式: $C_0=1$, 对于$n\ge 1$, $C_n=\sum_{k=0}^{n-1}C_kC_{n-1-k}$</p>
+<script type="math/tex; mode=display">
+  G(x)=\sum_{n\ge 0}C_n x^n</script><script type="math/tex; mode=display">
+  G(x)^2=\sum_{n\ge 0}\sum_{k=0}^nC_kC_{n-k}x^n</script><script type="math/tex; mode=display">
+  xG(x)^2=\sum_{n\ge 0}\sum_{k=0}^nC_kC_{n-k}x^{n+1}=
+  \sum_{n\ge 1}\sum_{k=0}^nC_kC_{n-1-k}x^{n}</script><script type="math/tex; mode=display">
+  G(x)=sum_{n\ge 0}C_nx^n=C_0+\sum_{n\ge 1}\sum_{k=0}^nC_kC_{n-1-k}x^{n}=1+xG(x)^2</script><script type="math/tex; mode=display">
+  G(x)=\frac{1\pm(1-4x)^{1/2}}{2x}</script><p>因为$\lim _{x\to 0}G(x)=C_0=1$</p>
+<p>所以</p>
+<script type="math/tex; mode=display">
+  G(x)=\frac{1-(1-4x)^{1/2}}{2x}</script><script type="math/tex; mode=display">
+  \begin{aligned}
+  (1-4x)^{1/2}&=\sum_{n\ge 0}\binom{1/2}{n}(-4x)^n\\
+  &=1+\sum_{n\ge 1}\binom{1/2}{n}(-4x)^n\\
+  &=1-4x\sum_{n\ge 0}\binom{1/2}{n+1}(-4x)^n
+  \end{aligned}</script><script type="math/tex; mode=display">
+  G(x)=\frac{1-(1-4x)^{1/2}}{2x}=2\sum_{n\ge 0}\binom{1/2}{n+1}(-4x)^n</script><script type="math/tex; mode=display">
+\begin{aligned}
+  C_n&=2\binom{1/2}{n+1}(-4)^n\\
+  &=2\cdot (\frac{1}{2}\cdot\frac{-1}{2}\cdot\frac{-3}{2}\cdots\frac{-(2n-1)}{2})\cdot\frac{1}{(n+1)!}(-4)^n\\
+  &=\frac{2^n}{(n+1)!}\prod_{k=1}^n(2k-1)\\
+  &=\frac{2^n}{(n+1)!}\prod_{k=1}^n\frac{(2k-1)2k}{2k}\\
+  &=\frac{1}{(n+1)!n!}\prod_{k=1}^n(2k-1)2k\\
+  &=\frac{(2n)!}{n!(n+1)!}\\
+  &=\frac{1}{n+1}\binom{2n}{n}
+  \end{aligned}</script><h1 id="4-快排分析"><a href="#4-快排分析" class="headerlink" title="4 快排分析"></a>4 快排分析</h1><h4 id="递归式"><a href="#递归式" class="headerlink" title="递归式"></a>递归式</h4><p>$T_0=T_1=0$,  而 $T_n = \frac{1}{n}\sum_{k=1}^n(n-1+T_{k-1}+T_{n-k})$</p>
+<h4 id="解OGF"><a href="#解OGF" class="headerlink" title="解OGF"></a>解OGF</h4><ul>
+<li>详见讲义, 注意卷积的使用</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/组合数学/" rel="tag"># 组合数学</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/18/高级算法之指纹/" rel="next" title="高级算法之指纹">
+                <i class="fa fa-chevron-left"></i> 高级算法之指纹
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/25/高级算法之哈希/" rel="prev" title="高级算法之哈希">
+                高级算法之哈希 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XY</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-生成函数"><span class="nav-number">1.</span> <span class="nav-text">1 生成函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-组合"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 组合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-斐波那契数"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 斐波那契数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-解递归式"><span class="nav-number">2.</span> <span class="nav-text">2 解递归式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-生成函数的代数操作"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 生成函数的代数操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-展开生成函数"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 展开生成函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-泰勒展开"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 泰勒展开</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-几何序列"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.2 几何序列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3-二项式定理"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.2.3 二项式定理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-卡特兰数"><span class="nav-number">3.</span> <span class="nav-text">3 卡特兰数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-解卡特兰数"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 解卡特兰数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-快排分析"><span class="nav-number">4.</span> <span class="nav-text">4 快排分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#递归式"><span class="nav-number">4.0.0.1.</span> <span class="nav-text">递归式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解OGF"><span class="nav-number">4.0.0.2.</span> <span class="nav-text">解OGF</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="概念 提供不比最优解差太多的可行解  定义: 对于最优化问题 $U = \{\Sigma_I, \Sigma_O, L, L_I, M, cost, goal\}$ , A是U的一个一致性算法. 对于所有问题实例$x\in L_I$, A对于x的相对误差$\epsilon_A(x)$定义为$$\epsilon_A(x) = \frac{|cost(A(x)) - Opt_U(x)|}{Opt_U(">
+<meta name="description" content="概念 提供不比最优解差太多的可行解  定义: 对于最优化问题 $U = \\{\Sigma_I, \Sigma_O, L, L_I, M, cost, goal\\}$ , A是U的一个一致性算法. 对于所有问题实例$x\in L_I$, A对于x的相对误差$\epsilon_A(x)$定义为  \epsilon_A(x) = \frac{|cost(A(x)) - Opt_U(x)|}{Opt_">
 <meta name="keywords" content="问题求解四">
 <meta property="og:type" content="article">
 <meta property="og:title" content="近似算法">
 <meta property="og:url" content="http://yoursite.com/2019/07/01/近似算法/index.html">
 <meta property="og:site_name" content="XY&#39;s blog">
-<meta property="og:description" content="概念 提供不比最优解差太多的可行解  定义: 对于最优化问题 $U = \{\Sigma_I, \Sigma_O, L, L_I, M, cost, goal\}$ , A是U的一个一致性算法. 对于所有问题实例$x\in L_I$, A对于x的相对误差$\epsilon_A(x)$定义为$$\epsilon_A(x) = \frac{|cost(A(x)) - Opt_U(x)|}{Opt_U(">
+<meta property="og:description" content="概念 提供不比最优解差太多的可行解  定义: 对于最优化问题 $U = \\{\Sigma_I, \Sigma_O, L, L_I, M, cost, goal\\}$ , A是U的一个一致性算法. 对于所有问题实例$x\in L_I$, A对于x的相对误差$\epsilon_A(x)$定义为  \epsilon_A(x) = \frac{|cost(A(x)) - Opt_U(x)|}{Opt_">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-07-01T07:39:34.321Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="近似算法">
-<meta name="twitter:description" content="概念 提供不比最优解差太多的可行解  定义: 对于最优化问题 $U = \{\Sigma_I, \Sigma_O, L, L_I, M, cost, goal\}$ , A是U的一个一致性算法. 对于所有问题实例$x\in L_I$, A对于x的相对误差$\epsilon_A(x)$定义为$$\epsilon_A(x) = \frac{|cost(A(x)) - Opt_U(x)|}{Opt_U(">
+<meta name="twitter:description" content="概念 提供不比最优解差太多的可行解  定义: 对于最优化问题 $U = \\{\Sigma_I, \Sigma_O, L, L_I, M, cost, goal\\}$ , A是U的一个一致性算法. 对于所有问题实例$x\in L_I$, A对于x的相对误差$\epsilon_A(x)$定义为  \epsilon_A(x) = \frac{|cost(A(x)) - Opt_U(x)|}{Opt_">
 
 
 
@@ -303,38 +303,46 @@
         <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ul>
 <li><p>提供不比最优解差太多的可行解</p>
 </li>
-<li><p>定义: 对于最优化问题 $U = \{\Sigma_I, \Sigma_O, L, L_I, M, cost, goal\}$ , A是U的一个一致性算法. 对于所有问题实例$x\in L_I$, A对于x的相对误差$\epsilon_A(x)$定义为<br>$$<br>\epsilon_A(x) = \frac{|cost(A(x)) - Opt_U(x)|}{Opt_U(x)}<br>$$<br>其中, $Opt_U(x)$是x的最优cost.</p>
+<li><p>定义: 对于最优化问题 $U = \\{\Sigma_I, \Sigma_O, L, L_I, M, cost, goal\\}$ , A是U的一个一致性算法. 对于所有问题实例$x\in L_I$, A对于x的相对误差$\epsilon_A(x)$定义为</p>
+<script type="math/tex; mode=display">
+\epsilon_A(x) = \frac{|cost(A(x)) - Opt_U(x)|}{Opt_U(x)}</script><p>其中, $Opt_U(x)$是x的最优cost.</p>
 </li>
-<li><p>对于任意$n\in \mathbb{N}$, 我们定义A的相对误差为<br>$$<br>\epsilon_A(n) = \max\{\epsilon_A(x)| x \in L_I \cap (\Sigma_I)^n\}<br>$$</p>
-</li>
+<li><p>对于任意$n\in \mathbb{N}$, 我们定义A的相对误差为</p>
+<script type="math/tex; mode=display">
+\epsilon_A(n) = \max\\{\epsilon_A(x)| x \in L_I \cap (\Sigma_I)^n\\}</script></li>
 <li><p>A关于x的近似率$R_A(x)$定义为</p>
 </li>
 </ul>
-<p>$$<br>R_A(x) = \max\{\frac{cost(A(x))}{Opt_U(x)}, \frac{Opt_U(x)}{cost(A(x))}\}<br>$$</p>
-<ul>
-<li><p>对于任意$n\in \mathbb{N}$, 我们定义A的相对近似率为<br>$$<br>R_A(x) = \max\{R_A(x)| x \in L_I\cap(\Sigma_I)^n\}<br>$$</p>
-</li>
+<script type="math/tex; mode=display">
+R_A(x) = \max\\{\frac{cost(A(x))}{Opt_U(x)}, \frac{Opt_U(x)}{cost(A(x))}\\}</script><ul>
+<li><p>对于任意$n\in \mathbb{N}$, 我们定义A的相对近似率为</p>
+<script type="math/tex; mode=display">
+R_A(x) = \max\\{R_A(x)| x \in L_I\cap(\Sigma_I)^n\\}</script></li>
 <li><p>对于任意正实数$\delta&gt;1$, 如果对任意$x\in L_I$, $R_A(x)\le \delta$, 定义A为U的<strong>$\delta-$近似算法</strong>.</p>
 </li>
 <li><p>对于任意函数$f:\mathbb{N}\to \mathbb{R^+}$, 如果对任意$n \in \mathbb{N}$, $R_A(x)\le f(n)$, 定义A为U的<strong>$f(n)-$近似算法</strong>.</p>
 </li>
-<li><p>对于最小化问题, 有</p>
-</li>
+<li>对于最小化问题, 有</li>
 </ul>
-<p>$$<br>R_A(x) = \frac{cost(A(x))}{Opt_U(x)}=1 + \epsilon_A(x)<br>$$</p>
-<ul>
-<li><p>对于最大化问题, 有<br>$$<br>R_A(x) = \frac{Opt_U(x)}{cost(A(x))}<br>$$</p>
-</li>
+<script type="math/tex; mode=display">
+R_A(x) = \frac{cost(A(x))}{Opt_U(x)}=1 + \epsilon_A(x)</script><ul>
+<li><p>对于最大化问题, 有</p>
+<script type="math/tex; mode=display">
+R_A(x) = \frac{Opt_U(x)}{cost(A(x))}</script></li>
 <li><p>Greedy Makespan Schedule:</p>
 <ul>
 <li><p>对于处理时间$p_i$排序, 从最大的开始, 依次将每个任务分配给最先空闲的机器.</p>
 </li>
 <li><p>证明这个算法是MS的2-近似算法:</p>
 <ul>
-<li><p>$I = (p_1, p_2, \cdots, p_n, m)$, $p_1&gt;p_2&gt;\cdots&gt;p_n$, 显然有<br>$$<br>Opt_{MS}(I) \ge p_1\ge p_2 \ge \cdots \ge p_n<br>$$<br>还有<br>$$<br>Opt_{MS}(I) \ge \frac{\sum_{i=1}^np_i}{m}<br>$$</p>
-</li>
-<li><p>对于任意$k = 1, 2, \cdots, n$, 因为$p_k$是$p_1$到$p_k$中最小的, 所以有<br>$$<br>p_k \le \frac{\sum_{i=1}^k p_i}{k}<br>$$</p>
-</li>
+<li><p>$I = (p_1, p_2, \cdots, p_n, m)$, $p_1&gt;p_2&gt;\cdots&gt;p_n$, 显然有</p>
+<script type="math/tex; mode=display">
+Opt_{MS}(I) \ge p_1\ge p_2 \ge \cdots \ge p_n</script><p>还有</p>
+<script type="math/tex; mode=display">
+Opt_{MS}(I) \ge \frac{\sum_{i=1}^np_i}{m}</script></li>
+<li><p>对于任意$k = 1, 2, \cdots, n$, 因为$p_k$是$p_1$到$p_k$中最小的, 所以有</p>
+<script type="math/tex; mode=display">
+p_k \le \frac{\sum_{i=1}^k p_i}{k}</script></li>
 <li><p>分类讨论:</p>
 <ul>
 <li><p>当$n\le m$时, 显然</p>
@@ -343,7 +351,15 @@
 <ul>
 <li><p>如果$k\le m$, $|T_l|=1$, 所以$Opt_{MS}(I) = p_1 = p_k$, $GMS(I)$是最优解.</p>
 </li>
-<li><p>如果$k&gt;m$, 因为其他机器的cost肯定不小于$cost(GMS(I)) - p_k$, 不然$p_k$就不会安排在这个机器, 所以<br>$$<br>\sum_{i=1}^{k-1}p_i\ge m\cdot [cost(GMS(I)) - p_k]<br>$$<br>再根据上面的式子2, 有<br>$$<br>Opt_{MS}(I)\ge cost(GMS(I))-p_k<br>$$<br>因此<br>$$<br>cost(GMS(I)) - Opt_{MS}(I)\le p_k\le \frac{\sum_{i=1}^k p_i}{k}<br>$$<br>最终有<br>$$<br>\frac{cost(GMS(I)) - Opt_{MS}(I)}{Opt_{MS}(I)}\le \frac{(\sum_{i=1}^k p_i)/k}{(\sum_{i=1}^n p_i)/m}\le \frac{m}{k} &lt; 1<br>$$<br>因此GMS是MS的2-近似算法.</p>
+<li><p>如果$k&gt;m$, 因为其他机器的cost肯定不小于$cost(GMS(I)) - p_k$, 不然$p_k$就不会安排在这个机器, 所以</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^{k-1}p_i\ge m\cdot [cost(GMS(I)) - p_k]</script><p>再根据上面的式子2, 有</p>
+<script type="math/tex; mode=display">
+Opt_{MS}(I)\ge cost(GMS(I))-p_k</script><p>因此</p>
+<script type="math/tex; mode=display">
+cost(GMS(I)) - Opt_{MS}(I)\le p_k\le \frac{\sum_{i=1}^k p_i}{k}</script><p>最终有</p>
+<script type="math/tex; mode=display">
+\frac{cost(GMS(I)) - Opt_{MS}(I)}{Opt_{MS}(I)}\le \frac{(\sum_{i=1}^k p_i)/k}{(\sum_{i=1}^n p_i)/m}\le \frac{m}{k} < 1</script><p>因此GMS是MS的2-近似算法.</p>
 </li>
 </ul>
 </li>
@@ -353,7 +369,7 @@
 </li>
 </ul>
 </li>
-<li><p>定义: 对于最优化问题 $U = {\Sigma_I, \Sigma_O, L, L_I, M, cost, goal}$ , 如果对于所有的输入对$(x, \epsilon)\in L_I\times \mathbb{R^+}$, A可以计算出一个相对误差不大于$\epsilon$的可行解A(x), 而且$Time_A(x, \epsilon^{-1})$有$|x|$的多项式函数上界, 那么A被称为U的<strong>多项式时间近似方案(PTAS)$</strong>.而如果$Time_A(x, \epsilon^{-1})$有$|x|$和$\epsilon^{-1}$的多项式函数上界, 那么A被称为U的<strong>完全多项式时间近似方案(FPTAS)$.</strong></p>
+<li><p>定义: 对于最优化问题 $U = \{\Sigma_I, \Sigma_O, L, L_I, M, cost, goal\}$ , 如果对于所有的输入对$(x, \epsilon)\in L_I\times \mathbb{R^+}$, A可以计算出一个相对误差不大于$\epsilon$的可行解A(x), 而且$Time_A(x, \epsilon^{-1})$有$|x|$的多项式函数上界, 那么A被称为U的<strong>多项式时间近似方案(PTAS)$</strong>.而如果$Time_A(x, \epsilon^{-1})$有$|x|$和$\epsilon^{-1}$的多项式函数上界, 那么A被称为U的<strong>完全多项式时间近似方案(FPTAS)$.</strong></p>
 </li>
 <li><p>PTAS: 任意输入, 想要多小误差都可以在|x|线性时间求解. </p>
 <p>FPTAS: 任意输入, 想要多小误差都可以在|x|和$\epsilon^{-1}$线性时间求解(误差越小越慢)</p>
@@ -393,29 +409,34 @@
 <h2 id="近似算法的稳定性"><a href="#近似算法的稳定性" class="headerlink" title="近似算法的稳定性"></a>近似算法的稳定性</h2><ul>
 <li><p>一般认为NPO(V)中的问题是不可求解的, 但是可以将$U\in NPO(V)$的输入$L_I$根据难度划分.</p>
 </li>
-<li><p>对于最优化问题 $U = \{\Sigma_I, \Sigma_O, L, L_I, M, cost, goal\}$ 和 $\overline U = \{\Sigma_I, \Sigma_O, L, L, M, cost, goal\}$ , $L_I\subseteq L$, $\overline U$关于$L_I$的<strong>距离函数</strong>$h_L:L\to \mathbb{R^{\ge 0}}$满足如下性质:</p>
+<li><p>对于最优化问题 $U = \\{\Sigma_I, \Sigma_O, L, L_I, M, cost, goal\\}$ 和 $\overline U = \\{\Sigma_I, \Sigma_O, L, L, M, cost, goal\\}$ , $L_I\subseteq L$, $\overline U$关于$L_I$的<strong>距离函数</strong>$h_L:L\to \mathbb{R^{\ge 0}}$满足如下性质:</p>
 <ul>
 <li>对于所有$x\in L_I$, 有$h_L(x)=0$</li>
 <li>h是多项式时间可计算的</li>
 </ul>
 </li>
-<li><p>对于$\overline U$关于$L_I$的距离函数$h$, 对于任意$r\in \mathbb{R}$, 定义<br>$$<br>Ball_{r,h}(L_I) = \{w\in L| h(w)\le r\}<br>$$</p>
-</li>
-<li><p>A是$\overline U$的一致性算法, 也是$U$的$\epsilon-$近似算法($\epsilon \in \mathbb{R^{&gt;1}}$). 令p为正实数, 当对于所有实数$0&lt;r\le p$, 存在$\delta_{r, \epsilon}\in \mathbb{R^{&gt;1}}$满足A是$U_r= \{\Sigma_I, \Sigma_O, L, Ball_{r,h}(L_I), M, cost, goal\}$的$\delta_{r, \epsilon}-$近似算法, 我们定义<strong>A关于h是p-稳定的</strong> </p>
+<li><p>对于$\overline U$关于$L_I$的距离函数$h$, 对于任意$r\in \mathbb{R}$, 定义</p>
+<script type="math/tex; mode=display">
+Ball_{r,h}(L_I) = \\{w\in L| h(w)\le r\\}</script></li>
+<li><p>A是$\overline U$的一致性算法, 也是$U$的$\epsilon-$近似算法($\epsilon \in \mathbb{R^{&gt;1}}$). 令p为正实数, 当对于所有实数$0<r\le p$, 存在$\delta_{r, \epsilon}\in \mathbb{r^{>1}}$满足A是$U_r= \\{\Sigma_I, \Sigma_O, L, Ball_{r,h}(L_I), M, cost, goal\\}$的$\delta_{r, \epsilon}-$近似算法, 我们定义<strong>A关于h是p-稳定的</strong> </r\le></p>
 </li>
 <li><p>如果对于所有正实数p, A都是p-稳定的, 那么A关于h是<strong>稳定</strong>的; 如果对于任意正实数p, A都不是p-稳定的, 那么A关于h是<strong>不稳定</strong>的</p>
 </li>
 <li><p>TSP和$\Delta-$TSP:</p>
 <ul>
-<li><p>对于任意输入实例(G, c), 定义<br>$$<br>dist(G,c)=\max\{0, \max\{\frac{c({u, v})}{c({u, v})+c({p,v})}-1|u, v, p\in V(G), u\ne v, u\ne p, v\ne p   \}\}<br>$$</p>
-<p>$$<br>dist_k(G,c)=\max\{0, \max\{\frac{c({u, v})}{\sum_{i=1}^m c({p_i,p_{i+1}})}-1|u, v\in V(G), u=p_1, p_2, \cdots, p_m=v$$<br>$$\text{ is a simple path between u and v of length at most }k(m + 1\le k)    \}\}<br>$$</p>
-<p>对于任意整数$k&gt;2$,<br>$$<br>distance(G,c) = \max\{disk_k(G,c)|2\le k\le|V(G)|-1  \}<br>$$<br>$Ball_{r, dist}(L_\Delta)$包含满足下面条件的带权图<br>$$<br>c({(u,v)})\le (1+r)(c({(u,p)}) + c({(p,v)}))<br>$$</p>
-</li>
+<li><p>对于任意输入实例(G, c), 定义</p>
+<script type="math/tex; mode=display">
+dist(G,c)=\max\\{0, \max\\{\frac{c(\{u, v\})}{c(\{u, v\})+c(\{p,v\})}-1|u, v, p\in V(G), u\ne v, u\ne p, v\ne p   \\}\\}</script><script type="math/tex; mode=display">
+dist_k(G,c)=\max\\{0, \max\\{\frac{c(\{u, v\})}{\sum_{i=1}^m c(\{p_i,p_{i+1}\})}-1|u, v\in V(G), u=p_1, p_2, \cdots, p_m=v</script><script type="math/tex; mode=display">\text{ is a simple path between u and v of length at most }k(m + 1\le k)    \\}\\}</script><p>对于任意整数$k&gt;2$, </p>
+<script type="math/tex; mode=display">
+distance(G,c) = \max\\{disk_k(G,c)|2\le k\le|V(G)|-1  \\}</script><p>$Ball_{r, dist}(L_\Delta)$包含满足下面条件的带权图</p>
+<script type="math/tex; mode=display">
+c(\{(u,v)\})\le (1+r)(c(\{(u,p)\}) + c(\{(p,v)\}))</script></li>
 </ul>
 </li>
 <li><p>只有在h合理划分问题实例的时候才是有意义的</p>
 </li>
-<li><p>U和$\overline U$, h, $U_r$定义同上, 令$A={A_\epsilon}_{\epsilon&gt;0}$是U的一个PTAS</p>
+<li><p>U和$\overline U$, h, $U_r$定义同上, 令$A=\{A_\epsilon\}_{\epsilon&gt;0}$是U的一个PTAS</p>
 <ul>
 <li><p>如果对所有的$r&gt;0$和$\epsilon&gt;0$, $A_\epsilon$是一个$U_r $的$\delta_{r,\epsilon}-$近似算法, 那么A关于h是<strong>稳定</strong>的</p>
 </li>
@@ -434,15 +455,16 @@
 </li>
 <li><p>对于最优化问题U, 定义<strong>限制条件距离函数</strong>为满足如下性质的函数$h: L_I \times \Sigma^*_O\to \mathbb R^{\ge 0}$</p>
 <ul>
-<li><p>对于$S\in M(x)$, $h(x, S)=0$</p>
-</li>
+<li>对于$S\in M(x)$, $h(x, S)=0$</li>
 <li><p>对于$S\not\in M(x)$, $h(x, S)&gt;0$</p>
 </li>
 <li><p>h是多项式时间可计算的</p>
 </li>
 </ul>
 </li>
-<li><p>例如01背包问题中, 定义<br>$$<br>h(I, T)=\max\{0, \max\{\sum_{l\in T_i}p_l|i=1,2,…,m  \}-1\}<br>$$<br>如果存在$\epsilon$满足对任何$i=1,2,…,m$有$\sum_{l\in T_i}p_l\le 1 + \epsilon$, 则$T\in M_\epsilon^h(I)$</p>
+<li><p>例如01背包问题中, 定义</p>
+<script type="math/tex; mode=display">
+h(I, T)=\max\\{0, \max\\{\sum_{l\in T_i}p_l|i=1,2,...,m  \\}-1\\}</script><p>如果存在$\epsilon$满足对任何$i=1,2,…,m$有$\sum_{l\in T_i}p_l\le 1 + \epsilon$, 则$T\in M_\epsilon^h(I)$</p>
 </li>
 <li><p>定义满足如下条件的算法A为U的<strong>$h-$对偶$\epsilon-$近似算法</strong>: 对所有$x\in L_I$, 有</p>
 <ul>
@@ -587,7 +609,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

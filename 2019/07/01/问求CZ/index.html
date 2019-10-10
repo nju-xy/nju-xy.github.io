@@ -306,44 +306,27 @@
 <li>如果uv是图G的边, 那么就称u和v在G中是邻接的(adjacent). G中的顶点数和边数分别称为该图的阶(order)和边数(size) .</li>
 </ul>
 <h3 id="连通图"><a href="#连通图" class="headerlink" title="连通图"></a>连通图</h3><ul>
-<li><p>诱导子图(induced subgraph):设图F是图G的一个子图． 对于F中的任意顶点u和v, 只要uv是G 中的边, 则uv一定是F中的边,</p>
-</li>
-<li><p><strong>链</strong>(walk):G中一条u-v链(walk) W 即为G 的一个顶点序列,满足:从u出发,到v结束,且图的顶点是邻接的．换句话说,可以把W表述成:<br>$$ W: u=v _0 , v_1, ….., v_k=v $$</p>
-</li>
-<li><p>链的长度(length): 一条链所经过的边的总数(包括边重复出现的次数)</p>
-</li>
-<li><p>平凡链(trivial walk):长度为0;</p>
-</li>
-<li><p><strong>迹</strong>(trail): 边没有被多次经过的u－v链．</p>
-</li>
-<li><p><strong>路</strong>(path):链中没有重复的顶点,显然每条路都是迹。</p>
-</li>
+<li>诱导子图(induced subgraph):设图F是图G的一个子图． 对于F中的任意顶点u和v, 只要uv是G 中的边, 则uv一定是F中的边,</li>
+<li><strong>链</strong>(walk):G中一条u-v链(walk) W 即为G 的一个顶点序列,满足:从u出发,到v结束,且图的顶点是邻接的．换句话说,可以把W表述成:<script type="math/tex; mode=display">W: u=v _0 , v_1, ....., v_k=v</script></li>
+<li>链的长度(length): 一条链所经过的边的总数(包括边重复出现的次数)</li>
+<li>平凡链(trivial walk):长度为0;</li>
+<li><strong>迹</strong>(trail): 边没有被多次经过的u－v链．</li>
+<li><strong>路</strong>(path):链中没有重复的顶点,显然每条路都是迹。</li>
 <li><p>定理1.6:<br>  若因G包含一条长为$l$的$u-v$链, 则G包含一条长至多为$l$的<br>$u - v$ 路．(反证法证明)</p>
 </li>
 <li><p><strong>回路</strong>(circuit):长至少为3的闭迹.(顶点可以重复)</p>
 </li>
-<li><p><strong>圈</strong>(cycle):没有顶点重复的回路 </p>
-</li>
-<li><p>(边)连通(connected):如果G 包含一条u-v路, 那么就称u 和ν 是连通的<br>(connected)。(注意是path,不是walk;但是有walk可以用定理1.6推出有path)</p>
-</li>
-<li><p>(图)连通(connected):如果对于G中每对不同顶点u,υ,G 都包含一条u-υ 路, 那么G称为是连通的(connected) .</p>
-</li>
-<li><p>不连通的(disconnected):一个不是连通的图G 称为不连通的(disconnected) .</p>
-</li>
-<li><p>连通分支(component): 若G的一个连通子图不是G的其他任何连通子图的真子图, 则称它为G的一个连通分支(component).(图G是连通的当且仅当G恰好有1个连通分支)</p>
-</li>
-<li><p>定理1.8:<br>  设G是一个阶至少为3的图若G包含两个不同的顶点u和v,使得G-u与G-v是连通的, 则G是连通的．(设x,y 是G的两个顶点．分情形讨论:$1.{x,y}\neq {u,v}~2.{x,y}={u,v}$)</p>
-</li>
-<li><p>距离(distance): G 为n阶连通图, u和v为G 的两个顶点. u和v之间的距寓(distance)定义为G中包u-v路的最小长度,记为$d_{G}(u,v)$或$d(u,v)$</p>
-</li>
-<li><p>测地线(geodesic):长为$d(u,v)$的u－v路称为u-v测地线(geodesic)</p>
-</li>
-<li><p>直径(diameter) :连通图G 的所有顶点之间的最大距离称为G 的直径(diameter),记为diam(G).</p>
-</li>
-<li><p>定理1.9:<br>  若G是一个阶至少为3的连通图, 则G包含两个不同的顶点u和v,使得G-u和G-v是连通的．(反证:考虑d(u,v)=diam(G), G-v假设不连通,然后找x,y$\in G-v$,假设x-u测地线,u-y测地线找矛盾)</p>
-</li>
-<li><p><strong>定理1.10</strong>:<br>   <strong>设G是一个阶至少为3的图则G是连通的当且仅当G包含两个不同的顶点u和v,使得G-u和G-v都是连通的．(1.9+1.8得)</strong></p>
-</li>
+<li><strong>圈</strong>(cycle):没有顶点重复的回路 </li>
+<li>(边)连通(connected):如果G 包含一条u-v路, 那么就称u 和ν 是连通的<br>(connected)。(注意是path,不是walk;但是有walk可以用定理1.6推出有path)</li>
+<li>(图)连通(connected):如果对于G中每对不同顶点u,υ,G 都包含一条u-υ 路, 那么G称为是连通的(connected) .</li>
+<li>不连通的(disconnected):一个不是连通的图G 称为不连通的(disconnected) .</li>
+<li>连通分支(component): 若G的一个连通子图不是G的其他任何连通子图的真子图, 则称它为G的一个连通分支(component).(图G是连通的当且仅当G恰好有1个连通分支)</li>
+<li>定理1.8:<br>  设G是一个阶至少为3的图若G包含两个不同的顶点u和v,使得G-u与G-v是连通的, 则G是连通的．(设x,y 是G的两个顶点．分情形讨论:$1.\{x,y\}\neq \{u,v\}~2.\{x,y\}=\{u,v\}$)</li>
+<li>距离(distance): G 为n阶连通图, u和v为G 的两个顶点. u和v之间的距寓(distance)定义为G中包u-v路的最小长度,记为$d_{G}(u,v)$或$d(u,v)$</li>
+<li>测地线(geodesic):长为$d(u,v)$的u－v路称为u-v测地线(geodesic)</li>
+<li>直径(diameter) :连通图G 的所有顶点之间的最大距离称为G 的直径(diameter),记为diam(G).</li>
+<li>定理1.9:<br>  若G是一个阶至少为3的连通图, 则G包含两个不同的顶点u和v,使得G-u和G-v是连通的．(反证:考虑d(u,v)=diam(G), G-v假设不连通,然后找x,y$\in G-v$,假设x-u测地线,u-y测地线找矛盾)</li>
+<li><strong>定理1.10</strong>:<br>   <strong>设G是一个阶至少为3的图则G是连通的当且仅当G包含两个不同的顶点u和v,使得G-u和G-v都是连通的．(1.9+1.8得)</strong></li>
 </ul>
 <h3 id="若干常见的图类"><a href="#若干常见的图类" class="headerlink" title="若干常见的图类"></a>若干常见的图类</h3><ul>
 <li>完全的(complete):如果图G的任何两个不同顶点都是邻接的,则称G是完全的,记为$K_{n}$,边数为$C_{n}^{2}$</li>
@@ -364,10 +347,10 @@
 <h2 id="二、度"><a href="#二、度" class="headerlink" title="二、度"></a>二、度</h2><h3 id="顶点的度"><a href="#顶点的度" class="headerlink" title="顶点的度"></a>顶点的度</h3><ul>
 <li>度(degree):顶点u 相关联的边的总数称为是u 的度(degree)记做$deg_{G}v$</li>
 <li>度为0位孤立顶点,度为1为端点(end-vertex)</li>
-<li>G的最小度记做$\delta (G)$,最大度记做$Δ(G)$,若G为n阶图,有<br>$$ 0 \leq δ(G) \le \deg~v\leq \Delta (G) \leq n-1$$</li>
-<li><strong>定理2.1(图论第一定理):<br>  若图G的边数为m, 则$$\sum _{v\in V(G)}deg~v=2m$$</strong></li>
+<li>G的最小度记做$\delta (G)$,最大度记做$Δ(G)$,若G为n阶图,有<script type="math/tex; mode=display">0 \leq δ(G) \le \deg~v\leq \Delta (G) \leq n-1</script></li>
+<li><strong>定理2.1(图论第一定理):<br>  若图G的边数为m, 则<script type="math/tex">\sum _{v\in V(G)}deg~v=2m</script></strong></li>
 <li>推论2.3:<br>  每一个图都有偶数个奇点。</li>
-<li><strong>定理2.4:<br>  设G为n阶图,若对于G中任意两个不邻接的顶点u和v, 都满足:<br>  $$deg<del>u+deg</del>v\geq n-1$$<br>  则G是连通的且diam(G)$\leq$2</strong></li>
+<li>**定理2.4:<br>  设G为n阶图,若对于G中任意两个不邻接的顶点u和v, 都满足:<script type="math/tex; mode=display">deg~u+deg~v\geq n-1</script>  则G是连通的且diam(G)$\leq$2**</li>
 <li><strong>推论2.5:<br>  设G是阶为n的图,若$δ(G)≥ (n-1)/2$,则$G$是连通的(根据2.4找两个点直接证明)</strong></li>
 <li>有向图中:<br>出度(outdegree) : od v 定义为D 中以v为起点的有向边个数,<br>入度(indegree) : id v 则定义为D中以v为终点的有向边个数．</li>
 </ul>
@@ -377,7 +360,7 @@
 <li>定理2.7<br>  对于任意图G和任意整数$r\geq\Delta(G)$, 都存在r正则图H, 它包含G作为诱导子图．(构造法证明,对于G,找G’,连接不是最大度的边构成G1,对于G1,找G1’…..一直构造直到$\Delta(G)=\delta (G)$;也可以另外加点,同理构造,(e.g.2.8))<h3 id="度序列"><a href="#度序列" class="headerlink" title="度序列"></a>度序列</h3></li>
 <li>度序列(degree sequence):若把图G所有顶点的度排成一个序列s,则s称为G 的度序列(degree sequence).</li>
 <li>可图的(graphical): 一个由非负整数组成的有限序列称为是可图的(graphical) , 如果它是某个图的度序列.</li>
-<li><strong>定理2.10:<br>  由非负整数构成的非增序列$s:d_1,d_2…d_n$是可图的当且仅当序列<br>  $$s1: d_2-1,d_3-1,…,d_{d_{1}+1}-1,d_{d_{1}+2},…,d_{n}$$<br>  是可图的.(就是对非增序列删除首项,假设为a,然后对后面的a项每项减一判断可不可图,如果判断不出来,继续……)</strong></li>
+<li>**定理2.10:<br>  由非负整数构成的非增序列$s:d_1,d_2…d_n$是可图的当且仅当序列<script type="math/tex; mode=display">s1: d_2-1,d_3-1,...,d_{d_{1}+1}-1,d_{d_{1}+2},...,d_{n}</script>  是可图的.(就是对非增序列删除首项,假设为a,然后对后面的a项每项减一判断可不可图,如果判断不出来,继续……)**</li>
 </ul>
 <h2 id="三、同构"><a href="#三、同构" class="headerlink" title="三、同构"></a>三、同构</h2><h3 id="同构的定义"><a href="#同构的定义" class="headerlink" title="同构的定义"></a>同构的定义</h3><ul>
 <li>同构的(isomorphic):如果存在一个从V$(G_1)$到V($G_{2}$)的一一对应$ϕ$,使得:$u_1v_1∈E(G_1)$当且仅当$\phi(u_1)\phi(v_1)\in E(G_2)$,此时$ϕ$称为从$G_1$到$G_2$的一个同构(isomorphism).</li>
@@ -413,9 +396,11 @@
 </ul>
 <h3 id="生成树的个数"><a href="#生成树的个数" class="headerlink" title="生成树的个数"></a>生成树的个数</h3><ul>
 <li>定理4.15：(Gayley公式)具有指定顶点集的$n$阶不同树的个数是$n^{n-2}$</li>
-<li>矩阵树定理：设$G$是顶点集为$V(G)={v_1, v_2, …, v_n}$的图，设$A$=[$a_{ij}$]是G的邻接矩阵，$C$=[$c_{ij}$]为 $n\times n$ 矩阵，其中<br>$$c_{ij} = \begin{cases}<br>\deg v_i, &amp;\text{i = j}\\</li>
+<li>矩阵树定理：设$G$是顶点集为$V(G)=\{v_1, v_2, …, v_n\}$的图，设$A$=[$a_{ij}$]是G的邻接矩阵，$C$=[$c_{ij}$]为 $n\times n$ 矩阵，其中<script type="math/tex; mode=display">c_{ij} = \begin{cases}
+\deg v_i, &\text{i = j}\\\\
+-a_{ij}, &\text{i != j}
+\end{cases}</script>则$G$的生成树的个数为$C$的任一余子式的值。</li>
 </ul>
-<p>-a_{ij}, &amp;\text{i != j}<br>\end{cases}$$<br>则$G$的生成树的个数为$C$的任一余子式的值。</p>
 <h2 id="五、图的连通度"><a href="#五、图的连通度" class="headerlink" title="五、图的连通度"></a>五、图的连通度</h2><h3 id="割点"><a href="#割点" class="headerlink" title="割点"></a>割点</h3><ol>
 <li>割点的定义：去掉这个点后，原图不再连通</li>
 <li><strong>定理5.1：设$v$是图$G$中与一条割边相关联的顶点，则$v$是$G$的割点当且仅当$deg v\geq 2$ 。</strong></li>
@@ -426,14 +411,10 @@
 <li>推论5.6：任意非平凡的连通图至少包含两个非割点的顶点。</li>
 </ol>
 <h3 id="块"><a href="#块" class="headerlink" title="块"></a>块</h3><ol>
-<li><p>不含割点的非平凡连通图称为是<strong>不可分图</strong>。</p>
-</li>
-<li><p><strong>定理5.7：阶至少为3的图是不可分的当且仅当任意两个顶点都位于某个圈上。</strong></p>
-</li>
-<li><p>若图$G$的一个不可分子图不是其他任一不可分子图的真子图，则称该子图是$G$的一个<strong>块</strong>。</p>
-</li>
-<li><p>定理5.8：设$R$是定义在非平凡连通图$G$的边集上的如下关系：对于$e,f\in E(G)$，若$e=f$或$e,f$位于$G$的同一个圈上，则$e,f$有关系$R$，记为$e;R;f$。则$R$是等价关系。</p>
-</li>
+<li>不含割点的非平凡连通图称为是<strong>不可分图</strong>。</li>
+<li><strong>定理5.7：阶至少为3的图是不可分的当且仅当任意两个顶点都位于某个圈上。</strong></li>
+<li>若图$G$的一个不可分子图不是其他任一不可分子图的真子图，则称该子图是$G$的一个<strong>块</strong>。</li>
+<li>定理5.8：设$R$是定义在非平凡连通图$G$的边集上的如下关系：对于$e,f\in E(G)$，若$e=f$或$e,f$位于$G$的同一个圈上，则$e,f$有关系$R$，记为$e\;R\;f$。则$R$是等价关系。</li>
 <li><p>推论5.9：非平凡连通图$G$的任意两个不同的块$B_1$和$B_2$具有下面性质：</p>
 <ul>
 <li>$B_1$和$B_2$是边不相交；</li>
@@ -449,10 +430,10 @@
 <h3 id="连通度"><a href="#连通度" class="headerlink" title="连通度"></a>连通度</h3><ol>
 <li>对于完全图$G$，$G$的最小顶点割的基数称为是$G$的<strong>点连通度</strong>，简称为$G$的<strong>连通度</strong>，用$\kappa(G)$表示。</li>
 <li>$\kappa(K_n)=n-1$</li>
-<li><strong>定理5.11：对于任意图$G$，点连通度$\le$边连通度$\le$最小度，<br>$$\kappa(G)\leq\lambda(G)\leq\delta(G)$$</strong></li>
+<li><strong>定理5.11：对于任意图$G$，点连通度$\le$边连通度$\le$最小度，<br><script type="math/tex">\kappa(G)\leq\lambda(G)\leq\delta(G)</script></strong></li>
 <li>定理5.12：<strong>若$G$是一个立方图，则$\kappa(G)=\lambda(G)$.</strong></li>
 <li>定理5.13：若$G$是一个阶为$n$且边数为$m(m\geq n-1)$的图，则<br> $\kappa(G)\leq\lfloor\frac{2m}{n}\rfloor$  </li>
-<li>定理5.14：对于任意两个整数$r$和$n(2\leq r &lt; n)$,<br><strong>$$\kappa(H_{r,n})=r$$</strong><br>其中H(r, n)表示每个点度都为r的n阶连通图。  </li>
+<li>定理5.14：对于任意两个整数$r$和$n(2\leq r &lt; n)$,<br><strong><script type="math/tex">\kappa(H_{r,n})=r</script></strong><br>其中H(r, n)表示每个点度都为r的n阶连通图。  </li>
 </ol>
 <h3 id="Menger定理"><a href="#Menger定理" class="headerlink" title="Menger定理"></a>Menger定理</h3><ol>
 <li>设$S$是图$G$的顶点集的一个子集，$u$和$v$是$G$的两个顶点，若$G-S$是不连通的，且$u$和$v$属于$G-S$的不同连通分支，则称$S$<strong>分离</strong>$u$和$v$。</li>
@@ -528,12 +509,12 @@
 <li><strong>定理8.10（Tutte定理）: 图G包含1因子当且仅当对于V(G)的任意真子集S，$k_0(G-S) \le |S|$. 其中$k_0$表示奇连通分支的数量。</strong></li>
 <li><strong>定理8.11(Petersen’s 定理): 每个3正则无割边图包含1因子。</strong></li>
 <li>定理8.12: 任一至多含有两条割边的3正则图包含1因子。</li>
-<li>称图G是<strong>可1因子分解</strong>的，若图G有1因子$F_1,F_2,…,F_r$ of $G$ 使得${E(F_1),E(F_2),…,E(F_r)}$是 $E(G)$的一个划分.此时我们成$G$被因子分解为1因子$F_1,F_2,…,F_r$，这些因子构成了$G$的1因子分解。</li>
+<li>称图G是<strong>可1因子分解</strong>的，若图G有1因子$F_1,F_2,…,F_r$ of $G$ 使得$\{E(F_1),E(F_2),…,E(F_r)\}$是 $E(G)$的一个划分.此时我们成$G$被因子分解为1因子$F_1,F_2,…,F_r$，这些因子构成了$G$的1因子分解。</li>
 <li>定理8.13: Petersen不可1因子分解。</li>
 <li>定理8.14: 对于任意整数$k$, $K_{2k}$可1因子分解.</li>
 <li>定理8.17: 对于任意整数可 Hamiltonian因子分解. Hamiltonian因子分解指满足所有2因子都是哈密顿圈的一个2因子分解。</li>
 <li>定理8.18: $K_9$可 $3K_3$因子分解.</li>
-<li>定理8.19: $n\geq3$ 阶的Kirkman三元系存在当且仅当$n\equiv3(mod,6)$</li>
+<li>定理8.19: $n\geq3$ 阶的Kirkman三元系存在当且仅当$n\equiv3(mod\,6)$</li>
 <li>定理8.20: 对于所有整数$k\geq1$, $K_{2k}$可因子分解为k-1个哈密顿圈和一个1因子。</li>
 </ol>
 
@@ -657,7 +638,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

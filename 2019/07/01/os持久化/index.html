@@ -458,8 +458,7 @@
 <li>read/write/ioctl系统调用 = 对象访问</li>
 </ul>
 </li>
-<li><p><strong>虚拟文件系统</strong></p>
-<ul>
+<li><strong>虚拟文件系统</strong><ul>
 <li>需要实现的需求:<ul>
 <li>根据路径解析出操作系统中的对象 (磁盘文件、进程、操作系统配置、……)</li>
 <li>open() → 解析路径、找到对象 → 对象自带read/write/…操作 → 创建文件描述符</li>
@@ -473,8 +472,7 @@
 </li>
 </ul>
 <h2 id="文件系统API"><a href="#文件系统API" class="headerlink" title="文件系统API"></a>文件系统API</h2><h3 id="挂载"><a href="#挂载" class="headerlink" title="挂载"></a>挂载</h3><ul>
-<li><p>procfs, sysfs都不是系统启动自带的，而是“<strong>挂载</strong>”的</p>
-<ul>
+<li>procfs, sysfs都不是系统启动自带的，而是“<strong>挂载</strong>”的<ul>
 <li>系统启动后仅有<code>/</code>, <code>/dev</code>，以及initramfs中的少量文件</li>
 <li>init程序负责挂载其他部分(例如<code>/home</code>)</li>
 </ul>
@@ -581,8 +579,7 @@
 <li>mmap</li>
 </ul>
 </li>
-<li><p>或read/write方式访问</p>
-<ul>
+<li>或read/write方式访问<ul>
 <li>适合流式文件 (文件描述符托管了offset)</li>
 </ul>
 </li>
@@ -645,8 +642,7 @@
 </li>
 </ul>
 <h3 id="实现文件系统2-目录文件"><a href="#实现文件系统2-目录文件" class="headerlink" title="实现文件系统2: 目录文件"></a>实现文件系统2: 目录文件</h3><ul>
-<li><p>首先，假设系统里的每个文件(虚拟磁盘)都有唯一的编号(id)</p>
-<ul>
+<li>首先，假设系统里的每个文件(虚拟磁盘)都有唯一的编号(id)<ul>
 <li>稍后我们讨论如何维护这个编号</li>
 <li>目录 = 文件名 → 文件id的映射 (这个机制天然支持链接)</li>
 </ul>
@@ -691,8 +687,7 @@
 </li>
 <li><p>元数据inode的存储</p>
 <ul>
-<li><p>单独区域</p>
-<ul>
+<li>单独区域<ul>
 <li>文件id = inode编号</li>
 </ul>
 </li>
@@ -768,8 +763,7 @@
 </li>
 <li><p>文件系统可能碎片化</p>
 </li>
-<li><p>磁盘碎片整理</p>
-<ul>
+<li>磁盘碎片整理<ul>
 <li>在磁盘中进行数据的“腾挪”</li>
 <li>使文件尽可能在磁盘中占有连续的块</li>
 </ul>
@@ -820,8 +814,7 @@
 <li>对于单个文件, FAT是用链表链接的, 每一块的下一个存在文件分配表中; 而ext2是树状结构</li>
 </ul>
 <h1 id="持久数据可靠性"><a href="#持久数据可靠性" class="headerlink" title="持久数据可靠性"></a>持久数据可靠性</h1><h2 id="RAID-创建副本"><a href="#RAID-创建副本" class="headerlink" title="RAID: 创建副本"></a>RAID: 创建副本</h2><ul>
-<li><p>廉价冗余磁盘阵列</p>
-</li>
+<li>廉价冗余磁盘阵列</li>
 <li><p>把多个磁盘虚拟成一块磁盘</p>
 </li>
 <li><p>用两块磁盘(redundancy)实现容错</p>
@@ -833,8 +826,7 @@
 <li>可以抵抗一块盘损坏 (只要磁盘没有连续损坏，就能实现容错)</li>
 </ul>
 </li>
-<li><p>设计RAID，就是设计“如何把虚拟磁盘块映射到物理磁盘块”</p>
-<ul>
+<li>设计RAID，就是设计“如何把虚拟磁盘块映射到物理磁盘块”<ul>
 <li>允许一对多映射; redundancy冗余</li>
 <li>评价标准: capacity, reliablity, performance</li>
 </ul>
@@ -857,50 +849,54 @@
 </ul>
 </li>
 </ul>
-<h3 id="RAID-4-奇偶校验"><a href="#RAID-4-奇偶校验" class="headerlink" title="RAID-4(奇偶校验)"></a>RAID-4(奇偶校验)</h3><table>
+<h3 id="RAID-4-奇偶校验"><a href="#RAID-4-奇偶校验" class="headerlink" title="RAID-4(奇偶校验)"></a>RAID-4(奇偶校验)</h3><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="center">Block</th>
-<th align="center">磁盘1</th>
-<th align="center">磁盘2</th>
-<th align="center">磁盘3</th>
-<th align="center">磁盘4</th>
-<th align="center">磁盘P</th>
+<th style="text-align:center">Block</th>
+<th style="text-align:center">磁盘1</th>
+<th style="text-align:center">磁盘2</th>
+<th style="text-align:center">磁盘3</th>
+<th style="text-align:center">磁盘4</th>
+<th style="text-align:center">磁盘P</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">#0</td>
-<td align="center">0</td>
-<td align="center">1</td>
-<td align="center">2</td>
-<td align="center">3</td>
-<td align="center">0⊕1⊕2⊕3</td>
+<tbody>
+<tr>
+<td style="text-align:center">#0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">0⊕1⊕2⊕3</td>
 </tr>
 <tr>
-<td align="center">#1</td>
-<td align="center">4</td>
-<td align="center">5</td>
-<td align="center">6</td>
-<td align="center">7</td>
-<td align="center">4⊕5⊕6⊕7</td>
+<td style="text-align:center">#1</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">4⊕5⊕6⊕7</td>
 </tr>
 <tr>
-<td align="center">#2</td>
-<td align="center">8</td>
-<td align="center">9</td>
-<td align="center">10</td>
-<td align="center">11</td>
-<td align="center">8⊕9⊕10⊕11</td>
+<td style="text-align:center">#2</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">11</td>
+<td style="text-align:center">8⊕9⊕10⊕11</td>
 </tr>
 <tr>
-<td align="center">#3</td>
-<td align="center">12</td>
-<td align="center">13</td>
-<td align="center">14</td>
-<td align="center">15</td>
-<td align="center">12⊕13⊕14⊕15</td>
+<td style="text-align:center">#3</td>
+<td style="text-align:center">12</td>
+<td style="text-align:center">13</td>
+<td style="text-align:center">14</td>
+<td style="text-align:center">15</td>
+<td style="text-align:center">12⊕13⊕14⊕15</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>5块盘实现：</p>
 <ul>
 <li><p>顺序/随机读 4X加速</p>
@@ -918,50 +914,54 @@
 </li>
 </ul>
 <h3 id="RAID-5"><a href="#RAID-5" class="headerlink" title="RAID-5"></a>RAID-5</h3><p>Parity盘是整个系统的瓶颈！因此将Party盘分散开.</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">Block</th>
-<th align="center">磁盘1</th>
-<th align="center">磁盘2</th>
-<th align="center">磁盘3</th>
-<th align="center">磁盘4</th>
-<th align="center">磁盘P</th>
+<th style="text-align:center">Block</th>
+<th style="text-align:center">磁盘1</th>
+<th style="text-align:center">磁盘2</th>
+<th style="text-align:center">磁盘3</th>
+<th style="text-align:center">磁盘4</th>
+<th style="text-align:center">磁盘P</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">#0</td>
-<td align="center">0</td>
-<td align="center">1</td>
-<td align="center">2</td>
-<td align="center">3</td>
-<td align="center">P</td>
+<tbody>
+<tr>
+<td style="text-align:center">#0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">P</td>
 </tr>
 <tr>
-<td align="center">#1</td>
-<td align="center">4</td>
-<td align="center">5</td>
-<td align="center">6</td>
-<td align="center">P</td>
-<td align="center">7</td>
+<td style="text-align:center">#1</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">P</td>
+<td style="text-align:center">7</td>
 </tr>
 <tr>
-<td align="center">#2</td>
-<td align="center">8</td>
-<td align="center">9</td>
-<td align="center">P</td>
-<td align="center">10</td>
-<td align="center">11</td>
+<td style="text-align:center">#2</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">P</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">11</td>
 </tr>
 <tr>
-<td align="center">#3</td>
-<td align="center">12</td>
-<td align="center">P</td>
-<td align="center">13</td>
-<td align="center">14</td>
-<td align="center">15</td>
+<td style="text-align:center">#3</td>
+<td style="text-align:center">12</td>
+<td style="text-align:center">P</td>
+<td style="text-align:center">13</td>
+<td style="text-align:center">14</td>
+<td style="text-align:center">15</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <ul>
 <li><p>顺序/随机读 4X加速</p>
 </li>
@@ -977,55 +977,7 @@
 <ul>
 <li><p>理论分析</p>
 <p>假设有n块组成RAID</p>
-<table>
-<thead>
-<tr>
-<th align="center">RAID</th>
-<th align="center">容量</th>
-<th align="center">容错</th>
-<th align="center">顺序读</th>
-<th align="center">随机读</th>
-<th align="center">顺序写</th>
-<th align="center">随机写</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">0</td>
-<td align="center">n</td>
-<td align="center">0</td>
-<td align="center">n</td>
-<td align="center">n</td>
-<td align="center">n</td>
-<td align="center">n</td>
-</tr>
-<tr>
-<td align="center">1</td>
-<td align="center">n/2</td>
-<td align="center">1..n/2</td>
-<td align="center">$&gt;$ n/2</td>
-<td align="center">n</td>
-<td align="center">n/2</td>
-<td align="center">n/2</td>
-</tr>
-<tr>
-<td align="center">4</td>
-<td align="center">n-1</td>
-<td align="center">1</td>
-<td align="center">n-1</td>
-<td align="center">n-1</td>
-<td align="center">n-1</td>
-<td align="center">1/2</td>
-</tr>
-<tr>
-<td align="center">5</td>
-<td align="center">n-1</td>
-<td align="center">1</td>
-<td align="center">n-1</td>
-<td align="center">n</td>
-<td align="center">n-1</td>
-<td align="center">n/4</td>
-</tr>
-</tbody></table>
+<p>| RAID | 容量 |  容错  | 顺序读  | 随机读 | 顺序写 | 随机写 |<br>| :—: | :—: | :——: | :——-: | :——: | :——: | :——: |<br>|  0   |  n   |   0    |    n    |   n    |   n    |   n    |<br>|  1   | n/2  | 1..n/2 | $&gt;$ n/2 |   n    |  n/2   |  n/2   |<br>|  4   | n-1  |   1    |   n-1   |  n-1   |  n-1   |  1/2   |<br>|  5   | n-1  |   1    |   n-1   |   n    |  n-1   |  n/4   |</p>
 </li>
 </ul>
 <h2 id="崩溃恢复和日志"><a href="#崩溃恢复和日志" class="headerlink" title="崩溃恢复和日志"></a>崩溃恢复和日志</h2><h3 id="磁盘上的数据结构"><a href="#磁盘上的数据结构" class="headerlink" title="磁盘上的数据结构"></a>磁盘上的数据结构</h3><ul>
@@ -1051,7 +1003,6 @@
 </ol>
 <p>等同于链表操作：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">block</span> *<span class="title">blk</span> = <span class="title">balloc</span>();</span> <span class="comment">// 找到某个blk-&gt;next == FREE</span></span><br><span class="line">blk-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">file_end-&gt;next = blk;</span><br><span class="line">write_data(blk);</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>考虑所有可能崩溃的情况 (去除重复)<ul>
 <li>$data[b’] $→ ❌ (random writes)</li>
@@ -1070,12 +1021,12 @@
 </ol>
 <p>可能的崩溃情况：</p>
 <ul>
-<li>{1} - corrupted filesystem</li>
-<li>{2} - dead block</li>
-<li>{3} - random writes</li>
-<li>{1,2}- incorrect data</li>
-<li>{1,3} - corrupted filesystem</li>
-<li>{2,3} - dead block</li>
+<li>\{1\} - corrupted filesystem</li>
+<li>\{2\} - dead block</li>
+<li>\{3\} - random writes</li>
+<li>\{1,2\}- incorrect data</li>
+<li>\{1,3\} - corrupted filesystem</li>
+<li>\{2,3\} - dead block</li>
 </ul>
 <h3 id="fsck"><a href="#fsck" class="headerlink" title="fsck"></a>fsck</h3><ul>
 <li><p>功能: 发现不一致并修复</p>
@@ -1260,7 +1211,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

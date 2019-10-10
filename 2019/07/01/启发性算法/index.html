@@ -318,7 +318,8 @@
 <li><p>threshold local search：允许移动到较差解</p>
 </li>
 <li><p>模拟退火的基本思想:</p>
-<pre><code>+  初始化：初始温度T，初始可行解$\alpha \in M(x)$(是算法迭代的起点)，温度关于温度和时间的下降函数f</code></pre><ul>
+<pre><code>+  初始化：初始温度T，初始可行解$\alpha \in M(x)$(是算法迭代的起点)，温度关于温度和时间的下降函数f
+</code></pre><ul>
 <li>时间$I=0$，当温度大于0(或不太靠近0)时，重复一下操作：<ul>
 <li>随机选取$\alpha$邻域中的解$\beta$</li>
 <li>如果$cost(\beta)\le cost(\beta)$, $\alpha:=\beta$; </li>
@@ -383,7 +384,7 @@
 <h2 id="遗传算法-genetic-algorithm"><a href="#遗传算法-genetic-algorithm" class="headerlink" title="遗传算法 genetic algorithm"></a>遗传算法 genetic algorithm</h2><h3 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h3><ul>
 <li><p>遗传算法:</p>
 <ul>
-<li>创造一个初始化人口$P={\alpha_1, \cdots, \alpha_k}$; 已经创造的人口数$t=0$</li>
+<li>创造一个初始化人口$P=\{\alpha_1, \cdots, \alpha_k\}$; 已经创造的人口数$t=0$</li>
 <li>计算fitness($\alpha_i$), i = 1, 2, …, k, 据此评估P的分布律$Prob_P$, 满足高fitness有较高概率</li>
 <li>根据$Prob_P$随机选取$k/2$对可行解$(\beta_1^1, \beta_1^1)$, …, $(\beta_{k/2}^1, \beta_{k/2}^1)$</li>
 <li>计算每一对的crossover生成新个体, 加入P</li>
@@ -393,8 +394,8 @@
 <li>$t:=t+1$; $P:=P’$; 满足停止条件则输出, 不然重复上述步骤</li>
 </ul>
 </li>
-<li><p>定义: M(x)的计划为任意向量$s=(s_1, s_2,…,s_n)\in \{0,1,* \} ^ n$(*表示free); 对于计划s的可行解集合为</p>
-<p>$Schema(s_1, …, s_n) = \{ \gamma_1, …, \gamma_n\in M(x)|\gamma_i = s_i \text{ for all }i \in \{1,…,n\} $<br>$\text{ such that }s_i\in \{0,1\};\gamma_i \in\{0,1\}\text{ for all }j\in \{1,2,…,n \}\text{ such that }s_j=*  \}$</p>
+<li><p>定义: M(x)的计划为任意向量$s=(s_1, s_2,…,s_n)\in \\{0,1,<em> \\} ^ n$(</em>表示free); 对于计划s的可行解集合为</p>
+<p>$Schema(s_1, …, s_n) = \\{ \gamma_1, …, \gamma_n\in M(x)|\gamma_i = s_i \text{ for all }i \in \\{1,…,n\\} $<br>$\text{ such that }s_i\in \\{0,1\\};\gamma_i \in\\{0,1\\}\text{ for all }j\in \\{1,2,…,n \\}\text{ such that }s_j=*  \\}$</p>
 </li>
 <li><p>length(s): s中第一个和最后一个非*位置间的距离;</p>
 <p>order(s): 非*位置数</p>
@@ -423,20 +424,17 @@
 <li>最大化问题直接选取cost作为fitness, 或再减去一个小于最小值的常数; 减去的值越接近最小cost, 越偏向于高cost个体</li>
 </ul>
 </li>
-<li><p>父母的选择:</p>
-<ul>
+<li>父母的选择:<ul>
 <li>选最好的一半和剩下的随机组合</li>
 <li>或者按照从小到大排序后, 根据$Prob(\alpha_i)=\frac{2i}{n(n+1)}$的概率选择</li>
 </ul>
 </li>
-<li><p>个体的表示和crossover</p>
-<ul>
+<li>个体的表示和crossover<ul>
 <li>例如TSP中个体表示为1-n的排列, crossover可以选择为一个排列中的某部分按照另一个排列中的顺序重排</li>
 <li>或者将父母的某些特征crossover, 然后选择满足crossover后性质的解作为孩子</li>
 </ul>
 </li>
-<li><p>突变概率:</p>
-<ul>
+<li>突变概率:<ul>
 <li>1/100</li>
 <li>或1/n</li>
 <li>或$\frac{1}{k^{0.93}\sqrt{n}}$</li>
@@ -577,7 +575,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
