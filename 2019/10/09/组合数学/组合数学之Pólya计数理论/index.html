@@ -88,8 +88,8 @@
 <meta property="og:description" content="Pólya计数理论1 群群$(G, \cdot)$: 闭合, 结合律, 幺元, 逆  1.1 置换群置换为双射$\pi:[n]\to [n]$, 置换之间的操作符 $\cdot$ 定义为函数的复合, 即$(\pi \cdot \sigma)(i)=\pi(\sigma(i))$ 对称群$S_n$$S_n$表示$[n]$的所有置换的集合. 容易验证$S_n$和函数复合操作 $\cdot$ 构成一个群">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/figs/组合数学/figs5/群操作.png">
-<meta property="og:image" content="http://yoursite.com/figs/组合数学/figs5/轨道.png">
-<meta property="og:updated_time" content="2019-10-10T12:44:15.961Z">
+<meta property="og:image" content="http://yoursite.com/figs/组合数学/figs4/轨道.png">
+<meta property="og:updated_time" content="2019-10-16T01:53:13.921Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="组合数学之Pólya计数理论">
 <meta name="twitter:description" content="Pólya计数理论1 群群$(G, \cdot)$: 闭合, 结合律, 幺元, 逆  1.1 置换群置换为双射$\pi:[n]\to [n]$, 置换之间的操作符 $\cdot$ 定义为函数的复合, 即$(\pi \cdot \sigma)(i)=\pi(\sigma(i))$ 对称群$S_n$$S_n$表示$[n]$的所有置换的集合. 容易验证$S_n$和函数复合操作 $\cdot$ 构成一个群">
@@ -305,8 +305,7 @@
       
         <h1 id="Polya计数理论"><a href="#Polya计数理论" class="headerlink" title="Pólya计数理论"></a>Pólya计数理论</h1><h2 id="1-群"><a href="#1-群" class="headerlink" title="1 群"></a>1 群</h2><p>群$(G, \cdot)$: 闭合, 结合律, 幺元, 逆 </p>
 <h3 id="1-1-置换群"><a href="#1-1-置换群" class="headerlink" title="1.1 置换群"></a>1.1 置换群</h3><p><strong>置换</strong>为双射$\pi:[n]\to [n]$, 置换之间的操作符 $\cdot$ 定义为函数的复合, 即$(\pi \cdot \sigma)(i)=\pi(\sigma(i))$</p>
-<h4 id="对称群-S-n"><a href="#对称群-S-n" class="headerlink" title="对称群$S_n$"></a>对称群$S_n$</h4><p>$S_n$表示$[n]$的所有置换的集合. 容易验证$S_n$和函数复合操作 $\cdot$ 构成一个群, 称为$n$元<strong>对称群</strong>.</p>
-<p>$S_n$的子群称为<strong>置换群</strong>.</p>
+<h4 id="对称群-S-n"><a href="#对称群-S-n" class="headerlink" title="对称群$S_n$"></a>对称群$S_n$</h4><p>$S_n$表示$[n]$的所有置换的集合. 容易验证$S_n$和函数复合操作 $\cdot$ 构成一个群, 称为$n$元<strong>对称群</strong>.<br>$S_n$的子群称为<strong>置换群</strong>.</p>
 <h4 id="循环群-C-n"><a href="#循环群-C-n" class="headerlink" title="循环群$C_n$"></a>循环群$C_n$</h4><p>定义特殊的置换$\sigma$满足$\forall i, ~\sigma(i)=(i+1)\mod n$, $C_n=\{\sigma^t|t\ge 0\}$, $C_n$称为$n$阶<strong>循环群</strong>, 生成元为$\sigma$, 是$n$边正多边形的<strong>旋转对称</strong>. </p>
 <h4 id="Dihedral群-D-n"><a href="#Dihedral群-D-n" class="headerlink" title="Dihedral群$D_n$"></a>Dihedral群$D_n$</h4><p>定义特殊置换$\rho$满足$\forall i\in [n], ~\rho(i)=n-i-1$. 把$\rho$加入$C_n$则得到<strong>Dihedral群</strong>$D_n$. 为正$n$边形翻转和旋转操作的对称群</p>
 <h4 id="Cycle-decomposition"><a href="#Cycle-decomposition" class="headerlink" title="Cycle decomposition"></a>Cycle decomposition</h4><p>将置换等价表示为cycle的复合</p>
@@ -319,7 +318,7 @@
 </ul>
 <p>项链的操作被描述为$X$上的群操作. 对于置换群$G$, 任意$\pi \in G$和$x\in X$, 群操作$\pi\circ x$定义为$(\pi \circ x)(i)=x(\pi(i))$</p>
 <h2 id="2-Burnside’s-Lemma"><a href="#2-Burnside’s-Lemma" class="headerlink" title="2 Burnside’s Lemma"></a>2 Burnside’s Lemma</h2><h3 id="2-1-轨道-Orbits"><a href="#2-1-轨道-Orbits" class="headerlink" title="2.1 轨道(Orbits)"></a>2.1 轨道(Orbits)</h3><p>定义和性质如下:</p>
-<p> <img src="/figs/组合数学/figs5/轨道.png" alt="轨道"></p>
+<p> <img src="/figs/组合数学/figs4/轨道.png" alt="轨道"></p>
 <p>可以把轨道理解为一个等价类, 同一等价类中的元素可以通过$G$中的操作相互转换.</p>
 <h3 id="2-2-invariant-set-and-stabilizer"><a href="#2-2-invariant-set-and-stabilizer" class="headerlink" title="2.2 invariant set and stabilizer"></a>2.2 invariant set and stabilizer</h3><p>$G$: 作用于集合$X$上的置换群. $\pi\in G$, $x\in X$.</p>
 <ul>
@@ -420,8 +419,8 @@ M_\pi(\sum_{i=1}^m y_i, \sum_{i=1}^m y_i^2,\cdots,\sum_{i=1}^m y_i^n)=\sum_{v=(n
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/01/计算机网络/计网Ch1计算机网络和因特网/" rel="next" title="计算机网络之计算机网络和因特网">
-                <i class="fa fa-chevron-left"></i> 计算机网络之计算机网络和因特网
+              <a href="/2019/10/09/高级算法/高级算法之度量集中度/" rel="next" title="高级算法之度量集中度">
+                <i class="fa fa-chevron-left"></i> 高级算法之度量集中度
               </a>
             
           </div>
@@ -429,6 +428,10 @@ M_\pi(\sum_{i=1}^m y_i, \sum_{i=1}^m y_i^2,\cdots,\sum_{i=1}^m y_i^n)=\sum_{v=(n
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/16/组合数学/组合数学之Cayley公式/" rel="prev" title="组合数学之Cayley公式">
+                组合数学之Cayley公式 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -505,7 +508,7 @@ M_\pi(\sum_{i=1}^m y_i, \sum_{i=1}^m y_i^2,\cdots,\sum_{i=1}^m y_i^n)=\sum_{v=(n
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
