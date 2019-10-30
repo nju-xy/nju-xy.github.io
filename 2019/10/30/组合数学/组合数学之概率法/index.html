@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="组合数学,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="概率法1 The Probabilistic Method概率法的两种基本方法:  对于概率空间$\Omega$和事件$P$, 如果$\Pr_x[P(x)]&amp;gt;0 =&amp;gt;\exist x\in\Omega$ 满足性质$P$. 对于随机变量$X$, 存在$x\le \mathbb E[X]$, $X=x$; 也存在$x\ge \mathbb E[X]$, $X=x$.(存在大于等于期望的,">
+<meta name="keywords" content="组合数学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="组合数学之概率法">
+<meta property="og:url" content="http://yoursite.com/2019/10/30/组合数学/组合数学之概率法/index.html">
+<meta property="og:site_name" content="XY&#39;s blog">
+<meta property="og:description" content="概率法1 The Probabilistic Method概率法的两种基本方法:  对于概率空间$\Omega$和事件$P$, 如果$\Pr_x[P(x)]&amp;gt;0 =&amp;gt;\exist x\in\Omega$ 满足性质$P$. 对于随机变量$X$, 存在$x\le \mathbb E[X]$, $X=x$; 也存在$x\ge \mathbb E[X]$, $X=x$.(存在大于等于期望的,">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-10-30T13:32:56.951Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="组合数学之概率法">
+<meta name="twitter:description" content="概率法1 The Probabilistic Method概率法的两种基本方法:  对于概率空间$\Omega$和事件$P$, 如果$\Pr_x[P(x)]&amp;gt;0 =&amp;gt;\exist x\in\Omega$ 满足性质$P$. 对于随机变量$X$, 存在$x\le \mathbb E[X]$, $X=x$; 也存在$x\ge \mathbb E[X]$, $X=x$.(存在大于等于期望的,">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/10/30/组合数学/组合数学之概率法/">
+
+
+
+
+
+  <title>组合数学之概率法 | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XY's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/30/组合数学/组合数学之概率法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XY">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XY's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">组合数学之概率法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-30T20:00:00+08:00">
+                2019-10-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="概率法"><a href="#概率法" class="headerlink" title="概率法"></a>概率法</h1><h2 id="1-The-Probabilistic-Method"><a href="#1-The-Probabilistic-Method" class="headerlink" title="1 The Probabilistic Method"></a>1 The Probabilistic Method</h2><p>概率法的两种基本方法:</p>
+<ul>
+<li>对于概率空间$\Omega$和事件$P$, 如果$\Pr_x[P(x)]&gt;0 =&gt;\exist x\in\Omega$ 满足性质$P$.</li>
+<li>对于随机变量$X$, 存在$x\le \mathbb E[X]$, $X=x$; 也存在$x\ge \mathbb E[X]$, $X=x$.(存在大于等于期望的, 也存在小于等于期望的.)</li>
+</ul>
+<h3 id="1-1-Ramsey-number"><a href="#1-1-Ramsey-number" class="headerlink" title="1.1 Ramsey number"></a>1.1 Ramsey number</h3><p>无论如何边着色(2色), $K_6$中一定有单色$K_3$(边颜色相同的三角形). </p>
+<p>推广:</p>
+<p>罗素数$R(k,l)$是最小的整数$n$满足对于$K_n$的任意二着色, 要么有红色的$K_k$, 要么有蓝色的$K_t$.</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Ramsey’s(罗素) Theorem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>如果$n\ge R(k,k)$, 对于$K_n$的任意二色边着色, 一定有单色的$K_k$.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>$R(k,l)$很难算, 但是我们可以给出$R(k,k)$的下界.</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Theorem (Erdős 1947)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>如果$\binom{n}{k}\cdot 2^{1-\binom{k}{2}}&lt;1$, 那么存在$K_n$的二着色满足没有单色子图$K_k$.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>证明:</p>
+<p>构造$K_n$的随机着色: 每条边独立以$1/2$概率决定颜色.</p>
+<p>对于任意$k$点集合$S$, $\epsilon_S$表示$S$诱导的$K_k$子图是单色的. $K_k$中有$\binom{k}{2}$条边, 所以</p>
+<script type="math/tex; mode=display">
+\Pr[\epsilon_S]=2\cdot2^{-\binom{k}{2}}=2^{1-\binom{k}{2}}</script><p>又因为$S$的选取有$\binom{n}{k}$种, 因为union bound, </p>
+<script type="math/tex; mode=display">
+\Pr[\exists S,\epsilon_S]\le \binom{n}{k}\cdot \Pr[\epsilon_S]=\binom{n}{k}2^{1-\binom{k}{2}}</script><p>根据假设, $\binom{n}{k}\cdot 2^{1-\binom{k}{2}}&lt;1$, 所以存在一种二着色, 没有一个$\epsilon_S$发生, 也就是没有单色$K_k$子图.</p>
+<p>根据上述结论, $k\ge 3$时选取$n=\lfloor 2^{k/2}\rfloor$, $\binom{n}{k}\cdot 2^{1-\binom{k}{2}}<1$就满足, 因此对于任意$k\ge 3$有$r(k,k)>n=\lfloor 2^{k/2}\rfloor$.</1$就满足,></p>
+<h3 id="1-2-Tournament"><a href="#1-2-Tournament" class="headerlink" title="1.2 Tournament"></a>1.2 Tournament</h3><p><strong>竞赛图Tournament</strong>指完全图的一个定向. 对于任意两个不同的点$u,v$, 要么有$(u,v)\in E$, 要么有$(v,u)\in E$, 不可能两者都有.</p>
+<p><strong>$k$-paradoxical</strong>: 一个竞赛图是$k$-paradoxical的当且仅当对于任意$k$个参赛者, 都存在一个参赛者赢了他们全部</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Theorem(Erdős 1963)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>如果$\binom{n}{k}(1-2^{-k})^{n-k}&lt;1$, 则存在一个$k$-paradoxical的$n$点竞赛图.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>证明:</p>
+<p>考虑均匀随机的$V=[n]$上的竞赛图$T$, 对于每个固定的$k$-子集$S\in\binom{V}{k}$, 定义事件$A_S$: $V\setminus S$中不存在顶点打赢了$S$中所有顶点. </p>
+<p>在一个均匀随机竞赛图中, 每条边的定向是独立随机的. 对于任意$u\in V\setminus S$,</p>
+<script type="math/tex; mode=display">
+\Pr[u\text{ beats all }v\in S]=2^{-k}</script><p>所以$\Pr[u\text{ does not beat all }v\in S]=1-2^{-k}$, </p>
+<script type="math/tex; mode=display">
+\Pr[A_s]=\prod_{u\in V\setminus S}\Pr[u\text{ does not beat all }v\in S]=(1-2^{-k})^{n-k}</script><p>所以</p>
+<script type="math/tex; mode=display">
+\Pr[\lor_{S\in\binom{V}{k}}A_S]\le \sum_{S\in\binom{V}{k}}\Pr[A_S]=\binom{n}{k}(1-2^{-k})^{n-k}<1</script><p>所以</p>
+<script type="math/tex; mode=display">
+\Pr[T\text{ is k-paradoxical}]=\Pr[\land_{S\in\binom{V}{k}}\overline{A_s}]=1-\Pr[\lor_{S\in\binom{V}{k}}A_S]>0</script><h3 id="1-3-Hamiltonian-paths"><a href="#1-3-Hamiltonian-paths" class="headerlink" title="1.3 Hamiltonian paths"></a>1.3 Hamiltonian paths</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Theorem(Szele 1943)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>存在有至少$n!2^{-(n-1)}$条哈密顿路径的$n$点竞赛图.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>证明:</p>
+<p>考虑$[n]$上的均匀随机竞赛图$T$. 对于任意$[n]$的排列$\pi$, 定义$X_\pi为指示随机变量</p>
+<script type="math/tex; mode=display">
+X_\pi=
+\begin{cases}
+1, &\forall i\in[n-1],(\pi_i,\pi_{i+1})\in T,\\
+0, &otherwise.
+\end{cases}</script><p>即$X_\pi$指示了$\pi_0\to\pi_1\to\cdots\to\pi_{n-1}$是否是哈密顿路径.</p>
+<script type="math/tex; mode=display">
+\mathbb E[X_\pi]=\Pr[X_\pi=1]=\Pr[\forall i\in[n-1],(\pi_i,\pi_{i+1})\in T]=2^{-(n-1)}</script><p>令$X=\sum_{\pi:\text{permutation of }[n]}X_\pi$表示$T$中总的哈密顿路径的数量.</p>
+<script type="math/tex; mode=display">
+\mathbb E[X]=\sum_\pi\mathbb E[X_\pi]=n!2^{-(n-1)}</script><p>为哈密顿路径数量的平均数, 所以肯定存在一个$n$点竞赛图, 哈密顿路径大于等于该值. </p>
+<h3 id="1-4-Independent-sets"><a href="#1-4-Independent-sets" class="headerlink" title="1.4 Independent sets"></a>1.4 Independent sets</h3><p><strong>独立集</strong>: 任意两点之间没有边的顶点集合.(不相邻)</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Theorem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$G(V,E)$表示$n$点$m$边的图. 则$G$有大小至少为$\frac{n^2}{4m}$的独立集.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol>
+<li>随机采样出集合$S$: 每个点独立地以概率$p$被选择.</li>
+<li>将$S$改为独立集$S’$: $\forall uv\in E$, 如果$u,v\in S$, 从$S$中删除$u,v$之一.</li>
+</ol>
+<p>显然$\mathbb E[|S|]=np$.</p>
+<p>对于每条边$e=uv\in E$, $Y_e$为指示是否$uv$都在$S$中的随机变量. 则</p>
+<script type="math/tex; mode=display">
+\mathbb E[Y_{uv}]=\Pr[u\in S\land v\in S]=p^2</script><p>令$Y$为$G$中被$S$诱导的边的数量, 则$Y=\sum_{e\in E}Y_e$. 根据期望的线性:</p>
+<script type="math/tex; mode=display">
+\mathbb E[Y]=\sum_{e\in E}\mathbb E[Y_e]=mp^2</script><p>因为$G(S)$中有$Y$条边, 所以从$S$到$S’$至多删除了$Y$条边, 即$|S^*|\ge |S|-Y$. 所以</p>
+<script type="math/tex; mode=display">
+\mathbb E[|S^*|]\ge \mathbb E[|S|-Y]= \mathbb E[|S|]- \mathbb E[Y]=np-mp^2\ge \frac{n^2}{4m}</script><p>最后是因为当$p=\frac{n}{2m}$, 期望最大.</p>
+<p>因此存在大小至少为$\frac{n^2}{4m}$的点独立集.</p>
+<p>方法2:</p>
+<p>首先构造一个$[n]$的排列$\pi$, 根据$\pi$构造独立集S: 按照顺序选, 只要邻居还没选, 就选进去.</p>
+<script type="math/tex; mode=display">
+\mathbb E[|S|]=\sum_{v\in V}Pr[v\in S]=\sum_{v\in V}\frac{1}{deg(v)+1}\ge \frac{n^2}{2m+n}</script><p>其中第二步是因为一个点被选入$S$当且仅当在$\pi$中它比所有邻居都早出现. 最后一步使用了柯西不等式, 注意$\sum_v{deg(v)+1}=2m+n$</p>
+<h3 id="1-5-Coloring-large-girth-graphs"><a href="#1-5-Coloring-large-girth-graphs" class="headerlink" title="1.5 Coloring large-girth graphs"></a>1.5 Coloring large-girth graphs</h3><p><strong>围长</strong>(girth)$g(G)$: 图$G$中最小长度的环的长度</p>
+<p><strong>着色数</strong>$\chi$: 将图properly着色(相邻点不同色)的最少颜色数量</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Theorem(Erdős 1959)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>对于任意$k,l$, 存在有限图$G$, $\chi(G)\ge k$且$g(G)\ge l$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>着色类: 同色顶点的等价类, 为独立集.</p>
+<p><strong>独立数</strong>$\alpha(G)$: 图$G$中最大的点独立集的大小.</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Lemma</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>对于任意$n$点图$G$, 有$\chi(G)\ge \frac{n}{\alpha(G)}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>因为$n$个点要分成$\chi(G)$个着色类, 每个着色类都是点独立集, 根据鸽笼原理, 至少有一个着色类(独立集)的大小至少为$n/\chi(G)$. 因此$\alpha(G)\le n/k=&gt;\chi(G)\ge k$. </p>
+<p>所以我们只需要证明存在图$G$满足$\alpha(G)\le n/k$且$g(G)&gt;l$.</p>
+<h5 id="首先保证-Pr-X-ge-frac-n-2-o-1"><a href="#首先保证-Pr-X-ge-frac-n-2-o-1" class="headerlink" title="首先保证$\Pr[X\ge\frac{n}{2}]=o(1)$"></a>首先保证$\Pr[X\ge\frac{n}{2}]=o(1)$</h5><p>固定$\theta&lt;1/l$. 令$G$为$G(n,p)$($K_n$中每条边以概率$p$被选), $p=n^{\theta-1}$. 对于任意长度为$i$的简单环$\sigma$, 令$X_\sigma$为指示随机变量</p>
+<script type="math/tex; mode=display">
+X_\sigma=\begin{cases}
+1 & \sigma\text{ is a cycle in }G\\
+0 & \text{otherwise.}
+\end{cases}</script><p>则$G$中长度至多为$l$的环的数量为</p>
+<script type="math/tex; mode=display">
+X=\sum_{i=3}^l\sum_{\sigma:i-cycle}X_\sigma</script><p>对于长度为$i$的简单环$\sigma$,</p>
+<script type="math/tex; mode=display">
+\mathbb E[X_\sigma]=\Pr[X_\sigma=1]=\Pr[\sigma\text{ is a cycle in }G]=p^i=n^{\theta i-i}</script><p>对于任意$3\le i\le n$, 长度为$i$的简单环的数量为$\frac{n(n-1)\cdots(n-i+1)}{2i}$. </p>
+<script type="math/tex; mode=display">
+\mathbb E[X]=\sum_{i=3}^l\sum_{\sigma:i-cycle}\mathbb E[X_\sigma]=\sum_{i=3}^l \frac{n(n-1)\cdots(n-i+1)}{2i}n^{\theta i-i}\le \sum_{i=3}^l\frac{n^{\theta i}}{2i}=o(n)</script><p>根据马尔科夫不等式, </p>
+<script type="math/tex; mode=display">
+\Pr[X\ge \frac{n}{2}]\le \frac{\mathbb E[X]}{n/2}=o(1)</script><p>所以大概率随机图有不到$n/2$个短的环.</p>
+<h5 id="再保证-Pr-alpha-G-gt-m-o-1"><a href="#再保证-Pr-alpha-G-gt-m-o-1" class="headerlink" title="再保证$\Pr[\alpha(G)&gt;m]=o(1)$"></a>再保证$\Pr[\alpha(G)&gt;m]=o(1)$</h5><p>令$m=\lfloor \frac{3\ln n}{n} \rfloor$, 所以</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\Pr[\alpha(G)\ge m]
+&\le \Pr[\exist S\in \binom{V}{m},\forall \{u,v\}\in \binom{S}{2},uv\not\in G]\\
+&\le \binom{n}{m}(1-p)^{\binom{m}{2}}\\
+&<n^me^{-p\binom{m}{2}}\\
+&=(ne^{-p(m-1)/2})^m\\
+&=o(1)
+\end{aligned}</script><p>根据上面两个结论,</p>
+<script type="math/tex; mode=display">
+\Pr[X\ge \frac{n}{2}\lor\alpha(G)\ge m]\le \Pr[X\ge \frac{n}{2}]+\Pr[\alpha(G)\ge m]=o(1)</script><p>因此存在图$G$, 有不到$n/2$个短环, 且$\alpha(G)&lt;m\le 3n^{1-\theta}\ln n$.</p>
+<h5 id="由G构造G’"><a href="#由G构造G’" class="headerlink" title="由G构造G’"></a>由G构造G’</h5><p>对于$G$中的每个短环去掉一个点(相邻的边也删了), 生成$G’$, 则$G’$没有短环, 因此$g(G’)\ge l$. 而且$G’$还有至多$n/2$个顶点 . 注意到这样删除边并不会让$\alpha(G)$增加, 也就是$\alpha(G’)\le\alpha(G)$. 因此</p>
+<script type="math/tex; mode=display">
+\chi(G')\ge \frac{n/2}{\alpha(G')}\ge\frac{n}{2m}\ge \frac{n^\theta}{6\ln n}</script><p>只需要让$n$足够大, 使最后的值大于$k$即可.</p>
+<h2 id="2-Lovasz-Local-Lemma"><a href="#2-Lovasz-Local-Lemma" class="headerlink" title="2 Lovász Local Lemma"></a>2 Lovász Local Lemma</h2><h3 id="2-1-Ramsey-number-revisited"><a href="#2-1-Ramsey-number-revisited" class="headerlink" title="2.1 Ramsey number, revisited"></a>2.1 Ramsey number, revisited</h3>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/组合数学/" rel="tag"># 组合数学</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/23/组合数学/组合数学之存在性问题/" rel="next" title="组合数学之存在性问题">
+                <i class="fa fa-chevron-left"></i> 组合数学之存在性问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XY</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概率法"><span class="nav-number">1.</span> <span class="nav-text">概率法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-The-Probabilistic-Method"><span class="nav-number">1.1.</span> <span class="nav-text">1 The Probabilistic Method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Ramsey-number"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 Ramsey number</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Tournament"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 Tournament</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-Hamiltonian-paths"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 Hamiltonian paths</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-Independent-sets"><span class="nav-number">1.1.4.</span> <span class="nav-text">1.4 Independent sets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-Coloring-large-girth-graphs"><span class="nav-number">1.1.5.</span> <span class="nav-text">1.5 Coloring large-girth graphs</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#首先保证-Pr-X-ge-frac-n-2-o-1"><span class="nav-number">1.1.5.0.1.</span> <span class="nav-text">首先保证$\Pr[X\ge\frac{n}{2}]=o(1)$</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#再保证-Pr-alpha-G-gt-m-o-1"><span class="nav-number">1.1.5.0.2.</span> <span class="nav-text">再保证$\Pr[\alpha(G)&gt;m]=o(1)$</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#由G构造G’"><span class="nav-number">1.1.5.0.3.</span> <span class="nav-text">由G构造G’</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Lovasz-Local-Lemma"><span class="nav-number">1.2.</span> <span class="nav-text">2 Lovász Local Lemma</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Ramsey-number-revisited"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 Ramsey number, revisited</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

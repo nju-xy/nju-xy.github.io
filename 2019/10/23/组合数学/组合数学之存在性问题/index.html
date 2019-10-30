@@ -79,20 +79,18 @@
 
 
 
-<meta name="description" content="1 生成函数 $a_n$的ordinary generating function(ODF):  G(x)=\sum_{n\ge 0}a_nx^n  1.1 组合 例1: $(x_0+x_1)^3$的展开式表示了3元集的所有子集, $(1+x)^3$的展开式的$x_k$系数表示了$k-$子集的数量 例2: 3红4蓝5绿球, 选$k$球的方法, 即$(1+x+x^2+x^3)(1+x+x^2+x^3">
+<meta name="description" content="存在性问题1 Existence by counting1.1 Shannon’s circuit lower bound布尔电路问题: $f:\{0,1\}^n\to \{0,1\}$, 三种门: AND, OR, NOT. 电路复杂度: 门的个数. 定理(Shannon): 存在布尔函数$f:\{0,1\}^n\to \{0,1\}$, 电路复杂度$&amp;gt;\frac{2^n}{3n}$. 证">
 <meta name="keywords" content="组合数学">
 <meta property="og:type" content="article">
-<meta property="og:title" content="组合数学之生成函数">
-<meta property="og:url" content="http://yoursite.com/2019/09/18/组合数学/组合数学之生成函数/index.html">
+<meta property="og:title" content="组合数学之存在性问题">
+<meta property="og:url" content="http://yoursite.com/2019/10/23/组合数学/组合数学之存在性问题/index.html">
 <meta property="og:site_name" content="XY&#39;s blog">
-<meta property="og:description" content="1 生成函数 $a_n$的ordinary generating function(ODF):  G(x)=\sum_{n\ge 0}a_nx^n  1.1 组合 例1: $(x_0+x_1)^3$的展开式表示了3元集的所有子集, $(1+x)^3$的展开式的$x_k$系数表示了$k-$子集的数量 例2: 3红4蓝5绿球, 选$k$球的方法, 即$(1+x+x^2+x^3)(1+x+x^2+x^3">
+<meta property="og:description" content="存在性问题1 Existence by counting1.1 Shannon’s circuit lower bound布尔电路问题: $f:\{0,1\}^n\to \{0,1\}$, 三种门: AND, OR, NOT. 电路复杂度: 门的个数. 定理(Shannon): 存在布尔函数$f:\{0,1\}^n\to \{0,1\}$, 电路复杂度$&amp;gt;\frac{2^n}{3n}$. 证">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/home/xy/Documents/大三上/组合数学/figs1/生成函数算术操作.png">
-<meta property="og:updated_time" content="2019-10-10T02:43:58.282Z">
+<meta property="og:updated_time" content="2019-10-30T13:35:25.725Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="组合数学之生成函数">
-<meta name="twitter:description" content="1 生成函数 $a_n$的ordinary generating function(ODF):  G(x)=\sum_{n\ge 0}a_nx^n  1.1 组合 例1: $(x_0+x_1)^3$的展开式表示了3元集的所有子集, $(1+x)^3$的展开式的$x_k$系数表示了$k-$子集的数量 例2: 3红4蓝5绿球, 选$k$球的方法, 即$(1+x+x^2+x^3)(1+x+x^2+x^3">
-<meta name="twitter:image" content="http://yoursite.com/home/xy/Documents/大三上/组合数学/figs1/生成函数算术操作.png">
+<meta name="twitter:title" content="组合数学之存在性问题">
+<meta name="twitter:description" content="存在性问题1 Existence by counting1.1 Shannon’s circuit lower bound布尔电路问题: $f:\{0,1\}^n\to \{0,1\}$, 三种门: AND, OR, NOT. 电路复杂度: 门的个数. 定理(Shannon): 存在布尔函数$f:\{0,1\}^n\to \{0,1\}$, 电路复杂度$&amp;gt;\frac{2^n}{3n}$. 证">
 
 
 
@@ -122,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/18/组合数学/组合数学之生成函数/">
+  <link rel="canonical" href="http://yoursite.com/2019/10/23/组合数学/组合数学之存在性问题/">
 
 
 
 
 
-  <title>组合数学之生成函数 | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>组合数学之存在性问题 | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -235,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/18/组合数学/组合数学之生成函数/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/23/组合数学/组合数学之存在性问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="XY">
@@ -252,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">组合数学之生成函数</h1>
+          <h1 class="post-title" itemprop="name headline">组合数学之存在性问题</h1>
         
 
         <div class="post-meta">
@@ -264,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-18T20:00:00+08:00">
-                2019-09-18
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-23T20:00:00+08:00">
+                2019-10-23
               </time>
             
 
@@ -302,100 +300,147 @@
       
 
       
-        <h1 id="1-生成函数"><a href="#1-生成函数" class="headerlink" title="1 生成函数"></a>1 生成函数</h1><ul>
-<li>$a_n$的<strong>ordinary generating function(ODF)</strong>: <script type="math/tex; mode=display">
-G(x)=\sum_{n\ge 0}a_nx^n</script></li>
-</ul>
-<h2 id="1-1-组合"><a href="#1-1-组合" class="headerlink" title="1.1 组合"></a>1.1 组合</h2><ul>
-<li>例1: $(x_0+x_1)^3$的展开式表示了3元集的所有子集, $(1+x)^3$的展开式的$x_k$系数表示了$k-$子集的数量</li>
-<li>例2: 3红4蓝5绿球, 选$k$球的方法, 即$(1+x+x^2+x^3)(1+x+x^2+x^3+x^4)(1+x+x^2+x^3+x^4+x^5)$展开式中$x^k$的系数</li>
-</ul>
-<h2 id="1-2-斐波那契数"><a href="#1-2-斐波那契数" class="headerlink" title="1.2 斐波那契数"></a>1.2 斐波那契数</h2><script type="math/tex; mode=display">
-  \begin{aligned}
-  G(x)&=\sum_{n\ge 0}F_nx^n\\
-  &= F_0+F_1x+\sum_{n\ge 2}F_nx^n\\
-  &=x+ \sum_{n\ge 2}(F_{n-1}+F_{n-2})x^n\\
-  \end{aligned}</script><script type="math/tex; mode=display">
-  xG(x)=\sum_{n\ge 0}F_nx^{n+1}=\sum_{n\ge 1}F_{n-1}x^{n}=\sum_{n\ge 2}F_{n-1}x^{n+1}</script><script type="math/tex; mode=display">
-  x^2G(x)=\sum_{n\ge 0}F_nx^{n+2}=\sum_{n\ge 2}F_{n-2}x^{n}</script><script type="math/tex; mode=display">
-  G(x)=x+(x+x^2)G(x)</script><script type="math/tex; mode=display">
-  \begin{aligned}
-  G(x)&=\frac{x}{1-x-x^2}\\
-  &=\frac{1}{\sqrt 5}\cdot \frac{1}{1-\phi x}-\frac{1}{\sqrt 5}\cdot \frac{1}{1-\hat\phi x}\\
-  &= \frac{1}{\sqrt 5}\sum_{n\ge 0}(\phi x)^n-\frac{1}{\sqrt 5}\sum_{n\ge 0}(\hat\phi x)^n\\
-  &= \sum_{n\ge 0}\frac{1}{\sqrt 5}(\phi^n-\hat \phi^n )x^n
-  \end{aligned}</script><p>  其中$\phi = \frac{1+\sqrt 5}{2}$, $\phi = \frac{1-\sqrt 5}{2}$</p>
-<p>因此</p>
-<script type="math/tex; mode=display">
-  F_n=\frac{1}{\sqrt 5}(\phi^n - \hat\phi^n)=\frac{1}{\sqrt 5}(\frac{1+\sqrt 5}{2})^n -\frac{1}{\sqrt 5} (\frac{1-\sqrt 5}{2})^n</script><h1 id="2-解递归式"><a href="#2-解递归式" class="headerlink" title="2 解递归式"></a>2 解递归式</h1><ul>
-<li>步骤如下:<ul>
-<li>给出$a_n$递归式: </li>
-<li>求$G(x)=\sum_{n\ge 0}a_nx^n$, 将右侧处理至含$G(x)$</li>
-<li>解出$G(x)$的表达式</li>
-<li>展开后, $x_n$的系数为$a_n$</li>
+        <h1 id="存在性问题"><a href="#存在性问题" class="headerlink" title="存在性问题"></a>存在性问题</h1><h2 id="1-Existence-by-counting"><a href="#1-Existence-by-counting" class="headerlink" title="1 Existence by counting"></a>1 Existence by counting</h2><h3 id="1-1-Shannon’s-circuit-lower-bound"><a href="#1-1-Shannon’s-circuit-lower-bound" class="headerlink" title="1.1 Shannon’s circuit lower bound"></a>1.1 Shannon’s circuit lower bound</h3><p>布尔电路问题: $f:\{0,1\}^n\to \{0,1\}$, 三种门: AND, OR, NOT. 电路复杂度: 门的个数.</p>
+<p><strong>定理</strong>(Shannon):</p>
+<p>存在布尔函数$f:\{0,1\}^n\to \{0,1\}$, 电路复杂度$&gt;\frac{2^n}{3n}$.</p>
+<p>证明:</p>
+<ul>
+<li><p>$f:\{0,1\}^n\to \{0,1\}$的布尔函数个数: $2^{2^n}$. </p>
+</li>
+<li><p>数$t$个门的电路:</p>
+<ul>
+<li>用De Morgan定律可以把所有的非门放在输入处, 这样以后每个门有两种(AND, OR), 都是2输入的.</li>
+<li>门的每个输入都是0, 1, $x_i$, $\neg x_i$, 或者其他门的输入. 所以最多有$2+2n+t-1$个可能的门输入</li>
+<li>因此$t$个门的电路数量至多为$2^t(2+2n+t-1)^{2t}$. (因为每个门有2中选择, 2个输出各有至多$2+2n+t-1$种选择)</li>
 </ul>
 </li>
+<li>如果$t=2^n/3n$, 则$\frac{2^t(2+2n+t-1)^{2t}}{2^{2^n}}=o(1)&lt;1$, 因此$2^t(2+2n+t-1)^{2t}&lt;2^{2^n}$.</li>
+<li>所以有不能用$2^n/3n$个门计算的电路.</li>
 </ul>
-<h2 id="2-1-生成函数的代数操作"><a href="#2-1-生成函数的代数操作" class="headerlink" title="2.1 生成函数的代数操作"></a>2.1 生成函数的代数操作</h2><p><img src="/home/xy/Documents/大三上/组合数学/figs1/生成函数算术操作.png" alt="生成函数算术操作"></p>
-<h2 id="2-2-展开生成函数"><a href="#2-2-展开生成函数" class="headerlink" title="2.2 展开生成函数"></a>2.2 展开生成函数</h2><h3 id="2-2-1-泰勒展开"><a href="#2-2-1-泰勒展开" class="headerlink" title="2.2.1 泰勒展开"></a>2.2.1 泰勒展开</h3><script type="math/tex; mode=display">
-G(x)=\sum_{n\ge 0}\frac{G^{(n)}(0)}{n!}x^n</script><h3 id="2-2-2-几何序列"><a href="#2-2-2-几何序列" class="headerlink" title="2.2.2 几何序列"></a>2.2.2 几何序列</h3><script type="math/tex; mode=display">
-\frac{1}{1-x}=\sum_{n\ge 0}x^n</script><ul>
-<li>例如$G(x)=\sum_{i=1}^k\frac{a_i}{1-b_ix}$, 因此$a_n=\sum_{i=1}^k a_ib_i^n$</li>
+<h3 id="1-2-Double-counting"><a href="#1-2-Double-counting" class="headerlink" title="1.2 Double counting"></a>1.2 Double counting</h3><h4 id="1-2-1-Handshaking-lamma"><a href="#1-2-1-Handshaking-lamma" class="headerlink" title="1.2.1 Handshaking lamma"></a>1.2.1 Handshaking lamma</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Handshaking Lemma</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>At a party, the number of guests who shake hands an odd number of times is even.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>将握手看做图中的边, 则可以由一下引理得到:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Lemma (Euler 1736)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\sum_{v\in V}d(v)=2</td>
+<td>E</td>
+<td>$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>为了证明这个引理, 我们需要数有向边的数量:</p>
+<ul>
+<li>每条边$uv\in E$有两个方向$(u,v)$和$(v,u)$, 所以有$2|E|$条有向边.</li>
+<li>对于每个点$v\in V$, 有$d(v)$个邻居, 也就有$d(v)$条有向边$(v,u)$. 因此总共$\sum_{v\in V}d(v)$条有向边.</li>
 </ul>
-<h3 id="2-2-3-二项式定理"><a href="#2-2-3-二项式定理" class="headerlink" title="2.2.3 二项式定理"></a>2.2.3 二项式定理</h3><script type="math/tex; mode=display">
-(1+x)^\alpha = \sum_{n\ge 0}\binom{\alpha}{n}x^n</script><p>例子: 多重集$S=\{x_1,x_2,\cdots, x_n\}$</p>
+<h4 id="1-2-2-Sperner’s-lemma"><a href="#1-2-2-Sperner’s-lemma" class="headerlink" title="1.2.2 Sperner’s lemma"></a>1.2.2 Sperner’s lemma</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Sperner’s Lemma (1928)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>For any properly colored triangulation, there exists a cell receiving all three colors.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>properly coloring</strong>:</p>
+<ul>
+<li>三个顶点a, b, c是三种不同的颜色</li>
+<li>边ab, ac, bc上的点有两种颜色</li>
+</ul>
+<p><strong>证明</strong>:</p>
+<p>如下构造对偶图:</p>
+<ul>
+<li>每个cell看做一个点, 外围空间也看做一个点</li>
+<li>对偶图中两点之间有边当且仅当原图中的这两个cell之间有红蓝边</li>
+</ul>
+<p>对于对偶图中的点:</p>
+<ul>
+<li>如果原图中的cell有三色, 那么对偶图中对应点度为1</li>
+<li>如果原图中的cell只有红蓝2色, 那么对偶图中对应点度为2</li>
+<li>对于其他cell, 对偶图中对应点度为0</li>
+<li>原图中外围空间对应的对偶图中点的度为奇数</li>
+</ul>
+<p>根据handshaking lemma, 奇度点的个数为偶数, 因此原图中三色cell的数量为奇数, 非0.</p>
+<h2 id="2-The-pigeonhole-Principle"><a href="#2-The-pigeonhole-Principle" class="headerlink" title="2 The pigeonhole Principle"></a>2 The pigeonhole Principle</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Generalized pigeonhole principle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>If a set consisting of more than $mn$ objects is partitioned into $n$ classes, then some class receives more than $m$ objects.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="2-1-Inevitable-divisors"><a href="#2-1-Inevitable-divisors" class="headerlink" title="2.1 Inevitable divisors"></a>2.1 Inevitable divisors</h3><p><strong>Theorem</strong>:<br>For any subset $S\subseteq \{1,2,\cdots,2n\}$ of size $|S|&gt;n$, there are two numbers $a,b\in S$ such that $a|b$.</p>
+<p>证明:</p>
+<p>对于每个奇数$m\in \{1,2,\cdots,2n\}$, 令</p>
 <script type="math/tex; mode=display">
-(1+x_1+x_1^2+\cdots)(1+x_2+x_2^2+\cdots)\cdots(1+x_n+x_n^2+\cdots)=\sum_{m:S\to \mathbb N}\prod_{x_i\in S}x_i^{m(x_i)}</script><p>其中$m$是$S$中可能的多重集中的$x_i$的重数</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-(1+x+x^2+\cdots)^n&=\sum_{m:S\to \mathbb N}x_i^{m(x_1)+m(x_2)+\cdots+m(x_n)}\\
-&=\sum_{multiset ~ M ~ on ~ S}x^{|M|}\\
-&=\sum_{k\ge 0}\left(\binom{n}{k}\right)x^k
-\end{aligned}</script><p>而</p>
-<script type="math/tex; mode=display">
-(1+x+x^2+\cdots)^n=(1-x)^{-n}=\sum_{k\ge 0}\binom{-n}{k}(-x)^k</script><p>因此</p>
-<script type="math/tex; mode=display">
-\left(\binom{n}{k}\right)=(-1)^k\binom{-n}{k}=\binom{n+k-1}{k}</script><h1 id="3-卡特兰数"><a href="#3-卡特兰数" class="headerlink" title="3 卡特兰数"></a>3 卡特兰数</h1><ul>
-<li>$C_n$例子:<ul>
-<li>$n$对括号合法匹配的个数</li>
-<li>$n+1$个数相乘, 不同的加括号方法</li>
-<li>$n+1$叶节点的full binary tree的数量</li>
-<li>$n\times n$方格中不超过对角线上方的monotonic paths的数量</li>
-<li>$n+2$边凸多边形的三角形分割数</li>
-<li>stack-sortable permutations of $\{1,\cdots, n\}$</li>
-<li>tile a stairstep shape of height n with n rectangles</li>
+C_m=\{2^k m|k\ge 0, 2^km\le 2n\}</script><p>显然同一类$C_m$中的两个数$b&lt;a$一定有$a|b$.</p>
+<p>而每个$a\in S$可以唯一表示为$a=2^km$其中$m$为奇数, 所以属于恰好一个类$C_m$, $m\in \{1,2,\cdots,2n\}$.总共$n$个奇数, 所以有$n$个不同的类$C_m$, 但是$|S|&gt;n$, 所以一定有不同的$a, b\in S$在同一个类$C_m$, 不妨设$a&gt;b$,则$a|b$ .</p>
+<h3 id="2-2-Monotonic-sbusequences"><a href="#2-2-Monotonic-sbusequences" class="headerlink" title="2.2 Monotonic sbusequences"></a>2.2 Monotonic sbusequences</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Theorem(Erdős-Szekeres 1935)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>一个长度大于$mn$的不同实数序列, 一定包含一个长度$m+1$的递增子列或者长度$n+1$的递减子列.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>设原序列为$(a_1,\cdots,a_N)$, $N&gt;mn$, $a_i$为各不相同的实数. </p>
+<p>对于$a_i$定义数对$(x_i,y_i)$如下:</p>
+<ul>
+<li>$x_i$: 最长的结束于$a_i$的递增序列的长度</li>
+<li>$y_i$: 最长的结束于$a_i$的递减序列的长度</li>
+<li>下证只要$i\ne j$就有$(x_i,y_i)\ne(x_j,y_j)$: (不妨设$i&lt;j$)<ul>
+<li>情形1: $a_i&lt;a_j$, 则结束于$a_i$的递增序列可以加上$a_j$后仍然递增, 所以$x_i&lt;x_j$.</li>
+<li>情形2: $a_i&gt;a_j$, 同理, $y_i&gt;y_j$</li>
 </ul>
 </li>
+<li>因此我们把$N$个鸽子放在$\{1,2,\cdots,N\}\times \{1,2,\cdots,N\}$的笼子中, $a_i$放在$(x_i,y_i)$, 每个笼子至多一个鸽子.</li>
+<li>因为$N&gt;mn$, 所以一定有鸽子在$\{1,2,\cdots,m\}\times \{1,2,\cdots,n\}$以外的笼子内, 也就是$x_i&gt;m$或$y_i&gt;n$. 得证.</li>
 </ul>
-<h2 id="3-1-解卡特兰数"><a href="#3-1-解卡特兰数" class="headerlink" title="3.1 解卡特兰数"></a>3.1 解卡特兰数</h2><p>卡特兰数递归式: $C_0=1$, 对于$n\ge 1$, $C_n=\sum_{k=0}^{n-1}C_kC_{n-1-k}$</p>
+<h3 id="2-3-Dirichlet’s-approximation"><a href="#2-3-Dirichlet’s-approximation" class="headerlink" title="2.3 Dirichlet’s approximation"></a>2.3 Dirichlet’s approximation</h3><p><strong>Theorem</strong>:<br>令$x$为一个无理数. 对于任意自然数$n$, 存在一个有理数$\frac{p}{q}$满足$1\le q\le n$且$|x-\frac{p}{q}|&lt;\frac{1}{nq}$.</p>
+<p>证明:<br>令$\{x\}=x-\lfloor x\rfloor$表示实数$x$的小数部分. 显然$\{x\}\in\{0,1\}$.</p>
+<p>考虑$n+1$个数$\{kx\}$, $k=1,2,\cdots,n+1$. 这$n+1$个数字(鸽子)属于$n$个区间(笼子): $(0,1/n),(1/n,2/n),\cdots,((n-1)/n,1)$. 且因为$x$是无理数, 所以$\{kx\}$都不在区间两端.</p>
+<p>根据鸽笼原理, 存在$1\le a\le b\le n+1$, 满足$\{ax\}$和$\{bx\}$在同一个区间, 因此有</p>
 <script type="math/tex; mode=display">
-  G(x)=\sum_{n\ge 0}C_n x^n</script><script type="math/tex; mode=display">
-  G(x)^2=\sum_{n\ge 0}\sum_{k=0}^nC_kC_{n-k}x^n</script><script type="math/tex; mode=display">
-  xG(x)^2=\sum_{n\ge 0}\sum_{k=0}^nC_kC_{n-k}x^{n+1}=
-  \sum_{n\ge 1}\sum_{k=0}^nC_kC_{n-1-k}x^{n}</script><script type="math/tex; mode=display">
-  G(x)=sum_{n\ge 0}C_nx^n=C_0+\sum_{n\ge 1}\sum_{k=0}^nC_kC_{n-1-k}x^{n}=1+xG(x)^2</script><script type="math/tex; mode=display">
-  G(x)=\frac{1\pm(1-4x)^{1/2}}{2x}</script><p>因为$\lim _{x\to 0}G(x)=C_0=1$</p>
-<p>所以</p>
+|\{bx\}-\{ax\}|<\frac{1}{n}</script><p>因此</p>
 <script type="math/tex; mode=display">
-  G(x)=\frac{1-(1-4x)^{1/2}}{2x}</script><script type="math/tex; mode=display">
-  \begin{aligned}
-  (1-4x)^{1/2}&=\sum_{n\ge 0}\binom{1/2}{n}(-4x)^n\\
-  &=1+\sum_{n\ge 1}\binom{1/2}{n}(-4x)^n\\
-  &=1-4x\sum_{n\ge 0}\binom{1/2}{n+1}(-4x)^n
-  \end{aligned}</script><script type="math/tex; mode=display">
-  G(x)=\frac{1-(1-4x)^{1/2}}{2x}=2\sum_{n\ge 0}\binom{1/2}{n+1}(-4x)^n</script><script type="math/tex; mode=display">
-\begin{aligned}
-  C_n&=2\binom{1/2}{n+1}(-4)^n\\
-  &=2\cdot (\frac{1}{2}\cdot\frac{-1}{2}\cdot\frac{-3}{2}\cdots\frac{-(2n-1)}{2})\cdot\frac{1}{(n+1)!}(-4)^n\\
-  &=\frac{2^n}{(n+1)!}\prod_{k=1}^n(2k-1)\\
-  &=\frac{2^n}{(n+1)!}\prod_{k=1}^n\frac{(2k-1)2k}{2k}\\
-  &=\frac{1}{(n+1)!n!}\prod_{k=1}^n(2k-1)2k\\
-  &=\frac{(2n)!}{n!(n+1)!}\\
-  &=\frac{1}{n+1}\binom{2n}{n}
-  \end{aligned}</script><h1 id="4-快排分析"><a href="#4-快排分析" class="headerlink" title="4 快排分析"></a>4 快排分析</h1><h4 id="递归式"><a href="#递归式" class="headerlink" title="递归式"></a>递归式</h4><p>$T_0=T_1=0$,  而 $T_n = \frac{1}{n}\sum_{k=1}^n(n-1+T_{k-1}+T_{n-k})$</p>
-<h4 id="解OGF"><a href="#解OGF" class="headerlink" title="解OGF"></a>解OGF</h4><ul>
-<li>详见讲义, 注意卷积的使用</li>
-</ul>
+|(b-a)x-(\lfloor bx\rfloor -\lfloor ax\rfloor)|<\frac{1}{n}</script><p>令$q=b-a$, $p=\lfloor bx\rfloor -\lfloor ax\rfloor$, 则$|qx-p|&lt;1/n$且$1\le q\le n$.两边除以$q$, 得证.</p>
 
       
     </div>
@@ -426,8 +471,8 @@ G(x)=\sum_{n\ge 0}\frac{G^{(n)}(0)}{n!}x^n</script><h3 id="2-2-2-几何序列"><
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/18/高级算法/高级算法之指纹/" rel="next" title="高级算法之指纹">
-                <i class="fa fa-chevron-left"></i> 高级算法之指纹
+              <a href="/2019/10/16/组合数学/组合数学之Cayley公式/" rel="next" title="组合数学之Cayley公式">
+                <i class="fa fa-chevron-left"></i> 组合数学之Cayley公式
               </a>
             
           </div>
@@ -436,8 +481,8 @@ G(x)=\sum_{n\ge 0}\frac{G^{(n)}(0)}{n!}x^n</script><h3 id="2-2-2-几何序列"><
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/25/高级算法/高级算法之哈希/" rel="prev" title="高级算法之哈希">
-                高级算法之哈希 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/10/30/组合数学/组合数学之概率法/" rel="prev" title="组合数学之概率法">
+                组合数学之概率法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -561,7 +606,7 @@ G(x)=\sum_{n\ge 0}\frac{G^{(n)}(0)}{n!}x^n</script><h3 id="2-2-2-几何序列"><
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-生成函数"><span class="nav-number">1.</span> <span class="nav-text">1 生成函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-组合"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 组合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-斐波那契数"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 斐波那契数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-解递归式"><span class="nav-number">2.</span> <span class="nav-text">2 解递归式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-生成函数的代数操作"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 生成函数的代数操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-展开生成函数"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 展开生成函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-泰勒展开"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 泰勒展开</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-几何序列"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.2 几何序列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3-二项式定理"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.2.3 二项式定理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-卡特兰数"><span class="nav-number">3.</span> <span class="nav-text">3 卡特兰数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-解卡特兰数"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 解卡特兰数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-快排分析"><span class="nav-number">4.</span> <span class="nav-text">4 快排分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#递归式"><span class="nav-number">4.0.0.1.</span> <span class="nav-text">递归式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解OGF"><span class="nav-number">4.0.0.2.</span> <span class="nav-text">解OGF</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#存在性问题"><span class="nav-number">1.</span> <span class="nav-text">存在性问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Existence-by-counting"><span class="nav-number">1.1.</span> <span class="nav-text">1 Existence by counting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Shannon’s-circuit-lower-bound"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 Shannon’s circuit lower bound</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Double-counting"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 Double counting</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-1-Handshaking-lamma"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">1.2.1 Handshaking lamma</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-2-Sperner’s-lemma"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">1.2.2 Sperner’s lemma</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-The-pigeonhole-Principle"><span class="nav-number">1.2.</span> <span class="nav-text">2 The pigeonhole Principle</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Inevitable-divisors"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 Inevitable divisors</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Monotonic-sbusequences"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 Monotonic sbusequences</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-Dirichlet’s-approximation"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 Dirichlet’s approximation</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
