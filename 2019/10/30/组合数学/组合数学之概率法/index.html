@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="XY&#39;s blog">
 <meta property="og:description" content="概率法1 The Probabilistic Method概率法的两种基本方法:  对于概率空间$\Omega$和事件$P$, 如果$\Pr_x[P(x)]&amp;gt;0 =&amp;gt;\exists x\in\Omega$ 满足性质$P$. 对于随机变量$X$, 存在$x\le \mathbb E[X]$, $X=x$; 也存在$x\ge \mathbb E[X]$, $X=x$.(存在大于等于期望的,">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-30T13:44:07.256Z">
+<meta property="og:updated_time" content="2019-11-13T07:24:35.834Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="组合数学之概率法">
 <meta name="twitter:description" content="概率法1 The Probabilistic Method概率法的两种基本方法:  对于概率空间$\Omega$和事件$P$, 如果$\Pr_x[P(x)]&amp;gt;0 =&amp;gt;\exists x\in\Omega$ 满足性质$P$. 对于随机变量$X$, 存在$x\le \mathbb E[X]$, $X=x$; 也存在$x\ge \mathbb E[X]$, $X=x$.(存在大于等于期望的,">
@@ -492,7 +492,48 @@ X=\sum_{i=3}^l\sum_{\sigma:i-cycle}X_\sigma</script><p>对于长度为$i$的简�
 <h5 id="由G构造G’"><a href="#由G构造G’" class="headerlink" title="由G构造G’"></a>由G构造G’</h5><p>对于$G$中的每个短环去掉一个点(相邻的边也删了), 生成$G’$, 则$G’$没有短环, 因此$g(G’)\ge l$. 而且$G’$还有至多$n/2$个顶点 . 注意到这样删除边并不会让$\alpha(G)$增加, 也就是$\alpha(G’)\le\alpha(G)$. 因此</p>
 <script type="math/tex; mode=display">
 \chi(G')\ge \frac{n/2}{\alpha(G')}\ge\frac{n}{2m}\ge \frac{n^\theta}{6\ln n}</script><p>只需要让$n$足够大, 使最后的值大于$k$即可.</p>
-<h2 id="2-Lovasz-Local-Lemma"><a href="#2-Lovasz-Local-Lemma" class="headerlink" title="2 Lovász Local Lemma"></a>2 Lovász Local Lemma</h2><h3 id="2-1-Ramsey-number-revisited"><a href="#2-1-Ramsey-number-revisited" class="headerlink" title="2.1 Ramsey number, revisited"></a>2.1 Ramsey number, revisited</h3>
+<h2 id="2-Lovasz-Local-Lemma"><a href="#2-Lovasz-Local-Lemma" class="headerlink" title="2 Lovász Local Lemma"></a>2 Lovász Local Lemma</h2><p>考虑一系列坏事件$A_1,A_2\cdots,A_n$, 假设$\Pr[A_i]\le p$. 我们希望可能一个坏事件都不发生, 即</p>
+<script type="math/tex; mode=display">
+\Pr[\land_{i=1}^n \overline {A_i}]>0.</script><p>情形1: 完全独立事件</p>
+<script type="math/tex; mode=display">
+\Pr[\land_{i=1}^n \overline {A_i}]\ge (1-p)^n>0.</script><p>情形2: 任意相关事件</p>
+<script type="math/tex; mode=display">
+\Pr[\land_{i=1}^n \overline {A_i}]=1-\Pr[\lor_{i=1}^nA_i]\ge 1-np</script><p>因此需要$p\le 1/n$.</p>
+<h4 id="相关图"><a href="#相关图" class="headerlink" title="相关图"></a>相关图</h4><p>下面引入<strong>相关图dependency graph</strong>:</p>
+<p>定义:令$A_1,A_2,\cdots,A_n$为一系列事件. 对于$V=\{1,2,\cdots,n\}$的图 $D=(V,E)$, 如果满足对于任意$i$, $1\le i\le n$, 事件$A_i$和事件集$\{A_j|(i,j)\not\in R\}$完全独立, 则称为$A_1,\cdots,A_n$相关图.</p>
+<p>即$ij\in E$ &lt;==&gt; $A_i$和$A_j$独立<br>注: A和$B_1,\cdots,B_n$完全独立的定义:</p>
+<script type="math/tex; mode=display">
+\Pr[A|\land_{i\in S} B_i\land_{j\in R}\overline B_j]=\Pr[A]\text{ for }\forall\text{ distinct  }S, R\subseteq [m]</script><p>例子:<br>独立随机变量$X_1,\cdots, X_m$. 每个事件$A_i$都是由$X_1,\cdots,X_m$中的一部分定义的. 记$v(A_i)$为决定$A_i$的最小变量集合. 则相关图$D(V,E)$定义为</p>
+<script type="math/tex; mode=display">
+(i,j)\in E\text{ iff }v(A_i)\cap v(A_j)\ne \emptyset</script><h4 id="Lovasz-Local-Lemma-symmetric-case"><a href="#Lovasz-Local-Lemma-symmetric-case" class="headerlink" title="Lovász Local Lemma (symmetric case)"></a>Lovász Local Lemma (symmetric case)</h4><p>$A_1,\cdots,A_n$为一系列事件, 假设</p>
+<ol>
+<li>$\forall~ 1\le i\le n, \Pr[A_i]\le p$, </li>
+<li>$A_1,\cdots,A_n$的相关图的最大度为$d$, 且$ep(d+1)\le 1$,<br>则<script type="math/tex; mode=display">
+\Pr[\land_{i=1}^n \overline {A_i}]>0.</script></li>
+</ol>
+<h4 id="Lovasz-Local-Lemma-general-case"><a href="#Lovasz-Local-Lemma-general-case" class="headerlink" title="Lovász Local Lemma (general case)"></a>Lovász Local Lemma (general case)</h4><p>令$D=(V,E)$为事件$A_1,\cdots,A_n$的相关图. 假设存在实数$x_1,\cdots,x_n$满足$0\le x_i&lt;1$, 且对于任意$1\le i\le n$, 有</p>
+<script type="math/tex; mode=display">
+\Pr[A_i]\le x_i\prod_{(i,j)\in E}(1-x_j)</script><p>则</p>
+<script type="math/tex; mode=display">
+\Pr[\land_{i=1}^n \overline {A_i}]\ge \prod_{i=1}^n(1-x_i).</script><h4 id="一般情况证明"><a href="#一般情况证明" class="headerlink" title="一般情况证明"></a>一般情况证明</h4><p>Chain rule:</p>
+<script type="math/tex; mode=display">
+\Pr[\land_{i=1}^n\overline{A_i}]=\prod_{i=1}^n\Pr[\overline{A_i}|\land_{j=1}^{i-1}\overline{A_j}]
+=\prod_{i=1}^n(1-\Pr[A_i|\land_{j=1}^{i-1}\overline{A_j}])</script><p>对$m$数归证明: </p>
+<script type="math/tex; mode=display">
+\Pr[A_{i_1}|\overline{A_{i_2}}\cdots\overline{A_{i_m}}]\le x_i\text{ for any }\{i_i,\cdots,i_m\}</script><p>$m=1$时:显然.<br>对于一般的$m$, 假设相关图中$i_2,\cdots, i_k$和$i_1$相邻, 其他和$i_1$不相邻. 显然$k-1\le d$. 有</p>
+<script type="math/tex; mode=display">
+\Pr[A_{i_1}|\overline{A_{i_2}}\cdots\overline{A_{i_m}}]
+=\frac{\Pr[A_{i_1}\overline{A_{i_2}}\cdots\overline{A_{i_k}}|\overline{A_{i_{k+1}}}\cdots\overline{A_{i_m}}]}{\Pr[\overline{A_{i_2}}\cdots\overline{A_{i_k}}|\overline{A_{i_{k+1}}}\cdots\overline{A_{i_m}}]}</script><p>分子 $\le \Pr[A_{i_1}|\overline{A_{i_{k+1}}}\cdots\overline{A_{i_m}}]=\Pr[A_{i_1}]\le x_{i_1}\prod_{j=2}^k(1-x_{i_j})$<br>分母 $=\prod_{j=2}^k\Pr[\overline{A_{i_j}}|\overline{A_{i_{j+1}}}\cdots \overline{A_{i_m}}]=\prod_{j=2}^k(1-\Pr[A_{i_j}|\overline{A_{i_{j+1}}}\cdots\overline{A_{i_m}}])\ge \prod_{j=2}^k(1-x_{i_j})$<br>下面易证.</p>
+<h4 id="用一般情况推对称情况"><a href="#用一般情况推对称情况" class="headerlink" title="用一般情况推对称情况"></a>用一般情况推对称情况</h4><p>令$x_1=x_2=\cdots=x_n=\frac{1}{d+1}$<br>则由对称情况的条件得</p>
+<script type="math/tex; mode=display">
+\Pr[A_i]\le \frac{1}{d+1}e^{-1}\le \frac{1}{d+1}(1-\frac{1}{d+1})^d\le \frac{1}{d+1}(1-\frac{1}{d+1})^{d_i}</script><p>因此可以使用一般情况证明.</p>
+<h3 id="2-1-Ramsey-number-revisited"><a href="#2-1-Ramsey-number-revisited" class="headerlink" title="2.1 Ramsey number, revisited"></a>2.1 Ramsey number, revisited</h3><p>罗素数$R(k,l)$是最小的整数$n$满足对于$K_n$的任意二着色, 要么有红色的$K_k$, 要么有蓝色的$K_t$.<br>定理:<br>$R(k,k)\ge Ck2^{k/2}$, $C$为正常数.<br>证明:<br>要证明$R(k,k)&gt;n$, 只要证存在$K_n$的二着色, 其中不存在同色的$K_k$.<br>选择一个随机的$K_n$的二着色, 每条边独立均匀随机地选择一种颜色. 对于任意$k$元集$S$, 定义$A_s$表示$S$为同色$K_k$的事件. 显然$\Pr[A_s]=2^{1-\binom{k}{2}}=p$.<br>对于任意$k$元集$T$, $A_s$和$A_T$相关当且仅当$|S\cap T|\ge 2$. 对于任意$S$, 满足$|S\cap T|\ge 2$的$T$的数量至多为$\binom{k}{2}\binom{n}{k-2}$. 因此$d\le \binom{k}{2}\binom{n}{k-2}$.<br>令$n=Ck2^{k/2}$, $C&gt;0$为常数, 则</p>
+<script type="math/tex; mode=display">
+ep(d+1)\le e2^{1-\binom{k}{2}}\left(\binom{k}{2}\binom{n}{k-2}+1\right)\le 2^{3-\binom{k}{2}}\binom{k}{2}\binom{n}{k-2}\le 1</script><p>使用对称情况的局部引理, 没有同色$K_k$的概率为</p>
+<script type="math/tex; mode=display">
+\Pr[\land_{S\in \binom{[n]}{k}}\overline{A_s}]>0</script><p>因此存在$K_n$的无同色$K_k$的二着色, 因此</p>
+<script type="math/tex; mode=display">
+R(k,k)>n=Ck2^{k/2}.</script>
       
     </div>
     
@@ -522,8 +563,8 @@ X=\sum_{i=3}^l\sum_{\sigma:i-cycle}X_\sigma</script><p>对于长度为$i$的简�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/23/组合数学/组合数学之存在性问题/" rel="next" title="组合数学之存在性问题">
-                <i class="fa fa-chevron-left"></i> 组合数学之存在性问题
+              <a href="/2019/10/23/高级算法/高级算法之降维/" rel="next" title="高级算法之降维">
+                <i class="fa fa-chevron-left"></i> 高级算法之降维
               </a>
             
           </div>
@@ -653,7 +694,7 @@ X=\sum_{i=3}^l\sum_{\sigma:i-cycle}X_\sigma</script><p>对于长度为$i$的简�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概率法"><span class="nav-number">1.</span> <span class="nav-text">概率法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-The-Probabilistic-Method"><span class="nav-number">1.1.</span> <span class="nav-text">1 The Probabilistic Method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Ramsey-number"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 Ramsey number</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Tournament"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 Tournament</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-Hamiltonian-paths"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 Hamiltonian paths</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-Independent-sets"><span class="nav-number">1.1.4.</span> <span class="nav-text">1.4 Independent sets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-Coloring-large-girth-graphs"><span class="nav-number">1.1.5.</span> <span class="nav-text">1.5 Coloring large-girth graphs</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#首先保证-Pr-X-ge-frac-n-2-o-1"><span class="nav-number">1.1.5.0.1.</span> <span class="nav-text">首先保证$\Pr[X\ge\frac{n}{2}]=o(1)$</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#再保证-Pr-alpha-G-gt-m-o-1"><span class="nav-number">1.1.5.0.2.</span> <span class="nav-text">再保证$\Pr[\alpha(G)&gt;m]=o(1)$</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#由G构造G’"><span class="nav-number">1.1.5.0.3.</span> <span class="nav-text">由G构造G’</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Lovasz-Local-Lemma"><span class="nav-number">1.2.</span> <span class="nav-text">2 Lovász Local Lemma</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Ramsey-number-revisited"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 Ramsey number, revisited</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概率法"><span class="nav-number">1.</span> <span class="nav-text">概率法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-The-Probabilistic-Method"><span class="nav-number">1.1.</span> <span class="nav-text">1 The Probabilistic Method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Ramsey-number"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 Ramsey number</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Tournament"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 Tournament</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-Hamiltonian-paths"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 Hamiltonian paths</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-Independent-sets"><span class="nav-number">1.1.4.</span> <span class="nav-text">1.4 Independent sets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-Coloring-large-girth-graphs"><span class="nav-number">1.1.5.</span> <span class="nav-text">1.5 Coloring large-girth graphs</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#首先保证-Pr-X-ge-frac-n-2-o-1"><span class="nav-number">1.1.5.0.1.</span> <span class="nav-text">首先保证$\Pr[X\ge\frac{n}{2}]=o(1)$</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#再保证-Pr-alpha-G-gt-m-o-1"><span class="nav-number">1.1.5.0.2.</span> <span class="nav-text">再保证$\Pr[\alpha(G)&gt;m]=o(1)$</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#由G构造G’"><span class="nav-number">1.1.5.0.3.</span> <span class="nav-text">由G构造G’</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Lovasz-Local-Lemma"><span class="nav-number">1.2.</span> <span class="nav-text">2 Lovász Local Lemma</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#相关图"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">相关图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Lovasz-Local-Lemma-symmetric-case"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">Lovász Local Lemma (symmetric case)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Lovasz-Local-Lemma-general-case"><span class="nav-number">1.2.0.3.</span> <span class="nav-text">Lovász Local Lemma (general case)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一般情况证明"><span class="nav-number">1.2.0.4.</span> <span class="nav-text">一般情况证明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用一般情况推对称情况"><span class="nav-number">1.2.0.5.</span> <span class="nav-text">用一般情况推对称情况</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Ramsey-number-revisited"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 Ramsey number, revisited</span></a></li></ol></div>
             
 
           </div>
