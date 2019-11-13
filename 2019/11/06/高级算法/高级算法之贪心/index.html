@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="XY&#39;s blog">
 <meta property="og:description" content="Greedy and local search1 set coverSet Cover Problem输入: 给定$m$个集合$S_1,S_2,\cdots,S_m\subseteq U$, $|U|=n$;输出: 最小的$C\subseteq \{1,2,\cdots,m\}$, 满足$U=\cup_{i\in C}S_i$.可以看做一个二部图. 如果把二部图左右反转, 得到等价的问题: Hit">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-13T09:18:32.449Z">
+<meta property="og:updated_time" content="2019-11-13T12:17:02.798Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高级算法之贪心">
 <meta name="twitter:description" content="Greedy and local search1 set coverSet Cover Problem输入: 给定$m$个集合$S_1,S_2,\cdots,S_m\subseteq U$, $|U|=n$;输出: 最小的$C\subseteq \{1,2,\cdots,m\}$, 满足$U=\cup_{i\in C}S_i$.可以看做一个二部图. 如果把二部图左右反转, 得到等价的问题: Hit">
@@ -303,7 +303,7 @@
         <h1 id="Greedy-and-local-search"><a href="#Greedy-and-local-search" class="headerlink" title="Greedy and local search"></a>Greedy and local search</h1><h2 id="1-set-cover"><a href="#1-set-cover" class="headerlink" title="1 set cover"></a>1 set cover</h2><h4 id="Set-Cover-Problem"><a href="#Set-Cover-Problem" class="headerlink" title="Set Cover Problem"></a>Set Cover Problem</h4><p>输入: 给定$m$个集合$S_1,S_2,\cdots,S_m\subseteq U$, $|U|=n$;<br>输出: 最小的$C\subseteq \{1,2,\cdots,m\}$, 满足$U=\cup_{i\in C}S_i$.<br>可以看做一个二部图. 如果把二部图左右反转, 得到等价的问题:</p>
 <h4 id="Hitting-Set-Problem"><a href="#Hitting-Set-Problem" class="headerlink" title="Hitting Set Problem"></a>Hitting Set Problem</h4><p>输入: 同上;<br>输出: 最小的$C\subseteq U$, 满足$C$和每一个集合$S_i$($1\le i\le n$)相交.</p>
 <h3 id="1-1-Frequency-and-Vertex-Cover"><a href="#1-1-Frequency-and-Vertex-Cover" class="headerlink" title="1.1 Frequency and Vertex Cover"></a>1.1 Frequency and Vertex Cover</h3><p>对于一个set cover问题, 定义<strong>频率</strong>: $frequency(x)=|\{i|x\in S_i\}|$(一个元素连着几个集合).<br>当频率为2时, 即<strong>点覆盖问题</strong>(每条边连着2个点, 找最少的点把每条边都覆盖)</p>
-<h3 id="1-2-贪心算法"><a href="#1-2-贪心算法" class="headerlink" title="1.2 贪心算法"></a>1.2 贪心算法</h3><h4 id="GreedyCover"><a href="#GreedyCover" class="headerlink" title="GreedyCover"></a>GreedyCover</h4><p>输入: 集合$S_1,S_2,\cdots,S_m$;<br>算法:<br>initially, $U=\cap_{i=1}^mS_i$, $C=\emptyset$;<br>while $U\ne \emptyset$ do<br>​        find $i\in\{1,2,\cdots,m\}$ with the largest $|S_i\cap U|$;<br>​        Set $price(e)=\frac{1}{|S_i\cap U|}$ for all $e\in S_i\cap U$.<br>​        let $C=C\cup \{i\}$, and $U=U/S_i$;<br>return $C$;</p>
+<h3 id="1-2-贪心算法"><a href="#1-2-贪心算法" class="headerlink" title="1.2 贪心算法"></a>1.2 贪心算法</h3><h4 id="GreedyCover"><a href="#GreedyCover" class="headerlink" title="GreedyCover"></a>GreedyCover</h4><p>输入: 集合$S_1,S_2,\cdots,S_m$;<br>算法:<br>initially, $U=\cup_{i=1}^mS_i$, $C=\emptyset$;<br>while $U\ne \emptyset$ do<br>                find $i\in\{1,2,\cdots,m\}$ with the largest $|S_i\cap U|$;<br>                Set $price(e)=\frac{1}{|S_i\cap U|}$ for all $e\in S_i\cap U$.<br>                let $C=C\cup \{i\}$, and $U=U/S_i$;<br>return $C$;</p>
 <p>近似分析:</p>
 <ul>
 <li>$|C|=\sum_{e\in U}price(e)$;</li>
