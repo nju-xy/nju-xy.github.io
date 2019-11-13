@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Greedy and local search1 set coverSet Cover Problem输入: 给定$m$个集合$S_1,S_2,\cdots,S_m\subseteq U$, $|U|=n$; 输出: 最小的$C\subseteq \{1,2,\cdots,m\}$, 满足$U=\cup_{i\in C}S_i$. 可以看做一个二部图. 如果把二部图左右反转, 得到等价的问题: H">
+<meta name="description" content="Greedy and local search1 set coverSet Cover Problem输入: 给定$m$个集合$S_1,S_2,\cdots,S_m\subseteq U$, $|U|=n$;输出: 最小的$C\subseteq \{1,2,\cdots,m\}$, 满足$U=\cup_{i\in C}S_i$.可以看做一个二部图. 如果把二部图左右反转, 得到等价的问题: Hit">
 <meta name="keywords" content="高级算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="高级算法之贪心">
 <meta property="og:url" content="http://yoursite.com/2019/11/06/高级算法/高级算法之贪心/index.html">
 <meta property="og:site_name" content="XY&#39;s blog">
-<meta property="og:description" content="Greedy and local search1 set coverSet Cover Problem输入: 给定$m$个集合$S_1,S_2,\cdots,S_m\subseteq U$, $|U|=n$; 输出: 最小的$C\subseteq \{1,2,\cdots,m\}$, 满足$U=\cup_{i\in C}S_i$. 可以看做一个二部图. 如果把二部图左右反转, 得到等价的问题: H">
+<meta property="og:description" content="Greedy and local search1 set coverSet Cover Problem输入: 给定$m$个集合$S_1,S_2,\cdots,S_m\subseteq U$, $|U|=n$;输出: 最小的$C\subseteq \{1,2,\cdots,m\}$, 满足$U=\cup_{i\in C}S_i$.可以看做一个二部图. 如果把二部图左右反转, 得到等价的问题: Hit">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-13T09:14:45.237Z">
+<meta property="og:updated_time" content="2019-11-13T09:18:32.449Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高级算法之贪心">
-<meta name="twitter:description" content="Greedy and local search1 set coverSet Cover Problem输入: 给定$m$个集合$S_1,S_2,\cdots,S_m\subseteq U$, $|U|=n$; 输出: 最小的$C\subseteq \{1,2,\cdots,m\}$, 满足$U=\cup_{i\in C}S_i$. 可以看做一个二部图. 如果把二部图左右反转, 得到等价的问题: H">
+<meta name="twitter:description" content="Greedy and local search1 set coverSet Cover Problem输入: 给定$m$个集合$S_1,S_2,\cdots,S_m\subseteq U$, $|U|=n$;输出: 最小的$C\subseteq \{1,2,\cdots,m\}$, 满足$U=\cup_{i\in C}S_i$.可以看做一个二部图. 如果把二部图左右反转, 得到等价的问题: Hit">
 
 
 
@@ -300,93 +300,60 @@
       
 
       
-        <h1 id="Greedy-and-local-search"><a href="#Greedy-and-local-search" class="headerlink" title="Greedy and local search"></a>Greedy and local search</h1><h2 id="1-set-cover"><a href="#1-set-cover" class="headerlink" title="1 set cover"></a>1 set cover</h2><h4 id="Set-Cover-Problem"><a href="#Set-Cover-Problem" class="headerlink" title="Set Cover Problem"></a>Set Cover Problem</h4><p>输入: 给定$m$个集合$S_1,S_2,\cdots,S_m\subseteq U$, $|U|=n$;</p>
-<p>输出: 最小的$C\subseteq \{1,2,\cdots,m\}$, 满足$U=\cup_{i\in C}S_i$.</p>
-<p>可以看做一个二部图. 如果把二部图左右反转, 得到等价的问题:</p>
-<h4 id="Hitting-Set-Problem"><a href="#Hitting-Set-Problem" class="headerlink" title="Hitting Set Problem"></a>Hitting Set Problem</h4><p>输入: 同上;</p>
-<p>输出: 最小的$C\subseteq U$, 满足$C$和每一个集合$S_i$($1\le i\le n$)相交.</p>
-<h3 id="1-1-Frequency-and-Vertex-Cover"><a href="#1-1-Frequency-and-Vertex-Cover" class="headerlink" title="1.1 Frequency and Vertex Cover"></a>1.1 Frequency and Vertex Cover</h3><p>对于一个set cover问题, 定义<strong>频率</strong>: $frequency(x)=|\{i|x\in S_i\}|$(一个元素连着几个集合).</p>
-<p>当频率为2时, 即<strong>点覆盖问题</strong>(每条边连着2个点, 找最少的点把每条边都覆盖)</p>
-<h3 id="1-2-贪心算法"><a href="#1-2-贪心算法" class="headerlink" title="1.2 贪心算法"></a>1.2 贪心算法</h3><h4 id="GreedyCover"><a href="#GreedyCover" class="headerlink" title="GreedyCover"></a>GreedyCover</h4><p>输入: 集合$S_1,S_2,\cdots,S_m$;</p>
-<p>算法:</p>
-<p>initially, $U=\cap_{i=1}^mS_i$, $C=\emptyset$;</p>
-<p>while $U\ne \emptyset$ do</p>
-<p>​        find $i\in\{1,2,\cdots,m\}$ with the largest $|S_i\cap U|$;</p>
-<p>​        Set $price(e)=\frac{1}{|S_i\cap U|}$ for all $e\in S_i\cap U$.</p>
-<p>​        let $C=C\cup \{i\}$, and $U=U/S_i$;</p>
-<p>return $C$;</p>
+        <h1 id="Greedy-and-local-search"><a href="#Greedy-and-local-search" class="headerlink" title="Greedy and local search"></a>Greedy and local search</h1><h2 id="1-set-cover"><a href="#1-set-cover" class="headerlink" title="1 set cover"></a>1 set cover</h2><h4 id="Set-Cover-Problem"><a href="#Set-Cover-Problem" class="headerlink" title="Set Cover Problem"></a>Set Cover Problem</h4><p>输入: 给定$m$个集合$S_1,S_2,\cdots,S_m\subseteq U$, $|U|=n$;<br>输出: 最小的$C\subseteq \{1,2,\cdots,m\}$, 满足$U=\cup_{i\in C}S_i$.<br>可以看做一个二部图. 如果把二部图左右反转, 得到等价的问题:</p>
+<h4 id="Hitting-Set-Problem"><a href="#Hitting-Set-Problem" class="headerlink" title="Hitting Set Problem"></a>Hitting Set Problem</h4><p>输入: 同上;<br>输出: 最小的$C\subseteq U$, 满足$C$和每一个集合$S_i$($1\le i\le n$)相交.</p>
+<h3 id="1-1-Frequency-and-Vertex-Cover"><a href="#1-1-Frequency-and-Vertex-Cover" class="headerlink" title="1.1 Frequency and Vertex Cover"></a>1.1 Frequency and Vertex Cover</h3><p>对于一个set cover问题, 定义<strong>频率</strong>: $frequency(x)=|\{i|x\in S_i\}|$(一个元素连着几个集合).<br>当频率为2时, 即<strong>点覆盖问题</strong>(每条边连着2个点, 找最少的点把每条边都覆盖)</p>
+<h3 id="1-2-贪心算法"><a href="#1-2-贪心算法" class="headerlink" title="1.2 贪心算法"></a>1.2 贪心算法</h3><h4 id="GreedyCover"><a href="#GreedyCover" class="headerlink" title="GreedyCover"></a>GreedyCover</h4><p>输入: 集合$S_1,S_2,\cdots,S_m$;<br>算法:<br>initially, $U=\cap_{i=1}^mS_i$, $C=\emptyset$;<br>while $U\ne \emptyset$ do<br>​        find $i\in\{1,2,\cdots,m\}$ with the largest $|S_i\cap U|$;<br>​        Set $price(e)=\frac{1}{|S_i\cap U|}$ for all $e\in S_i\cap U$.<br>​        let $C=C\cup \{i\}$, and $U=U/S_i$;<br>return $C$;</p>
 <p>近似分析:</p>
 <ul>
-<li><p>$|C|=\sum_{e\in U}price(e)$;</p>
-</li>
-<li><p>对于第一个覆盖的元素$x_1$, </p>
-<script type="math/tex; mode=display">
+<li>$|C|=\sum_{e\in U}price(e)$;</li>
+<li>对于第一个覆盖的元素$x_1$, <script type="math/tex; mode=display">
 price(x_1)=\frac{1}{\max_i|S_i|}\le \frac{OPT(I)}{n}</script></li>
-<li><p>对于第k个覆盖的元素$x_k$, 此时未覆盖的元素的集合为$U_k$, 则$|U_k|= n-k+1$, 所以</p>
-<script type="math/tex; mode=display">
+<li>对于第k个覆盖的元素$x_k$, 此时未覆盖的元素的集合为$U_k$, 则$|U_k|= n-k+1$, 所以<script type="math/tex; mode=display">
 price(x_k)=\frac{1}{\max_i|S_i\cap U_t|}\le \frac{OPT(I_t)}{|U_t|}\le \frac{OPT(I)}{|U_t|}=\frac{OPT}{n-k+1}</script></li>
-<li><p>因此</p>
-<script type="math/tex; mode=display">
-|C|=\sum_{e\in U}price(e)\le \sum_{k=1}^n\frac{OPT(I)}{n-k+1}=H_n\cdot OPT(I)</script><p>其中$H_n\approx \ln n+O(1)$为调和级数.</p>
-</li>
+<li>因此<script type="math/tex; mode=display">
+|C|=\sum_{e\in U}price(e)\le \sum_{k=1}^n\frac{OPT(I)}{n-k+1}=H_n\cdot OPT(I)</script>其中$H_n\approx \ln n+O(1)$为调和级数.</li>
 </ul>
-<h3 id="1-3-Prime-Dual算法"><a href="#1-3-Prime-Dual算法" class="headerlink" title="1.3 Prime-Dual算法"></a>1.3 Prime-Dual算法</h3><p>构造对偶问题:</p>
-<p>Instance: $S_1,S_2,\cdots,S_m\subseteq U$.</p>
-<p>Primal: 找到$C\subseteq [m]$满足$U_{i\in C}S_i=U$, 最小化$|C|$.</p>
-<p>Dual: 找到$M\subseteq U$满足对于任意$i\in[m]$, $|S_i\cap M|\le 1$, 最大化$|M|$.(二部图的最大匹配)</p>
+<h3 id="1-3-Prime-Dual算法"><a href="#1-3-Prime-Dual算法" class="headerlink" title="1.3 Prime-Dual算法"></a>1.3 Prime-Dual算法</h3><p>构造对偶问题:<br>Instance: $S_1,S_2,\cdots,S_m\subseteq U$.<br>Primal: 找到$C\subseteq [m]$满足$U_{i\in C}S_i=U$, 最小化$|C|$.<br>Dual: 找到$M\subseteq U$满足对于任意$i\in[m]$, $|S_i\cap M|\le 1$, 最大化$|M|$.(二部图的最大匹配)</p>
 <h4 id="弱对偶性"><a href="#弱对偶性" class="headerlink" title="弱对偶性:"></a>弱对偶性:</h4><p>$M$中的任意两个元素都不能被同一个$S_i$覆盖, 所以$M$中的每一个元素至少需要一个不同的$S_i$来覆盖, 也就是对于任何集合覆盖, 至少要$M$个集合来覆盖$M$中的所有元素, 也就是</p>
 <script type="math/tex; mode=display">
 \forall C, \forall M: |M|\le |C|</script><p>所以$\forall M:|M|\le OPT_{primal}=\min |C|$</p>
-<h4 id="DualCover"><a href="#DualCover" class="headerlink" title="DualCover"></a>DualCover</h4><p>找到一个任意的极大匹配$M$, 返回$C=\{i:S_i\cap M=\emptyset\}$.</p>
-<p>其中构造极大匹配的方法是: 不断加点进$M$直到不能加. 多项式时间.</p>
-<p>$C$是集合覆盖的原因: </p>
+<h4 id="DualCover"><a href="#DualCover" class="headerlink" title="DualCover"></a>DualCover</h4><p>找到一个任意的极大匹配$M$, 返回$C=\{i:S_i\cap M=\emptyset\}$.<br>其中构造极大匹配的方法是: 不断加点进$M$直到不能加. 多项式时间.<br>$C$是集合覆盖的原因: </p>
 <ul>
 <li>反证法: 假设$C$不是覆盖, 那么存在$x\in U$, 对于所有$i\in C$, $x\not\in S_i$, 说明$x\in M$, 而且也是匹配,则$M$加上$x$后也是匹配, $x$ 和$M$是最大匹配矛盾.</li>
 </ul>
 <h4 id="近似比"><a href="#近似比" class="headerlink" title="近似比:"></a>近似比:</h4><script type="math/tex; mode=display">
 |C|\le \sum_{x\in M}frequency(x)\le f\cdot|M|\le f\cdot OPT</script><p>其中, $f=\max_{x\in U}frequency(x)$为所有元素中的最大频率. 因此近似比为$f$.</p>
-<h4 id="点覆盖问题"><a href="#点覆盖问题" class="headerlink" title="点覆盖问题:"></a>点覆盖问题:</h4><p>点覆盖问题为$f=2$的集合覆盖问题.</p>
-<p>近似算法为:</p>
+<h4 id="点覆盖问题"><a href="#点覆盖问题" class="headerlink" title="点覆盖问题:"></a>点覆盖问题:</h4><p>点覆盖问题为$f=2$的集合覆盖问题.<br>近似算法为:</p>
 <ul>
 <li>当边集非空时<ul>
 <li>任意选择边$uv\in E$</li>
 <li>$u$和$v$都加入$C$ </li>
-<li>在$E$中去掉所有和$u$, $v$相邻的边.</li>
+<li>在$E$中去掉所有和$u$, $v$相邻的边.<br>这是一个2-近似算法.</li>
 </ul>
 </li>
 </ul>
-<p>这是一个2-近似算法.</p>
-<h2 id="2-Scheduling"><a href="#2-Scheduling" class="headerlink" title="2 Scheduling"></a>2 Scheduling</h2><p>详细地见之前的近似算法博客和讲义. 下面较为简略.</p>
-<p>问题:</p>
+<h2 id="2-Scheduling"><a href="#2-Scheduling" class="headerlink" title="2 Scheduling"></a>2 Scheduling</h2><p>详细地见之前的近似算法博客和讲义. 下面较为简略.<br>问题:</p>
 <ul>
 <li>$n$任务</li>
 <li>$m$相同机器, 每个机器可以从$t=0$开始工作, 同时做至多一个任务</li>
 <li>每个作业有需要的处理时间$p_j$.</li>
-<li>找到一个工作分配方案, 最小化最后一个任务完成的时间.</li>
+<li>找到一个工作分配方案, 最小化最后一个任务完成的时间.<br>$m=2$即为Partition问题, 所以是NPC问题.</li>
 </ul>
-<p>$m=2$即为Partition问题, 所以是NPC问题.</p>
-<h3 id="2-1-Graham’s-List-algorithm"><a href="#2-1-Graham’s-List-algorithm" class="headerlink" title="2.1 Graham’s List algorithm"></a>2.1 Graham’s List algorithm</h3><p>算法: 依次分配到最早完成当前所有任务的机器上.</p>
-<p>近似比: $2-\frac{1}{m}$.</p>
-<p>原因: </p>
+<h3 id="2-1-Graham’s-List-algorithm"><a href="#2-1-Graham’s-List-algorithm" class="headerlink" title="2.1 Graham’s List algorithm"></a>2.1 Graham’s List algorithm</h3><p>算法: 依次分配到最早完成当前所有任务的机器上.<br>近似比: $2-\frac{1}{m}$.<br>原因: </p>
 <ul>
-<li><p>$OPT\ge \max_{1\le j\le n}p_j$</p>
-</li>
-<li><p>$OPT\ge \frac{1}{m}\sum_{j=1}^np_j$</p>
-</li>
-<li><p>最后完成的那个机器时间分成两部分: </p>
-<ul>
+<li>$OPT\ge \max_{1\le j\le n}p_j$</li>
+<li>$OPT\ge \frac{1}{m}\sum_{j=1}^np_j$</li>
+<li>最后完成的那个机器时间分成两部分: <ul>
 <li>前一部分小于等于除了最后一个任务以外所有任务总时长/m</li>
-<li>后一部分为最后一个任务的时间$p_l$</li>
-</ul>
-<script type="math/tex; mode=display">
+<li>后一部分为最后一个任务的时间$p_l$<script type="math/tex; mode=display">
 C_{max}\le \frac{1}{m}(\sum_{j=1}^np_j-p_l)+p_l\le (2-1/m)\cdot OPT</script></li>
 </ul>
-<h3 id="2-2-Local-search"><a href="#2-2-Local-search" class="headerlink" title="2.2 Local search"></a>2.2 Local search</h3><p>算法: 先随便找一个分配方案, 之后不断将最后一个结束的任务转移到别的机器, 使得这个任务的完成时间更早, 直到无法进行这样的转移.</p>
-<p>分析: 和上面的完全一样</p>
-<h3 id="2-3-Longest-Processing-Time"><a href="#2-3-Longest-Processing-Time" class="headerlink" title="2.3 Longest Processing Time"></a>2.3 Longest Processing Time</h3><p>算法: 先将所有任务根据需要时间从长到短排序, 再执行Graham’s List algorithm.</p>
-<p>近似比: $4/3$. (很好证明是$3/2$)</p>
-<h3 id="2-4-Online-Algorithms-and-Competitive-Ratio"><a href="#2-4-Online-Algorithms-and-Competitive-Ratio" class="headerlink" title="2.4 Online Algorithms and Competitive Ratio"></a>2.4 Online Algorithms and Competitive Ratio</h3><p>Graham’s List algorithm实际上还是在线的. (每见到一个输入, 做一次决定, 而不需要见到所有输入之后再做决定.)(LPT就不是)</p>
-<p>在线算法中, 引入了类似近似比的概念<strong>competitive ratio</strong>, $\alpha$-competitive表示$SOL\le \alpha OPT_I$, 其中SOL是在线算法的结果, 而$OPT_I$是最优离线算法的结果. Graham’s List algorithm就是$(2-1/m)$-competitive的.</p>
+</li>
+</ul>
+<h3 id="2-2-Local-search"><a href="#2-2-Local-search" class="headerlink" title="2.2 Local search"></a>2.2 Local search</h3><p>算法: 先随便找一个分配方案, 之后不断将最后一个结束的任务转移到别的机器, 使得这个任务的完成时间更早, 直到无法进行这样的转移.<br>分析: 和上面的完全一样</p>
+<h3 id="2-3-Longest-Processing-Time"><a href="#2-3-Longest-Processing-Time" class="headerlink" title="2.3 Longest Processing Time"></a>2.3 Longest Processing Time</h3><p>算法: 先将所有任务根据需要时间从长到短排序, 再执行Graham’s List algorithm.<br>近似比: $4/3$. (很好证明是$3/2$)</p>
+<h3 id="2-4-Online-Algorithms-and-Competitive-Ratio"><a href="#2-4-Online-Algorithms-and-Competitive-Ratio" class="headerlink" title="2.4 Online Algorithms and Competitive Ratio"></a>2.4 Online Algorithms and Competitive Ratio</h3><p>Graham’s List algorithm实际上还是在线的. (每见到一个输入, 做一次决定, 而不需要见到所有输入之后再做决定.)(LPT就不是)<br>在线算法中, 引入了类似近似比的概念<strong>competitive ratio</strong>, $\alpha$-competitive表示$SOL\le \alpha OPT_I$, 其中SOL是在线算法的结果, 而$OPT_I$是最优离线算法的结果. Graham’s List algorithm就是$(2-1/m)$-competitive的.</p>
 
       
     </div>
