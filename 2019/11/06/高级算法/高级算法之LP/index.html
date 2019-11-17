@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="问题求解四,">
+  <meta name="keywords" content="高级算法,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="RSA公钥加密系统 公钥$P_A$, 私钥$S_A$  对于Bob给Alice的加密消息M: 发送方式: Bob取得Alice公钥$P_A$  Bob计算出相应于M的密文$C=P_A(M)$   接收过程: Alice收到密文C后, 她用自己的密钥$S_A$恢复原始信息: $S_A(C) = S_A(P_A(M)) = M$ $S_A()$和$P_A()$互为反函数     数字签名: Alice">
-<meta name="keywords" content="问题求解四">
+<meta name="description" content="Rounding Linear Programs1 Vertex Cover问题表示整数线性规划:  \begin{aligned}     {\text{minimize}}         &amp;&amp;&amp;\sum_{v\in V}x_{v}\\     {\text{subject to}}         &amp;&amp;&amp;\sum _{v\in e}x_v\ge 1,&amp;&amp;e\in E,\\         &amp;">
+<meta name="keywords" content="高级算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="密码算法">
-<meta property="og:url" content="http://yoursite.com/2019/07/01/问题求解/密码算法/index.html">
+<meta property="og:title" content="高级算法之LP">
+<meta property="og:url" content="http://yoursite.com/2019/11/06/高级算法/高级算法之LP/index.html">
 <meta property="og:site_name" content="XY&#39;s blog">
-<meta property="og:description" content="RSA公钥加密系统 公钥$P_A$, 私钥$S_A$  对于Bob给Alice的加密消息M: 发送方式: Bob取得Alice公钥$P_A$  Bob计算出相应于M的密文$C=P_A(M)$   接收过程: Alice收到密文C后, 她用自己的密钥$S_A$恢复原始信息: $S_A(C) = S_A(P_A(M)) = M$ $S_A()$和$P_A()$互为反函数     数字签名: Alice">
+<meta property="og:description" content="Rounding Linear Programs1 Vertex Cover问题表示整数线性规划:  \begin{aligned}     {\text{minimize}}         &amp;&amp;&amp;\sum_{v\in V}x_{v}\\     {\text{subject to}}         &amp;&amp;&amp;\sum _{v\in e}x_v\ge 1,&amp;&amp;e\in E,\\         &amp;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-01T03:52:22.896Z">
+<meta property="og:updated_time" content="2019-11-17T15:05:50.656Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="密码算法">
-<meta name="twitter:description" content="RSA公钥加密系统 公钥$P_A$, 私钥$S_A$  对于Bob给Alice的加密消息M: 发送方式: Bob取得Alice公钥$P_A$  Bob计算出相应于M的密文$C=P_A(M)$   接收过程: Alice收到密文C后, 她用自己的密钥$S_A$恢复原始信息: $S_A(C) = S_A(P_A(M)) = M$ $S_A()$和$P_A()$互为反函数     数字签名: Alice">
+<meta name="twitter:title" content="高级算法之LP">
+<meta name="twitter:description" content="Rounding Linear Programs1 Vertex Cover问题表示整数线性规划:  \begin{aligned}     {\text{minimize}}         &amp;&amp;&amp;\sum_{v\in V}x_{v}\\     {\text{subject to}}         &amp;&amp;&amp;\sum _{v\in e}x_v\ge 1,&amp;&amp;e\in E,\\         &amp;">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/01/问题求解/密码算法/">
+  <link rel="canonical" href="http://yoursite.com/2019/11/06/高级算法/高级算法之LP/">
 
 
 
 
 
-  <title>密码算法 | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>高级算法之LP | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/01/问题求解/密码算法/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/06/高级算法/高级算法之LP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="XY">
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">密码算法</h1>
+          <h1 class="post-title" itemprop="name headline">高级算法之LP</h1>
         
 
         <div class="post-meta">
@@ -262,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-01T11:50:15+08:00">
-                2019-07-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-06T19:00:00+08:00">
+                2019-11-06
               </time>
             
 
@@ -300,53 +300,78 @@
       
 
       
-        <h2 id="RSA公钥加密系统"><a href="#RSA公钥加密系统" class="headerlink" title="RSA公钥加密系统"></a>RSA公钥加密系统</h2><ul>
-<li>公钥$P_A$, 私钥$S_A$ </li>
-<li>对于Bob给Alice的加密消息M:<ul>
-<li>发送方式:<ul>
-<li>Bob取得Alice公钥$P_A$ </li>
-<li>Bob计算出相应于M的密文$C=P_A(M)$</li>
+        <h1 id="Rounding-Linear-Programs"><a href="#Rounding-Linear-Programs" class="headerlink" title="Rounding Linear Programs"></a>Rounding Linear Programs</h1><h2 id="1-Vertex-Cover"><a href="#1-Vertex-Cover" class="headerlink" title="1 Vertex Cover"></a>1 Vertex Cover</h2><h3 id="问题表示"><a href="#问题表示" class="headerlink" title="问题表示"></a>问题表示</h3><p>整数线性规划:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    {\text{minimize}}
+        &&&\sum_{v\in V}x_{v}\\
+    {\text{subject to}}
+        &&&\sum _{v\in e}x_v\ge 1,&&e\in E,\\
+        &&&x_{v}\in \{0,1\},&&v\in V.
+        \end{aligned}</script><p>解整数线性规划是NP难的.</p>
+<h3 id="线性规划的一般形式"><a href="#线性规划的一般形式" class="headerlink" title="线性规划的一般形式"></a>线性规划的一般形式</h3><p>matrix $A=\{a_{ij}\}$, sets $M\subseteq [m]$, $N\subseteq [n]$.</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    {\text{maximize}}
+        &&&c^\top x\\
+    {\text{subject to}}
+        &&&a_i^\top x=b_i,&&i\in M,\\
+        &&&a_i^\top x\ge b_i,&&i\in \overline M,\\
+        &&&x_{j}\ge 0,&&i\in N,\\
+        &&&x_{j}\text{ unconstrained},&&i\in \overline N,\\
+\end{aligned}</script><p>规范形:<br>$m\times n$矩阵$A$, </p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    {\text{maximize}}
+        &&&c^\top x\\
+    {\text{s.t}}
+        &&&Ax\ge b.\\
+\end{aligned}</script><p>转化方式:<br>等于限制变为大于等于和小于等于, 小于等于加负号;<br>无限制的变量变成两个非负变量之差.<br>几何解释: 超空间内的凸多面体</p>
+<h3 id="Relaxation-amp-Rounding"><a href="#Relaxation-amp-Rounding" class="headerlink" title="Relaxation &amp; Rounding"></a>Relaxation &amp; Rounding</h3><p>线性松弛:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}    {\text{maximize}}        &&&\sum_{v\in V}x_{v}\\    {\text{subject to}}        &&&\sum _{v\in e}x_v\ge 1,&&e\in E,\\        &&&x_{v}\in [0,1],&&v\in V.        \end{aligned}</script><p>线性规划可以在线性时间内解.</p>
+<p>近似:<br>线性规划解$x^*\in [0,1]^V$, 整数规划解$\hat x\in \{0,1\}$.</p>
+<script type="math/tex; mode=display">
+\hat x_v=\begin{cases}
+1 & \text{if }x_v^*\ge 0.5\\
+0 &\text{otherwise}
+\end{cases}</script><p>因为</p>
+<script type="math/tex; mode=display">
+\sum_{v\in e}x_v^* \ge 1 \to \sum_{v\in e}\hat x_v\ge 1</script><p>所以得到的解依然是可行的.<br>又因为$\hat x_v\le 2x_v^*$, 所以</p>
+<script type="math/tex; mode=display">
+OPT\ge OPT_LP = \sum_{v\in V}x_v^*</script><script type="math/tex; mode=display">
+ SOL=\sum_{v\in V}\hat x_v\le 2 \sum_{v\in V}x_v^*\le 2\cdot OPT</script><h4 id="一般步骤"><a href="#一般步骤" class="headerlink" title="一般步骤"></a>一般步骤</h4><ul>
+<li>表示为整数规划</li>
+<li>松弛为线性规划</li>
+<li>找到线性规划的最优解</li>
+<li>近似到可行解</li>
+<li>证明离整数规划最优解不远<script type="math/tex; mode=display">
+\text{Integrality Gap}= \sup_I \frac{OPT(I)}{OPT_{LP}(I)}</script>对于点覆盖问题, Integrality Gap为2.</li>
 </ul>
-</li>
-<li>接收过程:<ul>
-<li>Alice收到密文C后, 她用自己的密钥$S_A$恢复原始信息: $S_A(C) = S_A(P_A(M)) = M$</li>
-<li>$S_A()$和$P_A()$互为反函数</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>数字签名:<ul>
-<li>Alice运用她的密钥$S_A$和等式$\sigma=S_A(M’)$计算出信息$M’$的<strong>数字签名</strong>$\sigma$</li>
-<li>Alice把消息/签名对$(M’, \sigma)$发送给Bob</li>
-<li>当Bob收到$(M’, \sigma)$时, 他可以利用Alice的公钥, 通过验证等式$M’=P_A(\sigma)$来证实该消息的确来自Alice.</li>
-</ul>
-</li>
-<li>RSA加密系统中, 一个参与者按下列过程创建他的公钥和密钥:<ul>
-<li>随机选取两个大素数$p$和$q$, 使得$p\ne q$, 例如各1024位.</li>
-<li>计算$n=pq$</li>
-<li>选取一个和$\phi(n)=(p-1)(q-1)$互素的小奇数e</li>
-<li>对模$\phi(n)$, 计算出e的乘法逆元d的值</li>
-<li>将对$P=(e, n)$公开, 并作为参与者的<strong>RSA公钥</strong></li>
-<li>将$S=(d,n)$保密, 作为参与者的<strong>RSA密钥</strong></li>
-<li><script type="math/tex; mode=display">P(M)=M^e\mod n</script></li>
-<li><script type="math/tex; mode=display">P(C)=C^d\mod n</script></li>
-</ul>
-</li>
-<li>应用公钥$O(1)$次模乘法, $O(\beta^2)$次位操作</li>
-<li>应用密钥$O(\beta)$次模乘法, $O(\beta^3)$次位操作</li>
-<li>RSA加密系统的安全性来源于对大整数进行因数分解的困难性</li>
-</ul>
-<h1 id="整数的因子分解"><a href="#整数的因子分解" class="headerlink" title="整数的因子分解"></a>整数的因子分解</h1><ul>
-<li><p>Pollard的rho启发式方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">POLLARD-RHO(n)</span><br><span class="line">i = 1</span><br><span class="line">x_1 = RANDOM(0, n-1)</span><br><span class="line">y = x_1</span><br><span class="line">k = 2</span><br><span class="line">while True</span><br><span class="line">	i = i + 1</span><br><span class="line">	x_i = (x_&#123;i-1&#125;^2 - 1) mod n</span><br><span class="line">	d = gcd(y-x_i, n)</span><br><span class="line">	if d != 1 and d != n</span><br><span class="line">		print d</span><br><span class="line">	if i == k</span><br><span class="line">		y == x_i</span><br><span class="line">		k = 2k</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>可以在期望的$\theta(\sqrt n)$次算数运算内找到n的一个小因子p.</p>
-</li>
-<li><p>如果p是合数, 则在大约经过$n^{1/4}$ 次更新之后, 可以预计该过程已经找到了足够多的约数</p>
-</li>
-<li><p>函数$f(x)=(x^2-1)\mod n$生成的序列在出现回路之前预计要执行的步数为$\theta (\sqrt n)$</p>
-</li>
-</ul>
+<h2 id="2-MAX-SAT"><a href="#2-MAX-SAT" class="headerlink" title="2 MAX-SAT"></a>2 MAX-SAT</h2><h3 id="随机解"><a href="#随机解" class="headerlink" title="随机解"></a>随机解</h3><p>一个子句 $C=(l_1\lor l_2\lor \cdots\lor l_k )$, $l_j\in \{x_i,\neg x_i\}$</p>
+<script type="math/tex; mode=display">
+\Pr[C \text{ is satisfied}]=1-2^{-k}\ge 1/2</script><script type="math/tex; mode=display">
+\mathbb E[\text{number of satisfied clauses}] \ge \frac{m}{2}\ge \frac{1}{2}OPT</script><h3 id="整数规划"><a href="#整数规划" class="headerlink" title="整数规划"></a>整数规划</h3><p>布尔变量$x_1,x_2\cdots,x_n\in \{0,1\}$<br>$S_j^+:$ set of $i$ that $x_i$ is in $C_j$<br>$S_j^-:$ set of $i$ that $\neg x_i$ is in $C_j$<br>$C_j$ is satified &lt;==&gt; $\sum_{i\in S_j^+}x_i +\sum_{i\in S_j^-}(1-x_i)\ge 1$<br>整数规划:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}    {\text{maximize}}        &&&\sum_{j=1}^m y_{j}\\    {\text{subject to}}        &&&\sum_{i\in S_j^+}x_i +\sum_{i\in S_j^-}(1-x_i)\ge y_j,&&1\le j\le m,\\
+&&&x_{i}\in \{0,1\},&&1\le i\le n,\\
+&&&y_{j}\in \{0,1\},&&1\le j\le m. \end{aligned}</script><p>线性规划松弛:<br>将$\{0,1\}$改为$[0,1]$.<br>随机近似:</p>
+<script type="math/tex; mode=display">
+\hat x_i=\begin{cases}
+1 & \text{with probability }x_i^*,\\
+0 &\text{with probability }1-x_i^*.
+\end{cases}</script><p>近似比分析:</p>
+<script type="math/tex; mode=display">
+OPT\ge OPT_{LP}=\sum_{j=1}^m y_j^*</script><script type="math/tex; mode=display">
+\begin{aligned}
+\Pr[C_j \text{is satisfied}]&=1-\prod_{i\in S_j^+}(1-x_i^*)\prod_{i\in S_j^-}x_i^*\\
+&\ge 1-(1-y_j^*/k)^k\\
+&\ge [1-(1-1/k)^k]y_j^* \qquad \text{ (convexity)}\\
+&\ge (1-1/e)y_j^*
+\end{aligned}</script><script type="math/tex; mode=display">
+\mathbb E[\text{number of satisfied clauses}]\ge (1-1/e)\sum_{j=1}^my_j^*\ge (1-1/e)\cdot OPT</script><h3 id="两个算法结合"><a href="#两个算法结合" class="headerlink" title="两个算法结合"></a>两个算法结合</h3><p>随机解满足$m_1$子句, 随机近似LP松弛满足$m_2$子句, 选择$\max{m_1,m_2}$.<br>分析: </p>
+<script type="math/tex; mode=display">
+\mathbb E[\max\{m_1,m_2\}]\ge \mathbb E[\frac{m_1+m_2}{2}]\ge \frac{3}{4}OPT</script><p>近似比$3/4$.</p>
 
       
     </div>
@@ -364,7 +389,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/问题求解四/" rel="tag"># 问题求解四</a>
+            <a href="/tags/高级算法/" rel="tag"># 高级算法</a>
           
         </div>
       
@@ -377,8 +402,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/01/问题求解/数论/" rel="next" title="数论">
-                <i class="fa fa-chevron-left"></i> 数论
+              <a href="/2019/11/06/高级算法/高级算法之贪心/" rel="next" title="高级算法之贪心">
+                <i class="fa fa-chevron-left"></i> 高级算法之贪心
               </a>
             
           </div>
@@ -387,8 +412,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/07/01/问题求解/代数编码/" rel="prev" title="代数编码">
-                代数编码 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/11/13/组合数学/组合数学之概率法/" rel="prev" title="组合数学之概率法">
+                组合数学之概率法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -512,7 +537,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#RSA公钥加密系统"><span class="nav-number">1.</span> <span class="nav-text">RSA公钥加密系统</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#整数的因子分解"><span class="nav-number"></span> <span class="nav-text">整数的因子分解</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Rounding-Linear-Programs"><span class="nav-number">1.</span> <span class="nav-text">Rounding Linear Programs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Vertex-Cover"><span class="nav-number">1.1.</span> <span class="nav-text">1 Vertex Cover</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题表示"><span class="nav-number">1.1.1.</span> <span class="nav-text">问题表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性规划的一般形式"><span class="nav-number">1.1.2.</span> <span class="nav-text">线性规划的一般形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Relaxation-amp-Rounding"><span class="nav-number">1.1.3.</span> <span class="nav-text">Relaxation &amp; Rounding</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一般步骤"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">一般步骤</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-MAX-SAT"><span class="nav-number">1.2.</span> <span class="nav-text">2 MAX-SAT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#随机解"><span class="nav-number">1.2.1.</span> <span class="nav-text">随机解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#整数规划"><span class="nav-number">1.2.2.</span> <span class="nav-text">整数规划</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两个算法结合"><span class="nav-number">1.2.3.</span> <span class="nav-text">两个算法结合</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
