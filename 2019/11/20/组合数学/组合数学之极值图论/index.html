@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="组合数学,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="极值图论1 Fobidden Cliques研究问题: 如果$G$满足某些性质, 那么$G$至多有多少条边? 1.1 Mantel’s theorem定理(Mantel 1907):  假设$G(V,E)$ 是无三角形的$n$点图, 那么 $|E|\le n^2/4$.  证明1(鸽笼原理):对$n$数归证明任意$G(V,E)$满足$|V|=n$且$|E|&amp;gt;\frac{n^2}{4}$一定有">
+<meta name="keywords" content="组合数学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="组合数学之极值图论">
+<meta property="og:url" content="http://yoursite.com/2019/11/20/组合数学/组合数学之极值图论/index.html">
+<meta property="og:site_name" content="XY&#39;s blog">
+<meta property="og:description" content="极值图论1 Fobidden Cliques研究问题: 如果$G$满足某些性质, 那么$G$至多有多少条边? 1.1 Mantel’s theorem定理(Mantel 1907):  假设$G(V,E)$ 是无三角形的$n$点图, 那么 $|E|\le n^2/4$.  证明1(鸽笼原理):对$n$数归证明任意$G(V,E)$满足$|V|=n$且$|E|&amp;gt;\frac{n^2}{4}$一定有">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-12-07T01:47:01.011Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="组合数学之极值图论">
+<meta name="twitter:description" content="极值图论1 Fobidden Cliques研究问题: 如果$G$满足某些性质, 那么$G$至多有多少条边? 1.1 Mantel’s theorem定理(Mantel 1907):  假设$G(V,E)$ 是无三角形的$n$点图, 那么 $|E|\le n^2/4$.  证明1(鸽笼原理):对$n$数归证明任意$G(V,E)$满足$|V|=n$且$|E|&amp;gt;\frac{n^2}{4}$一定有">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/11/20/组合数学/组合数学之极值图论/">
+
+
+
+
+
+  <title>组合数学之极值图论 | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XY's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/20/组合数学/组合数学之极值图论/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XY">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XY's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">组合数学之极值图论</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-20T20:00:00+08:00">
+                2019-11-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="极值图论"><a href="#极值图论" class="headerlink" title="极值图论"></a>极值图论</h1><h2 id="1-Fobidden-Cliques"><a href="#1-Fobidden-Cliques" class="headerlink" title="1 Fobidden Cliques"></a>1 Fobidden Cliques</h2><p>研究问题: 如果$G$满足某些性质, 那么$G$至多有多少条边?</p>
+<h3 id="1-1-Mantel’s-theorem"><a href="#1-1-Mantel’s-theorem" class="headerlink" title="1.1 Mantel’s theorem"></a>1.1 Mantel’s theorem</h3><p><strong>定理(Mantel 1907)</strong>:</p>
+<ul>
+<li>假设$G(V,E)$ 是无三角形的$n$点图, 那么 $|E|\le n^2/4$.</li>
+</ul>
+<h4 id="证明1-鸽笼原理"><a href="#证明1-鸽笼原理" class="headerlink" title="证明1(鸽笼原理):"></a>证明1(鸽笼原理):</h4><p>对$n$数归证明任意$G(V,E)$满足$|V|=n$且$|E|&gt;\frac{n^2}{4}$一定有三角形:</p>
+<ol>
+<li>$n\le 3$显然.</li>
+<li>假设$|V|\le n-1$成立, 对于$n$点的图$G$, 不是一般性, 假设$|E|=\frac{n^2}{4}+1$.  对于任意$uv\in E$, 令$H$为$G$的$V\setminus\{u,v\}$的诱导子图. 显然$H$有$n-2$点.<ol>
+<li>如果$H$有$&gt;\frac{(n-2)^2}{4}$条边, 那么根据假设, $H$有三角形</li>
+<li>如果$H$有$\le \frac{(n-2)^2}{4}$条边, 那么$H$和$\{u,v\}$之间至少$(\frac{n^2}{4}+1)-\frac{(n-2)^2}{4}-1=n-1$条边. 根据鸽笼原理, $H$中一定有一个点和$u,v$都相邻, 所以$G$有三角形.</li>
+</ol>
+</li>
+</ol>
+<h4 id="证明2-Cauchy-Schwarz-inequality"><a href="#证明2-Cauchy-Schwarz-inequality" class="headerlink" title="证明2(Cauchy-Schwarz inequality):"></a>证明2(Cauchy-Schwarz inequality):</h4><p>对于任意边$uv\in E$, 因为无三角形, 所以$d_v+d_u\le n$, 所以$\sum_{uv\in E}(d_u+d_v)\le n|E|$.<br>注意到$d(v)$在求和中出现了正好$d_v$次, 所以$\sum_{uv\in E}(d_u+d_v)=\sum_{v\in V}d_v^2$.<br>应用<strong>Cauchy-Schwarz inequality</strong>, </p>
+<script type="math/tex; mode=display">
+n|E|\ge \sum_{uv\in E}(d_u+d_v)=\sum_{v\in V}d_v^2\ge \frac{(\sum_{v\in V}d_v)^2}{n}=\frac{4|E|^2}{n}</script><p>其中最后一步使用了欧拉等式(handshaking)$\sum_{v\in V}d_v=2|E|$.</p>
+<h4 id="证明3-inequality-of-the-arithmetic-and-geometric-mean"><a href="#证明3-inequality-of-the-arithmetic-and-geometric-mean" class="headerlink" title="证明3(inequality of the arithmetic and geometric mean):"></a>证明3(inequality of the arithmetic and geometric mean):</h4><p>$A$为$G$中最大的点独立集(两两不相邻的点的集合), 设$|A|=\alpha$. 因为$G$是无三角形的, 所以对于任意点$v$, 所有它的邻居必须形成一个独立集, 因此对于所有的$v\in V$, 有$d(v)\le \alpha$.<br>记$B=V\setminus A$, $\beta = |B|$. 因为$A$是点独立集, 所以所有$E$中的边至少有一个顶点在$B$中, 所以$|E|\le \sum_{v\in B}d_v$. 根据算数平均值和集合平均值的关系, </p>
+<script type="math/tex; mode=display">
+|E|\le \sum_{v\in B}d_v\le \alpha\beta\le (\frac{\alpha+\beta}{2})^2=\frac{n^2}{2}</script><h3 id="1-2-Turan’s-theorem"><a href="#1-2-Turan’s-theorem" class="headerlink" title="1.2 Turan’s theorem"></a>1.2 Turan’s theorem</h3><p>Turan’s theorem将Mantel’s theorem中的三角形团块推广到了任意特定的大小.<br>团块: 所有的点两两相邻.</p>
+<p><strong>定理(Turán 1941)</strong>  </p>
+<ul>
+<li>令$G(V,E)$为一个$|V|=n$的图. 如果$G$没有$r$团块, 则$|E|\le \frac{r-2}{2(r-1)}n^2$</li>
+</ul>
+<p>无$K_r$图的例子: $K_{n_1,n_2,\cdots,n_{r-1}}$. (因为不同部分的点才能相邻)<br><strong>定义</strong>:  完全多部图$K_{n_1,\cdots,n_{r-1}}$,对于任意$i$,  $n_i\in\{\lfloor n/(r-1)\rfloor ,\lceil n/(r-1)\rceil\}$, 则称为<strong>Turán graph</strong>$T(n,r-1)$.</p>
+<h4 id="证明1-数归"><a href="#证明1-数归" class="headerlink" title="证明1(数归):"></a>证明1(数归):</h4><ol>
+<li>$n&lt;r$显然.</li>
+<li>假设$n&lt;N$成立, 对于$n=N$, 假设$G$是最大$K_r$-free的, 也就是存在$r-1$团块, 记为$A$, 剩下的记为$B$. 因为假设, $|E(B)|\le \frac{r-2}{2(r-1)}(n-r+1)^2$. 又因为$K_r$-free, $B$中的点不可能和所有$v\in A$都相邻, 所以$E(A,B)\le (r-2)(n-r+1)$. <script type="math/tex; mode=display">
+\begin{aligned}
+|E|&=|E(A)|+|E(A,B)|+|E(B)|\\
+&\le \binom{r-1}{2}+\frac{r-2}{2(r-1)}(n-r+1)^2\le (r-2)(n-r+1)
+=\frac{r-2}{2(r-1)}n^2
+\end{aligned}</script></li>
+</ol>
+<h4 id="证明2-weight-shifting"><a href="#证明2-weight-shifting" class="headerlink" title="证明2(weight shifting):"></a>证明2(weight shifting):</h4><p>分配给每个点$v$一个权重$w_v\ge 0$, $\sum_{v\in V}w_v=1$. 评估$S=\sum_{uv\in E}w_uw_v$.<br>令$W_u=\sum_{v:v\sim u}w_v$, 对于$u\not\sim v$满足$W_u\ge W_v$, 有$(w_u+\epsilon)W_u+(w_v-\epsilon)W_v\ge w_uW_u+w_vW_v$.<br>把所有的权重从$v$移动到$u$, $S$一定不减, 所以$S$最大—&gt; 所有权重都在一个团块上.<br>因此$S=\sum_{uv\in E}w_uw_v\le \binom{r-1}{2}\frac{1}{(r-1)^2}$, 而当$w_i=1/n$时, $S=\sum_{uv\in E}w_uw_v=\frac{|E|}{n^2}$, 化简得证.</p>
+<h4 id="证明3-概率法"><a href="#证明3-概率法" class="headerlink" title="证明3(概率法):"></a>证明3(概率法):</h4><p>$V=\{v_1,\cdots, v_n\}$, $d_i=d(v_i)$, 团块数$w(G)$: 最大的团块的大小.<br>证明$w(G)\ge \sum_{v\in V}\frac{1}{n-d_v}$:<br>随机排列$\pi$,  根据$\pi$中顺序将点加入$S$, $v_i$加入$S$如果$v_i$和所有$S$中现有的点都相邻.<br>令$X_v$表示$v$是否在$S$中. 如果所有$n-d_v-1$个顶点都排在它后面, 那么一定有$v\in S$, 这样的概率为$\frac{1}{n-d_v}$. 因此</p>
+<script type="math/tex; mode=display">
+\mathbb E[X_v]=\Pr[v\in S]\ge \frac{1}{n-d_v}</script><p>观察到$|S|=\sum_{v\in V}X_v$. 因为期望的线性, 有</p>
+<script type="math/tex; mode=display">
+\mathbb E[|S|]=\sum_{v\in V}\mathbb E[X_v]\ge \sum_{v\in V}\frac{1}{n-d_v}</script><p>因此肯定存在团块大小至少为这么多, 也就是$w(G)\ge \sum_{v\in V}\frac{1}{n-d_v}$.<br>接下来应用Cauchy-Schwarz不等式, </p>
+<script type="math/tex; mode=display">
+(\sum_{v\in V}a_vb_v)^2\le (\sum_{v\in V}a_v^2)(\sum_{v\in V}b_v^2)</script><p>设$a_v=\sqrt{n-d_v}$, $b_v=\frac{1}{\sqrt{n-d_v}}$, 则</p>
+<script type="math/tex; mode=display">
+n^2\le \sum_{v\in V}(n-d_v)\sum_{v\in V}\frac{1}{n-d_v}\le w(G)\sum_{v\in V}(n-d_v)</script><p>应用Turán’s theorem假设, $w(G)\le r-1$, 考虑到$2|E|=\sum_{v\in V}d_v$:</p>
+<script type="math/tex; mode=display">
+n^2\le (r-1)(n^2-2|E|)</script><p>化简即得证.</p>
+<h4 id="证明4"><a href="#证明4" class="headerlink" title="证明4:"></a>证明4:</h4><p>如果$G$是有最多边的$K_r$-free图, 则$G$中不存在点$u,v,w$, $uv\in E$, $uw\not\in E$, $vw\not \in E$. 数归证明如下: </p>
+<ol>
+<li>$d(w)&lt;d(u)$ 或者 $d(w)&lt;d(v)$. 不妨设$d(w)&lt;d(u)$, 复制$u$为$u’$, 和$u$有同样的邻居, 无边$uu’$, 去掉$w$, 则边增加了, 也没有$r$团块, 和最大矛盾.</li>
+<li>$d(w)\ge d(u)$ 且 $d(w)\ge d(v)$. 复制$w$两次, 删掉$u$和$v$, 新图边更多且没有$r$团块, 和最大矛盾.<br>因此不相邻关系是等价关系, 因为$G$是完全多部图, 每个部分是一个等价类, 而因为无$r$团块, 所以至多$r-1$部分, 因此结果就是$K_{n_1,n_2,\cdots,n_{r-1}}$, 就是Turán graph.</li>
+</ol>
+<p><strong>Turán’s Theorem (independent set)</strong>: </p>
+<ul>
+<li>如果$G(V,E)$有$|V|=n$, $|E|=m$, 则$G$有大小$\ge n^2/(2m+n)$的独立集.<br>原图变成补图, 使用团块版本Turán’s Theorem.<br>或直接证明: 随机排列生成独立集(排在所有邻居之前), 柯西希瓦兹.</li>
+</ul>
+<h4 id="Parallel-Max问题"><a href="#Parallel-Max问题" class="headerlink" title="Parallel Max问题"></a>Parallel Max问题</h4><ul>
+<li>计算$n$个不同的数中最大的</li>
+<li>一轮比较: 至少比$\binom{n}{2}$次. 否则如果$i$和$j$没比过, 对手策略构造数据,$i$和$j$都比所有比过的大.</li>
+<li>两轮比较: 分成$k$组, 每组$n/k$个数, 第一轮比出每组的最大值, 第二轮比$k$个最大值中的最大值, 总共$k\binom{n/k}{2}+\binom{k}{2}=O(n^{4/3})$, $k=n^{2/3}$时最优.<ul>
+<li>对手策略: 第一轮比了$m$次, 每次比较看做一条边, 根据Turán有$\ge \frac{n^2}{2m+n}$的点独立集, 令他们都是局部最优; 第二轮比较需要$\ge \binom{n^2/(2m+n)}{2}$次比较, 所以总共比较数量$\ge m+\binom{n^2/(2m+n)}{2}$次, 所以已经是最优的了.</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-Fobidden-Cycles"><a href="#2-Fobidden-Cycles" class="headerlink" title="2 Fobidden Cycles"></a>2 Fobidden Cycles</h2><p><strong>围长</strong>(girth)$g(G)$: 图$G$中最小长度的环的长度.</p>
+<h3 id="定理"><a href="#定理" class="headerlink" title="定理"></a>定理</h3><p>$G(V,E)$是$n$点图, 如果$g(G)\ge 5$, 那么$|E|\le \frac{1}{2}n\sqrt {n-1}$<br>证明:<br>假设$g(G)\ge 5$. 令$v_1,v_2,\cdots,v_d$为$u$的所有邻居, $d=d(u)$. 令$S_i=\{v\in V|v\sim v_i\land v\ne u\}$为$v_i$的非$u$邻居.</p>
+<ul>
+<li>对于任意$v_i, v_j$, 因为$G$没有三角形, 所以$v_iv_j\not\in E$.</li>
+<li>因为$G$中无$C_4$, 所以除了$u$以外的点都不能同时和$v_1,v_2,\cdots, v_n$中的超过1个点相邻. 因此对于$i\ne j$, $S_i\cap S_j=\emptyset$.<br>因此对于$\{u,v_1,v_2,\cdots,v_d\}\cup S_1\cup S_2\cup \cdots\cup S_d\subseteq V$, 有<script type="math/tex; mode=display">
+(d+1)+|S_1|+|S_2|+\cdots|S_d|=(d+1)+(d(v_1)-1)+(d(v_2)-1)+\cdots+(d(v_d)-1)\le n</script>因此<script type="math/tex; mode=display">
+\sum_{v:v\sim u}d(v)\le n-1</script>根据柯西希瓦兹定理:<script type="math/tex; mode=display">
+n(n-1)\ge \sum_{u\in V}\sum_{v:v\sim u}d(v)=\sum_{v\in V}d(v)^2\ge \frac{\sum_{v\in V}d(v)}{n}=\frac{|E|}{n}</script></li>
+</ul>
+<h2 id="3-Erdos–Stone-theorem"><a href="#3-Erdos–Stone-theorem" class="headerlink" title="3 Erdős–Stone theorem"></a>3 Erdős–Stone theorem</h2><p>固定一个图$H$, ex(n, H)表示满足$G\not\supseteq H$的图的最大的边数.<br>也就是Turán’s theorem可以写成</p>
+<script type="math/tex; mode=display">
+ex(n,K_r)\le \frac{r-2}{2(r-1)}n^2</script><h3 id="极值图论基本定理-Erdos–Stone-1946"><a href="#极值图论基本定理-Erdos–Stone-1946" class="headerlink" title="极值图论基本定理 (Erdős–Stone 1946)"></a>极值图论基本定理 (Erdős–Stone 1946)</h3><p>$K_s^r=K_{s,s,\cdots,s}$, 是$r$部图, 每部分$r$个点. 对于任意整数$r\ge 2$, $s\ge 1$, 和$\epsilon &gt;0$, 如果$n$足够大, 每个有$n$个点和至少$(\frac{r-2}{2(r-1)}+\epsilon)n^2$条边的图中, 都包含$K_{r,s}$作为子图. 也就是</p>
+<script type="math/tex; mode=display">
+ex(m,K_s^r)=(\frac{r-2}{2(r-1)}+o(1))n^2</script><p>证明很复杂.</p>
+<h3 id="推论"><a href="#推论" class="headerlink" title="推论:"></a>推论:</h3><p>定义$ex(n,H)/\binom{n}{2}$为子图$H$的极值密度. 对于任意非空图$H$, </p>
+<script type="math/tex; mode=display">
+\lim_{n\to \infty}\frac{ex(n,H)}{\binom{n}{2}}=\frac{\chi(H)-2}{\chi(H)-1}</script><p>其中$\chi(H)$为$H$的染色数, 即最少的颜色数量满足点着色后相邻点都不同色.</p>
+<p>推论证明:<br>令$r=\chi(H)$. 则</p>
+<ol>
+<li>对于任意$n$, $H\not \subseteq T(n,r-1)$, 即$ex(n,H)\ge |T(n,r-1)|$</li>
+<li>对于足够大的$s$, 有$H\subseteq K_s^r$, 即$ex(n,H)\le ex(n,K_s^r)$(想要有子图$K_s^r$, 一定有子图$H$)<br>所以<script type="math/tex; mode=display">
+\frac{r-2}{r-1}-o(1)\le \frac{|T(n,r-1)|}{\binom{n}{2}}\le \frac{ex(n,H)}{\binom{n}{2}}\le  \frac{ex(n,K_s^r)}{\binom{n}{2}}\le \frac{r-2}{r-1}+o(1)</script></li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/组合数学/" rel="tag"># 组合数学</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/13/组合数学/组合数学之概率法/" rel="next" title="组合数学之概率法">
+                <i class="fa fa-chevron-left"></i> 组合数学之概率法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/27/高级算法/高级算法之对偶规划/" rel="prev" title="高级算法之对偶规划">
+                高级算法之对偶规划 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XY</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#极值图论"><span class="nav-number">1.</span> <span class="nav-text">极值图论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Fobidden-Cliques"><span class="nav-number">1.1.</span> <span class="nav-text">1 Fobidden Cliques</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Mantel’s-theorem"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 Mantel’s theorem</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#证明1-鸽笼原理"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">证明1(鸽笼原理):</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#证明2-Cauchy-Schwarz-inequality"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">证明2(Cauchy-Schwarz inequality):</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#证明3-inequality-of-the-arithmetic-and-geometric-mean"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">证明3(inequality of the arithmetic and geometric mean):</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Turan’s-theorem"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 Turan’s theorem</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#证明1-数归"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">证明1(数归):</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#证明2-weight-shifting"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">证明2(weight shifting):</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#证明3-概率法"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">证明3(概率法):</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#证明4"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">证明4:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Parallel-Max问题"><span class="nav-number">1.1.2.5.</span> <span class="nav-text">Parallel Max问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Fobidden-Cycles"><span class="nav-number">1.2.</span> <span class="nav-text">2 Fobidden Cycles</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定理"><span class="nav-number">1.2.1.</span> <span class="nav-text">定理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Erdos–Stone-theorem"><span class="nav-number">1.3.</span> <span class="nav-text">3 Erdős–Stone theorem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#极值图论基本定理-Erdos–Stone-1946"><span class="nav-number">1.3.1.</span> <span class="nav-text">极值图论基本定理 (Erdős–Stone 1946)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#推论"><span class="nav-number">1.3.2.</span> <span class="nav-text">推论:</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

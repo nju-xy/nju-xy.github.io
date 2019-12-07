@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Hashing and Sketching1 不同元素的个数问题: 输入一系列(未必不同)的元素$x_1,x_2\cdots,x_n\in \Omega$, 输出不同元素的个数$z=|\{x_1,x_2,\cdots,x_n\}|$  通常算法需要维护字典结构, 需要至少$O(n)$空间, 现在想要更小的空间复杂度  $(\epsilon,\delta)$estimator:  若$Pr[(1-\">
+<meta name="description" content="Semidefinite ProgramsLP for Max-Cut \begin{aligned} \text{max}&amp;&amp;&amp;\sum_{uv\in E}y_{uv}\\ \text{s.t} &amp;&amp;&amp;y_{uv}\le |x_u-x_v| &amp;&amp; \forall uv\in E\\ &amp;&amp;&amp; x_v\in \{0,1\} &amp;&amp;\forall v\in V \end{aligned}有绝对值, 非线">
 <meta name="keywords" content="高级算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="高级算法之哈希">
-<meta property="og:url" content="http://yoursite.com/2019/09/25/高级算法/高级算法之哈希/index.html">
+<meta property="og:title" content="高级算法之Semidefinite Programs">
+<meta property="og:url" content="http://yoursite.com/2019/12/01/高级算法/高级算法之半正定规划/index.html">
 <meta property="og:site_name" content="XY&#39;s blog">
-<meta property="og:description" content="Hashing and Sketching1 不同元素的个数问题: 输入一系列(未必不同)的元素$x_1,x_2\cdots,x_n\in \Omega$, 输出不同元素的个数$z=|\{x_1,x_2,\cdots,x_n\}|$  通常算法需要维护字典结构, 需要至少$O(n)$空间, 现在想要更小的空间复杂度  $(\epsilon,\delta)$estimator:  若$Pr[(1-\">
+<meta property="og:description" content="Semidefinite ProgramsLP for Max-Cut \begin{aligned} \text{max}&amp;&amp;&amp;\sum_{uv\in E}y_{uv}\\ \text{s.t} &amp;&amp;&amp;y_{uv}\le |x_u-x_v| &amp;&amp; \forall uv\in E\\ &amp;&amp;&amp; x_v\in \{0,1\} &amp;&amp;\forall v\in V \end{aligned}有绝对值, 非线">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-10T02:48:19.981Z">
+<meta property="og:updated_time" content="2019-12-07T01:39:55.682Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="高级算法之哈希">
-<meta name="twitter:description" content="Hashing and Sketching1 不同元素的个数问题: 输入一系列(未必不同)的元素$x_1,x_2\cdots,x_n\in \Omega$, 输出不同元素的个数$z=|\{x_1,x_2,\cdots,x_n\}|$  通常算法需要维护字典结构, 需要至少$O(n)$空间, 现在想要更小的空间复杂度  $(\epsilon,\delta)$estimator:  若$Pr[(1-\">
+<meta name="twitter:title" content="高级算法之Semidefinite Programs">
+<meta name="twitter:description" content="Semidefinite ProgramsLP for Max-Cut \begin{aligned} \text{max}&amp;&amp;&amp;\sum_{uv\in E}y_{uv}\\ \text{s.t} &amp;&amp;&amp;y_{uv}\le |x_u-x_v| &amp;&amp; \forall uv\in E\\ &amp;&amp;&amp; x_v\in \{0,1\} &amp;&amp;\forall v\in V \end{aligned}有绝对值, 非线">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/25/高级算法/高级算法之哈希/">
+  <link rel="canonical" href="http://yoursite.com/2019/12/01/高级算法/高级算法之半正定规划/">
 
 
 
 
 
-  <title>高级算法之哈希 | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>高级算法之Semidefinite Programs | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/25/高级算法/高级算法之哈希/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/01/高级算法/高级算法之半正定规划/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="XY">
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">高级算法之哈希</h1>
+          <h1 class="post-title" itemprop="name headline">高级算法之Semidefinite Programs</h1>
         
 
         <div class="post-meta">
@@ -262,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-25T20:00:00+08:00">
-                2019-09-25
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-01T21:00:00+08:00">
+                2019-12-01
               </time>
             
 
@@ -300,122 +300,124 @@
       
 
       
-        <h1 id="Hashing-and-Sketching"><a href="#Hashing-and-Sketching" class="headerlink" title="Hashing and Sketching"></a>Hashing and Sketching</h1><h2 id="1-不同元素的个数"><a href="#1-不同元素的个数" class="headerlink" title="1 不同元素的个数"></a>1 不同元素的个数</h2><p>问题: 输入一系列(未必不同)的元素$x_1,x_2\cdots,x_n\in \Omega$, 输出不同元素的个数$z=|\{x_1,x_2,\cdots,x_n\}|$</p>
-<ul>
-<li><p>通常算法需要维护字典结构, 需要至少$O(n)$空间, 现在想要更小的空间复杂度</p>
-</li>
-<li><p>$(\epsilon,\delta)$estimator: </p>
-<p>若$Pr[(1-\epsilon)z\le \hat Z\le (1+\epsilon)z]\ge 1-\delta$, 则$\hat Z$是$z$的$(\epsilon, \delta)$估计;</p>
-<p>若$\mathbb E[\hat Z]=z$则为无偏估计.</p>
-</li>
-</ul>
-<h3 id="1-1-哈希估计器"><a href="#1-1-哈希估计器" class="headerlink" title="1.1 哈希估计器"></a>1.1 哈希估计器</h3><ul>
-<li><p>假设有理想的均匀随机哈希函数$h:\Omega \to [0,1]$</p>
-</li>
-<li><script type="math/tex; mode=display">
-\mathbb E[\min _{1\le i\le n}h(x_i)]=\frac{1}{z+1}</script><ul>
-<li>证明概要: 有$z$个均匀随机的哈希值, 将$[0,1]$分成$z+1$份</li>
-</ul>
-</li>
-<li><p>这样估计太不稳定</p>
-</li>
-</ul>
-<h3 id="1-2-Flajolet-Martin算法"><a href="#1-2-Flajolet-Martin算法" class="headerlink" title="1.2 Flajolet-Martin算法"></a>1.2 Flajolet-Martin算法</h3><ul>
-<li>$h_1,h_2,\cdots,h_k: \Omega\to [0,1]$是k个均匀独立随机哈希函数</li>
-<li>扫描一遍所有$x$, 计算$Y_j=\min_{1\le i\le n}h_j(x_i)$, $j=1,2,\cdots,k$</li>
-<li>计算$Y_j$平均值$\bar Y$</li>
-<li>$\hat Z=\frac{1}{\bar Y}-1$</li>
-</ul>
-<h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><ul>
-<li>适合数据流模型, 只需要存$k$个值</li>
-<li>对于任意$\epsilon,\delta &lt; 1/2$, 若$k\ge \lceil \frac{4}{\epsilon^2\delta}\rceil$, 则$\hat Z$是$z$的$(\epsilon,\delta)$估计</li>
-<li>证明思路: <ul>
-<li>若$\bar Y$是$\frac{1}{1+z}$的$(\epsilon/2, \delta)$估计, 则$\hat Z$是$z$的$(\epsilon, \delta)$估计</li>
-<li>$\mathbb E[\bar Y] = \mathbb E[Y_j]=\frac{1}{z+1}$</li>
-<li>$Var[Y_j]\le \frac{1}{(z+1)^2}$, 因此$Var[\bar Y]\le \frac{1}{k(z+1)^2}$</li>
-<li>根据切比雪夫不等式, $Pr[|\bar Y-\mathbb E[\bar Y|&gt;\frac{\epsilon/2}{z+1}]\le \frac{4}{\epsilon^2}(z+1)^2Var[\bar Y]\le \frac{4}{\epsilon^2k}$</li>
-<li>因此取$k\ge \lceil \frac{4}{\epsilon^2\delta}\rceil$即可</li>
-</ul>
-</li>
-</ul>
-<h3 id="1-3-均匀哈希假设UHA"><a href="#1-3-均匀哈希假设UHA" class="headerlink" title="1.3 均匀哈希假设UHA"></a>1.3 均匀哈希假设UHA</h3><ul>
-<li>均匀随机函数$h: [N]\to[M]$是可获得的, 并且计算高效</li>
-</ul>
-<h2 id="2-集合元素"><a href="#2-集合元素" class="headerlink" title="2 集合元素"></a>2 集合元素</h2><ul>
-<li>基础问题: 是否$x\in S$ ?</li>
-<li>数据的有损失的表达称为<strong>sketch</strong></li>
-</ul>
-<h3 id="2-1-Bloom-filter"><a href="#2-1-Bloom-filter" class="headerlink" title="2.1 Bloom filter"></a>2.1 Bloom filter</h3><ul>
-<li>$h_1,h_2,\cdots,h_k:\Omega\to[cn]$是独立的均匀随机哈希函数</li>
-<li>数据结构建立<ul>
-<li>初始化布尔数列$A$的所有$cn$个bits为0</li>
-<li>对于每一个$x\in S$, 令$A[h_i(x)]=1$, $1\le i\le k$</li>
-</ul>
-</li>
-<li>查询过程: <ul>
-<li>对于任意$x\in \Omega$, 如果对于所有$1\le i\le k$, $A[h_i(x)]=1$, 则回答”是”; 否则回答”否”.</li>
-</ul>
-</li>
-</ul>
-<h4 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h4><ul>
-<li><p>空间: $cn$ bits, 时间: $O(k)$</p>
-</li>
-<li><p>没有假反例</p>
-</li>
-<li><p>假正例: $x\not\in S$但是对所有$1\le i\le k$都有$A[h_i(x)]=0$ </p>
-<ul>
-<li><script type="math/tex; mode=display">
+        <h1 id="Semidefinite-Programs"><a href="#Semidefinite-Programs" class="headerlink" title="Semidefinite Programs"></a>Semidefinite Programs</h1><h2 id="LP-for-Max-Cut"><a href="#LP-for-Max-Cut" class="headerlink" title="LP for Max-Cut"></a>LP for Max-Cut</h2><script type="math/tex; mode=display">
 \begin{aligned}
-Pr[wrong ~ answer ~ 'yes'] = &Pr[\forall 1\le i\le k, A[h_i(x)=1]]\\
-&= Pr[A[h1(x)=1]]^k\\
-&= (1-Pr[A[h_1(x)]=0])^k\\
-&= (1-(1-\frac{1}{cn})^{kn})^k\\
-&\approx (1-e^{-k/c})^k
-\end{aligned}</script></li>
-<li><p>$k$取$c\ln 2$时结果为$(0.6185)^c$</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="3-频率估计"><a href="#3-频率估计" class="headerlink" title="3 频率估计"></a>3 频率估计</h2><p>问题: 对于一个序列$x_1,x_2,\cdots,x_n\in \Omega$, 查询$x$出现的次数$f_x$.</p>
-<ul>
-<li>需要一个加法误差而不是乘法误差($Pr[|\hat f_x-f_x|\le \epsilon n]\ge 1-\delta$)</li>
-</ul>
-<h3 id="3-1-Count-min-sketch"><a href="#3-1-Count-min-sketch" class="headerlink" title="3.1 Count-min sketch"></a>3.1 Count-min sketch</h3><ul>
-<li>$h_1,h_2,\cdots,h_k:\Omega\to[m]$是独立的均匀随机哈希函数</li>
-<li>数据结构建立(一个$k\times m$的整数数列$CMS$)<ul>
-<li>初始化布尔数列$CMS$的所有元素为0</li>
-<li>对于每一个$x_i$, 令$CMS[j][h_j(x_i)]++$, $1\le j\le k$</li>
-</ul>
-</li>
-<li>查询过程: <ul>
-<li>对于任意$x\in \Omega$, 返回$\hat f_x=\min_{1\le j\le k}CMS[j][h_j(x)]$</li>
-</ul>
-</li>
-</ul>
-<h4 id="分析-2"><a href="#分析-2" class="headerlink" title="分析"></a>分析</h4><ul>
-<li><p>空间$O(km)$, 每次查询时间$O(k)$</p>
-</li>
-<li><p>显然$CMS[j][h_j(x)]\ge f_x$, 因此$\hat f_x\ge f_x$</p>
-</li>
-<li><script type="math/tex; mode=display">
-Pr[|\hat f_x -f_x|\ge \epsilon n]=Pr[\hat f_x-f_x\ge \epsilon n]=\prod_{j=1}^k
-Pr[CMS[j][h_j(x)]-f_x\ge \epsilon n]</script></li>
-<li><p>对于任意$x\in \Omega$和$1\le j\le k$, 有$\mathbb E[CMS[j][h_j(x)]]\le f_x+\frac{n}{m}$</p>
+\text{max}&&&\sum_{uv\in E}y_{uv}\\
+\text{s.t} &&&y_{uv}\le |x_u-x_v| && \forall uv\in E\\
+&&& x_v\in \{0,1\} &&\forall v\in V
+\end{aligned}</script><p>有绝对值, 非线性规划, 转化为下面的形式:</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
-\mathbb E[CMS[j][h_j(x)]]
-&=f_x+\sum_{y\in\{x_1,x_2,\cdots,x_n\}\setminus \{x\}}f_yPr[h_j(y)=h_j(x)]\\
-&=f_x+\frac{1}{m}\sum_{y\in\{x_1,x_2,\cdots,x_n\}\setminus \{x\}}f_x\\
-&\le f_x+\frac{1}{m}\sum_{y\in\{x_1,x_2,\cdots,x_n\}}f_x\\
-&\le f_x+\frac{n}{m}
-\end{aligned}</script></li>
-<li><p>马尔科夫不等式得$Pr[CMS[j][h_j(x)-f_x]\ge \epsilon n]\le \frac{1}{\epsilon m}$</p>
+\text{max}&&&\sum_{uv\in E}y_{uv}\\
+\text{s.t} &&&y_{uv}\le y_{uw}+y_{wv} && \forall u,v,w\in V\\
+&&&y_{uv}+ y_{uw}+y_{wv}\le 2 && \forall u,v,w\in V\\
+&&& y_{uv}\in \{0,1\} &&\forall u,v\in V
+\end{aligned}</script><p>也就是$\forall u,v,w\in V$, $\{u,v\}$, $\{u,w\}$, $\{v,w\}$中有0或2对是交错的.<br>integrality gap: $\ge 2$<br>也可以写成二次规划:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\text{max}&&&\sum_{uv\in E}y_{uv}\\
+\text{s.t} &&&y_{uv}\le \frac{1}{2}(1-x_ux_v) && \forall uv\in E\\
+&&& x_v\in \{-1,1\} &&\forall v\in V
+\end{aligned}</script><p>即</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\text{max}&&&\sum_{uv\in E}\frac{1}{2}(1-x_ux_v)\\
+\text{s.t} 
+&&& x_v^2=1 &&\forall v\in V
+\end{aligned}</script><p>松弛成向量规划</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\text{max}&&&\frac{1}{2}\sum_{uv\in E}(1-\langle x_u,x_v\rangle)\\
+\text{s.t} 
+&&& \langle x_v,x_v\rangle=1 &&\forall v\in V\\
+&&& x_v\in \mathbb R^n
+\end{aligned}</script><h2 id="半正定规划SDP"><a href="#半正定规划SDP" class="headerlink" title="半正定规划SDP"></a>半正定规划SDP</h2><p>定义: 对称矩阵$A\in \mathbb R^{n\times n}$是半正定的当且仅当对于任意$x\in \mathbb R^n$, $x^T Ax\ge 0$, 记做$A \succcurlyeq 0$<br>定理: 对于对称阵$A\in \mathbb R^{n\times n}$:</p>
+<p>​        $A \succcurlyeq 0 $ 当且仅当 所有特征值$\lambda(A)\ge 0$ 当且仅当 存在$B\in \mathbb R^{n\times n}, A=B^TB$</p>
+<p>半正定规划:<br>$C,A_1,\cdots,A_k\in \mathbb R^{n\times n}, b_1.b_2,\cdots,b_k\in \mathbb R$</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\text{max}&&& tr(C^TY)=\sum_{i=1}^n\sum_{j=1}^nc_{ij}y_{ij}\\
+\text{s.t} 
+&&& tr(A_r^T Y)\le b_r && \forall 1\le r\le k\\
+&&& Y \succcurlyeq 0\\
+&&& \text{symmetric } Y\in R^{n\times n}
+\end{aligned}</script><p>等价形式:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\text{max}&&& tr(C^TY)=\sum_{i=1}^n\sum_{j=1}^nc_{ij}\langle v_i,v_j\rangle\\
+\text{s.t} 
+&&& \sum_{i=1}^n\sum_{j=1}^na_{ij}^{(r)}\langle v_i,v_j\rangle\le b_r && \forall 1\le r\le k\\
+&&& v_1,\cdots,v_n\in R^{n}
+\end{aligned}</script><ul>
+<li>SDP是LP的推广</li>
+<li>SDP是半正定规划的一类</li>
+<li>可以可以被 ellipsoid method高效解答<ul>
+<li>在$poly(n, 1/\epsilon)$时间内得到$OPT \pm\epsilon$</li>
+</ul>
 </li>
-<li><p>综上, $Pr[|\hat f_x -f_x|\le \frac{1}{(\epsilon m)^k}$</p>
+</ul>
+<h2 id="舍入-Rounding"><a href="#舍入-Rounding" class="headerlink" title="舍入(Rounding)"></a>舍入(Rounding)</h2><p>对于最大割问题, 假设松弛到的SDP的解为$x_v^*$, 舍入到原问题解$\hat x_v$:</p>
+<ul>
+<li>均匀随机选取一个单位向量$u\in \mathbb R^n$, $\Vert u \Vert_2=1$</li>
+<li>则$x_v=sgn (\langle x_v^*,u\rangle)$</li>
+<li>几何理解: SDP的解是球内的点, 随机找一个超平面, 将球分成两半, 分别对应原问题解1和-1.</li>
+<li>生成均匀随机单位向量的方法: <ul>
+<li>随机选取$r=(r_1,\cdots,r_n)\in \mathbb R^n$, 每个$r_i\sim N(0,1)$, 独立同分布的<strong>高斯分布</strong></li>
+<li>然后归一化$u=\frac{r}{\Vert r\Vert_2}$就是均匀随机的单位向量</li>
+<li>原因: <ul>
+<li><script type="math/tex; mode=display">
+\Pr[(r_1,\cdots,r_n)]=\prod _{i=1}^n\frac{1}{\sqrt{2\pi}}e^{-r_i^2/2}=(2\pi)^{-d/2}e^{-\Vert r\Vert^2/2}</script></li>
+<li>是球面对称的, 之和离球心距离相关</li>
+</ul>
 </li>
-<li><p>取$m=\lceil \frac{e}{\epsilon}\rceil$, $k=\lceil \ln \frac{1}{\delta}\rceil$, 则上述概率上界$\frac{1}{(\epsilon m)^k}\le \delta$</p>
+<li>本问题中不用归一化(不影响符号)</li>
+</ul>
 </li>
+</ul>
+<p>近似比分析:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathbb E[\text{cut}]&=\sum_{uv\in E}\Pr[\text{sgn}(\langle x_u^*,r\rangle)\ne \text{sgn}(\langle x_u^*,r\rangle)]\\
+&=\sum_{uv\in E}\frac{\theta _{uv}}{\pi}\\
+&=\sum_{uv\in E}\frac{\arccos \langle x_u^*,x_v^*\rangle}{\pi}\\
+&\ge 0.878\cdot \frac{1}{2}(1-\langle x_u^*,x_v^*\rangle)
+\end{aligned}</script><p>其中$\theta_{uv}=\angle x_u^*ox_v^*$, 使用$\Vert x_u^*\Vert\cdot \Vert x_v^*\Vert \cos\theta_{uv}=\langle x_u^*,x_v^*\rangle$, 得$\cos\theta_{uv}=\langle x_u^*,x_v^*\rangle$. </p>
+<p>而$0.878$是通过极限算出来的.</p>
+<p>所以近似比为$0.878$.</p>
+<h2 id="Unique-Games-Conjecture"><a href="#Unique-Games-Conjecture" class="headerlink" title="Unique Games Conjecture"></a>Unique Games Conjecture</h2><p>没看懂, 算了吧.</p>
+<h2 id="Constraint-Satisfaction-Problem"><a href="#Constraint-Satisfaction-Problem" class="headerlink" title="Constraint Satisfaction Problem"></a>Constraint Satisfaction Problem</h2><ul>
+<li>变量: $X=\{x_1,x_2,\cdots,x_n\}$</li>
+<li>域: $\Omega$, 通常$\Omega=[q]$, $q$有限</li>
+<li>限制: $c=(\psi, S)$, 其中$\psi:\Omega^k\to\{0,1\}$, 范围$S\subseteq X$是一个$k$元子集.</li>
+<li>CSP实例: 一个定义在$X$上的限制集</li>
+<li>赋值: $\sigma\in\Omega ^X$ 对于每个变量赋值</li>
+<li>如果$\psi(\sigma_s)=1$, 限制$c=(\psi,S)$被满足 </li>
+<li>例子:<ul>
+<li>最大割: $q=2$, 限制为不等于.</li>
+<li>$k$-SAT: $q=2$, 限制是$k$-从句</li>
+<li>匹配/覆盖: $q=2$, 限制为$\sum\le 1$(或$\sum\ge 1$).</li>
+<li>$k$着色: $q=k$, 限制为不等于</li>
+<li>图同构: 限制为邻接矩阵</li>
+<li>unique games: $\Omega=[q]$, 每个限制是任意的二元双射谓词: $\psi: \Omega^2\to \{0,1\}$, 其中$\forall a\in\Omega$, 存在唯一的$b\in \Omega$, $\psi(a,b)=1$.</li>
+</ul>
+</li>
+<li>CSP算法问题: 给定CSP实例$I$<ul>
+<li>满足性: 是否存在一个赋值满足所有的限制<ul>
+<li>搜索: 找到满足的赋值</li>
+</ul>
+</li>
+<li>优化: 找到赋值满足尽可能多的限制.<ul>
+<li>驳斥(对偶): 证明不存在满足$&gt;m$个限制的赋值, $m$尽量小</li>
+</ul>
+</li>
+<li>计数: 估计满足限制的赋值的数量<ul>
+<li>采样: 随机采样一个满足赋值</li>
+<li>推断: 观察一个满足的赋值, 猜测未知变量的值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>各CSP问题难度见ppt</li>
 </ul>
 
       
@@ -447,8 +449,8 @@ Pr[CMS[j][h_j(x)]-f_x\ge \epsilon n]</script></li>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/18/组合数学/组合数学之生成函数/" rel="next" title="组合数学之生成函数">
-                <i class="fa fa-chevron-left"></i> 组合数学之生成函数
+              <a href="/2019/11/27/高级算法/高级算法之对偶规划/" rel="next" title="高级算法之对偶规划">
+                <i class="fa fa-chevron-left"></i> 高级算法之对偶规划
               </a>
             
           </div>
@@ -456,10 +458,6 @@ Pr[CMS[j][h_j(x)]-f_x\ge \epsilon n]</script></li>
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/25/组合数学/组合数学之容斥原理/" rel="prev" title="组合数学之容斥原理">
-                组合数学之容斥原理 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -582,7 +580,7 @@ Pr[CMS[j][h_j(x)]-f_x\ge \epsilon n]</script></li>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hashing-and-Sketching"><span class="nav-number">1.</span> <span class="nav-text">Hashing and Sketching</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-不同元素的个数"><span class="nav-number">1.1.</span> <span class="nav-text">1 不同元素的个数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-哈希估计器"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 哈希估计器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Flajolet-Martin算法"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 Flajolet-Martin算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分析"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-均匀哈希假设UHA"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 均匀哈希假设UHA</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-集合元素"><span class="nav-number">1.2.</span> <span class="nav-text">2 集合元素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Bloom-filter"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 Bloom filter</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分析-1"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">分析</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-频率估计"><span class="nav-number">1.3.</span> <span class="nav-text">3 频率估计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Count-min-sketch"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 Count-min sketch</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分析-2"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">分析</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Semidefinite-Programs"><span class="nav-number">1.</span> <span class="nav-text">Semidefinite Programs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LP-for-Max-Cut"><span class="nav-number">1.1.</span> <span class="nav-text">LP for Max-Cut</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#半正定规划SDP"><span class="nav-number">1.2.</span> <span class="nav-text">半正定规划SDP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#舍入-Rounding"><span class="nav-number">1.3.</span> <span class="nav-text">舍入(Rounding)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Unique-Games-Conjecture"><span class="nav-number">1.4.</span> <span class="nav-text">Unique Games Conjecture</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Constraint-Satisfaction-Problem"><span class="nav-number">1.5.</span> <span class="nav-text">Constraint Satisfaction Problem</span></a></li></ol></li></ol></div>
             
 
           </div>
