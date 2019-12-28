@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="XY&#39;s blog">
 <meta property="og:description" content="容斥原理1 容斥原理对于$n$个有限集合$A_1,A_2,\cdots, A_n$,   |\cup_{i=1}^nA_i|=\sum_{I\subseteq\{1,\cdots, n\}}(-1)^{|I|-1}|\cap_{i\in I}A_i|补集形式: 全集$U$  |\bar A_1\cap \bar A_2\cap\cdots\cap\bar A_n|=|U-\cup_{i=1}^nA">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-10T02:40:59.259Z">
+<meta property="og:updated_time" content="2019-12-28T07:34:46.527Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="组合数学之容斥原理">
 <meta name="twitter:description" content="容斥原理1 容斥原理对于$n$个有限集合$A_1,A_2,\cdots, A_n$,   |\cup_{i=1}^nA_i|=\sum_{I\subseteq\{1,\cdots, n\}}(-1)^{|I|-1}|\cap_{i\in I}A_i|补集形式: 全集$U$  |\bar A_1\cap \bar A_2\cap\cdots\cap\bar A_n|=|U-\cup_{i=1}^nA">
@@ -338,7 +338,7 @@ G_\pi=\{(i,\pi(i))|i\in\{1,2,\cdots, n\}\}</script><p>定义$N_0=|\{\pi|B \cap G
 <p>$r_k=|\{S\in\binom{B}{k}|\forall(i_1,j_1),(i_2,j_2)\in S, i_1\ne i_2, j_1\ne j_2\}|$为在B中放$k$个non-attacking的棋子的种数</p>
 <p>则</p>
 <script type="math/tex; mode=display">
-N_0=\sum_{k=0}^n(-1)^kr_k(n-k)!</script><p>证明太简答, 略</p>
+N_0=\sum_{k=0}^n(-1)^kr_k(n-k)!</script><p>证明太简单, 略</p>
 <p>例1: 重排问题: $B=\{(1,1),(2,2),\cdots, (n,n)\}$</p>
 <p>例2: Problème des ménages</p>
 <ul>
@@ -358,7 +358,7 @@ N_0=\sum_{k=0}^n(-1)^kr_k(n-k)!</script><p>证明太简答, 略</p>
 <li>$g(m,k)$: 在$m$个点中选$k$个不相邻的点涂红, 剩下的中选一个涂蓝, 下面算两次</li>
 <li>算法1: $g(m,k)=(m-k)f(m,k)$</li>
 <li>算法2: 选1个点涂蓝($m$种), 在这点剪短圆圈. 在一行$m-1$个中选择$m-1$个不相邻的涂红($\binom{m-k}{k}$种), 因此$g(m,k)=m\binom{m-k}{k}$</li>
-<li>因此$g(m,k)=\frac{m}{m-k}\binom{m-k}{k}$</li>
+<li>因此$f(m,k)=\frac{m}{m-k}\binom{m-k}{k}$</li>
 </ul>
 </li>
 <li>所以$r_k=\frac{2n}{2n-k}\binom{2n-k}{k}$, 从而可以算出$N_0$</li>
