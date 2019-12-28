@@ -87,10 +87,12 @@
 <meta property="og:site_name" content="XY&#39;s blog">
 <meta property="og:description" content="存在性问题1 Existence by counting1.1 Shannon’s circuit lower bound布尔电路问题: $f:\{0,1\}^n\to \{0,1\}$, 三种门: AND, OR, NOT. 电路复杂度: 门的个数. 定理(Shannon): 存在布尔函数$f:\{0,1\}^n\to \{0,1\}$, 电路复杂度$&amp;gt;\frac{2^n}{3n}$. 证">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-28T13:32:12.869Z">
+<meta property="og:image" content="http://yoursite.com/figs/组合数学/figs6/对偶图.png">
+<meta property="og:updated_time" content="2019-12-28T13:38:11.581Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="组合数学之存在性问题">
 <meta name="twitter:description" content="存在性问题1 Existence by counting1.1 Shannon’s circuit lower bound布尔电路问题: $f:\{0,1\}^n\to \{0,1\}$, 三种门: AND, OR, NOT. 电路复杂度: 门的个数. 定理(Shannon): 存在布尔函数$f:\{0,1\}^n\to \{0,1\}$, 电路复杂度$&amp;gt;\frac{2^n}{3n}$. 证">
+<meta name="twitter:image" content="http://yoursite.com/figs/组合数学/figs6/对偶图.png">
 
 
 
@@ -311,7 +313,7 @@
 <ul>
 <li>用De Morgan定律可以把所有的非门放在输入处, 这样以后每个门有两种(AND, OR), 都是2输入的.</li>
 <li>门的每个输入都是0, 1, $x_i$, $\neg x_i$, 或者其他门的输入. 所以最多有$2+2n+t-1$个可能的门输入</li>
-<li>因此$t$个门的电路数量至多为$2^t(2+2n+t-1)^{2t}$. (因为每个门有2中选择, 2个输入各有至多$2+2n+t-1$种选择)</li>
+<li>因此$t$个门的电路数量至多为$2^t(2+2n+t-1)^{2t}$. (因为每个门有2种选择, 2个输入各有至多$2+2n+t-1$种选择)</li>
 </ul>
 </li>
 <li>如果$t=2^n/3n$, 则$\frac{2^t(2+2n+t-1)^{2t}}{2^{2^n}}=o(1)&lt;1$, 因此$2^t(2+2n+t-1)^{2t}&lt;2^{2^n}$.</li>
@@ -378,6 +380,7 @@
 <li>每个cell看做一个点, 外围空间也看做一个点</li>
 <li>对偶图中两点之间有边当且仅当原图中的这两个cell之间有红蓝边</li>
 </ul>
+<p><img src="/figs/组合数学/figs6/对偶图.png" alt="对偶图" style="zoom:40%;"></p>
 <p>对于对偶图中的点:</p>
 <ul>
 <li>如果原图中的cell有三色, 那么对偶图中对应点度为1</li>
