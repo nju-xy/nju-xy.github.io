@@ -87,10 +87,13 @@
 <meta property="og:site_name" content="XY&#39;s blog">
 <meta property="og:description" content="极值图论1 Fobidden Cliques研究问题: 如果$G$满足某些性质, 那么$G$至多有多少条边? 1.1 Mantel’s theorem定理(Mantel 1907):  假设$G(V,E)$ 是无三角形的$n$点图, 那么 $|E|\le n^2/4$.  证明1(鸽笼原理):对$n$数归证明任意$G(V,E)$满足$|V|=n$且$|E|&amp;gt;\frac{n^2}{4}$一定有">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-29T01:56:55.964Z">
+<meta property="og:image" content="http://yoursite.com/figs/组合数学/figs8/f1.png">
+<meta property="og:image" content="http://yoursite.com/figs/组合数学/figs8/f2.png">
+<meta property="og:updated_time" content="2019-12-29T02:39:53.404Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="组合数学之极值图论">
 <meta name="twitter:description" content="极值图论1 Fobidden Cliques研究问题: 如果$G$满足某些性质, 那么$G$至多有多少条边? 1.1 Mantel’s theorem定理(Mantel 1907):  假设$G(V,E)$ 是无三角形的$n$点图, 那么 $|E|\le n^2/4$.  证明1(鸽笼原理):对$n$数归证明任意$G(V,E)$满足$|V|=n$且$|E|&amp;gt;\frac{n^2}{4}$一定有">
+<meta name="twitter:image" content="http://yoursite.com/figs/组合数学/figs8/f1.png">
 
 
 
@@ -317,7 +320,7 @@
 <h4 id="证明2-Cauchy-Schwarz-inequality"><a href="#证明2-Cauchy-Schwarz-inequality" class="headerlink" title="证明2(Cauchy-Schwarz inequality):"></a>证明2(Cauchy-Schwarz inequality):</h4><p>对于任意边$uv\in E$, 因为无三角形, 所以$d_v+d_u\le n$, 所以$\sum_{uv\in E}(d_u+d_v)\le n|E|$.<br>注意到$d(v)$在求和中出现了正好$d_v$次, 所以$\sum_{uv\in E}(d_u+d_v)=\sum_{v\in V}d_v^2$.<br>应用<strong>Cauchy-Schwarz inequality</strong>, </p>
 <script type="math/tex; mode=display">
 n|E|\ge \sum_{uv\in E}(d_u+d_v)=\sum_{v\in V}d_v^2\ge \frac{(\sum_{v\in V}d_v)^2}{n}=\frac{4|E|^2}{n}</script><p>其中最后一步使用了欧拉不等式(handshaking)$\sum_{v\in V}d_v=2|E|$.</p>
-<h4 id="证明3-inequality-of-the-arithmetic-and-geometric-mean"><a href="#证明3-inequality-of-the-arithmetic-and-geometric-mean" class="headerlink" title="证明3(inequality of the arithmetic and geometric mean):"></a>证明3(inequality of the arithmetic and geometric mean):</h4><p>$A$为$G$中最大的点独立集(两两不相邻的点的集合), 设$|A|=\alpha$. 因为$G$是无三角形的, 所以对于任意点$v$, 所有它的邻居必须形成一个独立集, 因此对于所有的$v\in V$, 有$d(v)\le \alpha$.<br>记$B=V\setminus A$, $\beta = |B|$. 因为$A$是点独立集, 所以所有$E$中的边至少有一个顶点在$B$中, 所以$|E|\le \sum_{v\in B}d_v$. 根据算数平均值和集合平均值的关系, </p>
+<h4 id="证明3-inequality-of-the-arithmetic-and-geometric-mean"><a href="#证明3-inequality-of-the-arithmetic-and-geometric-mean" class="headerlink" title="证明3(inequality of the arithmetic and geometric mean):"></a>证明3(inequality of the arithmetic and geometric mean):</h4><p>$A$为$G$中最大的点独立集(两两不相邻的点的集合), 设$|A|=\alpha$. 因为$G$是无三角形的, 所以对于任意点$v$, 所有它的邻居必须形成一个独立集, 因此对于所有的$v\in V$, 有$d(v)\le \alpha$.<br>记$B=V\setminus A$, $\beta = |B|$. 因为$A$是点独立集, 所以所有$E$中的边至少有一个顶点在$B$中, 所以$|E|\le \sum_{v\in B}d_v$. 根据算数平均值和几何平均值的关系, </p>
 <script type="math/tex; mode=display">
 |E|\le \sum_{v\in B}d_v\le \alpha\beta\le (\frac{\alpha+\beta}{2})^2=\frac{n^2}{2}</script><h3 id="1-2-Turan’s-theorem"><a href="#1-2-Turan’s-theorem" class="headerlink" title="1.2 Turan’s theorem"></a>1.2 Turan’s theorem</h3><p>Turan’s theorem将Mantel’s theorem中的三角形团块推广到了任意特定的大小.<br>团块: 所有的点两两相邻.</p>
 <p><strong>定理(Turán 1941)</strong>  </p>
@@ -334,7 +337,7 @@ n|E|\ge \sum_{uv\in E}(d_u+d_v)=\sum_{v\in V}d_v^2\ge \frac{(\sum_{v\in V}d_v)^2
 =\frac{r-2}{2(r-1)}n^2
 \end{aligned}</script></li>
 </ol>
-<h4 id="证明2-weight-shifting"><a href="#证明2-weight-shifting" class="headerlink" title="证明2(weight shifting):"></a>证明2(weight shifting):</h4><p>分配给每个点$v$一个权重$w_v\ge 0$, $\sum_{v\in V}w_v=1$. 评估$S=\sum_{uv\in E}w_uw_v$.<br>令$W_u=\sum_{v:v\sim u}w_v$, 对于$u\not\sim v$满足$W_u\ge W_v$, 有$(w_u+\epsilon)W_u+(w_v-\epsilon)W_v\ge w_uW_u+w_vW_v$.<br>把所有的权重从$v$移动到$u$, $S$一定不减, 所以$S$最大—&gt; 所有权重都在一个团块上.<br>因此$S=\sum_{uv\in E}w_uw_v\le \binom{r-1}{2}\frac{1}{(r-1)^2}$, 而当$w_i=1/n$时, $S=\sum_{uv\in E}w_uw_v=\frac{|E|}{n^2}$, 化简得证.</p>
+<h4 id="证明2-weight-shifting"><a href="#证明2-weight-shifting" class="headerlink" title="证明2(weight shifting):"></a>证明2(weight shifting):</h4><p>分配给每个点$v$一个权重$w_v\ge 0$, $\sum_{v\in V}w_v=1$. 评估$S=\sum_{uv\in E}w_uw_v$.<br>令$W_u=\sum_{v:v\sim u}w_v$, 则$S=\frac{1}{2}\sum_{u\in V}w_uW_u$. 对于$u\not\sim v$满足$W_u\ge W_v$, 有$(w_u+\epsilon)W_u+(w_v-\epsilon)W_v\ge w_uW_u+w_vW_v$.<br>把所有的权重从$v$移动到$u$, $S$一定不减, 所以$S$最大—&gt; 所有权重都在一个团块上.<br>因此$S=\sum_{uv\in E}w_uw_v\le \binom{r-1}{2}\frac{1}{(r-1)^2}$, 而当$w_i=1/n$时, $S=\sum_{uv\in E}w_uw_v=\frac{|E|}{n^2}$, 化简得证.</p>
 <h4 id="证明3-概率法"><a href="#证明3-概率法" class="headerlink" title="证明3(概率法):"></a>证明3(概率法):</h4><p>$V=\{v_1,\cdots, v_n\}$, $d_i=d(v_i)$, 团块数$w(G)$: 最大的团块的大小.<br>证明$w(G)\ge \sum_{v\in V}\frac{1}{n-d_v}$:<br>随机排列$\pi$,  根据$\pi$中顺序将点加入$S$, $v_i$加入$S$如果$v_i$和所有$S$中现有的点都相邻.<br>令$X_v$表示$v$是否在$S$中. 如果所有$n-d_v-1$个顶点都排在它后面, 那么一定有$v\in S$, 这样的概率为$\frac{1}{n-d_v}$. 因此</p>
 <script type="math/tex; mode=display">
 \mathbb E[X_v]=\Pr[v\in S]\ge \frac{1}{n-d_v}</script><p>观察到$|S|=\sum_{v\in V}X_v$. 因为期望的线性, 有</p>
@@ -351,6 +354,8 @@ n^2\le (r-1)(n^2-2|E|)</script><p>化简即得证.</p>
 <li>$d(w)&lt;d(u)$ 或者 $d(w)&lt;d(v)$. 不妨设$d(w)&lt;d(u)$, 复制$u$为$u’$, 和$u$有同样的邻居, 无边$uu’$, 去掉$w$, 则边增加了, 也没有$r$团块, 和最大矛盾.</li>
 <li>$d(w)\ge d(u)$ 且 $d(w)\ge d(v)$. 复制$w$两次, 删掉$u$和$v$, 新图边更多且没有$r$团块, 和最大矛盾.<br>因此不相邻关系是等价关系, 因为$G$是完全多部图, 每个部分是一个等价类, 而因为无$r$团块, 所以至多$r-1$部分, 因此结果就是$K_{n_1,n_2,\cdots,n_{r-1}}$, 就是Turán graph.</li>
 </ol>
+<p><img src="/figs/组合数学/figs8/f1.png" alt="f1"></p>
+<p><img src="/figs/组合数学/figs8/f2.png" alt="f2"></p>
 <p><strong>Turán’s Theorem (independent set)</strong>: </p>
 <ul>
 <li>如果$G(V,E)$有$|V|=n$, $|E|=m$, 则$G$有大小$\ge n^2/(2m+n)$的独立集.<br>原图变成补图, 使用团块版本Turán’s Theorem.<br>或直接证明: 随机排列生成独立集(排在所有邻居之前), 柯西希瓦兹.</li>
