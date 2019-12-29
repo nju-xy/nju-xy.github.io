@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="组合数学,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="极值集合1 太阳花集合系统(集族)$\mathcal F\in 2^{[n]}$, ground set $[n]$ sunflowers:$\mathcal F$是一个以$C$为中心的大小为$r$的太阳花, 即 $|\mathcal F|=r$, $\forall S,T\in \mathcal F, S\cap T=C$. 太阳花引理(Erdős-Rado): 如果$\mathcal F\su">
+<meta name="keywords" content="组合数学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="组合数学之极值集合">
+<meta property="og:url" content="http://yoursite.com/2019/11/27/组合数学/组合数学之极值集合/index.html">
+<meta property="og:site_name" content="XY&#39;s blog">
+<meta property="og:description" content="极值集合1 太阳花集合系统(集族)$\mathcal F\in 2^{[n]}$, ground set $[n]$ sunflowers:$\mathcal F$是一个以$C$为中心的大小为$r$的太阳花, 即 $|\mathcal F|=r$, $\forall S,T\in \mathcal F, S\cap T=C$. 太阳花引理(Erdős-Rado): 如果$\mathcal F\su">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-12-29T10:11:45.435Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="组合数学之极值集合">
+<meta name="twitter:description" content="极值集合1 太阳花集合系统(集族)$\mathcal F\in 2^{[n]}$, ground set $[n]$ sunflowers:$\mathcal F$是一个以$C$为中心的大小为$r$的太阳花, 即 $|\mathcal F|=r$, $\forall S,T\in \mathcal F, S\cap T=C$. 太阳花引理(Erdős-Rado): 如果$\mathcal F\su">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/11/27/组合数学/组合数学之极值集合/">
+
+
+
+
+
+  <title>组合数学之极值集合 | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XY's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/27/组合数学/组合数学之极值集合/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XY">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XY's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">组合数学之极值集合</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-27T20:00:00+08:00">
+                2019-11-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="极值集合"><a href="#极值集合" class="headerlink" title="极值集合"></a>极值集合</h1><h2 id="1-太阳花"><a href="#1-太阳花" class="headerlink" title="1 太阳花"></a>1 太阳花</h2><p>集合系统(集族)$\mathcal F\in 2^{[n]}$, ground set $[n]$</p>
+<p>sunflowers:<br>$\mathcal F$是一个以$C$为中心的大小为$r$的太阳花, 即 $|\mathcal F|=r$, $\forall S,T\in \mathcal F, S\cap T=C$.</p>
+<p><strong>太阳花引理(Erdős-Rado)</strong>:</p>
+<p>如果$\mathcal F\subseteq \binom{X}{k}$, $|\mathcal F|&gt;k!(r-1)^k$, 则存在太阳花$\mathcal G\subseteq \mathcal F$, $|\mathcal G|=r$.</p>
+<p>证明(对$k$归纳):</p>
+<ul>
+<li>当$k=1$时, $\mathcal F\subseteq \binom{X}{1}$, 所以$\mathcal F$中每个集合都是不相交的. 因为$|\mathcal F|&gt; r-1$, 所以任意选$r$个集合就可以形成一个太阳花.</li>
+<li>$k\ge 2$时, 取最大的不相交的$\mathcal G\subseteq \mathcal F$, 即<script type="math/tex; mode=display">
+  \forall S,T\in \mathcal G\text{ that } S\ne T, S\cap T=\emptyset</script><ul>
+<li>case 1: $|\mathcal G| \ge r$, $\mathcal G$是大小为$r$的太阳花    </li>
+<li>case 2: $|G|\le r-1$, 目标: 找一个足够popular的$x\in X$, 使足够多的集合都包含$x$    <ul>
+<li>令$Y=\cup_{S\in \mathcal G} S$. 则$|Y|=k|\mathcal G|\le k(r-1)$</li>
+<li>$Y$一定和所有$S\in \mathcal G$相交, 否则和最大矛盾.    </li>
+<li>根据鸽笼原理, 一定存在$y\in Y$至少被<script type="math/tex; mode=display">
+\frac{|\mathcal F|}{|Y|}>\frac{k!(r-1)^k}{k(r-1)}=(k-1)!(r-1)^{k-1}</script>个$\mathcal F$中集合包含.    </li>
+<li>我们从这些集合中删除$y$, 则考虑集族$\mathcal H=\{S\setminus\{y\}|S\in \mathcal F \land y\in S\}$.</li>
+<li>有$\mathcal H\subseteq \binom{X}{k-1}$,  因为$|\mathcal H|&gt;(k-1)!(r-1)^{k-1}$, 根据归纳法, $\mathcal H$中有大小为$r$的太阳花.    </li>
+<li>把$y$加入这些太阳花, 就得到了原集族$\mathcal F$的太阳花</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>得证.</li>
+</ul>
+<h2 id="2-The-Erdos–Ko–Rado-Theorem"><a href="#2-The-Erdos–Ko–Rado-Theorem" class="headerlink" title="2 The Erdős–Ko–Rado Theorem"></a>2 The Erdős–Ko–Rado Theorem</h2><p>一个集族$\mathcal F\subseteq 2^X$, 如果对于任意$S,T\in \mathcal F$, $S\cap T\ne \emptyset$, 则称为 相交的.</p>
+<p><strong>Erdős–Ko–Rado theorem</strong> (proved in 1938, published in 1961):</p>
+<p>令$\mathcal F\subseteq \binom{X}{k}$, 其中$|X|=n$且$n\ge 2k$. 如果$\mathcal F$是相交的, 那么</p>
+<script type="math/tex; mode=display">
+|\mathcal F|\le \binom{n-1}{k-1}</script><h3 id="2-1-Katona’s-proof"><a href="#2-1-Katona’s-proof" class="headerlink" title="2.1 Katona’s proof"></a>2.1 Katona’s proof</h3><p>令$\pi$是$X$的一个环排列, 则$n$元集上有$(n-1)!$个环排列(忽略旋转). 令</p>
+<script type="math/tex; mode=display">
+\mathcal G_{\pi}=\{\{\pi_{i+j\mod n}|j\in [k]\}|i\in[n]\}</script><p>下面的引理说明, 在$n$点的环上, 假设$n\ge 2k$, 至多有$k$段弧, 每段有$k$个点, 每一对弧至少共享一个点.</p>
+<p><strong>引理</strong>: 令$\mathcal F\subseteq \binom{X}{k}$, $|X|=n$, $n\ge 2k$. 如果$\mathcal F$是相交的, 那么对于任意$X$的环排列$\pi$, 有$|\mathcal G_\pi\cap \mathcal F|\le k$.</p>
+<p>证明: 固定$X$的环排列$\pi$, 令$A_i=\{\pi_{(i+j+n)\mod n}|j\in [k]\}$, 那么$\mathcal G_\pi$可以写成$\mathcal G_\pi=\{A_i|i\in[n]\}$. </p>
+<p>假设$A_t\in \mathcal F$. 因为$\mathcal F$是相交的, 如果除$A_t$以外的$A_i\in \mathcal F$, 则$t-(k-1)\le i\le t+k-1, i\ne t$, 有$2k-2$个这样的集合. 我们把它们分成$k-1$对$\{A_i,A_{i+k}\}$, $t-(k-1)\le i\le t-1$. </p>
+<p>因为$n\ge 2k$, 所以$A_i\cap A_{i+k}=\emptyset$, 所以这$k-1$对中, 每一对至多有一个在$\mathcal F$中. 得证.</p>
+<p><strong>Katona’s proof of Erdős–Ko–Rado theorem</strong>:(double counting)</p>
+<p>令$\mathcal R=\{(S,\pi)|\pi\text{ is a cyclic permutation of }X, \text{ and }S\in\mathcal F\cap G_\pi\}$. 下面用两种方法数$|\mathcal R|$:</p>
+<ol>
+<li><p>根据引理, $|\mathcal R|=\sum_{\text{cyclic }\pi}|\mathcal F\cap G_\pi|\le k(n-1)!$</p>
+</li>
+<li><p>对于每个$S\in\mathcal F$, 让$S$中元素连续的排列$\pi$的数量为$|S|!(n-|S|)!$, 所以</p>
+<script type="math/tex; mode=display">
+|\mathcal R|=\sum_{S\in \mathcal F}k!(n-k)!=|\mathcal F|k!(n-k)!</script></li>
+</ol>
+<p>因此有</p>
+<script type="math/tex; mode=display">
+|\mathcal F|\le \frac{k(n-1)!}{k!(n-k)!}=\binom{n-1}{k-1}</script><h3 id="2-2-Erdos’-shifting-technique"><a href="#2-2-Erdos’-shifting-technique" class="headerlink" title="2.2 Erdős’ shifting technique"></a>2.2 Erdős’ shifting technique</h3><p>不失一般性, 设$X=[n]$, 则<strong>Erdős–Ko–Rado theorem</strong>定理如下:<br>令$\mathcal F\subseteq \binom{[n]}{k}$, 其中$n\ge 2k$. 如果$\mathcal F$是相交的, 那么</p>
+<script type="math/tex; mode=display">
+|\mathcal F|\le \binom{n-1}{k-1}</script><p>定义<strong>shift</strong>操作:<br>假设$\mathcal F\subseteq 2^{[n]}$, 且$0\le i&lt;j\le n-1$. 定义$(i,j)-$shift $S_{ij}$为$\mathcal F$上的操作符, 定义如下:</p>
+<ul>
+<li>对于任意$T\in\mathcal F$, $T_{ij}=(T\setminus \{j\})\cup \{i\}$. 令<script type="math/tex; mode=display">
+S_{ij}=\begin{cases}
+T_{ij}&\text{if }j\in T,i\not\in T, \text{and }T_{ij}\not\in T,\\
+T&\text{otherwise;}
+\end{cases}</script></li>
+<li>$S_{ij}(\mathcal F)=\{S_{ij}(T)|T\in\mathcal F\}$</li>
+</ul>
+<p>则有如下性质:</p>
+<ul>
+<li>$|S_{ij}(T)|=|T|$且$|S_{ij}(\mathcal F)|=|\mathcal F|$</li>
+<li>如果$\mathcal F$是相交的, 那么$S_{ij}(\mathcal F)$也是相交的<ul>
+<li>唯一的坏情况是$A,B\in\mathcal F$, $A\cap B=\{j\}$, $A_{ij}\in\mathcal F$, $B_{ij}\not\in\mathcal F$, 则$A_{ij}\cap B=\emptyset$, 矛盾.</li>
+</ul>
+</li>
+</ul>
+<p>定义<strong>shifted</strong>:<br>对于$1\le i&lt;j\le n$重复执行$S_{ij}(\mathcal F)$, 直到$\mathcal F$不被任何$S_{ij}(\mathcal F)$改变, 则称为$\mathcal F$是<strong>shifted</strong>.</p>
+<p>Erdős-Ko-Rado’s证明:<br>只要证明shifted $\mathcal F’$满足$|\mathcal F’|\le \binom{n-1}{k-1}$, 就说明$|\mathcal F|\le \binom{n-1}{k-1}$. 所以不妨设$\mathcal F$是shifted.</p>
+<ul>
+<li>$k=1$成立.</li>
+<li>当$n=2k$时, $\forall S\in\binom{[n]}{k}$, $S$和$\overline S$中至多一个在$\mathcal F$中. 所以$|\mathcal F|\le \frac{1}{2}\binom{n}{k}=\binom{n-1}{k-1}$.</li>
+<li><p>当$n&gt;2k$时: 注意$\mathcal F$是shifted的!</p>
+<ul>
+<li><p>$\mathcal F_1=\{S\in F|n\in S\}$, $\mathcal F_1’=\{S\setminus\{n\}|S\in F_1\}$, 则$\mathcal F_1’$是相交的, 根据假设$|\mathcal F_1’|\le \binom{n-2}{k-2}$.</p>
+<ul>
+<li>反证: 如果存在$A,B\in\mathcal  F$, $A\cap B=\{n\}$, $|A\cup B|\le 2k-1&lt;n-1$, 所以存在$i&lt;n$, $i\not\in A\cup B$. 因为$\mathcal F$是shifted的, 所以 $C=A\setminus\{n\}\cup\{i\}\in\mathcal F$, 所以$C\cap B=\emptyset$</li>
+</ul>
+</li>
+<li><p>$F_0=\{S\in \mathcal F|n\not\in S\}$是相交的, 根据假设$|\mathcal F_0|\le \binom{n-2}{k-1}$.</p>
+</li>
+<li>$|\mathcal F|=|\mathcal F_0|+|\mathcal F_1|=|\mathcal F_0|+|\mathcal F_1’|\le \binom{n-2}{k-1}+\binom{n-2}{k-2}=\binom{n-1}{k-1}$.</li>
+</ul>
+</li>
+<li>证毕.</li>
+</ul>
+<h2 id="3-Sperner-system"><a href="#3-Sperner-system" class="headerlink" title="3 Sperner system"></a>3 Sperner system</h2><p>定义<strong>反链</strong>: 对于集族$\mathcal F\subseteq 2^X$, 如果任意$S,T\subseteq \mathcal F$, $S\ne T$, 有$S\not\subseteq T$, 则$\mathcal F$是反链.</p>
+<p><strong>Theorem (Sperner 1928)</strong>:</p>
+<p>令$\mathcal F\subseteq 2^X$, $|X|=n$. 如果$\mathcal F$是反链, 则</p>
+<script type="math/tex; mode=display">
+|\mathcal F|\le \binom{n}{\lfloor n/2\rfloor}</script><h3 id="3-1-证明1-shadow"><a href="#3-1-证明1-shadow" class="headerlink" title="3.1 证明1(shadow)"></a>3.1 证明1(shadow)</h3><p><strong>定义</strong>: $|X|=n$, $\mathcal F\subseteq \binom{X}{k}$, $k&lt;n$.</p>
+<p>shade: $\nabla F=\{T\in \binom{X}{k+1}|\exists S\in \mathcal F, S\subset T\}$</p>
+<p>shadow: $\Delta F=\{T\in \binom{X}{k-1}|\exists S\in \mathcal F, T\subset S\}$</p>
+<p><strong>Lemma (Sperner)</strong>:</p>
+<p>$\mathcal F\subseteq \binom{[n]}{k}$. 则</p>
+<script type="math/tex; mode=display">
+|\nabla F|\ge \frac{n-k}{k+1}|F|, \text{if }k<n</script><script type="math/tex; mode=display">
+|\Delta F|\le \frac{k}{n-k+1}|F|, \text{if }k>0</script><p>证明(double counting):</p>
+<p>第一个不等式:</p>
+<p>定义</p>
+<script type="math/tex; mode=display">
+\mathcal R=\{(S,T)|S\in\mathcal F, T\in \nabla \mathcal F, S\subset T\}</script><p>用两种方式计算$|\mathcal R|$:</p>
+<ol>
+<li><p>对于每个$S\in\mathcal F$, 有$n-k$个不同的$T\in \nabla\mathcal F$满足$S\subset T$, 所以$|\mathcal R|=(n-k)|\nabla\mathcal F|$</p>
+</li>
+<li><p>对于每个$T\in\nabla \mathcal F$, 有$k+1$个不同的方法选择$S\subset T$满足$|S|=k$(未必都在$\mathcal F$中), 所以</p>
+<script type="math/tex; mode=display">
+|\mathcal R|\le (k+1)|\nabla\mathcal F|</script></li>
+</ol>
+<p>因此$|\nabla\mathcal F|\ge \frac{n-k}{k+1}|\mathcal F|$.</p>
+<p>第二个不等式同理.</p>
+<p>因此非常容易得到下面的命题:</p>
+<p><strong>Proposition 1</strong>: </p>
+<p>如果$k\le \frac{n-1}{2}$, 则$|\nabla \mathcal F|\ge |\mathcal F|$;</p>
+<p>如果$k\ge \frac{n-1}{2}$, 则$|\Delta \mathcal F|\ge |\mathcal F|$.</p>
+<p><strong>Sperner定理证明思路</strong>:</p>
+<ul>
+<li>将大小$&lt;\frac{n-1}{2}$的集合$\mathcal F$用他们的shades替代;</li>
+<li>将大小$\ge\frac{n+1}{2}$的集合$\mathcal F$用他们的shadows替代;</li>
+</ul>
+<p>不断重复这个过程, 最终会得到一个集族$\mathcal F\subseteq \binom{X}{\lfloor n/2\rfloor}$. 接下来说明这个过程不会使$|\mathcal F|$减小.</p>
+<p><strong>Proposition 2</strong>: </p>
+<p>假设$\mathcal F\subseteq 2^X$, $|X|=n$. 令$\mathcal F_k=\mathcal F\cap \binom{X}{k}$. 令$k_{min}$为最小的满足$|\mathcal F_k|&gt;0$的$k$. 令</p>
+<script type="math/tex; mode=display">
+\mathcal F'=\begin{cases}
+\mathcal F\setminus \mathcal F_{k_{min}}\cup \nabla \mathcal F_{k_{min}} &\text{if }k_{min}<\frac{n-1}{2}\\
+\mathcal F & \text{otherwise.}
+\end{cases}</script><p>类似的, 令$k_{max}$表示最大的满足$|\mathcal F_k|&gt;0$的$k$, 令</p>
+<script type="math/tex; mode=display">
+\mathcal F''=\begin{cases}
+\mathcal F\setminus \mathcal F_{k_{max}}\cup \Delta \mathcal F_{k_{max}} &\text{if }k_{max}\ge\frac{n+1}{2}\\
+\mathcal F & \text{otherwise.}
+\end{cases}</script><p>如果$\mathcal F$是反链, 则$\mathcal F’$和$\mathcal F’’$也是反链, 且$|\mathcal F’|\ge |\mathcal F|$, $|\mathcal F’’|\ge |\mathcal F|$.</p>
+<p>证明过程见讲义. </p>
+<p>根据上面命题, 很容易证明Sperner定理. 具体见讲义.</p>
+<h3 id="3-2-证明2-counting"><a href="#3-2-证明2-counting" class="headerlink" title="3.2 证明2(counting)"></a>3.2 证明2(counting)</h3><p>令$\pi$是$X$的排列. 如果$S=\{\pi_1,\pi_2\cdots,\pi_{|S|}\}$, 则称$S\subseteq X$是$\pi$的<strong>前缀</strong>.<br>固定一个$S\subseteq X$. 满足$S$ 是$\pi$的前缀的排列$\pi$有$|S|!(n-|S|)!$个. 又因为$\mathcal F$是反链, 所以没有$X$的排列$\pi$满足多个$\mathcal F$中的元素都是$\pi$的前缀. 因此满足存在$S\in\mathcal F$是$\pi$的前缀的$\pi$的数量为</p>
+<script type="math/tex; mode=display">
+\sum_{S\in\mathcal F}|S|!(n-|S|)!</script><p>而这个数量肯定小于$X$的排列的总数$n!$, 所以</p>
+<script type="math/tex; mode=display">
+\sum_{S\in\mathcal F}|S|!(n-|S|)!\le n!</script><p>即</p>
+<script type="math/tex; mode=display">
+\sum_{S\in\mathcal F}\frac{1}{\binom{n}{|S|}}=\sum_{S\in\mathcal F}\frac{|S|!(n-|S|)!}{n!}\le 1</script><p>又因为$\binom{n}{|S|}\le \binom{n}{\lfloor n/2\rfloor}$, 所以</p>
+<script type="math/tex; mode=display">
+\frac{|\mathcal F|}{\binom{n}{\lfloor n/2\rfloor}}\le \sum_{S\in\mathcal F}\frac{1}{\binom{n}{|S|}}\le 1</script><p>得证.</p>
+<h3 id="3-3-LYM不等式"><a href="#3-3-LYM不等式" class="headerlink" title="3.3 LYM不等式"></a>3.3 LYM不等式</h3><p><strong>LYM</strong>不等式:</p>
+<p>令$\mathcal F\subseteq 2^X$, $|X|=n$. 如果$\mathcal F$是反链, 则</p>
+<script type="math/tex; mode=display">
+\sum_{S\in\mathcal F}\frac{1}{\binom{n}{|S|}}\le 1</script><p><strong>第三种证明</strong>(概率法):</p>
+<p>$\pi$是$X$的均匀随机排列. 定义一个随机的最大链为$\mathcal C_\pi=\{\{\pi_i|1\le i\le k\}|0\le k\le n\}$(建议看slides上的图).</p>
+<p>对于任意$S\in \mathcal F$, 令$X_s$为01随机变量指示是否$S\in\mathcal C_\pi$. 因为$C_\pi$中只有一个$|S|$大小的集合, 是$\binom{X}{|S|}$上的均匀分布. 所以</p>
+<script type="math/tex; mode=display">
+\mathbb E[X_S]=\Pr[S\in \mathcal C_\pi ]=\frac{1}{\binom{n}{|S|}}</script><p>令$X=\sum_{S\in\mathcal F}X_s$. 则$X=|\mathcal F\cap \mathcal C_\pi|$.</p>
+<script type="math/tex; mode=display">
+\mathbb E[X]=\sum_{S\in\mathcal F}\frac{1}{\binom{n}{|S|}}</script><p>又因为$\mathcal F$是反链, 所以不可能和一个链有多于一个交点, 也就是$X\le 1$. 因此$\mathbb E[X]\le 1$, 得证.</p>
+<h2 id="4-Sauer’s-lemma-and-VC-dimension"><a href="#4-Sauer’s-lemma-and-VC-dimension" class="headerlink" title="4 Sauer’s lemma and VC-dimension"></a>4 Sauer’s lemma and VC-dimension</h2><h3 id="4-1-Shattering-and-the-VC-dimension"><a href="#4-1-Shattering-and-the-VC-dimension" class="headerlink" title="4.1 Shattering and the VC-dimension"></a>4.1 Shattering and the VC-dimension</h3><p><strong>shatter定义</strong>:<br>$\mathcal F\subseteq 2^X$为集族, 令$R\subseteq X$为一个子集. $\mathcal F$在$R$上的<strong>trace</strong>$\mathcal F|_R$定义为</p>
+<script type="math/tex; mode=display">
+\mathcal F|_R=\{S\cap R|S\in \mathcal F\}</script><p>如果$\mathcal F|_R=2^R$, 我们称$\mathcal F$ <strong>shatters(打碎)</strong> $R$, 即对于任意$T\subseteq R$, 存在$S\in\mathcal F$满足$T=S\cap R$.</p>
+<p><strong>VC-dimension定义</strong>: </p>
+<p>集族$\mathcal F\subseteq 2^X$的<strong>VC维</strong>$VC-dim(\mathcal F)$是最大的满足$\mathcal F$ shatters $R$的$R\subseteq X$的大小.</p>
+<h3 id="4-2-Sauer’s-Lemma"><a href="#4-2-Sauer’s-Lemma" class="headerlink" title="4.2 Sauer’s Lemma"></a>4.2 Sauer’s Lemma</h3><p><strong>Sauer’s Lemma (Sauer; Shelah-Perles; Vapnik-Chervonenkis)</strong>:</p>
+<p>令$\mathcal F\subseteq 2^X$, $|X|=n$.如果$|\mathcal F\ge \sum_{1\le i&lt;k}\binom{n}{i}$, 则存在$R\in\binom{X}{k}$满足$\mathcal F$shatters $R$.</p>
+<p>即$VC-dim(\mathcal F)\ge k$.</p>
+<h3 id="4-3-Hereditary-family"><a href="#4-3-Hereditary-family" class="headerlink" title="4.3 Hereditary family"></a>4.3 Hereditary family</h3><p><strong>定义 hereditary family</strong>: </p>
+<p>一个集族$\mathcal F\subseteq 2^X$是遗传(hereditary)的(也称为an ideal or an abstract simplicial complex), 如果</p>
+<script type="math/tex; mode=display">
+S\subseteq T\in\mathcal F\text{ implies } S\in\mathcal F</script><p><strong>命题</strong>: 令$\mathcal F$为一个遗传集族. 如果$R\in \mathcal F$, 则$\mathcal F$ shatters $R$.</p>
+<p><strong>引理</strong>: 对于$\mathcal F\subseteq 2^X$, $|X|=n$. 如果$\mathcal F$是遗传的,  且$|\mathcal F|&gt;\sum_{1\le i&lt;k}\binom{n}{i}$, 则存在$R\in\binom{X}{k}$满足$\mathcal F$ shatters $R$</p>
+<p><strong>证明</strong>: 因为$\mathcal F$是遗传的, 所以我们只需要证明存在$R\in\mathcal F$且$|R|\ge k$. 假设$\mathcal F$的元素大小都$&lt;k$, 则</p>
+<script type="math/tex; mode=display">
+|\mathcal F|\le |\cup _{1\le i<k}\binom{X}{k}|=\sum_{1\le i<k}\binom{n}{i}</script><p>推出矛盾.</p>
+<h3 id="4-4-Down-shifts"><a href="#4-4-Down-shifts" class="headerlink" title="4.4 Down-shifts"></a>4.4 Down-shifts</h3><p>定义 <strong>(down-shifts)</strong>:</p>
+<p>假设$\mathcal F\subseteq 2^{[n]}$, $i\in[n]$. 定义<strong>down-shift</strong>操作符如下:</p>
+<ul>
+<li><p>对于任意$T\in\mathcal F$, 令</p>
+<script type="math/tex; mode=display">
+S_i(T)=\begin{cases}
+T\setminus \{i\} & \text{if }i\in T\text{ and }T\setminus\{i\}\not \in\mathcal F\\
+T &\text{otherwise.}
+\end{cases}</script></li>
+<li><p>令$S_i(\mathcal F)=\{S_i(T)|T\in\mathcal F\}$</p>
+</li>
+</ul>
+<p>对于所有的$i\in[n]$, 对$\mathcal F$使用$S_i$, 直到$\mathcal F$不再被任何$S_i$改变, 称为<strong>down-shifted</strong>.</p>
+<p><strong>定理</strong>: 如果$\mathcal F\subseteq 2^X$是down-shifted, 则$ \mathcal F$是遗传的.</p>
+<p><strong>命题</strong>: </p>
+<ol>
+<li><p>$|S_i(\mathcal F)|=|\mathcal F|$</p>
+</li>
+<li><p>$|S_i(\mathcal F)|_R|=|\mathcal F|_R|$, 所以如果$S_i(\mathcal F)$ shatters $R$, $\mathcal F$也是.</p>
+</li>
+</ol>
+<p>由上面命题易证<strong>Sauer’s lemma</strong>.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/组合数学/" rel="tag"># 组合数学</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/20/组合数学/组合数学之极值图论/" rel="next" title="组合数学之极值图论">
+                <i class="fa fa-chevron-left"></i> 组合数学之极值图论
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/27/高级算法/高级算法之对偶规划/" rel="prev" title="高级算法之对偶规划">
+                高级算法之对偶规划 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XY</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#极值集合"><span class="nav-number">1.</span> <span class="nav-text">极值集合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-太阳花"><span class="nav-number">1.1.</span> <span class="nav-text">1 太阳花</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-The-Erdos–Ko–Rado-Theorem"><span class="nav-number">1.2.</span> <span class="nav-text">2 The Erdős–Ko–Rado Theorem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Katona’s-proof"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 Katona’s proof</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Erdos’-shifting-technique"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 Erdős’ shifting technique</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Sperner-system"><span class="nav-number">1.3.</span> <span class="nav-text">3 Sperner system</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-证明1-shadow"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 证明1(shadow)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-证明2-counting"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 证明2(counting)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-LYM不等式"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 LYM不等式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Sauer’s-lemma-and-VC-dimension"><span class="nav-number">1.4.</span> <span class="nav-text">4 Sauer’s lemma and VC-dimension</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-Shattering-and-the-VC-dimension"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1 Shattering and the VC-dimension</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-Sauer’s-Lemma"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2 Sauer’s Lemma</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-Hereditary-family"><span class="nav-number">1.4.3.</span> <span class="nav-text">4.3 Hereditary family</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-Down-shifts"><span class="nav-number">1.4.4.</span> <span class="nav-text">4.4 Down-shifts</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
