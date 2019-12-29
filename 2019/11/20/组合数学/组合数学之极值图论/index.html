@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="XY&#39;s blog">
 <meta property="og:description" content="极值图论1 Fobidden Cliques研究问题: 如果$G$满足某些性质, 那么$G$至多有多少条边? 1.1 Mantel’s theorem定理(Mantel 1907):  假设$G(V,E)$ 是无三角形的$n$点图, 那么 $|E|\le n^2/4$.  证明1(鸽笼原理):对$n$数归证明任意$G(V,E)$满足$|V|=n$且$|E|&amp;gt;\frac{n^2}{4}$一定有">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-07T01:47:01.011Z">
+<meta property="og:updated_time" content="2019-12-29T01:56:55.964Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="组合数学之极值图论">
 <meta name="twitter:description" content="极值图论1 Fobidden Cliques研究问题: 如果$G$满足某些性质, 那么$G$至多有多少条边? 1.1 Mantel’s theorem定理(Mantel 1907):  假设$G(V,E)$ 是无三角形的$n$点图, 那么 $|E|\le n^2/4$.  证明1(鸽笼原理):对$n$数归证明任意$G(V,E)$满足$|V|=n$且$|E|&amp;gt;\frac{n^2}{4}$一定有">
@@ -308,7 +308,7 @@
 <h4 id="证明1-鸽笼原理"><a href="#证明1-鸽笼原理" class="headerlink" title="证明1(鸽笼原理):"></a>证明1(鸽笼原理):</h4><p>对$n$数归证明任意$G(V,E)$满足$|V|=n$且$|E|&gt;\frac{n^2}{4}$一定有三角形:</p>
 <ol>
 <li>$n\le 3$显然.</li>
-<li>假设$|V|\le n-1$成立, 对于$n$点的图$G$, 不是一般性, 假设$|E|=\frac{n^2}{4}+1$.  对于任意$uv\in E$, 令$H$为$G$的$V\setminus\{u,v\}$的诱导子图. 显然$H$有$n-2$点.<ol>
+<li>假设$|V|\le n-1$成立, 对于$n$点的图$G$, 不失一般性, 假设$|E|=\frac{n^2}{4}+1$.  对于任意$uv\in E$, 令$H$为$G$的$V\setminus\{u,v\}$的诱导子图. 显然$H$有$n-2$点.<ol>
 <li>如果$H$有$&gt;\frac{(n-2)^2}{4}$条边, 那么根据假设, $H$有三角形</li>
 <li>如果$H$有$\le \frac{(n-2)^2}{4}$条边, 那么$H$和$\{u,v\}$之间至少$(\frac{n^2}{4}+1)-\frac{(n-2)^2}{4}-1=n-1$条边. 根据鸽笼原理, $H$中一定有一个点和$u,v$都相邻, 所以$G$有三角形.</li>
 </ol>
@@ -316,7 +316,7 @@
 </ol>
 <h4 id="证明2-Cauchy-Schwarz-inequality"><a href="#证明2-Cauchy-Schwarz-inequality" class="headerlink" title="证明2(Cauchy-Schwarz inequality):"></a>证明2(Cauchy-Schwarz inequality):</h4><p>对于任意边$uv\in E$, 因为无三角形, 所以$d_v+d_u\le n$, 所以$\sum_{uv\in E}(d_u+d_v)\le n|E|$.<br>注意到$d(v)$在求和中出现了正好$d_v$次, 所以$\sum_{uv\in E}(d_u+d_v)=\sum_{v\in V}d_v^2$.<br>应用<strong>Cauchy-Schwarz inequality</strong>, </p>
 <script type="math/tex; mode=display">
-n|E|\ge \sum_{uv\in E}(d_u+d_v)=\sum_{v\in V}d_v^2\ge \frac{(\sum_{v\in V}d_v)^2}{n}=\frac{4|E|^2}{n}</script><p>其中最后一步使用了欧拉等式(handshaking)$\sum_{v\in V}d_v=2|E|$.</p>
+n|E|\ge \sum_{uv\in E}(d_u+d_v)=\sum_{v\in V}d_v^2\ge \frac{(\sum_{v\in V}d_v)^2}{n}=\frac{4|E|^2}{n}</script><p>其中最后一步使用了欧拉不等式(handshaking)$\sum_{v\in V}d_v=2|E|$.</p>
 <h4 id="证明3-inequality-of-the-arithmetic-and-geometric-mean"><a href="#证明3-inequality-of-the-arithmetic-and-geometric-mean" class="headerlink" title="证明3(inequality of the arithmetic and geometric mean):"></a>证明3(inequality of the arithmetic and geometric mean):</h4><p>$A$为$G$中最大的点独立集(两两不相邻的点的集合), 设$|A|=\alpha$. 因为$G$是无三角形的, 所以对于任意点$v$, 所有它的邻居必须形成一个独立集, 因此对于所有的$v\in V$, 有$d(v)\le \alpha$.<br>记$B=V\setminus A$, $\beta = |B|$. 因为$A$是点独立集, 所以所有$E$中的边至少有一个顶点在$B$中, 所以$|E|\le \sum_{v\in B}d_v$. 根据算数平均值和集合平均值的关系, </p>
 <script type="math/tex; mode=display">
 |E|\le \sum_{v\in B}d_v\le \alpha\beta\le (\frac{\alpha+\beta}{2})^2=\frac{n^2}{2}</script><h3 id="1-2-Turan’s-theorem"><a href="#1-2-Turan’s-theorem" class="headerlink" title="1.2 Turan’s theorem"></a>1.2 Turan’s theorem</h3><p>Turan’s theorem将Mantel’s theorem中的三角形团块推广到了任意特定的大小.<br>团块: 所有的点两两相邻.</p>
