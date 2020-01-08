@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="计算机网络,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="3 运输层3.1 概述和运输层服务 运输层协议为运行在不同主机上的应用进程之间提供了逻辑通信. 运输层协议在端系统中实现.  运输层分组称为报文段. 运输层将从发送应用程序进程接收到的报文转换成报文段, 然后在发送端系统中, 运输层将这些报文段传递给网络层, 网络层将其封装成数据报并向目的地发送; 在接收端, 网络层从数据报中提取运输层报文段, 并上交给运输层, 运输层处理接收到的报文段, 使报文">
+<meta name="keywords" content="计算机网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络之Ch3运输层">
+<meta property="og:url" content="http://yoursite.com/2019/12/25/计算机网络/计网Ch3运输层/index.html">
+<meta property="og:site_name" content="XY&#39;s blog">
+<meta property="og:description" content="3 运输层3.1 概述和运输层服务 运输层协议为运行在不同主机上的应用进程之间提供了逻辑通信. 运输层协议在端系统中实现.  运输层分组称为报文段. 运输层将从发送应用程序进程接收到的报文转换成报文段, 然后在发送端系统中, 运输层将这些报文段传递给网络层, 网络层将其封装成数据报并向目的地发送; 在接收端, 网络层从数据报中提取运输层报文段, 并上交给运输层, 运输层处理接收到的报文段, 使报文">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/figs/计算机网络/figs3/TCP报文结构.png">
+<meta property="og:image" content="http://yoursite.com/figs/计算机网络/figs3/三次握手.png">
+<meta property="og:image" content="http://yoursite.com/figs/计算机网络/figs3/四次挥手.png">
+<meta property="og:image" content="http://yoursite.com/figs/计算机网络/figs3/TCP状态图.png">
+<meta property="og:updated_time" content="2020-01-08T14:51:25.782Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机网络之Ch3运输层">
+<meta name="twitter:description" content="3 运输层3.1 概述和运输层服务 运输层协议为运行在不同主机上的应用进程之间提供了逻辑通信. 运输层协议在端系统中实现.  运输层分组称为报文段. 运输层将从发送应用程序进程接收到的报文转换成报文段, 然后在发送端系统中, 运输层将这些报文段传递给网络层, 网络层将其封装成数据报并向目的地发送; 在接收端, 网络层从数据报中提取运输层报文段, 并上交给运输层, 运输层处理接收到的报文段, 使报文">
+<meta name="twitter:image" content="http://yoursite.com/figs/计算机网络/figs3/TCP报文结构.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/12/25/计算机网络/计网Ch3运输层/">
+
+
+
+
+
+  <title>计算机网络之Ch3运输层 | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XY's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/25/计算机网络/计网Ch3运输层/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XY">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XY's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">计算机网络之Ch3运输层</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-25T20:00:00+08:00">
+                2019-12-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="3-运输层"><a href="#3-运输层" class="headerlink" title="3 运输层"></a>3 运输层</h1><h2 id="3-1-概述和运输层服务"><a href="#3-1-概述和运输层服务" class="headerlink" title="3.1 概述和运输层服务"></a>3.1 概述和运输层服务</h2><ul>
+<li>运输层协议为<strong>运行在不同主机上的应用进程</strong>之间提供了<strong>逻辑通信</strong>.</li>
+<li>运输层协议在<strong>端系统</strong>中实现. </li>
+<li>运输层分组称为<strong>报文段</strong>. <strong>运输层</strong>将从发送<strong>应用程序进程</strong>接收到的报文转换成<strong>报文段</strong>, 然后在发送端系统中, <strong>运输层</strong>将这些<strong>报文段</strong>传递给<strong>网络层</strong>, 网络层将其封装成<strong>数据报</strong>并向目的地发送; 在接收端, <strong>网络层</strong>从<strong>数据报</strong>中提取运输层<strong>报文段</strong>, 并上交给<strong>运输层</strong>, <strong>运输层</strong>处理接收到的报文段, 使报文段中的数据为<strong>接受应用进程</strong>所使用.</li>
+<li>因特网有两种运输层协议: <strong>TCP</strong>和<strong>UDP</strong>.<ul>
+<li>UDP: 不可靠, 无连接</li>
+<li>TCP: 可靠, 面向连接</li>
+</ul>
+</li>
+<li>IP的服务模型是<strong>尽力而为交付</strong>, 所以称为<strong>不可靠服务</strong>. TCP和UDP的最基本的责任是, 将两个端系统间IP的交付服务扩展为运行在端系统上的两个进程之间的交付服务, 即<strong>运输层的多路复用和多路分解</strong>.</li>
+<li>TCP和UDP都会进行差错检查.</li>
+<li>TCP通过流量控制, 序号, 确认和定时器提供可靠数据传输, 还提供拥塞控制.</li>
+</ul>
+<h2 id="3-2-多路复用和多路分解"><a href="#3-2-多路复用和多路分解" class="headerlink" title="3.2 多路复用和多路分解"></a>3.2 多路复用和多路分解</h2><ul>
+<li>一个进程有一个或多个<strong>套接字</strong>, 相当于从网络向进程传递数据和从进程向网络传递数据的门户.</li>
+<li>将运输层报文段中的数据交付到正确的套接字的工作称为<strong>多路分解</strong></li>
+<li>源主机从不同套接字中手机数据块, 并为每个数据块封装上首部信息从而生成报文段, 将报文段传递到网络层, 所有这些工作称为<strong>多路复用</strong></li>
+<li>套接字有唯一标识符, 每个报文段有特殊字段指示该报文段所要交付到的套接字, 即<strong>源端口号字段</strong>和<strong>目的端口号字段</strong></li>
+<li>端口号是一个16比特的字段, 0-1023范围的端口号称为周知端口号, 是保留给周知应用层协议使用的.</li>
+<li>UDP套接字是由一个二元组(<strong>目的IP地址, 目的端口号</strong>)全面标识的, 不同源IP/端口号但相同目的IP和端口号的UDP报文段会通过相同的目的套接字被定向到相同目的进程</li>
+<li>TCP套接字是由一个四元组(<strong>源IP地址, 源端口号, 目的IP地址, 目的端口号</strong>)标识的, 不同源IP/端口号的TCP报文段会定向到不同的套接字, 除非是包含初始创建连接请求的报文段(目的端口号12000)</li>
+<li>对于web服务器, 一个进程对应多个套接字</li>
+</ul>
+<h2 id="3-3-无连接运输-UDP"><a href="#3-3-无连接运输-UDP" class="headerlink" title="3.3 无连接运输: UDP"></a>3.3 无连接运输: UDP</h2><ul>
+<li>UDP只是做了运输协议能够做的最少工作, 即复用/分解和少量的差错检测</li>
+<li>DNS使用UDP协议</li>
+<li>UDP相比TCP的优点:<ul>
+<li>关于发送什么数据以及何时发送的应用层控制更为精细</li>
+<li>无须连接建立</li>
+<li>无连接状态</li>
+<li>分组首部开销小</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-3-1-UDP报文段结构"><a href="#3-3-1-UDP报文段结构" class="headerlink" title="3.3.1 UDP报文段结构"></a>3.3.1 UDP报文段结构</h3><ul>
+<li>首部4个字段:<ul>
+<li>源端口号</li>
+<li>目的端口号</li>
+<li>长度</li>
+<li>检验和</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-3-2-UDP检验和"><a href="#3-3-2-UDP检验和" class="headerlink" title="3.3.2 UDP检验和"></a>3.3.2 UDP检验和</h3><ul>
+<li><p>对报文段中的所有16比特字求和(有溢出的加法需要回卷, 即最高位的记为加到最低位), 再取反码(01对换).</p>
+</li>
+<li><p>需要检验和的原因: 不保证所有链路提供差错检验, 所以必须在<strong>端到端</strong>基础上在运输层提供差错检验.</p>
+</li>
+<li>UDP提供差错检测但不提供差错恢复</li>
+</ul>
+<h2 id="3-4-可靠数据传输原理"><a href="#3-4-可靠数据传输原理" class="headerlink" title="3.4 可靠数据传输原理"></a>3.4 可靠数据传输原理</h2><h3 id="3-4-1-构造可靠数据传输协议"><a href="#3-4-1-构造可靠数据传输协议" class="headerlink" title="3.4.1 构造可靠数据传输协议"></a>3.4.1 构造可靠数据传输协议</h3><ol>
+<li>rdt 2.0</li>
+</ol>
+<ul>
+<li>因为信道可能有比特差错, 所以需要使用<strong>肯定确认ACK</strong>和<strong>否定确认NAK</strong></li>
+<li><strong>自动重传请求(ARQ)协议</strong>: 差错检测, 接收方反馈, 重传</li>
+<li>发送放在确认接收方正确接受之前需要等待, 因此称为<strong>停等</strong>协议</li>
+</ul>
+<ol>
+<li>rdt 2.1</li>
+</ol>
+<ul>
+<li>考虑到ACK和NAK分组受损的可能, 在分组中加入了<strong>序号</strong>. 一旦发送方接收到对同一个分组的2次ACK(冗余ACK), 就知道接收方没有正确接受到该分组后的分组.</li>
+</ul>
+<ol>
+<li>rdt3.0</li>
+</ol>
+<ul>
+<li>假设可能丢包, 发送方选择一个时间值, 以判定可能发生了丢包</li>
+<li>如果在这个时间内没有收到ACK, 则重传</li>
+<li>因此需要一个<strong>倒计时计数器</strong></li>
+</ul>
+<h3 id="3-4-2-流水线可靠数据传输协议"><a href="#3-4-2-流水线可靠数据传输协议" class="headerlink" title="3.4.2 流水线可靠数据传输协议"></a>3.4.2 流水线可靠数据传输协议</h3><ul>
+<li>停等太慢, 所以改为流水线</li>
+<li>流水线需要:<ul>
+<li>增加序号范围</li>
+<li>协议的发送方和接收方两端缓存多个分组</li>
+<li>所需序号范围和对缓冲的要求取决于数据传输协议如何处理丢失, 损坏以及延时过大的分组. 解决流水线的差错恢复有两种基本方法: <strong>回退N步</strong>和<strong>选择重传</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="3-4-3-回退N步"><a href="#3-4-3-回退N步" class="headerlink" title="3.4.3 回退N步"></a>3.4.3 回退N步</h3><ul>
+<li><p>定义基序号为最早未确认分组的序号, 下一个序号为最小的未使用序号, 则将序号范围分割为4段: </p>
+<ul>
+<li>$[0, base-1]$: 已经发送并确认</li>
+<li>$[base, nextseqnum-1]$: 已经发送但是未确认</li>
+<li>$[nextseqnum, base+N-1]$: 要被立即发送的分组</li>
+<li>$\ge base+N$: 不能使用, 直到前面的未确认分组被确认</li>
+</ul>
+</li>
+<li><p>$N$: <strong>窗口长度</strong>(为了流量限制)</p>
+</li>
+<li><strong>回退N步(GBN)协议</strong>也被称为<strong>滑动窗口</strong>协议</li>
+<li>设接受方上次交付给上层 数据是序号为$n-1$的分组, <ul>
+<li>如果正确接收到序号为$n$的分组, 为其发送一个ACK, 并交付给上层</li>
+<li>其他所有情况, 丢失(失序)分组, 为$n-1$分组重新发送ACK</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-4-4-选择重传"><a href="#3-4-4-选择重传" class="headerlink" title="3.4.4 选择重传"></a>3.4.4 选择重传</h3><ul>
+<li><strong>选择重传(SR)</strong>协议通过让发送方只重传那些它怀疑在接收方出错(丢失或受损)的分组而避免了不必要的重传.</li>
+<li>SR确认方接受一个正确接收的分组而不管其是否按序</li>
+<li><p>发送方: </p>
+<ul>
+<li>从上层收到数据, 检查下一个可用于该分组的序号. 如果在窗口内就发送, 否则缓存.</li>
+<li>超时: 每个分组有一个自己的逻辑计时器</li>
+<li>收到ACK: 如果序号在窗口内, 标记为已接受; 否则, 窗口基序号前移到具有最小序号的未确认分组处. 如果移动后窗口内有未发送分组, 则发送这些分组.</li>
+</ul>
+</li>
+<li><p>接收方:</p>
+<ul>
+<li>序号在$[rcv_base, rcv_base + N - 1]$(窗口内)被正确接收, 则返回ACK</li>
+<li>序号在$[rcv_base-N,rcv_base-1]$, 则是接收方已经确认过的分组, 一定要发送ACK.<ul>
+<li>这种情况是因为之前接收方发的ACK没有到达发送放, 如果此时不发ACK, 会使发送方的窗口一直无法前进</li>
+</ul>
+</li>
+<li>其他情况忽略</li>
+</ul>
+</li>
+<li><p>如果序号范围有限, 发送发和接收方的窗口不一致会产生严重后果, 无法区分新分组和重发的分组</p>
+</li>
+</ul>
+<h2 id="3-5-面向连接的运输-TCP"><a href="#3-5-面向连接的运输-TCP" class="headerlink" title="3.5 面向连接的运输: TCP"></a>3.5 面向连接的运输: TCP</h2><ul>
+<li>TCP连接是逻辑连接</li>
+<li>TCP连接提供的<strong>全双工服务</strong>: 一台主机的进程A和另一台主机的进程B存在一条TCP连接, 那么应用层数据可以<br>A到B也可以B到A. TCP连接也是<strong>点对点</strong>的.</li>
+<li>TCP连接建立: 三次握手</li>
+<li><strong>最大报文段长度MSS</strong>: 指在报文段里应用层数据的最大长度, 不含TCP首部. 根据<strong>最大传输单元MTU</strong>设置. </li>
+<li>TCP连接的组成: 一个台主机上的缓存, 变量和进程连接的套接字和另一个台主机上的缓存, 变量和进程连接的套接字.</li>
+</ul>
+<h3 id="3-5-1-TCP报文段结构"><a href="#3-5-1-TCP报文段结构" class="headerlink" title="3.5.1 TCP报文段结构"></a>3.5.1 TCP报文段结构</h3><p><img src="/figs/计算机网络/figs3/TCP报文结构.png" alt="TCP报文结构"></p>
+<ul>
+<li><p>TCP首部一般20字节, 比UDP多12字节</p>
+</li>
+<li><p>源端口号和目的端口号</p>
+</li>
+<li>序号<ul>
+<li>是该报文段首字节的字节流编号</li>
+</ul>
+</li>
+<li>确认号<ul>
+<li>主机A填充进报文段的确认号是主机A从主机B收到的下一报文段的首字节的序号</li>
+<li>TCP只确认该流中至第一个丢失字节为止的字节, 称为<strong>累计确认</strong></li>
+</ul>
+</li>
+<li>校验号</li>
+<li>接收窗口字段(rwnd)<ul>
+<li>用于流量控制, 指示接收方愿意接受的字节数量</li>
+</ul>
+</li>
+<li>首部长度字段<ul>
+<li>以32比特的字为单位</li>
+</ul>
+</li>
+<li>选项字段</li>
+<li>标志字段<ul>
+<li>ACK: 指示确认字段中的值是有效的</li>
+<li>RST, SYN, FIN用于连接的建立和拆除</li>
+<li>CWR, ECE: 明确拥塞通告</li>
+<li>PSH: 指示接收方应立即将数据交给上层</li>
+<li>URG:报文段里存在着被发送端的上层实体设为 “紧急” 的数据</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-5-3-往返时间的估计"><a href="#3-5-3-往返时间的估计" class="headerlink" title="3.5.3 往返时间的估计"></a>3.5.3 往返时间的估计</h3><ul>
+<li><p><strong>往返时间RTT</strong>: 一个报文段发出到它被确认的时间</p>
+</li>
+<li><p>$\text{EstimatedRTT}=(1-\alpha)\cdot \text{EstimatedRTT}+\alpha\cdot \text{SampleRTT}$</p>
+<ul>
+<li><p>如果RTT序号越小越新, 则</p>
+<script type="math/tex; mode=display">
+\text{EstimatedRTT}
+=\alpha\sum_{i=1}^{n-1}(1-\alpha)^{i-1}\text{SampleRTT}_i+(1-\alpha)^{n-1}\cdot\text{SampleRTT}_n</script></li>
+<li><p>一般$\alpha=0.125$, </p>
+</li>
+<li><p>称为指数加权移动平均EWMA</p>
+</li>
+</ul>
+</li>
+<li><p>估计偏离程度: $\text{DevRTT}=(1-\beta)\cdot\text{DevRTT}+\beta\cdot|\text{SampleRTT}-\text{EstimatedRTT}|$</p>
+</li>
+<li><p>一般$\beta=0.25$</p>
+</li>
+<li><p>TCP超时间隔: $\text{TimeoutInterval}=\text{EstimateRTT}+4\cdot\text{DevRTT}$</p>
+<ul>
+<li>推荐初始值为$1 s$, 超时则翻倍</li>
+<li>只要收到(非重传)报文段并更新了$\text{EstimatedRTT}$, 就用上述公式重新计算$\text{TimeoutInterval}$</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-5-4-可靠数据传输"><a href="#3-5-4-可靠数据传输" class="headerlink" title="3.5.4 可靠数据传输"></a>3.5.4 可靠数据传输</h3><ul>
+<li><p>快速重传: </p>
+<ul>
+<li>冗余ACK: 再次确认某个报文段的ACK</li>
+<li>TCP发送方收到对相同数据的3个冗余ACK, 说明跟在后面的数据报已经丢失, 就进行快速重传</li>
+</ul>
+</li>
+<li><p>使用回退N步和选择重传的混合体: <strong>选择确认</strong>, 即有选择地确认收到地报文，而非采用累计确认.</p>
+</li>
+<li><p>发送端事件处理大致如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*假设发送方不受TCP流量控制和拥塞控制，每一个数据小于MSS.*/</span></span><br><span class="line">NextSeqNum = InitialSeqNum</span><br><span class="line">SendBase = InitialSeqNum</span><br><span class="line"></span><br><span class="line">loop(永远)&#123;</span><br><span class="line">  <span class="keyword">switch</span>(event):</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">case</span> 从上层应用接收数据：</span><br><span class="line">      生成序号为NextSeqNum的报文;</span><br><span class="line">      <span class="keyword">if</span>(定时器没有启动)&#123;</span><br><span class="line">        启动定时器;</span><br><span class="line">      &#125;</span><br><span class="line">      向IP传递报文;</span><br><span class="line">      NextSeqNum += 数据字节数;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">case</span> 超时：</span><br><span class="line">      重传SendBase对应的TCP报文; <span class="comment">/*和GBN不同之处*/</span></span><br><span class="line">      TimeoutInterval *= <span class="number">2</span>;</span><br><span class="line">      重启定时器; <span class="comment">/*每次重传一个报文后都会重新启动定时器*/</span></span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">case</span> 接收ACK, AN = y:</span><br><span class="line">      <span class="keyword">if</span>(y &gt; SendBase)&#123;</span><br><span class="line">        SendBase = y; <span class="comment">/*采取累计确认*/</span></span><br><span class="line">        重新计算TimeoutInterval;</span><br><span class="line">        <span class="keyword">if</span>(仍有发送且未确认报文)&#123;</span><br><span class="line">          重启定时器;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span>&#123;<span class="comment">/*实际上此时y == SendBase*/</span></span><br><span class="line">          y的冗余数量 += <span class="number">1</span>;</span><br><span class="line">          <span class="keyword">if</span>(y的冗余数量 == <span class="number">3</span>)&#123;</span><br><span class="line">            <span class="comment">/*快速重传*/</span></span><br><span class="line">            立即重传序号为y对应的报文;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>接收端产生ACK的情况在RFC 5681中建议：</p>
+<p>| 事件                                                         | 动作                                                         |<br>| :—————————————————————————————- | :—————————————————————————————- |<br>| 具有<strong>所期望序号</strong>的按序报文段到达 且在此<strong>之前的报文段都已经被确认</strong> 即本报文段是当前状态下第一个接收但未被确认的报文 | Delayed ACK，延迟ACK发送 (根据本地的计时器设定, 如果在短时间内还有可以接收的报文段，那么可以减少ACK的数量) |<br>| 具有<strong>所期望序号</strong>的按需报文段到达 且当前有一个报文段等待ACK传输， 即此时处于事件一的状态 | 立马发送ACK，确认这两个报文                                  |<br>| 比<strong>所期望序号大的失序</strong>报文段到达， 即接收产生了空隙        | 立马发送一个冗余ACK                                          |<br>| 收到能够填补间隙的报文段                                     | 如果该报文段序号是间隙的低端， 则马上发送ACK                 |</p>
+</li>
+</ul>
+<h3 id="3-5-5-流量控制"><a href="#3-5-5-流量控制" class="headerlink" title="3.5.5 流量控制"></a>3.5.5 流量控制</h3><ul>
+<li>TCP为它的应用程序提供了<strong>流量控制服务</strong>以消除发送方使接收方缓存溢出的可能</li>
+<li><p>TCP也有可能因为IP网络的拥塞而被遏制, 这种形式的发送方的控制称为<strong>拥塞控制</strong></p>
+</li>
+<li><p>TCP通过让发送方维护一个称为<strong>接收窗口(rwnd)</strong>的变量来提供流量控制, 确保</p>
+<p>$\text{LastByteRecd}-\text{LastByteRead}\le \text{RcvBuffer}$, 因此</p>
+<p>$\text{rwnd}=\text{RcvBuffer}-[\text{LastByteRecd}-\text{LastByteRead}]$</p>
+</li>
+<li><p>主机B把当前的$\text{rwnd}$值放入它给主机A的报文段接收窗口字段中, 主机A保证</p>
+<p>$\text{LastByteSent}-\text{LastByteAcked}\le \text{rwnd}$</p>
+<ul>
+<li>如果主机B的$\text{rwnd}=0$, 主机A依然发送1字节数据的报文段, 被确认后就知道主机B的缓存清空后的新$\text{rwnd}$值</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-5-6-TCP连接管理-必考"><a href="#3-5-6-TCP连接管理-必考" class="headerlink" title="3.5.6 TCP连接管理(必考)"></a>3.5.6 TCP连接管理(必考)</h3><h4 id="连接建立"><a href="#连接建立" class="headerlink" title="连接建立"></a>连接建立</h4><p><strong>三次握手</strong>:</p>
+<p><img src="/figs/计算机网络/figs3/三次握手.png" alt="三次握手"></p>
+<ol>
+<li>客户端发送不含应用层数据的特殊TCP报文段, 其中SYN比特置1. 同时客户端随机选择一个初始序号($\text{client_isn}$)</li>
+<li>服务器收到SYN报文段后, 服务器为该TCP连接分配YCP缓存和变量, 并向客户端发送允许连接的<strong>SYNACK报文段</strong>(也不含应用层数据). SYN比特置为1, 确认号ACK为$\text{client_isn}+1$, 服务器选择自己的初始序号$\text{server_isn}$.</li>
+<li>收到SYNACK报文段后, 客户也要为该连接分配缓存和变量. 客户主机向服务器发送另一个报文段, 对服务器的允许连接的报文段进行确认, 确认号ACK为$\text{server_isn}+1$, SYN比特置为0, 序列号为$\text{client_isn}+1$.</li>
+</ol>
+<ul>
+<li>快速连接: 发送SYN的时候就带数据, 第三次握手不光是ACK还是FIN.</li>
+<li>客户端time wait: 保证ACK已经被收到; 防止影响后续连接</li>
+<li>服务端没有time wait</li>
+</ul>
+<p>例子: </p>
+<ul>
+<li>客户端: SYN 1056</li>
+<li>服务端: SYN 2078, ACK 1057</li>
+<li>客户端: SN 1057, ACK 2079</li>
+<li>连接已经建立 </li>
+<li>客户端: SN 1057(并没有+1)</li>
+</ul>
+<h4 id="连接关闭"><a href="#连接关闭" class="headerlink" title="连接关闭"></a>连接关闭</h4><p><img src="/figs/计算机网络/figs3/四次挥手.png" alt="四次挥手"></p>
+<ul>
+<li>客户端向服务器发送FIN</li>
+<li>服务器收到后发ACK确认</li>
+<li>服务器发自己的终止报文段FIN</li>
+<li>客户对终止报文段发ACK确认</li>
+<li>同样的, 客户端需要time wait. 原因: 可能最后A的ACK丢失，导致B重发FIN/ACK，这个2MSL能够保证A能够获得重发的数据报并回应。</li>
+</ul>
+<p>例子:</p>
+<ul>
+<li>客户端: FIN 7080, ACK 6079</li>
+<li><p>服务器: SN 6079, ACK 7081</p>
+</li>
+<li><p>…</p>
+</li>
+<li>服务器:FIN 10679, ACK 7081</li>
+<li>客户端: SN 7081, ACK 10680 </li>
+</ul>
+<h4 id="TCP状态"><a href="#TCP状态" class="headerlink" title="TCP状态"></a>TCP状态</h4><p><img src="/figs/计算机网络/figs3/TCP状态图.png" alt="TCP状态图"></p>
+<ul>
+<li>如果一台主机接收了具有目的端口80的TCP SYN分组, 但是该主机在端口80不接受连接(即它不在端口80上运行Web服务器), 则该主机向源发送一个特殊重置报文段, 该报文段的RST标记位置为1.</li>
+<li>因此探索一台主机上的一个特定端口, <strong>nmap</strong>将对该端口发送一个TCP SYN报文段<ul>
+<li>如果收到TCP SYNACK, 则目标主机上一个应用程序使用该TCP端口</li>
+<li>如果收到TCP RST, 说明SYN到达了目标主机但是目标主机并没有使用该端口号的应用程序</li>
+<li>如果什么都没有收到, 那么可能该SYN报文段被中间的防火墙锁阻挡</li>
+</ul>
+</li>
+</ul>
+<h3 id="补充-崩溃检测"><a href="#补充-崩溃检测" class="headerlink" title="补充: 崩溃检测"></a>补充: 崩溃检测</h3><ul>
+<li>如果一边崩溃重启, 状态丢失, 连接半开</li>
+<li>当任意报文段i到达, 重启的那端发送RST i, 从而另一端关闭连接</li>
+<li>或者多次重试后关闭</li>
+</ul>
+<h2 id="3-6-拥塞控制原理"><a href="#3-6-拥塞控制原理" class="headerlink" title="3.6 拥塞控制原理"></a>3.6 拥塞控制原理</h2><h3 id="3-6-2-拥塞控制方法"><a href="#3-6-2-拥塞控制方法" class="headerlink" title="3.6.2 拥塞控制方法"></a>3.6.2 拥塞控制方法</h3><ul>
+<li>端到端拥塞控制: TCP报文段的丢失(通过超时或者三次冗余确认而得知)被认为是网络拥塞的迹象, TCP会相应的地减少其窗口长度, 且可以增加往返时延值.</li>
+<li>网络辅助的拥塞控制, 例如拥塞分组, 或者路由器标记或更新从发送方通知该网络拥塞指示</li>
+</ul>
+<h2 id="3-7-TCP拥塞控制"><a href="#3-7-TCP拥塞控制" class="headerlink" title="3.7 TCP拥塞控制"></a>3.7 TCP拥塞控制</h2><ul>
+<li>TCP采用的拥塞控制方法是让每一个发送方根据所感知到的网络拥塞程度来限制其能向连接发送流量的速率.</li>
+</ul>
+<h3 id="TCP发送方限制其向连接发送流量速率的方法"><a href="#TCP发送方限制其向连接发送流量速率的方法" class="headerlink" title="TCP发送方限制其向连接发送流量速率的方法"></a>TCP发送方限制其向连接发送流量速率的方法</h3><ul>
+<li>发送方跟踪一个额外的变量: <strong>拥塞窗口(cwnd)</strong></li>
+<li>在一个发送方中, 未被确认的数据量不会超过$\min\{\text{cwnd}, \text{rwnd}\}$. rwnd为接收窗口(由接受缓存决定)</li>
+</ul>
+<h3 id="TCP发送方如何感知在它和目的地之间的路径上出现了拥塞"><a href="#TCP发送方如何感知在它和目的地之间的路径上出现了拥塞" class="headerlink" title="TCP发送方如何感知在它和目的地之间的路径上出现了拥塞"></a>TCP发送方如何感知在它和目的地之间的路径上出现了拥塞</h3><ul>
+<li>定义<strong>丢包事件</strong>: 超时或者三次冗余ACK</li>
+<li>当出现过度的拥塞时, 在这条路径上的一个或多个路由器的缓存会溢出, 引起丢包.</li>
+<li>因为TCP使用确认来触发增大它的拥塞窗口长度, 所以TCP被称为是<strong>自计时</strong>的.</li>
+</ul>
+<h3 id="TCP拥塞控制算法"><a href="#TCP拥塞控制算法" class="headerlink" title="TCP拥塞控制算法"></a>TCP拥塞控制算法</h3><ol>
+<li>慢启动</li>
+</ol>
+<ul>
+<li><p>cwnd初始值为1MSS, 较小.</p>
+</li>
+<li><p>每当传输的报文段被首次确认, cwnd就翻倍, 指数增长.</p>
+</li>
+<li>停止慢启动的时机:<ul>
+<li>如果存在一个超时指示的丢包事件, TCP发送方将cwnd设置为1MSS, 且将第二个状态变量<strong>ssthresh(慢启动阈值)</strong>设为cwnd/2, 即拥塞窗口值的一半. </li>
+<li>检测到cwnd的值到达或超过ssthresh后, 结束满启动, 并且TCP转移到<strong>拥塞避免状态</strong>, 更加谨慎地增加cwnd.</li>
+<li>检测到3个冗余ACK, 则执行快速重传并进入<strong>快速恢复状态</strong></li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>拥塞避免</li>
+</ol>
+<ul>
+<li>一旦进入拥塞避免状态, cwnd大约为上次拥塞时的值的一半, 每次cwnd的值增加一个MSS.</li>
+<li>超时则cwnd设为1MSS, 更新ssthresh为cwnd/2</li>
+<li>碰到三个冗余ACK, 将cwnd减半(再根据冗余ACK的数量增加相应个数的MSS), ssthresh记为cwnd/2, 并进入<strong>快速恢复状态</strong></li>
+</ul>
+<ol>
+<li>快速恢复</li>
+</ol>
+<ul>
+<li>在快速恢复中, 对于引起TCP进入快速恢复状态的缺失报文段, 对收到的每个冗余的ACK, cwnd的值增加1个MSS. </li>
+<li>当缺失报文段的最后一个ACK到达时, TCP将降低cwnd后进入拥塞避免状态</li>
+<li>超时处理方法同1中</li>
+<li>TCP Reno: 三次冗余ACK后窗口减半; TCP Tahoe: 三次冗余和超时一样, 窗口置1</li>
+</ul>
+<ol>
+<li>TCP拥塞控制: 回顾</li>
+</ol>
+<ul>
+<li><strong>加性增, 乘性减(AIMD)模式</strong>: 每个RTT内cwnd线性增加1, 出现3个冗余ACK后减半</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/计算机网络/" rel="tag"># 计算机网络</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/18/组合数学/组合数学之Matching theory/" rel="next" title="组合数学之匹配论">
+                <i class="fa fa-chevron-left"></i> 组合数学之匹配论
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/31/计算机网络/计网期末/" rel="prev" title="计算机网络之期末复习">
+                计算机网络之期末复习 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XY</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#3-运输层"><span class="nav-number">1.</span> <span class="nav-text">3 运输层</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-概述和运输层服务"><span class="nav-number">1.1.</span> <span class="nav-text">3.1 概述和运输层服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-多路复用和多路分解"><span class="nav-number">1.2.</span> <span class="nav-text">3.2 多路复用和多路分解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-无连接运输-UDP"><span class="nav-number">1.3.</span> <span class="nav-text">3.3 无连接运输: UDP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-1-UDP报文段结构"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.3.1 UDP报文段结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-2-UDP检验和"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.3.2 UDP检验和</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-可靠数据传输原理"><span class="nav-number">1.4.</span> <span class="nav-text">3.4 可靠数据传输原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-1-构造可靠数据传输协议"><span class="nav-number">1.4.1.</span> <span class="nav-text">3.4.1 构造可靠数据传输协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-2-流水线可靠数据传输协议"><span class="nav-number">1.4.2.</span> <span class="nav-text">3.4.2 流水线可靠数据传输协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-3-回退N步"><span class="nav-number">1.4.3.</span> <span class="nav-text">3.4.3 回退N步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-4-选择重传"><span class="nav-number">1.4.4.</span> <span class="nav-text">3.4.4 选择重传</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5-面向连接的运输-TCP"><span class="nav-number">1.5.</span> <span class="nav-text">3.5 面向连接的运输: TCP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-1-TCP报文段结构"><span class="nav-number">1.5.1.</span> <span class="nav-text">3.5.1 TCP报文段结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-3-往返时间的估计"><span class="nav-number">1.5.2.</span> <span class="nav-text">3.5.3 往返时间的估计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-4-可靠数据传输"><span class="nav-number">1.5.3.</span> <span class="nav-text">3.5.4 可靠数据传输</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-5-流量控制"><span class="nav-number">1.5.4.</span> <span class="nav-text">3.5.5 流量控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-6-TCP连接管理-必考"><span class="nav-number">1.5.5.</span> <span class="nav-text">3.5.6 TCP连接管理(必考)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#连接建立"><span class="nav-number">1.5.5.1.</span> <span class="nav-text">连接建立</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#连接关闭"><span class="nav-number">1.5.5.2.</span> <span class="nav-text">连接关闭</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP状态"><span class="nav-number">1.5.5.3.</span> <span class="nav-text">TCP状态</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#补充-崩溃检测"><span class="nav-number">1.5.6.</span> <span class="nav-text">补充: 崩溃检测</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-6-拥塞控制原理"><span class="nav-number">1.6.</span> <span class="nav-text">3.6 拥塞控制原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-2-拥塞控制方法"><span class="nav-number">1.6.1.</span> <span class="nav-text">3.6.2 拥塞控制方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-7-TCP拥塞控制"><span class="nav-number">1.7.</span> <span class="nav-text">3.7 TCP拥塞控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP发送方限制其向连接发送流量速率的方法"><span class="nav-number">1.7.1.</span> <span class="nav-text">TCP发送方限制其向连接发送流量速率的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP发送方如何感知在它和目的地之间的路径上出现了拥塞"><span class="nav-number">1.7.2.</span> <span class="nav-text">TCP发送方如何感知在它和目的地之间的路径上出现了拥塞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP拥塞控制算法"><span class="nav-number">1.7.3.</span> <span class="nav-text">TCP拥塞控制算法</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

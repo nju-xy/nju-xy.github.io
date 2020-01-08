@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="计算机网络,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="4 网络层: 数据平面4.1 网络层概述4.1.1 转发和路由选择 OSI网络层功能 转发 将分组从一个输入链路接口转移到适当的输出链路借口的路由器本地操作, 一般硬件实现 排队和schedule 数据平面   路由选择: 确定分组从源到目的地所采取的端到端路径的网络范围处理过程, 一般软件实现 决定了转发表, 指出分组将被转发的路由器的输出链路接口 控制平面    4.1.2 网络服务模型 网络">
+<meta name="keywords" content="计算机网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络之Ch4网络层:数据平面">
+<meta property="og:url" content="http://yoursite.com/2019/12/04/计算机网络/计网Ch4网络层:数据平面/index.html">
+<meta property="og:site_name" content="XY&#39;s blog">
+<meta property="og:description" content="4 网络层: 数据平面4.1 网络层概述4.1.1 转发和路由选择 OSI网络层功能 转发 将分组从一个输入链路接口转移到适当的输出链路借口的路由器本地操作, 一般硬件实现 排队和schedule 数据平面   路由选择: 确定分组从源到目的地所采取的端到端路径的网络范围处理过程, 一般软件实现 决定了转发表, 指出分组将被转发的路由器的输出链路接口 控制平面    4.1.2 网络服务模型 网络">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/figs/计算机网络/figs4/路由器结构.png">
+<meta property="og:image" content="http://yoursite.com/figs/计算机网络/figs4/IPv4首部.png">
+<meta property="og:image" content="http://yoursite.com/figs/计算机网络/figs4/IPv4分片.png">
+<meta property="og:image" content="http://yoursite.com/figs/计算机网络/figs4/DHCP.png">
+<meta property="og:image" content="http://yoursite.com/figs/计算机网络/figs4/NAT.png">
+<meta property="og:image" content="http://yoursite.com/figs/计算机网络/figs4/tunnel.png">
+<meta property="og:updated_time" content="2020-01-08T14:47:39.482Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机网络之Ch4网络层:数据平面">
+<meta name="twitter:description" content="4 网络层: 数据平面4.1 网络层概述4.1.1 转发和路由选择 OSI网络层功能 转发 将分组从一个输入链路接口转移到适当的输出链路借口的路由器本地操作, 一般硬件实现 排队和schedule 数据平面   路由选择: 确定分组从源到目的地所采取的端到端路径的网络范围处理过程, 一般软件实现 决定了转发表, 指出分组将被转发的路由器的输出链路接口 控制平面    4.1.2 网络服务模型 网络">
+<meta name="twitter:image" content="http://yoursite.com/figs/计算机网络/figs4/路由器结构.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/12/04/计算机网络/计网Ch4网络层:数据平面/">
+
+
+
+
+
+  <title>计算机网络之Ch4网络层:数据平面 | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XY's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/04/计算机网络/计网Ch4网络层:数据平面/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XY">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XY's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">计算机网络之Ch4网络层:数据平面</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-04T20:00:00+08:00">
+                2019-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="4-网络层-数据平面"><a href="#4-网络层-数据平面" class="headerlink" title="4 网络层: 数据平面"></a>4 网络层: 数据平面</h1><h2 id="4-1-网络层概述"><a href="#4-1-网络层概述" class="headerlink" title="4.1 网络层概述"></a>4.1 网络层概述</h2><h2 id="4-1-1-转发和路由选择"><a href="#4-1-1-转发和路由选择" class="headerlink" title="4.1.1 转发和路由选择"></a>4.1.1 转发和路由选择</h2><ul>
+<li>OSI网络层功能</li>
+<li>转发<ul>
+<li>将分组从一个输入链路接口转移到适当的输出链路借口的路由器本地操作, 一般硬件实现</li>
+<li>排队和schedule</li>
+<li>数据平面</li>
+</ul>
+</li>
+<li>路由选择:<ul>
+<li>确定分组从源到目的地所采取的端到端路径的网络范围处理过程, 一般软件实现</li>
+<li>决定了<strong>转发表</strong>, 指出分组将被转发的路由器的输出链路接口</li>
+<li>控制平面</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-1-2-网络服务模型"><a href="#4-1-2-网络服务模型" class="headerlink" title="4.1.2 网络服务模型"></a>4.1.2 网络服务模型</h3><ul>
+<li><strong>网络服务模型</strong>: 分组在发送和接收端系统之间的端到端运输特性</li>
+<li>可能的服务:<ul>
+<li>确保交付</li>
+<li>具有时延上限的确保交付</li>
+<li>有序分组交付</li>
+<li>确保最小带宽</li>
+<li>安全性</li>
+</ul>
+</li>
+<li>因特网的网络层提供了单一的服务, 称为<strong>尽力而为服务</strong>:<ul>
+<li>不保证以发送的顺序接受, 不保证最终交付</li>
+<li>不保证端到端时延和最小带宽</li>
+</ul>
+</li>
+<li>分组交换机:<ul>
+<li>链路层交换机: 链路层</li>
+<li>路由器: 网络层</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-2-路由器工作原理"><a href="#4-2-路由器工作原理" class="headerlink" title="4.2 路由器工作原理"></a>4.2 路由器工作原理</h2><ul>
+<li>路由器的两个主要功能:<ul>
+<li>运行路由算法</li>
+<li>从输入端口到输出端口转发分组</li>
+</ul>
+</li>
+<li>路由器的4个组件<ul>
+<li>输入端口</li>
+<li>交换结构</li>
+<li>输出端口</li>
+<li>路由选择处理器</li>
+</ul>
+</li>
+</ul>
+<p><img src="/figs/计算机网络/figs4/路由器结构.png" alt="路由器结构"></p>
+<h3 id="4-2-1-输入端口处理和基于目的地转发"><a href="#4-2-1-输入端口处理和基于目的地转发" class="headerlink" title="4.2.1 输入端口处理和基于目的地转发"></a>4.2.1 输入端口处理和基于目的地转发</h3><ul>
+<li>输入端口处理:<ul>
+<li>线路端接-&gt;数据链路处理(协议, 拆分)-&gt;查找, 转发, 排队-&gt;交换结构</li>
+</ul>
+</li>
+<li>目的地转发: <ul>
+<li>路由器转发表采用前缀匹配的方式生成表项，对于每一个链路接口，其目的地址范围的前缀为表项中的前缀匹配</li>
+<li>当存在多个成功匹配时，采用 <strong>最长前缀匹配规则</strong>，转发到匹配长度最长的那个链路接口</li>
+</ul>
+</li>
+<li>转发见下面对比中</li>
+</ul>
+<h3 id="4-2-2-交换"><a href="#4-2-2-交换" class="headerlink" title="4.2.2 交换"></a>4.2.2 交换</h3><ul>
+<li>经内存交换<ul>
+<li>第一代交换机</li>
+<li>速度由内存带宽限制</li>
+</ul>
+</li>
+<li>经总线交换<ul>
+<li>速度由带宽限制</li>
+</ul>
+</li>
+<li>经互联网络交换<ul>
+<li>数据报分为固定大小的单元, 在网络中交换单元</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-2-3-输出端口处理"><a href="#4-2-3-输出端口处理" class="headerlink" title="4.2.3 输出端口处理"></a>4.2.3 输出端口处理</h3><ul>
+<li>交换结构—&gt;排队(缓存管理)—&gt;数据链路处理(协议, 封装)—&gt;线路端接</li>
+<li><p>包括选择和取出排队的分组进行传输, 执行所需的链路层和物理层传输功能</p>
+</li>
+<li><p>缓冲满的时候选择扔掉的分组</p>
+</li>
+</ul>
+<h3 id="4-2-4-何处出现排队"><a href="#4-2-4-何处出现排队" class="headerlink" title="4.2.4 何处出现排队"></a>4.2.4 何处出现排队</h3><ul>
+<li>缓存空间无内存可用: 丢包</li>
+</ul>
+<ol>
+<li>输入排队</li>
+<li>输出排队</li>
+</ol>
+<h3 id="4-2-5-分组调度"><a href="#4-2-5-分组调度" class="headerlink" title="4.2.5 分组调度"></a>4.2.5 分组调度</h3><p>排队的分组如何经输出链路传输:</p>
+<ul>
+<li><p>先进先出</p>
+</li>
+<li><p>优先权排队</p>
+<ul>
+<li>将到达输出链路的分组按照优先级分成多个类，优先级高的类先传输，类内采用FIFO的方式</li>
+<li><strong>非抢占式优先权排队</strong>：一旦分组开始被传输，即使此时有更高优先级的分组到达，该分组的传输也不会被打断</li>
+</ul>
+</li>
+<li><p>循环排队</p>
+<ul>
+<li>将分组分成多个类，循环调度器在类之间轮流传输</li>
+</ul>
+</li>
+<li>加权公平排队</li>
+</ul>
+<h2 id="补充-虚电路和数据报网络"><a href="#补充-虚电路和数据报网络" class="headerlink" title="补充: 虚电路和数据报网络"></a>补充: 虚电路和数据报网络</h2><ul>
+<li>虚电路网络:<ul>
+<li>对分组的流提供网络服务</li>
+<li>虚电路网络提供有连接的网络层服务</li>
+</ul>
+</li>
+<li>数据报电路<ul>
+<li>对单个分组提供网络服务</li>
+<li>数据报网络提供无连接的网络层服务</li>
+</ul>
+</li>
+</ul>
+<h3 id="虚电路网络"><a href="#虚电路网络" class="headerlink" title="虚电路网络"></a>虚电路网络</h3><ul>
+<li>对于分组流建立, 删除连接</li>
+<li>每个分组有VC标识符</li>
+<li>路径上的交换机保持状态</li>
+<li>链路, 交换机资源分配给VC</li>
+<li><p>一个VC包括</p>
+<ul>
+<li>源到目的地的路径</li>
+<li>VC数, 可能对于每条链路都不同</li>
+<li>路径上交换机中的表项, 包括: 输入接口, 输入VC数, 输出接口, 输出VC数</li>
+</ul>
+</li>
+<li><p>虚电路: 信号协议</p>
+<ul>
+<li>用于建立, 保持, 删除VC</li>
+<li>在ATM, frame-relay等中使用</li>
+<li>现在不用了</li>
+</ul>
+</li>
+</ul>
+<h3 id="数据报网络"><a href="#数据报网络" class="headerlink" title="数据报网络"></a>数据报网络</h3><ul>
+<li>不需要建议连接</li>
+<li>交换机没有端到端连接的状态</li>
+<li>转发表使用目的地地址</li>
+<li>相同的源和目的地之间的主分组对可能走不同的路径</li>
+<li>转发表(路由表)格式:<ul>
+<li>目的地地址前缀</li>
+<li>地址掩码</li>
+<li>链路接口</li>
+</ul>
+</li>
+<li>最长前缀匹配规则: 寻找最长的匹配项, 向其相关联的链路接口转发分组</li>
+</ul>
+<h2 id="4-3-网际协议-IPv4-寻址-IPv6和其他"><a href="#4-3-网际协议-IPv4-寻址-IPv6和其他" class="headerlink" title="4.3 网际协议: IPv4, 寻址, IPv6和其他"></a>4.3 网际协议: IPv4, 寻址, IPv6和其他</h2><ul>
+<li>IP操作<ul>
+<li>路由</li>
+<li>数据报生命周期</li>
+<li>分片和重装</li>
+<li>错误控制</li>
+<li>流控制</li>
+</ul>
+</li>
+<li>路由:<ul>
+<li>主机和路由器维护路由表</li>
+</ul>
+</li>
+<li>数据报生命周期:<ul>
+<li>数据报可能会不确定地循环</li>
+<li>在IP中用TTL(time to live)标记lifetime, 一旦用完, 数据报就会被丢弃</li>
+<li>lifetime的类型: 跳数, 每次在路由器间传递, 减少TTL</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-3-1-IPv4数据报格式"><a href="#4-3-1-IPv4数据报格式" class="headerlink" title="4.3.1 IPv4数据报格式"></a>4.3.1 IPv4数据报格式</h3><p><img src="/figs/计算机网络/figs4/IPv4首部.png" alt="IPv4首部"></p>
+<p>IP首部字段(不用背): </p>
+<ul>
+<li>版本: 4 or 6(见后面)</li>
+<li>首部长度(4 bits)</li>
+<li>服务类型(8 bits)<ul>
+<li>说明该IP数据报是什么类型, 包括优先级 Precedence, 可靠性, 延迟, 吞吐量</li>
+</ul>
+</li>
+<li>数据报长度(16 bits): 首部+数据的长度  </li>
+<li>标识(16 bits)<ul>
+<li>序列号</li>
+<li>和地址以及协议唯一标识数据报</li>
+</ul>
+</li>
+<li>标志flags(3bits)<ul>
+<li>More flags</li>
+<li>Don’t fragment</li>
+</ul>
+</li>
+<li>片偏移(13bits)</li>
+<li>寿命TTL(8bits)</li>
+<li>协议(8bits)<ul>
+<li>tcp, udp, ospf, (不可能是rip, 因为rip直接装在udp里面, udp装在ip里面)</li>
+</ul>
+</li>
+<li>首部校验和: <ul>
+<li>计算首部中所有16bits words的校验和</li>
+<li>在每个路由器中重新计算</li>
+</ul>
+</li>
+<li>源地址(必考)</li>
+<li>目的地址</li>
+<li>选项及padding(凑整的): 可有可无</li>
+</ul>
+<h3 id="4-3-2-分片和重装"><a href="#4-3-2-分片和重装" class="headerlink" title="4.3.2 分片和重装"></a>4.3.2 分片和重装</h3><ul>
+<li><p><strong>最大传送单元MTU</strong>: 一个链路层帧能够承载的最大数据量。</p>
+</li>
+<li><p>分片和重装: 分组长度超过了网络的<strong>MTU</strong></p>
+</li>
+<li><p>位置:</p>
+<ul>
+<li>IPv4的分片在<strong>路由器</strong>实现(IPv6在主机)<ul>
+<li>一个数据报变为多个小数据报</li>
+</ul>
+</li>
+<li>IP的重装只在目的地实现</li>
+</ul>
+</li>
+<li><p>实现:</p>
+<ul>
+<li>分片. IPv4数据报分片利用<strong>标识，标志，片偏移</strong>三个字段:<ul>
+<li>发送主机通常将它发送的每一个数据报的<strong>标识号(ID)</strong>依次加1</li>
+<li>分片后每个片(一个小的数据报)的源地址，目的地址，标识号一致，接收方可以通过标识号判断两个片是否属于同一个大的IP数据报</li>
+<li><strong>片偏移</strong>(在原始数据包中的位置(不含头), 以8个字节为单位, 因此计算片偏移需要<strong>除以8</strong>.)</li>
+<li>more flag: 判断是不是最后一个分片. 只有最后一个分片的more flag<strong>标志</strong>为1.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>多次分片容易导致碎片化.</p>
+<p>  <img src="/figs/计算机网络/figs4/IPv4分片.png" alt="IPv4分片" style="zoom:80%;"></p>
+<ul>
+<li><p>重装: </p>
+</li>
+<li><p>预留足够的缓冲区(开始不知道要多少)</p>
+</li>
+<li><p>分片到达, 则放在缓冲区的对应位置</p>
+<ul>
+<li>知道所有的数据域都重装</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>失败:</p>
+<ul>
+<li>当分片丢失</li>
+<li><p>重装超时, 扔掉所有的部分数据</p>
+</li>
+<li><p>使用分组lifetime(TTL in IP)</p>
+<ul>
+<li>随着分组下降, 超时则杀死所有数据</li>
+</ul>
+</li>
+<li>IPv6使用源分片</li>
+</ul>
+</li>
+</ul>
+<h4 id="错误控制和流量控制"><a href="#错误控制和流量控制" class="headerlink" title="错误控制和流量控制"></a>错误控制和流量控制</h4><ul>
+<li><p>错误控制:</p>
+<ul>
+<li>不保证到达</li>
+<li>如果分组丢失, 路由器试图告诉信息源</li>
+</ul>
+</li>
+<li><p>ICMP用于发送错误信息</p>
+<ul>
+<li>源可能用更高层的协议</li>
+</ul>
+</li>
+<li><p>流量控制</p>
+<ul>
+<li>运行路由器限制到达数据速率</li>
+<li>当缓冲区满了, 路由器丢弃输入分组<ul>
+<li>可能告知源</li>
+<li>使用ICMP</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-3-3-IPv4编址-非常重要-必考"><a href="#4-3-3-IPv4编址-非常重要-必考" class="headerlink" title="4.3.3 IPv4编址 (非常重要, 必考)"></a>4.3.3 IPv4编址 (非常重要, 必考)</h3><ul>
+<li><strong>接口</strong>: 主机与物理链路之间的边界<ul>
+<li>一般一个主机有一条链路和一个接口, 路由器有多个链路和多个接口</li>
+</ul>
+</li>
+<li>IP要求每台主机和路由器接口拥有自己的IP地址(全球唯一, NAT除外)</li>
+<li>每个IP地址32位(4字节), 按照<strong>点分十进制记方</strong>书写, 即每个字节用十进制, 各字节之间用点隔开.</li>
+<li>包含2部分: 网段地址和主机地址, Net+Host</li>
+<li>IP只关心网段之间的通讯</li>
+<li>0和255慎用, 0表示网段地址, 255广播地址</li>
+<li>在CIDR被采用之前使用<strong>分类编址</strong>:具有8, 16, 24比特的子网分别被称为A, B, C类网络.</li>
+<li>A类网, B类网, C类网(略)</li>
+<li>子网和子网掩码<ul>
+<li><strong>子网</strong>: 分开主机和路由器的每个接口, 产生几个隔离的网络岛, 使用接口端接这些隔离的网络的端点. 这些隔离的网络中的每一个都叫做一个<strong>子网</strong>.</li>
+<li>解决网络地址使用不充分问题</li>
+<li>地址通过<strong>子网掩码</strong>分为子网数和主机数</li>
+<li><strong>CIDR(无类别域间路由选择)</strong></li>
+<li>网段地址A.B.C.D/n, n为IP<strong>前缀</strong>, 表示掩码的1的数量, 前n位为IP地址的网络部分, 后32-n位用于分配组织内部设备使用</li>
+</ul>
+</li>
+<li>地址汇聚:<ul>
+<li>多个网段看做一个更大的网 段</li>
+</ul>
+</li>
+</ul>
+<h4 id="获取主机地址-DHCP协议"><a href="#获取主机地址-DHCP协议" class="headerlink" title="获取主机地址: DHCP协议"></a>获取主机地址: DHCP协议</h4><p>DHCP(动态主机配置协议): 主机刚入网如何获取IP地址<img src="/figs/计算机网络/figs4/DHCP.png" alt="DHCP" style="zoom:80%;"></p>
+<p>分为以下四步骤:</p>
+<ul>
+<li>DHCP服务器<strong>发现</strong>(discover)<ul>
+<li>一台新到达的主机的首要任务是发现一个要与其交互的DHCP服务器</li>
+<li>因为不知道服务器的IP地址, 所以客户生成包含DHCP dicover的IP数据报, 广播目的地址255.255.255.255(广播), 本主机地址0.0.0.0, 传给链路层, 广播到该子网的所有节点.</li>
+</ul>
+</li>
+<li>DHCP服务器<strong>提供</strong>(offer)<ul>
+<li>DHCP服务器收到一个DHCP discover报文时, 用DHCP offer报文向客户做出响应, 向子网的所有节点广播, 使用地址255.255.255.255</li>
+<li>可能有多台DHCP服务器, 他们向客户提供的报文包含: <ul>
+<li>收到的发现报文的事务ID</li>
+<li>向客户推荐的IP地址</li>
+<li>网络掩码</li>
+<li>IP地址租用期</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>DHCP<strong>请求</strong>(request)<ul>
+<li>新到达的客户从一个或多个DHCP offer中选择一个, 并向选取的DHCP offer用 DHCP request报文进行响应(含DHCP服务器ID, 即选择的那个服务器的offer包的IP头里面的IP地址), 回显配置的参数.</li>
+</ul>
+</li>
+<li><p>DHCP <strong>ACK</strong></p>
+<ul>
+<li>服务器用DHCP ACK报文对DHCP request进行响应</li>
+</ul>
+</li>
+<li><p>全部使用<strong>IP广播</strong></p>
+</li>
+</ul>
+<h3 id="4-3-4-网络地址转换-NAT"><a href="#4-3-4-网络地址转换-NAT" class="headerlink" title="4.3.4 网络地址转换(NAT)"></a>4.3.4 网络地址转换(NAT)</h3><ul>
+<li>内部(虚拟地址)和外部地址分开</li>
+<li>和外网通信时转换IP地址 </li>
+<li>NAT使能路由器对于外部来说可以就是一个具有单一IP地址的单一设备，而其实际上对外部隐藏了内部网络的细节。</li>
+<li>内部网络使用的IP地址是RFC 1918中保留的IP地址空间之一，用于家庭网络等<strong>专用网络</strong>或者<strong>具有专用地址的地域</strong>(即其地址只对该网络中设备有意义)</li>
+</ul>
+<p><img src="/figs/计算机网络/figs4/NAT.png" alt="NAT" style="zoom:80%;"></p>
+<ul>
+<li>实现:<ul>
+<li>用NAT表的方式进行地址转换, 记录对应的WAN端和LAN端的IP地址和端口号</li>
+<li>通过分配不同的源端口号来区分内部的主机</li>
+</ul>
+</li>
+<li>内部主机向外通信，发送源地址为主机IP地址，端口号随机生成的报文<ul>
+<li>NAT使能路由器接收到内部主机发送的报文后，改变源地址为自身IP地址，生成一个不在NAT表中的端口号，发送报文，随后添加NAT表项</li>
+<li>外部主机收到后，发送 目的地址为路由器IP地址，端口号为路由器生成端口号的 响应报文</li>
+<li>NAT使能路由器接收到外部主机的响应报文后，通过查NAT表，来转发给内部主机</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-3-5-IPv6"><a href="#4-3-5-IPv6" class="headerlink" title="4.3.5 IPv6"></a>4.3.5 IPv6</h3><ul>
+<li>最初动机: 地址空间用完了</li>
+<li>额外动机: <ul>
+<li>提升处理速度</li>
+<li>不在路由器处分片, 算校验和</li>
+<li>…</li>
+</ul>
+</li>
+</ul>
+<h4 id="IPv6数据报格式"><a href="#IPv6数据报格式" class="headerlink" title="IPv6数据报格式"></a>IPv6数据报格式</h4><ul>
+<li><p>IPv6引入的主要变化</p>
+<ul>
+<li><p>扩大的地址容量: 32bits变为128bits, 冒分(冒号分隔); 还引入的任播地址(传播给任意一个)</p>
+</li>
+<li><p>简化高效的40字节首部, 许多IPv4字段被舍弃或者作为选项. 舍弃的字段:</p>
+<ul>
+<li>分片/重装: 不允许在路由器上分片</li>
+<li>首部校验和: 运输层和数据链路层做过校验, 所以去除</li>
+<li>选项: 不在标准IP首部内, 但是可能在IPv6首部的”下一个首部”指出的位置上. 这样IP首部就是定长的了</li>
+</ul>
+</li>
+<li>流标签: 给属于特殊流的分组加上标签, 这些特殊流是发送方要求进行特殊处理的流, 如一种非默认服务质量或需要实时服务的流. 例如音频和视频传输</li>
+</ul>
+</li>
+<li><p>IPv6首部字段:</p>
+<ul>
+<li>版本: 4或6</li>
+<li>流量类型: 同IPv4</li>
+<li>流标签: 标识一条数据报的流, 能够对一条流中的某些数据报给出优先权</li>
+<li>有效载荷长度: 在定长的40字节首部后面的字节数量</li>
+<li>下一个首部: 标识数据报内的内容(数据字段)需要交付给哪个协议</li>
+<li>跳限制: 每一跳-1, 0则丢弃</li>
+<li>源地址和目的地址</li>
+</ul>
+</li>
+</ul>
+<p>题目:</p>
+<p>IPv4首部图, 哪些字段在经过中间路由器的时候肯定不会被修改(分为不考虑和考虑NAT)</p>
+<h3 id="IPv4和IPv6的互通"><a href="#IPv4和IPv6的互通" class="headerlink" title="IPv4和IPv6的互通"></a>IPv4和IPv6的互通</h3><p>隧道模式:</p>
+<p><img src="/figs/计算机网络/figs4/tunnel.png" alt="tunnel"></p>
+<ul>
+<li>原始的包 包在外面的包里面</li>
+<li>VPN使用</li>
+<li>通用</li>
+</ul>
+<p><strong>补充</strong>: </p>
+<h3 id="ARP"><a href="#ARP" class="headerlink" title="ARP"></a>ARP</h3><p>ARP协议: IP地址转换为对应的MAC地址</p>
+<h4 id="ARP过程"><a href="#ARP过程" class="headerlink" title="ARP过程"></a>ARP过程</h4><ul>
+<li><p>Sender</p>
+<ul>
+<li>查找自己的cache, 如果没有就</li>
+<li>构建ARP请求, 插入<sender ip, sender mac, destination ip></sender></li>
+<li>用MAC帧广播</li>
+<li>缓存目的地的<mac, ip>对, 以及时间戳</mac,></li>
+</ul>
+</li>
+<li><p>Receiver:</p>
+<ul>
+<li>查目的地IP, 如果OK</li>
+<li><p>建立ARP应答, 插入<destination ip, destination mac></destination></p>
+</li>
+<li><p>用MAC帧发送sender MAC</p>
+</li>
+<li>缓存发送方的<mac, ip>以及时间戳</mac,></li>
+</ul>
+</li>
+</ul>
+<h3 id="下面的都不考"><a href="#下面的都不考" class="headerlink" title="下面的都不考:"></a>下面的都不考:</h3><h3 id="IP组播"><a href="#IP组播" class="headerlink" title="IP组播"></a>IP组播</h3><ul>
+<li>组播: 发送的一个数据包, 要发给多个目的地(不是域内的所有主机)</li>
+<li><p>广播: 发送给在一个域内的所有主机</p>
+</li>
+<li><p>IP电视, 远程会议, 分布式计算…</p>
+</li>
+</ul>
+<h4 id="完成IP组播"><a href="#完成IP组播" class="headerlink" title="完成IP组播"></a>完成IP组播</h4><ul>
+<li>组播树: 在组成元的网段的路由器之间建立组播树, 分组只在组播树上传播</li>
+<li>发送方只发一次</li>
+</ul>
+<h4 id="IP组播服务模型-不考"><a href="#IP组播服务模型-不考" class="headerlink" title="IP组播服务模型(不考)"></a>IP组播服务模型(不考)</h4><p>协议组成:</p>
+<ul>
+<li>组播地址<ul>
+<li>IPv4: D类地址, 1110开头</li>
+<li>IPv6: 8位前缀, 4位flag, 4位地域限制. 112位组标记符</li>
+</ul>
+</li>
+<li><p>地址翻译</p>
+<ul>
+<li>IP:</li>
+<li>MAC:</li>
+</ul>
+</li>
+<li><p>局域网:</p>
+<ul>
+<li>IGMP:</li>
+</ul>
+</li>
+<li><p>wide area: </p>
+<ul>
+<li>构建组播树</li>
+</ul>
+</li>
+<li><p>IGMP主要操作</p>
+<ul>
+<li><p>主机</p>
+<ul>
+<li>发送报告加入和退出组</li>
+<li>主机不需要明确退出</li>
+</ul>
+</li>
+<li><p>路由器</p>
+<ul>
+<li><p>每过一段时间发送询问信息</p>
+</li>
+<li><p>组内主机必须回应</p>
+</li>
+</ul>
+</li>
+<li><p>两个特殊地址:</p>
+<ul>
+<li>224.0.0.1: 子网所有组播组</li>
+<li>224.0.0.2: 子网所有路由器</li>
+</ul>
+</li>
+<li><p>每个局域网中一个路由器被选为询问者</p>
+</li>
+<li><p>收到询问后, 对于每个组, 主机开始随机计时器(倒计时)</p>
+</li>
+<li><p>倒计时结束, 发送报告给整个组</p>
+</li>
+<li><p>组内其他成员收到报告,停止计时器</p>
+</li>
+</ul>
+</li>
+<li><p>组播路由</p>
+<ul>
+<li>共享树: 所有成员共享一棵树</li>
+<li>源树: 每个成员一棵树</li>
+</ul>
+</li>
+</ul>
+<h3 id="移动IP-不考"><a href="#移动IP-不考" class="headerlink" title="移动IP(不考)"></a>移动IP(不考)</h3><ul>
+<li><p>网段地址决定路由</p>
+</li>
+<li><p>移动节点</p>
+</li>
+<li><p>对应节点</p>
+</li>
+<li><p>本地代理</p>
+</li>
+<li><p>远地代理</p>
+</li>
+<li><p>对应节点C发送给移动节点B:</p>
+<ul>
+<li>C发给本地代理</li>
+<li>本地代理通过隧道方式发给远地代理</li>
+</ul>
+</li>
+<li><p>B发给C: 直接发</p>
+</li>
+<li><p>移动IP的三个能力:</p>
+<ul>
+<li>到达新的网段后发现远地代理</li>
+<li>注册: 要求本地代理转发给远地代理</li>
+<li>隧道: 本地代理和远地代理之间的隧道</li>
+</ul>
+</li>
+</ul>
+<h3 id="MPLS-了解即可"><a href="#MPLS-了解即可" class="headerlink" title="MPLS(了解即可)"></a>MPLS(了解即可)</h3><ul>
+<li>有连接网络</li>
+<li>略</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/计算机网络/" rel="tag"># 计算机网络</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/01/高级算法/高级算法之半正定规划/" rel="next" title="高级算法之Semidefinite Programs">
+                <i class="fa fa-chevron-left"></i> 高级算法之Semidefinite Programs
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/04/组合数学/组合数学之Ramsey理论/" rel="prev" title="组合数学之Ramsey理论">
+                组合数学之Ramsey理论 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XY</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#4-网络层-数据平面"><span class="nav-number">1.</span> <span class="nav-text">4 网络层: 数据平面</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-网络层概述"><span class="nav-number">1.1.</span> <span class="nav-text">4.1 网络层概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-1-转发和路由选择"><span class="nav-number">1.2.</span> <span class="nav-text">4.1.1 转发和路由选择</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-2-网络服务模型"><span class="nav-number">1.2.1.</span> <span class="nav-text">4.1.2 网络服务模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-路由器工作原理"><span class="nav-number">1.3.</span> <span class="nav-text">4.2 路由器工作原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-1-输入端口处理和基于目的地转发"><span class="nav-number">1.3.1.</span> <span class="nav-text">4.2.1 输入端口处理和基于目的地转发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-2-交换"><span class="nav-number">1.3.2.</span> <span class="nav-text">4.2.2 交换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-3-输出端口处理"><span class="nav-number">1.3.3.</span> <span class="nav-text">4.2.3 输出端口处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-4-何处出现排队"><span class="nav-number">1.3.4.</span> <span class="nav-text">4.2.4 何处出现排队</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-5-分组调度"><span class="nav-number">1.3.5.</span> <span class="nav-text">4.2.5 分组调度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#补充-虚电路和数据报网络"><span class="nav-number">1.4.</span> <span class="nav-text">补充: 虚电路和数据报网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#虚电路网络"><span class="nav-number">1.4.1.</span> <span class="nav-text">虚电路网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据报网络"><span class="nav-number">1.4.2.</span> <span class="nav-text">数据报网络</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-网际协议-IPv4-寻址-IPv6和其他"><span class="nav-number">1.5.</span> <span class="nav-text">4.3 网际协议: IPv4, 寻址, IPv6和其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-1-IPv4数据报格式"><span class="nav-number">1.5.1.</span> <span class="nav-text">4.3.1 IPv4数据报格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-2-分片和重装"><span class="nav-number">1.5.2.</span> <span class="nav-text">4.3.2 分片和重装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#错误控制和流量控制"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">错误控制和流量控制</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-3-IPv4编址-非常重要-必考"><span class="nav-number">1.5.3.</span> <span class="nav-text">4.3.3 IPv4编址 (非常重要, 必考)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#获取主机地址-DHCP协议"><span class="nav-number">1.5.3.1.</span> <span class="nav-text">获取主机地址: DHCP协议</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-4-网络地址转换-NAT"><span class="nav-number">1.5.4.</span> <span class="nav-text">4.3.4 网络地址转换(NAT)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-5-IPv6"><span class="nav-number">1.5.5.</span> <span class="nav-text">4.3.5 IPv6</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#IPv6数据报格式"><span class="nav-number">1.5.5.1.</span> <span class="nav-text">IPv6数据报格式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IPv4和IPv6的互通"><span class="nav-number">1.5.6.</span> <span class="nav-text">IPv4和IPv6的互通</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ARP"><span class="nav-number">1.5.7.</span> <span class="nav-text">ARP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ARP过程"><span class="nav-number">1.5.7.1.</span> <span class="nav-text">ARP过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下面的都不考"><span class="nav-number">1.5.8.</span> <span class="nav-text">下面的都不考:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IP组播"><span class="nav-number">1.5.9.</span> <span class="nav-text">IP组播</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#完成IP组播"><span class="nav-number">1.5.9.1.</span> <span class="nav-text">完成IP组播</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IP组播服务模型-不考"><span class="nav-number">1.5.9.2.</span> <span class="nav-text">IP组播服务模型(不考)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移动IP-不考"><span class="nav-number">1.5.10.</span> <span class="nav-text">移动IP(不考)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MPLS-了解即可"><span class="nav-number">1.5.11.</span> <span class="nav-text">MPLS(了解即可)</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

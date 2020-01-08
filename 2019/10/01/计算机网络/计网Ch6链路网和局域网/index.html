@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="计算机网络,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="6 链路层和局域网 两种截然不同的链路层信道: 广播信道, 点对点通信链路  6.1 链路层概述 直连网络—链路层—网卡  在通过特定的链路时, 传输节点将数据报封装在链路层帧中, 并将该帧传送到链路中 (首部 + data(IP包) + 尾部)   6.1.1 链路层提供的服务 成帧: 把数据报封装成帧  链路接入: 媒体访问控制MAC协议规定了帧在链路上传播的规则   可靠交付 差错检测: f">
+<meta name="keywords" content="计算机网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络之Ch6链路层和局域网">
+<meta property="og:url" content="http://yoursite.com/2019/10/01/计算机网络/计网Ch6链路网和局域网/index.html">
+<meta property="og:site_name" content="XY&#39;s blog">
+<meta property="og:description" content="6 链路层和局域网 两种截然不同的链路层信道: 广播信道, 点对点通信链路  6.1 链路层概述 直连网络—链路层—网卡  在通过特定的链路时, 传输节点将数据报封装在链路层帧中, 并将该帧传送到链路中 (首部 + data(IP包) + 尾部)   6.1.1 链路层提供的服务 成帧: 把数据报封装成帧  链路接入: 媒体访问控制MAC协议规定了帧在链路上传播的规则   可靠交付 差错检测: f">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/figs/计算机网络/figs6/CSMACD.png">
+<meta property="og:updated_time" content="2020-01-08T14:48:46.165Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机网络之Ch6链路层和局域网">
+<meta name="twitter:description" content="6 链路层和局域网 两种截然不同的链路层信道: 广播信道, 点对点通信链路  6.1 链路层概述 直连网络—链路层—网卡  在通过特定的链路时, 传输节点将数据报封装在链路层帧中, 并将该帧传送到链路中 (首部 + data(IP包) + 尾部)   6.1.1 链路层提供的服务 成帧: 把数据报封装成帧  链路接入: 媒体访问控制MAC协议规定了帧在链路上传播的规则   可靠交付 差错检测: f">
+<meta name="twitter:image" content="http://yoursite.com/figs/计算机网络/figs6/CSMACD.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/10/01/计算机网络/计网Ch6链路网和局域网/">
+
+
+
+
+
+  <title>计算机网络之Ch6链路层和局域网 | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XY's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/01/计算机网络/计网Ch6链路网和局域网/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XY">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XY's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">计算机网络之Ch6链路层和局域网</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-01T20:00:00+08:00">
+                2019-10-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="6-链路层和局域网"><a href="#6-链路层和局域网" class="headerlink" title="6 链路层和局域网"></a>6 链路层和局域网</h2><ul>
+<li>两种截然不同的链路层信道: <strong>广播信道</strong>, <strong>点对点通信链路</strong></li>
+</ul>
+<h2 id="6-1-链路层概述"><a href="#6-1-链路层概述" class="headerlink" title="6.1 链路层概述"></a>6.1 链路层概述</h2><ul>
+<li><p>直连网络—链路层—网卡</p>
+</li>
+<li><p>在通过特定的链路时, 传输节点将数据报封装在链路层帧中, 并将该帧传送到链路中</p>
+<p>(首部 + data(IP包) + 尾部)</p>
+</li>
+</ul>
+<h3 id="6-1-1-链路层提供的服务"><a href="#6-1-1-链路层提供的服务" class="headerlink" title="6.1.1 链路层提供的服务"></a>6.1.1 链路层提供的服务</h3><ul>
+<li><p>成帧: 把数据报封装成帧</p>
+</li>
+<li><p>链路接入: <strong>媒体访问控制MAC</strong>协议规定了帧在链路上传播的规则 </p>
+</li>
+<li>可靠交付</li>
+<li>差错检测: f(D)=E, 检测码E放在尾部, f(D’) = E’和收到的E对比 </li>
+</ul>
+<ul>
+<li>流量控制</li>
+</ul>
+<h3 id="6-1-2-链路层在何处实现"><a href="#6-1-2-链路层在何处实现" class="headerlink" title="6.1.2 链路层在何处实现"></a>6.1.2 链路层在何处实现</h3><ul>
+<li>链路层的主体在<strong>网络适配器</strong>(也称<strong>网络接口卡</strong>, 网卡)中实现</li>
+</ul>
+<h2 id="6-2-差错检测和纠正技术"><a href="#6-2-差错检测和纠正技术" class="headerlink" title="6.2 差错检测和纠正技术"></a>6.2 差错检测和纠正技术</h2><ul>
+<li>使用<strong>差错检测和纠正比特EDC</strong>来增强数据D</li>
+<li><p>f(D) = EDC, 放在数据D尾部一起发送; 接收方收到D’和EDC’, 通过计算f(D’)是否等于EDC’来检错</p>
+</li>
+<li><p>可能会有<strong>未检出比特差错</strong></p>
+</li>
+</ul>
+<h3 id="6-2-1-奇偶校验"><a href="#6-2-1-奇偶校验" class="headerlink" title="6.2.1 奇偶校验"></a>6.2.1 奇偶校验</h3><ul>
+<li>主要用于硬件检错, 通信方面一般不用</li>
+<li>一维和二维</li>
+</ul>
+<h3 id="6-2-2-校验和-Checksum"><a href="#6-2-2-校验和-Checksum" class="headerlink" title="6.2.2 校验和 Checksum"></a>6.2.2 校验和 Checksum</h3><ul>
+<li>把数据D分成一个一个16位word, 然后加起来</li>
+<li>这里的加法是有进位加法, 且最高位的进位加到最低位上, 直到最高位没有进位</li>
+<li>最后全都取反码得到R, 这样就有D &amp; R(数据和校验码)的全部words加起来为0</li>
+<li>由软件实现</li>
+</ul>
+<h3 id="6-2-3-循环冗余校验CRC"><a href="#6-2-3-循环冗余校验CRC" class="headerlink" title="6.2.3 循环冗余校验CRC"></a>6.2.3 循环冗余校验CRC</h3><ul>
+<li>也称<strong>多项式编码</strong></li>
+<li>发送: D: data bits to be sent (d bits); R: CRC bits(r bits), 即$D \cdot 2^r \oplus  R$</li>
+<li>R的计算: <ul>
+<li>发送方和接收方需要协定一个$r+1$比特模式, 称为<strong>生成多项式</strong>G, G最高有效位(最左)是1</li>
+<li>选择$r$位附加比特(CRC位, 记为R), 附加在D上, 满足<ul>
+<li><d, r>被G整除, 即$D \cdot 2^r \oplus  R=nG$</d,></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>检错:<ul>
+<li>接收方用G去除<d, r></d,></li>
+</ul>
+</li>
+<li>所有操作都是不进位的模2算术, 加和减都等价于异或</li>
+<li>由硬件实现, 计算$R=\text{remainder}\frac{D\cdot 2^r}{G}$, 实现方法为异或电路</li>
+</ul>
+<h2 id="补充-流量控制-书TCP部分3-5-5"><a href="#补充-流量控制-书TCP部分3-5-5" class="headerlink" title="补充: 流量控制(书TCP部分3.5.5)"></a>补充: 流量控制(书TCP部分3.5.5)</h2><ul>
+<li><p>停止等待</p>
+<ul>
+<li><p>源发送一个帧, 接收方收到帧并用ACK回应(表示可以接收下一个帧)</p>
+</li>
+<li><p>源等待发送下一个帧, 直到收到ACK</p>
+</li>
+<li><p>序号0或1, RR: receive ready; RNR: receive not ready</p>
+</li>
+<li><p>发送方 ———- 接收方</p>
+<p>Send 0 —————— &gt;</p>
+<p>​            &lt; ——————  RR1(第0个收到了, 可以接收第一个)</p>
+<p>Send 1 ——————-&gt;</p>
+<p>​            &lt;——————- RR0(正确收到) / RNR1(没收到1, 需要重发) / RR1(收到了1但是不想再收)</p>
+</li>
+</ul>
+</li>
+<li><p>滑动窗口</p>
+<ul>
+<li><p>序号0 - 7(3bits帧序号 + 3bits确认号)</p>
+</li>
+<li><p>只能发0 - 6(7个), 不然RR0有歧义</p>
+</li>
+<li><p>3个变量维持状态变量: </p>
+<p>发送方:</p>
+<ul>
+<li>Last ACK: 上一次接收方给出的确认帧序号(准备接收的那个, 也是比已经收到的大1)</li>
+<li>Last Send: 上一次发送的帧的序号(+ 1)</li>
+<li>Window Size常量7</li>
+</ul>
+<p>接收方:</p>
+<ul>
+<li>Last ACK: 上一次接收方给出的确认帧序号</li>
+<li>Last Receive: 上一次收到的帧的序号(+ 1)</li>
+<li>Window Size常量7</li>
+</ul>
+</li>
+<li><p>出错重传:</p>
+<ul>
+<li>go back n<ul>
+<li>错了之后的全都重传</li>
+</ul>
+</li>
+<li>Selective Reject<ul>
+<li>只重发错了的</li>
+<li>接收方需要有足够大的缓冲</li>
+<li>比较复杂, 不在网卡层使用, 在TCP中使用</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-3-多路访问链路和协议-重点"><a href="#6-3-多路访问链路和协议-重点" class="headerlink" title="6.3 多路访问链路和协议(重点)"></a>6.3 多路访问链路和协议(重点)</h3><ul>
+<li>两种截然不同的链路层信道: <strong>广播信道</strong>, <strong>点对点通信链路</strong></li>
+<li>点对点链路的协议:<ul>
+<li>HDLC: Bit-Oriented Protocols</li>
+<li>PPP: Byte-Oriented Protocols</li>
+<li>SONET(不做要求):<ul>
+<li>电信的</li>
+<li>9行, 对应一个一个话路(时隙)</li>
+<li>125$ \mu s$(电话频率)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>广播链路<ul>
+<li>多个节点同时传输帧, 所有节点同时收到多个帧, 则发生<strong>碰撞</strong>, 也称冲突</li>
+<li><strong>多路访问协议</strong><ul>
+<li>信道划分协议</li>
+<li>随机接入协议</li>
+<li>轮流协议</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-3-1-信道划分协议"><a href="#6-3-1-信道划分协议" class="headerlink" title="6.3.1 信道划分协议"></a>6.3.1 信道划分协议</h3><ul>
+<li>三种: <strong>时分复用</strong>,<strong>频分复用</strong>, <strong>码分复用</strong></li>
+<li><strong>时分复用</strong>: 将时间划分为<strong>时间帧</strong>, 每个<strong>时间帧</strong>划分为N个<strong>时隙</strong>, 每个时隙分配给N个节点中的一个</li>
+<li><strong>频分复用</strong>: 在$R$ bps信道中创立$N$个较小的$R/N$ bps信道</li>
+<li><strong>码分复用</strong>: 对每个节点分配一个<strong>码片</strong>, 码片是正交的(码片相乘为0)<ul>
+<li>编码信号 = 原信号$\times$码片序列</li>
+<li>解码:编码信号和码片序列的内积</li>
+<li>码片频率高, 信号频率低</li>
+<li>码片中的0用-1代替, 为1, -1编码</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-3-2-随机接入协议"><a href="#6-3-2-随机接入协议" class="headerlink" title="6.3.2 随机接入协议"></a>6.3.2 随机接入协议</h3><ul>
+<li>一个传输节点总是以信道的全部速率进行发送</li>
+<li>有碰撞时, 涉及碰撞的每个节点反复重发它的帧知道帧无碰撞地通过为止</li>
+<li>重发之前会等待随机一个时延</li>
+<li>主要种类: ALOHA和CSMA</li>
+</ul>
+<h4 id="ALOHA"><a href="#ALOHA" class="headerlink" title="ALOHA"></a>ALOHA</h4><ul>
+<li>无线型, 传输时间远小于传播时间</li>
+</ul>
+<ul>
+<li>过程: <ul>
+<li>节点首次获取某一个数据帧后，立即将该帧完整地传输到信道中。</li>
+<li>如果收到ACK则成功，反之则以概率p重传，或1-p等待一个帧时间</li>
+<li>等待一个帧时间之后, 再次以概率p重传，或1-p再等待一个帧时间. 以此类推</li>
+</ul>
+</li>
+<li>最大效率为$1/(2e)$, 恰好为时隙ALOHA的一半</li>
+</ul>
+<h4 id="时隙ALOHA"><a href="#时隙ALOHA" class="headerlink" title="时隙ALOHA"></a>时隙ALOHA</h4><ul>
+<li>假设:<ul>
+<li>所有帧大小相同为$L$</li>
+<li>时间被划分成长度为$L/R$(即传输一帧的时间)的<strong>时隙</strong></li>
+<li>基站发送脉冲, 主机收到脉冲才能发送帧</li>
+<li>如果一个时隙中发生碰撞，则所有节点在该时隙结束前能够检测到该碰撞</li>
+</ul>
+</li>
+<li>过程<ul>
+<li>节点有新帧需要发送，其需要等到下一个时隙开始时才可以发送。</li>
+<li>没有碰撞则传输成功，反之该节点以概率p在后面每个时隙开始重传该帧直到传输成功</li>
+</ul>
+</li>
+<li>帧只会完全冲突或者不冲突, 性能提升明显</li>
+</ul>
+<ul>
+<li>有效传输速率$1/e=0.37$ </li>
+</ul>
+<h4 id="载波侦听多路访问-CSMA"><a href="#载波侦听多路访问-CSMA" class="headerlink" title="载波侦听多路访问(CSMA)"></a>载波侦听多路访问(CSMA)</h4><ul>
+<li>有线型, 传输时间远大于传播时间, 都是理论协议</li>
+<li>规则:<ul>
+<li><strong>载波侦听</strong>：一个节点在传输前先侦听信道，等待知道检测到一段时间信道空闲，然后开始传输</li>
+<li><strong>碰撞检测</strong>：节点在传输时也一直侦听信道，如果检测到另一个节点也在传输，则马上终止自己的传输，且在进入”侦听-检测”新的循环之前，随机等待一段时间(二进制指数回退)</li>
+</ul>
+</li>
+<li>过程:<ul>
+<li>发送之前先<strong>载波侦听</strong>, 如果信道空闲才发送帧</li>
+<li>发送后等待ACK, 没等到就重传</li>
+</ul>
+</li>
+<li>帧越长, 传播时间越短, 性能越好</li>
+<li>根据信道非空闲时的处理方式分成以下三种<ul>
+<li>非坚持CSMA<ul>
+<li>检测到空闲立即传输</li>
+<li>信道忙就回去休息(idle), 过一段时间再次检测</li>
+<li>休息时间一定是随机的</li>
+</ul>
+</li>
+<li>1坚持CSMA<ul>
+<li>检测到空闲立即传输</li>
+<li>信道忙就一直侦听, 一旦空闲立即发送</li>
+<li>如果多个在等, 肯定冲突, 效果不好</li>
+</ul>
+</li>
+<li>p坚持CSMA(概率坚持)<ul>
+<li>空闲时以概率p重传，1-p延后一个时间单位再决定, 忙时一直监听</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="具有碰撞检测的CSMA-CSMA-CD"><a href="#具有碰撞检测的CSMA-CSMA-CD" class="headerlink" title="具有碰撞检测的CSMA: CSMA/CD"></a>具有碰撞检测的CSMA: CSMA/CD</h4><ul>
+<li>以太网的协议, 现在已经无效</li>
+<li><strong>碰撞检测</strong>: 当一个传输节点在传输时一直侦听此信道, 如果检测到另一个节点正在传输干扰帧, 就停止传输(从而减少了冲突时间)</li>
+<li>过程如下<ul>
+<li>适配器从网络层获得一条数据报, 准备链路层帧, 放入缓存</li>
+<li>若侦听到信道空闲: 发送; 若侦听到信道忙, 1坚持, 直到侦听到空闲就发送</li>
+<li>发送的同时监听, 如果发现冲突则发送一个高频信号(表示冲突)立即停止; 如果全程无冲突则成功. </li>
+<li>侦听到冲突则等待随机时间后回到第二步重试</li>
+</ul>
+</li>
+<li><strong>无ACK</strong>(CSMA和ALOHA都有), 但是在CSMA/CD中, 只要全程没冲突即发送成功</li>
+<li><strong>最坏要2个传播时间$2\mu$才能检测出来冲突</strong>, 因此要发送的<strong>最小帧长</strong>大于等于$2\mu$ ($\mu$的时间到目的地, 即将到目的第的时候冲突, 冲突再经过$\mu$传到发送方)</li>
+<li>重试:<ul>
+<li>等待时间是$[0, 2^k)$之间的随机整数</li>
+<li>前10次重试失败后$k$会加1, 第一次重试$k=1$</li>
+<li>第11-16次$k=10$不再增加</li>
+<li>16次都不成功则放弃</li>
+</ul>
+</li>
+</ul>
+<p><img src="/figs/计算机网络/figs6/CSMACD.png" alt="CSMACD"></p>
+<p>9.6$\mu s$: 硬件重置: 不管</p>
+<p>周期之前会等待512比特时间</p>
+<p>jam信号: 4-6字节</p>
+<h3 id="6-3-3-轮流协议"><a href="#6-3-3-轮流协议" class="headerlink" title="6.3.3 轮流协议"></a>6.3.3 轮流协议</h3><ul>
+<li><p><strong>轮询协议</strong>:</p>
+<ul>
+<li>1个主节点, 主节点以循环的方式轮询每个从节点</li>
+<li>蓝牙</li>
+</ul>
+</li>
+<li><p><strong>令牌传递(token-passing)协议</strong></p>
+<ul>
+<li>没有主节点, 一种称为<strong>令牌</strong>的特殊帧在节点之间以特定顺序传递</li>
+<li>拿到令牌的节点才能发送帧, 没有帧要发送则马上传递</li>
+</ul>
+</li>
+</ul>
+<h5 id="令牌环token-ring"><a href="#令牌环token-ring" class="headerlink" title="令牌环token ring"></a>令牌环token ring</h5><ul>
+<li>空闲时<strong>令牌</strong>(短帧)循环</li>
+<li>主机等待令牌, 拿到令牌后修改令牌中的一个位, 加上剩下的数据帧</li>
+<li>数据帧在环上循环, 再次回到发送方时, 回收并释放令牌</li>
+<li>实际上:<ul>
+<li>传播时延$\mu$&lt;&lt;传输时延$T$, 还没发完就回收了</li>
+<li>令牌可以预约, 在令牌上打个标记, 决定优先级</li>
+<li>接收方收到数据也会在数据帧尾部打一个标记</li>
+</ul>
+</li>
+</ul>
+<h5 id="FDDI令牌环"><a href="#FDDI令牌环" class="headerlink" title="FDDI令牌环"></a>FDDI令牌环</h5><ul>
+<li>100 Mbps令牌环</li>
+<li>内外两层环, 断掉一段回路或者坏掉一个主机都没事, 只要将边上的主机的内外环相连</li>
+<li>$\mu &gt; T$</li>
+<li>帧发完以后立即释放令牌(不用回收的时候再释放)</li>
+<li>可以不用令牌: 将$\mu$切成多个区域分别发送同步脉冲</li>
+</ul>
+<h2 id="6-4-交换局域网"><a href="#6-4-交换局域网" class="headerlink" title="6.4 交换局域网"></a>6.4 交换局域网</h2><h3 id="6-4-1-链路层寻址和ARP"><a href="#6-4-1-链路层寻址和ARP" class="headerlink" title="6.4.1 链路层寻址和ARP"></a>6.4.1 链路层寻址和ARP</h3><h4 id="MAC地址"><a href="#MAC地址" class="headerlink" title="MAC地址"></a>MAC地址</h4><ul>
+<li>并不是主机或者路由器具有链路层地址，而是它们的<strong>适配器(网络接口)具有链路层地址</strong>。因此具有多个网络接口的主机或者路由器具有多个链路层地址。</li>
+<li>因为主机和路由器不必明确地将帧寻址到其间的交换机, 所以链路层交换机无链路层地址</li>
+<li>链路层地址称为LAN地址，物理地址或<strong>MAC地址</strong>。</li>
+<li>MAC地址长度为6字节，所以共有$2^{48}$个可能的MAC地址(常用16进制表示为XX-XX-XX-XX-XX-XX)</li>
+<li>适配器的MAC地址一般是固定的</li>
+<li>没有个两块适配器具有相同的地址</li>
+<li>适配器的MAC地址具有扁平化结构, 且不论适配器到哪里用都不会变化，带有以太网接口的便携机总是具有同样的MAC地址(IP地址不是这样的)</li>
+<li>当适配器要向某些目的适配器发送一个帧时<ul>
+<li>发送适配器将目的适配器的MAC地址插入到链路层帧中，再发送到局域网上。</li>
+<li>接收适配器接收到帧后，检查其中MAC地址是否与自己MAC地址相匹配，如果匹配则取出其中数据，向上层传递，如果不是，则丢弃该帧。</li>
+</ul>
+</li>
+<li>广播：发送适配器需要让局域网上所有适配器都接受并处理某帧，则在该帧的目的地址中插入一个特殊的MAC地址(FF-FF-FF-FF-FF-FF)</li>
+</ul>
+<h4 id="地址解析协议-ARP"><a href="#地址解析协议-ARP" class="headerlink" title="地址解析协议 ARP"></a>地址解析协议 ARP</h4><ul>
+<li><p><strong>ARP协议</strong>: IP地址转换为对应的MAC地址</p>
+</li>
+<li><p>每台主机或路由器在其内存中有一个<strong>ARP</strong>表.</p>
+</li>
+</ul>
+<p>ARP过程</p>
+<ul>
+<li><p>Sender</p>
+<ul>
+<li>查找自己的cache, 如果没有就</li>
+<li>构建ARP请求, 插入<sender ip, sender mac, destination ip></sender></li>
+<li>用MAC帧广播</li>
+<li>缓存目的地的<mac, ip>对, 以及时间戳</mac,></li>
+</ul>
+</li>
+<li><p>Receiver:</p>
+<ul>
+<li>查目的地IP, 如果OK</li>
+<li><p>建立ARP应答, 插入<destination ip, destination mac></destination></p>
+</li>
+<li><p>用MAC帧发送sender MAC</p>
+</li>
+<li>缓存发送方的<mac, ip>以及时间戳</mac,></li>
+</ul>
+</li>
+</ul>
+<h3 id="6-4-2-以太网"><a href="#6-4-2-以太网" class="headerlink" title="6.4.2 以太网"></a>6.4.2 以太网</h3><ul>
+<li>早期的其他局域网技术: <ul>
+<li>ATM(异步传输模式)</li>
+<li>令牌环</li>
+<li>FDDI</li>
+</ul>
+</li>
+<li>以太网几乎占领着现有的有限局域网市场<ul>
+<li>总线拓扑$\to$星形拓扑</li>
+<li>星形拓扑中心: 集线器(hub)$\to$交换机(switch)</li>
+</ul>
+</li>
+</ul>
+<h5 id="以太网帧结构"><a href="#以太网帧结构" class="headerlink" title="以太网帧结构"></a>以太网帧结构</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>前同步码</th>
+<th>目的地址</th>
+<th>源地址</th>
+<th>类型</th>
+<th>数据</th>
+<th>CRC(循环冗余校验码)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8 bytes</td>
+<td>6</td>
+<td>6</td>
+<td>2</td>
+<td>46-1500</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>前同步码: 前7字节10101010唤醒接受适配器并同步时钟, 后1字节10101011</li>
+<li>类型字段: 复用多种网络协议, 例如可以使用除了IP以外的其他网络层协议</li>
+</ul>
+<h5 id="补充-LLC服务-了解概念即可"><a href="#补充-LLC服务-了解概念即可" class="headerlink" title="补充: LLC服务(了解概念即可)"></a>补充: LLC服务(了解概念即可)</h5><ul>
+<li>以太网是<strong>无确认无连接</strong>的, 而可以将其改变为LLC, 加上逻辑连接, 流控制和检错</li>
+<li>从不在以太网中使用, 但是在WiFi和令牌环中使用</li>
+<li>基于HDLC, 主要分为三种<ul>
+<li>无确认无连接: 什么都不加</li>
+<li>有确认无连接: 加ACK和NAK, stop and wait</li>
+<li>连接模式(异步平衡模式 异步: 无时钟脉冲 平衡: 无主从模式)</li>
+</ul>
+</li>
+</ul>
+<h5 id="以太网技术"><a href="#以太网技术" class="headerlink" title="以太网技术"></a>以太网技术</h5><ul>
+<li>以太网有很多标准, 缩写为10base5, 10base2,10baseT, 10baseFX等.<ul>
+<li>由IEEE 802.3 CSMA/CD(Ethernet)工作组标准化</li>
+<li>其中缩写的第一部分表示该标准的<strong>速率</strong>:10, 100, 1000, 10G(单位为Mbps)</li>
+<li>“BASE”指<strong>基带以太网</strong>, 表示该物理媒体仅承载以太网流量</li>
+<li>最后一部分表示物理媒体本身, 以太网是<strong>链路层</strong>也是<strong>物理层</strong>的规范. 例如’T’表示双绞铜线.</li>
+</ul>
+</li>
+</ul>
+<h5 id="高速以太网"><a href="#高速以太网" class="headerlink" title="高速以太网"></a>高速以太网</h5><ul>
+<li>依然使用MAC协议和帧结构, 星形拓扑</li>
+<li>100Mbps高速以太网: 100BASE-TX(2对双绞电缆), 100BASE-FX(2光纤), 100BASE-T4</li>
+<li>吉比特以太网<ul>
+<li>Carrier extension: 帧长至少4096bit</li>
+<li>Frame bursting: 多个小帧合并</li>
+<li>Full Duplex Operation: 必须用交换集线器</li>
+<li>1000Base-SX, 1000BaseLX, 1000Base-CX, 1000Base-T</li>
+</ul>
+</li>
+<li>10Gbps以太网: 略</li>
+<li>二层交换机switch: 多端口网桥;  以太网上的router: 三层交换机</li>
+</ul>
+<h3 id="6-4-3-网桥-switch-二层交换机-同一个意思-重要"><a href="#6-4-3-网桥-switch-二层交换机-同一个意思-重要" class="headerlink" title="6.4.3 网桥/switch/二层交换机(同一个意思)(重要)"></a>6.4.3 网桥/switch/二层交换机(同一个意思)(重要)</h3><ul>
+<li><p>主要作用: <strong>互连局域网的网段</strong>, 网桥互联的必须是<strong>同类型</strong>的局域网</p>
+</li>
+<li><p><strong>不修改帧的内容</strong>(路由器会修改)</p>
+</li>
+<li>有交换功能(<strong>基于MAC地址</strong>, <strong>以主机为单位</strong>)(==必考路由器和网桥的区别==)<ul>
+<li>MAC地址看不出网段, 而IP地址看得出</li>
+<li>网桥是以主机为单位, 路由是以网段为单位</li>
+<li>网桥不涉及封装解封, 路由器涉及</li>
+</ul>
+</li>
+<li><strong>存储转发</strong>(store and forward)不涉及协议转换</li>
+<li>对于子网中的主机和路由器是<strong>透明</strong>的(不被知道)</li>
+<li><p><strong>自学习</strong>的, <strong>即插即用</strong>(plug-and-play)</p>
+</li>
+<li><p>隧道模式: </p>
+<ul>
+<li>完整的帧, 加头和尾传播, 接收去掉头尾, 得到完整的帧</li>
+</ul>
+</li>
+<li><p>交换:</p>
+<ul>
+<li>不选择最短路—支撑树算法(==必考==)</li>
+</ul>
+</li>
+</ul>
+<h4 id="支撑树算法"><a href="#支撑树算法" class="headerlink" title="支撑树算法"></a>支撑树算法</h4><ul>
+<li>网桥自动生成交换表, 自动更新</li>
+<li>主要分为:<ul>
+<li>帧转发</li>
+<li>地址学习</li>
+<li>环路识别</li>
+</ul>
+</li>
+</ul>
+<h5 id="1-帧转发"><a href="#1-帧转发" class="headerlink" title="1. 帧转发"></a>1. 帧转发</h5><ul>
+<li><strong>交换表</strong>结构: &lt;目的MAC地址, 转发端口号, 时间戳&gt;</li>
+<li>对于一个到达端口X的帧:<ul>
+<li>搜索转发表, 看有没有这个MAC地址<ul>
+<li>如果没找到MAC地址, 在所有端口(除X)都转发</li>
+<li>如果有MAC地址, 检查端口号<ul>
+<li>若端口是X, 直接丢掉</li>
+<li>若端口是Y(非X), 如果Y是可以转发状态就转发<br>(forwarding状态可收可发, blocking状态只能发)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-地址学习"><a href="#2-地址学习" class="headerlink" title="2. 地址学习"></a>2. 地址学习</h5><ul>
+<li><p>转发表是<strong>自学习</strong>的</p>
+</li>
+<li><p>帧X到达端口后:</p>
+<ul>
+<li>如果没有这个MAC源地址, 则补上</li>
+<li><p>如果有MAC源地址, 则检查端口号</p>
+<ul>
+<li>如果端口是X则更新时间戳</li>
+<li>如果端口是Y(非X), 则端口更新为X且更新时间戳</li>
+</ul>
+</li>
+<li><p>每个表项有计时器, 时间到则删除表项(即一个表项如果一段时间没有对应的帧到来则删除)</p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="3-环路识别"><a href="#3-环路识别" class="headerlink" title="3.环路识别"></a>3.环路识别</h5><ul>
+<li>必须要是<strong>树结构</strong>才能运作<ul>
+<li>一旦有<strong>环路</strong>, 会造成一个帧不停转圈和路由震荡</li>
+<li>因此需要将某些端口blocking: 不收不发</li>
+</ul>
+</li>
+<li>中心树算法如下:<ul>
+<li>选择一个<strong>根网桥</strong>(ID最小)</li>
+<li>每个网桥(除了根网桥)选择一个<strong>根端口</strong>(离根网桥最近)</li>
+<li>对每个<strong>LAN</strong>选择<strong>指定网桥</strong></li>
+<li><strong>指定端口</strong>连接<strong>LAN</strong>和<strong>指定网桥</strong></li>
+<li>所有<strong>根端口</strong>和<strong>制定端口</strong>为forwarding状态, 其他blocking状态</li>
+</ul>
+</li>
+<li>路径发现<ul>
+<li>找两个结点间最短路……</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/计算机网络/" rel="tag"># 计算机网络</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/25/高级算法/高级算法之Balls into bins/" rel="next" title="高级算法之Balls into Bins">
+                <i class="fa fa-chevron-left"></i> 高级算法之Balls into Bins
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/09/高级算法/高级算法之度量集中度/" rel="prev" title="高级算法之度量集中度">
+                高级算法之度量集中度 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XY</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#6-链路层和局域网"><span class="nav-number">1.</span> <span class="nav-text">6 链路层和局域网</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-1-链路层概述"><span class="nav-number">2.</span> <span class="nav-text">6.1 链路层概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-1-链路层提供的服务"><span class="nav-number">2.1.</span> <span class="nav-text">6.1.1 链路层提供的服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-2-链路层在何处实现"><span class="nav-number">2.2.</span> <span class="nav-text">6.1.2 链路层在何处实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-2-差错检测和纠正技术"><span class="nav-number">3.</span> <span class="nav-text">6.2 差错检测和纠正技术</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-1-奇偶校验"><span class="nav-number">3.1.</span> <span class="nav-text">6.2.1 奇偶校验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-2-校验和-Checksum"><span class="nav-number">3.2.</span> <span class="nav-text">6.2.2 校验和 Checksum</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-3-循环冗余校验CRC"><span class="nav-number">3.3.</span> <span class="nav-text">6.2.3 循环冗余校验CRC</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#补充-流量控制-书TCP部分3-5-5"><span class="nav-number">4.</span> <span class="nav-text">补充: 流量控制(书TCP部分3.5.5)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-多路访问链路和协议-重点"><span class="nav-number">4.1.</span> <span class="nav-text">6.3 多路访问链路和协议(重点)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-1-信道划分协议"><span class="nav-number">4.2.</span> <span class="nav-text">6.3.1 信道划分协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-2-随机接入协议"><span class="nav-number">4.3.</span> <span class="nav-text">6.3.2 随机接入协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ALOHA"><span class="nav-number">4.3.1.</span> <span class="nav-text">ALOHA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#时隙ALOHA"><span class="nav-number">4.3.2.</span> <span class="nav-text">时隙ALOHA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#载波侦听多路访问-CSMA"><span class="nav-number">4.3.3.</span> <span class="nav-text">载波侦听多路访问(CSMA)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#具有碰撞检测的CSMA-CSMA-CD"><span class="nav-number">4.3.4.</span> <span class="nav-text">具有碰撞检测的CSMA: CSMA/CD</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-3-轮流协议"><span class="nav-number">4.4.</span> <span class="nav-text">6.3.3 轮流协议</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#令牌环token-ring"><span class="nav-number">4.4.0.1.</span> <span class="nav-text">令牌环token ring</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#FDDI令牌环"><span class="nav-number">4.4.0.2.</span> <span class="nav-text">FDDI令牌环</span></a></li></ol></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#6-4-交换局域网"><span class="nav-number">5.</span> <span class="nav-text">6.4 交换局域网</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4-1-链路层寻址和ARP"><span class="nav-number">5.1.</span> <span class="nav-text">6.4.1 链路层寻址和ARP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MAC地址"><span class="nav-number">5.1.1.</span> <span class="nav-text">MAC地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#地址解析协议-ARP"><span class="nav-number">5.1.2.</span> <span class="nav-text">地址解析协议 ARP</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4-2-以太网"><span class="nav-number">5.2.</span> <span class="nav-text">6.4.2 以太网</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#以太网帧结构"><span class="nav-number">5.2.0.1.</span> <span class="nav-text">以太网帧结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#补充-LLC服务-了解概念即可"><span class="nav-number">5.2.0.2.</span> <span class="nav-text">补充: LLC服务(了解概念即可)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#以太网技术"><span class="nav-number">5.2.0.3.</span> <span class="nav-text">以太网技术</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#高速以太网"><span class="nav-number">5.2.0.4.</span> <span class="nav-text">高速以太网</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4-3-网桥-switch-二层交换机-同一个意思-重要"><span class="nav-number">5.3.</span> <span class="nav-text">6.4.3 网桥/switch/二层交换机(同一个意思)(重要)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#支撑树算法"><span class="nav-number">5.3.1.</span> <span class="nav-text">支撑树算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-帧转发"><span class="nav-number">5.3.1.1.</span> <span class="nav-text">1. 帧转发</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-地址学习"><span class="nav-number">5.3.1.2.</span> <span class="nav-text">2. 地址学习</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-环路识别"><span class="nav-number">5.3.1.3.</span> <span class="nav-text">3.环路识别</span></a></li></ol></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
