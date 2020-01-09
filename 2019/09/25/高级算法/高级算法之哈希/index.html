@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="XY&#39;s blog">
 <meta property="og:description" content="Hashing and Sketching1 不同元素的个数问题: 输入一系列(未必不同)的元素$x_1,x_2\cdots,x_n\in \Omega$, 输出不同元素的个数$z=|\{x_1,x_2,\cdots,x_n\}|$  通常算法需要维护字典结构, 需要至少$O(n)$空间, 现在想要更小的空间复杂度  $(\epsilon,\delta)$estimator:  若$Pr[(1-\">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-10T02:48:19.981Z">
+<meta property="og:updated_time" content="2020-01-09T12:10:17.717Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高级算法之哈希">
 <meta name="twitter:description" content="Hashing and Sketching1 不同元素的个数问题: 输入一系列(未必不同)的元素$x_1,x_2\cdots,x_n\in \Omega$, 输出不同元素的个数$z=|\{x_1,x_2,\cdots,x_n\}|$  通常算法需要维护字典结构, 需要至少$O(n)$空间, 现在想要更小的空间复杂度  $(\epsilon,\delta)$estimator:  若$Pr[(1-\">
@@ -314,10 +314,10 @@
 </li>
 <li><script type="math/tex; mode=display">
 \mathbb E[\min _{1\le i\le n}h(x_i)]=\frac{1}{z+1}</script><ul>
-<li>证明概要: 有$z$个均匀随机的哈希值, 将$[0,1]$分成$z+1$份</li>
+<li>证明概要: 有$z$个均匀随机的哈希值, 将$[0,1]$分成$z+1$份, 根据对称性, 每个区间的长度期望相同, 因此最小的$h(x_i)$的期望就是$1/(z+1)$</li>
 </ul>
 </li>
-<li><p>这样估计太不稳定</p>
+<li><p>这样估计太不稳定, 因为方差过大</p>
 </li>
 </ul>
 <h3 id="1-2-Flajolet-Martin算法"><a href="#1-2-Flajolet-Martin算法" class="headerlink" title="1.2 Flajolet-Martin算法"></a>1.2 Flajolet-Martin算法</h3><ul>
@@ -332,7 +332,7 @@
 <li>证明思路: <ul>
 <li>若$\bar Y$是$\frac{1}{1+z}$的$(\epsilon/2, \delta)$估计, 则$\hat Z$是$z$的$(\epsilon, \delta)$估计</li>
 <li>$\mathbb E[\bar Y] = \mathbb E[Y_j]=\frac{1}{z+1}$</li>
-<li>$Var[Y_j]\le \frac{1}{(z+1)^2}$, 因此$Var[\bar Y]\le \frac{1}{k(z+1)^2}$</li>
+<li>$Var[Y_j]\le \mathbb E[Y_j^2] = \frac{1}{(z+1)^2}$, 因此$Var[\bar Y]\le \frac{1}{k(z+1)^2}$</li>
 <li>根据切比雪夫不等式, $Pr[|\bar Y-\mathbb E[\bar Y|&gt;\frac{\epsilon/2}{z+1}]\le \frac{4}{\epsilon^2}(z+1)^2Var[\bar Y]\le \frac{4}{\epsilon^2k}$</li>
 <li>因此取$k\ge \lceil \frac{4}{\epsilon^2\delta}\rceil$即可</li>
 </ul>
@@ -342,7 +342,7 @@
 <li>均匀随机函数$h: [N]\to[M]$是可获得的, 并且计算高效</li>
 </ul>
 <h2 id="2-集合元素"><a href="#2-集合元素" class="headerlink" title="2 集合元素"></a>2 集合元素</h2><ul>
-<li>基础问题: 是否$x\in S$ ?</li>
+<li>基础问题: 是否$x\in S$ ? (S的大小为n)</li>
 <li>数据的有损失的表达称为<strong>sketch</strong></li>
 </ul>
 <h3 id="2-1-Bloom-filter"><a href="#2-1-Bloom-filter" class="headerlink" title="2.1 Bloom filter"></a>2.1 Bloom filter</h3><ul>
@@ -410,7 +410,7 @@ Pr[CMS[j][h_j(x)]-f_x\ge \epsilon n]</script></li>
 &\le f_x+\frac{1}{m}\sum_{y\in\{x_1,x_2,\cdots,x_n\}}f_x\\
 &\le f_x+\frac{n}{m}
 \end{aligned}</script></li>
-<li><p>马尔科夫不等式得$Pr[CMS[j][h_j(x)-f_x]\ge \epsilon n]\le \frac{1}{\epsilon m}$</p>
+<li><p>马尔科夫不等式得$Pr[CMS[j][h_j(x)]-f_x\ge \epsilon n]\le \frac{1}{\epsilon m}$</p>
 </li>
 <li><p>综上, $Pr[|\hat f_x -f_x|\le \frac{1}{(\epsilon m)^k}$</p>
 </li>
