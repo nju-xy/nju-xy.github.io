@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="XY&#39;s blog">
 <meta property="og:description" content="Semidefinite ProgramsLP for Max-Cut \begin{aligned} \text{max}&amp;&amp;&amp;\sum_{uv\in E}y_{uv}\\ \text{s.t} &amp;&amp;&amp;y_{uv}\le |x_u-x_v| &amp;&amp; \forall uv\in E\\ &amp;&amp;&amp; x_v\in \{0,1\} &amp;&amp;\forall v\in V \end{aligned}有绝对值, 非线">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-07T01:39:55.682Z">
+<meta property="og:updated_time" content="2020-01-10T11:26:12.541Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高级算法之Semidefinite Programs">
 <meta name="twitter:description" content="Semidefinite ProgramsLP for Max-Cut \begin{aligned} \text{max}&amp;&amp;&amp;\sum_{uv\in E}y_{uv}\\ \text{s.t} &amp;&amp;&amp;y_{uv}\le |x_u-x_v| &amp;&amp; \forall uv\in E\\ &amp;&amp;&amp; x_v\in \{0,1\} &amp;&amp;\forall v\in V \end{aligned}有绝对值, 非线">
@@ -359,7 +359,7 @@
 <h2 id="舍入-Rounding"><a href="#舍入-Rounding" class="headerlink" title="舍入(Rounding)"></a>舍入(Rounding)</h2><p>对于最大割问题, 假设松弛到的SDP的解为$x_v^*$, 舍入到原问题解$\hat x_v$:</p>
 <ul>
 <li>均匀随机选取一个单位向量$u\in \mathbb R^n$, $\Vert u \Vert_2=1$</li>
-<li>则$x_v=sgn (\langle x_v^*,u\rangle)$</li>
+<li>则$\hat x_v=sgn (\langle x_v^<em>,u\rangle)$. (注意这里的$x_v^</em>$已经转化为了n维向量了)</li>
 <li>几何理解: SDP的解是球内的点, 随机找一个超平面, 将球分成两半, 分别对应原问题解1和-1.</li>
 <li>生成均匀随机单位向量的方法: <ul>
 <li>随机选取$r=(r_1,\cdots,r_n)\in \mathbb R^n$, 每个$r_i\sim N(0,1)$, 独立同分布的<strong>高斯分布</strong></li>
@@ -377,13 +377,11 @@
 <p>近似比分析:</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
-\mathbb E[\text{cut}]&=\sum_{uv\in E}\Pr[\text{sgn}(\langle x_u^*,r\rangle)\ne \text{sgn}(\langle x_u^*,r\rangle)]\\
+\mathbb E[\text{cut}]&=\sum_{uv\in E}\Pr[\text{sgn}(\langle x_u^*,r\rangle)\ne \text{sgn}(\langle x_v^*,r\rangle)]\\
 &=\sum_{uv\in E}\frac{\theta _{uv}}{\pi}\\
 &=\sum_{uv\in E}\frac{\arccos \langle x_u^*,x_v^*\rangle}{\pi}\\
 &\ge 0.878\cdot \frac{1}{2}(1-\langle x_u^*,x_v^*\rangle)
-\end{aligned}</script><p>其中$\theta_{uv}=\angle x_u^*ox_v^*$, 使用$\Vert x_u^*\Vert\cdot \Vert x_v^*\Vert \cos\theta_{uv}=\langle x_u^*,x_v^*\rangle$, 得$\cos\theta_{uv}=\langle x_u^*,x_v^*\rangle$. </p>
-<p>而$0.878$是通过极限算出来的.</p>
-<p>所以近似比为$0.878$.</p>
+\end{aligned}</script><p>其中$\theta_{uv}=\angle x_u^<em>ox_v^</em>$, 使用$\Vert x_u^<em>\Vert\cdot \Vert x_v^</em>\Vert \cos\theta_{uv}=\langle x_u^<em>,x_v^</em>\rangle$, 得$\cos\theta_{uv}=\langle x_u^<em>,x_v^</em>\rangle$<br>$0.878$是通过极限算出来的.<br>所以近似比为$0.878$.</p>
 <h2 id="Unique-Games-Conjecture"><a href="#Unique-Games-Conjecture" class="headerlink" title="Unique Games Conjecture"></a>Unique Games Conjecture</h2><p>没看懂, 算了吧.</p>
 <h2 id="Constraint-Satisfaction-Problem"><a href="#Constraint-Satisfaction-Problem" class="headerlink" title="Constraint Satisfaction Problem"></a>Constraint Satisfaction Problem</h2><ul>
 <li>变量: $X=\{x_1,x_2,\cdots,x_n\}$</li>
