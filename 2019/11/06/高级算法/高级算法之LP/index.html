@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="XY&#39;s blog">
 <meta property="og:description" content="Rounding Linear Programs1 Vertex Cover问题表示整数线性规划:  \begin{aligned}     {\text{minimize}}         &amp;&amp;&amp;\sum_{v\in V}x_{v}\\     {\text{subject to}}         &amp;&amp;&amp;\sum _{v\in e}x_v\ge 1,&amp;&amp;e\in E,\\         &amp;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-17T15:05:50.656Z">
+<meta property="og:updated_time" content="2020-01-10T07:33:03.132Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高级算法之LP">
 <meta name="twitter:description" content="Rounding Linear Programs1 Vertex Cover问题表示整数线性规划:  \begin{aligned}     {\text{minimize}}         &amp;&amp;&amp;\sum_{v\in V}x_{v}\\     {\text{subject to}}         &amp;&amp;&amp;\sum _{v\in e}x_v\ge 1,&amp;&amp;e\in E,\\         &amp;">
@@ -329,7 +329,7 @@
 \end{aligned}</script><p>转化方式:<br>等于限制变为大于等于和小于等于, 小于等于加负号;<br>无限制的变量变成两个非负变量之差.<br>几何解释: 超空间内的凸多面体</p>
 <h3 id="Relaxation-amp-Rounding"><a href="#Relaxation-amp-Rounding" class="headerlink" title="Relaxation &amp; Rounding"></a>Relaxation &amp; Rounding</h3><p>线性松弛:</p>
 <script type="math/tex; mode=display">
-\begin{aligned}    {\text{maximize}}        &&&\sum_{v\in V}x_{v}\\    {\text{subject to}}        &&&\sum _{v\in e}x_v\ge 1,&&e\in E,\\        &&&x_{v}\in [0,1],&&v\in V.        \end{aligned}</script><p>线性规划可以在线性时间内解.</p>
+\begin{aligned}    {\text{minimize}}        &&&\sum_{v\in V}x_{v}\\    {\text{subject to}}        &&&\sum _{v\in e}x_v\ge 1,&&e\in E,\\        &&&x_{v}\in [0,1],&&v\in V.        \end{aligned}</script><p>线性规划可以在线性时间内解.</p>
 <p>近似:<br>线性规划解$x^*\in [0,1]^V$, 整数规划解$\hat x\in \{0,1\}$.</p>
 <script type="math/tex; mode=display">
 \hat x_v=\begin{cases}
@@ -339,7 +339,7 @@
 <script type="math/tex; mode=display">
 \sum_{v\in e}x_v^* \ge 1 \to \sum_{v\in e}\hat x_v\ge 1</script><p>所以得到的解依然是可行的.<br>又因为$\hat x_v\le 2x_v^*$, 所以</p>
 <script type="math/tex; mode=display">
-OPT\ge OPT_LP = \sum_{v\in V}x_v^*</script><script type="math/tex; mode=display">
+OPT\ge OPT_{LP} = \sum_{v\in V}x_v^*</script><script type="math/tex; mode=display">
  SOL=\sum_{v\in V}\hat x_v\le 2 \sum_{v\in V}x_v^*\le 2\cdot OPT</script><h4 id="一般步骤"><a href="#一般步骤" class="headerlink" title="一般步骤"></a>一般步骤</h4><ul>
 <li>表示为整数规划</li>
 <li>松弛为线性规划</li>
@@ -362,16 +362,16 @@ OPT\ge OPT_LP = \sum_{v\in V}x_v^*</script><script type="math/tex; mode=display"
 0 &\text{with probability }1-x_i^*.
 \end{cases}</script><p>近似比分析:</p>
 <script type="math/tex; mode=display">
-OPT\ge OPT_{LP}=\sum_{j=1}^m y_j^*</script><script type="math/tex; mode=display">
+OPT\le OPT_{LP}=\sum_{j=1}^m y_j^*</script><script type="math/tex; mode=display">
 \begin{aligned}
 \Pr[C_j \text{is satisfied}]&=1-\prod_{i\in S_j^+}(1-x_i^*)\prod_{i\in S_j^-}x_i^*\\
 &\ge 1-(1-y_j^*/k)^k\\
 &\ge [1-(1-1/k)^k]y_j^* \qquad \text{ (convexity)}\\
 &\ge (1-1/e)y_j^*
 \end{aligned}</script><script type="math/tex; mode=display">
-\mathbb E[\text{number of satisfied clauses}]\ge (1-1/e)\sum_{j=1}^my_j^*\ge (1-1/e)\cdot OPT</script><h3 id="两个算法结合"><a href="#两个算法结合" class="headerlink" title="两个算法结合"></a>两个算法结合</h3><p>随机解满足$m_1$子句, 随机近似LP松弛满足$m_2$子句, 选择$\max{m_1,m_2}$.<br>分析: </p>
+\mathbb E[\text{number of satisfied clauses}]\ge (1-1/e)\sum_{j=1}^my_j^*\ge (1-1/e)\cdot OPT</script><h3 id="两个算法结合"><a href="#两个算法结合" class="headerlink" title="两个算法结合"></a>两个算法结合</h3><p>随机解满足$m_1$子句, 随机近似LP松弛满足$m_2$子句, 选择$\max\{m_1,m_2\}$,<br>分析: </p>
 <script type="math/tex; mode=display">
-\mathbb E[\max\{m_1,m_2\}]\ge \mathbb E[\frac{m_1+m_2}{2}]\ge \frac{3}{4}OPT</script><p>近似比$3/4$.</p>
+\mathbb E[\max\{m_1,m_2\}]\ge \mathbb E[\frac{m_1+m_2}{2}]\ge \frac{3}{4}OPT</script><p>近似比$3/4$(因为$1-2^{-k}$和$1-(1-1/k)^k$中总有一个$\ge 3/4$)</p>
 
       
     </div>
