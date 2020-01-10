@@ -87,16 +87,16 @@
 <meta property="og:site_name" content="XY&#39;s blog">
 <meta property="og:description" content="Concentration of measure1 Chernoff Bound矩生成函数: 随机变量$X$的矩生成函数为  \mathbb E[e^{\lambda X}]=\mathbb E [\sum_{k=0}^{\infty}\frac{\lambda^k}{k!}X^k] =\sum_{k=0}^{\infty}\frac{\lambda^k}{k!}\mathbb E [X^k]">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/home/xy/Documents/大三上/高级算法/Lecture5/figs5/Chernoff.png">
-<meta property="og:image" content="http://yoursite.com/home/xy/Documents/大三上/高级算法/Lecture5/figs5/Chernoff2.png">
-<meta property="og:image" content="http://yoursite.com/home/xy/Documents/大三上/高级算法/Lecture5/figs5/Hoeffding.png">
-<meta property="og:image" content="http://yoursite.com/home/xy/Documents/大三上/高级算法/Lecture5/figs5/Hoeffding2.png">
-<meta property="og:image" content="http://yoursite.com/home/xy/Documents/大三上/高级算法/Lecture5/figs5/Hoeffding3.png">
-<meta property="og:updated_time" content="2020-01-09T13:13:34.322Z">
+<meta property="og:image" content="http://yoursite.com/figs/高级算法/figs5/Chernoff.png">
+<meta property="og:image" content="http://yoursite.com/figs/高级算法/figs5/Chernoff2.png">
+<meta property="og:image" content="http://yoursite.com/figs/高级算法/figs5/Hoeffding.png">
+<meta property="og:image" content="http://yoursite.com/figs/高级算法/figs5/Hoeffding2.png">
+<meta property="og:image" content="http://yoursite.com/figs/高级算法/figs5/Hoeffding3.png">
+<meta property="og:updated_time" content="2020-01-10T06:28:33.129Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高级算法之度量集中度">
 <meta name="twitter:description" content="Concentration of measure1 Chernoff Bound矩生成函数: 随机变量$X$的矩生成函数为  \mathbb E[e^{\lambda X}]=\mathbb E [\sum_{k=0}^{\infty}\frac{\lambda^k}{k!}X^k] =\sum_{k=0}^{\infty}\frac{\lambda^k}{k!}\mathbb E [X^k]">
-<meta name="twitter:image" content="http://yoursite.com/home/xy/Documents/大三上/高级算法/Lecture5/figs5/Chernoff.png">
+<meta name="twitter:image" content="http://yoursite.com/figs/高级算法/figs5/Chernoff.png">
 
 
 
@@ -309,7 +309,7 @@
         <h1 id="Concentration-of-measure"><a href="#Concentration-of-measure" class="headerlink" title="Concentration of measure"></a>Concentration of measure</h1><h2 id="1-Chernoff-Bound"><a href="#1-Chernoff-Bound" class="headerlink" title="1 Chernoff Bound"></a>1 Chernoff Bound</h2><p>矩生成函数: 随机变量$X$的矩生成函数为</p>
 <script type="math/tex; mode=display">
 \mathbb E[e^{\lambda X}]=\mathbb E [\sum_{k=0}^{\infty}\frac{\lambda^k}{k!}X^k]
-=\sum_{k=0}^{\infty}\frac{\lambda^k}{k!}\mathbb E [X^k]</script><p><img src="/home/xy/Documents/大三上/高级算法/Lecture5/figs5/Chernoff.png" alt="Chernoff" style="zoom:67%;"></p>
+=\sum_{k=0}^{\infty}\frac{\lambda^k}{k!}\mathbb E [X^k]</script><p><img src="/figs/高级算法/figs5/Chernoff.png" alt="Chernoff" style="zoom:67%;"></p>
 <ul>
 <li>推导过程:<ul>
 <li>$\Pr[X\ge (1+\delta)\mu]=\Pr[e^{\lambda X}\ge e^{\lambda(1+\delta)\mu}]\le \frac{\mathbb E[e^{\lambda X}]}{e^{\lambda X(1+\delta)\mu}}$ </li>
@@ -321,7 +321,7 @@
 </li>
 <li>特例:</li>
 </ul>
-<p><img src="/home/xy/Documents/大三上/高级算法/Lecture5/figs5/Chernoff2.png" alt="Chernoff2" style="zoom:67%;"></p>
+<p><img src="/figs/高级算法/figs5/Chernoff2.png" alt="Chernoff2" style="zoom:67%;"></p>
 <h3 id="Balls-into-bins问题应用"><a href="#Balls-into-bins问题应用" class="headerlink" title="Balls into bins问题应用"></a>Balls into bins问题应用</h3><p>计算w.h.p的最大装载:</p>
 <p>$X_{ij}$表示第$i$ 个球是否扔进第$j$ 个箱子, 则$\mathbb E[X_{ij}]=1/n$.</p>
 <p>令$Y_i=\sum_{j\in [m]}X_{ij}$表示箱子$i$ 的装载, 则$\mu=\mathbb E[Y_i]=\mathbb E[\sum\limits_{j\in [m]}X_{ij}]=\sum\limits_{j\in [m]}\mathbb E[X_{ij}]=m/n$.</p>
@@ -330,11 +330,11 @@
 <p>存在一个箱子装载大于$c$的概率小于等于$nPr[Y_1&gt;c]\le 1/n$.</p>
 <p>因此$m=n$时, 大概率最大装载为$O(\frac{e\ln n}{\ln \ln n})$</p>
 <h4 id="The-m-gt-ln-n-Case"><a href="#The-m-gt-ln-n-Case" class="headerlink" title="The $m&gt;\ln n$ Case"></a>The $m&gt;\ln n$ Case</h4><p>类似方法得到: 大概率最大装载为$O(\frac{m}{n})$</p>
-<h1 id="2-Hoeffding-Bound"><a href="#2-Hoeffding-Bound" class="headerlink" title="2 Hoeffding Bound"></a>2 Hoeffding Bound</h1><p><img src="/home/xy/Documents/大三上/高级算法/Lecture5/figs5/Hoeffding.png" alt="Hoeffding" style="zoom:67%;"></p>
+<h1 id="2-Hoeffding-Bound"><a href="#2-Hoeffding-Bound" class="headerlink" title="2 Hoeffding Bound"></a>2 Hoeffding Bound</h1><p><img src="/figs/高级算法/figs5/Hoeffding.png" alt="Hoeffding" style="zoom:67%;"></p>
 <p>证明用到:</p>
-<p><img src="/home/xy/Documents/大三上/高级算法/Lecture5/figs5/Hoeffding2.png" alt="Hoeffding2" style="zoom:67%;"></p>
+<p><img src="/figs/高级算法/figs5/Hoeffding2.png" alt="Hoeffding2" style="zoom:67%;"></p>
 <p>推广:</p>
-<p><img src="/home/xy/Documents/大三上/高级算法/Lecture5/figs5/Hoeffding3.png" alt="Hoeffding3" style="zoom:67%;"></p>
+<p><img src="/figs/高级算法/figs5/Hoeffding3.png" alt="Hoeffding3" style="zoom:67%;"></p>
 <h4 id="Occupancy-Problem应用"><a href="#Occupancy-Problem应用" class="headerlink" title="Occupancy Problem应用"></a>Occupancy Problem应用</h4><p>问题: $f:[m]\to [n]$, 求$f^{-1}(i)$为空的$i\in[n]$的数量.</p>
 <p>$X_i$: 第$i $个箱子是否为空. $\mathbb E[X_i]=(1-1/n)^m$</p>
 <p>$X=\sum_{i=1}^n X_i$: 空箱子数量. $\mathbb E[X]=n(1-1/n)^m$</p>
