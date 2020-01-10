@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="操作系统,">
+  <meta name="keywords" content="高级算法,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Hello World的故事: Hello World的一生是从execve()开始的  继承父进程的文件描述符(./a.out &amp;gt; /dev/null; ./.a.out | cat, …) 内核会为a.out创建代码、数据、堆栈   执行的第一条指令  从ELF的entry开始执行 静态链接：a.out的entry 动态链接：ld.so的entry (动态链接器) 动态链接libc：链接">
-<meta name="keywords" content="操作系统">
+<meta name="description" content="Lovász Local LemmaCSP见上一个笔记末尾. k-SAT问题: 给定一个$k-CNF$公式$\phi$, 判定是否可满足CNF:  $n$个布尔变量: $x_1,\cdots,x_n\in\{\text{true, false}\}$ $m$个从句: $C_1\land C_2\land\cdots\land C_m$. 每个从句形式为$C_i=l_{i_1}\lor l_{i_2">
+<meta name="keywords" content="高级算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OS期中复习">
-<meta property="og:url" content="http://yoursite.com/2019/07/01/操作系统/os期中复习/index.html">
+<meta property="og:title" content="高级算法之Lovász Local Lemma">
+<meta property="og:url" content="http://yoursite.com/2019/12/05/高级算法/高级算法之Lovász-Local-Lemma/index.html">
 <meta property="og:site_name" content="XY&#39;s blog">
-<meta property="og:description" content="Hello World的故事: Hello World的一生是从execve()开始的  继承父进程的文件描述符(./a.out &amp;gt; /dev/null; ./.a.out | cat, …) 内核会为a.out创建代码、数据、堆栈   执行的第一条指令  从ELF的entry开始执行 静态链接：a.out的entry 动态链接：ld.so的entry (动态链接器) 动态链接libc：链接">
+<meta property="og:description" content="Lovász Local LemmaCSP见上一个笔记末尾. k-SAT问题: 给定一个$k-CNF$公式$\phi$, 判定是否可满足CNF:  $n$个布尔变量: $x_1,\cdots,x_n\in\{\text{true, false}\}$ $m$个从句: $C_1\land C_2\land\cdots\land C_m$. 每个从句形式为$C_i=l_{i_1}\lor l_{i_2">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-01T06:42:22.276Z">
+<meta property="og:updated_time" content="2020-01-10T12:11:29.117Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OS期中复习">
-<meta name="twitter:description" content="Hello World的故事: Hello World的一生是从execve()开始的  继承父进程的文件描述符(./a.out &amp;gt; /dev/null; ./.a.out | cat, …) 内核会为a.out创建代码、数据、堆栈   执行的第一条指令  从ELF的entry开始执行 静态链接：a.out的entry 动态链接：ld.so的entry (动态链接器) 动态链接libc：链接">
+<meta name="twitter:title" content="高级算法之Lovász Local Lemma">
+<meta name="twitter:description" content="Lovász Local LemmaCSP见上一个笔记末尾. k-SAT问题: 给定一个$k-CNF$公式$\phi$, 判定是否可满足CNF:  $n$个布尔变量: $x_1,\cdots,x_n\in\{\text{true, false}\}$ $m$个从句: $C_1\land C_2\land\cdots\land C_m$. 每个从句形式为$C_i=l_{i_1}\lor l_{i_2">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/01/操作系统/os期中复习/">
+  <link rel="canonical" href="http://yoursite.com/2019/12/05/高级算法/高级算法之Lovász-Local-Lemma/">
 
 
 
 
 
-  <title>OS期中复习 | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>高级算法之Lovász Local Lemma | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/01/操作系统/os期中复习/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/05/高级算法/高级算法之Lovász-Local-Lemma/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="XY">
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">OS期中复习</h1>
+          <h1 class="post-title" itemprop="name headline">高级算法之Lovász Local Lemma</h1>
         
 
         <div class="post-meta">
@@ -262,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-01T14:38:50+08:00">
-                2019-07-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-05T21:00:00+08:00">
+                2019-12-05
               </time>
             
 
@@ -300,107 +300,144 @@
       
 
       
-        <h3 id="Hello-World的故事"><a href="#Hello-World的故事" class="headerlink" title="Hello World的故事:"></a>Hello World的故事:</h3><ul>
-<li><p>Hello World的一生是从execve()开始的</p>
+        <h1 id="Lovasz-Local-Lemma"><a href="#Lovasz-Local-Lemma" class="headerlink" title="Lovász Local Lemma"></a>Lovász Local Lemma</h1><p>CSP见上一个笔记末尾.</p>
+<p>k-SAT问题: 给定一个$k-CNF$公式$\phi$, 判定是否可满足<br>CNF:</p>
 <ul>
-<li>继承父进程的文件描述符(<code>./a.out &gt; /dev/null</code>; <code>./.a.out | cat</code>, …)</li>
-<li>内核会为<code>a.out</code>创建代码、数据、堆栈</li>
+<li>$n$个布尔变量: $x_1,\cdots,x_n\in\{\text{true, false}\}$</li>
+<li>$m$个从句: $C_1\land C_2\land\cdots\land C_m$.</li>
+<li>每个从句形式为$C_i=l_{i_1}\lor l_{i_2}\lor \cdots\lor l_{i_{k_i}}$</li>
+<li>每个字符$l_{i_j}\in \{x_s,\neg x_s\}$, $s\in\{1,2,\cdots, n\}$</li>
+<li>k-CNF: 每个从句恰好$k$个变量</li>
+<li>度$d$: 每个从句和$\le d$个从句相交(分享变量).</li>
+<li><strong>相变</strong>: 对于随机$k$-CNF, 其中从句数量为$m=\alpha n$, 随机CSP的满足性存在相变现象, 即$\alpha$超过某个值时, 可行解突然消失.</li>
+</ul>
+<h2 id="The-Lovasz-Sieve"><a href="#The-Lovasz-Sieve" class="headerlink" title="The Lovász Sieve"></a>The Lovász Sieve</h2><ul>
+<li><strong>k-SAT的Lovász Local Lemma</strong>:<br>如果$d\le 2^{k-2}$, 则$\phi$一定是可满足的.<ul>
+<li>可以通过概率法证明, 详见组合数学之LLL.</li>
 </ul>
 </li>
-<li><p>执行的第一条指令</p>
+</ul>
+<p>一般情况: </p>
 <ul>
-<li>从ELF的entry开始执行<ul>
-<li>静态链接：<code>a.out</code>的entry</li>
-<li>动态链接：<code>ld.so</code>的entry (动态链接器)</li>
-<li>动态链接libc：链接器使用一系列mmap把libc链接进进程地址空间</li>
+<li>$m$个坏事件$A_1,\cdots,A_m$, 每个$A_i$和除了$\le d$ 个坏事件以外的事件独立. 目标证明$\Pr[\land_{i=1}^m\overline{A_i}]&gt;0$</li>
+<li>可以用union bound或者容斥原理</li>
+<li>LLL: <ul>
+<li>$\forall i: \Pr[A_i]\le \frac{1}{4d}$则$\Pr[\land_{i=1}^m\overline{A_i}]&gt;0$.</li>
+<li>$\forall i: \Pr[A_i]\le \frac{1}{e(d+1)}$则$\Pr[\land_{i=1}^m\overline{A_i}]&gt;0$.</li>
+<li>非对称版本: 存在$a_1,\cdots,a_m\in [0,1)$, $\forall i:\Pr[A_i]\le a_i\prod_{j\sim i}(1-a_j)$, 则$\Pr[\land_{i=1}^m\overline{A_i}]&gt;\prod_{i=1}^m (1-a_i).$</li>
 </ul>
 </li>
 </ul>
-</li>
-<li><p>main() 执行之前</p>
+<h2 id="Algorithmic-LLL"><a href="#Algorithmic-LLL" class="headerlink" title="Algorithmic LLL"></a>Algorithmic LLL</h2><p><strong>k-SAT的算法LLL</strong><br>存在$c&gt;0$, 如果$d\le 2^{k-c}$, 则满足限制的赋值大概率(w.h.p)可以再$O(n+km)$时间内找到.</p>
+<h3 id="Moser’s-Algorithm"><a href="#Moser’s-Algorithm" class="headerlink" title="Moser’s Algorithm"></a>Moser’s Algorithm</h3><p>输入: $\phi:$一个度为$d$的k-CNF, $m$从句, $n$变量</p>
+<p>函数$Solve(\phi)$:</p>
 <ul>
-<li><code>ld.so</code>会调用<code>_init()</code>；之后会调用<code>_start</code>, <code>__libc_start_main</code>, …<ul>
-<li>但都是普通的“用户代码”，libc也是一个普通的C程序</li>
-<li>完成整个C runtime的初始化，其中可能调用系统调用<ul>
-<li>一个有趣的系统调用: ioctl, 判断是否是tty</li>
+<li>随机采样一个均匀赋值$X_1,\cdots,X_n$</li>
+<li>while 存在不满足的从句$C$:<ul>
+<li>$Fix(C)$</li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p>main()的执行</p>
+<p>子函数$Fix(C)$:</p>
 <ul>
-<li>printf(…)<ul>
-<li>如果有缓冲区，写入缓冲区 (fork会复制缓冲区)，否则直接用write写入<code>STDOUT_FILENO</code></li>
-<li>如果缓冲区满足flush条件，则用write写入</li>
+<li>重随机$C$中的变量</li>
+<li>while 存在和$C$相交的(包含$C$自己)不满足的从句$D$<ul>
+<li>$Fix(D)$</li>
 </ul>
 </li>
 </ul>
-</li>
-<li><p>main执行结束后，libc代码依然会执行(exit()也进行这些操作)</p>
+<p><strong>分析</strong>:</p>
 <ul>
-<li>调用<code>atexit()</code>注册的回调函数</li>
-<li>清空缓冲区、释放资源</li>
-<li>执行<code>_exit()</code>退出</li>
-<li>如果结束前调用了_exit(), 则直接结束, 不进行上述操作</li>
-</ul>
+<li><p>一旦结束, 一定返回满足解</p>
+</li>
+<li><p>最外层(Solve函数中): 一旦$Fix(C)$返回后, 在Solve函数中看, $C$一直被满足.</p>
+</li>
+<li><p>Solve中每次调用$Fix(C)$的过程可以看做一个递归树, 递归树的总数$\le m$, 所有树中总共$T$个结点</p>
+</li>
+<li><p>$T$: $Fix(C)$的总调用次数</p>
+</li>
+<li><p>总复杂度: $n+kT$(按照总的随机数比特数来计算时间复杂度.)</p>
+</li>
+<li><p>根据最终的赋值和所有的递归树, 可以完全复原$n+kT$个随机比特</p>
+</li>
+<li><p>而根据$n+kT$个随机比特, 也可以编码所有的递归树和最终的赋值.</p>
+</li>
+<li><p>最终的赋值: $n$ bits</p>
+</li>
+<li><p>如果寻找不满足的从句的时候是按照字典序的, 那么所有的递归树: $m+T(\log_2 d+O(1))$ bits(每棵树的根结点要$1$比特, 只要存有没有在最外层函数中被Fix过就行, 树中每个结点$O(1)$比特记录栈操作以还原树的结构, $\log_2 d$比特记录结点身份(因为一个结点至多d+1个邻居(含自己), 记录是第几个邻居即可))</p>
+</li>
+<li><p>而根据信息论中的Incompressibility Theorem, $N$个均匀随机位不能用少于$N-l$比特以至少$1-O(2^{-l})$的概率被编码.</p>
+</li>
+<li><p>所以w.h.p: (左边减去的$\log_2n$是对应w.h.p)</p>
+<script type="math/tex; mode=display">
+n+kT-\log_2 n\le m+T(\log_2 d+O(1))+n</script></li>
+<li><p>如果存在$c$满足$d\le 2^{k-c}$, 代入得$T\le m+\log_2 n$. </p>
+</li>
+<li><p>所以w.h.p可以在$O(n+k(m+\log n))$内找到满足的解. </p>
+</li>
+<li><p>k-SAT的算法LLL得证.</p>
 </li>
 </ul>
-<h3 id="进程-操作系统视角"><a href="#进程-操作系统视角" class="headerlink" title="进程: 操作系统视角"></a>进程: 操作系统视角</h3><ul>
-<li>操作系统就是个中断处理程序<ul>
-<li>系统启动时完成初始化</li>
-<li>然后等待中断到来(打开中断，死循环或<code>yield()</code></li>
-<li>在中断返回时，精心设计一个进程的上下文(context)<ul>
-<li>在CR3寄存器中配置好虚拟内存的地址映射和权限</li>
-<li>设置好寄存器的值：CS:EIP; SS:ESIP; …</li>
-<li>执行<code>iret</code>让进程暂时占有CPU执行</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>“进程”只是操作系统中的一些数据，操作系统代码维护了代表“进程”的对象，以及和进程相关的对象<ul>
-<li>进程上下文(寄存器的数值)</li>
-<li>文件描述符(指向操作系统内对象的指针；文件访问的偏移量)</li>
-<li>内存映射区域</li>
-<li>进程的地址空间(页表、地址空间中的页面)</li>
-</ul>
-</li>
-</ul>
-<h3 id="重新理解系统调用"><a href="#重新理解系统调用" class="headerlink" title="重新理解系统调用"></a>重新理解系统调用</h3><ul>
-<li><p>操作系统为用户进程提供的一组API，通常在内核空间中实现，实现用户进程对操作系统对象/物理硬件访问的请求。</p>
-</li>
-<li><p>在刚才的视角上理解系统调用</p>
+<p>问题:</p>
 <ul>
-<li>进程 = 操作系统中的数据</li>
-<li>系统调用 = 这些数据上的操作</li>
-<li>例子：write()向某个操作系统的对象写入数据</li>
-<li>例子：mmap()创建一个映射区域</li>
+<li>如果$T$是无限的呢? <ul>
+<li>固定随机数比特数$t=2(m+\log n)$, 一旦用完, 算法停止(可能并不满足)</li>
+<li>仍然是对固定个数的随机比特的有效的编码</li>
 </ul>
 </li>
-<li><p>文件访问的偏移量问题:</p>
+</ul>
+<h2 id="非对称版本的LLL"><a href="#非对称版本的LLL" class="headerlink" title="非对称版本的LLL"></a>非对称版本的LLL</h2><p>非对称版本的LLL: </p>
+<p>存在$a_1,\cdots,a_m\in [0,1)$, $\forall i:\Pr[A_i]\le a_i\prod_{j\sim i}(1-a_j)$, 则$\Pr[\land_{i=1}^m\overline{A_i}]&gt;\prod_{i=1}^m (1-a_i).$</p>
 <ul>
-<li>系统中所有以O_APPEND的文件描述符共享一个offset</li>
-<li>每次单独的open都有一个独立的offset</li>
-<li>fork()后父子进程在复制的文件描述符上共享一个offset</li>
+<li>$n$ 个完全独立的随机变量$X_1,\cdots,X_n$</li>
+<li>$m$ 个坏事件: $A_1,\cdots,A_m$, 由$X_1,\cdots,X_n$决定</li>
+<li>vbl($A_i$): 定义$A_i$的变量集</li>
+<li>邻居$\Gamma (A_i)\triangleq \{A_j|j\ne i\land vbl(A_j)\cap vbl(A_i)\ne\emptyset\}$</li>
+</ul>
+<p>存在$a_1,\cdots,a_m\in [0,1)$, $\forall i:\Pr[A_i]\le a_i\prod_{A_j\in \Gamma(A_i)}(1-a_j)$, 则存在赋值$X_1,\cdots,X_n$, 避免了所有坏事件$A_1,\cdots,A_n$<br>寻找这样的$X_1,\cdots,X_n$的算法为<strong>Moser-Tardos Algorithm</strong></p>
+<h3 id="Moser-Tardos-Algorithm"><a href="#Moser-Tardos-Algorithm" class="headerlink" title="Moser-Tardos Algorithm"></a>Moser-Tardos Algorithm</h3><p>算法如下:</p>
+<ul>
+<li>随机采样所有的$X_1,\cdots,X_n$的一组赋值$x_1,\cdots,x_n\in\{\text{true, false}\}$;</li>
+<li>while $\exists$ 发生了的坏事件$A_i$<ul>
+<li>随机采样所有的$X_j\in vbl(A_i)$</li>
 </ul>
 </li>
 </ul>
-<h3 id="操作系统与并发"><a href="#操作系统与并发" class="headerlink" title="操作系统与并发"></a>操作系统与并发</h3><ul>
-<li>操作系统中的对象是在处理器之间共享的</li>
-<li>多处理器系统：原子性、顺序、可见性的丧失</li>
-<li>系统调用执行需要协调系统中的各个部分<ul>
-<li>例子：read()管道时，需要等数据；write()管道时，需要等待管道的空位，否则阻塞</li>
-<li>例子：read()终端时，需要等缓冲区中的数据；按下按键时，向缓冲区中写入数据</li>
-<li>例子：使用DMA完成磁盘I/O，等待DMA中断的到来</li>
+<p>假设: 下列事件可以高效完成:</p>
+<ul>
+<li>独立随机此采样$X_j$</li>
+<li>检测在当前的$X_1,\cdots,X_n$下$A_i$是否发生</li>
+</ul>
+<p><strong>Lovász Local Lemma (Moser-Tardos 2010):</strong></p>
+<p>存在$a_1,\cdots,a_m\in [0,1)$, $\forall i:\Pr[A_i]\le a_i\prod_{A_j\in \Gamma(A_i)}(1-a_j)$, 则期望上可以在$\sum_{i=1}^m \frac{a_i}{1-a_i}$次重采样内返回满足的赋值.</p>
+<p>若$d\le 2^{k-2}$ 则 可以在$O(n+km/d)$的期望时间内找到满足的赋值</p>
+<p><strong>算法分析</strong>:</p>
+<p>更换表述形式:</p>
+<p>Moser-Tardos Algorithm:</p>
+<ul>
+<li>sample all $X\in \mathscr X$</li>
+<li>while $\exists$ an occcurring event $A\in\mathscr A$:<ul>
+<li>resample all $X\in vbl(A)$</li>
 </ul>
 </li>
-<li>操作系统中有大量的同步问题<ul>
-<li>条件变量</li>
-<li>信号量</li>
+</ul>
+<p>定义运行日志execution log $\Lambda$: </p>
+<ul>
+<li>$\Lambda_1,\Lambda_2,\cdots\in\mathscr A$, 为重采样时间的随机序列</li>
+</ul>
+<p>定义witness tree证据树: </p>
+<ul>
+<li>证据树是一个有标记的树, 每个结点$v$标记为一个事件$A_v\in\mathscr A$, 姐妹一定是不同的标记</li>
+<li>根据运行日志$\Lambda $构造证据树$T(\Lambda, t)$:<ul>
+<li>初始, $T$是一个根结点, 标记为$\Lambda_t$:</li>
+<li>for $i=t-1,t-2,\cdots,1$:<ul>
+<li>如果存在标记为$A_v\in\Gamma^+(\Lambda_i)$的结点$v\in T$, </li>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+<p>证明看讲义吧.</p>
 
       
     </div>
@@ -418,7 +455,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/操作系统/" rel="tag"># 操作系统</a>
+            <a href="/tags/高级算法/" rel="tag"># 高级算法</a>
           
         </div>
       
@@ -431,8 +468,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/01/操作系统/os并发/" rel="next" title="OS并发">
-                <i class="fa fa-chevron-left"></i> OS并发
+              <a href="/2019/12/04/组合数学/组合数学之Ramsey理论/" rel="next" title="组合数学之Ramsey理论">
+                <i class="fa fa-chevron-left"></i> 组合数学之Ramsey理论
               </a>
             
           </div>
@@ -441,8 +478,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/07/01/操作系统/os期末复习 /" rel="prev" title="OS期末复习">
-                OS期末复习 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/12/18/组合数学/组合数学之Matching theory/" rel="prev" title="组合数学之匹配论">
+                组合数学之匹配论 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -566,7 +603,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hello-World的故事"><span class="nav-number">1.</span> <span class="nav-text">Hello World的故事:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程-操作系统视角"><span class="nav-number">2.</span> <span class="nav-text">进程: 操作系统视角</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重新理解系统调用"><span class="nav-number">3.</span> <span class="nav-text">重新理解系统调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作系统与并发"><span class="nav-number">4.</span> <span class="nav-text">操作系统与并发</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Lovasz-Local-Lemma"><span class="nav-number">1.</span> <span class="nav-text">Lovász Local Lemma</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#The-Lovasz-Sieve"><span class="nav-number">1.1.</span> <span class="nav-text">The Lovász Sieve</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Algorithmic-LLL"><span class="nav-number">1.2.</span> <span class="nav-text">Algorithmic LLL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Moser’s-Algorithm"><span class="nav-number">1.2.1.</span> <span class="nav-text">Moser’s Algorithm</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非对称版本的LLL"><span class="nav-number">1.3.</span> <span class="nav-text">非对称版本的LLL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Moser-Tardos-Algorithm"><span class="nav-number">1.3.1.</span> <span class="nav-text">Moser-Tardos Algorithm</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
