@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="XY&#39;s blog">
 <meta property="og:description" content="降维Dimension Reduction1 Metric Embedding失真distortion: 对于$\alpha \ge 1$, 对于任意$x,y\in X$, 有  \frac{1}{\alpha}\cdot d(x,y)\le d(\phi(x),\phi(y))\le \alpha\cdot d(x,y)2 The Johnson-Lindenstrauss Theorem降维D">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-30T13:42:40.713Z">
+<meta property="og:updated_time" content="2020-01-10T02:33:15.196Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高级算法之降维">
 <meta name="twitter:description" content="降维Dimension Reduction1 Metric Embedding失真distortion: 对于$\alpha \ge 1$, 对于任意$x,y\in X$, 有  \frac{1}{\alpha}\cdot d(x,y)\le d(\phi(x),\phi(y))\le \alpha\cdot d(x,y)2 The Johnson-Lindenstrauss Theorem降维D">
@@ -262,7 +262,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-16T21:00:00+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-16T20:00:00+08:00">
                 2019-10-16
               </time>
             
@@ -310,14 +310,16 @@
 <p><strong>The Johnson-Lindenstrauss Theorem</strong>:</p>
 <p>$\forall 0&lt;\epsilon &lt;1$, 对于任意$\mathbb R^d$中$n$点集合$S$, 存在映射$\phi :\mathbb R^d\to \mathbb R^k$, $k=O(\epsilon^{-2}\log n)$, 满足$\forall x,y\in S:$ </p>
 <p>$(1-\epsilon)\Vert x-y \Vert_2^2\le\Vert \phi(x)-\phi(y) \Vert_2^2\le (1+\epsilon)\Vert x-y \Vert_2^2$</p>
-<p><strong>证明</strong>: 概率论方法: 随机$k\times d$矩阵$A$:</p>
+<p><strong>证明</strong>: 概率法: 随机$k\times d$矩阵$A$:</p>
 <script type="math/tex; mode=display">
-Pr[\forall x,y\in S:(1-\epsilon)\Vert x-y\Vert_2^2\le\Vert Ax-Ay\Vert_2^2\le (1+\epsilon)\Vert x-y\Vert_2^2]\ge 1-O(\frac{1}{n})</script><h3 id="2-1-JLT-via-Gaussian-matrix"><a href="#2-1-JLT-via-Gaussian-matrix" class="headerlink" title="2.1 JLT via Gaussian matrix"></a>2.1 JLT via Gaussian matrix</h3><p>$A$: 所有元素服从正态分布$N(0,1/k)$.</p>
+Pr[\forall x,y\in S:(1-\epsilon)\Vert x-y\Vert_2^2\le\Vert Ax-Ay\Vert_2^2\le (1+\epsilon)\Vert x-y\Vert_2^2]\ge 1-O(\frac{1}{n})</script><p>具体如下:</p>
+<h3 id="2-1-JLT-via-Gaussian-matrix"><a href="#2-1-JLT-via-Gaussian-matrix" class="headerlink" title="2.1 JLT via Gaussian matrix"></a>2.1 JLT via Gaussian matrix</h3><p>$A$: 所有元素服从正态分布$N(0,1/k)$.</p>
 <p>证明如下:</p>
 <p>$Pr[\forall x,y\in S:(1-\epsilon)\Vert x-y\Vert_2^2\le\Vert Ax-Ay\Vert_2^2\le (1+\epsilon)\Vert x-y\Vert_2^2]\ge 1-O(\frac{1}{n})$</p>
 <p>即</p>
 <script type="math/tex; mode=display">
-\forall \text{ unit ventor } u\in \mathbb R^d: Pr[\vert\Vert Au\Vert_2^2-1\vert>\epsilon]<\frac{1}{n^3}</script><p>其中$\frac{1}{n^3}$是因为有$O(n^2)$对$x,y\in S$, 需要w.h.p全部满足.</p>
+\forall \text{ unit ventor } u\in \mathbb R^d: Pr[\vert\Vert Au\Vert_2^2-1\vert>\epsilon]<\frac{1}{n^3}</script><p>其中$|\Vert Au\Vert^2-1|&gt;\epsilon$源自$1-\epsilon\le \Vert A\frac{(x-y)}{\Vert x-y\Vert}\Vert\le 1+\epsilon$</p>
+<p>而$\frac{1}{n^3}$是因为有$O(n^2)$对$x,y\in S$, 也就是有$O(n^2 )$个独立的$u$, 需要w.h.p全部满足.</p>
 <p>因为$A_{ij}\sim \mathcal N(0,\frac{1}{k})$, 所以</p>
 <script type="math/tex; mode=display">
 Y_i=(Au)_i=(\sum_{j=1}^d A_{ij}u_j)\sim \mathcal N(0,\frac{\sum_{j=1}^d u_j^2}{k})=\mathcal N(0,\frac{1}{k})</script><p>所以 $\Vert Au\Vert_2^2=\sum_{i=1}^k(Au)_i^2=\sum_{i=1}^k Y_i^2$满足$\chi^2$分布.</p>
@@ -337,7 +339,7 @@ Pr[\vert\sum_{i=1}^k Y_i^2-1\vert >\epsilon]<\delta</script><p>证明见slides.<
 <p>询问: 点 $x\in X$</p>
 <p><strong>c-ANN</strong>(近似最近邻): 找到$y_i$满足$dist(x,y_i)\le c\cdot \min_{1\le j\le n}dist(x,y_i)$</p>
 <p><strong>(c,r)-ANN</strong>(近似近邻):</p>
-<p> 如果存在$y_j$满足$dist(x,y_j)\le r$, 返回一个$y_i$满足$dist(x,y_i)\le c\cdot r$ ;</p>
+<p>如果存在$y_j$满足$dist(x,y_j)\le r$, 返回一个$y_i$满足$dist(x,y_i)\le c\cdot r$ ;</p>
 <p>如果任意$y_i$都有$dist(x,y_i)&gt;c\cdot r$, 返回’no’;</p>
 <p>否则返回上面两种中任意一个.</p>
 <h3 id="c-ANN和-c-r-ANN两者关系"><a href="#c-ANN和-c-r-ANN两者关系" class="headerlink" title="c-ANN和(c,r)-ANN两者关系:"></a>c-ANN和(c,r)-ANN两者关系:</h3><ul>
@@ -349,7 +351,7 @@ Pr[\vert\sum_{i=1}^k Y_i^2-1\vert >\epsilon]<\delta</script><p>证明见slides.<
 <li>每次查询的$r$: $r_0=D_{min}$, $r_k=c^{k/2}r_0$</li>
 <li>找到$i$满足刚好$i$返回’no’, $i+1$非’no’:<ul>
 <li>$r_{i}$返回值’no’, 即内圈内无点, 即$dist_{min}&gt;r_{i}$</li>
-<li>$r_{i+1}$返回的点$y$一定满足$dist(x,y_i)\le \sqrt r_{i+1}=cr_i&lt;c \cdot dist_{min}$, 即为c-ANN答案.</li>
+<li>$r_{i+1}$返回的点$y$一定满足$dist(x,y_i)\le \sqrt c r_{i+1}=cr_i&lt;c \cdot dist_{min}$, 即为c-ANN答案.</li>
 </ul>
 </li>
 </ul>
@@ -364,7 +366,7 @@ Pr[\vert\sum_{i=1}^k Y_i^2-1\vert >\epsilon]<\delta</script><p>证明见slides.<
 <p>空间$O(n2^k)$, 询问时间$O(kd)$计算+$O(1)$内存访问</p>
 <p><strong>正确率</strong></p>
 <p>$\forall x,y\in\{0,1\}^d$, $dist(x,y)\le r$则$\Pr[dist(Ax,Ay)&gt;s]&lt;1/n^2$; </p>
-<p>$dist(x,y)&gt;c r$则$\Pr[dist(Ax,Ay)\le s]&lt;1/n^2$. 即w.t.p解决$(c,r)$-ANN问题.</p>
+<p>$dist(x,y)&gt;c r$则$\Pr[dist(Ax,Ay)\le s]&lt;1/n^2$. 即w.h.p解决$(c,r)$-ANN问题.</p>
 <p>证明见ppt.</p>
 <p><strong>参数选取</strong>:</p>
 <p>$k=\frac{\ln n}{(1/8-2^{-(c+2)})^2}$, $p=\frac{1}{2}-2^{-1-1/r}$, $s=(\frac{3}{8}-2^{-(c+2)})k$</p>
@@ -374,26 +376,26 @@ Pr[\vert\sum_{i=1}^k Y_i^2-1\vert >\epsilon]<\delta</script><p>证明见slides.<
 <p>$dist(x,y)&gt; cr =&gt;Pr[h(x)=h(y)]\le q$  </p>
 <p>则随机函数$h:X\to U$是$(r,cr,p,q)$-LSH.</p>
 <p><strong>性质</strong>:</p>
-<p>$\exists (r,cr,p,q)$-LSH $h:X\to U$  =&gt; $\exists (r,cr,p^k,q^k)$-LSH $h:X\to U^k$ :</p>
+<p>$\exist (r,cr,p,q)$-LSH $h:X\to U$  =&gt; $\exist (r,cr,p^k,q^k)$-LSH $h:X\to U^k$ :</p>
 <p>证明: </p>
 <p>直接根据$h$构造独立的$h_1,\cdots,h_k$, $g(x)=(h_1(x),\cdots,h_k(x))\in U^k$</p>
-<h3 id="解-c-r-ASH问题"><a href="#解-c-r-ASH问题" class="headerlink" title="解(c,r)-ASH问题"></a>解(c,r)-ASH问题</h3><p>假设我们有(r,cr,$p^*$,1/n)-LSH g:$X\to U$, 我们将$y_1,\cdots,y_n$按照$g(y_i)$的顺序存储</p>
-<p>询问$x\in X$: 二分搜索找到所有的满足$g(x_i)=g(y_i)$的$y_i$;</p>
+<h3 id="解-c-r-ANN问题"><a href="#解-c-r-ANN问题" class="headerlink" title="解(c,r)-ANN问题"></a>解(c,r)-ANN问题</h3><p>假设我们有(r,cr,$p^*$,1/n)-LSH g:$X\to U$, 我们将$y_1,\cdots,y_n$按照$g(y_i)$的顺序存储</p>
+<p>询问$x\in X$: 二分搜索找到所有的满足$g(x)=g(y_i)$的$y_i$;</p>
 <p>其中如果碰到$y_i$满足$dist(x,y_i)\le cr$则返回这个$y_i$; 否则返回’no’.</p>
 <p><strong>复杂度</strong>: </p>
 <p>空间$O(n)$, 时间$O(\log n)+O(1)$(期望)</p>
 <p><strong>正确率</strong>:</p>
-<p>实际答案为’no’: 必定正确</p>
-<p>实际答案不是’no’: 以概率$\ge p^*$正确</p>
+<p>(c,r)-ANN实际答案为’no’: 必定正确, 因为会检查是否真的有$dist(x,y_i)\le cr$, 所以算法一定也返回no</p>
+<p>(c,r)-ANN实际答案不是’no’: 以概率$\ge p^*$正确, 因为有1-p的概率会$dist(x,y)\le r$但是$g(x)\ne g(y)$, 导致漏掉</p>
 <p><strong>改进</strong>:</p>
 <p>取$l=1/p^*$, 找$l$个独立的$g$, 在这$l$个表中找到至多$10l$(随便定的参数)个$y_i$满足$\exists j ~g_j(x)=g_j(y_i)$, 检查有没有和$x$距离小于等于$cr$的$y_i$, 有就返回, 否则返回’no’.</p>
 <p><strong>分析</strong>:</p>
 <script type="math/tex; mode=display">
-\begin{aligned}\Pr[\text{answer 'no'}]&\le \Pr[\forall j, g_j(x)\ne g_j(y_s)]+
-\\ & ~ ~ ~ ~ \Pr[>10l\text{ bad }y_i\text{ that }dist(x,y_i)>cr\text{ but }\exists j~s.t. g_j(x)=g_j(y_j)]\\
+\begin{aligned}
+\Pr[\text{answer 'no'}]&\le \Pr[\forall j, g_j(x)\ne g_j(y_s)]+\\ 
+&\Pr[>10l\text{ bad }y_i\text{ that }dist(x,y_i)>cr\text{ but }\exist j~s.t. g_j(x)=g_j(y_j)]\\
 &\le (1-p^*)^l+ E[\text{number of such bad }y_i]/10l\\
-&\le 1/e+\frac{\ln(1/n)}{10l}\\
-&\le 1/e+0.1<0.5
+&\le 1/e+\frac{l\cdot n\cdot (1/n)}{10l}\\&\le 1/e+0.1<0.5
 \end{aligned}</script><p>其中使用了马尔科夫不等式.</p>
 <p><strong>实际步骤</strong></p>
 <p>如果最初有(r,cr,p,q)-LSH $h:X\to U$, 可以构造出(r,cr,$p^k$,1/n)-LSH $g:X\to U^k$, 其中$k=\log_{1/q}n$, 所以$p^k=p^{\log_{1/q}n}=n^{-\rho}$, 其中$\rho=\frac{\log p}{\log q}$. 这样我们就可以解决(c, r)-ANN, 空间复杂度$O(n^{1+\rho})$, 询问时间$O(n^\rho \log n)$, 单边错误率&lt;0.5.</p>
@@ -434,8 +436,8 @@ Pr[\vert\sum_{i=1}^k Y_i^2-1\vert >\epsilon]<\delta</script><p>证明见slides.<
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/16/组合数学/组合数学之Cayley公式/" rel="next" title="组合数学之Cayley公式">
-                <i class="fa fa-chevron-left"></i> 组合数学之Cayley公式
+              <a href="/2019/10/09/组合数学/组合数学之Pólya计数理论/" rel="next" title="组合数学之Pólya计数理论">
+                <i class="fa fa-chevron-left"></i> 组合数学之Pólya计数理论
               </a>
             
           </div>
@@ -444,8 +446,8 @@ Pr[\vert\sum_{i=1}^k Y_i^2-1\vert >\epsilon]<\delta</script><p>证明见slides.<
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/23/组合数学/组合数学之存在性问题/" rel="prev" title="组合数学之存在性问题">
-                组合数学之存在性问题 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/10/16/组合数学/组合数学之Cayley公式/" rel="prev" title="组合数学之Cayley公式">
+                组合数学之Cayley公式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -523,7 +525,7 @@ Pr[\vert\sum_{i=1}^k Y_i^2-1\vert >\epsilon]<\delta</script><p>证明见slides.<
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -569,7 +571,7 @@ Pr[\vert\sum_{i=1}^k Y_i^2-1\vert >\epsilon]<\delta</script><p>证明见slides.<
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#降维Dimension-Reduction"><span class="nav-number">1.</span> <span class="nav-text">降维Dimension Reduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Metric-Embedding"><span class="nav-number">1.1.</span> <span class="nav-text">1 Metric Embedding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-The-Johnson-Lindenstrauss-Theorem"><span class="nav-number">1.2.</span> <span class="nav-text">2 The Johnson-Lindenstrauss Theorem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-JLT-via-Gaussian-matrix"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 JLT via Gaussian matrix</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Concentration-of-chi-2-distribution"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 Concentration of $\chi ^{2}$-distribution</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Nearest-Neighbor-Search-NNS"><span class="nav-number">1.3.</span> <span class="nav-text">3 Nearest Neighbor Search (NNS)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#NNS"><span class="nav-number">1.3.1.</span> <span class="nav-text">NNS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ANN"><span class="nav-number">1.3.2.</span> <span class="nav-text">ANN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c-ANN和-c-r-ANN两者关系"><span class="nav-number">1.3.3.</span> <span class="nav-text">c-ANN和(c,r)-ANN两者关系:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c-r-ANN算法"><span class="nav-number">1.3.4.</span> <span class="nav-text">(c,r)-ANN算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Locality-Sensitive-Hashing-LSH"><span class="nav-number">1.4.</span> <span class="nav-text">4 Locality-Sensitive Hashing (LSH)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#r-cr-p-q-​-LSH函数"><span class="nav-number">1.4.1.</span> <span class="nav-text">(r,cr,p,q)​-LSH函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解-c-r-ASH问题"><span class="nav-number">1.4.2.</span> <span class="nav-text">解(c,r)-ASH问题</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#降维Dimension-Reduction"><span class="nav-number">1.</span> <span class="nav-text">降维Dimension Reduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Metric-Embedding"><span class="nav-number">1.1.</span> <span class="nav-text">1 Metric Embedding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-The-Johnson-Lindenstrauss-Theorem"><span class="nav-number">1.2.</span> <span class="nav-text">2 The Johnson-Lindenstrauss Theorem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-JLT-via-Gaussian-matrix"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 JLT via Gaussian matrix</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Concentration-of-chi-2-distribution"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 Concentration of $\chi ^{2}$-distribution</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Nearest-Neighbor-Search-NNS"><span class="nav-number">1.3.</span> <span class="nav-text">3 Nearest Neighbor Search (NNS)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#NNS"><span class="nav-number">1.3.1.</span> <span class="nav-text">NNS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ANN"><span class="nav-number">1.3.2.</span> <span class="nav-text">ANN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c-ANN和-c-r-ANN两者关系"><span class="nav-number">1.3.3.</span> <span class="nav-text">c-ANN和(c,r)-ANN两者关系:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c-r-ANN算法"><span class="nav-number">1.3.4.</span> <span class="nav-text">(c,r)-ANN算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Locality-Sensitive-Hashing-LSH"><span class="nav-number">1.4.</span> <span class="nav-text">4 Locality-Sensitive Hashing (LSH)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#r-cr-p-q-​-LSH函数"><span class="nav-number">1.4.1.</span> <span class="nav-text">(r,cr,p,q)​-LSH函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解-c-r-ANN问题"><span class="nav-number">1.4.2.</span> <span class="nav-text">解(c,r)-ANN问题</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -589,7 +591,7 @@ Pr[\vert\sum_{i=1}^k Y_i^2-1\vert >\epsilon]<\delta</script><p>证明见slides.<
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
