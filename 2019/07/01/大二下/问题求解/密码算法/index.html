@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="XY&#39;s blog">
 <meta property="og:description" content="RSA公钥加密系统 公钥$P_A$, 私钥$S_A$  对于Bob给Alice的加密消息M: 发送方式: Bob取得Alice公钥$P_A$  Bob计算出相应于M的密文$C=P_A(M)$   接收过程: Alice收到密文C后, 她用自己的密钥$S_A$恢复原始信息: $S_A(C) = S_A(P_A(M)) = M$ $S_A()$和$P_A()$互为反函数     数字签名: Alice">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-01T03:52:22.896Z">
+<meta property="og:updated_time" content="2020-02-18T09:20:39.841Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="密码算法">
 <meta name="twitter:description" content="RSA公钥加密系统 公钥$P_A$, 私钥$S_A$  对于Bob给Alice的加密消息M: 发送方式: Bob取得Alice公钥$P_A$  Bob计算出相应于M的密文$C=P_A(M)$   接收过程: Alice收到密文C后, 她用自己的密钥$S_A$恢复原始信息: $S_A(C) = S_A(P_A(M)) = M$ $S_A()$和$P_A()$互为反函数     数字签名: Alice">
@@ -342,10 +342,8 @@
 </li>
 <li><p>可以在期望的$\theta(\sqrt n)$次算数运算内找到n的一个小因子p.</p>
 </li>
-<li><p>如果p是合数, 则在大约经过$n^{1/4}$ 次更新之后, 可以预计该过程已经找到了足够多的约数</p>
-</li>
-<li><p>函数$f(x)=(x^2-1)\mod n$生成的序列在出现回路之前预计要执行的步数为$\theta (\sqrt n)$</p>
-</li>
+<li>如果p是合数, 则在大约经过$n^{1/4}$ 次更新之后, 可以预计该过程已经找到了足够多的约数</li>
+<li>函数$f(x)=(x^2-1)\mod n$生成的序列在出现回路之前预计要执行的步数为$\theta (\sqrt n)$</li>
 </ul>
 
       

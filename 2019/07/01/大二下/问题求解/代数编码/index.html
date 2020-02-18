@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="代数编码检错码和纠错码奇偶校验 校验位 parity check bit  不检验多错, 不纠错   最大似然编码 Maximum-Likelihood Decoding  假设收到的n元组被解码成最接近的编码   Block Codes (n, m)-block code:  编码函数$E: \mathbb Z_2^m \to \mathbb Z_2^n$ 译码函数$E: \mathbb Z_2">
+<meta name="description" content="代数编码检错码和纠错码奇偶校验 校验位 parity check bit 不检验多错, 不纠错  最大似然编码 Maximum-Likelihood Decoding 假设收到的n元组被解码成最接近的编码  Block Codes (n, m)-block code:  编码函数$E: \mathbb Z_2^m \to \mathbb Z_2^n$ 译码函数$E: \mathbb Z_2^n \">
 <meta name="keywords" content="问题求解四">
 <meta property="og:type" content="article">
 <meta property="og:title" content="代数编码">
 <meta property="og:url" content="http://yoursite.com/2019/07/01/大二下/问题求解/代数编码/index.html">
 <meta property="og:site_name" content="XY&#39;s blog">
-<meta property="og:description" content="代数编码检错码和纠错码奇偶校验 校验位 parity check bit  不检验多错, 不纠错   最大似然编码 Maximum-Likelihood Decoding  假设收到的n元组被解码成最接近的编码   Block Codes (n, m)-block code:  编码函数$E: \mathbb Z_2^m \to \mathbb Z_2^n$ 译码函数$E: \mathbb Z_2">
+<meta property="og:description" content="代数编码检错码和纠错码奇偶校验 校验位 parity check bit 不检验多错, 不纠错  最大似然编码 Maximum-Likelihood Decoding 假设收到的n元组被解码成最接近的编码  Block Codes (n, m)-block code:  编码函数$E: \mathbb Z_2^m \to \mathbb Z_2^n$ 译码函数$E: \mathbb Z_2^n \">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-01T03:52:09.273Z">
+<meta property="og:updated_time" content="2020-02-18T09:19:48.945Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="代数编码">
-<meta name="twitter:description" content="代数编码检错码和纠错码奇偶校验 校验位 parity check bit  不检验多错, 不纠错   最大似然编码 Maximum-Likelihood Decoding  假设收到的n元组被解码成最接近的编码   Block Codes (n, m)-block code:  编码函数$E: \mathbb Z_2^m \to \mathbb Z_2^n$ 译码函数$E: \mathbb Z_2">
+<meta name="twitter:description" content="代数编码检错码和纠错码奇偶校验 校验位 parity check bit 不检验多错, 不纠错  最大似然编码 Maximum-Likelihood Decoding 假设收到的n元组被解码成最接近的编码  Block Codes (n, m)-block code:  编码函数$E: \mathbb Z_2^m \to \mathbb Z_2^n$ 译码函数$E: \mathbb Z_2^n \">
 
 
 
@@ -301,16 +301,12 @@
 
       
         <h1 id="代数编码"><a href="#代数编码" class="headerlink" title="代数编码"></a>代数编码</h1><h2 id="检错码和纠错码"><a href="#检错码和纠错码" class="headerlink" title="检错码和纠错码"></a>检错码和纠错码</h2><h4 id="奇偶校验"><a href="#奇偶校验" class="headerlink" title="奇偶校验"></a>奇偶校验</h4><ul>
-<li><p>校验位 parity check bit</p>
-</li>
-<li><p>不检验多错, 不纠错</p>
-</li>
+<li>校验位 parity check bit</li>
+<li>不检验多错, 不纠错</li>
 </ul>
 <h4 id="最大似然编码"><a href="#最大似然编码" class="headerlink" title="最大似然编码"></a>最大似然编码</h4><ul>
-<li><p>Maximum-Likelihood Decoding</p>
-</li>
-<li><p>假设收到的n元组被解码成最接近的编码</p>
-</li>
+<li>Maximum-Likelihood Decoding</li>
+<li>假设收到的n元组被解码成最接近的编码</li>
 </ul>
 <h4 id="Block-Codes"><a href="#Block-Codes" class="headerlink" title="Block Codes"></a>Block Codes</h4><ul>
 <li>(n, m)-block code: <ul>
@@ -335,38 +331,33 @@
 <li>理想的编码过程: 构造一个$n \times (n-m)$的01矩阵$G$, 对于每个信息$x$, $Gx$可以得到一个$y$, $y$是群码字. 这里的m是校验位个数.</li>
 </ul>
 <h2 id="奇偶校验矩阵和生成矩阵"><a href="#奇偶校验矩阵和生成矩阵" class="headerlink" title="奇偶校验矩阵和生成矩阵"></a>奇偶校验矩阵和生成矩阵</h2><ul>
-<li><p>奇偶校验矩阵$H$:</p>
-<ul>
+<li>奇偶校验矩阵$H$:<ul>
 <li>$m\times n$矩阵$H$最后m列为$I_m$, 那么这个矩阵就是<strong>奇偶校验矩阵</strong>(canonical parity-check matrix), $H=(A|I_m)$.</li>
 <li>$C$为$G$生成的编码, 则$y\in C$当且仅当$Hy = 0$. 而且$C$是$H$的线性编码.</li>
 <li>若$y\in Null(H)$, 则$y$前$n - m$位任意, 后$m$位由$Hy = 0$计算得</li>
 </ul>
 </li>
-<li><p>生成矩阵$G$:</p>
-<ul>
+<li>生成矩阵$G$:<ul>
 <li>$H=(A|I_m)$, ($A$是任取的), 则<strong>标准生成矩阵</strong>(standard generator matrix)$G = (\frac{I_{n-m}}{A})$, $G$是$n\times (n-m)$矩阵.</li>
 <li>$G$是$n\times k$标准生成阵, 则$C= \{y:Gx=y ~for ~x \in \mathbb Z_2^k\}$为$(n, k)$-block code, $C$也为group code.</li>
 </ul>
 </li>
-<li><p>codeword 计算:</p>
-<ul>
+<li>codeword 计算:<ul>
 <li>计算$Null(H)$</li>
 <li>计算$Gx$</li>
 </ul>
 </li>
-<li><p>$H$和$G$关系:</p>
-<ul>
+<li>$H$和$G$关系:<ul>
 <li>$HG = 0$</li>
 <li>存在$x$满足 $Gx=y$ 当且仅当 $Hy = 0$</li>
 </ul>
 </li>
-<li><p>纠错和检错能力:</p>
-<ul>
+<li>纠错和检错能力:<ul>
 <li>检错能力: $Null(H)$是单检错码当且仅当$H$中任意一列都不全$0$</li>
 </ul>
 <ul>
 <li>纠错能力: $Null(H)$是单纠错码当且仅当$H$无$0$列, 且没有相同列</li>
-<li>==$d(c) =$ H中最小的线性相关的列向量的数量== </li>
+<li>$d(c) =$ H中最小的线性相关的列向量的数量</li>
 </ul>
 </li>
 </ul>
@@ -381,10 +372,8 @@
 </li>
 </ul>
 <h4 id="陪集解码"><a href="#陪集解码" class="headerlink" title="陪集解码"></a>陪集解码</h4><ul>
-<li><p>两个$n$元组属于同一个陪集当且仅当它们的$syndrome$相同</p>
-</li>
-<li><p>解码表: $syndrome$和$Coset Leader$的对应表</p>
-</li>
+<li>两个$n$元组属于同一个陪集当且仅当它们的$syndrome$相同</li>
+<li>解码表: $syndrome$和$Coset Leader$的对应表</li>
 </ul>
 
       

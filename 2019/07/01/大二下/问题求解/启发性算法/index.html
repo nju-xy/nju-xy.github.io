@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="启发性算法 非常狭义定义： 用来设计最优化问题的随机算法的鲁棒性技术； 不能保证解的效率和质量 没有有界常数概率    模拟退火 Simulated Annealing概念 局部搜索+跳出局部最优的随机决策  局部搜索：找到一个可行解；找到邻域中的最优解替换并且循环这一步  多起点局部搜索  threshold local search：允许移动到较差解  模拟退火的基本思想: +  初始化：初始">
+<meta name="description" content="启发性算法 非常狭义定义： 用来设计最优化问题的随机算法的鲁棒性技术； 不能保证解的效率和质量 没有有界常数概率    模拟退火 Simulated Annealing概念 局部搜索+跳出局部最优的随机决策 局部搜索：找到一个可行解；找到邻域中的最优解替换并且循环这一步 多起点局部搜索 threshold local search：允许移动到较差解 模拟退火的基本思想: 初始化：初始温度T，初始可">
 <meta name="keywords" content="问题求解四">
 <meta property="og:type" content="article">
 <meta property="og:title" content="启发性算法">
 <meta property="og:url" content="http://yoursite.com/2019/07/01/大二下/问题求解/启发性算法/index.html">
 <meta property="og:site_name" content="XY&#39;s blog">
-<meta property="og:description" content="启发性算法 非常狭义定义： 用来设计最优化问题的随机算法的鲁棒性技术； 不能保证解的效率和质量 没有有界常数概率    模拟退火 Simulated Annealing概念 局部搜索+跳出局部最优的随机决策  局部搜索：找到一个可行解；找到邻域中的最优解替换并且循环这一步  多起点局部搜索  threshold local search：允许移动到较差解  模拟退火的基本思想: +  初始化：初始">
+<meta property="og:description" content="启发性算法 非常狭义定义： 用来设计最优化问题的随机算法的鲁棒性技术； 不能保证解的效率和质量 没有有界常数概率    模拟退火 Simulated Annealing概念 局部搜索+跳出局部最优的随机决策 局部搜索：找到一个可行解；找到邻域中的最优解替换并且循环这一步 多起点局部搜索 threshold local search：允许移动到较差解 模拟退火的基本思想: 初始化：初始温度T，初始可">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-01T07:16:38.908Z">
+<meta property="og:updated_time" content="2020-02-18T09:01:13.688Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="启发性算法">
-<meta name="twitter:description" content="启发性算法 非常狭义定义： 用来设计最优化问题的随机算法的鲁棒性技术； 不能保证解的效率和质量 没有有界常数概率    模拟退火 Simulated Annealing概念 局部搜索+跳出局部最优的随机决策  局部搜索：找到一个可行解；找到邻域中的最优解替换并且循环这一步  多起点局部搜索  threshold local search：允许移动到较差解  模拟退火的基本思想: +  初始化：初始">
+<meta name="twitter:description" content="启发性算法 非常狭义定义： 用来设计最优化问题的随机算法的鲁棒性技术； 不能保证解的效率和质量 没有有界常数概率    模拟退火 Simulated Annealing概念 局部搜索+跳出局部最优的随机决策 局部搜索：找到一个可行解；找到邻域中的最优解替换并且循环这一步 多起点局部搜索 threshold local search：允许移动到较差解 模拟退火的基本思想: 初始化：初始温度T，初始可">
 
 
 
@@ -309,17 +309,12 @@
 </li>
 </ul>
 <h2 id="模拟退火-Simulated-Annealing"><a href="#模拟退火-Simulated-Annealing" class="headerlink" title="模拟退火 Simulated Annealing"></a>模拟退火 Simulated Annealing</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul>
-<li><p>局部搜索+跳出局部最优的随机决策</p>
-</li>
-<li><p>局部搜索：找到一个可行解；找到邻域中的最优解替换并且循环这一步</p>
-</li>
-<li><p>多起点局部搜索</p>
-</li>
-<li><p>threshold local search：允许移动到较差解</p>
-</li>
-<li><p>模拟退火的基本思想:</p>
-<pre><code>+  初始化：初始温度T，初始可行解$\alpha \in M(x)$(是算法迭代的起点)，温度关于温度和时间的下降函数f
-</code></pre><ul>
+<li>局部搜索+跳出局部最优的随机决策</li>
+<li>局部搜索：找到一个可行解；找到邻域中的最优解替换并且循环这一步</li>
+<li>多起点局部搜索</li>
+<li>threshold local search：允许移动到较差解</li>
+<li>模拟退火的基本思想:<ul>
+<li>初始化：初始温度T，初始可行解$\alpha \in M(x)$(是算法迭代的起点)，温度关于温度和时间的下降函数f</li>
 <li>时间$I=0$，当温度大于0(或不太靠近0)时，重复一下操作：<ul>
 <li>随机选取$\alpha$邻域中的解$\beta$</li>
 <li>如果$cost(\beta)\le cost(\beta)$, $\alpha:=\beta$; </li>
@@ -331,8 +326,6 @@
 <li>$T=f(T,I)$</li>
 </ul>
 </li>
-</ul>
-<ul>
 <li>输出$\alpha$</li>
 </ul>
 </li>
@@ -382,8 +375,7 @@
 </li>
 </ul>
 <h2 id="遗传算法-genetic-algorithm"><a href="#遗传算法-genetic-algorithm" class="headerlink" title="遗传算法 genetic algorithm"></a>遗传算法 genetic algorithm</h2><h3 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h3><ul>
-<li><p>遗传算法:</p>
-<ul>
+<li>遗传算法:<ul>
 <li>创造一个初始化人口$P=\{\alpha_1, \cdots, \alpha_k\}$; 已经创造的人口数$t=0$</li>
 <li>计算fitness($\alpha_i$), i = 1, 2, …, k, 据此评估P的分布律$Prob_P$, 满足高fitness有较高概率</li>
 <li>根据$Prob_P$随机选取$k/2$对可行解$(\beta_1^1, \beta_1^1)$, …, $(\beta_{k/2}^1, \beta_{k/2}^1)$</li>
@@ -394,33 +386,22 @@
 <li>$t:=t+1$; $P:=P’$; 满足停止条件则输出, 不然重复上述步骤</li>
 </ul>
 </li>
-<li><p>定义: M(x)的计划为任意向量$s=(s_1, s_2,…,s_n)\in \\{0,1,<em> \\} ^ n$(</em>表示free); 对于计划s的可行解集合为</p>
-<p>$Schema(s_1, …, s_n) = \\{ \gamma_1, …, \gamma_n\in M(x)|\gamma_i = s_i \text{ for all }i \in \\{1,…,n\\} $<br>$\text{ such that }s_i\in \\{0,1\\};\gamma_i \in\\{0,1\\}\text{ for all }j\in \\{1,2,…,n \\}\text{ such that }s_j=*  \\}$</p>
-</li>
-<li><p>length(s): s中第一个和最后一个非*位置间的距离;</p>
-<p>order(s): 非*位置数</p>
-<p>$Fitness(s, P) = \frac{1}{|Schema(s)\cap P|}\cdot \sum_{\gamma\in Schema(s)\cap P}cost(\gamma)$</p>
-<p>$Fit-ratio(s, P) = \frac{Fitness(s, P)}{\sum_{\beta \in P}cost(\beta)/|P|}$, 分母为平均fitness</p>
-</li>
-<li><p>The Schema Thm for GAS: 对任意Schema s 和任意 t= 1, 2, …, Schema(s)在(t+1)-st人口的期望个体数为</p>
-<p>$E[Z_{t+1}]=Fit-ratio(s, P_t)\cdot \frac{n-length(s)}{n}\cdot (1-order(s)\cdot pr_m)\cdot |P_t\cap Schema(s)|$</p>
-</li>
+<li>定义: M(x)的计划为任意向量$s=(s_1, s_2,…,s_n)\in \\{0,1,<em> \\} ^ n$(</em>表示free); 对于计划s的可行解集合为<br>$Schema(s_1, …, s_n) = \{ \gamma_1, …, \gamma_n\in M(x)|\gamma_i = s_i \text{ for all }i \in \{1,…,n\} $<br>$\text{ such that }s_i\in \{0,1\};\gamma_i \in\{0,1\}\text{ for all }j\in \{1,2,…,n \}\text{ such that }s_j=*  \}$</li>
+<li>length(s): s中第一个和最后一个非<em>位置间的距离;<br>order(s): 非</em>位置数<br>$Fitness(s, P) = \frac{1}{|Schema(s)\cap P|}\cdot \sum_{\gamma\in Schema(s)\cap P}cost(\gamma)$<br>$Fit-ratio(s, P) = \frac{Fitness(s, P)}{\sum_{\beta \in P}cost(\beta)/|P|}$, 分母为平均fitness</li>
+<li>The Schema Thm for GAS: 对任意Schema s 和任意 t= 1, 2, …, Schema(s)在(t+1)-st人口的期望个体数为<br>$E[Z_{t+1}]=Fit-ratio(s, P_t)\cdot \frac{n-length(s)}{n}\cdot (1-order(s)\cdot pr_m)\cdot |P_t\cap Schema(s)|$</li>
 </ul>
 <h3 id="参数选择"><a href="#参数选择" class="headerlink" title="参数选择"></a>参数选择</h3><ul>
-<li><p>人口大小: </p>
-<ul>
+<li>人口大小: <ul>
 <li>太小容易局部最优, 太大计算开销大</li>
 <li>30或者区间[n, 2n]内(n为实例的大小)</li>
 </ul>
 </li>
-<li><p>初始人口选择:</p>
-<ul>
+<li>初始人口选择:<ul>
 <li>随机选择</li>
 <li>选择较高质量的初始人口会增快收敛速度, 但容易收敛到局部最优</li>
 </ul>
 </li>
-<li><p>fitness选择:</p>
-<ul>
+<li>fitness选择:<ul>
 <li>最大化问题直接选取cost作为fitness, 或再减去一个小于最小值的常数; 减去的值越接近最小cost, 越偏向于高cost个体</li>
 </ul>
 </li>
@@ -441,16 +422,14 @@
 <li>如果人口数量k较小, 就要增大突变率防止局部最优</li>
 </ul>
 </li>
-<li><p>新人口选择机制</p>
-<ul>
+<li>新人口选择机制<ul>
 <li>en block strategy: 孩子完全替代父母</li>
 <li>elite model: 选一小部分父母中的高fitness个体, 其余的大部分选孩子</li>
 <li>父母孩子放一起, 选择高fitness的</li>
 <li>选完之后可以在小邻域中提升个体fitness</li>
 </ul>
 </li>
-<li><p>停止策略:</p>
-<ul>
+<li>停止策略:<ul>
 <li>确定的代数</li>
 <li>根据平均fitness(不怎么变)和个体差异(小)</li>
 </ul>
