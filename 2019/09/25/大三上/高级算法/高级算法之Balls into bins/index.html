@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Balls into Bins 背景: 将$m$个球独立均匀随机地扔进$n$个盒子, 等价于随机映射$f:[m]\to[n]$.  1 生日问题 问题: $m$个学生生日独立随机均匀分布于一年365天. 求没有两人同一天生日的概率  等价于: 将$m$个不同的球扔进365个盒子. 更一般的, 盒子数为$n$. 事件$\epsilon$: 没有盒子里面有多于1个球   总共$n^m$中扔法, 其中没">
+<meta name="description" content="Balls into Bins 背景: 将$m$个球独立均匀随机地扔进$n$个盒子, 等价于随机映射$f:[m]\to[n]$.  1 生日问题 问题: $m$个学生生日独立随机均匀分布于一年365天. 求没有两人同一天生日的概率 等价于: 将$m$个不同的球扔进365个盒子. 更一般的, 盒子数为$n$. 事件$\epsilon$: 没有盒子里面有多于1个球   总共$n^m$中扔法, 其中没有">
 <meta name="keywords" content="高级算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="高级算法之Balls into Bins">
 <meta property="og:url" content="http://yoursite.com/2019/09/25/大三上/高级算法/高级算法之Balls into bins/index.html">
 <meta property="og:site_name" content="XY&#39;s blog">
-<meta property="og:description" content="Balls into Bins 背景: 将$m$个球独立均匀随机地扔进$n$个盒子, 等价于随机映射$f:[m]\to[n]$.  1 生日问题 问题: $m$个学生生日独立随机均匀分布于一年365天. 求没有两人同一天生日的概率  等价于: 将$m$个不同的球扔进365个盒子. 更一般的, 盒子数为$n$. 事件$\epsilon$: 没有盒子里面有多于1个球   总共$n^m$中扔法, 其中没">
+<meta property="og:description" content="Balls into Bins 背景: 将$m$个球独立均匀随机地扔进$n$个盒子, 等价于随机映射$f:[m]\to[n]$.  1 生日问题 问题: $m$个学生生日独立随机均匀分布于一年365天. 求没有两人同一天生日的概率 等价于: 将$m$个不同的球扔进365个盒子. 更一般的, 盒子数为$n$. 事件$\epsilon$: 没有盒子里面有多于1个球   总共$n^m$中扔法, 其中没有">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-10T02:49:05.251Z">
+<meta property="og:updated_time" content="2020-02-18T08:47:09.599Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高级算法之Balls into Bins">
-<meta name="twitter:description" content="Balls into Bins 背景: 将$m$个球独立均匀随机地扔进$n$个盒子, 等价于随机映射$f:[m]\to[n]$.  1 生日问题 问题: $m$个学生生日独立随机均匀分布于一年365天. 求没有两人同一天生日的概率  等价于: 将$m$个不同的球扔进365个盒子. 更一般的, 盒子数为$n$. 事件$\epsilon$: 没有盒子里面有多于1个球   总共$n^m$中扔法, 其中没">
+<meta name="twitter:description" content="Balls into Bins 背景: 将$m$个球独立均匀随机地扔进$n$个盒子, 等价于随机映射$f:[m]\to[n]$.  1 生日问题 问题: $m$个学生生日独立随机均匀分布于一年365天. 求没有两人同一天生日的概率 等价于: 将$m$个不同的球扔进365个盒子. 更一般的, 盒子数为$n$. 事件$\epsilon$: 没有盒子里面有多于1个球   总共$n^m$中扔法, 其中没有">
 
 
 
@@ -304,45 +304,33 @@
 <li>背景: 将$m$个球独立均匀随机地扔进$n$个盒子, 等价于随机映射$f:[m]\to[n]$.</li>
 </ul>
 <h2 id="1-生日问题"><a href="#1-生日问题" class="headerlink" title="1 生日问题"></a>1 生日问题</h2><ul>
-<li><p>问题: $m$个学生生日独立随机均匀分布于一年365天. 求没有两人同一天生日的概率</p>
-<ul>
+<li>问题: $m$个学生生日独立随机均匀分布于一年365天. 求没有两人同一天生日的概率<ul>
 <li>等价于: 将$m$个不同的球扔进365个盒子. 更一般的, 盒子数为$n$.</li>
 <li>事件$\epsilon$: 没有盒子里面有多于1个球</li>
 </ul>
 </li>
-<li><p>总共$n^m$中扔法, 其中没有一个盒子有多于1个球的扔法有$\binom{n}{m}m!$种, 因此</p>
-<script type="math/tex; mode=display">
+<li>总共$n^m$中扔法, 其中没有一个盒子有多于1个球的扔法有$\binom{n}{m}m!$种, 因此<script type="math/tex; mode=display">
 Pr[\epsilon]=\frac{\binom{n}{m}m!}{n^m}=\frac{n!}{n^m(n-m)!}=\prod_{k=1}^{m-1}(1-\frac{k}{n})</script></li>
-<li><p>另一解释: 一个学生按顺序来算</p>
-</li>
-<li><p>根据泰勒展开$e^{-k/n}\approx1-k/n$, 有</p>
-<script type="math/tex; mode=display">
+<li>另一解释: 一个学生按顺序来算</li>
+<li>根据泰勒展开$e^{-k/n}\approx1-k/n$, 有<script type="math/tex; mode=display">
 \begin{aligned}
 \prod_{k=1}^{m-1}(1-\frac{k}{n})&\approx\prod_{k=1}^{m-1}e^{-k/n}\\
 &=\exp(-\sum_{k=1}^{m-1}\frac{k}{n})\\
 &=e^{-m(m-1)/2n}\\
 &\approx e^{-m^2/2n}
 \end{aligned}</script></li>
-<li><p>取$m=\sqrt{2n\ln\frac{1}{\epsilon}}$, 有$Pr[\epsilon]\approx \epsilon$</p>
-</li>
-<li><p>实际上没有两人同一天生日的概率很小</p>
-</li>
+<li>取$m=\sqrt{2n\ln\frac{1}{\epsilon}}$, 有$Pr[\epsilon]\approx \epsilon$</li>
+<li>实际上没有两人同一天生日的概率很小</li>
 </ul>
 <h2 id="2-Coupon-Collector"><a href="#2-Coupon-Collector" class="headerlink" title="2 Coupon Collector"></a>2 Coupon Collector</h2><ul>
-<li><p>问题: $n$种票, 随机获取. 多少次才能集齐</p>
-<ul>
+<li>问题: $n$种票, 随机获取. 多少次才能集齐<ul>
 <li>等价于: 随机扔球进$n$个盒子, 扔多少个才能没有盒子是空的</li>
 </ul>
 </li>
-<li><p>记录扔的次数为$X$, 则$\mathbb E[X]=nH(x)$, $H(x)$是第$n$个调和数</p>
-<p>证明: </p>
-<ul>
-<li><p>记恰好有$i-1$个非空盒子时候, 再扔一个球进非空盒子需要的球数为$X_i$, $X=\sum_{i=1}^nX_i$</p>
-</li>
-<li><p>恰好有$i-1$个非空盒子时候, 再扔一个球进非空盒子的概率是$p_i=1-\frac{i-1}{n}$</p>
-</li>
-<li><p>$X_i$服从几何分布, $Pr[X_i=k]=(1-p_i)^{k-1}p_i$, $\mathbb E[X_i]=\frac{1}{p_i}=\frac{n}{n-i+1}$</p>
-</li>
+<li>记录扔的次数为$X$, 则$\mathbb E[X]=nH(x)$, $H(x)$是第$n$个调和数<br>证明: <ul>
+<li>记恰好有$i-1$个非空盒子时候, 再扔一个球进非空盒子需要的球数为$X_i$, $X=\sum_{i=1}^nX_i$</li>
+<li>恰好有$i-1$个非空盒子时候, 再扔一个球进非空盒子的概率是$p_i=1-\frac{i-1}{n}$</li>
+<li>$X_i$服从几何分布, $Pr[X_i=k]=(1-p_i)^{k-1}p_i$, $\mathbb E[X_i]=\frac{1}{p_i}=\frac{n}{n-i+1}$</li>
 <li><script type="math/tex; mode=display">
 \begin{aligned}
 \mathbb E[X]&=\mathbb E[\sum_{i=1}^n X_i]\\
@@ -351,32 +339,21 @@ Pr[\epsilon]=\frac{\binom{n}{m}m!}{n^m}=\frac{n!}{n^m(n-m)!}=\prod_{k=1}^{m-1}(1
 &= n\sum_{i=1}^n\frac{1}{i}\\
 &=nH(n)
 \end{aligned}</script></li>
-<li><p>$H(n)=\ln n+O(1)$, 因此$\mathbb E[X]=n\ln n+O(n)$</p>
-</li>
+<li>$H(n)=\ln n+O(1)$, 因此$\mathbb E[X]=n\ln n+O(n)$</li>
 </ul>
 </li>
-<li><p>对于任意$c&gt;0$, $Pr[X\ge n\ln n+cn]&lt;e^{-c}$</p>
-<p>证明</p>
-<ul>
-<li><p>对于任意盒子$i$, 在扔了$n\ln n+cn$个球之后为空的概率为</p>
-<p>$(1-\frac{1}{n})^{n\ln n+cn}&lt;e^{-(\ln n + c)}=\frac{1}{ne^c}$</p>
-</li>
-<li><p>$Pr[X\ge n\ln n+cn]&lt;n\frac{1}{ne^c}=e^{-c}$</p>
-</li>
+<li>对于任意$c&gt;0$, $Pr[X\ge n\ln n+cn]&lt;e^{-c}$<br>证明<ul>
+<li>对于任意盒子$i$, 在扔了$n\ln n+cn$个球之后为空的概率为<br>$(1-\frac{1}{n})^{n\ln n+cn}&lt;e^{-(\ln n + c)}=\frac{1}{ne^c}$</li>
+<li>$Pr[X\ge n\ln n+cn]&lt;n\frac{1}{ne^c}=e^{-c}$</li>
 </ul>
 </li>
 </ul>
 <h2 id="3-Occupancy-Problem"><a href="#3-Occupancy-Problem" class="headerlink" title="3 Occupancy Problem"></a>3 Occupancy Problem</h2><ul>
-<li><p>考虑盒子的装载量, 显然$\mathbb E[X_i]=m/n$</p>
-</li>
-<li><p>因此$\sum_{i=1}^n\mathbb E[X_i]=\mathbb E[\sum_{i=1}^n X_i]=\mathbb E[m]=m$</p>
-</li>
-<li><p>下面考虑最大装载量$\max_{1\le i\le n}X_i$: </p>
-<script type="math/tex; mode=display">
-Pr[\max_{1\le i\le n} X_i\ge \frac{3\ln n}{\ln\ln n}]<\frac{1}{n}</script><p>证明:</p>
-<ul>
-<li><p>对于任意$M$个球, 全都扔进盒子1的概率为$(1/n)^M$, 而$M$个球的选择有$\binom{n}{m}$种</p>
-<script type="math/tex; mode=display">
+<li>考虑盒子的装载量, 显然$\mathbb E[X_i]=m/n$</li>
+<li>因此$\sum_{i=1}^n\mathbb E[X_i]=\mathbb E[\sum_{i=1}^n X_i]=\mathbb E[m]=m$</li>
+<li>下面考虑最大装载量$\max_{1\le i\le n}X_i$: <script type="math/tex; mode=display">
+Pr[\max_{1\le i\le n} X_i\ge \frac{3\ln n}{\ln\ln n}]<\frac{1}{n}</script>证明:<ul>
+<li>对于任意$M$个球, 全都扔进盒子1的概率为$(1/n)^M$, 而$M$个球的选择有$\binom{n}{m}$种<script type="math/tex; mode=display">
 \begin{aligned}
 Pr[X_1\ge M]&\le \binom{n}{m}\left(\frac{1}{n}\right)^M\\
 &=\frac{n!}{M!(n-M)!n^M}\\
@@ -384,8 +361,7 @@ Pr[X_1\ge M]&\le \binom{n}{m}\left(\frac{1}{n}\right)^M\\
 &=\frac{1}{M!}\cdot \prod_{i=0}^{M-1}(1-i/n)\\
 &\le \frac{1}{M!}\\
 &\le\left(\frac{e}{M}\right)^M
-\end{aligned}</script><p>注意这里第一步为$\le$是因为后面的计算方法有计算重复的, 最后一步是因为斯特林近似$M!\approx\sqrt{2\pi M}\left(\frac{M}{e}\right)^M$</p>
-</li>
+\end{aligned}</script>注意这里第一步为$\le$是因为后面的计算方法有计算重复的, 最后一步是因为斯特林近似$M!\approx\sqrt{2\pi M}\left(\frac{M}{e}\right)^M$</li>
 <li><script type="math/tex; mode=display">
 \begin{aligned}
 Pr[\max_{1\le i\le n}X_i\ge M]&=Pr[(X_1\ge M)\lor(X_2\ge M)\lor\cdots\lor(X_n\ge M)]\\
@@ -398,12 +374,10 @@ Pr[\max_{1\le i\le n}X_i\ge M]&=Pr[(X_1\ge M)\lor(X_2\ge M)\lor\cdots\lor(X_n\ge
 &\le n \exp(-2\ln n)\\
 &=n\cdot\frac{1}{n^2}\\
 &=\frac{1}{n}
-\end{aligned}</script><p>注意这里倒数第二步的那个$\le$我认为只有在$n$不小的时候成立</p>
-</li>
+\end{aligned}</script>注意这里倒数第二步的那个$\le$我认为只有在$n$不小的时候成立</li>
 </ul>
 </li>
-<li><p>对于$m=\Omega(n\log n)$, 有大概率最大装载量为$O(m/n)$</p>
-</li>
+<li>对于$m=\Omega(n\log n)$, 有大概率最大装载量为$O(m/n)$</li>
 </ul>
 
       

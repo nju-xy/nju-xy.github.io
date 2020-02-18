@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="XY&#39;s blog">
 <meta property="og:description" content="最小割和最大割1 最小割1.1 Karger’s Contraction algorithmContraction操作: $Contract(G, uv)$表示将图G中点u和v合并, uv之间的边删除 RandomContract算法RandomContract算法:  while |V| &amp;gt; 2 do  随机选择边$uv\in E$ $G=Contract(G, uv)$  return">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-08T14:00:19.250Z">
+<meta property="og:updated_time" content="2020-02-18T08:53:14.865Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高级算法之最小割和最大割">
 <meta name="twitter:description" content="最小割和最大割1 最小割1.1 Karger’s Contraction algorithmContraction操作: $Contract(G, uv)$表示将图G中点u和v合并, uv之间的边删除 RandomContract算法RandomContract算法:  while |V| &amp;gt; 2 do  随机选择边$uv\in E$ $G=Contract(G, uv)$  return">
@@ -325,15 +325,12 @@
 </div>
 <p>证明要点:</p>
 <ul>
-<li><p>C为G的最小割, $e\not\in C$, 则C是$G’=Contract(G,e)$的最小割</p>
-<ul>
+<li>C为G的最小割, $e\not\in C$, 则C是$G’=Contract(G,e)$的最小割<ul>
 <li>因为G’中的割都是G中的割, 且C在G’中”存活”, 所以C是G’的最小割</li>
 </ul>
 </li>
-<li><p>C被RandomContract返回当且仅当对于任意$i=1,2,…,n-2, e_i\not\in C$</p>
-</li>
-<li><p>根据链法则, $p_C$转化为$\Pi_{i=1}^n Pr[e_i\not\in C|\forall  j &lt; i, e_j\not\in C]$</p>
-</li>
+<li>C被RandomContract返回当且仅当对于任意$i=1,2,…,n-2, e_i\not\in C$</li>
+<li>根据链法则, $p_C$转化为$\Pi_{i=1}^n Pr[e_i\not\in C|\forall  j &lt; i, e_j\not\in C]$</li>
 <li>证明$|E|\ge \frac{|V||C|}{2}$<ul>
 <li>(多重)图中的最小度一定大于等于最小割$|C|$, 因为最小度条边一定能构成一个割</li>
 <li>$2|E|=\sum_v d_v\ge |V|\cdot d_\min\ge |V|\cdot|C|$</li>
@@ -393,13 +390,11 @@
 </ul>
 <h3 id="2-1-Greedy-algorithm"><a href="#2-1-Greedy-algorithm" class="headerlink" title="2.1 Greedy algorithm"></a>2.1 Greedy algorithm</h3><h4 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法:"></a>贪心算法:</h4><ul>
 <li>初始$S=T=\emptyset$</li>
-<li><p>for i = 1, 2, …, n</p>
-<ul>
+<li>for i = 1, 2, …, n<ul>
 <li>$v_i$加入S或者T, 以最大化当前的$|E(S, T)|$</li>
 </ul>
 </li>
-<li><p>多项式时间</p>
-</li>
+<li>多项式时间</li>
 </ul>
 <h4 id="近似度分析"><a href="#近似度分析" class="headerlink" title="近似度分析"></a>近似度分析</h4><ul>
 <li>$OPT_G$上界为|E|</li>
@@ -415,8 +410,7 @@
 <li>近似比为0.5</li>
 </ul>
 <h3 id="2-2-Derandomazation-by-conditional-expectation"><a href="#2-2-Derandomazation-by-conditional-expectation" class="headerlink" title="2.2 Derandomazation by conditional expectation"></a>2.2 Derandomazation by conditional expectation</h3><ul>
-<li><p>随机割:</p>
-<ul>
+<li>随机割:<ul>
 <li>用$X_v$为0或1表示$v$属于S还是T</li>
 <li>$\mathbb E[|E(S,T)|]=\sum_{uv\in E}\mathbb E[I[X_u\neq X_v]] = \frac{|E|}{2}\ge \frac{OPT_G}{2}$</li>
 <li>因此至少有一组分割满足$E(S,T)\ge\frac{OPT_G}{2}$</li>
@@ -424,15 +418,11 @@
 </li>
 <li><p>条件概率去除随机化:</p>
 <ul>
-<li><p>可以作一棵决策树, 第i层表示$v_i$的选择</p>
-</li>
-<li><p>对于$x_{v_1}$, 因为$\mathbb E[E(S, T)]=\frac{1}{2}\mathbb E[E(S, T)|x_{v_1}=0]+\frac{1}{2}\mathbb E[E(S, T)|x_{v_1}=1]$, 所以存在$x_1\in\{0,1\}$, 满足$\mathbb E[E(S, T)|x_{v_1}=x_1]\ge \mathbb E[E(S,T)]$</p>
-</li>
-<li><p>同理存在一系列$x_i$满足</p>
-<script type="math/tex; mode=display">
+<li>可以作一棵决策树, 第i层表示$v_i$的选择</li>
+<li>对于$x_{v_1}$, 因为$\mathbb E[E(S, T)]=\frac{1}{2}\mathbb E[E(S, T)|x_{v_1}=0]+\frac{1}{2}\mathbb E[E(S, T)|x_{v_1}=1]$, 所以存在$x_1\in\{0,1\}$, 满足$\mathbb E[E(S, T)|x_{v_1}=x_1]\ge \mathbb E[E(S,T)]$</li>
+<li>同理存在一系列$x_i$满足<script type="math/tex; mode=display">
 \mathbb E[E(S, T)|x_{v_1}=x_1, x_{v_2}=x_2, ..., x_{v_i}=x_i]\ge \mathbb E[E(S,T)|x_{v_1}=x_1, x_{v_2}=x_2, ..., x_{v_{i-1}}=x_{i-1}]</script></li>
-<li><p>综上存在$x_1, x_2, …, x_n$的01序列使得$\mathbb E[E(S, T)|x_{v_1}=x_1, x_{v_2}=x_2, …, x_{v_n}=x_n]\ge \mathbb E[E(S, T)|]$</p>
-</li>
+<li>综上存在$x_1, x_2, …, x_n$的01序列使得$\mathbb E[E(S, T)|x_{v_1}=x_1, x_{v_2}=x_2, …, x_{v_n}=x_n]\ge \mathbb E[E(S, T)|]$</li>
 </ul>
 </li>
 <li><p>也就是存在$\hat S, \hat T$满足$\mathbb E[\hat S, \hat T]\ge \frac{OPT_G}{2}$</p>
@@ -447,25 +437,18 @@
 <li>实际上算法和上面的贪心完全一致</li>
 </ul>
 <h3 id="2-3-Derandomazation-by-pairwise-independence"><a href="#2-3-Derandomazation-by-pairwise-independence" class="headerlink" title="2.3 Derandomazation by pairwise independence"></a>2.3 Derandomazation by pairwise independence</h3><ul>
-<li><p>注意上面算法实际上只要求成对独立, 因此可以优化</p>
-</li>
-<li><p>用$Y_v$表示v属于S还是T</p>
-</li>
-<li><p>定理:</p>
-<ul>
+<li>注意上面算法实际上只要求成对独立, 因此可以优化</li>
+<li>用$Y_v$表示v属于S还是T</li>
+<li>定理:<ul>
 <li>01随机变量$X_1, X_2, …, X_k$</li>
 <li>$S_1, S_2, …, S_{2^k-1}\subseteq \{1,2,…,k\}$为$\{1,2,…,k\}$的非空子集的枚举</li>
 <li>对任意i, $Y_i=\oplus_{j\in S_i} X_j$</li>
 <li>$Y_1, Y_2,…,Y_{2^k-1}$就是成对独立均匀随机位</li>
 </ul>
 </li>
-<li><p>如果$Y_v$是按照上面方式构造, $k=\lceil\log(n+1)\rceil$</p>
-<p>有$\mathbb E[|E(S,T)|]=\sum_{uv\in E} Pr[Y_u\neq Y_v=|E|/2$</p>
-</li>
-<li><p>因此存在S, T满足$|E(S,T)|\ge |E|/2\ge OPT/2$</p>
-</li>
-<li><p>搜索空间降低为$2^k-1=O(n^2)$</p>
-</li>
+<li>如果$Y_v$是按照上面方式构造, $k=\lceil\log(n+1)\rceil$<br>有$\mathbb E[|E(S,T)|]=\sum_{uv\in E} Pr[Y_u\neq Y_v=|E|/2$</li>
+<li>因此存在S, T满足$|E(S,T)|\ge |E|/2\ge OPT/2$</li>
+<li>搜索空间降低为$2^k-1=O(n^2)$</li>
 </ul>
 <h4 id="算法-1"><a href="#算法-1" class="headerlink" title="算法"></a>算法</h4><ul>
 <li>$k=\lceil\log(n+1)\rceil$</li>

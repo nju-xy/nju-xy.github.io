@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Hashing and Sketching1 不同元素的个数问题: 输入一系列(未必不同)的元素$x_1,x_2\cdots,x_n\in \Omega$, 输出不同元素的个数$z=|\{x_1,x_2,\cdots,x_n\}|$  通常算法需要维护字典结构, 需要至少$O(n)$空间, 现在想要更小的空间复杂度 $(\epsilon,\delta)$estimator:若$Pr[(1-\eps">
+<meta name="description" content="Lovász Local LemmaCSP见上一个笔记末尾. k-SAT问题: 给定一个$k-CNF$公式$\phi$, 判定是否可满足CNF:  $n$个布尔变量: $x_1,\cdots,x_n\in\{\text{true, false}\}$ $m$个从句: $C_1\land C_2\land\cdots\land C_m$. 每个从句形式为$C_i=l_{i_1}\lor l_{i_2">
 <meta name="keywords" content="高级算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="高级算法之哈希">
-<meta property="og:url" content="http://yoursite.com/2019/09/25/大三上/高级算法/高级算法之哈希/index.html">
+<meta property="og:title" content="高级算法之Lovász Local Lemma">
+<meta property="og:url" content="http://yoursite.com/2019/12/01/大三上/高级算法/高级算法之Lovász-Local-Lemma/index.html">
 <meta property="og:site_name" content="XY&#39;s blog">
-<meta property="og:description" content="Hashing and Sketching1 不同元素的个数问题: 输入一系列(未必不同)的元素$x_1,x_2\cdots,x_n\in \Omega$, 输出不同元素的个数$z=|\{x_1,x_2,\cdots,x_n\}|$  通常算法需要维护字典结构, 需要至少$O(n)$空间, 现在想要更小的空间复杂度 $(\epsilon,\delta)$estimator:若$Pr[(1-\eps">
+<meta property="og:description" content="Lovász Local LemmaCSP见上一个笔记末尾. k-SAT问题: 给定一个$k-CNF$公式$\phi$, 判定是否可满足CNF:  $n$个布尔变量: $x_1,\cdots,x_n\in\{\text{true, false}\}$ $m$个从句: $C_1\land C_2\land\cdots\land C_m$. 每个从句形式为$C_i=l_{i_1}\lor l_{i_2">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-02-18T08:50:48.458Z">
+<meta property="og:updated_time" content="2020-02-18T08:49:30.940Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="高级算法之哈希">
-<meta name="twitter:description" content="Hashing and Sketching1 不同元素的个数问题: 输入一系列(未必不同)的元素$x_1,x_2\cdots,x_n\in \Omega$, 输出不同元素的个数$z=|\{x_1,x_2,\cdots,x_n\}|$  通常算法需要维护字典结构, 需要至少$O(n)$空间, 现在想要更小的空间复杂度 $(\epsilon,\delta)$estimator:若$Pr[(1-\eps">
+<meta name="twitter:title" content="高级算法之Lovász Local Lemma">
+<meta name="twitter:description" content="Lovász Local LemmaCSP见上一个笔记末尾. k-SAT问题: 给定一个$k-CNF$公式$\phi$, 判定是否可满足CNF:  $n$个布尔变量: $x_1,\cdots,x_n\in\{\text{true, false}\}$ $m$个从句: $C_1\land C_2\land\cdots\land C_m$. 每个从句形式为$C_i=l_{i_1}\lor l_{i_2">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/25/大三上/高级算法/高级算法之哈希/">
+  <link rel="canonical" href="http://yoursite.com/2019/12/01/大三上/高级算法/高级算法之Lovász-Local-Lemma/">
 
 
 
 
 
-  <title>高级算法之哈希 | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>高级算法之Lovász Local Lemma | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/25/大三上/高级算法/高级算法之哈希/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/01/大三上/高级算法/高级算法之Lovász-Local-Lemma/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="XY">
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">高级算法之哈希</h1>
+          <h1 class="post-title" itemprop="name headline">高级算法之Lovász Local Lemma</h1>
         
 
         <div class="post-meta">
@@ -262,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-25T20:00:00+08:00">
-                2019-09-25
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-01T21:00:00+08:00">
+                2019-12-01
               </time>
             
 
@@ -300,111 +300,123 @@
       
 
       
-        <h1 id="Hashing-and-Sketching"><a href="#Hashing-and-Sketching" class="headerlink" title="Hashing and Sketching"></a>Hashing and Sketching</h1><h2 id="1-不同元素的个数"><a href="#1-不同元素的个数" class="headerlink" title="1 不同元素的个数"></a>1 不同元素的个数</h2><p>问题: 输入一系列(未必不同)的元素$x_1,x_2\cdots,x_n\in \Omega$, 输出不同元素的个数$z=|\{x_1,x_2,\cdots,x_n\}|$</p>
+        <h1 id="Lovasz-Local-Lemma"><a href="#Lovasz-Local-Lemma" class="headerlink" title="Lovász Local Lemma"></a>Lovász Local Lemma</h1><p>CSP见上一个笔记末尾.</p>
+<p>k-SAT问题: 给定一个$k-CNF$公式$\phi$, 判定是否可满足<br>CNF:</p>
 <ul>
-<li>通常算法需要维护字典结构, 需要至少$O(n)$空间, 现在想要更小的空间复杂度</li>
-<li>$(\epsilon,\delta)$estimator:<br>若$Pr[(1-\epsilon)z\le \hat Z\le (1+\epsilon)z]\ge 1-\delta$, 则$\hat Z$是$z$的$(\epsilon, \delta)$估计;<br>若$\mathbb E[\hat Z]=z$则为无偏估计.</li>
+<li>$n$个布尔变量: $x_1,\cdots,x_n\in\{\text{true, false}\}$</li>
+<li>$m$个从句: $C_1\land C_2\land\cdots\land C_m$.</li>
+<li>每个从句形式为$C_i=l_{i_1}\lor l_{i_2}\lor \cdots\lor l_{i_{k_i}}$</li>
+<li>每个字符$l_{i_j}\in \{x_s,\neg x_s\}$, $s\in\{1,2,\cdots, n\}$</li>
+<li>k-CNF: 每个从句恰好$k$个变量</li>
+<li>度$d$: 每个从句和$\le d$个从句相交(分享变量).</li>
+<li><strong>相变</strong>: 对于随机$k$-CNF, 其中从句数量为$m=\alpha n$, 随机CSP的满足性存在相变现象, 即$\alpha$超过某个值时, 可行解突然消失.</li>
 </ul>
-<h3 id="1-1-哈希估计器"><a href="#1-1-哈希估计器" class="headerlink" title="1.1 哈希估计器"></a>1.1 哈希估计器</h3><ul>
-<li><p>假设有理想的均匀随机哈希函数$h:\Omega \to [0,1]$</p>
-</li>
-<li><script type="math/tex; mode=display">
-\mathbb E[\min _{1\le i\le n}h(x_i)]=\frac{1}{z+1}</script><ul>
-<li>证明概要: 有$z$个均匀随机的哈希值, 将$[0,1]$分成$z+1$份, 根据对称性, 每个区间的长度期望相同, 因此最小的$h(x_i)$的期望就是$1/(z+1)$</li>
-</ul>
-</li>
-<li><p>这样估计太不稳定, 因为方差过大</p>
-</li>
-</ul>
-<h3 id="1-2-Flajolet-Martin算法"><a href="#1-2-Flajolet-Martin算法" class="headerlink" title="1.2 Flajolet-Martin算法"></a>1.2 Flajolet-Martin算法</h3><ul>
-<li>$h_1,h_2,\cdots,h_k: \Omega\to [0,1]$是k个均匀独立随机哈希函数</li>
-<li>扫描一遍所有$x$, 计算$Y_j=\min_{1\le i\le n}h_j(x_i)$, $j=1,2,\cdots,k$</li>
-<li>计算$Y_j$平均值$\bar Y$</li>
-<li>$\hat Z=\frac{1}{\bar Y}-1$</li>
-</ul>
-<h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><ul>
-<li>适合数据流模型, 只需要存$k$个值</li>
-<li>对于任意$\epsilon,\delta &lt; 1/2$, 若$k\ge \lceil \frac{4}{\epsilon^2\delta}\rceil$, 则$\hat Z$是$z$的$(\epsilon,\delta)$估计</li>
-<li>证明思路: <ul>
-<li>若$\bar Y$是$\frac{1}{1+z}$的$(\epsilon/2, \delta)$估计, 则$\hat Z$是$z$的$(\epsilon, \delta)$估计</li>
-<li>$\mathbb E[\bar Y] = \mathbb E[Y_j]=\frac{1}{z+1}$</li>
-<li>$Var[Y_j]\le \mathbb E[Y_j^2] = \frac{1}{(z+1)^2}$, 因此$Var[\bar Y]\le \frac{1}{k(z+1)^2}$</li>
-<li>根据切比雪夫不等式, $Pr[|\bar Y-\mathbb E[\bar Y|&gt;\frac{\epsilon/2}{z+1}]\le \frac{4}{\epsilon^2}(z+1)^2Var[\bar Y]\le \frac{4}{\epsilon^2k}$</li>
-<li>因此取$k\ge \lceil \frac{4}{\epsilon^2\delta}\rceil$即可</li>
+<h2 id="The-Lovasz-Sieve"><a href="#The-Lovasz-Sieve" class="headerlink" title="The Lovász Sieve"></a>The Lovász Sieve</h2><ul>
+<li><strong>k-SAT的Lovász Local Lemma</strong>:<br>如果$d\le 2^{k-2}$, 则$\phi$一定是可满足的.<ul>
+<li>可以通过概率法证明, 详见组合数学之LLL.</li>
 </ul>
 </li>
 </ul>
-<h3 id="1-3-均匀哈希假设UHA"><a href="#1-3-均匀哈希假设UHA" class="headerlink" title="1.3 均匀哈希假设UHA"></a>1.3 均匀哈希假设UHA</h3><ul>
-<li>均匀随机函数$h: [N]\to[M]$是可获得的, 并且计算高效</li>
-</ul>
-<h2 id="2-集合元素"><a href="#2-集合元素" class="headerlink" title="2 集合元素"></a>2 集合元素</h2><ul>
-<li>基础问题: 是否$x\in S$ ? (S的大小为n)</li>
-<li>数据的有损失的表达称为<strong>sketch</strong></li>
-</ul>
-<h3 id="2-1-Bloom-filter"><a href="#2-1-Bloom-filter" class="headerlink" title="2.1 Bloom filter"></a>2.1 Bloom filter</h3><ul>
-<li>$h_1,h_2,\cdots,h_k:\Omega\to[cn]$是独立的均匀随机哈希函数</li>
-<li>数据结构建立<ul>
-<li>初始化布尔数列$A$的所有$cn$个bits为0</li>
-<li>对于每一个$x\in S$, 令$A[h_i(x)]=1$, $1\le i\le k$</li>
-</ul>
-</li>
-<li>查询过程: <ul>
-<li>对于任意$x\in \Omega$, 如果对于所有$1\le i\le k$, $A[h_i(x)]=1$, 则回答”是”; 否则回答”否”.</li>
-</ul>
-</li>
-</ul>
-<h4 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h4><ul>
-<li>空间: $cn$ bits, 时间: $O(k)$</li>
-<li>没有假反例</li>
-<li><p>假正例: $x\not\in S$但是对所有$1\le i\le k$都有$A[h_i(x)]=0$ </p>
+<p>一般情况: </p>
 <ul>
-<li><script type="math/tex; mode=display">
-\begin{aligned}
-Pr[wrong ~ answer ~ 'yes'] = &Pr[\forall 1\le i\le k, A[h_i(x)=1]]\\
-&= Pr[A[h1(x)=1]]^k\\
-&= (1-Pr[A[h_1(x)]=0])^k\\
-&= (1-(1-\frac{1}{cn})^{kn})^k\\
-&\approx (1-e^{-k/c})^k
-\end{aligned}</script></li>
-<li><p>$k$取$c\ln 2$时结果为$(0.6185)^c$</p>
-</li>
+<li>$m$个坏事件$A_1,\cdots,A_m$, 每个$A_i$和除了$\le d$ 个坏事件以外的事件独立. 目标证明$\Pr[\land_{i=1}^m\overline{A_i}]&gt;0$</li>
+<li>可以用union bound或者容斥原理</li>
+<li>LLL: <ul>
+<li>$\forall i: \Pr[A_i]\le \frac{1}{4d}$则$\Pr[\land_{i=1}^m\overline{A_i}]&gt;0$.</li>
+<li>$\forall i: \Pr[A_i]\le \frac{1}{e(d+1)}$则$\Pr[\land_{i=1}^m\overline{A_i}]&gt;0$.</li>
+<li>非对称版本: 存在$a_1,\cdots,a_m\in [0,1)$, $\forall i:\Pr[A_i]\le a_i\prod_{j\sim i}(1-a_j)$, 则$\Pr[\land_{i=1}^m\overline{A_i}]&gt;\prod_{i=1}^m (1-a_i).$</li>
 </ul>
 </li>
 </ul>
-<h2 id="3-频率估计"><a href="#3-频率估计" class="headerlink" title="3 频率估计"></a>3 频率估计</h2><p>问题: 对于一个序列$x_1,x_2,\cdots,x_n\in \Omega$, 查询$x$出现的次数$f_x$.</p>
+<h2 id="Algorithmic-LLL"><a href="#Algorithmic-LLL" class="headerlink" title="Algorithmic LLL"></a>Algorithmic LLL</h2><p><strong>k-SAT的算法LLL</strong><br>存在$c&gt;0$, 如果$d\le 2^{k-c}$, 则满足限制的赋值大概率(w.h.p)可以再$O(n+km)$时间内找到.</p>
+<h3 id="Moser’s-Algorithm"><a href="#Moser’s-Algorithm" class="headerlink" title="Moser’s Algorithm"></a>Moser’s Algorithm</h3><p>输入: $\phi:$一个度为$d$的k-CNF, $m$从句, $n$变量</p>
+<p>函数$Solve(\phi)$:</p>
 <ul>
-<li>需要一个加法误差而不是乘法误差($Pr[|\hat f_x-f_x|\le \epsilon n]\ge 1-\delta$)</li>
-</ul>
-<h3 id="3-1-Count-min-sketch"><a href="#3-1-Count-min-sketch" class="headerlink" title="3.1 Count-min sketch"></a>3.1 Count-min sketch</h3><ul>
-<li>$h_1,h_2,\cdots,h_k:\Omega\to[m]$是独立的均匀随机哈希函数</li>
-<li>数据结构建立(一个$k\times m$的整数数列$CMS$)<ul>
-<li>初始化布尔数列$CMS$的所有元素为0</li>
-<li>对于每一个$x_i$, 令$CMS[j][h_j(x_i)]++$, $1\le j\le k$</li>
+<li>随机采样一个均匀赋值$X_1,\cdots,X_n$</li>
+<li>while 存在不满足的从句$C$:<ul>
+<li>$Fix(C)$<br>子函数$Fix(C)$:</li>
 </ul>
 </li>
-<li>查询过程: <ul>
-<li>对于任意$x\in \Omega$, 返回$\hat f_x=\min_{1\le j\le k}CMS[j][h_j(x)]$</li>
+<li>重随机$C$中的变量</li>
+<li>while 存在和$C$相交的(包含$C$自己)不满足的从句$D$<ul>
+<li>$Fix(D)$</li>
 </ul>
 </li>
 </ul>
-<h4 id="分析-2"><a href="#分析-2" class="headerlink" title="分析"></a>分析</h4><ul>
-<li>空间$O(km)$, 每次查询时间$O(k)$</li>
-<li>显然$CMS[j][h_j(x)]\ge f_x$, 因此$\hat f_x\ge f_x$</li>
-<li><script type="math/tex; mode=display">
-Pr[|\hat f_x -f_x|\ge \epsilon n]=Pr[\hat f_x-f_x\ge \epsilon n]=\prod_{j=1}^k
-Pr[CMS[j][h_j(x)]-f_x\ge \epsilon n]</script></li>
-<li>对于任意$x\in \Omega$和$1\le j\le k$, 有$\mathbb E[CMS[j][h_j(x)]]\le f_x+\frac{n}{m}$<script type="math/tex; mode=display">
-\begin{aligned}
-\mathbb E[CMS[j][h_j(x)]]
-&=f_x+\sum_{y\in\{x_1,x_2,\cdots,x_n\}\setminus \{x\}}f_yPr[h_j(y)=h_j(x)]\\
-&=f_x+\frac{1}{m}\sum_{y\in\{x_1,x_2,\cdots,x_n\}\setminus \{x\}}f_x\\
-&\le f_x+\frac{1}{m}\sum_{y\in\{x_1,x_2,\cdots,x_n\}}f_x\\
-&\le f_x+\frac{n}{m}
-\end{aligned}</script></li>
-<li>马尔科夫不等式得$Pr[CMS[j][h_j(x)]-f_x\ge \epsilon n]\le \frac{1}{\epsilon m}$</li>
-<li>综上, $Pr[|\hat f_x -f_x|\le \frac{1}{(\epsilon m)^k}$</li>
-<li>取$m=\lceil \frac{e}{\epsilon}\rceil$, $k=\lceil \ln \frac{1}{\delta}\rceil$, 则上述概率上界$\frac{1}{(\epsilon m)^k}\le \delta$</li>
+<p><strong>分析</strong>:</p>
+<ul>
+<li>一旦结束, 一定返回满足解</li>
+<li>最外层(Solve函数中): 一旦$Fix(C)$返回后, 在Solve函数中看, $C$一直被满足.</li>
+<li>Solve中每次调用$Fix(C)$的过程可以看做一个递归树, 递归树的总数$\le m$, 所有树中总共$T$个结点</li>
+<li>$T$: $Fix(C)$的总调用次数</li>
+<li>总复杂度: $n+kT$(按照总的随机数比特数来计算时间复杂度.)</li>
+<li>根据最终的赋值和所有的递归树, 可以完全复原$n+kT$个随机比特</li>
+<li>而根据$n+kT$个随机比特, 也可以编码所有的递归树和最终的赋值.</li>
+<li>最终的赋值: $n$ bits</li>
+<li>如果寻找不满足的从句的时候是按照字典序的, 那么所有的递归树: $m+T(\log_2 d+O(1))$ bits(每棵树的根结点要$1$比特, 只要存有没有在最外层函数中被Fix过就行, 树中每个结点$O(1)$比特记录栈操作以还原树的结构, $\log_2 d$比特记录结点身份(因为一个结点至多d+1个邻居(含自己), 记录是第几个邻居即可))</li>
+<li>而根据信息论中的Incompressibility Theorem, $N$个均匀随机位不能用少于$N-l$比特以至少$1-O(2^{-l})$的概率被编码.</li>
+<li>所以w.h.p: (左边减去的$\log_2n$是对应w.h.p)<script type="math/tex; mode=display">
+n+kT-\log_2 n\le m+T(\log_2 d+O(1))+n</script></li>
+<li>如果存在$c$满足$d\le 2^{k-c}$, 代入得$T\le m+\log_2 n$. </li>
+<li>所以w.h.p可以在$O(n+k(m+\log n))$内找到满足的解. </li>
+<li>k-SAT的算法LLL得证.<br>问题:</li>
+<li>如果$T$是无限的呢? <ul>
+<li>固定随机数比特数$t=2(m+\log n)$, 一旦用完, 算法停止(可能并不满足)</li>
+<li>仍然是对固定个数的随机比特的有效的编码</li>
 </ul>
+</li>
+</ul>
+<h2 id="非对称版本的LLL"><a href="#非对称版本的LLL" class="headerlink" title="非对称版本的LLL"></a>非对称版本的LLL</h2><p>非对称版本的LLL:<br>存在$a_1,\cdots,a_m\in [0,1)$, $\forall i:\Pr[A_i]\le a_i\prod_{j\sim i}(1-a_j)$, 则$\Pr[\land_{i=1}^m\overline{A_i}]&gt;\prod_{i=1}^m (1-a_i).$</p>
+<ul>
+<li>$n$ 个完全独立的随机变量$X_1,\cdots,X_n$</li>
+<li>$m$ 个坏事件: $A_1,\cdots,A_m$, 由$X_1,\cdots,X_n$决定</li>
+<li>vbl($A_i$): 定义$A_i$的变量集</li>
+<li>邻居$\Gamma (A_i)\triangleq \{A_j|j\ne i\land vbl(A_j)\cap vbl(A_i)\ne\emptyset\}$</li>
+</ul>
+<p>存在$a_1,\cdots,a_m\in [0,1)$, $\forall i:\Pr[A_i]\le a_i\prod_{A_j\in \Gamma(A_i)}(1-a_j)$, 则存在赋值$X_1,\cdots,X_n$, 避免了所有坏事件$A_1,\cdots,A_n$<br>寻找这样的$X_1,\cdots,X_n$的算法为<strong>Moser-Tardos Algorithm</strong></p>
+<h3 id="Moser-Tardos-Algorithm"><a href="#Moser-Tardos-Algorithm" class="headerlink" title="Moser-Tardos Algorithm"></a>Moser-Tardos Algorithm</h3><p>算法如下:</p>
+<ul>
+<li>随机采样所有的$X_1,\cdots,X_n$的一组赋值$x_1,\cdots,x_n\in\{\text{true, false}\}$;</li>
+<li>while $\exists$ 发生了的坏事件$A_i$<ul>
+<li>随机采样所有的$X_j\in vbl(A_i)$</li>
+</ul>
+</li>
+</ul>
+<p>假设: 下列事件可以高效完成:</p>
+<ul>
+<li>独立随机此采样$X_j$</li>
+<li>检测在当前的$X_1,\cdots,X_n$下$A_i$是否发生</li>
+</ul>
+<p><strong>Lovász Local Lemma (Moser-Tardos 2010):</strong></p>
+<p>存在$a_1,\cdots,a_m\in [0,1)$, $\forall i:\Pr[A_i]\le a_i\prod_{A_j\in \Gamma(A_i)}(1-a_j)$, 则期望上可以在$\sum_{i=1}^m \frac{a_i}{1-a_i}$次重采样内返回满足的赋值.</p>
+<p>若$d\le 2^{k-2}$ 则 可以在$O(n+km/d)$的期望时间内找到满足的赋值</p>
+<p><strong>算法分析</strong>:</p>
+<p>更换表述形式:</p>
+<p>Moser-Tardos Algorithm:</p>
+<ul>
+<li>sample all $X\in \mathscr X$</li>
+<li>while $\exists$ an occcurring event $A\in\mathscr A$:<ul>
+<li>resample all $X\in vbl(A)$</li>
+</ul>
+</li>
+</ul>
+<p>定义运行日志execution log $\Lambda$: </p>
+<ul>
+<li>$\Lambda_1,\Lambda_2,\cdots\in\mathscr A$, 为重采样时间的随机序列</li>
+</ul>
+<p>定义witness tree证据树: </p>
+<ul>
+<li>证据树是一个有标记的树, 每个结点$v$标记为一个事件$A_v\in\mathscr A$, 姐妹一定是不同的标记</li>
+<li>根据运行日志$\Lambda $构造证据树$T(\Lambda, t)$:<ul>
+<li>初始, $T$是一个根结点, 标记为$\Lambda_t$:</li>
+<li>for $i=t-1,t-2,\cdots,1$:<ul>
+<li>如果存在标记为$A_v\in\Gamma^+(\Lambda_i)$的结点$v\in T$, </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>证明看讲义吧.</p>
 
       
     </div>
@@ -435,8 +447,8 @@ Pr[CMS[j][h_j(x)]-f_x\ge \epsilon n]</script></li>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/18/大三上/组合数学/组合数学之生成函数/" rel="next" title="组合数学之生成函数">
-                <i class="fa fa-chevron-left"></i> 组合数学之生成函数
+              <a href="/2019/12/01/大三上/高级算法/高级算法之半正定规划/" rel="next" title="高级算法之Semidefinite Programs">
+                <i class="fa fa-chevron-left"></i> 高级算法之Semidefinite Programs
               </a>
             
           </div>
@@ -445,8 +457,8 @@ Pr[CMS[j][h_j(x)]-f_x\ge \epsilon n]</script></li>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/25/大三上/组合数学/组合数学之容斥原理/" rel="prev" title="组合数学之容斥原理">
-                组合数学之容斥原理 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/12/04/大三上/计算机网络/计网Ch4网络层:数据平面/" rel="prev" title="计算机网络之Ch4网络层:数据平面">
+                计算机网络之Ch4网络层:数据平面 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -570,7 +582,7 @@ Pr[CMS[j][h_j(x)]-f_x\ge \epsilon n]</script></li>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hashing-and-Sketching"><span class="nav-number">1.</span> <span class="nav-text">Hashing and Sketching</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-不同元素的个数"><span class="nav-number">1.1.</span> <span class="nav-text">1 不同元素的个数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-哈希估计器"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 哈希估计器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Flajolet-Martin算法"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 Flajolet-Martin算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分析"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-均匀哈希假设UHA"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 均匀哈希假设UHA</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-集合元素"><span class="nav-number">1.2.</span> <span class="nav-text">2 集合元素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Bloom-filter"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 Bloom filter</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分析-1"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">分析</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-频率估计"><span class="nav-number">1.3.</span> <span class="nav-text">3 频率估计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Count-min-sketch"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 Count-min sketch</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分析-2"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">分析</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Lovasz-Local-Lemma"><span class="nav-number">1.</span> <span class="nav-text">Lovász Local Lemma</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#The-Lovasz-Sieve"><span class="nav-number">1.1.</span> <span class="nav-text">The Lovász Sieve</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Algorithmic-LLL"><span class="nav-number">1.2.</span> <span class="nav-text">Algorithmic LLL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Moser’s-Algorithm"><span class="nav-number">1.2.1.</span> <span class="nav-text">Moser’s Algorithm</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非对称版本的LLL"><span class="nav-number">1.3.</span> <span class="nav-text">非对称版本的LLL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Moser-Tardos-Algorithm"><span class="nav-number">1.3.1.</span> <span class="nav-text">Moser-Tardos Algorithm</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

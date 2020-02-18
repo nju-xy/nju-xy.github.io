@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="XY&#39;s blog">
 <meta property="og:description" content="降维Dimension Reduction1 Metric Embedding失真distortion: 对于$\alpha \ge 1$, 对于任意$x,y\in X$, 有  \frac{1}{\alpha}\cdot d(x,y)\le d(\phi(x),\phi(y))\le \alpha\cdot d(x,y)2 The Johnson-Lindenstrauss Theorem降维D">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-10T02:34:00.053Z">
+<meta property="og:updated_time" content="2020-02-18T08:56:25.860Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高级算法之降维">
 <meta name="twitter:description" content="降维Dimension Reduction1 Metric Embedding失真distortion: 对于$\alpha \ge 1$, 对于任意$x,y\in X$, 有  \frac{1}{\alpha}\cdot d(x,y)\le d(\phi(x),\phi(y))\le \alpha\cdot d(x,y)2 The Johnson-Lindenstrauss Theorem降维D">
@@ -308,45 +308,27 @@
 <li>输入: $n$点: $y_1,y_2,\cdots,y_n\in \mathbb R^k$满足$\forall i,j: (1-\epsilon)\Vert x_i-x_j \Vert\le\Vert y_i-y_j \Vert\le (1+\epsilon)\Vert x_i-x_j \Vert$</li>
 </ul>
 <p><strong>The Johnson-Lindenstrauss Theorem</strong>:</p>
-<p>$\forall 0&lt;\epsilon &lt;1$, 对于任意$\mathbb R^d$中$n$点集合$S$, 存在映射$\phi :\mathbb R^d\to \mathbb R^k$, $k=O(\epsilon^{-2}\log n)$, 满足$\forall x,y\in S:$ </p>
-<p>$(1-\epsilon)\Vert x-y \Vert_2^2\le\Vert \phi(x)-\phi(y) \Vert_2^2\le (1+\epsilon)\Vert x-y \Vert_2^2$</p>
+<p>$\forall 0&lt;\epsilon &lt;1$, 对于任意$\mathbb R^d$中$n$点集合$S$, 存在映射$\phi :\mathbb R^d\to \mathbb R^k$, $k=O(\epsilon^{-2}\log n)$, 满足$\forall x,y\in S:$<br>$(1-\epsilon)\Vert x-y \Vert_2^2\le\Vert \phi(x)-\phi(y) \Vert_2^2\le (1+\epsilon)\Vert x-y \Vert_2^2$</p>
 <p><strong>证明</strong>: 概率法: 随机$k\times d$矩阵$A$:</p>
 <script type="math/tex; mode=display">
-Pr[\forall x,y\in S:(1-\epsilon)\Vert x-y\Vert_2^2\le\Vert Ax-Ay\Vert_2^2\le (1+\epsilon)\Vert x-y\Vert_2^2]\ge 1-O(\frac{1}{n})</script><p>具体如下:</p>
-<h3 id="2-1-JLT-via-Gaussian-matrix"><a href="#2-1-JLT-via-Gaussian-matrix" class="headerlink" title="2.1 JLT via Gaussian matrix"></a>2.1 JLT via Gaussian matrix</h3><p>$A$: 所有元素服从正态分布$N(0,1/k)$.</p>
-<p>证明如下:</p>
-<p>$Pr[\forall x,y\in S:(1-\epsilon)\Vert x-y\Vert_2^2\le\Vert Ax-Ay\Vert_2^2\le (1+\epsilon)\Vert x-y\Vert_2^2]\ge 1-O(\frac{1}{n})$</p>
-<p>即</p>
+Pr[\forall x,y\in S:(1-\epsilon)\Vert x-y\Vert_2^2\le\Vert Ax-Ay\Vert_2^2\le (1+\epsilon)\Vert x-y\Vert_2^2]\ge 1-O(\frac{1}{n})</script><h3 id="2-1-JLT-via-Gaussian-matrix"><a href="#2-1-JLT-via-Gaussian-matrix" class="headerlink" title="2.1 JLT via Gaussian matrix"></a>2.1 JLT via Gaussian matrix</h3><p>$A$: 所有元素服从正态分布$N(0,1/k)$.</p>
+<p>证明如下:<br>$Pr[\forall x,y\in S:(1-\epsilon)\Vert x-y\Vert_2^2\le\Vert Ax-Ay\Vert_2^2\le (1+\epsilon)\Vert x-y\Vert_2^2]\ge 1-O(\frac{1}{n})$<br>即</p>
 <script type="math/tex; mode=display">
-\forall \text{ unit ventor } u\in \mathbb R^d: Pr[\vert\Vert Au\Vert_2^2-1\vert>\epsilon]<\frac{1}{n^3}</script><p>其中$|\Vert Au\Vert^2-1|&gt;\epsilon$源自$1-\epsilon\le \Vert A\frac{(x-y)}{\Vert x-y\Vert}\Vert\le 1+\epsilon$</p>
-<p>而$\frac{1}{n^3}$是因为有$O(n^2)$对$x,y\in S$, 也就是有$O(n^2 )$个独立的$u$, 需要w.h.p全部满足.</p>
-<p>因为$A_{ij}\sim \mathcal N(0,\frac{1}{k})$, 所以</p>
+\forall \text{ unit ventor } u\in \mathbb R^d: Pr[\vert\Vert Au\Vert_2^2-1\vert>\epsilon]<\frac{1}{n^3}</script><p>其中$|\Vert Au\Vert^2-1|&gt;\epsilon$源自$1-\epsilon\le \Vert A\frac{(x-y)}{\Vert x-y\Vert}\Vert\le 1+\epsilon$<br>而$\frac{1}{n^3}$是因为有$O(n^2)$对$x,y\in S$, 也就是有$O(n^2 )$个独立的$u$, 需要w.h.p全部满足.<br>因为$A_{ij}\sim \mathcal N(0,\frac{1}{k})$, 所以</p>
 <script type="math/tex; mode=display">
-Y_i=(Au)_i=(\sum_{j=1}^d A_{ij}u_j)\sim \mathcal N(0,\frac{\sum_{j=1}^d u_j^2}{k})=\mathcal N(0,\frac{1}{k})</script><p>所以 $\Vert Au\Vert_2^2=\sum_{i=1}^k(Au)_i^2=\sum_{i=1}^k Y_i^2$满足$\chi^2$分布.</p>
-<p>所以</p>
+Y_i=(Au)_i=(\sum_{j=1}^d A_{ij}u_j)\sim \mathcal N(0,\frac{\sum_{j=1}^d u_j^2}{k})=\mathcal N(0,\frac{1}{k})</script><p>所以 $\Vert Au\Vert_2^2=\sum_{i=1}^k(Au)_i^2=\sum_{i=1}^k Y_i^2$满足$\chi^2$分布.<br>所以</p>
 <script type="math/tex; mode=display">
 \mathbb E[Y_i^2]=Var[Y_i]+\mathbb E[Y_i]^2=\frac{1}{k}</script><p>因此</p>
 <script type="math/tex; mode=display">
 \mathbb E[\Vert Au\Vert_2 ^2]=\sum_{i=1}^k\mathbb E[Y_i^2]=1</script><h3 id="2-2-Concentration-of-chi-2-distribution"><a href="#2-2-Concentration-of-chi-2-distribution" class="headerlink" title="2.2 Concentration of $\chi ^{2}$-distribution"></a>2.2 Concentration of $\chi ^{2}$-distribution</h3><p><strong>Chernoff bound for $\chi ^{2}$-distribution</strong>:</p>
 <p>对于任意正的$\epsilon,\delta &lt;1/2$, 存在正整数$k=O(\epsilon^{-2}\log \frac{1}{\delta})$, 满足对于独立同分布的随机变量$Y_1,\cdots,Y_k\sim \mathcal N(0,1/k)$, </p>
 <script type="math/tex; mode=display">
-Pr[\vert\sum_{i=1}^k Y_i^2-1\vert >\epsilon]<\delta</script><p>证明见slides.</p>
-<p>根据该不等式, 就证明了<strong>The Johnson-Lindenstrauss Theorem</strong>.</p>
-<h2 id="3-Nearest-Neighbor-Search-NNS"><a href="#3-Nearest-Neighbor-Search-NNS" class="headerlink" title="3 Nearest Neighbor Search (NNS)"></a>3 Nearest Neighbor Search (NNS)</h2><h3 id="NNS"><a href="#NNS" class="headerlink" title="NNS"></a>NNS</h3><p>数据: $n$ 个点  $y_1,\cdots,y_n\in X$ </p>
-<p>询问: 点 $x\in X$</p>
-<p>找到离$x$最近的$y_i$</p>
-<h3 id="ANN"><a href="#ANN" class="headerlink" title="ANN"></a>ANN</h3><p>数据: $n$ 个点  $y_1,\cdots,y_n\in X$ </p>
-<p>询问: 点 $x\in X$</p>
-<p><strong>c-ANN</strong>(近似最近邻): 找到$y_i$满足$dist(x,y_i)\le c\cdot \min_{1\le j\le n}dist(x,y_i)$</p>
-<p><strong>(c,r)-ANN</strong>(近似近邻):</p>
-<p>如果存在$y_j$满足$dist(x,y_j)\le r$, 返回一个$y_i$满足$dist(x,y_i)\le c\cdot r$ ;</p>
-<p>如果任意$y_i$都有$dist(x,y_i)&gt;c\cdot r$, 返回’no’;</p>
-<p>否则返回上面两种中任意一个.</p>
+Pr[\vert\sum_{i=1}^k Y_i^2-1\vert >\epsilon]<\delta</script><p>证明见slides.<br>根据该不等式, 就证明了<strong>The Johnson-Lindenstrauss Theorem</strong>.</p>
+<h2 id="3-Nearest-Neighbor-Search-NNS"><a href="#3-Nearest-Neighbor-Search-NNS" class="headerlink" title="3 Nearest Neighbor Search (NNS)"></a>3 Nearest Neighbor Search (NNS)</h2><h3 id="NNS"><a href="#NNS" class="headerlink" title="NNS"></a>NNS</h3><p>数据: $n$ 个点  $y_1,\cdots,y_n\in X$<br>询问: 点 $x\in X$<br>找到离$x$最近的$y_i$</p>
+<h3 id="ANN"><a href="#ANN" class="headerlink" title="ANN"></a>ANN</h3><p>数据: $n$ 个点  $y_1,\cdots,y_n\in X$<br>询问: 点 $x\in X$<br><strong>c-ANN</strong>(近似最近邻): 找到$y_i$满足$dist(x,y_i)\le c\cdot \min_{1\le j\le n}dist(x,y_i)$<br><strong>(c,r)-ANN</strong>(近似近邻):<br>如果存在$y_j$满足$dist(x,y_j)\le r$, 返回一个$y_i$满足$dist(x,y_i)\le c\cdot r$ ;<br>如果任意$y_i$都有$dist(x,y_i)&gt;c\cdot r$, 返回’no’;<br>否则返回上面两种中任意一个.</p>
 <h3 id="c-ANN和-c-r-ANN两者关系"><a href="#c-ANN和-c-r-ANN两者关系" class="headerlink" title="c-ANN和(c,r)-ANN两者关系:"></a>c-ANN和(c,r)-ANN两者关系:</h3><ul>
-<li><p>令$R=\frac{D_{max}}{D_{min}}$. $D_{max}=\max_{1\le i&lt;j\le n}dist(y_i,y_j)$, $D_{min}$同理.</p>
-</li>
-<li><p>如果$\forall r, (\sqrt c,r)$-ANN可以在$s$空间$t$询问时间内解决, 则$c$-ANN可以在$O(s\log_c R)$空间$O(t\log\log_c R)$询问时间内解决</p>
-</li>
+<li>令$R=\frac{D_{max}}{D_{min}}$. $D_{max}=\max_{1\le i&lt;j\le n}dist(y_i,y_j)$, $D_{min}$同理.</li>
+<li>如果$\forall r, (\sqrt c,r)$-ANN可以在$s$空间$t$询问时间内解决, 则$c$-ANN可以在$O(s\log_c R)$空间$O(t\log\log_c R)$询问时间内解决</li>
 <li>方法: 打表($\log_c R$项)+二分<ul>
 <li>每次查询的$r$: $r_0=D_{min}$, $r_k=c^{k/2}r_0$</li>
 <li>找到$i$满足刚好$i$返回’no’, $i+1$非’no’:<ul>
@@ -357,36 +339,24 @@ Pr[\vert\sum_{i=1}^k Y_i^2-1\vert >\epsilon]<\delta</script><p>证明见slides.<
 </ul>
 </li>
 </ul>
-<h3 id="c-r-ANN算法"><a href="#c-r-ANN算法" class="headerlink" title="(c,r)-ANN算法"></a>(c,r)-ANN算法</h3><p>对于$X=\{0,1\}^d$:</p>
-<p>$k,p,s$为待定常数, 随机$k\times d$的布尔矩阵$A$, 每个项为独立的参数$p$伯努利随机变量;</p>
-<p>对于$i=1,2,\cdots,n$: 令$z_i=Ay_i\in\{0,1\}^k$定义于有限域$GF(2)$;</p>
-<p>存储所有的$s$球, $B_s(u)=\{y_i|dist(u,z_i)\le s\}$, $u\in\{0,1\}^k$.</p>
-<p>询问过程: 找到$B_s(Ax)$; 如果$B_s(Ax)=\emptyset$, 返回’no’; 否则返回任意一个$y_i\in B_s(Ax)$</p>
+<h3 id="c-r-ANN算法"><a href="#c-r-ANN算法" class="headerlink" title="(c,r)-ANN算法"></a>(c,r)-ANN算法</h3><p>对于$X=\{0,1\}^d$:<br>$k,p,s$为待定常数, 随机$k\times d$的布尔矩阵$A$, 每个项为独立的参数$p$伯努利随机变量;<br>对于$i=1,2,\cdots,n$: 令$z_i=Ay_i\in\{0,1\}^k$定义于有限域$GF(2)$;<br>存储所有的$s$球, $B_s(u)=\{y_i|dist(u,z_i)\le s\}$, $u\in\{0,1\}^k$.<br>询问过程: 找到$B_s(Ax)$; 如果$B_s(Ax)=\emptyset$, 返回’no’; 否则返回任意一个$y_i\in B_s(Ax)$</p>
 <p><strong>复杂度</strong>: </p>
 <p>空间$O(n2^k)$, 询问时间$O(kd)$计算+$O(1)$内存访问</p>
 <p><strong>正确率</strong></p>
-<p>$\forall x,y\in\{0,1\}^d$, $dist(x,y)\le r$则$\Pr[dist(Ax,Ay)&gt;s]&lt;1/n^2$; </p>
-<p>$dist(x,y)&gt;c r$则$\Pr[dist(Ax,Ay)\le s]&lt;1/n^2$. 即w.h.p解决$(c,r)$-ANN问题.</p>
+<p>$\forall x,y\in\{0,1\}^d$, $dist(x,y)\le r$则$\Pr[dist(Ax,Ay)&gt;s]<1 n^2$; $dist(x,y)>c r$则$\Pr[dist(Ax,Ay)\le s]&lt;1/n^2$. 即w.h.p解决$(c,r)$-ANN问题.</1></p>
 <p>证明见ppt.</p>
 <p><strong>参数选取</strong>:</p>
-<p>$k=\frac{\ln n}{(1/8-2^{-(c+2)})^2}$, $p=\frac{1}{2}-2^{-1-1/r}$, $s=(\frac{3}{8}-2^{-(c+2)})k$</p>
-<p>空间$n^{O(1)}$, 询问时间$O(d\ln n)$.</p>
-<h2 id="4-Locality-Sensitive-Hashing-LSH"><a href="#4-Locality-Sensitive-Hashing-LSH" class="headerlink" title="4 Locality-Sensitive Hashing (LSH)"></a>4 Locality-Sensitive Hashing (LSH)</h2><h3 id="r-cr-p-q-​-LSH函数"><a href="#r-cr-p-q-​-LSH函数" class="headerlink" title="(r,cr,p,q)​-LSH函数"></a>(r,cr,p,q)​-LSH函数</h3><p>如果$\forall x,y\in X$:</p>
-<p>$dist(x,y)\le r =&gt;Pr[h(x)=h(y)]\ge p$</p>
-<p>$dist(x,y)&gt; cr =&gt;Pr[h(x)=h(y)]\le q$  </p>
-<p>则随机函数$h:X\to U$是$(r,cr,p,q)$-LSH.</p>
+<p>$k=\frac{\ln n}{(1/8-2^{-(c+2)})^2}$, $p=\frac{1}{2}-2^{-1-1/r}$, $s=(\frac{3}{8}-2^{-(c+2)})k$<br>空间$n^{O(1)}$, 询问时间$O(d\ln n)$.</p>
+<h2 id="4-Locality-Sensitive-Hashing-LSH"><a href="#4-Locality-Sensitive-Hashing-LSH" class="headerlink" title="4 Locality-Sensitive Hashing (LSH)"></a>4 Locality-Sensitive Hashing (LSH)</h2><h3 id="r-cr-p-q-​-LSH函数"><a href="#r-cr-p-q-​-LSH函数" class="headerlink" title="(r,cr,p,q)​-LSH函数"></a>(r,cr,p,q)​-LSH函数</h3><p>如果$\forall x,y\in X$:<br>$dist(x,y)\le r =&gt;Pr[h(x)=h(y)]\ge p$<br>$dist(x,y)&gt; cr =&gt;Pr[h(x)=h(y)]\le q$<br>则随机函数$h:X\to U$是$(r,cr,p,q)$-LSH.</p>
 <p><strong>性质</strong>:</p>
 <p>$\exist (r,cr,p,q)$-LSH $h:X\to U$  =&gt; $\exist (r,cr,p^k,q^k)$-LSH $h:X\to U^k$ :</p>
 <p>证明: </p>
 <p>直接根据$h$构造独立的$h_1,\cdots,h_k$, $g(x)=(h_1(x),\cdots,h_k(x))\in U^k$</p>
-<h3 id="解-c-r-ANN问题"><a href="#解-c-r-ANN问题" class="headerlink" title="解(c,r)-ANN问题"></a>解(c,r)-ANN问题</h3><p>假设我们有(r,cr,$p^*$,1/n)-LSH g:$X\to U$, 我们将$y_1,\cdots,y_n$按照$g(y_i)$的顺序存储</p>
-<p>询问$x\in X$: 二分搜索找到所有的满足$g(x)=g(y_i)$的$y_i$;</p>
-<p>其中如果碰到$y_i$满足$dist(x,y_i)\le cr$则返回这个$y_i$; 否则返回’no’.</p>
+<h3 id="解-c-r-ANN问题"><a href="#解-c-r-ANN问题" class="headerlink" title="解(c,r)-ANN问题"></a>解(c,r)-ANN问题</h3><p>假设我们有(r,cr,$p^*$,1/n)-LSH g:$X\to U$, 我们将$y_1,\cdots,y_n$按照$g(y_i)$的顺序存储<br>询问$x\in X$: 二分搜索找到所有的满足$g(x)=g(y_i)$的$y_i$;<br>其中如果碰到$y_i$满足$dist(x,y_i)\le cr$则返回这个$y_i$; 否则返回’no’.</p>
 <p><strong>复杂度</strong>: </p>
 <p>空间$O(n)$, 时间$O(\log n)+O(1)$(期望)</p>
 <p><strong>正确率</strong>:</p>
-<p>(c,r)-ANN实际答案为’no’: 必定正确, 因为会检查是否真的有$dist(x,y_i)\le cr$, 所以算法一定也返回no</p>
-<p>(c,r)-ANN实际答案不是’no’: 以概率$\ge p^*$正确, 因为有1-p的概率会$dist(x,y)\le r$但是$g(x)\ne g(y)$, 导致漏掉</p>
+<p>(c,r)-ANN实际答案为’no’: 必定正确, 因为会检查是否真的有$dist(x,y_i)\le cr$, 所以算法一定也返回no<br>(c,r)-ANN实际答案不是’no’: 以概率$\ge p^*$正确, 因为有1-p的概率会$dist(x,y)\le r$但是$g(x)\ne g(y)$, 导致漏掉</p>
 <p><strong>改进</strong>:</p>
 <p>取$l=1/p^*$, 找$l$个独立的$g$, 在这$l$个表中找到至多$10l$(随便定的参数)个$y_i$满足$\exists j ~g_j(x)=g_j(y_i)$, 检查有没有和$x$距离小于等于$cr$的$y_i$, 有就返回, 否则返回’no’.</p>
 <p><strong>分析</strong>:</p>
@@ -400,12 +370,7 @@ Pr[\vert\sum_{i=1}^k Y_i^2-1\vert >\epsilon]<\delta</script><p>证明见slides.<
 <p><strong>实际步骤</strong></p>
 <p>如果最初有(r,cr,p,q)-LSH $h:X\to U$, 可以构造出(r,cr,$p^k$,1/n)-LSH $g:X\to U^k$, 其中$k=\log_{1/q}n$, 所以$p^k=p^{\log_{1/q}n}=n^{-\rho}$, 其中$\rho=\frac{\log p}{\log q}$. 这样我们就可以解决(c, r)-ANN, 空间复杂度$O(n^{1+\rho})$, 询问时间$O(n^\rho \log n)$, 单边错误率&lt;0.5.</p>
 <p><strong>LSH函数举例</strong></p>
-<p>对于$X=\{0,1\}^d$, 可以使用如下的LSH函数:</p>
-<p>$\forall x\in\{0,1\}^d: h(x)=x_i\text{ for uniform random }i\in[d]$</p>
-<p>则有</p>
-<p>$dist(x,y)\le r =&gt;Pr[h(x)=h(y)]\ge 1-r/d$</p>
-<p>$dist(x,y)&gt; cr =&gt;Pr[h(x)=h(y)]\le 1-cr/d$  </p>
-<p>所以$\rho=\frac{\log(1-r/d)}{\log(1-cr/d)}\le \frac{1}{c}$, 可以解决汉明空间内的(c, r)-ANN问题, 空间复杂度$O(n^{1+1/c})$, 询问时间$O(n^{1/c}\log n)$, 单边错误率&lt;0.5.</p>
+<p>对于$X=\{0,1\}^d$, 可以使用如下的LSH函数:<br>$\forall x\in\{0,1\}^d: h(x)=x_i\text{ for uniform random }i\in[d]$<br>则有<br>$dist(x,y)\le r =&gt;Pr[h(x)=h(y)]\ge 1-r/d$<br>$dist(x,y)&gt; cr =&gt;Pr[h(x)=h(y)]\le 1-cr/d$<br>所以$\rho=\frac{\log(1-r/d)}{\log(1-cr/d)}\le \frac{1}{c}$, 可以解决汉明空间内的(c, r)-ANN问题, 空间复杂度$O(n^{1+1/c})$, 询问时间$O(n^{1/c}\log n)$, 单边错误率&lt;0.5.</p>
 
       
     </div>

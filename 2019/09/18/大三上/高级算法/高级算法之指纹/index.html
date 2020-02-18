@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Fingerprinting1. Polynomial Identity Testing (PIT) Polynomial Identity Testing (PIT): 给定两个多项式, 确定他们是否相同  单变量情形 问题  输入: 两个多项式$f$, $g\in \mathbb F [x]$(单变量域(filed)), 度都为$d$(最高次项次数) 确定是否有$f\equiv g$   度为">
+<meta name="description" content="Fingerprinting1. Polynomial Identity Testing (PIT) Polynomial Identity Testing (PIT): 给定两个多项式, 确定他们是否相同  单变量情形 问题 输入: 两个多项式$f$, $g\in \mathbb F [x]$(单变量域(filed)), 度都为$d$(最高次项次数) 确定是否有$f\equiv g$   度为$">
 <meta name="keywords" content="高级算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="高级算法之指纹">
 <meta property="og:url" content="http://yoursite.com/2019/09/18/大三上/高级算法/高级算法之指纹/index.html">
 <meta property="og:site_name" content="XY&#39;s blog">
-<meta property="og:description" content="Fingerprinting1. Polynomial Identity Testing (PIT) Polynomial Identity Testing (PIT): 给定两个多项式, 确定他们是否相同  单变量情形 问题  输入: 两个多项式$f$, $g\in \mathbb F [x]$(单变量域(filed)), 度都为$d$(最高次项次数) 确定是否有$f\equiv g$   度为">
+<meta property="og:description" content="Fingerprinting1. Polynomial Identity Testing (PIT) Polynomial Identity Testing (PIT): 给定两个多项式, 确定他们是否相同  单变量情形 问题 输入: 两个多项式$f$, $g\in \mathbb F [x]$(单变量域(filed)), 度都为$d$(最高次项次数) 确定是否有$f\equiv g$   度为$">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-09T09:33:35.472Z">
+<meta property="og:updated_time" content="2020-02-18T08:52:29.832Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高级算法之指纹">
-<meta name="twitter:description" content="Fingerprinting1. Polynomial Identity Testing (PIT) Polynomial Identity Testing (PIT): 给定两个多项式, 确定他们是否相同  单变量情形 问题  输入: 两个多项式$f$, $g\in \mathbb F [x]$(单变量域(filed)), 度都为$d$(最高次项次数) 确定是否有$f\equiv g$   度为">
+<meta name="twitter:description" content="Fingerprinting1. Polynomial Identity Testing (PIT) Polynomial Identity Testing (PIT): 给定两个多项式, 确定他们是否相同  单变量情形 问题 输入: 两个多项式$f$, $g\in \mathbb F [x]$(单变量域(filed)), 度都为$d$(最高次项次数) 确定是否有$f\equiv g$   度为$">
 
 
 
@@ -304,20 +304,16 @@
 <li><strong>Polynomial Identity Testing (PIT)</strong>: 给定两个多项式, 确定他们是否相同</li>
 </ul>
 <h3 id="单变量情形"><a href="#单变量情形" class="headerlink" title="单变量情形"></a>单变量情形</h3><ul>
-<li><p>问题</p>
-<ul>
+<li>问题<ul>
 <li>输入: 两个多项式$f$, $g\in \mathbb F [x]$(单变量域(filed)), 度都为$d$(最高次项次数)</li>
 <li>确定是否有$f\equiv g$</li>
 </ul>
 </li>
-<li><p>度为$d$的多项式$f\in \mathbb F[x]$为$f(x)=\sum_{i=0}^d a_ix^i$, $a_i\in \mathbb F$</p>
-</li>
-<li><p>假设$f$为黑盒, 因此不能直接判断$a_i$是否为0</p>
-</li>
+<li>度为$d$的多项式$f\in \mathbb F[x]$为$f(x)=\sum_{i=0}^d a_ix^i$, $a_i\in \mathbb F$</li>
+<li>假设$f$为黑盒, 因此不能直接判断$a_i$是否为0</li>
 <li><p>确定性解法</p>
 <ul>
-<li><p>从$\mathbb F$中取$x_1, x_2, \cdots, x_{d+1}$, 判断$f(x_1), f(x_2), \cdots, f(x_{d+1})$是否都为0</p>
-</li>
+<li>从$\mathbb F$中取$x_1, x_2, \cdots, x_{d+1}$, 判断$f(x_1), f(x_2), \cdots, f(x_{d+1})$是否都为0</li>
 <li><p>根据: </p>
 <p>| 算数基本定理                           |<br>| ——————————————————— |<br>| 任意度为$d$的单变量多项式至多有$d$个根 |</p>
 </li>
@@ -325,27 +321,20 @@
 </li>
 </ul>
 <h4 id="最简单的随机算法"><a href="#最简单的随机算法" class="headerlink" title="最简单的随机算法"></a>最简单的随机算法</h4><ul>
-<li><p>算法:</p>
-<ul>
+<li>算法:<ul>
 <li>假设有有限集$S\subseteq \mathbb F$</li>
 <li>随机选取$r\in S$</li>
 <li>如果$f(r)=0$返回’yes’, 否则返回’no’ </li>
 </ul>
 </li>
-<li><p>若$f=0$, 必定返回’yes’, 正确</p>
-</li>
-<li><p>若$f\neq 0$, 也有可能返回’yes’. 但是因为$f$至多有$d$个根, 所以算法结果错误的概率上界为</p>
-<script type="math/tex; mode=display">
+<li>若$f=0$, 必定返回’yes’, 正确</li>
+<li>若$f\neq 0$, 也有可能返回’yes’. 但是因为$f$至多有$d$个根, 所以算法结果错误的概率上界为<script type="math/tex; mode=display">
 Pr[f(r)=0]\le \frac{d}{|S|}</script></li>
-<li><p>如果取$|S|=2d$, 则错误率至多1/2. 想要错误率小于任意常数$\delta$, 只需要重复$\log_2 \delta$次</p>
-</li>
+<li>如果取$|S|=2d$, 则错误率至多1/2. 想要错误率小于任意常数$\delta$, 只需要重复$\log_2 \delta$次</li>
 </ul>
 <h3 id="1-1-相等问题的通信复杂度"><a href="#1-1-相等问题的通信复杂度" class="headerlink" title="1.1 相等问题的通信复杂度"></a>1.1 相等问题的通信复杂度</h3><ul>
-<li><p>Alice有私密输入a, Bob有私密输入b, 他们希望通过通信协议来计算函数$f(a,b)$. 通信复杂度是最坏情况下Alice和Bob之间需要传输的bit数</p>
-</li>
-<li><p>判断相等性的函数为$EQ: \{0,1\}^n\times \{0,1\}^n\to \{0,1\}$</p>
-<p>对于任意$a, b\in\{0,1\}^n$, </p>
-<script type="math/tex; mode=display">
+<li>Alice有私密输入a, Bob有私密输入b, 他们希望通过通信协议来计算函数$f(a,b)$. 通信复杂度是最坏情况下Alice和Bob之间需要传输的bit数</li>
+<li>判断相等性的函数为$EQ: \{0,1\}^n\times \{0,1\}^n\to \{0,1\}$<br>对于任意$a, b\in\{0,1\}^n$, <script type="math/tex; mode=display">
 EQ(a,b)=\begin{cases}  
 0 & a=b \\
 1 & a\ne b
@@ -357,11 +346,9 @@ EQ(a,b)=\begin{cases}
 <h4 id="随机算法"><a href="#随机算法" class="headerlink" title="随机算法"></a>随机算法</h4><ul>
 <li><p>准备工作</p>
 <ul>
-<li><p>用两个度至多为$n-1$的单变量多项式来表示$a, b$, </p>
-<script type="math/tex; mode=display">
+<li>用两个度至多为$n-1$的单变量多项式来表示$a, b$, <script type="math/tex; mode=display">
 f(x)=\sum_{i=0}^{n-1}a_ix^i, g(x)=\sum_{i=0}^{n-1}b_ix^i</script></li>
-<li><p>$f$和$g$定义在有限域$\mathbb Z_p=\{0,1,\cdots, p-1\}$上, $p$为合适的素数</p>
-</li>
+<li>$f$和$g$定义在有限域$\mathbb Z_p=\{0,1,\cdots, p-1\}$上, $p$为合适的素数</li>
 </ul>
 </li>
 <li><p><strong>A randomized protocol for EQ</strong></p>
@@ -378,70 +365,49 @@ f(x)=\sum_{i=0}^{n-1}a_ix^i, g(x)=\sum_{i=0}^{n-1}b_ix^i</script></li>
 </li>
 </ul>
 </li>
-<li><p>通讯复杂度$O(\log p)$</p>
-</li>
-<li><p>错误情况: $f\not\equiv g$但是$f(r)=g(r)$. 因为$f, g$的度至多为$n-1$, $r$是从$p$个数中随机选取, 所以</p>
-<script type="math/tex; mode=display">
+<li>通讯复杂度$O(\log p)$</li>
+<li>错误情况: $f\not\equiv g$但是$f(r)=g(r)$. 因为$f, g$的度至多为$n-1$, $r$是从$p$个数中随机选取, 所以<script type="math/tex; mode=display">
 Pr[f(r)=g(r)]\le \frac{n-1}{p}</script></li>
-<li><p>通过选取$p\in[n^2, 2n^2]$(根据切比雪夫, 这样的素数一定存在), 上述错误率至多$O(1/n)$, 通讯复杂度$O(\log n)$, 比确定性算法提升较大</p>
-</li>
+<li>通过选取$p\in[n^2, 2n^2]$(根据切比雪夫, 这样的素数一定存在), 上述错误率至多$O(1/n)$, 通讯复杂度$O(\log n)$, 比确定性算法提升较大</li>
 </ul>
 <h3 id="1-2-Schwartz-Zippel-Theorem"><a href="#1-2-Schwartz-Zippel-Theorem" class="headerlink" title="1.2 Schwartz-Zippel Theorem"></a>1.2 Schwartz-Zippel Theorem</h3><ul>
-<li><p>| <strong>Schwartz-Zippel Theorem</strong>                                  |<br>| —————————————————————————————— |<br>| 令$f\in \mathbb [x_1,x_2, \cdots, x_n]$为$\mathbb F$中度为$d$的多元多项式. 如果$f\not\equiv 0$, 那么对于任意有限集合$S\subset F$, 随机选取$r_1, r_2, \cdots, r_n\in S$, $Pr[f(r_1, r_2, \cdots, r_n)=0]\le \frac{d}{|S|}$. |</p>
-</li>
-<li><p><strong>Schwartz-Zippel Theorem</strong>定理说明对于任何非0的$n$变量度为$d$的多项式, 在任意立方体$S^n$中的根的数量至多为$d\cdot |S|^{n-1}$</p>
-</li>
-<li><p>注意多元多项式中的度为所有变量的指数之和</p>
-</li>
+<li>| <strong>Schwartz-Zippel Theorem</strong>                                  |<br>| —————————————————————————————— |<br>| 令$f\in \mathbb [x_1,x_2, \cdots, x_n]$为$\mathbb F$中度为$d$的多元多项式. 如果$f\not\equiv 0$, 那么对于任意有限集合$S\subset F$, 随机选取$r_1, r_2, \cdots, r_n\in S$, $Pr[f(r_1, r_2, \cdots, r_n)=0]\le \frac{d}{|S|}$. |</li>
+<li><strong>Schwartz-Zippel Theorem</strong>定理说明对于任何非0的$n$变量度为$d$的多项式, 在任意立方体$S^n$中的根的数量至多为$d\cdot |S|^{n-1}$</li>
+<li>注意多元多项式中的度为所有变量的指数之和</li>
 </ul>
 <h4 id="证明-数归"><a href="#证明-数归" class="headerlink" title="证明(数归)"></a>证明(数归)</h4><ul>
-<li><p>Induction basis: </p>
-<ul>
+<li>Induction basis: <ul>
 <li>$n=1$为单变量情况, 上面已经讨论过</li>
 </ul>
 </li>
-<li><p>Induction hypothesis:</p>
-<ul>
+<li>Induction hypothesis:<ul>
 <li>假设定理对于所有$m$元多项式($m&lt;n$)成立</li>
 </ul>
 </li>
-<li><p>Induction step:</p>
-<ul>
-<li><p>对于任意至多$d$阶的$n$元多项式$f(x_1,x_2, \cdots, x_n)$, 将$f$写成</p>
-<script type="math/tex; mode=display">
-f(x_1,x_2,\cdots, x_n)=\sum_{i=0}^kx_n^if_i(x_1,x_2,\cdots, x_{n-1})</script><p>其中$k$为$x_n$的最高度, 也就是$f_k$的度至多为$d-k$, 且$f_k\not\equiv 0$</p>
-</li>
-<li><p>具体的, 把$f$分成两部分:</p>
-<script type="math/tex; mode=display">
-f(x_1,x_2,\cdots,x_n)=x_n^kf_k(x_1,x_2,\cdots,x_{n-1})+\bar f(x_1,x_2,\cdots,x_n)</script><p>其中:</p>
-<ul>
+<li>Induction step:<ul>
+<li>对于任意至多$d$阶的$n$元多项式$f(x_1,x_2, \cdots, x_n)$, 将$f$写成<script type="math/tex; mode=display">
+f(x_1,x_2,\cdots, x_n)=\sum_{i=0}^kx_n^if_i(x_1,x_2,\cdots, x_{n-1})</script>其中$k$为$x_n$的最高度, 也就是$f_k$的度至多为$d-k$, 且$f_k\not\equiv 0$</li>
+<li>具体的, 把$f$分成两部分:<script type="math/tex; mode=display">
+f(x_1,x_2,\cdots,x_n)=x_n^kf_k(x_1,x_2,\cdots,x_{n-1})+\bar f(x_1,x_2,\cdots,x_n)</script>其中:<ul>
 <li>$f_k\not\equiv0$定义如上, 度至多$d-k$</li>
 <li>$\bar f(x_1,x_2,\cdots, x_n)=\sum_{i=0}^{k-1}x_n^i f_i(x_1,x_2,\cdots, x_{n-1})$, 因此$\bar f$中没有带$x_n^k$的项</li>
 </ul>
 </li>
-</ul>
-</li>
-</ul>
-<ul>
 <li><script type="math/tex; mode=display">
 Pr[f(r_1,r_2,\cdots,r_n)=0]\\= Pr[f(\vec r)=0|f_k(r_1,r_2,\cdots, r_{n-1})=0]  \cdot Pr[f_k(r_1,r_2,\cdots, r_{n-1})=0]\\
 + Pr[f(\vec r)=0|f_k(r_1,r_2,\cdots, r_{n-1})\ne 0]  \cdot Pr[f_k(r_1,r_2,\cdots, r_{n-1})\ne 0]</script></li>
-<li><p>其中$f_k(r_1,r_2,\cdots, r_{n-1})$是$n-1$变量$d-k$阶多项式, 且$f_k\not\equiv 0$. 根据猜想, 我们有</p>
-<script type="math/tex; mode=display">
+<li>其中$f_k(r_1,r_2,\cdots, r_{n-1})$是$n-1$变量$d-k$阶多项式, 且$f_k\not\equiv 0$. 根据猜想, 我们有<script type="math/tex; mode=display">
 Pr[f_k(r_1,r_2\cdots,r_{n-1})=0]\le \frac{d-k}{|S|}</script></li>
-<li><p>考虑条件$f_k(r_1,r_2, \cdots, r_{n-1})\ne 0$.该条件保证了</p>
-<script type="math/tex; mode=display">
-f(r_1,\cdots, r_{n-1},x_n)=x_n^kf_k(r_1,r_2,\cdots,r_{n-1})+\bar f(r_1,r_2,\cdots,r_{n-1},x_n)=g_{r_1\cdots r_{n-1}}(x_n)</script><p>是一个非0的单变量$x_n$的多项式, 且度为k, 且$g_{r_1\cdots r_{n-1}}\not\equiv 0$. 因此$g_{r_1\cdots r_{n-1}}(r_n) =0$的概率至多$\frac{k}{|S|}$</p>
-</li>
-<li><p>因此</p>
-<script type="math/tex; mode=display">
+<li>考虑条件$f_k(r_1,r_2, \cdots, r_{n-1})\ne 0$.该条件保证了<script type="math/tex; mode=display">
+f(r_1,\cdots, r_{n-1},x_n)=x_n^kf_k(r_1,r_2,\cdots,r_{n-1})+\bar f(r_1,r_2,\cdots,r_{n-1},x_n)=g_{r_1\cdots r_{n-1}}(x_n)</script>是一个非0的单变量$x_n$的多项式, 且度为k, 且$g_{r_1\cdots r_{n-1}}\not\equiv 0$. 因此$g_{r_1\cdots r_{n-1}}(r_n) =0$的概率至多$\frac{k}{|S|}$</li>
+<li>因此<script type="math/tex; mode=display">
 \begin{aligned}
 &Pr[f(\vec r)=0|f_k(r_1,r_2,\cdots, r_{n-1})\ne 0] \\
 =&Pr[g_{r_1\cdots r_{n-1}}(r_n) =0|f_k(r_1,r_2,\cdots, r_{n-1})\ne 0] \le \frac{k}{|S|}
 \end{aligned}</script></li>
-<li><p>因此</p>
-<script type="math/tex; mode=display">
-Pr[f(r_1,r_2,\cdots,r_n)=0]\le \frac{d-k}{|S|}+\frac{k}{|S|}=\frac{d}{|S|}</script><p>得证.</p>
+<li>因此<script type="math/tex; mode=display">
+Pr[f(r_1,r_2,\cdots,r_n)=0]\le \frac{d-k}{|S|}+\frac{k}{|S|}=\frac{d}{|S|}</script>得证.</li>
+</ul>
 </li>
 </ul>
 <h2 id="2-Fingerprinting"><a href="#2-Fingerprinting" class="headerlink" title="2. Fingerprinting"></a>2. Fingerprinting</h2><p>使用指纹的相等判断的通信协议</p>
@@ -449,28 +415,19 @@ Pr[f(r_1,r_2,\cdots,r_n)=0]\le \frac{d-k}{|S|}+\frac{k}{|S|}=\frac{d}{|S|}</scri
 <li>使用指纹函数$FING(\cdot)$来判断</li>
 </ul>
 <h3 id="2-1-Fingerprinting-by-PIT"><a href="#2-1-Fingerprinting-by-PIT" class="headerlink" title="2.1 Fingerprinting by PIT"></a>2.1 Fingerprinting by PIT</h3><ul>
-<li><p>$FING(x)=\sum_{i=1}^n x_ir^i$, 运算都在$\mathbb Z_p$中, $r$是$\mathbb Z_p$中的均匀随机数, $p$是合适的$[n^2, 2n^2]$的素数</p>
-</li>
-<li><p>只需要$O(\log p)=O(\log n)$bits</p>
-</li>
-<li><p>对于不同的$x$和$y$, </p>
-<script type="math/tex; mode=display">
+<li>$FING(x)=\sum_{i=1}^n x_ir^i$, 运算都在$\mathbb Z_p$中, $r$是$\mathbb Z_p$中的均匀随机数, $p$是合适的$[n^2, 2n^2]$的素数</li>
+<li>只需要$O(\log p)=O(\log n)$bits</li>
+<li>对于不同的$x$和$y$, <script type="math/tex; mode=display">
 Pr[FING(x)=FING(y)]\le \frac{n-1}{p}\le \frac{1}{n}</script></li>
 </ul>
 <h3 id="2-2-Fingerprinting-by-randomized-checksum"><a href="#2-2-Fingerprinting-by-randomized-checksum" class="headerlink" title="2.2 Fingerprinting by randomized checksum"></a>2.2 Fingerprinting by randomized checksum</h3><ul>
-<li><p>$a,b\in [2^n]$</p>
-</li>
-<li><p>$FING(x)=x\mod p$, $p$为$[k]$中素数, $k$待定</p>
-</li>
-<li><p>通信$O(\log k)$bits</p>
-</li>
-<li><p>$\pi(k)$为小于$k$的素数的数量, 有</p>
-<script type="math/tex; mode=display">
+<li>$a,b\in [2^n]$</li>
+<li>$FING(x)=x\mod p$, $p$为$[k]$中素数, $k$待定</li>
+<li>通信$O(\log k)$bits</li>
+<li>$\pi(k)$为小于$k$的素数的数量, 有<script type="math/tex; mode=display">
 \pi(k)\sim \frac{k}{\ln k}</script></li>
-<li><p>对于$x\ne y$, $Pr[x\equiv y\mod p]=Pr[z \mod p=0]\le$ z的素因子数/$[k]$的素数数</p>
-</li>
-<li><p>选择$k=2n^2\ln n$, $0&lt;z&lt;2^n$至多$n$个素因子,</p>
-<script type="math/tex; mode=display">
+<li>对于$x\ne y$, $Pr[x\equiv y\mod p]=Pr[z \mod p=0]\le$ z的素因子数/$[k]$的素数数</li>
+<li>选择$k=2n^2\ln n$, $0&lt;z&lt;2^n$至多$n$个素因子,<script type="math/tex; mode=display">
 Pr[z\mod p = 0]\le \frac{n}{\pi(k)}\sim \frac{1}{n}</script></li>
 </ul>
 <h2 id="3-Checking-distinctness"><a href="#3-Checking-distinctness" class="headerlink" title="3 Checking distinctness"></a>3 Checking distinctness</h2><h3 id="3-1-Fingerprinting-multisets"><a href="#3-1-Fingerprinting-multisets" class="headerlink" title="3.1 Fingerprinting multisets"></a>3.1 Fingerprinting multisets</h3><ul>

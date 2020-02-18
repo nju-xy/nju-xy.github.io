@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="XY&#39;s blog">
 <meta property="og:description" content="Markov Chain Monte Carlo(MCMC) methods问题: 样本空间$U$, 子集$S\subset U$, $\rho=|S|/|U|$, 假设有一个从$U$中的均匀随机采样器, 估计$Z=|S|$.  蒙特卡洛法: 从$U$中独立均匀随机采样$X_1, X_2,\cdots,X_N$,   Y_i=\begin{cases} 1&amp;X_i\in S\\ 0&amp;X_i\not">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-11T03:06:09.989Z">
+<meta property="og:updated_time" content="2020-02-18T08:46:23.805Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高级算法之Markov Chain Monte Carlo methods">
 <meta name="twitter:description" content="Markov Chain Monte Carlo(MCMC) methods问题: 样本空间$U$, 子集$S\subset U$, $\rho=|S|/|U|$, 假设有一个从$U$中的均匀随机采样器, 估计$Z=|S|$.  蒙特卡洛法: 从$U$中独立均匀随机采样$X_1, X_2,\cdots,X_N$,   Y_i=\begin{cases} 1&amp;X_i\in S\\ 0&amp;X_i\not">
@@ -324,8 +324,15 @@ Y_i=\begin{cases}
 <li>$U=\{T,F\}^n$, $S=\{x\in\{T,F\}^n|\phi(x)\}=\phi^{-1}(T)$</li>
 <li>$\rho$可能是指数小的. 例如当DNF是一个很大的子句时</li>
 </ul>
-<h2 id="Union-of-sets"><a href="#Union-of-sets" class="headerlink" title="Union of sets"></a>Union of sets</h2><p>输入: $m$个集合$S_1,S_2,\cdots, S_m$, 估计集合$S=\cup_{i=1}^m S_i$的大小<br>定义$U=S_1\biguplus S_2 \biguplus \cdots\biguplus S_m=\{(x,i)|x\in S_{i}\}$, $U=\{(x,i^<em>)|x\in S_{i^</em>}\text{ and }x\in S_i=&gt;i^<em>\le i\}$($i^</em>$是最小的那个),<br>则$|\overline S|=|S|$, $\overline S\subseteq U$, $\rho = \frac{|\overline S|}{|U|}\ge \frac{1}{m}$</p>
-<p>蒙特卡洛方法: 均匀采样$(x,i)\in U$ ($N=\Theta(\frac{m}{\epsilon^2}\ln \frac{1}{\delta})$次独立的). 对于每个采样, 判断是否有$(x,i)\in\overline S$.<br>并且要统计每个$S_i$的大小, 加起来得到$|U|$, 然而使用<strong>Estimator Theorem</strong>即可.<br>$\rho=\frac{|\overline S|}{|U|}\ge 1/m$是因为$\overline S$中每个元素至多在$U$中出现m次</p>
+<h2 id="Union-of-sets"><a href="#Union-of-sets" class="headerlink" title="Union of sets"></a>Union of sets</h2><p>输入: $m$个集合$S_1,S_2,\cdots, S_m$, 估计集合$S=\cup_{i=1}^m S_i$的大小<br>定义: </p>
+<ul>
+<li>$U=S_1\biguplus S_2 \biguplus \cdots\biguplus S_m=\{(x,i)|x\in S_{i}\}$, </li>
+<li>$U=\{(x,i^{*})|x\in S_{i^{*}}\text{ and }x\in S_i=&gt;i^{*}\le i\}$<br>($i^{*}$是最小的那个),<br>则$|\overline S|=|S|$, $\overline S\subseteq U$, $\rho = \frac{|\overline S|}{|U|}\ge \frac{1}{m}$</li>
+</ul>
+<p>蒙特卡洛方法: </p>
+<ul>
+<li>均匀采样$(x,i)\in U$ ($N=\Theta(\frac{m}{\epsilon^2}\ln \frac{1}{\delta})$次独立的). 对于每个采样, 判断是否有$(x,i)\in\overline S$.<br>并且要统计每个$S_i$的大小, 加起来得到$|U|$, 然而使用<strong>Estimator Theorem</strong>即可.<br>$\rho=\frac{|\overline S|}{|U|}\ge 1/m$是因为$\overline S$中每个元素至多在$U$中出现m次</li>
+</ul>
 <h2 id="CSP均匀采样的两种方法"><a href="#CSP均匀采样的两种方法" class="headerlink" title="CSP均匀采样的两种方法"></a>CSP均匀采样的两种方法</h2><p>输入一个CSP实例, 采样一个均匀随机的CSP解.</p>
 <h3 id="Metropolis-Algorithm"><a href="#Metropolis-Algorithm" class="headerlink" title="Metropolis Algorithm:"></a>Metropolis Algorithm:</h3><p>初始: 一个任意的CSP解;<br>每一步当前CSP解为$\sigma=(\sigma_1,\cdots,\sigma_n)$</p>
 <ul>
@@ -395,7 +402,6 @@ P(u,v)=\begin{cases}
 \frac{1}{2\Delta} &\text{if }uv\in E\\
 0&\text{otherwise.}
 \end{cases}</script><p>其中$\Delta=\max_vdeg(v)$.</p>
-<p>必考: reversiblity和图上的随机游走: 如何设计P来根据reversiblity得到想要的稳态分布</p>
 <h3 id="Metropolis-Algorithm-1"><a href="#Metropolis-Algorithm-1" class="headerlink" title="Metropolis Algorithm"></a>Metropolis Algorithm</h3><ul>
 <li>状态空间$\Omega$上的对称的转移矩阵$Q$:<br>$Q^T=Q$, $Q1=1$ ==&gt; $1Q=1$ 稳态分布</li>
 <li>每一步中, 当前状态是$x\in \Omega$<ul>
@@ -409,12 +415,9 @@ P(u,v)=\begin{cases}
 </ul>
 <h3 id="Glauber-Dynamics"><a href="#Glauber-Dynamics" class="headerlink" title="Glauber Dynamics"></a>Glauber Dynamics</h3><p>每一步中, 当前状态是$X=(X_1,\cdots,X_n)$:</p>
 <ul>
-<li><p>均匀随机选择$i\in [n]$</p>
-</li>
-<li><p>根据$X_i$的当前边界分布(除了$X_i$以外的都固定为当前值), 采样$X_i$</p>
-</li>
+<li>均匀随机选择$i\in [n]$</li>
+<li>根据$X_i$的当前边界分布(除了$X_i$以外的都固定为当前值), 采样$X_i$<br>也满足DBE, 是均匀稳态分布</li>
 </ul>
-<p>也满足DBE, 是均匀稳态分布</p>
 <h2 id="Mixing-Time"><a href="#Mixing-Time" class="headerlink" title="Mixing Time"></a>Mixing Time</h2><p>到达稳态的时间. 具体见讲义.</p>
 
       
@@ -446,8 +449,8 @@ P(u,v)=\begin{cases}
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/12/05/大三上/高级算法/高级算法之Lovász-Local-Lemma/" rel="next" title="高级算法之Lovász Local Lemma">
-                <i class="fa fa-chevron-left"></i> 高级算法之Lovász Local Lemma
+              <a href="/2019/12/04/大三上/组合数学/组合数学之Ramsey理论/" rel="next" title="组合数学之Ramsey理论">
+                <i class="fa fa-chevron-left"></i> 组合数学之Ramsey理论
               </a>
             
           </div>
