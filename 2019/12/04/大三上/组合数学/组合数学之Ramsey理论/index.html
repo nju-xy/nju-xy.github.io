@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="组合数学,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1 Ramsey定理1.1 图论Ramsey定理双色版本定理: 令$k,l$是正数. 那么存在一个整数$R(k,l)$满足: 如果$n\ge R(k,l)$, 对于图$K_n$的任意红蓝2着色, 要么存在红色$K_k$, 要么存在蓝色$K_l$. (即罗素数是有限的.)证明:对于$k+l$ 数归:  $R(k,1)=R(1,l)=1$ 对于一般的$k,l$, 证明$R(k,l)\le R(k,l-">
+<meta name="keywords" content="组合数学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="组合数学之Ramsey理论">
+<meta property="og:url" content="http://yoursite.com/2019/12/04/大三上/组合数学/组合数学之Ramsey理论/index.html">
+<meta property="og:site_name" content="XY&#39;s blog">
+<meta property="og:description" content="1 Ramsey定理1.1 图论Ramsey定理双色版本定理: 令$k,l$是正数. 那么存在一个整数$R(k,l)$满足: 如果$n\ge R(k,l)$, 对于图$K_n$的任意红蓝2着色, 要么存在红色$K_k$, 要么存在蓝色$K_l$. (即罗素数是有限的.)证明:对于$k+l$ 数归:  $R(k,1)=R(1,l)=1$ 对于一般的$k,l$, 证明$R(k,l)\le R(k,l-">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-12-29T12:39:10.693Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="组合数学之Ramsey理论">
+<meta name="twitter:description" content="1 Ramsey定理1.1 图论Ramsey定理双色版本定理: 令$k,l$是正数. 那么存在一个整数$R(k,l)$满足: 如果$n\ge R(k,l)$, 对于图$K_n$的任意红蓝2着色, 要么存在红色$K_k$, 要么存在蓝色$K_l$. (即罗素数是有限的.)证明:对于$k+l$ 数归:  $R(k,1)=R(1,l)=1$ 对于一般的$k,l$, 证明$R(k,l)\le R(k,l-">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/12/04/大三上/组合数学/组合数学之Ramsey理论/">
+
+
+
+
+
+  <title>组合数学之Ramsey理论 | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XY's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/04/大三上/组合数学/组合数学之Ramsey理论/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XY">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XY's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">组合数学之Ramsey理论</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-04T20:00:00+08:00">
+                2019-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-Ramsey定理"><a href="#1-Ramsey定理" class="headerlink" title="1 Ramsey定理"></a>1 Ramsey定理</h1><h2 id="1-1-图论Ramsey定理"><a href="#1-1-图论Ramsey定理" class="headerlink" title="1.1 图论Ramsey定理"></a>1.1 图论Ramsey定理</h2><h3 id="双色版本"><a href="#双色版本" class="headerlink" title="双色版本"></a>双色版本</h3><p>定理: 令$k,l$是正数. 那么存在一个整数$R(k,l)$满足: 如果$n\ge R(k,l)$, 对于图$K_n$的任意红蓝2着色, 要么存在红色$K_k$, 要么存在蓝色$K_l$. (即罗素数是有限的.)<br>证明:<br>对于$k+l$ 数归:</p>
+<ol>
+<li>$R(k,1)=R(1,l)=1$</li>
+<li>对于一般的$k,l$, 证明$R(k,l)\le R(k,l-1)+R(k-1,l)$:<br>对于$K_n$的’一个2着色, $n=R(k,l-1)+R(k-1,l)$. 对于任意点$v$, 将$V\setminus\{v\}$分成两部分: $S=\{u\in V\setminus \{v\}|uv\text{ is blue}\}$, $T=\{u\in V\setminus \{v\}|uv\text{ is red}\}$.<br>因为$|S|+|T|+1=n=R(k,l-1)+R(k-1,l)$, 所以要么$|S|\ge R(k,l-1)$, 要么$|T|\ge R(k-1,l)$.<br>根据对称性, 不妨设$|S|\ge R(k,l-1)$. 根据假设, $S$上的完全图要么有红色的$K_k$, 要么有蓝色的$K_{l-1}$; 如果有蓝色的$K_{l-1}$, 加上$\{v\}$就是$K_l$, 在$S\cup \{v\}$上定义的完全图中有蓝色$K_l$或者红色$K_k$. </li>
+</ol>
+<h3 id="多色版本"><a href="#多色版本" class="headerlink" title="多色版本"></a>多色版本</h3><p>定理: 令$r,k_1,k_2,\cdots,k_r$是正整数. 则存在整数$R(r;k_1,k_2,\cdots,k_r)$满足任意$n\ge R(r;k_1,k_2,\cdots,k_r)$的完全图上的$r$着色, 存在同色的第$i$个颜色的$k_i$团块. </p>
+<p><strong>引理(the “mixing color” trick)</strong>: </p>
+<script type="math/tex; mode=display">
+R(r;k_1,k_2,\cdots,k_r)\le R(r-1;k_1,k_2,\cdots,k_{r-2}, R(2;k_{r-1},k_r))</script><p>将最后两种颜色看做一种颜色. 如果$n\ge R(r-1;k_1,k_2,\cdots,k_{r-2}, R(2;k_{r-1},k_r))$, 对于任意$K_n$的$r$着色</p>
+<ul>
+<li>要么存在$i\in \{1,2,\cdots,r-2\}$和一个$k_i$大小的第$i$种颜色的团块; </li>
+<li>要么存在$R(2;k_{r-1},k_r)$个点的第$r-1$种和第$r$中颜色的团块, 而其中要么有大小为$k_{r-1}$的第$r-1$种颜色的团块, 要么有大小为$k_{r}$的第$r$种颜色的团块.<br>得证.</li>
+</ul>
+<p>有了这个引理后, 易证多色版本的罗素定理.</p>
+<h2 id="1-2-Ramsey数"><a href="#1-2-Ramsey数" class="headerlink" title="1.2 Ramsey数"></a>1.2 Ramsey数</h2><p>最小的满足罗素定理中条件的$R(k,l)$称为<strong>罗素数</strong>. 罗素定理即$R(k,l)$是有限的.<br>上界: 类似上面证明中的数归易证</p>
+<script type="math/tex; mode=display">
+R(k,l)\le \binom{k+l-2}{k-1}</script><p>下界: 用概率法中的LLL可证: 存在某个常数$C$, </p>
+<script type="math/tex; mode=display">
+R(k,k)\ge Ck2^{k/2}</script><p>证明见概率法部分笔记.<br>因此有</p>
+<script type="math/tex; mode=display">
+\Omega(k2^{k/2})\le R(k,k)\le \binom{2k-2}{k-1}=O(k^{-1/2}4^k)</script><h2 id="1-3-超图的Ramsey定理"><a href="#1-3-超图的Ramsey定理" class="headerlink" title="1.3 超图的Ramsey定理"></a>1.3 超图的Ramsey定理</h2><p>定理: 令$r,k_1,k_2,\cdots,k_r$是正整数. 则存在整数$R_t(r;k_1,k_2,\cdots,k_r)$满足任意$n\ge R_t(r;k_1,k_2,\cdots,k_r)$的$\binom{[n]}{t}$上的$r$着色, 存在$i\in \{1,2,\cdots,r\}$和一个满足$|X|\ge k_i$的子集$X\subseteq [n]$, $\binom{X}{t}$的所有元素都是第$i$中颜色的.</p>
+<p>注释:</p>
+<ul>
+<li><p>之前边的$r$着色, 是$f:\binom{n}{2}\to \{1,2,\cdots,r\}$, 是每两个点对应一个颜色;</p>
+</li>
+<li><p>现在超图中是 是$f:\binom{n}{t}\to \{1,2,\cdots,r\}$, 是每$t$个点对应一个颜色.</p>
+</li>
+<li>表示为<strong>Erdős-Rado partition arrow</strong>: $n\to (k_1,k_2,\cdots,k_r)^t$</li>
+</ul>
+<p><strong>Lemma (the “mixing color” trick)</strong>: </p>
+<script type="math/tex; mode=display">
+R_t(r;k_1,k_2,\cdots,k_r)\le R_t(r-1;k_1,k_2,\cdots,k_{r-2},R_t(2;k_{r-1},k_r))</script><p>证明和上面多色图完全一样. 要证明罗素定理, 只需要证这个引理; 而证明这个引理, 只需要证明$R_t(k,l)=R_t(2;k,l)$是有限的, 而这可以通过下面的引理证明.</p>
+<p>引理: </p>
+<script type="math/tex; mode=display">
+R_t(k,l)\le R_{t-1}(R_t(k-1,l), R_t(k,l-1))+1</script><p>引理证明:</p>
+<p>令$n=R_{t-1}(R_t(k-1,l), R_t(k,l-1))+1$, 令$f:\binom{[n]}{t}\to \{\text{red, blue}\}$, 为任意一种$\binom{[n]}{t}$的二着色. 下面证明要么存在$X\subseteq [n]$, $|X|=k$, 所有的$\binom{X}{t}$中的元素都是红色的; 要么存在$X\subseteq [n]$, $|X|=l$, 所有的$\binom{X}{t}$中的元素都是蓝色的.</p>
+<p>从$[n]$中去掉$n$, 且定义新的着色方式: $f’:\binom{[n-1]}{t-1}\to \{\text{red, blue}\}$, 对于任意$A\in\binom{[n-1]}{t-1}$, $f’(A)=f(A\cup \{n\})$.</p>
+<p>因为$n$的取值, </p>
+<ul>
+<li>要么存在子集$S\subseteq [n-1]$, $|S|=R_t(k-1,l)$, $\binom{S}{t-1}$中所有元素被$f’$着色为红色;</li>
+<li>要么存在子集$T\subseteq [n-1]$, $|T|=R_t(k,l-1)$, $\binom{T}{t-1}$中所有元素被$f’$着色为蓝色. </li>
+</ul>
+<p>根据对称性, 不妨设前者成立. 则</p>
+<ul>
+<li>要么存在$X\subseteq S$, $|X|=k-1$, $\binom{X}{t}$中所有元素被$f$染色为红色. 因为所有的$A\in\binom{S}{t-1}$都被$f’$染色为了红色, 根据$f’$的定义, 对于所有的$A\in\binom{X}{t-1}\in\binom{S}{t-1}$, $f(A\cup \{n\})=\text{red}$. 因为$\binom{X}{t}$被$f$染色为红色, 所以$\binom{X\cup \{n\}}{t}$中所有元素被$f$染色为红色. (注: $X\cup \{n\}$中选$t$个有两种方法, 一个是$X$中选$t$个, 一种是$X$中选$t-1$个再加上$\{n\}$).</li>
+<li>要么存在$Y\subseteq S$, $|Y|=l$, $\binom{Y}{t}$中所有元素被$f$染色为蓝色, 符合要求;</li>
+</ul>
+<p>得证.</p>
+<h1 id="2-Ramsey定理应用"><a href="#2-Ramsey定理应用" class="headerlink" title="2 Ramsey定理应用"></a>2 Ramsey定理应用</h1><h2 id="2-1-The-“Happy-Ending”-problem"><a href="#2-1-The-“Happy-Ending”-problem" class="headerlink" title="2.1 The “Happy Ending” problem"></a>2.1 The “Happy Ending” problem</h2><p><strong>The happy ending problem</strong>: 平面上任意5个点, 任意三个不共线, 则一定有四个点构成的一个凸四边形.</p>
+<p><strong>定理(Erdős-Szekeres 1935)</strong>: 任意正整数$m\ge 3$, 总存在$N(m)$, 满足任意至少$N(m)$个点的三点不共线(general position)的平面上的点集, 都包含$m$个点构成凸$m$边形.</p>
+<p>凸多边形的充要条件: 任意三个顶点连起来, 三角形内部不会出现其他顶点.</p>
+<p><strong>证明</strong>:</p>
+<p>$N(m) = R_3(m,m)$. 令$X$为平面内的任意$n$点集, 三点不共线, $|X|=n\ge N(m)$. </p>
+<p>如下定义3子集的2着色$f:\binom{X}{3}\to \{0,1\}$: 任意$\{a,b,c\}\in\binom{X}{3}$, 令$\triangle_{abc}\subset X$为三角形$abc$内部的点的个数. 而$f(\{a,b,c\})=|\triangle _{abc}|\mod 2$, 也就是$f(\{a,b,c\})$为三角形$abc$覆盖的点的数量的奇偶性.<br>因为$|X|\ge R_3(m,m)$, 所以存在$Y\subseteq X$, 满足$|Y|=m$且$\binom{Y}{3}$的所有元素都被$f$染为同色.<br>如果$Y$中的$m$个点不是一个凸多边形, 则存在四个点$\{a,b,c,d\}\subseteq Y$, 且$d\in \triangle_{abc}$. 因为没有三点共线, 所以</p>
+<script type="math/tex; mode=display">
+\triangle_{abc}=\triangle_{adb}\cup\triangle_{acd}\cup\triangle_{bcd}\cup\{d\}</script><p>这些都是不相交的, 所以</p>
+<script type="math/tex; mode=display">
+|\triangle_{abc}|=|\triangle_{adb}|+|\triangle_{acd}|+|\triangle_{bcd}|+1</script><p>因此$f(\{a,b,c\}), f(\{a,b,d\}),f(\{a,c,d\}),f(\{b,c,d\})$并不全相等, 和所有的$\binom{Y}{3}$中的元素都同色矛盾.<br>所以$Y$中的$m$个点是一个凸多边形.</p>
+<h2 id="2-2-Yao’s-lower-bound-on-implicit-data-structures"><a href="#2-2-Yao’s-lower-bound-on-implicit-data-structures" class="headerlink" title="2.2 Yao’s lower bound on implicit data structures"></a>2.2 Yao’s lower bound on implicit data structures</h2><p>问题: 是否有$x\in S$?</p>
+<h3 id="排序表"><a href="#排序表" class="headerlink" title="排序表"></a>排序表</h3><p><strong>引理</strong>: 令$n\ge 2$为2的幂, $N\ge 2n$. 假设全集为$[N]$, 集合的大小为$n$. 如果数据结构为排序表, 最坏情况下任何搜索算法需要至少$\log n$次数据结构的访问.</p>
+<p><strong>证明</strong>(归纳法+对手策略):<br>$n=2$且$N\ge 3$时, 最坏情况必须访问两次.</p>
+<p>当$n&gt;2$时, 假设对于更小的$n$都成立; $N\ge 2n$且$x=n$.<br>假设第一次访问在表格中的位置是$k$. 对手策略构造该位置的值$T[k]$:</p>
+<script type="math/tex; mode=display">
+T[k]=\begin{cases}
+k & k\le \frac{n}{2}\\
+N-(n-k) &k>\frac{n}{2}
+\end{cases}</script><p>根据对称性, 假设是第一种情况$k\le n/2$, 则关键字$x=n$的位置为$n/2+1$到$n$之间. 则$T[n/2+1]$到$T[n]$是一个新的排序表, 大小$n’=n/2$, 元素范围$\{n/2+1,n/2+2,\cdots,N\}$</p>
+<p>因此最坏情况下没有搜索算法能超过二分搜索.</p>
+<h3 id="implicit-data-structure"><a href="#implicit-data-structure" class="headerlink" title="implicit data structure"></a>implicit data structure</h3><p>问题: 有没有除了递增序以外的其他序, 在上面有更好的搜索算法?</p>
+<p>定义 <strong>implicit data structure</strong>:</p>
+<p>每个$S\in\binom{[N]}{n}$作为一个$S$的排列存储$f:\binom{[N]}{n}\to[n!]$. 如果$f(S)=\pi$, 数据集为$x_1&lt;\cdots&lt;x_n$, 则表为$x_{\pi(1)},\cdots, x_{\pi(n)}$. </p>
+<p><strong>定理(Yao 1981)</strong>:</p>
+<p>对于足够大的$N$, 在任意implicit data structure上, 任何搜索算法最坏情况下需要$\Omega(\log n)$次访问.</p>
+<p>证明:</p>
+<p>因为$N\ge R_n(n!;2n,\cdots,2n)$, 所以存在$X\subseteq [N]$, $|X|\ge 2n$, $\binom{X}{n}$是同色的(映射到相同的$\pi$), 那就和排序表一样, 最坏情况至少需要$\ge \log n$次访问.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/组合数学/" rel="tag"># 组合数学</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/04/大三上/计算机网络/计网Ch4网络层:数据平面/" rel="next" title="计算机网络之Ch4网络层:数据平面">
+                <i class="fa fa-chevron-left"></i> 计算机网络之Ch4网络层:数据平面
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/05/大三上/高级算法/高级算法之Lovász-Local-Lemma/" rel="prev" title="高级算法之Lovász Local Lemma">
+                高级算法之Lovász Local Lemma <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XY</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Ramsey定理"><span class="nav-number">1.</span> <span class="nav-text">1 Ramsey定理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-图论Ramsey定理"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 图论Ramsey定理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#双色版本"><span class="nav-number">1.1.1.</span> <span class="nav-text">双色版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多色版本"><span class="nav-number">1.1.2.</span> <span class="nav-text">多色版本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Ramsey数"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Ramsey数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-超图的Ramsey定理"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 超图的Ramsey定理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Ramsey定理应用"><span class="nav-number">2.</span> <span class="nav-text">2 Ramsey定理应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-The-“Happy-Ending”-problem"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 The “Happy Ending” problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-Yao’s-lower-bound-on-implicit-data-structures"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Yao’s lower bound on implicit data structures</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#排序表"><span class="nav-number">2.2.1.</span> <span class="nav-text">排序表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#implicit-data-structure"><span class="nav-number">2.2.2.</span> <span class="nav-text">implicit data structure</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

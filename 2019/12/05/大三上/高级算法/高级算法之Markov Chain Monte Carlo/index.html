@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="高级算法,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Markov Chain Monte Carlo(MCMC) methods问题: 样本空间$U$, 子集$S\subset U$, $\rho=|S|/|U|$, 假设有一个从$U$中的均匀随机采样器, 估计$Z=|S|$.  蒙特卡洛法: 从$U$中独立均匀随机采样$X_1, X_2,\cdots,X_N$,   Y_i=\begin{cases} 1&amp;X_i\in S\\ 0&amp;X_i\not">
+<meta name="keywords" content="高级算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高级算法之Markov Chain Monte Carlo methods">
+<meta property="og:url" content="http://yoursite.com/2019/12/05/大三上/高级算法/高级算法之Markov Chain Monte Carlo/index.html">
+<meta property="og:site_name" content="XY&#39;s blog">
+<meta property="og:description" content="Markov Chain Monte Carlo(MCMC) methods问题: 样本空间$U$, 子集$S\subset U$, $\rho=|S|/|U|$, 假设有一个从$U$中的均匀随机采样器, 估计$Z=|S|$.  蒙特卡洛法: 从$U$中独立均匀随机采样$X_1, X_2,\cdots,X_N$,   Y_i=\begin{cases} 1&amp;X_i\in S\\ 0&amp;X_i\not">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-01-11T03:06:09.989Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="高级算法之Markov Chain Monte Carlo methods">
+<meta name="twitter:description" content="Markov Chain Monte Carlo(MCMC) methods问题: 样本空间$U$, 子集$S\subset U$, $\rho=|S|/|U|$, 假设有一个从$U$中的均匀随机采样器, 估计$Z=|S|$.  蒙特卡洛法: 从$U$中独立均匀随机采样$X_1, X_2,\cdots,X_N$,   Y_i=\begin{cases} 1&amp;X_i\in S\\ 0&amp;X_i\not">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/12/05/大三上/高级算法/高级算法之Markov Chain Monte Carlo/">
+
+
+
+
+
+  <title>高级算法之Markov Chain Monte Carlo methods | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XY's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/05/大三上/高级算法/高级算法之Markov Chain Monte Carlo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XY">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XY's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">高级算法之Markov Chain Monte Carlo methods</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-05T21:00:00+08:00">
+                2019-12-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Markov-Chain-Monte-Carlo-MCMC-methods"><a href="#Markov-Chain-Monte-Carlo-MCMC-methods" class="headerlink" title="Markov Chain Monte Carlo(MCMC) methods"></a>Markov Chain Monte Carlo(MCMC) methods</h1><p><strong>问题</strong>: 样本空间$U$, 子集$S\subset U$, $\rho=|S|/|U|$, 假设有一个从$U$中的均匀随机采样器, 估计$Z=|S|$. </p>
+<p><strong>蒙特卡洛法</strong>:</p>
+<p>从$U$中独立均匀随机采样$X_1, X_2,\cdots,X_N$, </p>
+<script type="math/tex; mode=display">
+Y_i=\begin{cases}
+1&X_i\in S\\
+0&X_i\not\in S
+\end{cases}</script><p>则</p>
+<script type="math/tex; mode=display">
+\hat Z=\frac{|U|}{N}\sum_{i=1}^NY_i</script><p><strong>Estimator Theorem</strong>:</p>
+<p>$N\ge \frac{4}{\epsilon^2\rho}\ln \frac{2}{\delta}$, 则$\Pr[\hat Z\text{ is }\epsilon\text{-approx of }|S|]\ge 1-\delta$, 即$\Pr[(1-\epsilon)Z\le \hat Z\le (1+\epsilon)Z]\ge 1-\delta$.<br>证明直接使用Chernoff Bound:<br>令$Y=\sum_{i=1}^NY_i$, $\mathbb E[Y]=\rho N$, </p>
+<script type="math/tex; mode=display">
+\Pr[\hat Z\ge (1+\epsilon)|S|]=\Pr[Y\ge (1+\epsilon)\rho N]=\Pr[Y\ge (1+\epsilon)\mathbb E[Y]]\le e^{-\epsilon^2\rho N/3}</script><p>另一个方向同理(概率小于等于$e^{-\epsilon^2\rho n/2}$).</p>
+<script type="math/tex; mode=display">
+\Pr[\hat Z\text{ is not an }\epsilon\text{-approx of }|S|]\le 2e^{-\epsilon^2\rho n/3}=\delta</script><h2 id="Counting-DNF-Solutions"><a href="#Counting-DNF-Solutions" class="headerlink" title="Counting DNF Solutions"></a>Counting DNF Solutions</h2><p>输入: DNF公式$\phi: \{T,F\}^n\to\{T,F\}$<br>输出: 满足解的个数$Z=|\phi^{-1}(T)|$</p>
+<ul>
+<li>n个布尔变量: $x_1, x_2,\cdots,x_n\in\{\text{true, false}\}$</li>
+<li>DNF: $\phi=C_1\lor C_2\lor \cdots\lor C_m$</li>
+<li>m个子句$C_1,\cdots,C_m$</li>
+<li>每个子句为$C_i=l_{i_1}\land l_{i_2}\land\cdots\land l_{i_k}$</li>
+<li>每个文字: $l_j\in\{x_r,\neg x_r\}$对于某个$r$<br>数DNF是$# P$难的(比NP难还难)</li>
+<li>$U=\{T,F\}^n$, $S=\{x\in\{T,F\}^n|\phi(x)\}=\phi^{-1}(T)$</li>
+<li>$\rho$可能是指数小的. 例如当DNF是一个很大的子句时</li>
+</ul>
+<h2 id="Union-of-sets"><a href="#Union-of-sets" class="headerlink" title="Union of sets"></a>Union of sets</h2><p>输入: $m$个集合$S_1,S_2,\cdots, S_m$, 估计集合$S=\cup_{i=1}^m S_i$的大小<br>定义$U=S_1\biguplus S_2 \biguplus \cdots\biguplus S_m=\{(x,i)|x\in S_{i}\}$, $U=\{(x,i^<em>)|x\in S_{i^</em>}\text{ and }x\in S_i=&gt;i^<em>\le i\}$($i^</em>$是最小的那个),<br>则$|\overline S|=|S|$, $\overline S\subseteq U$, $\rho = \frac{|\overline S|}{|U|}\ge \frac{1}{m}$</p>
+<p>蒙特卡洛方法: 均匀采样$(x,i)\in U$ ($N=\Theta(\frac{m}{\epsilon^2}\ln \frac{1}{\delta})$次独立的). 对于每个采样, 判断是否有$(x,i)\in\overline S$.<br>并且要统计每个$S_i$的大小, 加起来得到$|U|$, 然而使用<strong>Estimator Theorem</strong>即可.<br>$\rho=\frac{|\overline S|}{|U|}\ge 1/m$是因为$\overline S$中每个元素至多在$U$中出现m次</p>
+<h2 id="CSP均匀采样的两种方法"><a href="#CSP均匀采样的两种方法" class="headerlink" title="CSP均匀采样的两种方法"></a>CSP均匀采样的两种方法</h2><p>输入一个CSP实例, 采样一个均匀随机的CSP解.</p>
+<h3 id="Metropolis-Algorithm"><a href="#Metropolis-Algorithm" class="headerlink" title="Metropolis Algorithm:"></a>Metropolis Algorithm:</h3><p>初始: 一个任意的CSP解;<br>每一步当前CSP解为$\sigma=(\sigma_1,\cdots,\sigma_n)$</p>
+<ul>
+<li>提议: 均匀随机选择变量$i\in[n]$, $c\in[q]$;</li>
+<li>滤波: 如果改变后依然满足所有限制, 把$\sigma_i$改为$c$.<br>在T步之后返回$\sigma$.</li>
+<li>MCMC: 第一个MC对应随机游走, 第二个MC表示停下了的时候不是完美的, 有一定的偏置</li>
+</ul>
+<h3 id="Glauber-Dynamics-Gibbs-sampling"><a href="#Glauber-Dynamics-Gibbs-sampling" class="headerlink" title="Glauber Dynamics(Gibbs sampling)"></a>Glauber Dynamics(Gibbs sampling)</h3><p>从任意解出发</p>
+<ul>
+<li>随机选择$i\in[n]$</li>
+<li>根据$\sigma_i$以外的变量的当前取值, 算出$\sigma_i$的所有可行取值, 在这些可行取值中均匀随机采样, $\sigma_i$改为采样到的值.<br>(根据第i个变量的条件为其他变量当前取值的<strong>边缘分布</strong>)<br>在T步之后返回$\sigma$.<br>这两个算法最终都收敛到均匀分布.<br>收敛速率分析是很难的.</li>
+</ul>
+<h2 id="随机游走"><a href="#随机游走" class="headerlink" title="随机游走"></a>随机游走</h2><h4 id="随机过程"><a href="#随机过程" class="headerlink" title="随机过程"></a>随机过程</h4><p>$\{X_t|t\in T\}$, $X_t\in \Omega$.<br>离散时间$T=\{0,1,\cdots\}$<br>离散空间$\Omega$是有穷的或者可数无穷的<br>$X_0,X_1,\cdots$<br>马尔科夫链:<br>$\forall t=0,1,\cdots,\forall x_0,x_1\cdots,x_{t-1},x,y\in\Omega$<br>$\Pr[X_{t+1}=y|X_0=x_0,\cdots,X_{t-1}=x_{t-1},X_t=x]=\Pr[X_{t+1}=y|X_t=x]=P_{xy}^{(t)}$<br>即和之前哪来的无关, 只和当前位置有关(无记忆的)<br>homogeneity: 转移规则和时间无关, 即$P_{xy}^{(t)}=P_{xy}$. 下面只考虑这种.<br>转移矩阵P: $\Omega\times\Omega$ 的转移矩阵$P$, 每一行加起来是1<br>已知$X_t$的分布, 根据全概率公式, 就可以得到$X_{t+1}$的分布, 即$P^{(t+1)}=p^{(t)}P$<br>稳态分布$\pi$: $\pi P=\pi$(不动点)</p>
+<p><strong>马尔科夫链基本定理</strong>:</p>
+<p>如果一个<strong>有穷</strong>马尔科夫链$M=(\Omega,P)$是<strong>不可约</strong>且<strong>无周期</strong>的, 那么任意初始分布$\pi^{(0)}$, </p>
+<script type="math/tex; mode=display">
+\lim_{t\to\infty}\pi^{(0)}P^t=\pi</script><p>其中$\pi$是<strong>唯一</strong>的稳态分布, 满足$\pi P=\pi$<br>坏情况</p>
+<ul>
+<li>实际不连通, 有无穷多个稳态分布</li>
+<li>有周期<br>不可约: 所有的状态对都是互通(强连通)的. 否则$P=\left[\begin{matrix}P_A &amp; 0\\0&amp;P_B\end{matrix}\right]$<br>无周期性: 定义$d_x=\gcd\{t|P^t(x,x)&gt;0\}$, 即有长为t的x到x的环. 无周期性即每个状态的周期都是1.<br>1一定是右特征值, 而左特征值和右特征值是一一对应的, 所以1也是左特征值, 而左特征向量非负(Perron-Frobenius Theorem非负矩阵的最大特征值对应的特征向量一定是非负的), 所以稳态分布一定存在</li>
+</ul>
+<h3 id="图上的随机游走"><a href="#图上的随机游走" class="headerlink" title="图上的随机游走"></a>图上的随机游走</h3><p>无向图$G(V,E)$中:</p>
+<p><strong>均匀随机游走</strong>:</p>
+<ul>
+<li>每一步均匀随机选取一个邻居走过去</li>
+<li><p>转移矩阵</p>
+<script type="math/tex; mode=display">
+P(u,v)=\begin{cases}
+\frac{1}{deg(u)} &\text{if }uv\in E\\
+0&\text{if }uv\not\in E
+\end{cases}</script></li>
+<li><p>不可约: $G$是连接的</p>
+</li>
+<li>无周期: $P(x,y)&gt;0$<br><strong>懒惰随机游走</strong>:</li>
+<li>一半概率什么都不做, </li>
+<li>一半概率随机选取一个邻居走过去</li>
+<li>转移矩阵<script type="math/tex; mode=display">
+P(u,v)=\begin{cases}
+1/2&\text{if }u=v\\
+\frac{1}{2deg(u)} &\text{if }uv\in E\\
+0&\text{otherwise.}
+\end{cases}</script></li>
+<li>这两种的稳态分布都是:<script type="math/tex; mode=display">
+\pi(u)=\frac{deg(u)}{2|E|}</script></li>
+<li>对于均匀随机游走, <script type="math/tex; mode=display">
+(\pi P)_v=\sum_{u\in V}\pi(u)P(u,v)=\sum_{u\sim v}\frac{deg(u)}{2|E|}\frac{1}{deg(u)}=\frac{deg(u)}{2|E|}=\pi (v)</script></li>
+<li>对于懒惰游走, $P’=\frac{1}{2}(I+P)$, $\pi P=\pi$, 所以$\pi P’=\pi$</li>
+</ul>
+<h3 id="Reversibility"><a href="#Reversibility" class="headerlink" title="Reversibility"></a>Reversibility</h3><p><strong>Detailed Balance Equation(DBE)</strong>: </p>
+<script type="math/tex; mode=display">
+\pi(x)P(x, y) = \pi(y)P(y, x)</script><p><strong>时间可逆time-reversible Markov chain</strong>:</p>
+<script type="math/tex; mode=display">
+\exists\pi,\forall x,y\in\Omega,\pi(x)P(x,y)=\pi(y)P(y,x)</script><p>时间可逆time-reversible Markov chain一定是stationary distribution:</p>
+<script type="math/tex; mode=display">
+(\pi P)_y=\sum_x\pi(x)P(x,y)=\sum_x\pi(y)P(y,x)=\pi(y)</script><p>时间可逆: 从$\pi$开始</p>
+<script type="math/tex; mode=display">
+\Pr[X_0=x_0\land X_1=x_1\land\cdots\land X_n=x_n]=\Pr[X_0=x_n\land X_1=x_{n-1}\land\cdots\land X_n=x_0]</script><p>在图上的游走中</p>
+<ul>
+<li>在$u=v$或者$u\not\sim v$时, DBE成立; </li>
+<li>在$u\sim v$时, DBE成立当<script type="math/tex; mode=display">
+\pi(u)\propto \frac{1}{P(u,v)}\propto deg(u)</script></li>
+</ul>
+<p>如果想要得到稳态是<strong>均匀分布</strong>, 则转移矩阵为</p>
+<script type="math/tex; mode=display">
+P(u,v)=\begin{cases}
+1-\frac{deg(u)}{2\Delta}&\text{if }u=v\\
+\frac{1}{2\Delta} &\text{if }uv\in E\\
+0&\text{otherwise.}
+\end{cases}</script><p>其中$\Delta=\max_vdeg(v)$.</p>
+<p>必考: reversiblity和图上的随机游走: 如何设计P来根据reversiblity得到想要的稳态分布</p>
+<h3 id="Metropolis-Algorithm-1"><a href="#Metropolis-Algorithm-1" class="headerlink" title="Metropolis Algorithm"></a>Metropolis Algorithm</h3><ul>
+<li>状态空间$\Omega$上的对称的转移矩阵$Q$:<br>$Q^T=Q$, $Q1=1$ ==&gt; $1Q=1$ 稳态分布</li>
+<li>每一步中, 当前状态是$x\in \Omega$<ul>
+<li>提议: 以概率$Q(x,y)$提议$y\in \Omega$</li>
+<li>滤波: 接受提议, 以概率$\min\{1,\pi(y)/\pi(x)\}$移动到$y$</li>
+</ul>
+</li>
+<li>对于$x\ne y$, $P(x,y)=Q(x,y)\min\{1,\frac{\pi(x)}{\pi(y)}\}$</li>
+<li>对于$x=y$, $P(x,x)=1-\sum_{y\ne x}P(x,y)$. </li>
+<li>满足DBE, 是均匀稳态分布</li>
+</ul>
+<h3 id="Glauber-Dynamics"><a href="#Glauber-Dynamics" class="headerlink" title="Glauber Dynamics"></a>Glauber Dynamics</h3><p>每一步中, 当前状态是$X=(X_1,\cdots,X_n)$:</p>
+<ul>
+<li><p>均匀随机选择$i\in [n]$</p>
+</li>
+<li><p>根据$X_i$的当前边界分布(除了$X_i$以外的都固定为当前值), 采样$X_i$</p>
+</li>
+</ul>
+<p>也满足DBE, 是均匀稳态分布</p>
+<h2 id="Mixing-Time"><a href="#Mixing-Time" class="headerlink" title="Mixing Time"></a>Mixing Time</h2><p>到达稳态的时间. 具体见讲义.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/高级算法/" rel="tag"># 高级算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/05/大三上/高级算法/高级算法之Lovász-Local-Lemma/" rel="next" title="高级算法之Lovász Local Lemma">
+                <i class="fa fa-chevron-left"></i> 高级算法之Lovász Local Lemma
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/18/大三上/组合数学/组合数学之Matching theory/" rel="prev" title="组合数学之匹配论">
+                组合数学之匹配论 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XY</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Markov-Chain-Monte-Carlo-MCMC-methods"><span class="nav-number">1.</span> <span class="nav-text">Markov Chain Monte Carlo(MCMC) methods</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Counting-DNF-Solutions"><span class="nav-number">1.1.</span> <span class="nav-text">Counting DNF Solutions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Union-of-sets"><span class="nav-number">1.2.</span> <span class="nav-text">Union of sets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSP均匀采样的两种方法"><span class="nav-number">1.3.</span> <span class="nav-text">CSP均匀采样的两种方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Metropolis-Algorithm"><span class="nav-number">1.3.1.</span> <span class="nav-text">Metropolis Algorithm:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Glauber-Dynamics-Gibbs-sampling"><span class="nav-number">1.3.2.</span> <span class="nav-text">Glauber Dynamics(Gibbs sampling)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#随机游走"><span class="nav-number">1.4.</span> <span class="nav-text">随机游走</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#随机过程"><span class="nav-number">1.4.0.1.</span> <span class="nav-text">随机过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图上的随机游走"><span class="nav-number">1.4.1.</span> <span class="nav-text">图上的随机游走</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reversibility"><span class="nav-number">1.4.2.</span> <span class="nav-text">Reversibility</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Metropolis-Algorithm-1"><span class="nav-number">1.4.3.</span> <span class="nav-text">Metropolis Algorithm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Glauber-Dynamics"><span class="nav-number">1.4.4.</span> <span class="nav-text">Glauber Dynamics</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mixing-Time"><span class="nav-number">1.5.</span> <span class="nav-text">Mixing Time</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

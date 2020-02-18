@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="问题求解四,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="启发性算法 非常狭义定义： 用来设计最优化问题的随机算法的鲁棒性技术； 不能保证解的效率和质量 没有有界常数概率    模拟退火 Simulated Annealing概念 局部搜索+跳出局部最优的随机决策  局部搜索：找到一个可行解；找到邻域中的最优解替换并且循环这一步  多起点局部搜索  threshold local search：允许移动到较差解  模拟退火的基本思想: +  初始化：初始">
+<meta name="keywords" content="问题求解四">
+<meta property="og:type" content="article">
+<meta property="og:title" content="启发性算法">
+<meta property="og:url" content="http://yoursite.com/2019/07/01/大二下/问题求解/启发性算法/index.html">
+<meta property="og:site_name" content="XY&#39;s blog">
+<meta property="og:description" content="启发性算法 非常狭义定义： 用来设计最优化问题的随机算法的鲁棒性技术； 不能保证解的效率和质量 没有有界常数概率    模拟退火 Simulated Annealing概念 局部搜索+跳出局部最优的随机决策  局部搜索：找到一个可行解；找到邻域中的最优解替换并且循环这一步  多起点局部搜索  threshold local search：允许移动到较差解  模拟退火的基本思想: +  初始化：初始">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-01T07:16:38.908Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="启发性算法">
+<meta name="twitter:description" content="启发性算法 非常狭义定义： 用来设计最优化问题的随机算法的鲁棒性技术； 不能保证解的效率和质量 没有有界常数概率    模拟退火 Simulated Annealing概念 局部搜索+跳出局部最优的随机决策  局部搜索：找到一个可行解；找到邻域中的最优解替换并且循环这一步  多起点局部搜索  threshold local search：允许移动到较差解  模拟退火的基本思想: +  初始化：初始">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/01/大二下/问题求解/启发性算法/">
+
+
+
+
+
+  <title>启发性算法 | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XY's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/01/大二下/问题求解/启发性算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XY">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XY's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">启发性算法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-01T11:59:49+08:00">
+                2019-07-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="启发性算法"><a href="#启发性算法" class="headerlink" title="启发性算法"></a>启发性算法</h1><ul>
+<li>非常狭义定义：<ul>
+<li>用来设计最优化问题的随机算法的鲁棒性技术；</li>
+<li>不能保证解的效率和质量</li>
+<li>没有有界常数概率</li>
+</ul>
+</li>
+</ul>
+<h2 id="模拟退火-Simulated-Annealing"><a href="#模拟退火-Simulated-Annealing" class="headerlink" title="模拟退火 Simulated Annealing"></a>模拟退火 Simulated Annealing</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul>
+<li><p>局部搜索+跳出局部最优的随机决策</p>
+</li>
+<li><p>局部搜索：找到一个可行解；找到邻域中的最优解替换并且循环这一步</p>
+</li>
+<li><p>多起点局部搜索</p>
+</li>
+<li><p>threshold local search：允许移动到较差解</p>
+</li>
+<li><p>模拟退火的基本思想:</p>
+<pre><code>+  初始化：初始温度T，初始可行解$\alpha \in M(x)$(是算法迭代的起点)，温度关于温度和时间的下降函数f
+</code></pre><ul>
+<li>时间$I=0$，当温度大于0(或不太靠近0)时，重复一下操作：<ul>
+<li>随机选取$\alpha$邻域中的解$\beta$</li>
+<li>如果$cost(\beta)\le cost(\beta)$, $\alpha:=\beta$; </li>
+<li>否则生成一个(0, 1)间的随机数r<ul>
+<li>如果$r&lt;\exp(-\frac{cost(\beta)-cost(\alpha)}{T})$, 则$\alpha:=\beta$; </li>
+</ul>
+</li>
+<li>$I =I+1$</li>
+<li>$T=f(T,I)$</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>输出$\alpha$</li>
+</ul>
+</li>
+</ul>
+<h3 id="理论和经验"><a href="#理论和经验" class="headerlink" title="理论和经验"></a>理论和经验</h3><ul>
+<li>如果下列条件成立, 模拟退火是渐进收敛的, 即取全局最优解的概率随迭代次数的增加趋向于1<ul>
+<li>每个可行解都是任意其他可行解可达的</li>
+<li>初始温度T至少为最深的非全局最优的局部最优解的深度</li>
+</ul>
+</li>
+<li>初始温度选择:<ul>
+<li>cost的最大差值</li>
+<li>或者任选T, 过程中增大T值保证接受概率小于1</li>
+</ul>
+</li>
+<li>温度下降函数选择:<ul>
+<li>通常选取常数r, $0.8\le r \le 0.99$, $T := r\cdot T$</li>
+<li>或者选取$T_k:=\frac{T}{\log_2(k+2)}$</li>
+<li>每个固定温度的迭代次数d为邻域的大小</li>
+</ul>
+</li>
+<li>终止条件:<ul>
+<li>一段时间cost不变</li>
+<li>T &lt; term, 通常$term\le \frac{\epsilon}{\ln [(|M(x)|-1)/p]}$</li>
+</ul>
+</li>
+<li>观察结果:<ul>
+<li>可能解质量好但是计算开销极大</li>
+<li>解的质量实际上未必和初始解选取有关</li>
+<li>最重要的参数是邻域和温度下降率</li>
+<li>平均时间接近最坏时间</li>
+<li>相同邻域下效果比局部搜索好</li>
+</ul>
+</li>
+<li>应用: MAX-CUT, MIN-CUT; (TSP效果很差)</li>
+</ul>
+<h3 id="随机禁忌搜索"><a href="#随机禁忌搜索" class="headerlink" title="随机禁忌搜索"></a>随机禁忌搜索</h3><ul>
+<li>模拟退火推广版</li>
+<li>记录搜索过的最优解, 并且在邻域和TABU的差集中搜索, 搜索后更新TABU</li>
+<li>TABU有多种选择策略, 可以前k步搜索过的解以免重复</li>
+<li>随机禁忌搜索算法:<ul>
+<li>选初始解$\alpha$, TABU = {$\alpha$}, STOP = FALSE, BEST = $\alpha$</li>
+<li>选$Neigh_x(\alpha)-TABU$中最优解$\beta$, 同模拟退火选择是否接受$\beta$</li>
+<li>更新TABU和STOP</li>
+<li>重复直至STOP</li>
+</ul>
+</li>
+</ul>
+<h2 id="遗传算法-genetic-algorithm"><a href="#遗传算法-genetic-algorithm" class="headerlink" title="遗传算法 genetic algorithm"></a>遗传算法 genetic algorithm</h2><h3 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h3><ul>
+<li><p>遗传算法:</p>
+<ul>
+<li>创造一个初始化人口$P=\{\alpha_1, \cdots, \alpha_k\}$; 已经创造的人口数$t=0$</li>
+<li>计算fitness($\alpha_i$), i = 1, 2, …, k, 据此评估P的分布律$Prob_P$, 满足高fitness有较高概率</li>
+<li>根据$Prob_P$随机选取$k/2$对可行解$(\beta_1^1, \beta_1^1)$, …, $(\beta_{k/2}^1, \beta_{k/2}^1)$</li>
+<li>计算每一对的crossover生成新个体, 加入P</li>
+<li>对P中每个个体随机使用变异mutation</li>
+<li>对于P中每个个体再次计算fitness, 据此选择k个组成P’ $\subseteq$P</li>
+<li>可能对于P’中元素在邻域中搜索最优解来替代</li>
+<li>$t:=t+1$; $P:=P’$; 满足停止条件则输出, 不然重复上述步骤</li>
+</ul>
+</li>
+<li><p>定义: M(x)的计划为任意向量$s=(s_1, s_2,…,s_n)\in \\{0,1,<em> \\} ^ n$(</em>表示free); 对于计划s的可行解集合为</p>
+<p>$Schema(s_1, …, s_n) = \\{ \gamma_1, …, \gamma_n\in M(x)|\gamma_i = s_i \text{ for all }i \in \\{1,…,n\\} $<br>$\text{ such that }s_i\in \\{0,1\\};\gamma_i \in\\{0,1\\}\text{ for all }j\in \\{1,2,…,n \\}\text{ such that }s_j=*  \\}$</p>
+</li>
+<li><p>length(s): s中第一个和最后一个非*位置间的距离;</p>
+<p>order(s): 非*位置数</p>
+<p>$Fitness(s, P) = \frac{1}{|Schema(s)\cap P|}\cdot \sum_{\gamma\in Schema(s)\cap P}cost(\gamma)$</p>
+<p>$Fit-ratio(s, P) = \frac{Fitness(s, P)}{\sum_{\beta \in P}cost(\beta)/|P|}$, 分母为平均fitness</p>
+</li>
+<li><p>The Schema Thm for GAS: 对任意Schema s 和任意 t= 1, 2, …, Schema(s)在(t+1)-st人口的期望个体数为</p>
+<p>$E[Z_{t+1}]=Fit-ratio(s, P_t)\cdot \frac{n-length(s)}{n}\cdot (1-order(s)\cdot pr_m)\cdot |P_t\cap Schema(s)|$</p>
+</li>
+</ul>
+<h3 id="参数选择"><a href="#参数选择" class="headerlink" title="参数选择"></a>参数选择</h3><ul>
+<li><p>人口大小: </p>
+<ul>
+<li>太小容易局部最优, 太大计算开销大</li>
+<li>30或者区间[n, 2n]内(n为实例的大小)</li>
+</ul>
+</li>
+<li><p>初始人口选择:</p>
+<ul>
+<li>随机选择</li>
+<li>选择较高质量的初始人口会增快收敛速度, 但容易收敛到局部最优</li>
+</ul>
+</li>
+<li><p>fitness选择:</p>
+<ul>
+<li>最大化问题直接选取cost作为fitness, 或再减去一个小于最小值的常数; 减去的值越接近最小cost, 越偏向于高cost个体</li>
+</ul>
+</li>
+<li>父母的选择:<ul>
+<li>选最好的一半和剩下的随机组合</li>
+<li>或者按照从小到大排序后, 根据$Prob(\alpha_i)=\frac{2i}{n(n+1)}$的概率选择</li>
+</ul>
+</li>
+<li>个体的表示和crossover<ul>
+<li>例如TSP中个体表示为1-n的排列, crossover可以选择为一个排列中的某部分按照另一个排列中的顺序重排</li>
+<li>或者将父母的某些特征crossover, 然后选择满足crossover后性质的解作为孩子</li>
+</ul>
+</li>
+<li>突变概率:<ul>
+<li>1/100</li>
+<li>或1/n</li>
+<li>或$\frac{1}{k^{0.93}\sqrt{n}}$</li>
+<li>如果人口数量k较小, 就要增大突变率防止局部最优</li>
+</ul>
+</li>
+<li><p>新人口选择机制</p>
+<ul>
+<li>en block strategy: 孩子完全替代父母</li>
+<li>elite model: 选一小部分父母中的高fitness个体, 其余的大部分选孩子</li>
+<li>父母孩子放一起, 选择高fitness的</li>
+<li>选完之后可以在小邻域中提升个体fitness</li>
+</ul>
+</li>
+<li><p>停止策略:</p>
+<ul>
+<li>确定的代数</li>
+<li>根据平均fitness(不怎么变)和个体差异(小)</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/问题求解四/" rel="tag"># 问题求解四</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/01/大二下/问题求解/随机算法/" rel="next" title="随机算法">
+                <i class="fa fa-chevron-left"></i> 随机算法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/01/大二下/操作系统/os虚拟化/" rel="prev" title="OS虚拟化">
+                OS虚拟化 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XY</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#启发性算法"><span class="nav-number">1.</span> <span class="nav-text">启发性算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模拟退火-Simulated-Annealing"><span class="nav-number">1.1.</span> <span class="nav-text">模拟退火 Simulated Annealing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念"><span class="nav-number">1.1.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#理论和经验"><span class="nav-number">1.1.2.</span> <span class="nav-text">理论和经验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随机禁忌搜索"><span class="nav-number">1.1.3.</span> <span class="nav-text">随机禁忌搜索</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遗传算法-genetic-algorithm"><span class="nav-number">1.2.</span> <span class="nav-text">遗传算法 genetic algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数选择"><span class="nav-number">1.2.2.</span> <span class="nav-text">参数选择</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="组合数学,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Matching theory1 Systems of Distinct Representatives(SDR)SDR: 对于集合$S_1,S_2,\cdots,S_m$, 选出不同的$x_1,x_2,\cdots,x_m$, $x_i\in S_i$, $i=1,2,\cdots,m$ 1.1 Hall’s marriage theoremHall定理: 集合$S_1,S_2,\cdots,S">
+<meta name="keywords" content="组合数学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="组合数学之匹配论">
+<meta property="og:url" content="http://yoursite.com/2019/12/18/大三上/组合数学/组合数学之Matching theory/index.html">
+<meta property="og:site_name" content="XY&#39;s blog">
+<meta property="og:description" content="Matching theory1 Systems of Distinct Representatives(SDR)SDR: 对于集合$S_1,S_2,\cdots,S_m$, 选出不同的$x_1,x_2,\cdots,x_m$, $x_i\in S_i$, $i=1,2,\cdots,m$ 1.1 Hall’s marriage theoremHall定理: 集合$S_1,S_2,\cdots,S">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-12-29T12:54:03.553Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="组合数学之匹配论">
+<meta name="twitter:description" content="Matching theory1 Systems of Distinct Representatives(SDR)SDR: 对于集合$S_1,S_2,\cdots,S_m$, 选出不同的$x_1,x_2,\cdots,x_m$, $x_i\in S_i$, $i=1,2,\cdots,m$ 1.1 Hall’s marriage theoremHall定理: 集合$S_1,S_2,\cdots,S">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/12/18/大三上/组合数学/组合数学之Matching theory/">
+
+
+
+
+
+  <title>组合数学之匹配论 | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XY's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/18/大三上/组合数学/组合数学之Matching theory/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XY">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XY's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">组合数学之匹配论</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-18T20:00:00+08:00">
+                2019-12-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Matching-theory"><a href="#Matching-theory" class="headerlink" title="Matching theory"></a>Matching theory</h1><h2 id="1-Systems-of-Distinct-Representatives-SDR"><a href="#1-Systems-of-Distinct-Representatives-SDR" class="headerlink" title="1 Systems of Distinct Representatives(SDR)"></a>1 Systems of Distinct Representatives(SDR)</h2><p>SDR: 对于集合$S_1,S_2,\cdots,S_m$, 选出不同的$x_1,x_2,\cdots,x_m$, $x_i\in S_i$, $i=1,2,\cdots,m$</p>
+<h3 id="1-1-Hall’s-marriage-theorem"><a href="#1-1-Hall’s-marriage-theorem" class="headerlink" title="1.1 Hall’s marriage theorem"></a>1.1 Hall’s marriage theorem</h3><p><strong>Hall定理</strong>: 集合$S_1,S_2,\cdots,S_m$存在SDR当且仅当</p>
+<script type="math/tex; mode=display">
+|\bigcup _{i\in I}S_i|\ge |I|\text{ for all }I\subseteq \{1,2,\cdots,m\}</script><p><strong>证明</strong>:</p>
+<p>$m=1$时, 显然.</p>
+<p>$m&gt;1$时, 定义<strong>critical family</strong>: $S_1,S_2,\cdots,S_k$, $k&lt;m$, $|\bigcup_{i=1}^kS_i|=k$. </p>
+<p>case 1. 没有critical family, 即对于任何$I\subset \{1,2,\cdots,m\}$, $|\bigcup_{i\in I}S_i|&gt;|I|$. 任意选择$x\in S_m$作为$S_m$的代表, 去掉$S_m$和$x$后, $S_i’=S_i\setminus\{x\}$. 对于任意$I\subseteq \{1,2,\cdots,m-1\}$, $|\bigcup_{i\in I}S_i|\ge |\bigcup_{i\in I}S_i|-1\ge |I|$. 根据归纳假设, 得证.</p>
+<p>case 2. 存在一个critical family, 即存在$I\subset \{1,2,\cdots,m\}$, $|I|&lt;m$, $|\bigcup_{i\in I}S_i|=|I|$. 假设$S_{m-k+1}, \cdots,S_m$是恰好满足Hall条件(取等)的$k&lt;m$元集. 根据假设, 有SDR: $x_{m-k+1}\in S_{m-k+1}, \cdots,x_{m}\in S_{m}$. 去掉这$k$个元素, $S_i’=S_i\setminus \{x_{m-k+1}, \cdots,x_m\}$, $1\le i\le m-k$. 根据Hall条件, 对于任意$I\subseteq \{1,2,\cdots,m-k\}$, 记$S=\bigcup_{i\in I}S_i \cup\bigcup_{i=m-k+1}S_i$, $|S|\ge |I|+k$, 所以$|\bigcup _{i\in I}S_i’|\ge |S|-|\bigcup_{i=m-k+1}^m S_i|\ge |I|$. 根据假设, 存在$S_1,\cdots,S_{m-k}$的SDR, 和前面的SDR合起来就得到了答案.</p>
+<p><strong>Hall定理(图论版本)</strong>: </p>
+<p>二部图$G(U,V,E)$有$U$的匹配当且仅当对于所有$S\subseteq U$都有$|N(S)|\ge |S|$</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/组合数学/" rel="tag"># 组合数学</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/05/大三上/高级算法/高级算法之Markov Chain Monte Carlo/" rel="next" title="高级算法之Markov Chain Monte Carlo methods">
+                <i class="fa fa-chevron-left"></i> 高级算法之Markov Chain Monte Carlo methods
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/25/大三上/计算机网络/计网Ch3运输层/" rel="prev" title="计算机网络之Ch3运输层">
+                计算机网络之Ch3运输层 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XY</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Matching-theory"><span class="nav-number">1.</span> <span class="nav-text">Matching theory</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Systems-of-Distinct-Representatives-SDR"><span class="nav-number">1.1.</span> <span class="nav-text">1 Systems of Distinct Representatives(SDR)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Hall’s-marriage-theorem"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 Hall’s marriage theorem</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

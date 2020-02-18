@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="高级算法,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Semidefinite ProgramsLP for Max-Cut \begin{aligned} \text{max}&amp;&amp;&amp;\sum_{uv\in E}y_{uv}\\ \text{s.t} &amp;&amp;&amp;y_{uv}\le |x_u-x_v| &amp;&amp; \forall uv\in E\\ &amp;&amp;&amp; x_v\in \{0,1\} &amp;&amp;\forall v\in V \end{aligned}有绝对值, 非线">
+<meta name="keywords" content="高级算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高级算法之Semidefinite Programs">
+<meta property="og:url" content="http://yoursite.com/2019/12/01/大三上/高级算法/高级算法之半正定规划/index.html">
+<meta property="og:site_name" content="XY&#39;s blog">
+<meta property="og:description" content="Semidefinite ProgramsLP for Max-Cut \begin{aligned} \text{max}&amp;&amp;&amp;\sum_{uv\in E}y_{uv}\\ \text{s.t} &amp;&amp;&amp;y_{uv}\le |x_u-x_v| &amp;&amp; \forall uv\in E\\ &amp;&amp;&amp; x_v\in \{0,1\} &amp;&amp;\forall v\in V \end{aligned}有绝对值, 非线">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-01-10T11:26:12.541Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="高级算法之Semidefinite Programs">
+<meta name="twitter:description" content="Semidefinite ProgramsLP for Max-Cut \begin{aligned} \text{max}&amp;&amp;&amp;\sum_{uv\in E}y_{uv}\\ \text{s.t} &amp;&amp;&amp;y_{uv}\le |x_u-x_v| &amp;&amp; \forall uv\in E\\ &amp;&amp;&amp; x_v\in \{0,1\} &amp;&amp;\forall v\in V \end{aligned}有绝对值, 非线">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/12/01/大三上/高级算法/高级算法之半正定规划/">
+
+
+
+
+
+  <title>高级算法之Semidefinite Programs | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XY's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/01/大三上/高级算法/高级算法之半正定规划/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XY">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XY's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">高级算法之Semidefinite Programs</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-01T21:00:00+08:00">
+                2019-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Semidefinite-Programs"><a href="#Semidefinite-Programs" class="headerlink" title="Semidefinite Programs"></a>Semidefinite Programs</h1><h2 id="LP-for-Max-Cut"><a href="#LP-for-Max-Cut" class="headerlink" title="LP for Max-Cut"></a>LP for Max-Cut</h2><script type="math/tex; mode=display">
+\begin{aligned}
+\text{max}&&&\sum_{uv\in E}y_{uv}\\
+\text{s.t} &&&y_{uv}\le |x_u-x_v| && \forall uv\in E\\
+&&& x_v\in \{0,1\} &&\forall v\in V
+\end{aligned}</script><p>有绝对值, 非线性规划, 转化为下面的形式:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\text{max}&&&\sum_{uv\in E}y_{uv}\\
+\text{s.t} &&&y_{uv}\le y_{uw}+y_{wv} && \forall u,v,w\in V\\
+&&&y_{uv}+ y_{uw}+y_{wv}\le 2 && \forall u,v,w\in V\\
+&&& y_{uv}\in \{0,1\} &&\forall u,v\in V
+\end{aligned}</script><p>也就是$\forall u,v,w\in V$, $\{u,v\}$, $\{u,w\}$, $\{v,w\}$中有0或2对是交错的.<br>integrality gap: $\ge 2$<br>也可以写成二次规划:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\text{max}&&&\sum_{uv\in E}y_{uv}\\
+\text{s.t} &&&y_{uv}\le \frac{1}{2}(1-x_ux_v) && \forall uv\in E\\
+&&& x_v\in \{-1,1\} &&\forall v\in V
+\end{aligned}</script><p>即</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\text{max}&&&\sum_{uv\in E}\frac{1}{2}(1-x_ux_v)\\
+\text{s.t} 
+&&& x_v^2=1 &&\forall v\in V
+\end{aligned}</script><p>松弛成向量规划</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\text{max}&&&\frac{1}{2}\sum_{uv\in E}(1-\langle x_u,x_v\rangle)\\
+\text{s.t} 
+&&& \langle x_v,x_v\rangle=1 &&\forall v\in V\\
+&&& x_v\in \mathbb R^n
+\end{aligned}</script><h2 id="半正定规划SDP"><a href="#半正定规划SDP" class="headerlink" title="半正定规划SDP"></a>半正定规划SDP</h2><p>定义: 对称矩阵$A\in \mathbb R^{n\times n}$是半正定的当且仅当对于任意$x\in \mathbb R^n$, $x^T Ax\ge 0$, 记做$A \succcurlyeq 0$<br>定理: 对于对称阵$A\in \mathbb R^{n\times n}$:</p>
+<p>​        $A \succcurlyeq 0 $ 当且仅当 所有特征值$\lambda(A)\ge 0$ 当且仅当 存在$B\in \mathbb R^{n\times n}, A=B^TB$</p>
+<p>半正定规划:<br>$C,A_1,\cdots,A_k\in \mathbb R^{n\times n}, b_1.b_2,\cdots,b_k\in \mathbb R$</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\text{max}&&& tr(C^TY)=\sum_{i=1}^n\sum_{j=1}^nc_{ij}y_{ij}\\
+\text{s.t} 
+&&& tr(A_r^T Y)\le b_r && \forall 1\le r\le k\\
+&&& Y \succcurlyeq 0\\
+&&& \text{symmetric } Y\in R^{n\times n}
+\end{aligned}</script><p>等价形式:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\text{max}&&& tr(C^TY)=\sum_{i=1}^n\sum_{j=1}^nc_{ij}\langle v_i,v_j\rangle\\
+\text{s.t} 
+&&& \sum_{i=1}^n\sum_{j=1}^na_{ij}^{(r)}\langle v_i,v_j\rangle\le b_r && \forall 1\le r\le k\\
+&&& v_1,\cdots,v_n\in R^{n}
+\end{aligned}</script><ul>
+<li>SDP是LP的推广</li>
+<li>SDP是半正定规划的一类</li>
+<li>可以可以被 ellipsoid method高效解答<ul>
+<li>在$poly(n, 1/\epsilon)$时间内得到$OPT \pm\epsilon$</li>
+</ul>
+</li>
+</ul>
+<h2 id="舍入-Rounding"><a href="#舍入-Rounding" class="headerlink" title="舍入(Rounding)"></a>舍入(Rounding)</h2><p>对于最大割问题, 假设松弛到的SDP的解为$x_v^*$, 舍入到原问题解$\hat x_v$:</p>
+<ul>
+<li>均匀随机选取一个单位向量$u\in \mathbb R^n$, $\Vert u \Vert_2=1$</li>
+<li>则$\hat x_v=sgn (\langle x_v^<em>,u\rangle)$. (注意这里的$x_v^</em>$已经转化为了n维向量了)</li>
+<li>几何理解: SDP的解是球内的点, 随机找一个超平面, 将球分成两半, 分别对应原问题解1和-1.</li>
+<li>生成均匀随机单位向量的方法: <ul>
+<li>随机选取$r=(r_1,\cdots,r_n)\in \mathbb R^n$, 每个$r_i\sim N(0,1)$, 独立同分布的<strong>高斯分布</strong></li>
+<li>然后归一化$u=\frac{r}{\Vert r\Vert_2}$就是均匀随机的单位向量</li>
+<li>原因: <ul>
+<li><script type="math/tex; mode=display">
+\Pr[(r_1,\cdots,r_n)]=\prod _{i=1}^n\frac{1}{\sqrt{2\pi}}e^{-r_i^2/2}=(2\pi)^{-d/2}e^{-\Vert r\Vert^2/2}</script></li>
+<li>是球面对称的, 之和离球心距离相关</li>
+</ul>
+</li>
+<li>本问题中不用归一化(不影响符号)</li>
+</ul>
+</li>
+</ul>
+<p>近似比分析:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathbb E[\text{cut}]&=\sum_{uv\in E}\Pr[\text{sgn}(\langle x_u^*,r\rangle)\ne \text{sgn}(\langle x_v^*,r\rangle)]\\
+&=\sum_{uv\in E}\frac{\theta _{uv}}{\pi}\\
+&=\sum_{uv\in E}\frac{\arccos \langle x_u^*,x_v^*\rangle}{\pi}\\
+&\ge 0.878\cdot \frac{1}{2}(1-\langle x_u^*,x_v^*\rangle)
+\end{aligned}</script><p>其中$\theta_{uv}=\angle x_u^<em>ox_v^</em>$, 使用$\Vert x_u^<em>\Vert\cdot \Vert x_v^</em>\Vert \cos\theta_{uv}=\langle x_u^<em>,x_v^</em>\rangle$, 得$\cos\theta_{uv}=\langle x_u^<em>,x_v^</em>\rangle$<br>$0.878$是通过极限算出来的.<br>所以近似比为$0.878$.</p>
+<h2 id="Unique-Games-Conjecture"><a href="#Unique-Games-Conjecture" class="headerlink" title="Unique Games Conjecture"></a>Unique Games Conjecture</h2><p>没看懂, 算了吧.</p>
+<h2 id="Constraint-Satisfaction-Problem"><a href="#Constraint-Satisfaction-Problem" class="headerlink" title="Constraint Satisfaction Problem"></a>Constraint Satisfaction Problem</h2><ul>
+<li>变量: $X=\{x_1,x_2,\cdots,x_n\}$</li>
+<li>域: $\Omega$, 通常$\Omega=[q]$, $q$有限</li>
+<li>限制: $c=(\psi, S)$, 其中$\psi:\Omega^k\to\{0,1\}$, 范围$S\subseteq X$是一个$k$元子集.</li>
+<li>CSP实例: 一个定义在$X$上的限制集</li>
+<li>赋值: $\sigma\in\Omega ^X$ 对于每个变量赋值</li>
+<li>如果$\psi(\sigma_s)=1$, 限制$c=(\psi,S)$被满足 </li>
+<li>例子:<ul>
+<li>最大割: $q=2$, 限制为不等于.</li>
+<li>$k$-SAT: $q=2$, 限制是$k$-从句</li>
+<li>匹配/覆盖: $q=2$, 限制为$\sum\le 1$(或$\sum\ge 1$).</li>
+<li>$k$着色: $q=k$, 限制为不等于</li>
+<li>图同构: 限制为邻接矩阵</li>
+<li>unique games: $\Omega=[q]$, 每个限制是任意的二元双射谓词: $\psi: \Omega^2\to \{0,1\}$, 其中$\forall a\in\Omega$, 存在唯一的$b\in \Omega$, $\psi(a,b)=1$.</li>
+</ul>
+</li>
+<li>CSP算法问题: 给定CSP实例$I$<ul>
+<li>满足性: 是否存在一个赋值满足所有的限制<ul>
+<li>搜索: 找到满足的赋值</li>
+</ul>
+</li>
+<li>优化: 找到赋值满足尽可能多的限制.<ul>
+<li>驳斥(对偶): 证明不存在满足$&gt;m$个限制的赋值, $m$尽量小</li>
+</ul>
+</li>
+<li>计数: 估计满足限制的赋值的数量<ul>
+<li>采样: 随机采样一个满足赋值</li>
+<li>推断: 观察一个满足的赋值, 猜测未知变量的值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>各CSP问题难度见ppt</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/高级算法/" rel="tag"># 高级算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/27/大三上/高级算法/高级算法之对偶规划/" rel="next" title="高级算法之对偶规划">
+                <i class="fa fa-chevron-left"></i> 高级算法之对偶规划
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/04/大三上/计算机网络/计网Ch4网络层:数据平面/" rel="prev" title="计算机网络之Ch4网络层:数据平面">
+                计算机网络之Ch4网络层:数据平面 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XY</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Semidefinite-Programs"><span class="nav-number">1.</span> <span class="nav-text">Semidefinite Programs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LP-for-Max-Cut"><span class="nav-number">1.1.</span> <span class="nav-text">LP for Max-Cut</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#半正定规划SDP"><span class="nav-number">1.2.</span> <span class="nav-text">半正定规划SDP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#舍入-Rounding"><span class="nav-number">1.3.</span> <span class="nav-text">舍入(Rounding)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Unique-Games-Conjecture"><span class="nav-number">1.4.</span> <span class="nav-text">Unique Games Conjecture</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Constraint-Satisfaction-Problem"><span class="nav-number">1.5.</span> <span class="nav-text">Constraint Satisfaction Problem</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

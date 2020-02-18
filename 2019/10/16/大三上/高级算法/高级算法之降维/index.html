@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="高级算法,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="降维Dimension Reduction1 Metric Embedding失真distortion: 对于$\alpha \ge 1$, 对于任意$x,y\in X$, 有  \frac{1}{\alpha}\cdot d(x,y)\le d(\phi(x),\phi(y))\le \alpha\cdot d(x,y)2 The Johnson-Lindenstrauss Theorem降维D">
+<meta name="keywords" content="高级算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高级算法之降维">
+<meta property="og:url" content="http://yoursite.com/2019/10/16/大三上/高级算法/高级算法之降维/index.html">
+<meta property="og:site_name" content="XY&#39;s blog">
+<meta property="og:description" content="降维Dimension Reduction1 Metric Embedding失真distortion: 对于$\alpha \ge 1$, 对于任意$x,y\in X$, 有  \frac{1}{\alpha}\cdot d(x,y)\le d(\phi(x),\phi(y))\le \alpha\cdot d(x,y)2 The Johnson-Lindenstrauss Theorem降维D">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-01-10T02:34:00.053Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="高级算法之降维">
+<meta name="twitter:description" content="降维Dimension Reduction1 Metric Embedding失真distortion: 对于$\alpha \ge 1$, 对于任意$x,y\in X$, 有  \frac{1}{\alpha}\cdot d(x,y)\le d(\phi(x),\phi(y))\le \alpha\cdot d(x,y)2 The Johnson-Lindenstrauss Theorem降维D">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/10/16/大三上/高级算法/高级算法之降维/">
+
+
+
+
+
+  <title>高级算法之降维 | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XY's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/16/大三上/高级算法/高级算法之降维/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XY">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XY's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">高级算法之降维</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-16T20:00:00+08:00">
+                2019-10-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="降维Dimension-Reduction"><a href="#降维Dimension-Reduction" class="headerlink" title="降维Dimension Reduction"></a>降维Dimension Reduction</h1><h2 id="1-Metric-Embedding"><a href="#1-Metric-Embedding" class="headerlink" title="1 Metric Embedding"></a>1 Metric Embedding</h2><p><strong>失真distortion</strong>: 对于$\alpha \ge 1$, 对于任意$x,y\in X$, 有</p>
+<script type="math/tex; mode=display">
+\frac{1}{\alpha}\cdot d(x,y)\le d(\phi(x),\phi(y))\le \alpha\cdot d(x,y)</script><h2 id="2-The-Johnson-Lindenstrauss-Theorem"><a href="#2-The-Johnson-Lindenstrauss-Theorem" class="headerlink" title="2 The Johnson-Lindenstrauss Theorem"></a>2 The Johnson-Lindenstrauss Theorem</h2><p><strong>降维Dimension Reduction</strong>: </p>
+<ul>
+<li>输入: $n$点: $x_1,x_2,\cdots,x_n\in \mathbb R^d$</li>
+<li>输入: $n$点: $y_1,y_2,\cdots,y_n\in \mathbb R^k$满足$\forall i,j: (1-\epsilon)\Vert x_i-x_j \Vert\le\Vert y_i-y_j \Vert\le (1+\epsilon)\Vert x_i-x_j \Vert$</li>
+</ul>
+<p><strong>The Johnson-Lindenstrauss Theorem</strong>:</p>
+<p>$\forall 0&lt;\epsilon &lt;1$, 对于任意$\mathbb R^d$中$n$点集合$S$, 存在映射$\phi :\mathbb R^d\to \mathbb R^k$, $k=O(\epsilon^{-2}\log n)$, 满足$\forall x,y\in S:$ </p>
+<p>$(1-\epsilon)\Vert x-y \Vert_2^2\le\Vert \phi(x)-\phi(y) \Vert_2^2\le (1+\epsilon)\Vert x-y \Vert_2^2$</p>
+<p><strong>证明</strong>: 概率法: 随机$k\times d$矩阵$A$:</p>
+<script type="math/tex; mode=display">
+Pr[\forall x,y\in S:(1-\epsilon)\Vert x-y\Vert_2^2\le\Vert Ax-Ay\Vert_2^2\le (1+\epsilon)\Vert x-y\Vert_2^2]\ge 1-O(\frac{1}{n})</script><p>具体如下:</p>
+<h3 id="2-1-JLT-via-Gaussian-matrix"><a href="#2-1-JLT-via-Gaussian-matrix" class="headerlink" title="2.1 JLT via Gaussian matrix"></a>2.1 JLT via Gaussian matrix</h3><p>$A$: 所有元素服从正态分布$N(0,1/k)$.</p>
+<p>证明如下:</p>
+<p>$Pr[\forall x,y\in S:(1-\epsilon)\Vert x-y\Vert_2^2\le\Vert Ax-Ay\Vert_2^2\le (1+\epsilon)\Vert x-y\Vert_2^2]\ge 1-O(\frac{1}{n})$</p>
+<p>即</p>
+<script type="math/tex; mode=display">
+\forall \text{ unit ventor } u\in \mathbb R^d: Pr[\vert\Vert Au\Vert_2^2-1\vert>\epsilon]<\frac{1}{n^3}</script><p>其中$|\Vert Au\Vert^2-1|&gt;\epsilon$源自$1-\epsilon\le \Vert A\frac{(x-y)}{\Vert x-y\Vert}\Vert\le 1+\epsilon$</p>
+<p>而$\frac{1}{n^3}$是因为有$O(n^2)$对$x,y\in S$, 也就是有$O(n^2 )$个独立的$u$, 需要w.h.p全部满足.</p>
+<p>因为$A_{ij}\sim \mathcal N(0,\frac{1}{k})$, 所以</p>
+<script type="math/tex; mode=display">
+Y_i=(Au)_i=(\sum_{j=1}^d A_{ij}u_j)\sim \mathcal N(0,\frac{\sum_{j=1}^d u_j^2}{k})=\mathcal N(0,\frac{1}{k})</script><p>所以 $\Vert Au\Vert_2^2=\sum_{i=1}^k(Au)_i^2=\sum_{i=1}^k Y_i^2$满足$\chi^2$分布.</p>
+<p>所以</p>
+<script type="math/tex; mode=display">
+\mathbb E[Y_i^2]=Var[Y_i]+\mathbb E[Y_i]^2=\frac{1}{k}</script><p>因此</p>
+<script type="math/tex; mode=display">
+\mathbb E[\Vert Au\Vert_2 ^2]=\sum_{i=1}^k\mathbb E[Y_i^2]=1</script><h3 id="2-2-Concentration-of-chi-2-distribution"><a href="#2-2-Concentration-of-chi-2-distribution" class="headerlink" title="2.2 Concentration of $\chi ^{2}$-distribution"></a>2.2 Concentration of $\chi ^{2}$-distribution</h3><p><strong>Chernoff bound for $\chi ^{2}$-distribution</strong>:</p>
+<p>对于任意正的$\epsilon,\delta &lt;1/2$, 存在正整数$k=O(\epsilon^{-2}\log \frac{1}{\delta})$, 满足对于独立同分布的随机变量$Y_1,\cdots,Y_k\sim \mathcal N(0,1/k)$, </p>
+<script type="math/tex; mode=display">
+Pr[\vert\sum_{i=1}^k Y_i^2-1\vert >\epsilon]<\delta</script><p>证明见slides.</p>
+<p>根据该不等式, 就证明了<strong>The Johnson-Lindenstrauss Theorem</strong>.</p>
+<h2 id="3-Nearest-Neighbor-Search-NNS"><a href="#3-Nearest-Neighbor-Search-NNS" class="headerlink" title="3 Nearest Neighbor Search (NNS)"></a>3 Nearest Neighbor Search (NNS)</h2><h3 id="NNS"><a href="#NNS" class="headerlink" title="NNS"></a>NNS</h3><p>数据: $n$ 个点  $y_1,\cdots,y_n\in X$ </p>
+<p>询问: 点 $x\in X$</p>
+<p>找到离$x$最近的$y_i$</p>
+<h3 id="ANN"><a href="#ANN" class="headerlink" title="ANN"></a>ANN</h3><p>数据: $n$ 个点  $y_1,\cdots,y_n\in X$ </p>
+<p>询问: 点 $x\in X$</p>
+<p><strong>c-ANN</strong>(近似最近邻): 找到$y_i$满足$dist(x,y_i)\le c\cdot \min_{1\le j\le n}dist(x,y_i)$</p>
+<p><strong>(c,r)-ANN</strong>(近似近邻):</p>
+<p>如果存在$y_j$满足$dist(x,y_j)\le r$, 返回一个$y_i$满足$dist(x,y_i)\le c\cdot r$ ;</p>
+<p>如果任意$y_i$都有$dist(x,y_i)&gt;c\cdot r$, 返回’no’;</p>
+<p>否则返回上面两种中任意一个.</p>
+<h3 id="c-ANN和-c-r-ANN两者关系"><a href="#c-ANN和-c-r-ANN两者关系" class="headerlink" title="c-ANN和(c,r)-ANN两者关系:"></a>c-ANN和(c,r)-ANN两者关系:</h3><ul>
+<li><p>令$R=\frac{D_{max}}{D_{min}}$. $D_{max}=\max_{1\le i&lt;j\le n}dist(y_i,y_j)$, $D_{min}$同理.</p>
+</li>
+<li><p>如果$\forall r, (\sqrt c,r)$-ANN可以在$s$空间$t$询问时间内解决, 则$c$-ANN可以在$O(s\log_c R)$空间$O(t\log\log_c R)$询问时间内解决</p>
+</li>
+<li>方法: 打表($\log_c R$项)+二分<ul>
+<li>每次查询的$r$: $r_0=D_{min}$, $r_k=c^{k/2}r_0$</li>
+<li>找到$i$满足刚好$i$返回’no’, $i+1$非’no’:<ul>
+<li>$r_{i}$返回值’no’, 即内圈内无点, 即$dist_{min}&gt;r_{i}$</li>
+<li>$r_{i+1}$返回的点$y$一定满足$dist(x,y_i)\le \sqrt c r_{i+1}=cr_i&lt;c \cdot dist_{min}$, 即为c-ANN答案.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="c-r-ANN算法"><a href="#c-r-ANN算法" class="headerlink" title="(c,r)-ANN算法"></a>(c,r)-ANN算法</h3><p>对于$X=\{0,1\}^d$:</p>
+<p>$k,p,s$为待定常数, 随机$k\times d$的布尔矩阵$A$, 每个项为独立的参数$p$伯努利随机变量;</p>
+<p>对于$i=1,2,\cdots,n$: 令$z_i=Ay_i\in\{0,1\}^k$定义于有限域$GF(2)$;</p>
+<p>存储所有的$s$球, $B_s(u)=\{y_i|dist(u,z_i)\le s\}$, $u\in\{0,1\}^k$.</p>
+<p>询问过程: 找到$B_s(Ax)$; 如果$B_s(Ax)=\emptyset$, 返回’no’; 否则返回任意一个$y_i\in B_s(Ax)$</p>
+<p><strong>复杂度</strong>: </p>
+<p>空间$O(n2^k)$, 询问时间$O(kd)$计算+$O(1)$内存访问</p>
+<p><strong>正确率</strong></p>
+<p>$\forall x,y\in\{0,1\}^d$, $dist(x,y)\le r$则$\Pr[dist(Ax,Ay)&gt;s]&lt;1/n^2$; </p>
+<p>$dist(x,y)&gt;c r$则$\Pr[dist(Ax,Ay)\le s]&lt;1/n^2$. 即w.h.p解决$(c,r)$-ANN问题.</p>
+<p>证明见ppt.</p>
+<p><strong>参数选取</strong>:</p>
+<p>$k=\frac{\ln n}{(1/8-2^{-(c+2)})^2}$, $p=\frac{1}{2}-2^{-1-1/r}$, $s=(\frac{3}{8}-2^{-(c+2)})k$</p>
+<p>空间$n^{O(1)}$, 询问时间$O(d\ln n)$.</p>
+<h2 id="4-Locality-Sensitive-Hashing-LSH"><a href="#4-Locality-Sensitive-Hashing-LSH" class="headerlink" title="4 Locality-Sensitive Hashing (LSH)"></a>4 Locality-Sensitive Hashing (LSH)</h2><h3 id="r-cr-p-q-​-LSH函数"><a href="#r-cr-p-q-​-LSH函数" class="headerlink" title="(r,cr,p,q)​-LSH函数"></a>(r,cr,p,q)​-LSH函数</h3><p>如果$\forall x,y\in X$:</p>
+<p>$dist(x,y)\le r =&gt;Pr[h(x)=h(y)]\ge p$</p>
+<p>$dist(x,y)&gt; cr =&gt;Pr[h(x)=h(y)]\le q$  </p>
+<p>则随机函数$h:X\to U$是$(r,cr,p,q)$-LSH.</p>
+<p><strong>性质</strong>:</p>
+<p>$\exist (r,cr,p,q)$-LSH $h:X\to U$  =&gt; $\exist (r,cr,p^k,q^k)$-LSH $h:X\to U^k$ :</p>
+<p>证明: </p>
+<p>直接根据$h$构造独立的$h_1,\cdots,h_k$, $g(x)=(h_1(x),\cdots,h_k(x))\in U^k$</p>
+<h3 id="解-c-r-ANN问题"><a href="#解-c-r-ANN问题" class="headerlink" title="解(c,r)-ANN问题"></a>解(c,r)-ANN问题</h3><p>假设我们有(r,cr,$p^*$,1/n)-LSH g:$X\to U$, 我们将$y_1,\cdots,y_n$按照$g(y_i)$的顺序存储</p>
+<p>询问$x\in X$: 二分搜索找到所有的满足$g(x)=g(y_i)$的$y_i$;</p>
+<p>其中如果碰到$y_i$满足$dist(x,y_i)\le cr$则返回这个$y_i$; 否则返回’no’.</p>
+<p><strong>复杂度</strong>: </p>
+<p>空间$O(n)$, 时间$O(\log n)+O(1)$(期望)</p>
+<p><strong>正确率</strong>:</p>
+<p>(c,r)-ANN实际答案为’no’: 必定正确, 因为会检查是否真的有$dist(x,y_i)\le cr$, 所以算法一定也返回no</p>
+<p>(c,r)-ANN实际答案不是’no’: 以概率$\ge p^*$正确, 因为有1-p的概率会$dist(x,y)\le r$但是$g(x)\ne g(y)$, 导致漏掉</p>
+<p><strong>改进</strong>:</p>
+<p>取$l=1/p^*$, 找$l$个独立的$g$, 在这$l$个表中找到至多$10l$(随便定的参数)个$y_i$满足$\exists j ~g_j(x)=g_j(y_i)$, 检查有没有和$x$距离小于等于$cr$的$y_i$, 有就返回, 否则返回’no’.</p>
+<p><strong>分析</strong>:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\Pr[\text{answer 'no'}]&\le \Pr[\forall j, g_j(x)\ne g_j(y_s)]+\\ 
+&\Pr[>10l\text{ bad }y_i\text{ that }dist(x,y_i)>cr\text{ but }\exist j~s.t. g_j(x)=g_j(y_j)]\\
+&\le (1-p^*)^l+ E[\text{number of such bad }y_i]/10l\\
+&\le 1/e+\frac{l\cdot n\cdot (1/n)}{10l}\\&\le 1/e+0.1<0.5
+\end{aligned}</script><p>其中使用了马尔科夫不等式.</p>
+<p><strong>实际步骤</strong></p>
+<p>如果最初有(r,cr,p,q)-LSH $h:X\to U$, 可以构造出(r,cr,$p^k$,1/n)-LSH $g:X\to U^k$, 其中$k=\log_{1/q}n$, 所以$p^k=p^{\log_{1/q}n}=n^{-\rho}$, 其中$\rho=\frac{\log p}{\log q}$. 这样我们就可以解决(c, r)-ANN, 空间复杂度$O(n^{1+\rho})$, 询问时间$O(n^\rho \log n)$, 单边错误率&lt;0.5.</p>
+<p><strong>LSH函数举例</strong></p>
+<p>对于$X=\{0,1\}^d$, 可以使用如下的LSH函数:</p>
+<p>$\forall x\in\{0,1\}^d: h(x)=x_i\text{ for uniform random }i\in[d]$</p>
+<p>则有</p>
+<p>$dist(x,y)\le r =&gt;Pr[h(x)=h(y)]\ge 1-r/d$</p>
+<p>$dist(x,y)&gt; cr =&gt;Pr[h(x)=h(y)]\le 1-cr/d$  </p>
+<p>所以$\rho=\frac{\log(1-r/d)}{\log(1-cr/d)}\le \frac{1}{c}$, 可以解决汉明空间内的(c, r)-ANN问题, 空间复杂度$O(n^{1+1/c})$, 询问时间$O(n^{1/c}\log n)$, 单边错误率&lt;0.5.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/高级算法/" rel="tag"># 高级算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/09/大三上/组合数学/组合数学之Pólya计数理论/" rel="next" title="组合数学之Pólya计数理论">
+                <i class="fa fa-chevron-left"></i> 组合数学之Pólya计数理论
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/16/大三上/组合数学/组合数学之Cayley公式/" rel="prev" title="组合数学之Cayley公式">
+                组合数学之Cayley公式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XY</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#降维Dimension-Reduction"><span class="nav-number">1.</span> <span class="nav-text">降维Dimension Reduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Metric-Embedding"><span class="nav-number">1.1.</span> <span class="nav-text">1 Metric Embedding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-The-Johnson-Lindenstrauss-Theorem"><span class="nav-number">1.2.</span> <span class="nav-text">2 The Johnson-Lindenstrauss Theorem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-JLT-via-Gaussian-matrix"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 JLT via Gaussian matrix</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Concentration-of-chi-2-distribution"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 Concentration of $\chi ^{2}$-distribution</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Nearest-Neighbor-Search-NNS"><span class="nav-number">1.3.</span> <span class="nav-text">3 Nearest Neighbor Search (NNS)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#NNS"><span class="nav-number">1.3.1.</span> <span class="nav-text">NNS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ANN"><span class="nav-number">1.3.2.</span> <span class="nav-text">ANN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c-ANN和-c-r-ANN两者关系"><span class="nav-number">1.3.3.</span> <span class="nav-text">c-ANN和(c,r)-ANN两者关系:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c-r-ANN算法"><span class="nav-number">1.3.4.</span> <span class="nav-text">(c,r)-ANN算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Locality-Sensitive-Hashing-LSH"><span class="nav-number">1.4.</span> <span class="nav-text">4 Locality-Sensitive Hashing (LSH)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#r-cr-p-q-​-LSH函数"><span class="nav-number">1.4.1.</span> <span class="nav-text">(r,cr,p,q)​-LSH函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解-c-r-ANN问题"><span class="nav-number">1.4.2.</span> <span class="nav-text">解(c,r)-ANN问题</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

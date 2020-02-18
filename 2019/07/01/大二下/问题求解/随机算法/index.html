@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="问题求解四,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="随机算法是非确定性算法, 但是可以看做一个额外有随机数序列作为输入的确定性算法. 随机算法的复杂度或者输出可以看做随机变量  输出可以看做随机变量的随机算法称为蒙特卡洛算法 永远输出正确答案但是复杂度是随机变量的随机算法称为拉斯维加斯算法   常常不知道随机化是否是有效的, 也不知道是否能在不牺牲资源的情况下转化为确定性算法.  可以结合随机算法和近似算法, 将近似率看做随机变量  概念 $Ra">
+<meta name="keywords" content="问题求解四">
+<meta property="og:type" content="article">
+<meta property="og:title" content="随机算法">
+<meta property="og:url" content="http://yoursite.com/2019/07/01/大二下/问题求解/随机算法/index.html">
+<meta property="og:site_name" content="XY&#39;s blog">
+<meta property="og:description" content="随机算法是非确定性算法, 但是可以看做一个额外有随机数序列作为输入的确定性算法. 随机算法的复杂度或者输出可以看做随机变量  输出可以看做随机变量的随机算法称为蒙特卡洛算法 永远输出正确答案但是复杂度是随机变量的随机算法称为拉斯维加斯算法   常常不知道随机化是否是有效的, 也不知道是否能在不牺牲资源的情况下转化为确定性算法.  可以结合随机算法和近似算法, 将近似率看做随机变量  概念 $Ra">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-01T07:34:48.933Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="随机算法">
+<meta name="twitter:description" content="随机算法是非确定性算法, 但是可以看做一个额外有随机数序列作为输入的确定性算法. 随机算法的复杂度或者输出可以看做随机变量  输出可以看做随机变量的随机算法称为蒙特卡洛算法 永远输出正确答案但是复杂度是随机变量的随机算法称为拉斯维加斯算法   常常不知道随机化是否是有效的, 也不知道是否能在不牺牲资源的情况下转化为确定性算法.  可以结合随机算法和近似算法, 将近似率看做随机变量  概念 $Ra">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/01/大二下/问题求解/随机算法/">
+
+
+
+
+
+  <title>随机算法 | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XY's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/01/大二下/问题求解/随机算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XY">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XY's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">随机算法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-01T11:58:58+08:00">
+                2019-07-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>随机算法是非确定性算法, 但是可以看做一个额外有随机数序列作为输入的确定性算法.</li>
+<li><p>随机算法的复杂度或者输出可以看做随机变量</p>
+<ul>
+<li>输出可以看做随机变量的随机算法称为<strong>蒙特卡洛算法</strong></li>
+<li>永远输出正确答案但是复杂度是随机变量的随机算法称为<strong>拉斯维加斯算法</strong></li>
+</ul>
+</li>
+<li><p>常常不知道随机化是否是有效的, 也不知道是否能在不牺牲资源的情况下转化为确定性算法.</p>
+</li>
+<li>可以结合随机算法和近似算法, 将近似率看做随机变量</li>
+</ul>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ul>
+<li>$Random_A(x)$: 算法A在输入x的所有情况下的用到的最大随机比特数</li>
+<li><p>$Random_A(n) = \max\\{Random_A(x)| x ~is ~a ~input ~of ~size ~n\\}$</p>
+</li>
+<li><p>$Prob_{A, x}(C)$: 算法A在输入x时以C的方式运行的概率</p>
+<ul>
+<li>是运行方式C中所有随机选择的概率之积</li>
+</ul>
+</li>
+<li><p>$Prob(A(x) = y)$: 输入x时A输出y的概率</p>
+</li>
+<li><p>A在输入x时的期望运行时间</p>
+<script type="math/tex; mode=display">
+Exp-Time_A(x)=E[Time]=\sum_CProb_{A,x}(C)\cdot Time(C)</script></li>
+<li><script type="math/tex; mode=display">Exp-Time_A(n)=\max\\{Exp-Time_A(x)|x ~is ~a ~input ~of ~size ~x\\}</script></li>
+<li><p>当期望时间难求的时候, 经常用最坏情况替代:</p>
+<script type="math/tex; mode=display">Time_A(x)=\max\\{Time(C)|C ~is ~a ~run ~of ~A ~on ~x\\}</script></li>
+<li><script type="math/tex; mode=display">Time_A(n)=\max\\{Time_A(x)|x ~is ~a ~input ~of ~size ~x\\}</script></li>
+<li>但是随机算法允许小概率的永不终止</li>
+</ul>
+<h2 id="随机算法的分类"><a href="#随机算法的分类" class="headerlink" title="随机算法的分类"></a>随机算法的分类</h2><h3 id="拉斯维加斯算法"><a href="#拉斯维加斯算法" class="headerlink" title="拉斯维加斯算法"></a><strong>拉斯维加斯算法</strong></h3><ul>
+<li><p>永不给出错误输出</p>
+</li>
+<li><p>定义一: </p>
+<p>如果对于问题$F$的所有输入实例$x$, 有</p>
+<script type="math/tex; mode=display">
+Prob(A(x)=F(x))=1</script><p>则随机算法A是拉斯维加斯算法. 其中的$F(x)$指在输入实例x时问题$F$的解.</p>
+</li>
+<li><p>定义二:</p>
+<p>如果对于问题$F$的任何输入实例$x$, 有</p>
+<script type="math/tex; mode=display">
+Prob(A(x)=F(x))\ge \frac{1}{2}</script><p> 且</p>
+<script type="math/tex; mode=display">
+Prob(A(x)="?")=1-Prob(A(x)=F(x))\le \frac{1}{2}</script></li>
+<li><p>随机快排: 每次随机选取一个数a, 将所有数分为大于a, 等于a, 小于a三类, 然后递归将小于a和大于a的类排序, 直到一类只有一个数.</p>
+</li>
+<li><p>类似的有随机算法求第k小的数</p>
+<ul>
+<li>期望运行时间</li>
+</ul>
+<script type="math/tex; mode=display">
+E(T(n))\le n-1 + \frac{1}{n}\sum_{j=1}^{n-1}\max(E(T_{j-1}, E(T_{n-j})))</script><script type="math/tex; mode=display">\le n-1 + \frac{1}{n}\sum_{j=1}^{n-1}E[T_{max\{j-1, n-j\}}]</script><script type="math/tex; mode=display">\le n-1 + \frac{2}{n}\sum_{l=\lceil n/2 \rceil}^{n-1}E[T_l]</script></li>
+</ul>
+<ul>
+<li>数学归纳法得$E(T(n))\le 5n$</li>
+</ul>
+<ul>
+<li><p>拉斯维加斯单向通信:</p>
+<ul>
+<li>问题: <ul>
+<li>$C_I$将输入x计算为一个prefix-free的01位串$\overline C_I(x)$</li>
+<li>$C_{II}$根据$\overline C_I(x)$和y计算出0或者1</li>
+<li>$Choice_n: \{0,1\}^n\times \{1,2,\cdots,n\}\to\{0,1\}: Choice_n(x_1x_2\cdots x_n,i)=x_i$</li>
+<li>通过单向通信计算$Choice_n$ </li>
+</ul>
+</li>
+<li>通信复杂度$\max\{|\overline C_I(x)||x\in A_I\}$至少为n</li>
+<li>有如下$n / 2 + 1$拉斯维加斯算法:<ul>
+<li>D1随机选择0或1</li>
+<li>如果选到0, 发送$0x_1x_2\cdots x_{n/2}$, 否则发送$0x_{n/2+1}x_{n/2+2}\cdots x_{n}$</li>
+<li>$r=0$时, 如果$j\in\{1,2,\cdots,n/2\}$, 输出$x_j$; 否则输出”?”;</li>
+<li>$r=1$时, 如果$j\in\{1,2,\cdots,n/2\}$, 输出”?”; 否则输出$x_j$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="单边错误蒙特卡洛算法"><a href="#单边错误蒙特卡洛算法" class="headerlink" title="单边错误蒙特卡洛算法"></a>单边错误蒙特卡洛算法</h3><ul>
+<li>仅限于决定性问题</li>
+<li><p>当算法A满足下列条件时, 称为单边错误蒙特卡洛算法</p>
+<ul>
+<li>对于所有$x\in L$, $Prob(A(x)=1)\ge \frac{1}{2}$</li>
+<li>对于所有$x\not\in L$, $Prob(A(x)=0)=1$</li>
+</ul>
+</li>
+<li><p>对于不符合要求的输入从不说”是”</p>
+</li>
+<li><p>例: 通过单向通信计算函数<br>$Non-Eq_n: \\{0,1\\}^n\times\\{0,1\\}^n\to \\{0,1\\}: Non-Eq_n(x,y)=1 ~iff ~x\ne y$</p>
+<p>对于01位串u和v,  $u\ne v$ 说明$\overline C_I(u)\ne C_I(v)$</p>
+<p>有如下$\log_2 n$单边错误蒙特卡洛算法:</p>
+<ul>
+<li>$R_I$随机选取一个[2, $n^2$]间的素数p(约$2\lceil\log_2 n\rceil$random bits)</li>
+<li>$R_I$计算$s=Number(x)\mod p$, 发送$p$和$s$给$R_{II}$</li>
+<li>$R_{II}$计算$q=Number(y)\mod p$, 如果$q\ne s$输出1, 否则输出0</li>
+</ul>
+</li>
+<li>算法分析<ul>
+<li>显然$Prob(R_I, R_{II} ~ rejects ~(x,y))=1$</li>
+<li>若$x\ne y$但$Number(x)\mod p =Number(y) \mod p$<br>那么$p| h= |Number(x)-Number(y)|$</li>
+<li>因为$h&lt;2^n$, 所以至多$n-1$个满足要求的素数l, 而区间内总共有至少$n^2/\ln_n^2$个素数,<br>所以概率至多为$\frac{n-1}{n^2/\ln_n^2}\le \frac{\ln n^2}{n}$. </li>
+<li>因此$Prob((R_I, R_{II})~ accepts ~ (x,y))\ge 1-\frac{\ln n^2}{n}$, 当$n&gt;100$时大于0.9</li>
+</ul>
+</li>
+</ul>
+<h3 id="双边错误蒙特卡洛算法"><a href="#双边错误蒙特卡洛算法" class="headerlink" title="双边错误蒙特卡洛算法"></a>双边错误蒙特卡洛算法</h3><ul>
+<li><p>定义: 对问题F的所有输入实例$x$, 存在$\epsilon(1&lt;\epsilon\le \frac{1}{2})$满足$Prob(A(x)=F(x))\ge \frac{1}{2} +\epsilon$</p>
+</li>
+<li><p>让算法A跑t次, 取其中至少出现$\lceil t/2\rceil$的结果(如果存在, 否则输出”?”), 算法记做$A_t$. 假设A跑一次正确概率为$p(x)\ge \frac{1}{2}+\epsilon$, 那么对于x, A跑k次给出正确答案的概率$Prob(A_t(x)=F(x))\ge 1-\frac{1}{2}(1-4\epsilon^2)^{t/2}$</p>
+</li>
+<li><p>如果要$Prob(A_k(x)=F(x))\ge 1-\delta$, 那么需要$k\ge \frac{2\ln 2\delta}{\ln(1-4\epsilon^2)}$</p>
+</li>
+</ul>
+<h3 id="无界错误蒙特卡洛算法"><a href="#无界错误蒙特卡洛算法" class="headerlink" title="无界错误蒙特卡洛算法"></a>无界错误蒙特卡洛算法</h3><ul>
+<li><p>定义: 对问题F的所有输入实例$x$, 有$Prob(A(x)=F(x))&gt; \frac{1}{2} $</p>
+</li>
+<li><p>想要通过运行k次无界错误蒙特卡洛算法A得到满足$Prob(A_{k(|x|)}(x)=F(x))\ge 1-\delta$的算法$A_{k(n)}$, 需要接受$Time_{A_{k(n)}}(n)=O(2^{2Random_A(n)}\cdot Time_A(n))$</p>
+</li>
+</ul>
+<h3 id="随机最优化算法"><a href="#随机最优化算法" class="headerlink" title="随机最优化算法"></a>随机最优化算法</h3><ul>
+<li>取最好的那次</li>
+<li><p>$Prob(A_k(x)\in Output_U(x))=1-[Prob(A(x)\not\in Output_U(x))]^k$</p>
+</li>
+<li><p>定义: U的<strong>随机$\delta-$近似算法</strong>: 对于所有$x\in L_I$有</p>
+<ul>
+<li>$Prob(A(x)\in M(x))=1$</li>
+<li>$Prob(R_A(x)\le \delta)\ge 1/2$</li>
+</ul>
+</li>
+<li><p>类似的有<strong>随机f(n)-近似算法</strong>($\delta$改为$f(|x|)$)</p>
+</li>
+<li><p><strong>RPTAS</strong>: 对于任意输入对$(x,\delta)\in L_I \times \mathbb R^+$</p>
+</li>
+<li><p>对于所有随机选择, A计算出U的一个可行解: $Prob(A(x,\delta)\in M(x))=1$</p>
+<ul>
+<li>至少有1/2的概率输出一个相对误差至多$\delta$的可行解: $Prob(\epsilon_A(x,\delta)\le \delta)\ge 1/2$</li>
+</ul>
+</li>
+<li><p>$Time_A(x, \delta^{-1})\le p(|x|,\delta^{-1})$, p是|x|的多项式函数</p>
+</li>
+<li><p>如果时间还是$\delta^{-1}$的多项式函数, 那么是<strong>RFPTAS</strong></p>
+</li>
+<li><p><strong>随机$\delta-$期望近似算法</strong>: 对所有$x\in L_I$</p>
+<ul>
+<li>$Prob(A(x)\in M(x))=1$</li>
+<li>$E[R_A(x)]\le \delta$</li>
+</ul>
+</li>
+</ul>
+<h2 id="随机算法设计范式"><a href="#随机算法设计范式" class="headerlink" title="随机算法设计范式"></a>随机算法设计范式</h2><ul>
+<li>随机算法打败对手策略中的”难”的输入</li>
+<li>随机选取构造证书</li>
+<li><p>指纹识别判断问题等价性</p>
+<ul>
+<li>随机选取映射h</li>
+<li>计算指纹$h(R_1), h(R_2)$</li>
+<li>如果$h(R_1)= h(R_2)$输出yes, 否则输出no</li>
+</ul>
+</li>
+<li><p>随机采样</p>
+<ul>
+<li>随机变量的期望保证至少一个样本不大于期望, 至少一个样本不小于期望</li>
+<li>样本以正概率满足某性质, 则一定有样本满足该性质</li>
+</ul>
+</li>
+<li>松弛和随机舍入<ul>
+<li>如整数规划-&gt;线性规划</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/问题求解四/" rel="tag"># 问题求解四</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/01/大二下/问题求解/近似算法/" rel="next" title="近似算法">
+                <i class="fa fa-chevron-left"></i> 近似算法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/01/大二下/问题求解/启发性算法/" rel="prev" title="启发性算法">
+                启发性算法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XY</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#随机算法的分类"><span class="nav-number">2.</span> <span class="nav-text">随机算法的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#拉斯维加斯算法"><span class="nav-number">2.1.</span> <span class="nav-text">拉斯维加斯算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单边错误蒙特卡洛算法"><span class="nav-number">2.2.</span> <span class="nav-text">单边错误蒙特卡洛算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双边错误蒙特卡洛算法"><span class="nav-number">2.3.</span> <span class="nav-text">双边错误蒙特卡洛算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无界错误蒙特卡洛算法"><span class="nav-number">2.4.</span> <span class="nav-text">无界错误蒙特卡洛算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随机最优化算法"><span class="nav-number">2.5.</span> <span class="nav-text">随机最优化算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#随机算法设计范式"><span class="nav-number">3.</span> <span class="nav-text">随机算法设计范式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

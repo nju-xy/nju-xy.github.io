@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="高级算法,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Concentration of measure1 Chernoff Bound矩生成函数: 随机变量$X$的矩生成函数为  \mathbb E[e^{\lambda X}]=\mathbb E [\sum_{k=0}^{\infty}\frac{\lambda^k}{k!}X^k] =\sum_{k=0}^{\infty}\frac{\lambda^k}{k!}\mathbb E [X^k]">
+<meta name="keywords" content="高级算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高级算法之度量集中度">
+<meta property="og:url" content="http://yoursite.com/2019/10/09/大三上/高级算法/高级算法之度量集中度/index.html">
+<meta property="og:site_name" content="XY&#39;s blog">
+<meta property="og:description" content="Concentration of measure1 Chernoff Bound矩生成函数: 随机变量$X$的矩生成函数为  \mathbb E[e^{\lambda X}]=\mathbb E [\sum_{k=0}^{\infty}\frac{\lambda^k}{k!}X^k] =\sum_{k=0}^{\infty}\frac{\lambda^k}{k!}\mathbb E [X^k]">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/figs/高级算法/figs5/Chernoff.png">
+<meta property="og:image" content="http://yoursite.com/figs/高级算法/figs5/Chernoff2.png">
+<meta property="og:image" content="http://yoursite.com/figs/高级算法/figs5/Hoeffding.png">
+<meta property="og:image" content="http://yoursite.com/figs/高级算法/figs5/Hoeffding2.png">
+<meta property="og:image" content="http://yoursite.com/figs/高级算法/figs5/Hoeffding3.png">
+<meta property="og:updated_time" content="2020-01-10T06:28:33.129Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="高级算法之度量集中度">
+<meta name="twitter:description" content="Concentration of measure1 Chernoff Bound矩生成函数: 随机变量$X$的矩生成函数为  \mathbb E[e^{\lambda X}]=\mathbb E [\sum_{k=0}^{\infty}\frac{\lambda^k}{k!}X^k] =\sum_{k=0}^{\infty}\frac{\lambda^k}{k!}\mathbb E [X^k]">
+<meta name="twitter:image" content="http://yoursite.com/figs/高级算法/figs5/Chernoff.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/10/09/大三上/高级算法/高级算法之度量集中度/">
+
+
+
+
+
+  <title>高级算法之度量集中度 | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XY's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/09/大三上/高级算法/高级算法之度量集中度/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XY">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XY's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">高级算法之度量集中度</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-09T20:00:00+08:00">
+                2019-10-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Concentration-of-measure"><a href="#Concentration-of-measure" class="headerlink" title="Concentration of measure"></a>Concentration of measure</h1><h2 id="1-Chernoff-Bound"><a href="#1-Chernoff-Bound" class="headerlink" title="1 Chernoff Bound"></a>1 Chernoff Bound</h2><p>矩生成函数: 随机变量$X$的矩生成函数为</p>
+<script type="math/tex; mode=display">
+\mathbb E[e^{\lambda X}]=\mathbb E [\sum_{k=0}^{\infty}\frac{\lambda^k}{k!}X^k]
+=\sum_{k=0}^{\infty}\frac{\lambda^k}{k!}\mathbb E [X^k]</script><p><img src="/figs/高级算法/figs5/Chernoff.png" alt="Chernoff" style="zoom:67%;"></p>
+<ul>
+<li>推导过程:<ul>
+<li>$\Pr[X\ge (1+\delta)\mu]=\Pr[e^{\lambda X}\ge e^{\lambda(1+\delta)\mu}]\le \frac{\mathbb E[e^{\lambda X}]}{e^{\lambda X(1+\delta)\mu}}$ </li>
+<li>$\mathbb E[e^{\lambda X}]=\mathbb E[e^{\lambda \sum_{i=1}^n X_i}]=\mathbb E[\prod_{i=1}^ne^{\lambda X_i}]=\prod_{i=1}^n\mathbb E[e^{\lambda X_i}]$</li>
+<li>$\mu=\mathbb E[X]=\sum_{i=1}^n \mathbb E[X]=\sum_{i=1}^np_i$</li>
+<li>$\mathbb E[e^{\lambda X_i}]=p_ie^\lambda +(1-p_i)e^0=1+p_i(e^\lambda -1)\le e^{p_i(e^\lambda-1)}$</li>
+<li>合起来就得证</li>
+</ul>
+</li>
+<li>特例:</li>
+</ul>
+<p><img src="/figs/高级算法/figs5/Chernoff2.png" alt="Chernoff2" style="zoom:67%;"></p>
+<h3 id="Balls-into-bins问题应用"><a href="#Balls-into-bins问题应用" class="headerlink" title="Balls into bins问题应用"></a>Balls into bins问题应用</h3><p>计算w.h.p的最大装载:</p>
+<p>$X_{ij}$表示第$i$ 个球是否扔进第$j$ 个箱子, 则$\mathbb E[X_{ij}]=1/n$.</p>
+<p>令$Y_i=\sum_{j\in [m]}X_{ij}$表示箱子$i$ 的装载, 则$\mu=\mathbb E[Y_i]=\mathbb E[\sum\limits_{j\in [m]}X_{ij}]=\sum\limits_{j\in [m]}\mathbb E[X_{ij}]=m/n$.</p>
+<h4 id="The-m-n-Case"><a href="#The-m-n-Case" class="headerlink" title="The $m = n$ Case"></a>The $m = n$ Case</h4><p>在$m=n$时, $\mu=1$, $Pr[Y_i&gt;(1+\delta)\mu]\le \left(\frac{e^\delta}{(1+\delta)^{1+\delta}}\right)^\mu$</p>
+<p>令$c=\frac{e\ln n}{\ln \ln n}$, 则$ Pr[Y_i&gt;c]\le \frac{e^{c-1}}{c^c}\le 1/n^2$</p>
+<p>存在一个箱子装载大于$c$的概率小于等于$nPr[Y_1&gt;c]\le 1/n$.</p>
+<p>因此$m=n$时, 大概率最大装载为$O(\frac{e\ln n}{\ln \ln n})$</p>
+<h4 id="The-m-gt-ln-n-Case"><a href="#The-m-gt-ln-n-Case" class="headerlink" title="The $m&gt;\ln n$ Case"></a>The $m&gt;\ln n$ Case</h4><p>类似方法得到: 大概率最大装载为$O(\frac{m}{n})$</p>
+<h1 id="2-Hoeffding-Bound"><a href="#2-Hoeffding-Bound" class="headerlink" title="2 Hoeffding Bound"></a>2 Hoeffding Bound</h1><p><img src="/figs/高级算法/figs5/Hoeffding.png" alt="Hoeffding" style="zoom:67%;"></p>
+<p>证明用到:</p>
+<p><img src="/figs/高级算法/figs5/Hoeffding2.png" alt="Hoeffding2" style="zoom:67%;"></p>
+<p>推广:</p>
+<p><img src="/figs/高级算法/figs5/Hoeffding3.png" alt="Hoeffding3" style="zoom:67%;"></p>
+<h4 id="Occupancy-Problem应用"><a href="#Occupancy-Problem应用" class="headerlink" title="Occupancy Problem应用"></a>Occupancy Problem应用</h4><p>问题: $f:[m]\to [n]$, 求$f^{-1}(i)$为空的$i\in[n]$的数量.</p>
+<p>$X_i$: 第$i $个箱子是否为空. $\mathbb E[X_i]=(1-1/n)^m$</p>
+<p>$X=\sum_{i=1}^n X_i$: 空箱子数量. $\mathbb E[X]=n(1-1/n)^m$</p>
+<p>$Y_j\in[n]$表示第$j$个球扔进的箱子号, 则$X$是$Y_1,\cdots, Y_n$的函数.</p>
+<p>改变一个$Y_i$, $X$至多变化1. </p>
+<p>应用bounded differences, 有$Pr[|X-n(1-1/n)^m]\ge t\sqrt m]=Pr[|X-\mathbb E[X]|\ge t\sqrt m]\le 2e^{-t^2/2}$</p>
+<p>因此$m$和$n$较大时, 空箱子的数量大致集中于$n(1-1/n)^m\approx \frac{n}{e^{m/n}}$</p>
+<h4 id="Pattern-Matching应用"><a href="#Pattern-Matching应用" class="headerlink" title="Pattern Matching应用"></a>Pattern Matching应用</h4><p>问题: 字母表$|\Sigma|=m$, 长度为$n$的随机字符串, 长度为$k$的pattern, 求匹配子列数量$Y$.</p>
+<p>$\mathbb E[Y]=(n-k+1)(\frac{1}{m})^k$(考虑匹配的字符串开始的位置)</p>
+<p>原字符串$X_1,X_2,\cdots, X_n\in \Sigma$</p>
+<p>$Y=f(X_1,X_2,\cdots, X_n)$, 改变$X_i$至多$Y$至多影响$k$, 因此</p>
+<script type="math/tex; mode=display">
+Pr[|Y-\mathbb E[Y]|\ge tk\sqrt n]\le 2e^{-t^2/2}</script><h4 id="Combining-unit-vectors应用"><a href="#Combining-unit-vectors应用" class="headerlink" title="Combining unit vectors应用"></a>Combining unit vectors应用</h4><p>问题: $u_1,u_2,\cdots,u_n$为$n$个正交空间中的单位向量. 独立均匀随机选取$\epsilon_1,\cdots, \epsilon_n\in \{+1,-1\}$ . 令$v=\epsilon_1 u_1+\cdots+\epsilon_n u_n$, 而$X=||v||$. 考虑$X$的分布.</p>
+<p>$X$是独立随机变量$\epsilon_1,\cdots,\epsilon_n$的函数. 根据三角不等式, 改变一个$\epsilon_i$, $X$至多变化2. 因此</p>
+<script type="math/tex; mode=display">
+Pr[|X-\mathbb E[X]|\ge 2t\sqrt n]\le 2e^{-t^2/2}</script><p>The Bounded Difference Method证明见讲义.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/高级算法/" rel="tag"># 高级算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/01/大三上/计算机网络/计网Ch6链路网和局域网/" rel="next" title="计算机网络之Ch6链路层和局域网">
+                <i class="fa fa-chevron-left"></i> 计算机网络之Ch6链路层和局域网
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/09/大三上/组合数学/组合数学之Pólya计数理论/" rel="prev" title="组合数学之Pólya计数理论">
+                组合数学之Pólya计数理论 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XY</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Concentration-of-measure"><span class="nav-number">1.</span> <span class="nav-text">Concentration of measure</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Chernoff-Bound"><span class="nav-number">1.1.</span> <span class="nav-text">1 Chernoff Bound</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Balls-into-bins问题应用"><span class="nav-number">1.1.1.</span> <span class="nav-text">Balls into bins问题应用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#The-m-n-Case"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">The $m = n$ Case</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#The-m-gt-ln-n-Case"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">The $m&gt;\ln n$ Case</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Hoeffding-Bound"><span class="nav-number">2.</span> <span class="nav-text">2 Hoeffding Bound</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Occupancy-Problem应用"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">Occupancy Problem应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pattern-Matching应用"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">Pattern Matching应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Combining-unit-vectors应用"><span class="nav-number">2.0.0.3.</span> <span class="nav-text">Combining unit vectors应用</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

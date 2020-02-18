@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="组合数学,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Pólya计数理论1 群群$(G, \cdot)$: 闭合, 结合律, 幺元, 逆  1.1 置换群置换为双射$\pi:[n]\to [n]$, 置换之间的操作符 $\cdot$ 定义为函数的复合, 即$(\pi \cdot \sigma)(i)=\pi(\sigma(i))$ 对称群$S_n$$S_n$表示$[n]$的所有置换的集合. 容易验证$S_n$和函数复合操作 $\cdot$ 构成一个群">
+<meta name="keywords" content="组合数学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="组合数学之Pólya计数理论">
+<meta property="og:url" content="http://yoursite.com/2019/10/09/大三上/组合数学/组合数学之Pólya计数理论/index.html">
+<meta property="og:site_name" content="XY&#39;s blog">
+<meta property="og:description" content="Pólya计数理论1 群群$(G, \cdot)$: 闭合, 结合律, 幺元, 逆  1.1 置换群置换为双射$\pi:[n]\to [n]$, 置换之间的操作符 $\cdot$ 定义为函数的复合, 即$(\pi \cdot \sigma)(i)=\pi(\sigma(i))$ 对称群$S_n$$S_n$表示$[n]$的所有置换的集合. 容易验证$S_n$和函数复合操作 $\cdot$ 构成一个群">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/figs/组合数学/figs5/群操作.png">
+<meta property="og:image" content="http://yoursite.com/figs/组合数学/figs4/轨道.png">
+<meta property="og:updated_time" content="2019-10-30T13:46:25.193Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="组合数学之Pólya计数理论">
+<meta name="twitter:description" content="Pólya计数理论1 群群$(G, \cdot)$: 闭合, 结合律, 幺元, 逆  1.1 置换群置换为双射$\pi:[n]\to [n]$, 置换之间的操作符 $\cdot$ 定义为函数的复合, 即$(\pi \cdot \sigma)(i)=\pi(\sigma(i))$ 对称群$S_n$$S_n$表示$[n]$的所有置换的集合. 容易验证$S_n$和函数复合操作 $\cdot$ 构成一个群">
+<meta name="twitter:image" content="http://yoursite.com/figs/组合数学/figs5/群操作.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/10/09/大三上/组合数学/组合数学之Pólya计数理论/">
+
+
+
+
+
+  <title>组合数学之Pólya计数理论 | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XY's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/09/大三上/组合数学/组合数学之Pólya计数理论/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XY">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XY's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">组合数学之Pólya计数理论</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-09T21:00:00+08:00">
+                2019-10-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Polya计数理论"><a href="#Polya计数理论" class="headerlink" title="Pólya计数理论"></a>Pólya计数理论</h1><h2 id="1-群"><a href="#1-群" class="headerlink" title="1 群"></a>1 群</h2><p>群$(G, \cdot)$: 闭合, 结合律, 幺元, 逆 </p>
+<h3 id="1-1-置换群"><a href="#1-1-置换群" class="headerlink" title="1.1 置换群"></a>1.1 置换群</h3><p><strong>置换</strong>为双射$\pi:[n]\to [n]$, 置换之间的操作符 $\cdot$ 定义为函数的复合, 即$(\pi \cdot \sigma)(i)=\pi(\sigma(i))$</p>
+<h4 id="对称群-S-n"><a href="#对称群-S-n" class="headerlink" title="对称群$S_n$"></a>对称群$S_n$</h4><p>$S_n$表示$[n]$的所有置换的集合. 容易验证$S_n$和函数复合操作 $\cdot$ 构成一个群, 称为$n$元<strong>对称群</strong>.<br>$S_n$的子群称为<strong>置换群</strong>.</p>
+<h4 id="循环群-C-n"><a href="#循环群-C-n" class="headerlink" title="循环群$C_n$"></a>循环群$C_n$</h4><p>定义特殊的置换$\sigma$满足$\forall i, ~\sigma(i)=(i+1)\mod n$, $C_n=\{\sigma^t|t\ge 0\}$, $C_n$称为$n$阶<strong>循环群</strong>, 生成元为$\sigma$, 是$n$边正多边形的<strong>旋转对称</strong>. </p>
+<h4 id="Dihedral群-D-n"><a href="#Dihedral群-D-n" class="headerlink" title="Dihedral群$D_n$"></a>Dihedral群$D_n$</h4><p>定义特殊置换$\rho$满足$\forall i\in [n], ~\rho(i)=n-i-1$. 把$\rho$加入$C_n$则得到<strong>Dihedral群</strong>$D_n$. 为正$n$边形翻转和旋转操作的对称群</p>
+<h4 id="Cycle-decomposition"><a href="#Cycle-decomposition" class="headerlink" title="Cycle decomposition"></a>Cycle decomposition</h4><p>将置换等价表示为cycle的复合</p>
+<h3 id="1-2-群操作"><a href="#1-2-群操作" class="headerlink" title="1.2 群操作"></a>1.2 群操作</h3><p><img src="/figs/组合数学/figs5/群操作.png" alt="群操作"></p>
+<h4 id="例子-项链上色"><a href="#例子-项链上色" class="headerlink" title="例子: 项链上色"></a>例子: 项链上色</h4><p>问题: $n$个珠子的项链, 珠子每个是$m$种颜色之一. 形式化的为$x:[n]\to[m]$, 即把$m$个颜色分配给$n$个位置. $X=\{x:[n]\to[m]\}$为这样的分配的集合.</p>
+<p>考虑两种对称操作:</p>
+<ul>
+<li>旋转: 循环群$C_n$</li>
+<li>旋转和翻转: dihedral群$D_n$</li>
+</ul>
+<p>项链的操作被描述为$X$上的群操作. 对于置换群$G$, 任意$\pi \in G$和$x\in X$, 群操作$\pi\circ x$定义为$(\pi \circ x)(i)=x(\pi(i))$</p>
+<h2 id="2-Burnside’s-Lemma"><a href="#2-Burnside’s-Lemma" class="headerlink" title="2 Burnside’s Lemma"></a>2 Burnside’s Lemma</h2><h3 id="2-1-轨道-Orbits"><a href="#2-1-轨道-Orbits" class="headerlink" title="2.1 轨道(Orbits)"></a>2.1 轨道(Orbits)</h3><p>定义和性质如下:</p>
+<p> <img src="/figs/组合数学/figs4/轨道.png" alt="轨道"></p>
+<p>可以把轨道理解为一个等价类, 同一等价类中的元素可以通过$G$中的操作相互转换.</p>
+<h3 id="2-2-invariant-set-and-stabilizer"><a href="#2-2-invariant-set-and-stabilizer" class="headerlink" title="2.2 invariant set and stabilizer"></a>2.2 invariant set and stabilizer</h3><p>$G$: 作用于集合$X$上的置换群. $\pi\in G$, $x\in X$.</p>
+<ul>
+<li>$\pi$的<strong>invariant set</strong>: $X_\pi =\{x\in X|\pi\circ x=x\}$</li>
+<li>$x$的<strong>stabilizer</strong>: $G_x=\{\pi\in G|\pi \circ x=x\}$</li>
+</ul>
+<p>引理: </p>
+<script type="math/tex; mode=display">
+|G_x||Gx|=|G|</script><p>证明:</p>
+<ul>
+<li><p>$Gx=\{x_1,x_2,\cdots, x_t\}$, $P=\{\pi_1,\pi_2,\cdots, \pi_t\}$, 其中$\pi_i\circ x=x_i, ~ i = 1,2,\cdots, t$</p>
+</li>
+<li><p>构造一个$G$和$P\times G_x$的双射:</p>
+<ul>
+<li>对于任意$\pi\in G$, 对于某个$x_i$有$\pi\circ x=x_i$</li>
+<li>因为$\pi_i\circ x=x_i$, 所以$\pi_i\circ x=\pi\circ x$, 故$(\pi_i^{-1}\cdot \pi)\circ x=x$</li>
+<li>记$\sigma=\pi_i^{-1}\pi$, 则$\pi_i\cdot \sigma =\pi$, $\sigma \circ x=x$, 即$\sigma \in G_x$.</li>
+<li>因此每个$\pi\in G$对应一个不同的pair$(\pi_i, \sigma)\in P\times G_x$</li>
+<li>对于每个$\pi_i\in P$和$\sigma\in G_x$, 有$\pi=\pi_i\cdot \sigma\in G$</li>
+<li><p>对于$\pi_i\sigma=\pi_j\tau$, 有$(\pi_i\cdot \sigma)\circ x=x_i$, $(\pi_j\cdot \tau)\circ x=x_j$, 所以$x_i=x_j$, $\pi_i=\pi_j$, $\tau =\sigma$</p>
+</li>
+<li><p>因此是双射, 得证.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-3-轨道计数"><a href="#2-3-轨道计数" class="headerlink" title="2.3 轨道计数"></a>2.3 轨道计数</h3><p><strong>Burnside’s Lemma</strong>: 轨道的个数(记做$|X/G|$) 为</p>
+<script type="math/tex; mode=display">
+|X/G|=\frac{1}{|G|}\sum_{\pi\in G}|X_\pi|</script><p>证明:</p>
+<ul>
+<li><p>记$A(\pi, x)=\begin{cases}1 &amp; \pi\circ x=x,\\0&amp; ~ otherwise. \end{cases}$</p>
+</li>
+<li><p>$\sum_{\pi\in G}|X_\pi|=\sum_{\pi\in G}\sum_{x\in X}A(\pi, x)=\sum_{x\in X}\sum_{\pi\in G}A(\pi, x)=\sum_{x\in X}|G_x|$.</p>
+</li>
+<li><p>定义轨道为$X_1,\cdots, X_{|X/G|}, 则$</p>
+<script type="math/tex; mode=display">
+|G|\sum_{x\in X}\frac{1}{|Gx|}=|G|\sum_{i=1}^{|X/G|}\sum_{x\in X_i}\frac{1}{|Gx|}=|G|\sum_{i=1}^{|X/G|}\sum_{x\in X_i}\frac{1}{|X_i|}=|G||X/G|</script></li>
+<li><p>使用上面的引理, 有</p>
+<script type="math/tex; mode=display">
+\sum_{\pi\in G}|X_\pi|=\sum_{x\in X}|G_x|=|G|\sum_{x\in X}\frac{1}{|Gx|}=|G||X/G|</script></li>
+</ul>
+<h2 id="3-Polya’s-Theory-of-Counting"><a href="#3-Polya’s-Theory-of-Counting" class="headerlink" title="3 Pólya’s Theory of Counting"></a>3 Pólya’s Theory of Counting</h2><h3 id="3-1-The-cycle-index"><a href="#3-1-The-cycle-index" class="headerlink" title="3.1 The cycle index"></a>3.1 The cycle index</h3><p>对于某种上色$x$, 如果$x$在$\pi\in G$下是不变的, 那么在$\pi$的每个circle中的所有位置必须有相同颜色. 即如果$\pi$被分解为$k$个circle, 那么$|X_\pi|=m^k$.</p>
+<p>定义一个置换群$G$中的<strong>cycle index</strong>: </p>
+<p>对任意$\pi\in G$, 如果$\pi$是$k$个cycle的乘积, 且第$i$个cycle的长度为$l_i$,令</p>
+<script type="math/tex; mode=display">
+M_\pi(x_1,x_2,\cdots, x_n)=\prod_{i=1}^k x_{l_i}.</script><p>$G$的<strong>cycle index</strong>为</p>
+<script type="math/tex; mode=display">
+P_G(x_1,x_2,\cdots,x_n)=\frac{1}{|G|}\sum_{\pi\in G}M_\pi(x_1,x_2,\cdots, x_n)</script><h3 id="3-2-Polya’s-enumeration-formula"><a href="#3-2-Polya’s-enumeration-formula" class="headerlink" title="3.2 Pólya’s enumeration formula"></a>3.2 Pólya’s enumeration formula</h3><p>对于任意tuple $v=(n_1,n_2,\cdots, n_m)$满足$n_1+n_2+\cdots+n_m=n$和$n_i\ge 0, ~ 1\le i\le m$, 表示第$i$个颜色的珠子有$n_i$个.</p>
+<p><strong>pattern inventory</strong>:</p>
+<p>$a_v$的多元生成函数</p>
+<script type="math/tex; mode=display">
+F_G(y_1,y_2,\cdots, y_m)=\sum_va_vy_1^{n_1}y_2^{n_2}\cdots y_m^{n_m}</script><p><strong>Pólya’s enumeration formula</strong>:</p>
+<p>非等价的$n$个物体的$m$色上色的<strong>pattern inventory</strong>为</p>
+<script type="math/tex; mode=display">
+F_G(y_1,y_2,\cdots, y_m)=P_G(\sum_{i=1}^my_i,\sum_{i=1}^my_i^2,\cdots,\sum_{i=1}^my_i^n)</script><p>证明思路如下:</p>
+<ul>
+<li><p>$X^v=\{x:[n]\to[m]|\forall i\in [m], x^{-1}(i)=n_i\}$表示第$i$个颜色出现$n_i$的着色方案集合(所有都算, 对称的也算)</p>
+</li>
+<li><p>$X_\pi^v=\{x\in X^v|\pi\circ x=x\}$</p>
+</li>
+<li><p>先(用Burnside’s lemma)证明</p>
+<script type="math/tex; mode=display">
+a_v=\frac{1}{G}\sum_{x\in G}|X_\pi^v|</script></li>
+<li><p>再证明</p>
+<script type="math/tex; mode=display">
+M_\pi(\sum_{i=1}^m y_i, \sum_{i=1}^m y_i^2,\cdots,\sum_{i=1}^m y_i^n)=\sum_{v=(n_1,\cdots,n_m)\\n_1+\cdots+n_m=n}|X_\pi^v|y_1^{n_1}y_2^{n_2}\cdots y_m^{n_m}</script><p>考虑中间值$(y_1^{l_1}+y_2^{l_1}+\cdots,y_m^{l_1})y_1^{l_2}+y_2^{l_2}+\cdots,y_m^{l_2})\cdots (y_1^{l_m}+y_2^{l_m}+\cdots,y_m^{l_m})$, 和等式左右都相等.</p>
+</li>
+<li><p>合起来即证毕.</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/组合数学/" rel="tag"># 组合数学</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/09/大三上/高级算法/高级算法之度量集中度/" rel="next" title="高级算法之度量集中度">
+                <i class="fa fa-chevron-left"></i> 高级算法之度量集中度
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/16/大三上/高级算法/高级算法之降维/" rel="prev" title="高级算法之降维">
+                高级算法之降维 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XY</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Polya计数理论"><span class="nav-number">1.</span> <span class="nav-text">Pólya计数理论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-群"><span class="nav-number">1.1.</span> <span class="nav-text">1 群</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-置换群"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 置换群</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对称群-S-n"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">对称群$S_n$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#循环群-C-n"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">循环群$C_n$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Dihedral群-D-n"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">Dihedral群$D_n$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cycle-decomposition"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">Cycle decomposition</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-群操作"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 群操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#例子-项链上色"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">例子: 项链上色</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Burnside’s-Lemma"><span class="nav-number">1.2.</span> <span class="nav-text">2 Burnside’s Lemma</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-轨道-Orbits"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 轨道(Orbits)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-invariant-set-and-stabilizer"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 invariant set and stabilizer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-轨道计数"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 轨道计数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Polya’s-Theory-of-Counting"><span class="nav-number">1.3.</span> <span class="nav-text">3 Pólya’s Theory of Counting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-The-cycle-index"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 The cycle index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Polya’s-enumeration-formula"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 Pólya’s enumeration formula</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

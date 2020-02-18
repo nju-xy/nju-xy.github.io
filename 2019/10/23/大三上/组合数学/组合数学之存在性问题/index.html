@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="组合数学,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="存在性问题1 Existence by counting1.1 Shannon’s circuit lower bound布尔电路问题: $f:\{0,1\}^n\to \{0,1\}$, 三种门: AND, OR, NOT. 电路复杂度: 门的个数. 定理(Shannon): 存在布尔函数$f:\{0,1\}^n\to \{0,1\}$, 电路复杂度$&amp;gt;\frac{2^n}{3n}$. 证">
+<meta name="keywords" content="组合数学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="组合数学之存在性问题">
+<meta property="og:url" content="http://yoursite.com/2019/10/23/大三上/组合数学/组合数学之存在性问题/index.html">
+<meta property="og:site_name" content="XY&#39;s blog">
+<meta property="og:description" content="存在性问题1 Existence by counting1.1 Shannon’s circuit lower bound布尔电路问题: $f:\{0,1\}^n\to \{0,1\}$, 三种门: AND, OR, NOT. 电路复杂度: 门的个数. 定理(Shannon): 存在布尔函数$f:\{0,1\}^n\to \{0,1\}$, 电路复杂度$&amp;gt;\frac{2^n}{3n}$. 证">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/figs/组合数学/figs6/对偶图.png">
+<meta property="og:updated_time" content="2019-12-28T13:46:28.912Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="组合数学之存在性问题">
+<meta name="twitter:description" content="存在性问题1 Existence by counting1.1 Shannon’s circuit lower bound布尔电路问题: $f:\{0,1\}^n\to \{0,1\}$, 三种门: AND, OR, NOT. 电路复杂度: 门的个数. 定理(Shannon): 存在布尔函数$f:\{0,1\}^n\to \{0,1\}$, 电路复杂度$&amp;gt;\frac{2^n}{3n}$. 证">
+<meta name="twitter:image" content="http://yoursite.com/figs/组合数学/figs6/对偶图.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/10/23/大三上/组合数学/组合数学之存在性问题/">
+
+
+
+
+
+  <title>组合数学之存在性问题 | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XY's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/23/大三上/组合数学/组合数学之存在性问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XY">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XY's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">组合数学之存在性问题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-23T20:00:00+08:00">
+                2019-10-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="存在性问题"><a href="#存在性问题" class="headerlink" title="存在性问题"></a>存在性问题</h1><h2 id="1-Existence-by-counting"><a href="#1-Existence-by-counting" class="headerlink" title="1 Existence by counting"></a>1 Existence by counting</h2><h3 id="1-1-Shannon’s-circuit-lower-bound"><a href="#1-1-Shannon’s-circuit-lower-bound" class="headerlink" title="1.1 Shannon’s circuit lower bound"></a>1.1 Shannon’s circuit lower bound</h3><p>布尔电路问题: $f:\{0,1\}^n\to \{0,1\}$, 三种门: AND, OR, NOT. 电路复杂度: 门的个数.</p>
+<p><strong>定理</strong>(Shannon):</p>
+<p>存在布尔函数$f:\{0,1\}^n\to \{0,1\}$, 电路复杂度$&gt;\frac{2^n}{3n}$.</p>
+<p>证明:</p>
+<ul>
+<li><p>$f:\{0,1\}^n\to \{0,1\}$的布尔函数个数: $2^{2^n}$. </p>
+</li>
+<li><p>数$t$个门的电路:</p>
+<ul>
+<li>用De Morgan定律可以把所有的非门放在输入处, 这样以后每个门有两种(AND, OR), 都是2输入的.</li>
+<li>门的每个输入都是0, 1, $x_i$, $\neg x_i$, 或者其他门的输入. 所以最多有$2+2n+t-1$个可能的门输入</li>
+<li>因此$t$个门的电路数量至多为$2^t(2+2n+t-1)^{2t}$. (因为每个门有2种选择, 2个输入各有至多$2+2n+t-1$种选择)</li>
+</ul>
+</li>
+<li>如果$t=2^n/3n$, 则$\frac{2^t(2+2n+t-1)^{2t}}{2^{2^n}}=o(1)&lt;1$, 因此$2^t(2+2n+t-1)^{2t}&lt;2^{2^n}$.</li>
+<li>所以有不能用$2^n/3n$个门计算的电路.</li>
+</ul>
+<h3 id="1-2-Double-counting"><a href="#1-2-Double-counting" class="headerlink" title="1.2 Double counting"></a>1.2 Double counting</h3><h4 id="1-2-1-Handshaking-lamma"><a href="#1-2-1-Handshaking-lamma" class="headerlink" title="1.2.1 Handshaking lamma"></a>1.2.1 Handshaking lamma</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Handshaking Lemma</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>At a party, the number of guests who shake hands an odd number of times is even.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>将握手看做图中的边, 则可以由一下引理得到:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Lemma (Euler 1736)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\sum_{v\in V}d(v)=2</td>
+<td>E</td>
+<td>$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>为了证明这个引理, 我们需要数有向边的数量:</p>
+<ul>
+<li>每条边$uv\in E$有两个方向$(u,v)$和$(v,u)$, 所以有$2|E|$条有向边.</li>
+<li>对于每个点$v\in V$, 有$d(v)$个邻居, 也就有$d(v)$条有向边$(v,u)$. 因此总共$\sum_{v\in V}d(v)$条有向边.</li>
+</ul>
+<h4 id="1-2-2-Sperner’s-lemma"><a href="#1-2-2-Sperner’s-lemma" class="headerlink" title="1.2.2 Sperner’s lemma"></a>1.2.2 Sperner’s lemma</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Sperner’s Lemma (1928)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>For any properly colored triangulation, there exists a cell receiving all three colors.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>properly coloring</strong>:</p>
+<ul>
+<li>三个顶点a, b, c是三种不同的颜色</li>
+<li>边ab, ac, bc上的点有两种颜色</li>
+</ul>
+<p><strong>证明</strong>:</p>
+<p>如下构造对偶图:</p>
+<ul>
+<li>每个cell看做一个点, 外围空间也看做一个点</li>
+<li>对偶图中两点之间有边当且仅当原图中的这两个cell之间有红蓝边</li>
+</ul>
+<p><img src="/figs/组合数学/figs6/对偶图.png" alt="对偶图" style="zoom:40%;"></p>
+<p>对于对偶图中的点:</p>
+<ul>
+<li>如果原图中的cell有三色, 那么对偶图中对应点度为1</li>
+<li>如果原图中的cell只有红蓝2色, 那么对偶图中对应点度为2</li>
+<li>对于其他cell, 对偶图中对应点度为0</li>
+<li>原图中外围空间对应的对偶图中点的度为奇数</li>
+</ul>
+<p>根据handshaking lemma, 奇度点的个数为偶数, 因此原图中三色cell的数量为奇数, 非0.</p>
+<h2 id="2-The-pigeonhole-Principle"><a href="#2-The-pigeonhole-Principle" class="headerlink" title="2 The pigeonhole Principle"></a>2 The pigeonhole Principle</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Generalized pigeonhole principle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>If a set consisting of more than $mn$ objects is partitioned into $n$ classes, then some class receives more than $m$ objects.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="2-1-Inevitable-divisors"><a href="#2-1-Inevitable-divisors" class="headerlink" title="2.1 Inevitable divisors"></a>2.1 Inevitable divisors</h3><p><strong>Theorem</strong>:<br>For any subset $S\subseteq \{1,2,\cdots,2n\}$ of size $|S|&gt;n$, there are two numbers $a,b\in S$ such that $a|b$.</p>
+<p>证明:</p>
+<p>对于每个奇数$m\in \{1,2,\cdots,2n\}$, 令</p>
+<script type="math/tex; mode=display">
+C_m=\{2^k m|k\ge 0, 2^km\le 2n\}</script><p>显然同一类$C_m$中的两个数$b&lt;a$一定有$a|b$.</p>
+<p>而每个$a\in S$可以唯一表示为$a=2^km$其中$m$为奇数, 所以属于恰好一个类$C_m$, $m\in \{1,2,\cdots,2n\}$.总共$n$个奇数, 所以有$n$个不同的类$C_m$, 但是$|S|&gt;n$, 所以一定有不同的$a, b\in S$在同一个类$C_m$, 不妨设$a&gt;b$,则$a|b$ .</p>
+<h3 id="2-2-Monotonic-sbusequences"><a href="#2-2-Monotonic-sbusequences" class="headerlink" title="2.2 Monotonic sbusequences"></a>2.2 Monotonic sbusequences</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Theorem(Erdős-Szekeres 1935)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>一个长度大于$mn$的不同实数序列, 一定包含一个长度$m+1$的递增子列或者长度$n+1$的递减子列.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>设原序列为$(a_1,\cdots,a_N)$, $N&gt;mn$, $a_i$为各不相同的实数. </p>
+<p>对于$a_i$定义数对$(x_i,y_i)$如下:</p>
+<ul>
+<li>$x_i$: 最长的结束于$a_i$的递增序列的长度</li>
+<li>$y_i$: 最长的开始于$a_i$的递减序列的长度</li>
+<li>下证只要$i\ne j$就有$(x_i,y_i)\ne(x_j,y_j)$: (不妨设$i&lt;j$)<ul>
+<li>情形1: $a_i&lt;a_j$, 则结束于$a_i$的递增序列可以加上$a_j$后仍然递增, 所以$x_i&lt;x_j$.</li>
+<li>情形2: $a_i&gt;a_j$, 同理, $y_i&gt;y_j$</li>
+</ul>
+</li>
+<li>因此我们把$N$个鸽子放在$\{1,2,\cdots,N\}\times \{1,2,\cdots,N\}$的笼子中, $a_i$放在$(x_i,y_i)$, 每个笼子至多一个鸽子.</li>
+<li>因为$N&gt;mn$, 所以一定有鸽子在$\{1,2,\cdots,m\}\times \{1,2,\cdots,n\}$以外的笼子内, 也就是$x_i&gt;m$或$y_i&gt;n$. 得证.</li>
+</ul>
+<h3 id="2-3-Dirichlet’s-approximation"><a href="#2-3-Dirichlet’s-approximation" class="headerlink" title="2.3 Dirichlet’s approximation"></a>2.3 Dirichlet’s approximation</h3><p><strong>Theorem</strong>:<br>令$x$为一个无理数. 对于任意自然数$n$, 存在一个有理数$\frac{p}{q}$满足$1\le q\le n$且$|x-\frac{p}{q}|&lt;\frac{1}{nq}$.</p>
+<p>证明:<br>令$\{x\}=x-\lfloor x\rfloor$表示实数$x$的小数部分. 显然$\{x\}\in\{0,1\}$.</p>
+<p>考虑$n+1$个数$\{kx\}$, $k=1,2,\cdots,n+1$. 这$n+1$个数字(鸽子)属于$n$个区间(笼子): $(0,1/n),(1/n,2/n),\cdots,((n-1)/n,1)$. 且因为$x$是无理数, 所以$\{kx\}$都不在区间两端.</p>
+<p>根据鸽笼原理, 存在$1\le a\le b\le n+1$, 满足$\{ax\}$和$\{bx\}$在同一个区间, 因此有</p>
+<script type="math/tex; mode=display">
+|\{bx\}-\{ax\}|<\frac{1}{n}</script><p>因此</p>
+<script type="math/tex; mode=display">
+|(b-a)x-(\lfloor bx\rfloor -\lfloor ax\rfloor)|<\frac{1}{n}</script><p>令$q=b-a$, $p=\lfloor bx\rfloor -\lfloor ax\rfloor$, 则$|qx-p|&lt;1/n$且$1\le q\le n$.两边除以$q$, 得证.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/组合数学/" rel="tag"># 组合数学</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/22/大三上/计算机网络/计网Ch7无线网/" rel="next" title="计算机网络之Ch7无线网">
+                <i class="fa fa-chevron-left"></i> 计算机网络之Ch7无线网
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/06/大三上/高级算法/高级算法之贪心/" rel="prev" title="高级算法之贪心">
+                高级算法之贪心 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XY</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#存在性问题"><span class="nav-number">1.</span> <span class="nav-text">存在性问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Existence-by-counting"><span class="nav-number">1.1.</span> <span class="nav-text">1 Existence by counting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Shannon’s-circuit-lower-bound"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 Shannon’s circuit lower bound</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Double-counting"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 Double counting</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-1-Handshaking-lamma"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">1.2.1 Handshaking lamma</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-2-Sperner’s-lemma"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">1.2.2 Sperner’s lemma</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-The-pigeonhole-Principle"><span class="nav-number">1.2.</span> <span class="nav-text">2 The pigeonhole Principle</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Inevitable-divisors"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 Inevitable divisors</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Monotonic-sbusequences"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 Monotonic sbusequences</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-Dirichlet’s-approximation"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 Dirichlet’s approximation</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

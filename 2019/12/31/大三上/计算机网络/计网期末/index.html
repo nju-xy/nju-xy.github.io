@@ -1,0 +1,2435 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="计算机网络,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="第1章 计算机网络和因特网1.1  什么是因特网1.1.1 具体构成描述组成组成: 端系统, 通信链路, 分组交换机  连入因特网的设备: 主机(host) 或 端系统 端系统通过通信链路 和 分组交换机连接到一起 通信链路: 由不同类型的物理媒体构成: 同轴电缆, 铜线, 光纤, 无线电频谱 传输速度: bits/s或bps   端系统向别的端系统发送数据时, 发送端将数据分段, 为每段加上首部">
+<meta name="keywords" content="计算机网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络之期末复习">
+<meta property="og:url" content="http://yoursite.com/2019/12/31/大三上/计算机网络/计网期末/index.html">
+<meta property="og:site_name" content="XY&#39;s blog">
+<meta property="og:description" content="第1章 计算机网络和因特网1.1  什么是因特网1.1.1 具体构成描述组成组成: 端系统, 通信链路, 分组交换机  连入因特网的设备: 主机(host) 或 端系统 端系统通过通信链路 和 分组交换机连接到一起 通信链路: 由不同类型的物理媒体构成: 同轴电缆, 铜线, 光纤, 无线电频谱 传输速度: bits/s或bps   端系统向别的端系统发送数据时, 发送端将数据分段, 为每段加上首部">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/figs/计算机网络/figs1/现代家庭网络.png">
+<meta property="og:image" content="http://yoursite.com/figs/计算机网络/figs3/TCP报文结构.png">
+<meta property="og:image" content="http://yoursite.com/figs/计算机网络/figs3/三次握手.png">
+<meta property="og:image" content="http://yoursite.com/figs/计算机网络/figs3/四次挥手.png">
+<meta property="og:image" content="http://yoursite.com/figs/计算机网络/figs3/TCP状态图.png">
+<meta property="og:image" content="http://yoursite.com/figs/计算机网络/figs4/路由器结构.png">
+<meta property="og:image" content="http://yoursite.com/figs/计算机网络/figs4/IPv4首部.png">
+<meta property="og:image" content="http://yoursite.com/figs/计算机网络/figs4/IPv4分片.png">
+<meta property="og:image" content="http://yoursite.com/figs/计算机网络/figs4/DHCP.png">
+<meta property="og:image" content="http://yoursite.com/figs/计算机网络/figs4/NAT.png">
+<meta property="og:image" content="http://yoursite.com/figs/计算机网络/figs4/IPv6首部.png">
+<meta property="og:image" content="http://yoursite.com/figs/计算机网络/figs4/tunnel.png">
+<meta property="og:image" content="http://yoursite.com/figs/计算机网络/figs5/DVtable.png">
+<meta property="og:image" content="http://yoursite.com/figs/计算机网络/figs5/ICMP.png">
+<meta property="og:image" content="http://yoursite.com/figs/计算机网络/figs6/CSMACD.png">
+<meta property="og:image" content="http://yoursite.com/figs/计算机网络/figs7/CSMACA传输过程.png">
+<meta property="og:updated_time" content="2020-01-08T14:44:22.475Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机网络之期末复习">
+<meta name="twitter:description" content="第1章 计算机网络和因特网1.1  什么是因特网1.1.1 具体构成描述组成组成: 端系统, 通信链路, 分组交换机  连入因特网的设备: 主机(host) 或 端系统 端系统通过通信链路 和 分组交换机连接到一起 通信链路: 由不同类型的物理媒体构成: 同轴电缆, 铜线, 光纤, 无线电频谱 传输速度: bits/s或bps   端系统向别的端系统发送数据时, 发送端将数据分段, 为每段加上首部">
+<meta name="twitter:image" content="http://yoursite.com/figs/计算机网络/figs1/现代家庭网络.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/12/31/大三上/计算机网络/计网期末/">
+
+
+
+
+
+  <title>计算机网络之期末复习 | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XY's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/31/大三上/计算机网络/计网期末/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XY">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XY's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">计算机网络之期末复习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-31T20:00:00+08:00">
+                2019-12-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="第1章-计算机网络和因特网"><a href="#第1章-计算机网络和因特网" class="headerlink" title="第1章 计算机网络和因特网"></a>第1章 计算机网络和因特网</h1><h2 id="1-1-什么是因特网"><a href="#1-1-什么是因特网" class="headerlink" title="1.1  什么是因特网"></a>1.1  什么是因特网</h2><h3 id="1-1-1-具体构成描述"><a href="#1-1-1-具体构成描述" class="headerlink" title="1.1.1 具体构成描述"></a>1.1.1 具体构成描述</h3><h4 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h4><p>组成: 端系统, 通信链路, 分组交换机</p>
+<ul>
+<li>连入因特网的设备: <strong>主机</strong>(host) 或 <strong>端系统</strong></li>
+<li>端系统通过<strong>通信链路</strong> 和 <strong>分组交换机</strong>连接到一起</li>
+<li><strong>通信链路</strong>: 由不同类型的物理媒体构成:<ul>
+<li>同轴电缆, 铜线, 光纤, 无线电频谱</li>
+<li>传输速度: bits/s或bps</li>
+</ul>
+</li>
+<li>端系统向别的端系统发送数据时, 发送端将数据分段, 为每段加上首部字节, 称为<strong>分组</strong>; 这些分组通过网络发送到目的端系统, 在那里被装备成初始数据.</li>
+<li><p><strong>分组交换机</strong> 从它的一条入通信链路接受到达的分组, 并从它的一条出通信链路转发该分组. 主要一下两种:</p>
+<ul>
+<li><strong>路由器</strong>: 网络核心中</li>
+<li><strong>链路层交换机</strong>: 接入网中</li>
+</ul>
+</li>
+<li><p>从发送端到接收端, 一个分组所经历的一系列通信链路和分组交换机称为通过该网络的路径</p>
+</li>
+</ul>
+<h4 id="ISP"><a href="#ISP" class="headerlink" title="ISP"></a>ISP</h4><ul>
+<li><p>端系统通过<strong>因特网服务提供商(ISP)</strong>接入因特网</p>
+</li>
+<li><p>各ISP为端系统提供各种不同类型的网络接入</p>
+<ul>
+<li>住宅宽带接入, 高速局域网接入, 移动无限接入</li>
+</ul>
+</li>
+<li>ISP也为内容提供者提供因特网接入服务<ul>
+<li>将Web站点和视频服务器直接连入因特网</li>
+</ul>
+</li>
+<li>粗略分等级:<ul>
+<li>中心(1级): 国际ISPs(网络服务提供者)</li>
+<li>2级ISPs: 较小的(一般地区性的)ISPs</li>
+<li>3级ISPs和局部/端ISPs, 连接接入网 </li>
+</ul>
+</li>
+</ul>
+<h4 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h4><ul>
+<li><p>端系统, 分组交换机和其他因特网部件都要运行一系列的<strong>协议</strong>, 这些协议控制着因特网中信息的接收和发送</p>
+</li>
+<li><p>因特网的主要协议: <strong>TCP/IP</strong></p>
+<ul>
+<li>高效但不可靠的数据传输 — IP</li>
+<li>从源到目的地的可靠数据传输 — TCP</li>
+</ul>
+</li>
+</ul>
+<h4 id="网络标准"><a href="#网络标准" class="headerlink" title="网络标准"></a>网络标准</h4><ul>
+<li>IETF, RFC</li>
+</ul>
+<h3 id="1-1-2-服务描述"><a href="#1-1-2-服务描述" class="headerlink" title="1.1.2 服务描述"></a>1.1.2 服务描述</h3><ul>
+<li>涉及到多个相互交换数据的端系统的应用程序: <strong>分布式应用程序</strong></li>
+<li>与因特网相连的端系统提供了一个<strong>套接字接口</strong><ul>
+<li>该接口规定了运行在一个端系统上的程序 请求因特网基础设施向 运行在另一个端系统上的特定目的地程序 交互数据的方式 </li>
+</ul>
+</li>
+</ul>
+<h3 id="1-1-3-什么是协议"><a href="#1-1-3-什么是协议" class="headerlink" title="1.1.3 什么是协议"></a>1.1.3 什么是协议</h3><ul>
+<li><strong>协议</strong> 定义了在两个或多个通信实体之间交换的报文的格式和顺序, 以及报文发送和/或接受一条报文或者其他事情所采取的动作.</li>
+</ul>
+<h2 id="2-2-网络边缘"><a href="#2-2-网络边缘" class="headerlink" title="2.2 网络边缘"></a>2.2 网络边缘</h2><ul>
+<li><p>主机(端系统)运行应用程序</p>
+</li>
+<li><p>主机分为<strong>客户</strong>和<strong>服务器</strong></p>
+</li>
+</ul>
+<h3 id="1-2-1-接入网"><a href="#1-2-1-接入网" class="headerlink" title="1.2.1 接入网"></a>1.2.1 接入网</h3><ul>
+<li><strong>接入网</strong> 指将端系统物理连接到其边缘路由器的网络</li>
+</ul>
+<h4 id="家庭接入-DSL-电缆-FTTH-拨号和卫星"><a href="#家庭接入-DSL-电缆-FTTH-拨号和卫星" class="headerlink" title="家庭接入: DSL, 电缆, FTTH, 拨号和卫星"></a>家庭接入: DSL, 电缆, FTTH, 拨号和卫星</h4><ul>
+<li><strong>数字用户线DSL</strong><ul>
+<li>从本地电话接入的本地电话公司处获得DSL因特网接入</li>
+<li>ISP: 用户的本地电话公司</li>
+<li>每个用户的<strong>DSL调制解调器</strong>使用现有的电话线(即<strong>双绞铜线</strong>)与位于电话公司的本地中心局(CO)中的<strong>数字用户线复用器(DSLAM)</strong>交换数据</li>
+<li>家庭电话线同时承载了数据和传统的电话信号, 用不同的频率编码</li>
+</ul>
+</li>
+<li><strong>电缆因特网接入</strong>:<ul>
+<li>使用有线电视公司现有的有线电视基础设施</li>
+<li>需要<strong>电缆调制解调器</strong></li>
+<li>不对称: 下载快, 上传慢</li>
+<li>共享广播媒体(人多就卡)</li>
+</ul>
+</li>
+<li><p><strong>光纤入户FTTH</strong></p>
+<ul>
+<li>本地中心局直接到家庭提供一条光纤路径</li>
+<li>分成<strong>主动光纤网络</strong>和<strong>被动光纤网络</strong></li>
+</ul>
+</li>
+<li><strong>拨号上网</strong></li>
+</ul>
+<h4 id="企业-和家庭-接入"><a href="#企业-和家庭-接入" class="headerlink" title="企业(和家庭)接入"></a>企业(和家庭)接入</h4><ul>
+<li>使用<strong>局域网(LAN)</strong>将端系统连接到边缘路由器</li>
+<li><strong>以太网Ethernet</strong>是最流行的接入技术</li>
+<li><strong>无线LAN(WLAN)</strong>: WiFi</li>
+<li>现代家庭网络: <ul>
+<li>设备</li>
+<li>一个与无线PC和其他设备通信的基站(<strong>无线接入点</strong>)/以太网交换器</li>
+<li>一个提供与因特网宽带接入的<strong>DSL/电缆调制解调器</strong></li>
+<li>一台互联了基站和带有电缆调制解调器的固定PC的<strong>路由器</strong>(router)/防火墙</li>
+</ul>
+</li>
+</ul>
+<p><img src="/figs/计算机网络/figs1/现代家庭网络.png" alt="现代家庭网络"></p>
+<h4 id="广域无线接入-3G和LTE"><a href="#广域无线接入-3G和LTE" class="headerlink" title="广域无线接入: 3G和LTE"></a>广域无线接入: 3G和LTE</h4><h3 id="1-2-2-物理媒体"><a href="#1-2-2-物理媒体" class="headerlink" title="1.2.2 物理媒体"></a>1.2.2 物理媒体</h3><ul>
+<li>分类:<ul>
+<li>导引型媒体<ul>
+<li>电波沿固体媒体前行</li>
+</ul>
+</li>
+<li>非导引型媒体<ul>
+<li>电波在空气或外层空间中传播</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>双绞铜线</li>
+<li>同轴电缆</li>
+<li>光纤</li>
+<li>陆地无线电信道</li>
+<li>卫星无线电信道</li>
+</ul>
+<h3 id="1-3-网络核心"><a href="#1-3-网络核心" class="headerlink" title="1.3 网络核心"></a>1.3 网络核心</h3><ul>
+<li>分组交换机和链路构成的网状网络</li>
+<li>核心问题:<ul>
+<li>数据如何通过网络传播</li>
+</ul>
+</li>
+<li>分类<ul>
+<li><strong>电路交换</strong>(面向连接, 固定的)</li>
+<li><strong>分组交换</strong>(面向无连接, 到了每个路口自己决定怎么走)</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-3-1-分组交换"><a href="#1-3-1-分组交换" class="headerlink" title="1.3.1 分组交换"></a>1.3.1 分组交换</h3><ul>
+<li>类似于公路网, 或者打的</li>
+<li><p>源将<strong>报文</strong>(message)划分为较小的数据块, 称为<strong>分组</strong>(packet)</p>
+</li>
+<li><p>在源和目的地之间, 每个分组都通过通信链路和<strong>分组交换机</strong>传送</p>
+</li>
+<li>无固定路线</li>
+<li>应用A, B的分组共享网络资源</li>
+<li>不分配资源</li>
+<li>分组每次前进一步: 后在交换机处存储(排队)</li>
+<li>每个包用满的带宽</li>
+<li>有拥塞问题, 排队</li>
+</ul>
+<h4 id="存储转发传输"><a href="#存储转发传输" class="headerlink" title="存储转发传输"></a>存储转发传输</h4><ul>
+<li>多数分组交换机在链路的输入端使用<strong>存储转发传输</strong></li>
+<li><strong>存储转发传输</strong> 指在交换机能够开始向输出链路传输该分组的第一个比特之前, 必须接收到整个分组</li>
+<li><p>1路由器1分组: 总时延$2L/R$: $L/R$ 时刻路由器接收整个分组, $2L/R$ 时刻路由器传输了整个分组</p>
+</li>
+<li><p>1路由器3分组: 时延$4L/R$</p>
+</li>
+<li>$N-1$路由器($N$链路)1分组: 时延$N\frac{L}{R}$</li>
+</ul>
+<h4 id="排队时延和分组丢失"><a href="#排队时延和分组丢失" class="headerlink" title="排队时延和分组丢失"></a>排队时延和分组丢失</h4><ul>
+<li>每台分组交换机连多条链路, 对于每条链路, 有一个<strong>输出缓存</strong></li>
+<li>如果某条链路正在传输别的分组, 需要在输出缓存中等待, 因此有<strong>排队时延</strong></li>
+<li>如果缓存满了, 会出现<strong>分组丢失(丢包)</strong></li>
+</ul>
+<h4 id="转发表和路由选择协议"><a href="#转发表和路由选择协议" class="headerlink" title="转发表和路由选择协议"></a>转发表和路由选择协议</h4><p>问题: 路由器如何决定向哪条链路转发:</p>
+<ul>
+<li>因特网中每个端系统有<strong>IP地址</strong></li>
+<li>目的地的IP地址包含于分组的首部</li>
+<li>每台路由器有一个<strong>转发表</strong>, 用于将目的地址(或一部分)映射成输出链路</li>
+<li>因特网具有<strong>路由选择协议</strong>来自动设置转发表</li>
+</ul>
+<h3 id="1-3-2-电路交换"><a href="#1-3-2-电路交换" class="headerlink" title="1.3.2 电路交换"></a>1.3.2 电路交换</h3><ul>
+<li>类似于铁路网</li>
+<li>在端系统间通信期间, 预留了端系统间沿路径通信所需要的资源(缓存和传输速率)</li>
+<li>两台主机要通信时, 该网络在两台主机之间创建一条专用的<strong>端到端连接</strong></li>
+<li>专用资源, 无共享</li>
+<li>面向连接, 固定路线</li>
+<li>路由器分配资源: 带宽固定</li>
+<li>线路分配资源: 频分复用/时分复用/码分复用</li>
+<li>性能有保障</li>
+<li>有Call setup和teardown, 不灵活</li>
+</ul>
+<h4 id="1-3-2-1-电路交换网络中的复用"><a href="#1-3-2-1-电路交换网络中的复用" class="headerlink" title="1.3.2.1 电路交换网络中的复用"></a>1.3.2.1 电路交换网络中的复用</h4><ul>
+<li><p><strong>频分复用FDM</strong>和<strong>时分复用TDM</strong></p>
+</li>
+<li><p><strong>FDM</strong>: </p>
+<ul>
+<li>每条连接专用一个频段</li>
+<li>频段宽度称为<strong>带宽</strong></li>
+</ul>
+</li>
+<li><p><strong>TDM</strong>:</p>
+<ul>
+<li><p>时间被划分为固定期间的<strong>帧</strong>, 每个帧被划分为固定数量的<strong>时隙</strong></p>
+</li>
+<li><p>在循环的TDM帧中, 每条电路被分配相同的专用时隙</p>
+</li>
+<li>传输速率: 帧速率$\times$一个时隙中的比特数量</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-3-2-2-分组交换和电路交换的对比"><a href="#1-3-2-2-分组交换和电路交换的对比" class="headerlink" title="1.3.2.2 分组交换和电路交换的对比"></a>1.3.2.2 分组交换和电路交换的对比</h4><ul>
+<li>电路交换存在<strong>静默期</strong>, 例如打电话的一个人停止说话, 空闲的网络资源不能被其他进行中的连接利用, 因此性能不如分组交换</li>
+<li>因此有了<strong>虚电路</strong>: 分组交换 + 电路交换, 分组交换和电路交换的中间形式(类似于公交车)<ul>
+<li>路由器或者主要通路固定</li>
+<li>资源共享, 需要拥塞控制</li>
+<li>资源可被保留, 导致不同的性能</li>
+<li>需要连接setup/teardown</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-3-3-网络的网络"><a href="#1-3-3-网络的网络" class="headerlink" title="1.3.3 网络的网络"></a>1.3.3 网络的网络</h3><ul>
+<li>多层ISP</li>
+<li><strong>存在点PoP</strong>(入网点): 存在于除了接入ISP的所有层次, 为提供商的一台或者多台路由器群组, 其中客户ISP能够与供应商ISP连接</li>
+<li><p><strong>多宿</strong>: 一个ISP可以和多个提供商ISP连接</p>
+</li>
+<li><p><strong>对等</strong>: 位于相同结构等级层次的邻近的一对ISP可以直接将网络连在一起,  流量不经过上游ISP传输</p>
+</li>
+<li><strong>因特网交换点IXP</strong>: 多个ISP在这里一起对等的汇合点</li>
+<li><strong>内容提供商网络</strong>: 独立于公共因特网, 与多层ISP相连</li>
+</ul>
+<h2 id="1-4-分组交换网中的时延-丢包和吞吐量"><a href="#1-4-分组交换网中的时延-丢包和吞吐量" class="headerlink" title="1.4 分组交换网中的时延, 丢包和吞吐量"></a>1.4 分组交换网中的时延, 丢包和吞吐量</h2><h3 id="1-4-1-分组交换中的时延概述"><a href="#1-4-1-分组交换中的时延概述" class="headerlink" title="1.4.1 分组交换中的时延概述"></a>1.4.1 分组交换中的时延概述</h3><p>时延的类型: </p>
+<ul>
+<li><strong>处理时延</strong><ul>
+<li>包括检查分组首部, 决定该分组导向何处; 检错</li>
+</ul>
+</li>
+<li><strong>排队时延</strong><ul>
+<li>分组在链路上等待传输的时间</li>
+</ul>
+</li>
+<li><strong>传输时延</strong><ul>
+<li>将整个分组中所有比特都推向链路所需要的时间</li>
+<li>分组长度L, 链路传输速率R, 则传输时延$L/R$</li>
+</ul>
+</li>
+<li><strong>传播时延</strong><ul>
+<li>一个比特从链路起点到下一个路由器的时间</li>
+<li>传播速度接近光速</li>
+</ul>
+</li>
+<li>总时延就是这四种时延之和</li>
+</ul>
+<h3 id="1-4-2-排队时延和丢包"><a href="#1-4-2-排队时延和丢包" class="headerlink" title="1.4.2 排队时延和丢包"></a>1.4.2 排队时延和丢包</h3><ul>
+<li>分组长度L比特, 分组到达队列的速率$\alpha$, 分组传输速率R</li>
+<li>定义<strong>流量强度</strong>$L\alpha /R$</li>
+<li>$L\alpha /R&gt;1$, 队列无限增加</li>
+<li><p>$L\alpha /R\le 1$, 若到达队列的过程是随机的, 随着流量强度接近于1, 平均排队时延迅速增加</p>
+</li>
+<li><p><strong>丢包</strong>: 队列已满, 没有地方存储, 则丢弃该分组</p>
+</li>
+</ul>
+<h3 id="1-4-3-端到端时延"><a href="#1-4-3-端到端时延" class="headerlink" title="1.4.3 端到端时延"></a>1.4.3 端到端时延</h3><ul>
+<li><p>假设源到目的地之间有N-1台路由器, 网络无阻塞, 则端到端时延为</p>
+<p>$d_{end-end}=N(d_{proc}+d_{trans}+d_{prop})$</p>
+</li>
+<li><p>可以用traceroute程序查看端到端时延</p>
+</li>
+<li><p>其他时延: </p>
+<ul>
+<li>希望向共享媒体传输分组的端系统可能会有意延迟传输</li>
+<li>媒体分组化时延, 出现于IP语音VoIP中</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-4-4-计算机中的吞吐量"><a href="#1-4-4-计算机中的吞吐量" class="headerlink" title="1.4.4 计算机中的吞吐量"></a>1.4.4 计算机中的吞吐量</h3><ul>
+<li><strong>瞬时吞吐量</strong>, <strong>平均吞吐量</strong>: bps</li>
+<li><strong>瓶颈链路</strong>: <ul>
+<li>无干扰流量时为链路中最小的那个传输速率</li>
+<li>有干扰流量, 高传输速率的链路也可能为平静链路</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-5-协议层次及其服务模型"><a href="#1-5-协议层次及其服务模型" class="headerlink" title="1.5 协议层次及其服务模型"></a>1.5 协议层次及其服务模型</h2><h3 id="1-5-1-分层的体系结构"><a href="#1-5-1-分层的体系结构" class="headerlink" title="1.5.1 分层的体系结构"></a>1.5.1 分层的体系结构</h3><ul>
+<li><p>各层的所有协议称为<strong>协议栈</strong>, <strong>协议栈</strong>分成五层: <strong>物理层</strong>, <strong>链路层</strong>, <strong>网络层</strong>, <strong>运输层</strong>, <strong>应用层</strong> </p>
+</li>
+<li><p><strong>OSI参考模型</strong>: 物理层, 链路层, 网络层, 运输层, 会话层, 表示层, 应用层(后三层可以统称为应用层)</p>
+</li>
+</ul>
+<p>(1) 应用层</p>
+<ul>
+<li>应用层是网络应用程序及它们的应用层协议存留的地方. 应用层协议分布在多个端系统上, <strong>一个端系统上的应用程序</strong>使用协议和<strong>另一个端系统上的应用程序</strong>交换信息分组</li>
+<li>应用层的信息分组称为<strong>报文(message)</strong></li>
+<li>FTP, SMTP, HTTP</li>
+</ul>
+<p>(2) 运输层</p>
+<ul>
+<li>因特网的运输层在<strong>应用程序端点</strong>之间传送应用层报文</li>
+<li>TCP, UDP<ul>
+<li>TCP面向连接, 包括确保传递和流量控制, 将长报文划分成短报文, 有拥塞, 可靠</li>
+<li>UDP提供无连接服务, 不可靠, 无流量控制, 无拥塞机制</li>
+</ul>
+</li>
+<li>运输层的分组称为<strong>报文段(segment)</strong></li>
+</ul>
+<p>(3) 网络层</p>
+<ul>
+<li>网络层负责将称为<strong>数据报(datagram)</strong>的网络层分组从一台<strong>主机</strong>移动到另一台<strong>主机</strong></li>
+<li>运输层协议向网络层提交运输层报文段和目的地址</li>
+<li>IP协议</li>
+</ul>
+<p>(4) 链路层</p>
+<ul>
+<li>为了将分组从一个<strong>节点(主机或路由器)</strong>移动到路径上的下一个<strong>节点</strong>, 网络层需要依靠链路层的服务</li>
+<li>一个数据报可以被沿途不同链路上的不同链路层协议处理</li>
+<li>网卡实现</li>
+<li>差错检测, 流量控制</li>
+<li>PPP, 以太网</li>
+<li>链路层分组: <strong>帧(frame)</strong></li>
+</ul>
+<p>(5) 物理层</p>
+<ul>
+<li><strong>链路层</strong>任务是将整个<strong>帧</strong>从一个网络元素移动到邻近的网络元素, 而<strong>物理层</strong>的任务是将该帧中的一个个<strong>比特</strong>从一个节点移动到下一个节点</li>
+<li>物理层协议依然链路相关, 并且和实际传输媒体(例如双绞铜线, 单模光纤)有关</li>
+</ul>
+<h3 id="1-5-2-封装"><a href="#1-5-2-封装" class="headerlink" title="1.5.2 封装"></a>1.5.2 封装</h3><ul>
+<li><strong>封装</strong>: 应用层报文传送给传输层, 传输层收到报文并附上附加信息(传输层首部信息); 其他层之间也类似</li>
+<li>在每一层, 一个分组具有两种类型的字段: <strong>首部字段</strong>和<strong>有效载荷字段</strong>. 有效载荷字段来自上一层的分组</li>
+<li>链路层交换机实现了协议栈中的第一层和第二层<br>路由器实现了协议栈中的第一层到第三层<br>主机实现了所有5个层次</li>
+</ul>
+<h2 id="1-6-面对攻击的网络"><a href="#1-6-面对攻击的网络" class="headerlink" title="1.6 面对攻击的网络"></a>1.6 面对攻击的网络</h2><h3 id="1-6-1-坏家伙能够经因特网将有害程序放入你的计算机中"><a href="#1-6-1-坏家伙能够经因特网将有害程序放入你的计算机中" class="headerlink" title="1.6.1 坏家伙能够经因特网将有害程序放入你的计算机中"></a>1.6.1 坏家伙能够经因特网将有害程序放入你的计算机中</h3><ul>
+<li>恶意的东西统称为<strong>恶意软件</strong></li>
+<li>恶意软件感染我们设备后, 可以做各种不正当的事情, 包括删除文件, 安装间谍软件收集隐私信息并发给坏家伙</li>
+<li><p>受害主机可以称为众多受害设备网络中的一员, 它们统称为<strong>僵尸网络</strong></p>
+</li>
+<li><p>坏家伙可以通过僵尸网络控制并对目标主机展开垃圾邮件分发或者分布式拒绝服务攻击</p>
+</li>
+<li>多数恶意软件是<strong>自我复制的</strong>: 感染一台主机后从那台主机寻求进入因特网上的其他主机</li>
+<li><strong>病毒</strong>是一种需要某种形式的用户交互来干扰用户设备的恶意软件<ul>
+<li>例如包含恶意可执行代码的电子邮件附件</li>
+</ul>
+</li>
+<li><strong>蠕虫</strong>是一种无须任何明显用户交互就能进入设备的恶意软件<ul>
+<li>例如用户运行了一个攻击者能够发送恶意软件的脆弱网络应用程序</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-6-2-坏家伙能够攻击服务器和网络基础设施"><a href="#1-6-2-坏家伙能够攻击服务器和网络基础设施" class="headerlink" title="1.6.2 坏家伙能够攻击服务器和网络基础设施"></a>1.6.2 坏家伙能够攻击服务器和网络基础设施</h3><ul>
+<li><strong>拒绝服务攻击DoS</strong>: DoS攻击使得网络, 主机或其他基础设施部分不能由合法用户使用</li>
+<li>主要三种:<ul>
+<li>弱点攻击: 发送制作精细的报文</li>
+<li>带宽洪泛: 发送大量分组</li>
+<li>连接洪泛: 创建大量半开或者全开TCP连接</li>
+</ul>
+</li>
+<li><strong>分布式DoS(DDoS)</strong>: 攻击者控制多个源并让每个源向目标猛烈发送流量</li>
+</ul>
+<h3 id="1-6-3-坏家伙能够顾嗅探分组"><a href="#1-6-3-坏家伙能够顾嗅探分组" class="headerlink" title="1.6.3 坏家伙能够顾嗅探分组"></a>1.6.3 坏家伙能够顾嗅探分组</h3><ul>
+<li>在无线传输设备的附近放置一台被动的接收机, 接收机就能得到传输的每个分组的副本</li>
+<li>记录每个流经的分组副本的被动接受器称为<strong>分组嗅探器</strong></li>
+</ul>
+<h3 id="1-6-4-坏家伙能够伪成你认识的人"><a href="#1-6-4-坏家伙能够伪成你认识的人" class="headerlink" title="1.6.4 坏家伙能够伪成你认识的人"></a>1.6.4 坏家伙能够伪成你认识的人</h3><ul>
+<li>将具有虚假源地址的分组注入因特网的能力称为<strong>IP哄骗</strong></li>
+</ul>
+<h1 id="第3章-运输层"><a href="#第3章-运输层" class="headerlink" title="第3章 运输层"></a>第3章 运输层</h1><h2 id="3-1-概述和运输层服务"><a href="#3-1-概述和运输层服务" class="headerlink" title="3.1 概述和运输层服务"></a>3.1 概述和运输层服务</h2><ul>
+<li>运输层协议为<strong>运行在不同主机上的应用进程</strong>之间提供了<strong>逻辑通信</strong>.</li>
+<li>运输层协议在<strong>端系统</strong>中实现. </li>
+<li>运输层分组称为<strong>报文段</strong>. <strong>运输层</strong>将从发送<strong>应用程序进程</strong>接收到的报文转换成<strong>报文段</strong>, 然后在发送端系统中, <strong>运输层</strong>将这些<strong>报文段</strong>传递给<strong>网络层</strong>, 网络层将其封装成<strong>数据报</strong>并向目的地发送; 在接收端, <strong>网络层</strong>从<strong>数据报</strong>中提取运输层<strong>报文段</strong>, 并上交给<strong>运输层</strong>, <strong>运输层</strong>处理接收到的报文段, 使报文段中的数据为<strong>接受应用进程</strong>所使用.</li>
+<li>因特网有两种运输层协议: <strong>TCP</strong>和<strong>UDP</strong>.<ul>
+<li>UDP: 不可靠, 无连接</li>
+<li>TCP: 可靠, 面向连接</li>
+</ul>
+</li>
+<li>IP的服务模型是<strong>尽力而为交付</strong>, 所以称为<strong>不可靠服务</strong>. TCP和UDP的最基本的责任是, 将两个端系统间IP的交付服务扩展为运行在端系统上的两个进程之间的交付服务, 即<strong>运输层的多路复用和多路分解</strong>.</li>
+<li>TCP和UDP都会进行差错检查.</li>
+<li>TCP通过流量控制, 序号, 确认和定时器提供可靠数据传输, 还提供拥塞控制.</li>
+</ul>
+<h2 id="3-2-多路复用和多路分解"><a href="#3-2-多路复用和多路分解" class="headerlink" title="3.2 多路复用和多路分解"></a>3.2 多路复用和多路分解</h2><ul>
+<li>一个进程有一个或多个<strong>套接字</strong>, 相当于从网络向进程传递数据和从进程向网络传递数据的门户.</li>
+<li>将运输层报文段中的数据交付到正确的套接字的工作称为<strong>多路分解</strong></li>
+<li>源主机从不同套接字中收集数据块, 并为每个数据块封装上首部信息从而生成报文段, 将报文段传递到网络层, 所有这些工作称为<strong>多路复用</strong></li>
+<li>套接字有唯一标识符, 每个报文段有特殊字段指示该报文段所要交付到的套接字, 即<strong>源端口号字段</strong>和<strong>目的端口号字段</strong></li>
+<li>端口号是一个16比特的字段, 0-1023范围的端口号称为周知端口号, 是保留给周知应用层协议使用的.</li>
+<li>UDP套接字是由一个二元组(<strong>目的IP地址, 目的端口号</strong>)全面标识的, 不同源IP/端口号但相同目的IP和端口号的UDP报文段会通过相同的目的套接字被定向到相同目的进程</li>
+<li>TCP套接字是由一个四元组(<strong>源IP地址, 源端口号, 目的IP地址, 目的端口号</strong>)标识的, 不同源IP/端口号的TCP报文段会定向到不同的套接字, 除非是包含初始创建连接请求的报文段(目的端口号12000)</li>
+<li>对于web服务器, 一个进程对应多个套接字</li>
+</ul>
+<h2 id="3-3-无连接运输-UDP"><a href="#3-3-无连接运输-UDP" class="headerlink" title="3.3 无连接运输: UDP"></a>3.3 无连接运输: UDP</h2><ul>
+<li>UDP只是做了运输协议能够做的最少工作, 即复用/分解和少量的差错检测</li>
+<li>DNS使用UDP协议</li>
+<li>UDP相比TCP的优点:<ul>
+<li>关于发送什么数据以及何时发送的应用层控制更为精细</li>
+<li>无须连接建立</li>
+<li>无连接状态</li>
+<li>分组首部开销小</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-3-1-UDP报文段结构"><a href="#3-3-1-UDP报文段结构" class="headerlink" title="3.3.1 UDP报文段结构"></a>3.3.1 UDP报文段结构</h3><ul>
+<li>首部4个字段:<ul>
+<li>源端口号</li>
+<li>目的端口号</li>
+<li>长度</li>
+<li>检验和</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-3-2-UDP检验和"><a href="#3-3-2-UDP检验和" class="headerlink" title="3.3.2 UDP检验和"></a>3.3.2 UDP检验和</h3><ul>
+<li><p>对报文段中的所有16比特字求和(有溢出的加法需要回卷, 即最高位的记为加到最低位), 再取反码(01对换).</p>
+</li>
+<li><p>需要检验和的原因: 不保证所有链路提供差错检验, 所以必须在<strong>端到端</strong>基础上在运输层提供差错检验.</p>
+</li>
+<li>UDP提供差错检测但不提供差错恢复</li>
+</ul>
+<h2 id="3-4-可靠数据传输原理"><a href="#3-4-可靠数据传输原理" class="headerlink" title="3.4 可靠数据传输原理"></a>3.4 可靠数据传输原理</h2><h3 id="3-4-1-构造可靠数据传输协议"><a href="#3-4-1-构造可靠数据传输协议" class="headerlink" title="3.4.1 构造可靠数据传输协议"></a>3.4.1 构造可靠数据传输协议</h3><ol>
+<li>rdt 2.0</li>
+</ol>
+<ul>
+<li>因为信道可能有比特差错, 所以需要使用<strong>肯定确认ACK</strong>和<strong>否定确认NAK</strong></li>
+<li><strong>自动重传请求(ARQ)协议</strong>: 差错检测, 接收方反馈, 重传</li>
+<li>发送放在确认接收方正确接受之前需要等待, 因此称为<strong>停等</strong>协议</li>
+</ul>
+<ol>
+<li>rdt 2.1</li>
+</ol>
+<ul>
+<li>考虑到ACK和NAK分组受损的可能, 在分组中加入了<strong>序号</strong>. 一旦发送方接收到对同一个分组的2次ACK(冗余ACK), 就知道接收方没有正确接受到该分组后的分组.</li>
+</ul>
+<ol>
+<li>rdt3.0</li>
+</ol>
+<ul>
+<li>假设可能丢包, 发送方选择一个时间值, 以判定可能发生了丢包</li>
+<li>如果在这个时间内没有收到ACK, 则重传</li>
+<li>因此需要一个<strong>倒计时计数器</strong></li>
+</ul>
+<h3 id="3-4-2-流水线可靠数据传输协议"><a href="#3-4-2-流水线可靠数据传输协议" class="headerlink" title="3.4.2 流水线可靠数据传输协议"></a>3.4.2 流水线可靠数据传输协议</h3><ul>
+<li>停等太慢, 所以改为流水线</li>
+<li>流水线需要:<ul>
+<li>增加序号范围</li>
+<li>协议的发送方和接收方两端缓存多个分组</li>
+<li>所需序号范围和对缓冲的要求取决于数据传输协议如何处理丢失, 损坏以及延时过大的分组. 解决流水线的差错恢复有两种基本方法: <strong>回退N步</strong>和<strong>选择重传</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="3-4-3-回退N步"><a href="#3-4-3-回退N步" class="headerlink" title="3.4.3 回退N步"></a>3.4.3 回退N步</h3><ul>
+<li><p>定义基序号为最早未确认分组的序号, 下一个序号为最小的未使用序号, 则将序号范围分割为4段: </p>
+<ul>
+<li>$[0, base-1]$: 已经发送并确认</li>
+<li>$[base, nextseqnum-1]$: 已经发送但是未确认</li>
+<li>$[nextseqnum, base+N-1]$: 要被立即发送的分组</li>
+<li>$\ge base+N$: 不能使用, 直到前面的未确认分组被确认</li>
+</ul>
+</li>
+<li><p>$N$: <strong>窗口长度</strong>(为了流量限制)</p>
+</li>
+<li><strong>回退N步(GBN)协议</strong>也被称为<strong>滑动窗口</strong>协议</li>
+<li>设接受方上次交付给上层 数据是序号为$n-1$的分组, <ul>
+<li>如果正确接收到序号为$n$的分组, 为其发送一个ACK, 并交付给上层</li>
+<li>其他所有情况, 丢失(失序)分组, 为$n-1$分组重新发送ACK</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-4-4-选择重传"><a href="#3-4-4-选择重传" class="headerlink" title="3.4.4 选择重传"></a>3.4.4 选择重传</h3><ul>
+<li><strong>选择重传(SR)</strong>协议通过让发送方只重传那些它怀疑在接收方出错(丢失或受损)的分组而避免了不必要的重传.</li>
+<li>SR确认方接受一个正确接收的分组而不管其是否按序</li>
+<li><p>发送方: </p>
+<ul>
+<li>从上层收到数据, 检查下一个可用于该分组的序号. 如果在窗口内就发送, 否则缓存.</li>
+<li>超时: 每个分组有一个自己的逻辑计时器</li>
+<li>收到ACK: 如果序号在窗口内, 标记为已接受; 否则, 窗口基序号前移到具有最小序号的未确认分组处. 如果移动后窗口内有未发送分组, 则发送这些分组.</li>
+</ul>
+</li>
+<li><p>接收方:</p>
+<ul>
+<li>序号在$[rcv_base, rcv_base + N - 1]$(窗口内)被正确接收, 则返回ACK</li>
+<li>序号在$[rcv_base-N,rcv_base-1]$, 则是接收方已经确认过的分组, 一定要发送ACK.<ul>
+<li>这种情况是因为之前接收方发的ACK没有到达发送放, 如果此时不发ACK, 会使发送方的窗口一直无法前进</li>
+</ul>
+</li>
+<li>其他情况忽略</li>
+</ul>
+</li>
+<li><p>如果序号范围有限, 发送发和接收方的窗口不一致会产生严重后果, 无法区分新分组和重发的分组</p>
+</li>
+</ul>
+<h2 id="3-5-面向连接的运输-TCP"><a href="#3-5-面向连接的运输-TCP" class="headerlink" title="3.5 面向连接的运输: TCP"></a>3.5 面向连接的运输: TCP</h2><ul>
+<li>TCP连接是逻辑连接</li>
+<li>TCP连接提供的<strong>全双工服务</strong>: 一台主机的进程A和另一台主机的进程B存在一条TCP连接, 那么应用层数据可以<br>A到B也可以B到A. TCP连接也是<strong>点对点</strong>的.</li>
+<li>TCP连接建立: 三次握手</li>
+<li><strong>最大报文段长度MSS</strong>: 指在报文段里应用层数据的最大长度, 不含TCP首部. 根据<strong>最大传输单元MTU</strong>设置. </li>
+<li>TCP连接的组成: 一个台主机上的缓存, 变量和进程连接的套接字和另一个台主机上的缓存, 变量和进程连接的套接字.</li>
+</ul>
+<h3 id="3-5-1-TCP报文段结构"><a href="#3-5-1-TCP报文段结构" class="headerlink" title="3.5.1 TCP报文段结构"></a>3.5.1 TCP报文段结构</h3><p><img src="/figs/计算机网络/figs3/TCP报文结构.png" alt="TCP报文结构"></p>
+<ul>
+<li><p>TCP首部一般20字节, 比UDP多12字节</p>
+</li>
+<li><p>源端口号和目的端口号</p>
+</li>
+<li>序号<ul>
+<li>是该报文段首字节的字节流编号</li>
+</ul>
+</li>
+<li>确认号<ul>
+<li>主机A填充进报文段的确认号是主机A从主机B收到的下一报文段的首字节的序号</li>
+<li>TCP只确认该流中至第一个丢失字节为止的字节, 称为<strong>累计确认</strong></li>
+</ul>
+</li>
+<li>校验号</li>
+<li>接收窗口字段(rwnd)<ul>
+<li>用于流量控制, 指示接收方愿意接受的字节数量</li>
+</ul>
+</li>
+<li>首部长度字段<ul>
+<li>以32比特的字为单位</li>
+</ul>
+</li>
+<li>选项字段</li>
+<li>标志字段<ul>
+<li>ACK: 指示确认字段中的值是有效的</li>
+<li>RST, SYN, FIN用于连接的建立和拆除</li>
+<li>CWR, ECE: 明确拥塞通告</li>
+<li>PSH: 指示接收方应立即将数据交给上层</li>
+<li>URG:报文段里存在着被发送端的上层实体设为 “紧急” 的数据</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-5-3-往返时间的估计"><a href="#3-5-3-往返时间的估计" class="headerlink" title="3.5.3 往返时间的估计"></a>3.5.3 往返时间的估计</h3><ul>
+<li><p><strong>往返时间RTT</strong>: 一个报文段发出到它被确认的时间</p>
+</li>
+<li><p>$\text{EstimatedRTT}=(1-\alpha)\cdot \text{EstimatedRTT}+\alpha\cdot \text{SampleRTT}$</p>
+<ul>
+<li><p>如果RTT序号越小越新, 则</p>
+<script type="math/tex; mode=display">
+\text{EstimatedRTT}
+=\alpha\sum_{i=1}^{n-1}(1-\alpha)^{i-1}\text{SampleRTT}_i+(1-\alpha)^{n-1}\cdot\text{SampleRTT}_n</script></li>
+<li><p>一般$\alpha=0.125$, </p>
+</li>
+<li><p>称为指数加权移动平均EWMA</p>
+</li>
+</ul>
+</li>
+<li><p>估计偏离程度: $\text{DevRTT}=(1-\beta)\cdot\text{DevRTT}+\beta\cdot|\text{SampleRTT}-\text{EstimatedRTT}|$</p>
+</li>
+<li><p>一般$\beta=0.25$</p>
+</li>
+<li><p>TCP超时间隔: $\text{TimeoutInterval}=\text{EstimateRTT}+4\cdot\text{DevRTT}$</p>
+<ul>
+<li>推荐初始值为$1 s$, 超时则翻倍</li>
+<li>只要收到(非重传)报文段并更新了$\text{EstimatedRTT}$, 就用上述公式重新计算$\text{TimeoutInterval}$</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-5-4-可靠数据传输"><a href="#3-5-4-可靠数据传输" class="headerlink" title="3.5.4 可靠数据传输"></a>3.5.4 可靠数据传输</h3><ul>
+<li><p>快速重传: </p>
+<ul>
+<li>冗余ACK: 再次确认某个报文段的ACK</li>
+<li>TCP发送方收到对相同数据的3个冗余ACK, 说明跟在后面的数据报已经丢失, 就进行快速重传</li>
+</ul>
+</li>
+<li><p>使用回退N步和选择重传的混合体: <strong>选择确认</strong>, 即有选择地确认收到地报文，而非采用累计确认.</p>
+</li>
+<li><p>发送端事件处理大致如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*假设发送方不受TCP流量控制和拥塞控制，每一个数据小于MSS.*/</span></span><br><span class="line">NextSeqNum = InitialSeqNum</span><br><span class="line">SendBase = InitialSeqNum</span><br><span class="line"></span><br><span class="line">loop(永远)&#123;</span><br><span class="line">  <span class="keyword">switch</span>(event):</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">case</span> 从上层应用接收数据：</span><br><span class="line">      生成序号为NextSeqNum的报文;</span><br><span class="line">      <span class="keyword">if</span>(定时器没有启动)&#123;</span><br><span class="line">        启动定时器;</span><br><span class="line">      &#125;</span><br><span class="line">      向IP传递报文;</span><br><span class="line">      NextSeqNum += 数据字节数;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">case</span> 超时：</span><br><span class="line">      重传SendBase对应的TCP报文; <span class="comment">/*和GBN不同之处*/</span></span><br><span class="line">      TimeoutInterval *= <span class="number">2</span>;</span><br><span class="line">      重启定时器; <span class="comment">/*每次重传一个报文后都会重新启动定时器*/</span></span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">case</span> 接收ACK, AN = y:</span><br><span class="line">      <span class="keyword">if</span>(y &gt; SendBase)&#123;</span><br><span class="line">        SendBase = y; <span class="comment">/*采取累计确认*/</span></span><br><span class="line">        重新计算TimeoutInterval;</span><br><span class="line">        <span class="keyword">if</span>(仍有发送且未确认报文)&#123;</span><br><span class="line">          重启定时器;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span>&#123;<span class="comment">/*实际上此时y == SendBase*/</span></span><br><span class="line">          y的冗余数量 += <span class="number">1</span>;</span><br><span class="line">          <span class="keyword">if</span>(y的冗余数量 == <span class="number">3</span>)&#123;</span><br><span class="line">            <span class="comment">/*快速重传*/</span></span><br><span class="line">            立即重传序号为y对应的报文;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>接收端产生ACK的情况在RFC 5681中建议：</p>
+<p>| 事件                                                         | 动作                                                         |<br>| :—————————————————————————————- | :—————————————————————————————- |<br>| 具有<strong>所期望序号</strong>的按序报文段到达 且在此<strong>之前的报文段都已经被确认</strong> 即本报文段是当前状态下第一个接收但未被确认的报文 | Delayed ACK，延迟ACK发送 (根据本地的计时器设定, 如果在短时间内还有可以接收的报文段，那么可以减少ACK的数量) |<br>| 具有<strong>所期望序号</strong>的按需报文段到达 且当前有一个报文段等待ACK传输， 即此时处于事件一的状态 | 立马发送ACK，确认这两个报文                                  |<br>| 比<strong>所期望序号大的失序</strong>报文段到达， 即接收产生了空隙        | 立马发送一个冗余ACK                                          |<br>| 收到能够填补间隙的报文段                                     | 如果该报文段序号是间隙的低端， 则马上发送ACK                 |</p>
+</li>
+</ul>
+<h3 id="3-5-5-流量控制"><a href="#3-5-5-流量控制" class="headerlink" title="3.5.5 流量控制"></a>3.5.5 流量控制</h3><ul>
+<li><p>TCP为它的应用程序提供了<strong>流量控制服务</strong>以消除发送方使接收方缓存溢出的可能</p>
+</li>
+<li><p>TCP也有可能因为IP网络的拥塞而被遏制, 这种形式的发送方的控制称为<strong>拥塞控制</strong></p>
+</li>
+<li><p>TCP通过让发送方维护一个称为<strong>接收窗口(rwnd)</strong>的变量来提供流量控制, 确保</p>
+<p>$\text{LastByteRecd}-\text{LastByteRead}\le \text{RcvBuffer}$, 因此</p>
+<p>$\text{rwnd}=\text{RcvBuffer}-[\text{LastByteRecd}-\text{LastByteRead}]$</p>
+</li>
+<li><p>主机B把当前的$\text{rwnd}$值放入它给主机A的报文段接收窗口字段中, 主机A保证</p>
+<p>$\text{LastByteSent}-\text{LastByteAcked}\le \text{rwnd}$</p>
+<ul>
+<li>如果主机B的$\text{rwnd}=0$, 主机A依然发送1字节数据的报文段, 被确认后就知道主机B的缓存清空后的新$\text{rwnd}$值</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-5-6-TCP连接管理-必考"><a href="#3-5-6-TCP连接管理-必考" class="headerlink" title="3.5.6 TCP连接管理(必考)"></a>3.5.6 TCP连接管理(必考)</h3><h4 id="连接建立"><a href="#连接建立" class="headerlink" title="连接建立"></a>连接建立</h4><p><strong>三次握手</strong>:</p>
+<p><img src="/figs/计算机网络/figs3/三次握手.png" alt="三次握手"></p>
+<ol>
+<li>客户端发送不含应用层数据的特殊TCP报文段, 其中SYN比特置1. 同时客户端随机选择一个初始序号($\text{client_isn}$)</li>
+<li>服务器收到SYN报文段后, 服务器为该TCP连接分配YCP缓存和变量, 并向客户端发送允许连接的<strong>SYNACK报文段</strong>(也不含应用层数据). SYN比特置为1, 确认号ACK为$\text{client_isn}+1$, 服务器选择自己的初始序号$\text{server_isn}$.</li>
+<li>收到SYNACK报文段后, 客户也要为该连接分配缓存和变量. 客户主机向服务器发送另一个报文段, 对服务器的允许连接的报文段进行确认, 确认号ACK为$\text{server_isn}+1$, SYN比特置为0, 序列号为$\text{client_isn}+1$.</li>
+</ol>
+<ul>
+<li>快速连接: 发送SYN的时候就带数据, 第三次握手不光是ACK还是FIN.</li>
+<li>客户端time wait: 保证ACK已经被收到; 防止影响后续连接</li>
+<li>服务端没有time wait</li>
+</ul>
+<p>例子: </p>
+<ul>
+<li>客户端: SYN 1056</li>
+<li>服务端: SYN 2078, ACK 1057</li>
+<li>客户端: SN 1057, ACK 2079</li>
+<li>连接已经建立 </li>
+<li>客户端: SN 1057(并没有+1)</li>
+</ul>
+<h4 id="连接关闭"><a href="#连接关闭" class="headerlink" title="连接关闭"></a>连接关闭</h4><p><img src="/figs/计算机网络/figs3/四次挥手.png" alt="四次挥手"></p>
+<ul>
+<li>客户端向服务器发送FIN</li>
+<li>服务器收到后发ACK确认</li>
+<li>服务器发自己的终止报文段FIN</li>
+<li>客户对终止报文段发ACK确认</li>
+<li>同样的, 客户端需要time wait. 原因: 可能最后A的ACK丢失，导致B重发FIN/ACK，这个2MSL能够保证A能够获得重发的数据报并回应。</li>
+</ul>
+<p>例子:</p>
+<ul>
+<li>客户端: FIN 7080, ACK 6079</li>
+<li><p>服务器: SN 6079, ACK 7081</p>
+</li>
+<li><p>…</p>
+</li>
+<li>服务器:FIN 10679, ACK 7081</li>
+<li>客户端: SN 7081, ACK 10680 </li>
+</ul>
+<h4 id="TCP状态"><a href="#TCP状态" class="headerlink" title="TCP状态"></a>TCP状态</h4><p><img src="/figs/计算机网络/figs3/TCP状态图.png" alt="TCP状态图"></p>
+<ul>
+<li>如果一台主机接收了具有目的端口80的TCP SYN分组, 但是该主机在端口80不接受连接(即它不在端口80上运行Web服务器), 则该主机向源发送一个特殊重置报文段, 该报文段的RST标记位置为1.</li>
+<li>因此探索一台主机上的一个特定端口, <strong>nmap</strong>将对该端口发送一个TCP SYN报文段<ul>
+<li>如果收到TCP SYNACK, 则目标主机上一个应用程序使用该TCP端口</li>
+<li>如果收到TCP RST, 说明SYN到达了目标主机但是目标主机并没有使用该端口号的应用程序</li>
+<li>如果什么都没有收到, 那么可能该SYN报文段被中间的防火墙锁阻挡</li>
+</ul>
+</li>
+</ul>
+<h3 id="补充-崩溃检测"><a href="#补充-崩溃检测" class="headerlink" title="补充: 崩溃检测"></a>补充: 崩溃检测</h3><ul>
+<li>如果一边崩溃重启, 状态丢失, 连接半开</li>
+<li>当任意报文段i到达, 重启的那端发送RST i, 从而另一端关闭连接</li>
+<li>或者多次重试后关闭</li>
+</ul>
+<h2 id="3-6-拥塞控制原理"><a href="#3-6-拥塞控制原理" class="headerlink" title="3.6 拥塞控制原理"></a>3.6 拥塞控制原理</h2><h3 id="3-6-2-拥塞控制方法"><a href="#3-6-2-拥塞控制方法" class="headerlink" title="3.6.2 拥塞控制方法"></a>3.6.2 拥塞控制方法</h3><ul>
+<li>端到端拥塞控制: TCP报文段的丢失(通过超时或者三次冗余确认而得知)被认为是网络拥塞的迹象, TCP会相应的地减少其窗口长度, 且可以增加往返时延值.</li>
+<li>网络辅助的拥塞控制, 例如拥塞分组, 或者路由器标记或更新从发送方通知该网络拥塞指示</li>
+</ul>
+<h2 id="3-7-TCP拥塞控制"><a href="#3-7-TCP拥塞控制" class="headerlink" title="3.7 TCP拥塞控制"></a>3.7 TCP拥塞控制</h2><ul>
+<li>TCP采用的拥塞控制方法是让每一个发送方根据所感知到的网络拥塞程度来限制其能向连接发送流量的速率.</li>
+</ul>
+<h3 id="TCP发送方限制其向连接发送流量速率的方法"><a href="#TCP发送方限制其向连接发送流量速率的方法" class="headerlink" title="TCP发送方限制其向连接发送流量速率的方法"></a>TCP发送方限制其向连接发送流量速率的方法</h3><ul>
+<li>发送方跟踪一个额外的变量: <strong>拥塞窗口(cwnd)</strong></li>
+<li>在一个发送方中, 未被确认的数据量不会超过$\min\{\text{cwnd}, \text{rwnd}\}$. rwnd为接收窗口(由接受缓存决定)</li>
+</ul>
+<h3 id="TCP发送方如何感知在它和目的地之间的路径上出现了拥塞"><a href="#TCP发送方如何感知在它和目的地之间的路径上出现了拥塞" class="headerlink" title="TCP发送方如何感知在它和目的地之间的路径上出现了拥塞"></a>TCP发送方如何感知在它和目的地之间的路径上出现了拥塞</h3><ul>
+<li>定义<strong>丢包事件</strong>: 超时或者三次冗余ACK</li>
+<li>当出现过度的拥塞时, 在这条路径上的一个或多个路由器的缓存会溢出, 引起丢包.</li>
+<li>因为TCP使用确认来触发增大它的拥塞窗口长度, 所以TCP被称为是<strong>自计时</strong>的.</li>
+</ul>
+<h3 id="TCP拥塞控制算法"><a href="#TCP拥塞控制算法" class="headerlink" title="TCP拥塞控制算法"></a>TCP拥塞控制算法</h3><ol>
+<li>慢启动</li>
+</ol>
+<ul>
+<li><p>cwnd初始值为1MSS, 较小.</p>
+</li>
+<li><p>每当传输的报文段被首次确认, cwnd就翻倍, 指数增长.</p>
+</li>
+<li>停止慢启动的时机:<ul>
+<li>如果存在一个超时指示的丢包事件, TCP发送方将cwnd设置为1MSS, 且将第二个状态变量<strong>ssthresh(慢启动阈值)</strong>设为cwnd/2, 即拥塞窗口值的一半. </li>
+<li>检测到cwnd的值到达或超过ssthresh后, 结束满启动, 并且TCP转移到<strong>拥塞避免状态</strong>, 更加谨慎地增加cwnd.</li>
+<li>检测到3个冗余ACK, 则执行快速重传并进入<strong>快速恢复状态</strong></li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>拥塞避免</li>
+</ol>
+<ul>
+<li>一旦进入拥塞避免状态, cwnd大约为上次拥塞时的值的一半, 每次cwnd的值增加一个MSS.</li>
+<li>超时则cwnd设为1MSS, 更新ssthresh为cwnd/2</li>
+<li>碰到三个冗余ACK, 将cwnd减半(再根据冗余ACK的数量增加相应个数的MSS), ssthresh记为cwnd/2, 并进入<strong>快速恢复状态</strong></li>
+</ul>
+<ol>
+<li>快速恢复</li>
+</ol>
+<ul>
+<li>在快速恢复中, 对于引起TCP进入快速恢复状态的缺失报文段, 对收到的每个冗余的ACK, cwnd的值增加1个MSS. </li>
+<li>当缺失报文段的最后一个ACK到达时, TCP将降低cwnd后进入拥塞避免状态</li>
+<li>超时处理方法同1中</li>
+<li>TCP Reno: 三次冗余ACK后窗口减半; TCP Tahoe: 三次冗余和超时一样, 窗口置1</li>
+</ul>
+<ol>
+<li>TCP拥塞控制: 回顾</li>
+</ol>
+<ul>
+<li><strong>加性增, 乘性减(AIMD)模式</strong>: 每个RTT内cwnd线性增加1, 出现3个冗余ACK后减半</li>
+</ul>
+<h1 id="第4章-网络层-数据平面"><a href="#第4章-网络层-数据平面" class="headerlink" title="第4章 网络层: 数据平面"></a>第4章 网络层: 数据平面</h1><h2 id="4-2-路由器工作原理"><a href="#4-2-路由器工作原理" class="headerlink" title="4.2 路由器工作原理"></a>4.2 路由器工作原理</h2><ul>
+<li>路由器的两个主要功能:<ul>
+<li>运行路由算法</li>
+<li>从输入端口到输出端口转发分组</li>
+</ul>
+</li>
+<li>路由器的4个组件<ul>
+<li>输入端口</li>
+<li>交换结构</li>
+<li>输出端口</li>
+<li>路由选择处理器</li>
+</ul>
+</li>
+</ul>
+<p><img src="/figs/计算机网络/figs4/路由器结构.png" alt="路由器结构"></p>
+<h3 id="4-2-1-输入端口处理和基于目的地转发"><a href="#4-2-1-输入端口处理和基于目的地转发" class="headerlink" title="4.2.1 输入端口处理和基于目的地转发"></a>4.2.1 输入端口处理和基于目的地转发</h3><ul>
+<li>输入端口处理:<ul>
+<li>线路端接-&gt;数据链路处理(协议, 拆分)-&gt;查找, 转发, 排队-&gt;交换结构</li>
+</ul>
+</li>
+<li>目的地转发: <ul>
+<li>路由器转发表采用前缀匹配的方式生成表项，对于每一个链路接口，其目的地址范围的前缀为表项中的前缀匹配</li>
+<li>当存在多个成功匹配时，采用 <strong>最长前缀匹配规则</strong>，转发到匹配长度最长的那个链路接口</li>
+</ul>
+</li>
+<li>转发见下面对比中</li>
+</ul>
+<h3 id="4-2-2-交换"><a href="#4-2-2-交换" class="headerlink" title="4.2.2 交换"></a>4.2.2 交换</h3><ul>
+<li>经内存交换<ul>
+<li>第一代交换机</li>
+<li>速度由内存带宽限制</li>
+</ul>
+</li>
+<li>经总线交换<ul>
+<li>速度由带宽限制</li>
+</ul>
+</li>
+<li>经互联网络交换<ul>
+<li>数据报分为固定大小的单元, 在网络中交换单元</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-2-3-输出端口处理"><a href="#4-2-3-输出端口处理" class="headerlink" title="4.2.3 输出端口处理"></a>4.2.3 输出端口处理</h3><ul>
+<li>交换结构—&gt;排队(缓存管理)—&gt;数据链路处理(协议, 封装)—&gt;线路端接</li>
+<li><p>包括选择和取出排队的分组进行传输, 执行所需的链路层和物理层传输功能</p>
+</li>
+<li><p>缓冲满的时候选择扔掉的分组</p>
+</li>
+</ul>
+<h3 id="4-2-4-何处出现排队"><a href="#4-2-4-何处出现排队" class="headerlink" title="4.2.4 何处出现排队"></a>4.2.4 何处出现排队</h3><ul>
+<li><p>缓存空间无内存可用: 丢包</p>
+</li>
+<li><p>输入排队: </p>
+<ul>
+<li>两个输入队列前端的分组发往同一个输出队列</li>
+<li>线路前部阻塞: 被位于线路前部的另一个分组阻塞</li>
+</ul>
+</li>
+<li><p>输出排队</p>
+</li>
+</ul>
+<h3 id="4-2-5-分组调度"><a href="#4-2-5-分组调度" class="headerlink" title="4.2.5 分组调度"></a>4.2.5 分组调度</h3><p>排队的分组如何经输出链路传输:</p>
+<ul>
+<li>先进先出</li>
+<li>优先权排队<ul>
+<li>将到达输出链路的分组按照优先级分成多个类，优先级高的类先传输，类内采用FIFO的方式</li>
+<li><strong>非抢占式优先权排队</strong>：一旦分组开始被传输，即使此时有更高优先级的分组到达，该分组的传输也不会被打断</li>
+</ul>
+</li>
+<li>循环排队<ul>
+<li>将分组分成多个类，循环调度器在类之间轮流传输</li>
+</ul>
+</li>
+<li>加权公平排队<ul>
+<li>循环排队基础上每个类加权</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-3-网际协议-IPv4-寻址-IPv6和其他"><a href="#4-3-网际协议-IPv4-寻址-IPv6和其他" class="headerlink" title="4.3 网际协议: IPv4, 寻址, IPv6和其他"></a>4.3 网际协议: IPv4, 寻址, IPv6和其他</h2><ul>
+<li>IP操作<ul>
+<li>路由</li>
+<li>数据报生命周期</li>
+<li>分片和重装</li>
+<li>错误控制</li>
+<li>流控制</li>
+</ul>
+</li>
+<li>路由:<ul>
+<li>主机和路由器维护路由表</li>
+</ul>
+</li>
+<li>数据报生命周期:<ul>
+<li>数据报可能会不确定地循环</li>
+<li>在IP中用TTL(time to live)标记lifetime, 一旦用完, 数据报就会被丢弃</li>
+<li>lifetime的类型: 跳数, 每次在路由器间传递, 减少TTL</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-3-1-IPv4数据报格式"><a href="#4-3-1-IPv4数据报格式" class="headerlink" title="4.3.1 IPv4数据报格式"></a>4.3.1 IPv4数据报格式</h3><p><img src="/figs/计算机网络/figs4/IPv4首部.png" alt="IPv4首部"></p>
+<p>IP首部字段(不用背): </p>
+<ul>
+<li>版本: 4 or 6(见后面)</li>
+<li>首部长度(4 bits)</li>
+<li>服务类型(8 bits)<ul>
+<li>说明该IP数据报是什么类型, 包括优先级 Precedence, 可靠性, 延迟, 吞吐量</li>
+</ul>
+</li>
+<li>数据报长度(16 bits): 首部+数据的长度  </li>
+<li>标识(16 bits)<ul>
+<li>序列号</li>
+<li>和地址以及协议唯一标识数据报</li>
+</ul>
+</li>
+<li>标志flags(3bits)<ul>
+<li>More flags</li>
+<li>Don’t fragment</li>
+</ul>
+</li>
+<li>片偏移(13bits)</li>
+<li>寿命TTL(8bits)</li>
+<li>协议(8bits)<ul>
+<li>tcp, udp, ospf, (不可能是rip, 因为rip直接装在udp里面, udp装在ip里面)</li>
+</ul>
+</li>
+<li>首部校验和: <ul>
+<li>计算首部中所有16bits words的校验和</li>
+<li>在每个路由器中重新计算</li>
+</ul>
+</li>
+<li>源地址(必考)</li>
+<li>目的地址</li>
+<li>选项及padding(凑整的): 可有可无</li>
+</ul>
+<h3 id="4-3-2-分片和重装"><a href="#4-3-2-分片和重装" class="headerlink" title="4.3.2 分片和重装"></a>4.3.2 分片和重装</h3><ul>
+<li><p><strong>最大传送单元MTU</strong>: 一个链路层帧能够承载的最大数据量。</p>
+</li>
+<li><p>分片和重装: 分组长度超过了网络的<strong>MTU</strong></p>
+</li>
+<li><p>位置:</p>
+<ul>
+<li>IPv4的分片在<strong>路由器</strong>实现(IPv6在主机)<ul>
+<li>一个数据报变为多个小数据报</li>
+</ul>
+</li>
+<li>IP的重装只在目的地实现</li>
+</ul>
+</li>
+<li><p>实现:</p>
+<ul>
+<li><p>分片. IPv4数据报分片利用<strong>标识，标志，片偏移</strong>三个字段:</p>
+<ul>
+<li>发送主机通常将它发送的每一个数据报的<strong>标识号(ID)</strong>依次加1</li>
+<li>分片后每个片(一个小的数据报)的源地址，目的地址，标识号一致，接收方可以通过标识号判断两个片是否属于同一个大的IP数据报</li>
+<li><strong>片偏移</strong>(在原始数据包中的位置(不含头), 以8个字节为单位, 因此计算片偏移需要<strong>除以8</strong>.)</li>
+<li>more flag: 判断是不是最后一个分片. 只有最后一个分片的more flag<strong>标志</strong>为1.</li>
+</ul>
+<p>多次分片容易导致碎片化.</p>
+</li>
+</ul>
+<p><img src="/figs/计算机网络/figs4/IPv4分片.png" alt="IPv4分片" style="zoom:80%;"></p>
+<ul>
+<li><p>重装: </p>
+<ul>
+<li><p>预留足够的缓冲区(开始不知道要多少)</p>
+</li>
+<li><p>分片到达, 则放在缓冲区的对应位置</p>
+</li>
+<li>知道所有的数据域都重装</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>失败:</p>
+<ul>
+<li>当分片丢失</li>
+<li><p>重装超时, 扔掉所有的部分数据</p>
+</li>
+<li><p>使用分组lifetime(TTL in IP)</p>
+<ul>
+<li>随着分组下降, 超时则杀死所有数据</li>
+</ul>
+</li>
+<li>IPv6使用源分片</li>
+</ul>
+</li>
+</ul>
+<h4 id="错误控制和流量控制"><a href="#错误控制和流量控制" class="headerlink" title="错误控制和流量控制"></a>错误控制和流量控制</h4><ul>
+<li><p>错误控制:</p>
+<ul>
+<li>不保证到达</li>
+<li>如果分组丢失, 路由器试图告诉信息源</li>
+</ul>
+</li>
+<li><p>ICMP用于发送错误信息</p>
+<ul>
+<li>源可能用更高层的协议</li>
+</ul>
+</li>
+<li><p>流量控制</p>
+<ul>
+<li>运行路由器限制到达数据速率</li>
+<li>当缓冲区满了, 路由器丢弃输入分组<ul>
+<li>可能告知源</li>
+<li>使用ICMP</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-3-3-IPv4编址-非常重要-必考"><a href="#4-3-3-IPv4编址-非常重要-必考" class="headerlink" title="4.3.3 IPv4编址 (非常重要, 必考)"></a>4.3.3 IPv4编址 (非常重要, 必考)</h3><ul>
+<li><strong>接口</strong>: 主机与物理链路之间的边界<ul>
+<li>一般一个主机有一条链路和一个接口, 路由器有多个链路和多个接口</li>
+</ul>
+</li>
+<li>IP要求每台主机和路由器接口拥有自己的IP地址(全球唯一, NAT除外)</li>
+<li>每个IP地址32位(4字节), 按照<strong>点分十进制记方</strong>书写, 即每个字节用十进制, 各字节之间用点隔开.</li>
+<li>包含2部分: 网段地址和主机地址, Net+Host</li>
+<li>IP只关心网段之间的通讯</li>
+<li>0和255慎用, 0表示网段地址, 255广播地址</li>
+<li>在CIDR被采用之前使用<strong>分类编址</strong>:具有8, 16, 24比特的子网分别被称为A, B, C类网络.</li>
+<li>A类网, B类网, C类网(略)</li>
+<li>子网和子网掩码<ul>
+<li><strong>子网</strong>: 分开主机和路由器的每个接口, 产生几个隔离的网络岛, 使用接口端接这些隔离的网络的端点. 这些隔离的网络中的每一个都叫做一个<strong>子网</strong>.</li>
+<li>解决网络地址使用不充分问题</li>
+<li>地址通过<strong>子网掩码</strong>分为子网数和主机数</li>
+<li><strong>CIDR(无类别域间路由选择)</strong></li>
+<li>网段地址A.B.C.D/n, n为IP<strong>前缀</strong>, 表示掩码的1的数量, 前n位为IP地址的网络部分, 后32-n位用于分配组织内部设备使用</li>
+</ul>
+</li>
+<li>地址汇聚:<ul>
+<li>多个网段看做一个更大的网 段</li>
+</ul>
+</li>
+</ul>
+<h4 id="获取主机IP地址-DHCP协议"><a href="#获取主机IP地址-DHCP协议" class="headerlink" title="获取主机IP地址: DHCP协议"></a>获取主机IP地址: DHCP协议</h4><p>DHCP(动态主机配置协议): 主机刚入网如何获取IP地址<img src="/figs/计算机网络/figs4/DHCP.png" alt="DHCP" style="zoom:80%;"></p>
+<p>分为以下四步骤:</p>
+<ul>
+<li>DHCP服务器<strong>发现</strong>(discover)<ul>
+<li>一台新到达的主机的首要任务是发现一个要与其交互的DHCP服务器</li>
+<li>因为不知道服务器的IP地址, 所以客户生成包含DHCP dicover的IP数据报, 广播目的地址255.255.255.255(广播), 本主机地址0.0.0.0, 传给链路层, 广播到该子网的所有节点.</li>
+</ul>
+</li>
+<li>DHCP服务器<strong>提供</strong>(offer)<ul>
+<li>DHCP服务器收到一个DHCP discover报文时, 用DHCP offer报文向客户做出响应, 向子网的所有节点广播, 使用地址255.255.255.255</li>
+<li>可能有多台DHCP服务器, 他们向客户提供的报文包含: <ul>
+<li>收到的发现报文的事务ID</li>
+<li>向客户推荐的IP地址</li>
+<li>网络掩码</li>
+<li>IP地址租用期</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>DHCP<strong>请求</strong>(request)<ul>
+<li>新到达的客户从一个或多个DHCP offer中选择一个, 并向选取的DHCP offer用 DHCP request报文进行响应(含DHCP服务器ID, 即选择的那个服务器的offer包的IP头里面的IP地址), 回显配置的参数.</li>
+</ul>
+</li>
+<li><p>DHCP <strong>ACK</strong></p>
+<ul>
+<li>服务器用DHCP ACK报文对DHCP request进行响应</li>
+</ul>
+</li>
+<li><p>全部使用<strong>IP广播</strong></p>
+</li>
+</ul>
+<h3 id="4-3-4-网络地址转换-NAT"><a href="#4-3-4-网络地址转换-NAT" class="headerlink" title="4.3.4 网络地址转换(NAT)"></a>4.3.4 网络地址转换(NAT)</h3><ul>
+<li>内部(虚拟地址)和外部地址分开</li>
+<li>和外网通信时转换IP地址 </li>
+<li>NAT使能路由器对于外部来说可以就是一个具有单一IP地址的单一设备，而其实际上对外部隐藏了内部网络的细节。</li>
+<li>内部网络使用的IP地址是RFC 1918中保留的IP地址空间之一，用于家庭网络等<strong>专用网络</strong>或者<strong>具有专用地址的地域</strong>(即其地址只对该网络中设备有意义)</li>
+</ul>
+<p><img src="/figs/计算机网络/figs4/NAT.png" alt="NAT" style="zoom:80%;"></p>
+<ul>
+<li>实现:<ul>
+<li>用NAT表的方式进行地址转换, 记录对应的WAN端和LAN端的IP地址和端口号</li>
+<li>通过分配不同的源端口号来区分内部的主机</li>
+<li>内部主机向外通信，发送源地址为主机IP地址，端口号随机生成的报文</li>
+<li>NAT使能路由器接收到内部主机发送的报文后，改变源地址为自身IP地址，生成一个不在NAT表中的端口号，发送报文，随后添加NAT表项</li>
+<li>外部主机收到后，发送 目的地址为路由器IP地址，端口号为路由器生成端口号的 响应报文</li>
+<li>NAT使能路由器接收到外部主机的响应报文后，通过查NAT表，来转发给内部主机</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-3-5-IPv6"><a href="#4-3-5-IPv6" class="headerlink" title="4.3.5 IPv6"></a>4.3.5 IPv6</h3><h4 id="IPv6数据报格式"><a href="#IPv6数据报格式" class="headerlink" title="IPv6数据报格式"></a>IPv6数据报格式</h4><p><img src="/figs/计算机网络/figs4/IPv6首部.png" alt="IPv6首部"></p>
+<ul>
+<li><p>IPv6引入的主要变化</p>
+<ul>
+<li><p>扩大的地址容量: 32bits变为128bits, 冒分(冒号分隔); 还引入的任播地址(传播给任意一个)</p>
+</li>
+<li><p>简化高效的40字节首部, 许多IPv4字段被舍弃或者作为选项. 舍弃的字段:</p>
+<ul>
+<li>分片/重装: 不允许在路由器上分片</li>
+<li>首部校验和: 因为运输层协议(TCP与UDP)和链路层(以太网协议)都有差错检测，所以在网络层不需要再进行检测</li>
+<li>选项: 不在标准IP首部内, 但是可能在IPv6首部的”下一个首部”指出的位置上. 这样IP首部就是定长的了</li>
+</ul>
+</li>
+<li>流标签: 给属于特殊流的分组加上标签, 这些特殊流是发送方要求进行特殊处理的流, 如一种非默认服务质量或需要实时服务的流. 例如音频和视频传输</li>
+</ul>
+</li>
+<li><p>IPv6首部字段:</p>
+<ul>
+<li>版本: 4或6</li>
+<li>流量类型: 同IPv4的服务类型</li>
+<li>流标签: 标识一条数据报的流, 能够对一条流中的某些数据报给出优先权</li>
+<li>有效载荷长度: 在定长的40字节首部后面的字节数量, 不含首部(IPv4的数据报长度包含首部)</li>
+<li>下一个首部: 标识数据报内的内容(数据字段)需要交付给哪个协议, 同IPv4的协议字段</li>
+<li>跳限制: 每一跳-1, 到0则丢弃. 和IPv4中寿命(TTL)用处一致</li>
+<li>源地址和目的地址: 从原来的32比特改为了128比特</li>
+</ul>
+</li>
+</ul>
+<p>题目:</p>
+<p>IPv4首部图, 哪些字段在经过中间路由器的时候肯定不会被修改(分为不考虑和考虑NAT)</p>
+<h3 id="IPv4和IPv6的互通"><a href="#IPv4和IPv6的互通" class="headerlink" title="IPv4和IPv6的互通"></a>IPv4和IPv6的互通</h3><p>隧道模式:</p>
+<p><img src="/figs/计算机网络/figs4/tunnel.png" alt="tunnel"></p>
+<ul>
+<li>两台IPv6路由器之间的连续的IPv4路由器合成为一个隧道。</li>
+<li>隧道入口处的IPv6路由器，会将IPv6报文当作数据, 封装在IPv4报文的数据部分，将IPv4数据报的目的地址设为隧道出口处的IPv6路由器，并将IPv4数据报的上层协议设为41(表明数据部分是一个IPv6数据报)</li>
+<li>隧道中的IPv4路由器就像处理正常的IPv4数据报一样转发。</li>
+<li>出口处的IPv6路由器根据IPv4数据报中上层协议为41从而取出中间的IPv6数据报，然后进行相关操作。</li>
+</ul>
+<h1 id="第5章-网络层-控制平面"><a href="#第5章-网络层-控制平面" class="headerlink" title="第5章 网络层: 控制平面"></a>第5章 网络层: 控制平面</h1><h2 id="5-1-概述"><a href="#5-1-概述" class="headerlink" title="5.1 概述"></a>5.1 概述</h2><ul>
+<li>计算维护和安装转发表和流表</li>
+<li>两种可能方法:<ul>
+<li>每路由器控制: 每台路由器运行一种路由选择算法</li>
+<li>逻辑集中式控制: 需要控制代理CA和控制器通信并且按控制器命令行事, CA不能直接相互交互, 也不主动参与计算转发表</li>
+</ul>
+</li>
+</ul>
+<h2 id="5-2-路由选择算法"><a href="#5-2-路由选择算法" class="headerlink" title="5.2 路由选择算法"></a>5.2 路由选择算法</h2><ul>
+<li><p>路由选择算法的目的是从发送方到接收方的过程中确定一条通过路由器网络的好的路径.</p>
+</li>
+<li><p>不同的路由策略:</p>
+<ul>
+<li>集中式路由选择算法: <ul>
+<li>用完整的全局性的网络制式计算出源到目的地之间的最低开销路径</li>
+<li>具有全局状态信息的算法称为<strong>链路状态(LS)</strong>算法</li>
+</ul>
+</li>
+<li>分散式路由选择算法: <ul>
+<li>路由器以迭代, 分布式的方式计算出最低开销路径</li>
+<li>没有结点拥有关于所有网络链路开销的完整信息</li>
+<li>例如<strong>距离向量(DV)</strong>算法</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>洪泛: </p>
+<ul>
+<li>不需要网络信息</li>
+<li>分组转发到路由器的每个邻居</li>
+<li>很多副本到达目的地</li>
+<li>缺点: 多副本, 环路问题</li>
+<li>优点: <ul>
+<li>尝试所有路径, 鲁棒</li>
+<li>至少一个分组采用最小消耗道路</li>
+<li>访问所有路由器</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>随机路由: 随机选取一个输出路径</li>
+<li>最小消耗算法:<ul>
+<li><strong>Dijkstra</strong>算法</li>
+<li><strong>Bellman-Ford</strong>算法</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-2-1-链路状态-LS-路由选择算法"><a href="#5-2-1-链路状态-LS-路由选择算法" class="headerlink" title="5.2.1 链路状态(LS)路由选择算法"></a>5.2.1 链路状态(LS)路由选择算法</h3><ul>
+<li>在该算法中，网络拓扑和所有链路开销都是已知的。实践中是通过让每个节点向网络中<strong>广播链路状态分组</strong>来完成的。其中链路状态分组包含和自己相连的链路的开销信息，这常常由 <strong>链路状态广播算法</strong>完成(洪泛)</li>
+<li>使用协议：OSPF，使用的算法：Dijkstra算法，复杂度$O(|V|^2)$.</li>
+</ul>
+<h4 id="Dijkstra算法"><a href="#Dijkstra算法" class="headerlink" title="Dijkstra算法"></a>Dijkstra算法</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>   Initialization: </span><br><span class="line"><span class="number">2</span>    N’ = &#123;u&#125; </span><br><span class="line"><span class="number">3</span>    <span class="keyword">for</span> all nodes v </span><br><span class="line"><span class="number">4</span>      <span class="keyword">if</span> v is a neighbor of u </span><br><span class="line"><span class="number">5</span>        then D(v) = c(u, v) </span><br><span class="line"><span class="number">6</span>      <span class="keyword">else</span> D(v) = ∞ </span><br><span class="line"><span class="number">7</span>  </span><br><span class="line"><span class="number">8</span>   Loop</span><br><span class="line"><span class="number">9</span>    find w <span class="keyword">not</span> in N’ such that D(w) is a minimum </span><br><span class="line"><span class="number">10</span>   add w to N’ </span><br><span class="line"><span class="number">11</span>   update D(v) <span class="keyword">for</span> each neighbor v of w <span class="keyword">and</span> <span class="keyword">not</span> in N’: </span><br><span class="line"><span class="number">12</span>         D(v) = min(D(v), D(w)+ c(w, v) ) </span><br><span class="line"><span class="number">13</span>    <span class="comment">/* new cost to v is either old cost to v or known </span></span><br><span class="line"><span class="comment">14     least path cost to w plus cost from w to v */</span> </span><br><span class="line"><span class="number">15</span>  until N’= N</span><br></pre></td></tr></table></figure>
+<ul>
+<li>找给定源到其他所有节点之间的最短路</li>
+<li>k次迭代后得到k个目的节点的最低开销路径</li>
+<li>例子见书P246</li>
+<li>存在的问题：<strong>拥塞敏感的选择振荡</strong><ul>
+<li>在拥塞敏感且将路径负载当作开销的情况下，所有路由器同时运行LS算法，会使得由于选择了某一条目前最短开销路径而导致网络中路径开销改变，LS算法得出的最短开销路径会不断摇摆振荡。</li>
+<li>解决办法是 <strong>使每台路由器广播链路状态分组的时间随机化</strong>。</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-2-2-距离向量-DV-路由选择算法"><a href="#5-2-2-距离向量-DV-路由选择算法" class="headerlink" title="5.2.2 距离向量(DV)路由选择算法"></a>5.2.2 距离向量(DV)路由选择算法</h3><ul>
+<li>该算法是一种 <strong>迭代的，异步的，分布式</strong>的算法，使用的协议有BGP，RIP.</li>
+<li>使用的算法：Bellman-ford算法，复杂度$O(|V||E|)$，算法关键为$d_x(y)=\min_v\{c(x,v)+d_v(y)\}$</li>
+</ul>
+<h4 id="Bellman-Ford算法"><a href="#Bellman-Ford算法" class="headerlink" title="Bellman-Ford算法"></a>Bellman-Ford算法</h4><p>在每个节点x:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>  Initialization: </span><br><span class="line"><span class="number">2</span>    <span class="keyword">for</span> all destinations y in N: </span><br><span class="line"><span class="number">3</span>       Dx(y)= c(x, y)<span class="comment">/* if y is not a neighbor then c(x, y)= ∞ */</span> </span><br><span class="line"><span class="number">4</span>    <span class="keyword">for</span> each neighbor w </span><br><span class="line"><span class="number">5</span>       Dw(y) = ? <span class="keyword">for</span> all destinations y in N </span><br><span class="line"><span class="number">6</span>    <span class="keyword">for</span> each neighbor w </span><br><span class="line"><span class="number">7</span>       send distance <span class="built_in">vector</span>  Dx = [Dx(y): y in N] to w </span><br><span class="line"><span class="number">8</span> </span><br><span class="line"><span class="number">9</span>  loop </span><br><span class="line"><span class="number">10</span>    wait  (until I see a link cost change to some neighbor w <span class="keyword">or</span> </span><br><span class="line"><span class="number">11</span>            until I receive a distance <span class="built_in">vector</span> from some neighbor w) </span><br><span class="line"><span class="number">12</span> </span><br><span class="line"><span class="number">13</span>    <span class="keyword">for</span> each y in N: </span><br><span class="line"><span class="number">14</span>        Dx(y) = min_v &#123;c(x, v) + Dv(y)&#125; </span><br><span class="line"><span class="number">15</span> </span><br><span class="line"><span class="number">16</span> <span class="keyword">if</span> Dx(y) changed <span class="keyword">for</span> any destination y </span><br><span class="line"><span class="number">17</span>       send distance <span class="built_in">vector</span> Dx = [Dx(y): y in N] to all neighbors </span><br><span class="line"><span class="number">18</span> </span><br><span class="line"><span class="number">19</span> forever</span><br></pre></td></tr></table></figure>
+<ul>
+<li>每个节点维护一张路由选择表, 包含 该点和它的所有邻居 到 所有节点 的开销</li>
+<li>初始计算自己的距离向量$D_x=[D_x(y):y\in N]$,发送自己的距离向量给相邻节点</li>
+<li>保存相邻节点距离向量，并依据其更新自己的距离向量，再循环</li>
+<li>例子:</li>
+</ul>
+<p><img src="/figs/计算机网络/figs5/DVtable.png" alt="DVtable"></p>
+<p>存在的问题：<strong>无穷计数</strong></p>
+<ul>
+<li>当DV算法稳定后，网络中某条链路开销突然改变后，可能会出现<strong>路由选择环路</strong>，节点间的最短路径互相依赖，结果会在节点间不断来回变换，直到最后稳定，变换的次数和链路开销改变后的值相关，值足够大时会导致变换很多次，因此被称为无穷计数问题.</li>
+<li>解决方法：<strong>毒性逆转</strong>，即某一结点z到达x的<strong>最小开销路径的下一跳</strong>是y的话，z发送给y的信息中，z到x的最小开销为正无穷，<strong>使得此时y不可能通过依赖z来选择到达x的最小开销链路</strong>，从而避免无穷计数. 毒性逆转并不能完全解决无穷计数问题.</li>
+</ul>
+<h4 id="两者对比"><a href="#两者对比" class="headerlink" title="两者对比"></a>两者对比</h4><p>LS: </p>
+<ul>
+<li>链路状态通过洪泛告知其他节点</li>
+<li>每个节点有复杂的拓扑, 构造自己的路由表</li>
+<li>鲁棒性好</li>
+<li>收敛快</li>
+</ul>
+<p>DV: </p>
+<ul>
+<li>每个节点维护距离向量</li>
+<li>向量和邻居节点交换</li>
+<li>分布式构建路由表</li>
+<li>报文简单</li>
+<li>鲁棒性差</li>
+<li>收敛慢</li>
+</ul>
+<h2 id="5-3-因特网中自治系统内部路由协议"><a href="#5-3-因特网中自治系统内部路由协议" class="headerlink" title="5.3 因特网中自治系统内部路由协议"></a>5.3 因特网中自治系统内部路由协议</h2><ul>
+<li><strong>自治系统AS</strong>: 一个ISP中的路由器以及互联他们的链路构成一个AS</li>
+<li>同一个AS中使用同一个路由协议</li>
+<li><p>网关: </p>
+<ul>
+<li>AS之间的路由</li>
+<li>同AS内与其他路由器之间的路由</li>
+</ul>
+</li>
+<li><p>IGP—自治系统内部协议</p>
+<ul>
+<li>RIP: 使用距离向量</li>
+<li>OSPF: Open Shortest Path First, 使用链路状态</li>
+</ul>
+</li>
+<li>EGP—自治系统之间<ul>
+<li>BGP</li>
+</ul>
+</li>
+</ul>
+<h3 id="RIP"><a href="#RIP" class="headerlink" title="RIP"></a>RIP</h3><ul>
+<li>使用DV算法，应用于应用层</li>
+<li>在路由表或报文中Distance Matric表明当前节点(路由器)到达目的子网的跳数，取值为[0,15]，到达和路由器直接相连的子网跳数为0，取值为16则表示正无穷。后来不仅使用跳数，还增加了队列长度作为链路开销</li>
+<li>各个路由器每30s中向相邻节点发送一次路由表信息</li>
+<li>超过180s没有接收到相邻节点的路由表信息则认为已经失去和相邻节点的连接</li>
+</ul>
+<h3 id="OSPF"><a href="#OSPF" class="headerlink" title="OSPF"></a>OSPF</h3><ul>
+<li>使用LS算法和洪泛链路状态信息，周期性广播链路状态ICMP</li>
+<li><p>每一个路由器上都储存了一个含有着整个自治系统网络信息的有向图，其中路由器，主机，子网都是节点，他们之间的关联作为图的边</p>
+</li>
+<li><p>通过在本地运行LS算法，生成一个以自己为根的最短路径树(SPF Tree)</p>
+</li>
+<li>OSPF的优点：<ul>
+<li>安全：所有OSPF消息都经过身份验证，以防止恶意入侵。</li>
+<li>多条相同开销的路径：当存在多条相同开销的路径时，OSPF允许使用多条路径</li>
+<li>对单播和多播路由选择综合支持</li>
+<li>支持在单个AS中的层次结构：在AS内部可以划分区域，每个区域运行自己的OSPF,然后由一个主区域为其他区域之间流量提供路由选择</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-4-ISP之间的路由选择-BGP"><a href="#5-4-ISP之间的路由选择-BGP" class="headerlink" title="5.4 ISP之间的路由选择: BGP"></a>5.4 ISP之间的路由选择: BGP</h3><ul>
+<li>分组跨越多个AS进行路由的时候, 需要一个自治系统间路由选择协议</li>
+<li><p>因特网中所有的AS运行相同的AS间路由选择协议, 称为<strong>边界网关协议BGP</strong></p>
+</li>
+<li><p>在BGP中，分组并不是路由到一个具体的目的地，而是一个CIDR化的前缀，即路由到一个子网或一个子网的集合，所以运行BGP协议的路由器的转发表项格式大致为(前缀，接口)</p>
+</li>
+<li><p>路由器分为: </p>
+<ul>
+<li>网关路由器: 位于AS边缘的路由器, 直接连接到在其他AS中的一台或多台路由器</li>
+<li>内部路由器: 仅仅连接在它自己AS内的主机和路由器</li>
+</ul>
+</li>
+<li><p>BGP连接分为:</p>
+<ul>
+<li><strong>外部BGP(eBGP)</strong>连接: 跨越2个AS的BGP连接</li>
+<li><strong>内部BGP(iBGP)</strong>连接: 在相同AS中的两台路由器之间的BGP连接</li>
+</ul>
+</li>
+<li><p>例子见书P258</p>
+</li>
+<li><p>BGP给每个AS提供了如下工具：</p>
+<ul>
+<li>通告路由信息：<ul>
+<li>通过eBGP(external BGP)来确保AS内部某个子网被整个因特网中其他AS所知。</li>
+<li>通过iBGP(internal BGP)来确保这个信息在其他AS内部传播到所有BGP路由器上。</li>
+</ul>
+</li>
+<li>确定到目的前缀”最好的”路由：<ul>
+<li>当BGP通告前缀的时候，前缀中会带有一些<strong>BGP属性</strong>比如AS-PATH和NEXT-HOP.<ul>
+<li>当一个前缀通过某个AS时，该AS会在该前缀的AS-PATH上加上自己的AS number. 该属性用来检测和防止环路，当路由器在AS-PATH中看到了自己所在的AS的number,则说明有环路，拒绝该通告。</li>
+<li>NEXT-HOP是AS-PATH中起始的路由器接口的IP地址。</li>
+</ul>
+</li>
+<li>热土豆路由选择：选择的路由是到 <strong>开始该路由的NEXT-HOP路由器的最小开销</strong>，即自己AS内部开销最小，而不管其他AS。</li>
+<li>路由选择算法:(1)本地偏好优先。(2)最短AS-PATH优先。(3)热土豆选择。(4)BGP标识符选择</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="IP任播"><a href="#IP任播" class="headerlink" title="IP任播"></a>IP任播</h4><ul>
+<li>常用于DNS中，使得每个用户能够从最靠近自己的服务器上获得想要的内容。</li>
+<li>比如DNS根IP只有13个，但是每一个IP被分配在不同地方多个DNS根服务器上，通过BGP通告后，这些不同地方会被当作到达同一地址的不同路径，然后在用户申请访问的时候，根据上面说的路由选择算法，选择最靠近自己的服务器。</li>
+</ul>
+<h3 id="5-6-ICMP-因特网控制报文协议"><a href="#5-6-ICMP-因特网控制报文协议" class="headerlink" title="5.6 ICMP: 因特网控制报文协议"></a>5.6 ICMP: 因特网控制报文协议</h3><ul>
+<li>数据承载于IP分组中, 协议类型1, 不可靠</li>
+<li>被主机和路由器用来彼此沟通网络层的信息, 传递控制信息和差错信息</li>
+</ul>
+<p><img src="/figs/计算机网络/figs5/ICMP.png" alt="ICMP"></p>
+<ul>
+<li>使用ICMP: Ping<ul>
+<li>测试目的地可达性</li>
+<li>源发送回显请求echo request(ICMP类型8编码0的报文)</li>
+<li>远程系统收到ICMP包, 则发送回一个echo reply包给源</li>
+<li>从而还可以计算来回的时间和跳数(用TTL)</li>
+</ul>
+</li>
+<li>使用ICMP: Traceroute<ul>
+<li>得到到达目的地需要的跳数</li>
+<li>源主机向目的地主机发送一系列普通的IP数据报, 每个携带一个具有不可达UDP端口号的UDP报文</li>
+<li>第一个数据报TTL为1, 第二个为2, 以此类推</li>
+<li>第n个数据报到达第n台路由器时, 路由器观察到数据报的TTL正好过期, 丢弃该数据报并发送一个<strong>ICMP告警报文</strong>给源主机(类型11编码0)</li>
+<li>数据报之一会到达目的主机, 因为UDP端口不可达, 目的主机发送一个端口不可达的ICMP报文(类型3编码3). 源主机收到后, 就知道不用再发送另外的探测分组.</li>
+</ul>
+</li>
+<li>使用ICMP: path MTU<ul>
+<li>决定路径中的最小MTU</li>
+<li>发送带有don’t fragment的IP包, 如果超过路径MTU, 则会返回错误信息parameter unintelligible. 减少IP包大小直到不报错.</li>
+<li>路径必须固定, 结果方法: 使用源路由</li>
+</ul>
+</li>
+</ul>
+<h1 id="第6章-链路层和局域网"><a href="#第6章-链路层和局域网" class="headerlink" title="第6章 链路层和局域网"></a>第6章 链路层和局域网</h1><ul>
+<li><p>链路层提供的服务</p>
+<ul>
+<li>成帧: 把数据报封装成帧</li>
+<li>链路接入: <strong>媒体访问控制MAC</strong>协议规定了帧在链路上传播的规则 </li>
+<li>可靠交付</li>
+<li>差错检测: f(D)=E, 检测码E放在尾部, f(D’) = E’和收到的E对比<ul>
+<li>奇偶校验</li>
+<li>校验和checksum</li>
+<li>循环冗余校验CRC<ul>
+<li>协定一个$r+1$比特模式, 称为<strong>生成多项式</strong>G, G最高有效位(最左)是1</li>
+<li>选择$r$位附加比特(CRC位, 记为R), 附加在D上, 满足<d, r>被G整除, 即$D \cdot 2^r \oplus  R=nG$</d,></li>
+<li>$R=\text{remainder}\frac{D\cdot 2^r}{G}$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>流量控制<ul>
+<li>滑动窗口</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>链路层的主体在<strong>网络适配器</strong>(也称<strong>网络接口卡</strong>, 网卡)中实现</p>
+</li>
+</ul>
+<h2 id="6-3-多路访问链路和协议"><a href="#6-3-多路访问链路和协议" class="headerlink" title="6.3 多路访问链路和协议"></a>6.3 多路访问链路和协议</h2><ul>
+<li>两种截然不同的链路层信道<ul>
+<li><strong>点对点通信链路</strong><ul>
+<li>PPP协议</li>
+<li>HDLC协议</li>
+</ul>
+</li>
+<li><strong>广播链路</strong>:<ul>
+<li>多个发送和接收节点都连接到相同的, 单一的, 共享的广播信道上</li>
+<li><strong>多路访问问题</strong>: 如何协调多个发送和接收节点对一个共享广播信道的访问</li>
+<li>多个节点同时传输帧, 所有节点同时收到多个帧, 则发生<strong>碰撞</strong>, 也称冲突</li>
+<li><strong>多路访问协议</strong><ul>
+<li>信道划分协议</li>
+<li>随机接入协议</li>
+<li>轮流协议</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>对于速率为R bps的广播信道，多路访问协议应该具有以下所希望的特性：<ul>
+<li>当仅有一个节点发送数据时，该节点具有R bps的吞吐量。</li>
+<li>当有M个节点发送数据时，每个节点吞吐量为R/M bps，不要求每个节点总是有R/M bps的瞬时速率，而是在适当的时间间隔内平均速率达到。</li>
+<li>协议是分散的，不会因为某主节点故障而使得整个系统崩溃。</li>
+<li>协议是简单的，实现昂贵。</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-3-1-信道划分协议"><a href="#6-3-1-信道划分协议" class="headerlink" title="6.3.1 信道划分协议"></a>6.3.1 信道划分协议</h3><ul>
+<li>三种: <strong>时分复用</strong>,<strong>频分复用</strong>, <strong>码分复用</strong></li>
+<li><strong>时分复用</strong>: <ul>
+<li>将时间划分为<strong>时间帧</strong>, 每个<strong>时间帧</strong>划分为N个<strong>时隙</strong>, 每个时隙分配给N个节点中的一个</li>
+<li>优点<ul>
+<li>避免了碰撞而且公平</li>
+<li>每个节点中在属于自己的时隙中可以占用信号全部的带宽。</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>在每一个时间帧中，每个节点的传输速率只有R/N bps.</li>
+<li>节点必须等待一个轮次才能进行下一次传输</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>频分复用</strong>: <ul>
+<li>在$R$ bps信道中创立$N$个较小的$R/N$ bps信道</li>
+<li>优点<ul>
+<li>避免了碰撞而且公平。</li>
+<li>每个节点可以任意时刻都传输数据。</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>每个节点只有R/N的带宽。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>码分复用(CDMA)</strong>: 对每个节点分配一个<strong>码片</strong>, 码片是正交的(码片相乘为0)<ul>
+<li>编码信号 = 原信号$\times$码片序列</li>
+<li>解码:编码信号和码片序列的内积</li>
+<li>码片频率高, 信号频率低</li>
+<li>码片中的0用-1代替, 为1, -1编码</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-3-2-随机接入协议"><a href="#6-3-2-随机接入协议" class="headerlink" title="6.3.2 随机接入协议"></a>6.3.2 随机接入协议</h3><ul>
+<li>一个传输节点总是以信道的全部速率进行发送</li>
+<li>有碰撞时, 涉及碰撞的每个节点反复重发它的帧知道帧无碰撞地通过为止</li>
+<li>重发之前会等待随机一个时延</li>
+<li>主要种类: ALOHA和CSMA</li>
+</ul>
+<h4 id="ALOHA"><a href="#ALOHA" class="headerlink" title="ALOHA"></a>ALOHA</h4><ul>
+<li>无线型, 传输时间远大于传播时间</li>
+</ul>
+<ul>
+<li>过程: <ul>
+<li>节点首次获取某一个数据帧后，立即将该帧完整地传输到信道中。</li>
+<li>如果收到ACK则成功，反之则以概率p重传，或1-p等待一个帧时间</li>
+<li>等待一个帧时间之后, 再次以概率p重传，或1-p再等待一个帧时间. 以此类推</li>
+</ul>
+</li>
+<li>最大效率为$1/(2e)$, 恰好为时隙ALOHA的一半</li>
+</ul>
+<h4 id="时隙ALOHA"><a href="#时隙ALOHA" class="headerlink" title="时隙ALOHA"></a>时隙ALOHA</h4><ul>
+<li>假设:<ul>
+<li>所有帧大小相同为$L$</li>
+<li>时间被划分成长度为$L/R$(即传输一帧的时间)的<strong>时隙</strong></li>
+<li>基站发送脉冲, 主机收到脉冲才能发送帧</li>
+<li>如果一个时隙中发生碰撞，则所有节点在该时隙结束前能够检测到该碰撞</li>
+</ul>
+</li>
+<li>过程<ul>
+<li>节点有新帧需要发送，其需要等到下一个时隙开始时才可以发送。</li>
+<li>没有碰撞则传输成功，反之该节点以概率p在后面每个时隙开始重传该帧直到传输成功</li>
+</ul>
+</li>
+<li>帧只会完全冲突或者不冲突, 性能提升明显</li>
+</ul>
+<ul>
+<li>有效传输速率$1/e=0.37$ </li>
+</ul>
+<h4 id="载波侦听多路访问-CSMA"><a href="#载波侦听多路访问-CSMA" class="headerlink" title="载波侦听多路访问(CSMA)"></a>载波侦听多路访问(CSMA)</h4><ul>
+<li>有线型, 传输时间远大于传播时间, 都是理论协议</li>
+<li><strong>载波侦听</strong>：一个节点在传输前先侦听信道，等待知道检测到一段时间信道空闲，然后开始传输</li>
+<li>过程:<ul>
+<li>发送之前先<strong>载波侦听</strong>, 如果信道空闲才发送帧</li>
+<li>发送后等待ACK, 没等到就重传</li>
+</ul>
+</li>
+<li>帧越长, 传播时间越短, 性能越好</li>
+<li>根据信道非空闲时的处理方式分成以下三种<ul>
+<li>非坚持CSMA<ul>
+<li>检测到空闲立即传输</li>
+<li>信道忙就回去休息(idle), 过一段时间再次检测</li>
+<li>休息时间一定是随机的</li>
+</ul>
+</li>
+<li>1坚持CSMA<ul>
+<li>检测到空闲立即传输</li>
+<li>信道忙就一直侦听, 一旦空闲立即发送</li>
+<li>如果多个在等, 肯定冲突, 效果不好</li>
+</ul>
+</li>
+<li>p坚持CSMA(概率坚持)<ul>
+<li>空闲时以概率p重传，1-p延后一个时间单位再决定, 忙时一直监听</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="具有碰撞检测的CSMA-CSMA-CD"><a href="#具有碰撞检测的CSMA-CSMA-CD" class="headerlink" title="具有碰撞检测的CSMA: CSMA/CD"></a>具有碰撞检测的CSMA: CSMA/CD</h4><ul>
+<li>以太网的协议, 现在已经无效</li>
+<li><strong>碰撞检测</strong>: 当一个传输节点在传输时一直侦听此信道, 如果检测到另一个节点正在传输干扰帧, 就停止传输(从而减少了冲突时间)</li>
+<li>过程如下<ul>
+<li>适配器从网络层获得一条数据报, 准备链路层帧, 放入缓存</li>
+<li>若侦听到信道空闲: 发送; 若侦听到信道忙, 1坚持, 直到侦听到空闲就发送</li>
+<li>发送的同时监听, 如果发现冲突则发送一个高频信号(表示冲突)立即停止; 如果全程无冲突则成功. </li>
+<li>侦听到冲突则等待随机时间后回到第二步重试</li>
+</ul>
+</li>
+<li><strong>无ACK</strong>(CSMA和ALOHA都有), 但是在CSMA/CD中, 只要全程没冲突即发送成功</li>
+<li><strong>最坏要2个传播时间$2\mu$才能检测出来冲突</strong>, 因此要发送的<strong>最小帧长</strong>大于等于$2\mu$ ($\mu$的时间到目的地, 即将到目的地的时候冲突, 冲突再经过$\mu$传到发送方)</li>
+<li>重试:<ul>
+<li>等待时间是$[0, 2^k)$之间的随机整数$\times$ 发送512比特的时间</li>
+<li>前10次重试失败后$k$会加1, 第一次重试$k=1$</li>
+<li>第11-16次$k=10$不再增加</li>
+<li>16次都不成功则放弃</li>
+</ul>
+</li>
+</ul>
+<p><img src="/figs/计算机网络/figs6/CSMACD.png" alt="CSMACD"></p>
+<p>9.6$\mu s$: 硬件重置: 不管</p>
+<p>周期之前会等待512比特时间</p>
+<p>jam信号: 4-6字节</p>
+<h3 id="轮流协议"><a href="#轮流协议" class="headerlink" title="轮流协议"></a>轮流协议</h3><ul>
+<li><strong>轮询协议</strong><ul>
+<li>一个主节点轮询其他节点，告诉其他节点可以传输的帧的最大数量</li>
+<li>优点：避免碰撞和随机接入协议里面会出现的空时隙</li>
+<li>缺点：1.主节点故障，整个系统崩溃。2.引入了轮询时延</li>
+<li>例如蓝牙</li>
+</ul>
+</li>
+<li><strong>令牌传递协议</strong><ul>
+<li>一个被称为 <strong>令牌</strong> 的特殊帧在节点间按照固定次序交换</li>
+<li>拿到令牌的节点才能发送帧, 没有帧要发送则马上传递</li>
+<li>拿到令牌后如果有帧要发送, 则发送最大数目的帧, 然后把令牌给下一个节点</li>
+<li>缺点：1.一个节点故障会导致最原始模式的令牌环协议崩溃。 2.令牌环额外的开销和延迟</li>
+</ul>
+</li>
+</ul>
+<h2 id="6-4-交换局域网"><a href="#6-4-交换局域网" class="headerlink" title="6.4 交换局域网"></a>6.4 交换局域网</h2><h3 id="6-4-1-链路层寻址和ARP"><a href="#6-4-1-链路层寻址和ARP" class="headerlink" title="6.4.1 链路层寻址和ARP"></a>6.4.1 链路层寻址和ARP</h3><h4 id="MAC地址"><a href="#MAC地址" class="headerlink" title="MAC地址"></a>MAC地址</h4><ul>
+<li>并不是主机或者路由器具有链路层地址，而是它们的<strong>适配器(网络接口)具有链路层地址</strong>。因此具有多个网络接口的主机或者路由器具有多个链路层地址。</li>
+<li>因为主机和路由器不必明确地将帧寻址到其间的交换机, 所以链路层交换机无链路层地址</li>
+<li>链路层地址称为LAN地址，物理地址或<strong>MAC地址</strong>。</li>
+<li>MAC地址长度为6字节，所以共有$2^{48}$个可能的MAC地址(常用16进制表示为XX-XX-XX-XX-XX-XX)</li>
+<li>适配器的MAC地址一般是固定的</li>
+<li>没有个两块适配器具有相同的地址</li>
+<li>适配器的MAC地址具有扁平化结构, 且不论适配器到哪里用都不会变化，带有以太网接口的便携机总是具有同样的MAC地址(IP地址不是这样的)</li>
+<li>当适配器要向某些目的适配器发送一个帧时<ul>
+<li>发送适配器将目的适配器的MAC地址插入到链路层帧中，再发送到局域网上。</li>
+<li>接收适配器接收到帧后，检查其中MAC地址是否与自己MAC地址相匹配，如果匹配则取出其中数据，向上层传递，如果不是，则丢弃该帧。</li>
+</ul>
+</li>
+<li>广播：发送适配器需要让局域网上所有适配器都接受并处理某帧，则在该帧的目的地址中插入一个特殊的MAC地址(FF-FF-FF-FF-FF-FF)</li>
+</ul>
+<h4 id="地址解析协议-ARP"><a href="#地址解析协议-ARP" class="headerlink" title="地址解析协议 ARP"></a>地址解析协议 ARP</h4><ul>
+<li><p><strong>ARP协议</strong>: IP地址转换为对应的MAC地址</p>
+</li>
+<li><p>每台主机或路由器在其内存中有一个<strong>ARP</strong>表.</p>
+</li>
+</ul>
+<p>ARP过程</p>
+<ul>
+<li><p>Sender</p>
+<ul>
+<li>查找自己的cache, 如果没有就</li>
+<li>构建ARP请求, 插入<sender ip, sender mac, destination ip></sender></li>
+<li>用MAC帧广播</li>
+<li>缓存目的地的<mac, ip>对, 以及时间戳</mac,></li>
+</ul>
+</li>
+<li><p>Receiver:</p>
+<ul>
+<li>查目的地IP, 如果OK</li>
+<li><p>建立ARP应答, 插入<destination ip, destination mac></destination></p>
+</li>
+<li><p>用MAC帧发送sender MAC</p>
+</li>
+<li>缓存发送方的<mac, ip>以及时间戳</mac,></li>
+</ul>
+</li>
+</ul>
+<h3 id="6-4-2-以太网"><a href="#6-4-2-以太网" class="headerlink" title="6.4.2 以太网"></a>6.4.2 以太网</h3><h3 id="以太网帧结构"><a href="#以太网帧结构" class="headerlink" title="以太网帧结构"></a>以太网帧结构</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>前同步码</th>
+<th>目的地址</th>
+<th>源地址</th>
+<th>类型</th>
+<th>数据</th>
+<th>CRC(循环冗余校验码)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8 bytes</td>
+<td>6</td>
+<td>6</td>
+<td>2</td>
+<td>46-1500</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>前同步码: 前7字节10101010唤醒接受适配器并同步时钟, 后1字节10101011</li>
+<li>目的地址: 目的适配器的MAC地址</li>
+<li>源地址: 传输该帧到局域网上的适配器的MAC地址</li>
+<li>类型字段: 允许以太网复用多种网络层协议, 例如可以使用除了IP以外的其他网络层协议</li>
+<li>数据字段承载IP数据报，以太网最长传输单元(MTU)为1500字节，超过之后得分片</li>
+<li>CRC: 循环冗余校验</li>
+</ul>
+<h3 id="以太网技术"><a href="#以太网技术" class="headerlink" title="以太网技术"></a>以太网技术</h3><ul>
+<li>以太网技术向网络层提供无连接服务，也就是源适配器要发送数据报时需要先将IP数据报封装在以太网帧中然后发到局域网上，而非像TCP协议那样三次握手建立连接。</li>
+<li>以太网技术向网络层提供不可靠服务，当适配器收到一个以太网帧后执行CRC检验，检验通过不会发送ACK帧，检验不通过也不会发送否定帧，而是直接丢弃该帧</li>
+<li><p>IEEE 802.3是一个定义了<strong>有线以太网物理层和链路层</strong>的媒体访问控制(MAC)的标准</p>
+</li>
+<li><p>以太网有很多标准, 缩写为10base5, 10base2,10baseT, 10baseFX等.</p>
+<ul>
+<li>由IEEE 802.3 CSMA/CD(Ethernet)工作组标准化</li>
+<li>其中缩写的第一部分表示该标准的<strong>速率</strong>:10, 100, 1000, 10G(单位为Mbps)</li>
+<li>“BASE”指<strong>基带以太网</strong>, 表示该物理媒体仅承载以太网流量</li>
+<li>最后一部分表示物理媒体本身, 以太网是<strong>链路层</strong>也是<strong>物理层</strong>的规范. 例如’T’表示双绞铜线.</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-4-3-网桥-switch-二层交换机-同一个意思-重要"><a href="#6-4-3-网桥-switch-二层交换机-同一个意思-重要" class="headerlink" title="6.4.3 网桥/switch/二层交换机(同一个意思)(重要)"></a>6.4.3 网桥/switch/二层交换机(同一个意思)(重要)</h3><ul>
+<li><p>主要作用: <strong>互连局域网的网段</strong>, 网桥互联的必须是<strong>同类型</strong>的局域网</p>
+</li>
+<li><p><strong>不修改帧的内容</strong>(路由器会修改)</p>
+</li>
+<li>有交换功能(<strong>基于MAC地址</strong>, <strong>以主机为单位</strong>)(==必考路由器和网桥的区别==)<ul>
+<li>MAC地址看不出网段, 而IP地址看得出</li>
+<li>网桥是以主机为单位, 路由是以网段为单位</li>
+<li>网桥不涉及封装解封, 路由器涉及</li>
+</ul>
+</li>
+<li><strong>存储转发</strong>(store and forward)不涉及协议转换</li>
+<li>对于子网中的主机和路由器是<strong>透明</strong>的(不被知道)</li>
+<li><p><strong>自学习</strong>的, <strong>即插即用</strong>(plug-and-play)</p>
+</li>
+<li><p>隧道模式: </p>
+<ul>
+<li>完整的帧, 加头和尾传播, 接收去掉头尾, 得到完整的帧</li>
+</ul>
+</li>
+<li><p>交换:</p>
+<ul>
+<li>选择最短路—支撑树算法</li>
+</ul>
+</li>
+</ul>
+<h4 id="支撑树算法"><a href="#支撑树算法" class="headerlink" title="支撑树算法"></a>支撑树算法</h4><ul>
+<li>网桥自动生成交换表, 自动更新</li>
+<li>主要分为:<ul>
+<li>帧转发</li>
+<li>地址学习</li>
+<li>环路识别</li>
+</ul>
+</li>
+</ul>
+<h5 id="1-帧转发"><a href="#1-帧转发" class="headerlink" title="1. 帧转发"></a>1. 帧转发</h5><ul>
+<li><strong>交换表</strong>结构: &lt;目的MAC地址, 转发端口号, 时间戳&gt;</li>
+<li>对于一个到达端口X的帧:<ul>
+<li>搜索转发表, 看有没有这个MAC地址<ul>
+<li>如果没找到MAC地址, 在所有端口(除X)都转发</li>
+<li>如果有MAC地址, 检查端口号<ul>
+<li>若端口是X, 直接丢掉</li>
+<li>若端口是Y(非X), 如果Y是可以转发状态就转发<br>(forwarding状态可收可发, blocking状态只能发)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-地址学习"><a href="#2-地址学习" class="headerlink" title="2. 地址学习"></a>2. 地址学习</h5><ul>
+<li><p>转发表是<strong>自学习</strong>的</p>
+</li>
+<li><p>帧X到达端口后:</p>
+<ul>
+<li>如果没有这个MAC源地址, 则补上</li>
+<li>如果有MAC源地址, 则检查端口号<ul>
+<li>如果端口是X则更新时间戳</li>
+<li>如果端口是Y(非X), 则端口更新为X且更新时间戳</li>
+</ul>
+</li>
+<li>每个表项有计时器, 时间到则删除表项(即一个表项如果一段时间没有对应的帧到来则删除)</li>
+</ul>
+</li>
+<li><p>交换机和路由器的比较</p>
+<ul>
+<li>路由器是使用网络层地址转发分组的存储转发分组交换机</li>
+<li>交换机也是一个存储转发分组交换机,但它和路由器是根本不同的, 因为它用MAC地址转发分组。</li>
+<li>交换机是第二层的分组交换机, 而路由器是第三层的分组交换机,</li>
+<li>交换机是即插即用的,具有相对高的分组过滤和转发速率</li>
+</ul>
+</li>
+</ul>
+<h1 id="第7章-无线网络和移动网络"><a href="#第7章-无线网络和移动网络" class="headerlink" title="第7章 无线网络和移动网络"></a>第7章 无线网络和移动网络</h1><h2 id="7-3-WiFi-802-11无线LAN"><a href="#7-3-WiFi-802-11无线LAN" class="headerlink" title="7.3 WiFi: 802.11无线LAN"></a>7.3 WiFi: 802.11无线LAN</h2><ul>
+<li>频段: 2.4GHz, 5GHz</li>
+<li>媒体访问协议: CSMA/CA</li>
+</ul>
+<h3 id="7-3-1-802-11体系结构"><a href="#7-3-1-802-11体系结构" class="headerlink" title="7.3.1 802.11体系结构"></a>7.3.1 802.11体系结构</h3><ul>
+<li><p>基本构建模块: <strong>基本服务集 BSS</strong>, 包含一个或多个<strong>无线站点</strong>和一个称为<strong>接入点</strong>(AP)的中央基站</p>
+<ul>
+<li>控制模块/基站/无线hub/接入点都是同一个东西</li>
+<li>用户模块: 无线网卡</li>
+</ul>
+</li>
+<li>每个802.11无线站点都有一个6字节的<strong>MAC地址</strong>, 存在该站适配器(网卡)中</li>
+<li>每个接入点(AP)的无线接口也有一个<strong>MAC地址</strong></li>
+<li>配置AP的无线LAN称为<strong>基础设施无线LAN</strong></li>
+<li>每个接入点有一个<strong>服务集标识符SSID</strong></li>
+<li><strong>ESS</strong>: 多个BSS通过分布式系统(DS)互联, DS为交换机, 有线网或者无线网</li>
+<li><strong>WiFi丛林</strong>: 任意一个物理位置, 在这里无线站点可以从2个或者多个AP中收到很强的信号</li>
+<li><strong>关联</strong>: <ul>
+<li>进入WiFi丛林时, 主机需要加入其中一个子网并与其中一个AP相关联, 即在这一无线站点在自身和该AP之间创建一个虚拟线路.</li>
+<li>仅有关联的AP才向你的无线站点发送数据帧, 你的无线站点也仅仅通过该关联AP向因特网发送数据帧</li>
+</ul>
+</li>
+<li>被动扫描：<ul>
+<li>每个AP每个一定时间在自身所在信道中发送一个<strong>信标帧</strong>(含AP的SSID(服务集标识)和MAC地址)。</li>
+<li>设备扫描所有信道获取信标帧，选择一个AP发送<strong>关联请求帧</strong></li>
+<li>AP向设备发送<strong>关联响应帧</strong>.</li>
+</ul>
+</li>
+<li>主动扫描：<ul>
+<li>设备发送<strong>广播探测帧</strong>。</li>
+<li>AP发送探测响应。</li>
+<li>设备选择AP发送<strong>关联请求帧</strong>。</li>
+<li>AP向设备发送<strong>关联响应帧</strong>。</li>
+</ul>
+</li>
+</ul>
+<h3 id="7-3-2-802-11-MAC协议"><a href="#7-3-2-802-11-MAC协议" class="headerlink" title="7.3.2 802.11 MAC协议"></a>7.3.2 802.11 MAC协议</h3><ul>
+<li>802.11无线网<strong>无法使用碰撞检测</strong></li>
+<li>有<strong>链路层确认ACK</strong>, 因为无线LAN中节点发送帧有可能不能无损到达目的站点</li>
+<li><strong>IFS帧间间隔</strong>(实现了优先级)</li>
+<li><p>过程:</p>
+<ul>
+<li><p>如果最初监听到信道空闲, 它将在一个<strong> 分布式帧间间隔DIFS</strong>后发送该帧</p>
+</li>
+<li><p>否则该站点选取一个随机返回值, 并且在侦听信道空闲时递减该值. 侦听到信道忙时不变</p>
+</li>
+<li>计数值为0时, 该站点发送整个数据帧并等待确认</li>
+<li>收到确认则知道帧已经正确接收. 如果想要再发送一个帧, 从第二步开始.</li>
+<li>如果没有收到确认, 发送站点重新进入第二步中的回退阶段, 并从更大的范围中选取随机值</li>
+</ul>
+</li>
+<li><p>倒计时(backoff)时即使监听到信道空闲也抑制传输的原因: 尽量避免碰撞.</p>
+</li>
+<li><p>IEEE 802.11 Medium Access Control Logic</p>
+</li>
+<li><p>3个级别的IFS: </p>
+<ul>
+<li>SIFS: 短IFS—高优先级</li>
+<li>PIFS: AP使用, 用于抢占信道，AP发送信息的优先级高于一般节点</li>
+<li>DIFS</li>
+</ul>
+</li>
+</ul>
+<h4 id="处理隐藏终端-RTS和CTS-4帧交换"><a href="#处理隐藏终端-RTS和CTS-4帧交换" class="headerlink" title="处理隐藏终端: RTS和CTS(4帧交换)"></a>处理隐藏终端: RTS和CTS(4帧交换)</h4><ul>
+<li>问题描述: A节点可以和B节点相互传输，B可以和C相互传输，但A不能直接和C相互传输，那么可能A,C同时向B发送帧, 因为AC之间互相听不到对方的传输而导致冲突</li>
+<li>解决方法: 使用<strong>RTS</strong>(<strong>请求发送控制帧</strong>)和<strong>CTS</strong>(<strong>允许发送控制帧</strong>)</li>
+<li>发送方要发数据帧时:<ul>
+<li>(延迟DIFS后)先向AP发一个RTS帧, 指示传输数据和确认帧的总时间</li>
+<li>AP收到RTS帧后, (延迟SIFS后)广播一个CTS帧作为回应, 目的为<ul>
+<li>给发送方发送许可</li>
+<li>指示其他站点在预约期内不要发送</li>
+</ul>
+</li>
+<li>发送方收到RTS(延迟SIFS)后发送data帧</li>
+<li>目的地收到data(延迟SIFS)后发送ACK</li>
+</ul>
+</li>
+</ul>
+<p><img src="/figs/计算机网络/figs7/CSMACA传输过程.png" alt="CSMACA传输过程" style="zoom:80%;"></p>
+<h2 id="补充-拥塞和Qos"><a href="#补充-拥塞和Qos" class="headerlink" title="补充: 拥塞和Qos"></a>补充: 拥塞和Qos</h2><h3 id="拥塞原因"><a href="#拥塞原因" class="headerlink" title="拥塞原因"></a>拥塞原因</h3><ul>
+<li>大量分组在网络上传输，数量超出路由器的处理能力。</li>
+</ul>
+<h3 id="拥塞代价"><a href="#拥塞代价" class="headerlink" title="拥塞代价"></a>拥塞代价</h3><ul>
+<li>造成丢包，时延；重传使得浪费之前发送的资源。</li>
+</ul>
+<h3 id="拥塞控制方法"><a href="#拥塞控制方法" class="headerlink" title="拥塞控制方法"></a>拥塞控制方法</h3><ul>
+<li><p><strong>抑制分组(choke packet):</strong> 产生拥塞的路由器通过特定协议(如ICMP)向源端系统发送抑制分组来抑制源端系统的分组发送。</p>
+</li>
+<li><p><strong>反向施压(Backpressure):</strong> 当传播时间大于传输时间时，choke packet往往没有作用，则通过产生拥塞路由器向前面一个路由器反向施压抑制前面路由器的发送，这样传递下去，最终影响到源端系统。</p>
+</li>
+<li><p><strong>标志位(Warning bit):</strong> 通过在分组上设置一个标志位来告诉端系统可能发生拥塞。</p>
+<ul>
+<li>前向标记(FECN): 发生拥塞相同的方向</li>
+<li>后向标记(BECN): 发生拥塞相反的方向</li>
+</ul>
+</li>
+<li><p><strong>拥塞窗口</strong>：使用在端系统上(如TCP)</p>
+</li>
+<li><p><strong>早期随机丢弃(RED)</strong>: 作用在路由器上，该方式设置一个下限Lmin，一个上限Lmax。</p>
+<ul>
+<li>当队列的长度小于小于下限时，保证不会丢掉分组</li>
+<li>当队列的长度介于上下限之间时，对于每一个接收到的分组，路由器以概率 <strong>p</strong>丢弃</li>
+<li>当队列长度完全大于上限时，丢弃接收到的分组。</li>
+</ul>
+</li>
+<li><p><strong>流量整形（Traffic shaping):</strong> 在建立连接之后，端系统和路由器之间协商流量整形的方式。</p>
+<ul>
+<li>约定数据速率(CIR): RED方式。</li>
+<li><strong>漏桶</strong>(令牌桶):漏桶由一个能够容纳$b$个令牌的桶组成。令牌加进该桶的过程如下:<ul>
+<li>可能潜在地加入桶中的新令牌总是以每秒$r$个令牌的速率产生</li>
+<li>当产生一个令牌时,如果桶填充得少于 个令牌,新产生的令牌加入该桶中;否则忽略该新产生的令牌,令牌桶保持具有$b$个令牌的满状态。</li>
+</ul>
+</li>
+<li>漏桶规则:<ul>
+<li>在一个分组向网络传输之前,必须首先从令牌桶中去除一个令牌</li>
+<li>如果令牌桶是空的,分组必须等待一个令牌</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>效果:<ul>
+<li>平均速率: $r+b/t$, 令牌产生速率$r$用于限制分组能够进入网络的长期平均速率</li>
+<li>突发长度: $b$</li>
+<li>峰值速率:在已有的一个漏桶后, 串联一个高度为1的桶,其速率为$r’$可限制峰值速率。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Qos的两种服务"><a href="#Qos的两种服务" class="headerlink" title="Qos的两种服务"></a>Qos的两种服务</h3><h4 id="ISA-Integrated-Services-Architecture"><a href="#ISA-Integrated-Services-Architecture" class="headerlink" title="ISA(Integrated Services Architecture)"></a>ISA(Integrated Services Architecture)</h4><ul>
+<li>由于太复杂，现在还没用。</li>
+</ul>
+<h4 id="DS-Differentiated-Services-差异化服务"><a href="#DS-Differentiated-Services-差异化服务" class="headerlink" title="DS(Differentiated Services)差异化服务"></a>DS(Differentiated Services)差异化服务</h4><ul>
+<li>使用IPv4和IPv6里面的服务类型和流量类型来区分不同的分组的重要性。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/计算机网络/" rel="tag"># 计算机网络</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/30/大三上/dip/数字图像处理/" rel="next" title="数字图像处理">
+                <i class="fa fa-chevron-left"></i> 数字图像处理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XY</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第1章-计算机网络和因特网"><span class="nav-number">1.</span> <span class="nav-text">第1章 计算机网络和因特网</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-什么是因特网"><span class="nav-number">1.1.</span> <span class="nav-text">1.1  什么是因特网</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-1-具体构成描述"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1.1 具体构成描述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#组成"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">组成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ISP"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">ISP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#协议"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络标准"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">网络标准</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-2-服务描述"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.1.2 服务描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-3-什么是协议"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.1.3 什么是协议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-网络边缘"><span class="nav-number">1.2.</span> <span class="nav-text">2.2 网络边缘</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-接入网"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.2.1 接入网</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#家庭接入-DSL-电缆-FTTH-拨号和卫星"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">家庭接入: DSL, 电缆, FTTH, 拨号和卫星</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#企业-和家庭-接入"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">企业(和家庭)接入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#广域无线接入-3G和LTE"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">广域无线接入: 3G和LTE</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-物理媒体"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2.2 物理媒体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-网络核心"><span class="nav-number">1.2.3.</span> <span class="nav-text">1.3 网络核心</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-1-分组交换"><span class="nav-number">1.2.4.</span> <span class="nav-text">1.3.1 分组交换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#存储转发传输"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">存储转发传输</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#排队时延和分组丢失"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">排队时延和分组丢失</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#转发表和路由选择协议"><span class="nav-number">1.2.4.3.</span> <span class="nav-text">转发表和路由选择协议</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-2-电路交换"><span class="nav-number">1.2.5.</span> <span class="nav-text">1.3.2 电路交换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-2-1-电路交换网络中的复用"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">1.3.2.1 电路交换网络中的复用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-2-2-分组交换和电路交换的对比"><span class="nav-number">1.2.5.2.</span> <span class="nav-text">1.3.2.2 分组交换和电路交换的对比</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-3-网络的网络"><span class="nav-number">1.2.6.</span> <span class="nav-text">1.3.3 网络的网络</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-分组交换网中的时延-丢包和吞吐量"><span class="nav-number">1.3.</span> <span class="nav-text">1.4 分组交换网中的时延, 丢包和吞吐量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-1-分组交换中的时延概述"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.4.1 分组交换中的时延概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-2-排队时延和丢包"><span class="nav-number">1.3.2.</span> <span class="nav-text">1.4.2 排队时延和丢包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-3-端到端时延"><span class="nav-number">1.3.3.</span> <span class="nav-text">1.4.3 端到端时延</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-4-计算机中的吞吐量"><span class="nav-number">1.3.4.</span> <span class="nav-text">1.4.4 计算机中的吞吐量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-协议层次及其服务模型"><span class="nav-number">1.4.</span> <span class="nav-text">1.5 协议层次及其服务模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-1-分层的体系结构"><span class="nav-number">1.4.1.</span> <span class="nav-text">1.5.1 分层的体系结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-2-封装"><span class="nav-number">1.4.2.</span> <span class="nav-text">1.5.2 封装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-6-面对攻击的网络"><span class="nav-number">1.5.</span> <span class="nav-text">1.6 面对攻击的网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-1-坏家伙能够经因特网将有害程序放入你的计算机中"><span class="nav-number">1.5.1.</span> <span class="nav-text">1.6.1 坏家伙能够经因特网将有害程序放入你的计算机中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-2-坏家伙能够攻击服务器和网络基础设施"><span class="nav-number">1.5.2.</span> <span class="nav-text">1.6.2 坏家伙能够攻击服务器和网络基础设施</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-3-坏家伙能够顾嗅探分组"><span class="nav-number">1.5.3.</span> <span class="nav-text">1.6.3 坏家伙能够顾嗅探分组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-4-坏家伙能够伪成你认识的人"><span class="nav-number">1.5.4.</span> <span class="nav-text">1.6.4 坏家伙能够伪成你认识的人</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第3章-运输层"><span class="nav-number">2.</span> <span class="nav-text">第3章 运输层</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-概述和运输层服务"><span class="nav-number">2.1.</span> <span class="nav-text">3.1 概述和运输层服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-多路复用和多路分解"><span class="nav-number">2.2.</span> <span class="nav-text">3.2 多路复用和多路分解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-无连接运输-UDP"><span class="nav-number">2.3.</span> <span class="nav-text">3.3 无连接运输: UDP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-1-UDP报文段结构"><span class="nav-number">2.3.1.</span> <span class="nav-text">3.3.1 UDP报文段结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-2-UDP检验和"><span class="nav-number">2.3.2.</span> <span class="nav-text">3.3.2 UDP检验和</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-可靠数据传输原理"><span class="nav-number">2.4.</span> <span class="nav-text">3.4 可靠数据传输原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-1-构造可靠数据传输协议"><span class="nav-number">2.4.1.</span> <span class="nav-text">3.4.1 构造可靠数据传输协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-2-流水线可靠数据传输协议"><span class="nav-number">2.4.2.</span> <span class="nav-text">3.4.2 流水线可靠数据传输协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-3-回退N步"><span class="nav-number">2.4.3.</span> <span class="nav-text">3.4.3 回退N步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-4-选择重传"><span class="nav-number">2.4.4.</span> <span class="nav-text">3.4.4 选择重传</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5-面向连接的运输-TCP"><span class="nav-number">2.5.</span> <span class="nav-text">3.5 面向连接的运输: TCP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-1-TCP报文段结构"><span class="nav-number">2.5.1.</span> <span class="nav-text">3.5.1 TCP报文段结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-3-往返时间的估计"><span class="nav-number">2.5.2.</span> <span class="nav-text">3.5.3 往返时间的估计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-4-可靠数据传输"><span class="nav-number">2.5.3.</span> <span class="nav-text">3.5.4 可靠数据传输</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-5-流量控制"><span class="nav-number">2.5.4.</span> <span class="nav-text">3.5.5 流量控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-6-TCP连接管理-必考"><span class="nav-number">2.5.5.</span> <span class="nav-text">3.5.6 TCP连接管理(必考)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#连接建立"><span class="nav-number">2.5.5.1.</span> <span class="nav-text">连接建立</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#连接关闭"><span class="nav-number">2.5.5.2.</span> <span class="nav-text">连接关闭</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP状态"><span class="nav-number">2.5.5.3.</span> <span class="nav-text">TCP状态</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#补充-崩溃检测"><span class="nav-number">2.5.6.</span> <span class="nav-text">补充: 崩溃检测</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-6-拥塞控制原理"><span class="nav-number">2.6.</span> <span class="nav-text">3.6 拥塞控制原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-2-拥塞控制方法"><span class="nav-number">2.6.1.</span> <span class="nav-text">3.6.2 拥塞控制方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-7-TCP拥塞控制"><span class="nav-number">2.7.</span> <span class="nav-text">3.7 TCP拥塞控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP发送方限制其向连接发送流量速率的方法"><span class="nav-number">2.7.1.</span> <span class="nav-text">TCP发送方限制其向连接发送流量速率的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP发送方如何感知在它和目的地之间的路径上出现了拥塞"><span class="nav-number">2.7.2.</span> <span class="nav-text">TCP发送方如何感知在它和目的地之间的路径上出现了拥塞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP拥塞控制算法"><span class="nav-number">2.7.3.</span> <span class="nav-text">TCP拥塞控制算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第4章-网络层-数据平面"><span class="nav-number">3.</span> <span class="nav-text">第4章 网络层: 数据平面</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-路由器工作原理"><span class="nav-number">3.1.</span> <span class="nav-text">4.2 路由器工作原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-1-输入端口处理和基于目的地转发"><span class="nav-number">3.1.1.</span> <span class="nav-text">4.2.1 输入端口处理和基于目的地转发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-2-交换"><span class="nav-number">3.1.2.</span> <span class="nav-text">4.2.2 交换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-3-输出端口处理"><span class="nav-number">3.1.3.</span> <span class="nav-text">4.2.3 输出端口处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-4-何处出现排队"><span class="nav-number">3.1.4.</span> <span class="nav-text">4.2.4 何处出现排队</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-5-分组调度"><span class="nav-number">3.1.5.</span> <span class="nav-text">4.2.5 分组调度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-网际协议-IPv4-寻址-IPv6和其他"><span class="nav-number">3.2.</span> <span class="nav-text">4.3 网际协议: IPv4, 寻址, IPv6和其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-1-IPv4数据报格式"><span class="nav-number">3.2.1.</span> <span class="nav-text">4.3.1 IPv4数据报格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-2-分片和重装"><span class="nav-number">3.2.2.</span> <span class="nav-text">4.3.2 分片和重装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#错误控制和流量控制"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">错误控制和流量控制</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-3-IPv4编址-非常重要-必考"><span class="nav-number">3.2.3.</span> <span class="nav-text">4.3.3 IPv4编址 (非常重要, 必考)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#获取主机IP地址-DHCP协议"><span class="nav-number">3.2.3.1.</span> <span class="nav-text">获取主机IP地址: DHCP协议</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-4-网络地址转换-NAT"><span class="nav-number">3.2.4.</span> <span class="nav-text">4.3.4 网络地址转换(NAT)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-5-IPv6"><span class="nav-number">3.2.5.</span> <span class="nav-text">4.3.5 IPv6</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#IPv6数据报格式"><span class="nav-number">3.2.5.1.</span> <span class="nav-text">IPv6数据报格式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IPv4和IPv6的互通"><span class="nav-number">3.2.6.</span> <span class="nav-text">IPv4和IPv6的互通</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第5章-网络层-控制平面"><span class="nav-number">4.</span> <span class="nav-text">第5章 网络层: 控制平面</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-概述"><span class="nav-number">4.1.</span> <span class="nav-text">5.1 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-路由选择算法"><span class="nav-number">4.2.</span> <span class="nav-text">5.2 路由选择算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-1-链路状态-LS-路由选择算法"><span class="nav-number">4.2.1.</span> <span class="nav-text">5.2.1 链路状态(LS)路由选择算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Dijkstra算法"><span class="nav-number">4.2.1.1.</span> <span class="nav-text">Dijkstra算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-2-距离向量-DV-路由选择算法"><span class="nav-number">4.2.2.</span> <span class="nav-text">5.2.2 距离向量(DV)路由选择算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Bellman-Ford算法"><span class="nav-number">4.2.2.1.</span> <span class="nav-text">Bellman-Ford算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#两者对比"><span class="nav-number">4.2.2.2.</span> <span class="nav-text">两者对比</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-因特网中自治系统内部路由协议"><span class="nav-number">4.3.</span> <span class="nav-text">5.3 因特网中自治系统内部路由协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RIP"><span class="nav-number">4.3.1.</span> <span class="nav-text">RIP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OSPF"><span class="nav-number">4.3.2.</span> <span class="nav-text">OSPF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-ISP之间的路由选择-BGP"><span class="nav-number">4.3.3.</span> <span class="nav-text">5.4 ISP之间的路由选择: BGP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#IP任播"><span class="nav-number">4.3.3.1.</span> <span class="nav-text">IP任播</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-6-ICMP-因特网控制报文协议"><span class="nav-number">4.3.4.</span> <span class="nav-text">5.6 ICMP: 因特网控制报文协议</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第6章-链路层和局域网"><span class="nav-number">5.</span> <span class="nav-text">第6章 链路层和局域网</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#6-3-多路访问链路和协议"><span class="nav-number">5.1.</span> <span class="nav-text">6.3 多路访问链路和协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-1-信道划分协议"><span class="nav-number">5.1.1.</span> <span class="nav-text">6.3.1 信道划分协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-2-随机接入协议"><span class="nav-number">5.1.2.</span> <span class="nav-text">6.3.2 随机接入协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ALOHA"><span class="nav-number">5.1.2.1.</span> <span class="nav-text">ALOHA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#时隙ALOHA"><span class="nav-number">5.1.2.2.</span> <span class="nav-text">时隙ALOHA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#载波侦听多路访问-CSMA"><span class="nav-number">5.1.2.3.</span> <span class="nav-text">载波侦听多路访问(CSMA)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#具有碰撞检测的CSMA-CSMA-CD"><span class="nav-number">5.1.2.4.</span> <span class="nav-text">具有碰撞检测的CSMA: CSMA/CD</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#轮流协议"><span class="nav-number">5.1.3.</span> <span class="nav-text">轮流协议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-4-交换局域网"><span class="nav-number">5.2.</span> <span class="nav-text">6.4 交换局域网</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4-1-链路层寻址和ARP"><span class="nav-number">5.2.1.</span> <span class="nav-text">6.4.1 链路层寻址和ARP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MAC地址"><span class="nav-number">5.2.1.1.</span> <span class="nav-text">MAC地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#地址解析协议-ARP"><span class="nav-number">5.2.1.2.</span> <span class="nav-text">地址解析协议 ARP</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4-2-以太网"><span class="nav-number">5.2.2.</span> <span class="nav-text">6.4.2 以太网</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以太网帧结构"><span class="nav-number">5.2.3.</span> <span class="nav-text">以太网帧结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以太网技术"><span class="nav-number">5.2.4.</span> <span class="nav-text">以太网技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4-3-网桥-switch-二层交换机-同一个意思-重要"><span class="nav-number">5.2.5.</span> <span class="nav-text">6.4.3 网桥/switch/二层交换机(同一个意思)(重要)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#支撑树算法"><span class="nav-number">5.2.5.1.</span> <span class="nav-text">支撑树算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-帧转发"><span class="nav-number">5.2.5.1.1.</span> <span class="nav-text">1. 帧转发</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-地址学习"><span class="nav-number">5.2.5.1.2.</span> <span class="nav-text">2. 地址学习</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第7章-无线网络和移动网络"><span class="nav-number">6.</span> <span class="nav-text">第7章 无线网络和移动网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#7-3-WiFi-802-11无线LAN"><span class="nav-number">6.1.</span> <span class="nav-text">7.3 WiFi: 802.11无线LAN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3-1-802-11体系结构"><span class="nav-number">6.1.1.</span> <span class="nav-text">7.3.1 802.11体系结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3-2-802-11-MAC协议"><span class="nav-number">6.1.2.</span> <span class="nav-text">7.3.2 802.11 MAC协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#处理隐藏终端-RTS和CTS-4帧交换"><span class="nav-number">6.1.2.1.</span> <span class="nav-text">处理隐藏终端: RTS和CTS(4帧交换)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#补充-拥塞和Qos"><span class="nav-number">6.2.</span> <span class="nav-text">补充: 拥塞和Qos</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#拥塞原因"><span class="nav-number">6.2.1.</span> <span class="nav-text">拥塞原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拥塞代价"><span class="nav-number">6.2.2.</span> <span class="nav-text">拥塞代价</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拥塞控制方法"><span class="nav-number">6.2.3.</span> <span class="nav-text">拥塞控制方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Qos的两种服务"><span class="nav-number">6.2.4.</span> <span class="nav-text">Qos的两种服务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ISA-Integrated-Services-Architecture"><span class="nav-number">6.2.4.1.</span> <span class="nav-text">ISA(Integrated Services Architecture)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DS-Differentiated-Services-差异化服务"><span class="nav-number">6.2.4.2.</span> <span class="nav-text">DS(Differentiated Services)差异化服务</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

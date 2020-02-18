@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="操作系统,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="存储介质 磁: 磁铁方向, 磁盘 光: 挖坑填坑, 光盘 电: SSD 存储介质相当于是一个字节数组bool bits[CAPACITY];  I/O设备与驱动 I/O设备: 设备是三种操作的集合:  (别人)发送命令(给他)、(别人)读取(他的)状态、(互相)传输数据      键盘: 按键信息会存储到键盘内置的缓冲数据区  缓冲区通常大小是有限的  如果缓冲区满，后续按键将会丢失 (可能会发出">
+<meta name="keywords" content="操作系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OS持久化">
+<meta property="og:url" content="http://yoursite.com/2019/07/01/大二下/操作系统/os持久化/index.html">
+<meta property="og:site_name" content="XY&#39;s blog">
+<meta property="og:description" content="存储介质 磁: 磁铁方向, 磁盘 光: 挖坑填坑, 光盘 电: SSD 存储介质相当于是一个字节数组bool bits[CAPACITY];  I/O设备与驱动 I/O设备: 设备是三种操作的集合:  (别人)发送命令(给他)、(别人)读取(他的)状态、(互相)传输数据      键盘: 按键信息会存储到键盘内置的缓冲数据区  缓冲区通常大小是有限的  如果缓冲区满，后续按键将会丢失 (可能会发出">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/figs/os/iodev-model.png">
+<meta property="og:image" content="http://yoursite.com/figs/fat32-pbr.jpg">
+<meta property="og:image" content="http://yoursite.com/figs/os/FAT32.png">
+<meta property="og:image" content="http://yoursite.com/figs/fat32-dirent.png">
+<meta property="og:image" content="http://yoursite.com/figs/os/ext2-inode.gif">
+<meta property="og:image" content="http://yoursite.com/figs/os/ext2-groups.png">
+<meta property="og:updated_time" content="2019-09-14T08:42:59.865Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OS持久化">
+<meta name="twitter:description" content="存储介质 磁: 磁铁方向, 磁盘 光: 挖坑填坑, 光盘 电: SSD 存储介质相当于是一个字节数组bool bits[CAPACITY];  I/O设备与驱动 I/O设备: 设备是三种操作的集合:  (别人)发送命令(给他)、(别人)读取(他的)状态、(互相)传输数据      键盘: 按键信息会存储到键盘内置的缓冲数据区  缓冲区通常大小是有限的  如果缓冲区满，后续按键将会丢失 (可能会发出">
+<meta name="twitter:image" content="http://yoursite.com/figs/os/iodev-model.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/01/大二下/操作系统/os持久化/">
+
+
+
+
+
+  <title>OS持久化 | XY's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XY's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/01/大二下/操作系统/os持久化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XY">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XY's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">OS持久化</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-01T14:38:46+08:00">
+                2019-07-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="存储介质"><a href="#存储介质" class="headerlink" title="存储介质"></a>存储介质</h1><ul>
+<li>磁: 磁铁方向, 磁盘</li>
+<li>光: 挖坑填坑, 光盘</li>
+<li>电: SSD</li>
+<li>存储介质相当于是一个字节数组<code>bool bits[CAPACITY];</code></li>
+</ul>
+<h1 id="I-O设备与驱动"><a href="#I-O设备与驱动" class="headerlink" title="I/O设备与驱动"></a>I/O设备与驱动</h1><ul>
+<li>I/O设备: 设备是三种操作的集合: <ul>
+<li>(别人)发送命令(给他)、(别人)读取(他的)状态、(互相)传输数据</li>
+</ul>
+</li>
+</ul>
+<p><img src="/figs/os/iodev-model.png" alt="iodev-model"></p>
+<ul>
+<li><p>键盘: 按键信息会存储到键盘内置的缓冲数据区</p>
+<ul>
+<li><p>缓冲区通常大小是有限的</p>
+</li>
+<li><p>如果缓冲区满，后续按键将会丢失 (可能会发出声音)</p>
+</li>
+<li><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> status = inb(<span class="number">0x64</span>);</span><br><span class="line"><span class="keyword">if</span> ((status &amp; <span class="number">0x1</span>) == <span class="number">0</span>) &#123;</span><br><span class="line">  <span class="comment">// no input</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (status &amp; <span class="number">0x20</span>) &#123; <span class="comment">// mouse</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">int</span> code = inb(<span class="number">0x60</span>) &amp; <span class="number">0xff</span>;</span><br><span class="line">    <span class="comment">// 按键的“扫描码”</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>磁盘: 磁盘是一个巨大的bit array</p>
+<ul>
+<li><p>磁盘控制器: 配置好需要读/写的位置，然后开始传送数据</p>
+</li>
+<li><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">waitdisk</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123; <span class="keyword">while</span> ((in_byte(<span class="number">0x1F7</span>)&amp;<span class="number">0xC0</span>) != <span class="number">0x40</span>); &#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">readsect</span><span class="params">(<span class="keyword">volatile</span> <span class="keyword">void</span> *dst, <span class="keyword">int</span> sect)</span> </span>&#123;</span><br><span class="line">  waitdisk();</span><br><span class="line">  out_byte(<span class="number">0x1F2</span>, <span class="number">1</span>); <span class="comment">// 读sector的数量</span></span><br><span class="line">  out_byte(<span class="number">0x1F3</span>, sect);</span><br><span class="line">  out_byte(<span class="number">0x1F4</span>, sect &gt;&gt; <span class="number">8</span>);</span><br><span class="line">  out_byte(<span class="number">0x1F5</span>, sect &gt;&gt; <span class="number">16</span>);</span><br><span class="line">  out_byte(<span class="number">0x1F6</span>, (sect &gt;&gt; <span class="number">24</span>) | <span class="number">0xE0</span>);</span><br><span class="line">  out_byte(<span class="number">0x1F7</span>, <span class="number">0x20</span>);</span><br><span class="line">  waitdisk();</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; SECTSIZE / <span class="number">4</span>; i ++)</span><br><span class="line">    ((<span class="keyword">uint32_t</span> *)dst)[i] = in_long(<span class="number">0x1F0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>I/O设备: 实现</p>
+<ul>
+<li>CPU终究是通过地址和数据访问I/O设备的<ul>
+<li>Port IO/MMIO只是两种不同的地址空间</li>
+<li>电路负责根据地址把地址和数据“转发”给设备</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>显示加速器(显卡GPU)</p>
+<ul>
+<li>GPU是一个“协处理器”<ul>
+<li>CPU可以将代码和数据传输给GPU</li>
+<li>GPU执行程序，并且可以将程序的一部分输出绘制到屏幕上</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>管理I/O设备</p>
+<ul>
+<li>cat /proc/iomem: 得到IO的内存映射</li>
+<li>lspci: 查看总线上的设备</li>
+<li>lsblk: 查看块设备</li>
+<li>“回路”设备<ul>
+<li>可以把一个文件模拟成一个块设备</li>
+<li>mount后在lsblk中可以看到</li>
+</ul>
+</li>
+<li>用代码访问I/O设备：<ul>
+<li>等待设备空闲</li>
+<li>给设备发送数据和命令</li>
+<li>等待设备完成命令</li>
+</ul>
+</li>
+<li>拒绝忙等待: 利用中断机制<ul>
+<li>在设备完成请求/发生变化时通知处理器</li>
+<li>例子：磁盘可以配置成“命令完成后发送中断”</li>
+<li>例子：再也不需要轮询键盘，有按键按下后会收到键盘中断</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>抽象层: <strong>设备驱动</strong>(以Lab2为例)</p>
+<ul>
+<li><p>设备驱动: os中负责与设备交互的程序. 根据设备类型不同, 给每一类设备以统一的接口访问, 实现这个接口的就是设备驱动程序.</p>
+</li>
+<li><p>从系统启动后就一直存在</p>
+</li>
+<li><p>简化了很多(Plug and Play非常麻烦)</p>
+</li>
+<li><p>每个设备有三个操作：初始化、读、写</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">device</span> <span class="title">device_t</span>;</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">devops</span> &#123;</span></span><br><span class="line">  <span class="keyword">int</span> (*init)(<span class="keyword">device_t</span> *dev);</span><br><span class="line">  <span class="keyword">ssize_t</span> (*read)(<span class="keyword">device_t</span> *dev, <span class="keyword">off_t</span> offset, <span class="keyword">void</span> *buf, <span class="keyword">size_t</span> count);</span><br><span class="line">  <span class="keyword">ssize_t</span> (*write)(<span class="keyword">device_t</span> *dev, <span class="keyword">off_t</span> offset, <span class="keyword">const</span> <span class="keyword">void</span> *buf, <span class="keyword">size_t</span> count);</span><br><span class="line">&#125; <span class="keyword">devops_t</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">  <span class="keyword">void</span> (*init)();</span><br><span class="line">&#125; MODULE(dev);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>DMA：可以理解为实现<code>memcpy()</code>的I/O设备</p>
+</li>
+<li><p>性能不够, 处理器来凑</p>
+</li>
+</ul>
+<h1 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h1><h2 id="文件系统概念"><a href="#文件系统概念" class="headerlink" title="文件系统概念"></a>文件系统概念</h2><ul>
+<li><p><strong>磁盘</strong> (I/O设备)：一个可以读/写的定长字节序列</p>
+<ul>
+<li>虚拟磁盘(文件)：一个可以读/写/的动态字节序列</li>
+<li>可以理解成<code>std::vector&lt;uint8_t&gt;</code></li>
+<li>类比<ul>
+<li>进程 (虚拟CPU)：分时共享一个CPU</li>
+<li>虚拟存储：多个虚拟地址空间</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>文件</strong>: 理解成一个名为xxx的<strong>虚拟存储设备</strong>(磁盘)，我们可以对这个虚拟磁盘中执行写入数据、扩展大小等操作</p>
+</li>
+<li><p><strong>目录directory</strong>: 文件/目录的集合</p>
+<ul>
+<li>目录体现了局部性：相关的数据存放在相近的目录</li>
+<li>目录结构: 树形结构有助于帮我们分组<ul>
+<li>人工训练的一个“决策树”</li>
+<li>每个目录有<code>.</code> (当前目录)和<code>..</code> (上级目录)两个特殊的目录</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>目录/文件(inode)</p>
+<ul>
+<li>inode number: 索引数</li>
+</ul>
+</li>
+<li><p><strong>文件系统</strong>是保存在持久存储上的数据结构</p>
+<ul>
+<li>数据结构在磁盘上的存储格式规范</li>
+<li>允许对数据结构进行的操作</li>
+<li>文件系统实现 = 数据结构的查询/修改操作<ul>
+<li>可以通过文件管理进程(能够访问存储设备)实现</li>
+</ul>
+</li>
+<li>文件系统基本操作<ul>
+<li>目录操作：<ul>
+<li>改变进程工作目录(chdir)、路径解析(当前目录pwd)</li>
+<li>读取目录 (getdents)</li>
+<li>目录操作 (link, unlink, rename, …)</li>
+</ul>
+</li>
+<li>文件操作：<ul>
+<li>打开(返回文件描述符)、关闭</li>
+<li>文件描述符操作：read, write, lseek, ioctl, mmap, …</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>文件意义扩展: 操作系统中的一个可读/写/控制的<strong>对象</strong></p>
+<ul>
+<li>文件描述符：指向操作系统对象的handle(指向对象的指针)</li>
+<li>read/write/ioctl系统调用 = 对象访问</li>
+</ul>
+</li>
+<li><strong>虚拟文件系统</strong><ul>
+<li>需要实现的需求:<ul>
+<li>根据路径解析出操作系统中的对象 (磁盘文件、进程、操作系统配置、……)</li>
+<li>open() → 解析路径、找到对象 → 对象自带read/write/…操作 → 创建文件描述符</li>
+</ul>
+</li>
+<li>实现:<ul>
+<li>把read/write翻译成对操作系统对象的读写, 包括进程/线程, 文件/目录, 设备, 其他数据</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="文件系统API"><a href="#文件系统API" class="headerlink" title="文件系统API"></a>文件系统API</h2><h3 id="挂载"><a href="#挂载" class="headerlink" title="挂载"></a>挂载</h3><ul>
+<li>procfs, sysfs都不是系统启动自带的，而是“<strong>挂载</strong>”的<ul>
+<li>系统启动后仅有<code>/</code>, <code>/dev</code>，以及initramfs中的少量文件</li>
+<li>init程序负责挂载其他部分(例如<code>/home</code>)</li>
+</ul>
+</li>
+<li><p>挂载机制创建了文件系统世界：连接设备 - 文件系统实现 - 目录树</p>
+<ul>
+<li><code>mount -t type device dir</code></li>
+</ul>
+</li>
+<li><p>系统中允许</p>
+<ul>
+<li>有多个文件系统根“/”，互相不可见<ul>
+<li>chroot; 容器 (namespaces)<ul>
+<li>chroot只影响路径解析, 如果持有外部文件描述符，则很容易jail break</li>
+<li>如果“everything is a file”，所有可见的东西都在文件系统里，那么改变文件系统root就实现了完全的隔离</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>一份文件系统代码，多个设备/挂载点<ul>
+<li>允许系统内有多个ext4分区</li>
+<li>挂载多个procfs/sysfs (容器)</li>
+</ul>
+</li>
+<li>把一个文件(例如.iso)挂载到文件系统中<ul>
+<li>通过loopback device (类似于“虚拟光驱”)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="目录管理"><a href="#目录管理" class="headerlink" title="目录管理"></a>目录管理</h3><ul>
+<li>目录也存储数据 (字节序列)，也是虚拟磁盘，因此目录和文件都用“inode”表示 (一个编号)</li>
+<li>操作系统在路径解析、目录遍历时对它的数据有特殊的解读</li>
+<li>实现方法：目录上有一些额外的操作<ul>
+<li>lookup (路径解析)</li>
+<li>create (创建文件)</li>
+<li>link (链接)</li>
+<li>unlink (删除)</li>
+</ul>
+</li>
+<li>目录: 并不是树!</li>
+<li>Linux系统允许创建两种类型的<strong>链接</strong><ul>
+<li>硬链接：hard link<ul>
+<li>目标只能是文件, 不能是目录</li>
+<li>不能跨文件系统<ul>
+<li>硬链接总是合法可以访问——能看到硬链接，说明文件系统被挂载</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>软(符号)链接：soft/symbolic link<ul>
+<li>符号链接可以是任何相对/绝对路径<ul>
+<li>只是一个“路径解析提示”</li>
+<li>非常有用 &amp; 容易滥用</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="文件管理：打开文件"><a href="#文件管理：打开文件" class="headerlink" title="文件管理：打开文件"></a>文件管理：打开文件</h3><ul>
+<li>我们熟知的一系列API，访问各种文件：<ul>
+<li>open(); read/write(); close();</li>
+</ul>
+</li>
+<li>用这套API：<ul>
+<li>访问磁盘上的数据</li>
+<li>读取系统信息 (procfs)</li>
+<li>配置操作系统 (sysfs)</li>
+<li>…</li>
+</ul>
+</li>
+</ul>
+<h3 id="打开目录"><a href="#打开目录" class="headerlink" title="打开目录"></a>打开目录</h3><ul>
+<li>目录可以open但是不能read write</li>
+<li>打开目录得到了一个指向文件系统某个位置的指针</li>
+<li>对目录本身的操作<ul>
+<li>fchmod, fchown, …</li>
+</ul>
+</li>
+<li>相对于目录位置的操作<ul>
+<li>openat()</li>
+<li>linkat()</li>
+</ul>
+</li>
+<li>更多的好处<ul>
+<li>避免了每次open都解析路径 (有时路径很长)</li>
+<li>在fd在合法的前提下，目录总是存在</li>
+</ul>
+</li>
+</ul>
+<h3 id="文件描述符"><a href="#文件描述符" class="headerlink" title="文件描述符"></a>文件描述符</h3><ul>
+<li><p>对同一个文件的多次操作是自然的</p>
+<ul>
+<li>文件描述符避免了每次操作都要重新打开文件</li>
+<li>同时也帮助我们自动管理文件访问的偏移量</li>
+</ul>
+</li>
+<li><p>内存映射方式访问</p>
+<ul>
+<li>适合随机访问的结构数据 (数据库)</li>
+<li>mmap</li>
+</ul>
+</li>
+<li>或read/write方式访问<ul>
+<li>适合流式文件 (文件描述符托管了offset)</li>
+</ul>
+</li>
+</ul>
+<h3 id="保存文件"><a href="#保存文件" class="headerlink" title="保存文件"></a>保存文件</h3><ul>
+<li>执行<code>sync</code>命令, 将缓存中磁盘操作都写入磁盘</li>
+</ul>
+<h2 id="文件系统实现"><a href="#文件系统实现" class="headerlink" title="文件系统实现"></a>文件系统实现</h2><ul>
+<li>文件系统是支持文件和目录操作的数据结构<ul>
+<li>文件实现磁盘的虚拟化</li>
+<li>目录实现文件的分类归档</li>
+</ul>
+</li>
+</ul>
+<h3 id="块设备"><a href="#块设备" class="headerlink" title="块设备"></a>块设备</h3><ul>
+<li><p>块设备 = 固定大小的块(block)的数组 (存储设备)；支持：</p>
+<ul>
+<li>read(#blk, data)</li>
+<li>write(#blk, data)</li>
+<li>查看块大小<code>blockdev --getbsz /dev/sda2</code> (通常4KB) (通过sysfs得知)</li>
+</ul>
+</li>
+<li><p>块设备API:</p>
+<ul>
+<li>进程/线程(通常是文件系统实现)向存储设备提交I/O request (block读/写)<ul>
+<li>request首先进入设备的队列</li>
+<li>经过调度器调度后，执行设备上的I/O (DMA)</li>
+</ul>
+</li>
+<li>调度是为了<ul>
+<li>保证多进程之间的公平性/优先级</li>
+<li>I/O操作的合并</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Block I/O调度</p>
+<ul>
+<li>I/O请求优化 + 兼顾进程优先级和公平<ul>
+<li>例子：按照“电梯”方式寻道</li>
+</ul>
+</li>
+<li>不该归操作系统管</li>
+</ul>
+</li>
+</ul>
+<h3 id="实现文件系统1-虚拟磁盘"><a href="#实现文件系统1-虚拟磁盘" class="headerlink" title="实现文件系统1: 虚拟磁盘"></a>实现文件系统1: 虚拟磁盘</h3><ul>
+<li><p>文件 = 虚拟的磁盘</p>
+<ul>
+<li>数据块的数组，支持read, write, lseek操作</li>
+<li>元数据 (大小固定)：大小、访问权限、修改时间……</li>
+</ul>
+</li>
+<li><p>链表或树实现:</p>
+<ul>
+<li>只需要balloc()和bfree()</li>
+</ul>
+</li>
+<li><p>在磁盘里划分一块专门的区域，每个bit代表每个块是否可用</p>
+</li>
+</ul>
+<h3 id="实现文件系统2-目录文件"><a href="#实现文件系统2-目录文件" class="headerlink" title="实现文件系统2: 目录文件"></a>实现文件系统2: 目录文件</h3><ul>
+<li>首先，假设系统里的每个文件(虚拟磁盘)都有唯一的编号(id)<ul>
+<li>稍后我们讨论如何维护这个编号</li>
+<li>目录 = 文件名 → 文件id的映射 (这个机制天然支持链接)</li>
+</ul>
+</li>
+<li><p>目录也是文件</p>
+<ul>
+<li>用文件(虚拟磁盘)来存储key-value mapping</li>
+<li>支持以下操作：<ul>
+<li><code>value = get(key)</code> (路径解析)</li>
+<li><code>set(key, value)</code> (link)</li>
+<li><code>delete(key)</code> (unlink)</li>
+<li><code>get_keys()</code> (遍历目录中的文件)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>把虚拟磁盘看成<code>_heap = { start, end }</code></p>
+<ul>
+<li>实现目录文件就是OSLab1 (…)</li>
+<li>额外需求：<code>get_keys()</code>, <code>get()</code>应当高效</li>
+</ul>
+</li>
+</ul>
+<h3 id="实现文件系统3-元数据inode"><a href="#实现文件系统3-元数据inode" class="headerlink" title="实现文件系统3: 元数据inode"></a>实现文件系统3: 元数据inode</h3><p>我们希望文件有</p>
+<ul>
+<li><p>唯一的一个编号</p>
+</li>
+<li><p>元数据</p>
+<p>信息</p>
+<ul>
+<li>类型：是否为目录</li>
+<li>数据：大小、权限、访问时间、链接数量</li>
+<li>链表实现：链表的第一个块；树实现：索引块的编号</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>UNIX：每个文件用一个inode (index node)表示</p>
+<ul>
+<li><code>ls -i</code>可以查看inode编号; <code>stat</code>查看文件元数据</li>
+</ul>
+</li>
+<li><p>元数据inode的存储</p>
+<ul>
+<li>单独区域<ul>
+<li>文件id = inode编号</li>
+</ul>
+</li>
+<li><p>目录文件中</p>
+<ul>
+<li>文件id = 文件的第一块编号</li>
+</ul>
+</li>
+<li><p>文件头部</p>
+<ul>
+<li>文件id = 文件的第一块编号</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="实现文件系统"><a href="#实现文件系统" class="headerlink" title="实现文件系统"></a>实现文件系统</h2><ul>
+<li>实现文件系统需要考虑以下因素：<ul>
+<li>虚拟磁盘的数据结构 (链表、树、……)</li>
+<li>目录文件的数据结构</li>
+<li>inode的表示和存储</li>
+<li>balloc/bfree的实现</li>
+</ul>
+</li>
+</ul>
+<h2 id="FAT和ext2"><a href="#FAT和ext2" class="headerlink" title="FAT和ext2"></a>FAT和ext2</h2><h3 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h3><ul>
+<li>实现文件: 链表, 为每一个block都维护一个“next block”<ul>
+<li>链接存储在块尾</li>
+<li>统一存储链接</li>
+</ul>
+</li>
+<li>File Allocation Table文件分配表, 集中存储next<ul>
+<li>next block占多少个字节？ FAT32 → 32bit (绝大部分信息都是32bit)</li>
+<li>存储在文件系统头部, super block后</li>
+</ul>
+</li>
+</ul>
+<h3 id="FAT32"><a href="#FAT32" class="headerlink" title="FAT32"></a>FAT32</h3><ul>
+<li><p>FAT文件系统的基本思想是使用链表管理所有的数据块。FAT文件系统把若干个连续的扇区(sector)作为一个簇(cluster)，也就是我们所说的管理存储的基本单位“块”，因此如果我们希望表示一个文件，我们只需要知道：</p>
+<ul>
+<li>文件的第一块的编号</li>
+<li>对于每一块，它下一块的编号</li>
+</ul>
+<p>因此，FAT文件系统专门在磁盘中开辟一个区域(File Allocation Table, FAT)，来存储每一块的下一块编号。除了编号之外，还有两种特殊的编号：</p>
+<ul>
+<li>free (0, 该块可以使用)</li>
+<li>EOF (-1, 该块代表了某个文件的末尾)</li>
+</ul>
+<p>这样，FAT还可以兼用于block bitmap，用于分配/回收数据块。</p>
+</li>
+<li><p>Partition Boot Record(PBR), 存储在分区的头部(例如<code>/dev/sda1</code>)</p>
+</li>
+<li><p>block”在FAT32中称为“sector”的“cluster” (簇)<img src="/figs/fat32-pbr.jpg" alt="fat32-pbr"></p>
+</li>
+<li><p>文件分配表</p>
+</li>
+</ul>
+<p><img src="/figs/os/FAT32.png" alt="FAT32"></p>
+<ul>
+<li><p>FAT32目录项</p>
+<ul>
+<li>不支持链接; 因此inode(元数据)直接存储在目录项中</li>
+<li>目录项直接按顺序存储在文件中</li>
+<li>FAT16：11字节文件名(8文件名+3扩展名)；向前兼容<img src="/figs/fat32-dirent.png" alt="fat32-dirent"></li>
+</ul>
+</li>
+<li><p>FAT如果损坏将会导致非常严重的后果</p>
+<ul>
+<li>相当于链表所有的“next”都丢失了</li>
+<li>解决办法：多份FAT备份 (PBR)中指定了“number of FATs”</li>
+<li>通常有两个副本，同时更新</li>
+</ul>
+</li>
+<li><p>文件系统可能碎片化</p>
+</li>
+<li>磁盘碎片整理<ul>
+<li>在磁盘中进行数据的“腾挪”</li>
+<li>使文件尽可能在磁盘中占有连续的块</li>
+</ul>
+</li>
+</ul>
+<h3 id="ext2文件系统"><a href="#ext2文件系统" class="headerlink" title="ext2文件系统"></a>ext2文件系统</h3><ul>
+<li><p>实现文件: 索引</p>
+<ul>
+<li><p>文件小的时候，立即能找到它的块</p>
+</li>
+<li><p>文件大的时候，才用索引</p>
+<p><img src="/figs/os/ext2-inode.gif" alt="ext2-inode"></p>
+</li>
+</ul>
+</li>
+<li><p>支持链接，因此ext2单独管理inodes</p>
+<ul>
+<li>每个inode占用128B或256B空间 (相比FAT来说是很大的)<ul>
+<li>相比于FAT来说，浪费少量空间</li>
+</ul>
+</li>
+<li><code>tune2fs -l /dev/sda1</code> - 查看文件系统信息</li>
+</ul>
+</li>
+</ul>
+<p><img src="/figs/os/ext2-groups.png" alt="ext2-groups"></p>
+<ul>
+<li>为什么要分组？<ul>
+<li>把分配分为成了两级 (组级、块级)<ul>
+<li>不用管理全局的bitmaps (inode/block)</li>
+</ul>
+</li>
+<li>一定程度的性能优化<ul>
+<li>尽量把相近(例如同一个目录)的文件分配在同一个组里</li>
+<li>尽量把同一个文件的数据块分配在同一个组里</li>
+</ul>
+</li>
+<li>这个设计还使磁盘大小动态调整变得容易</li>
+<li>对于小文件(12个块以内，4KB块是48KB)，直接索引，没有额外的空间开销</li>
+<li>对于中等文件，只使用一级索引</li>
+<li>对于更大的文件(但更少)，使用更多级别的索引</li>
+</ul>
+</li>
+<li>与FAT类似，ext2的目录中按顺序存储其中文件/子目录的名字和inode编号。</li>
+</ul>
+<h3 id="我理解的FAT和ext2的区别"><a href="#我理解的FAT和ext2的区别" class="headerlink" title="我理解的FAT和ext2的区别:"></a>我理解的FAT和ext2的区别:</h3><ul>
+<li>ext2的inode集中储存, 而FAT的存在目录项中, 因此不支持链接</li>
+<li>对于单个文件, FAT是用链表链接的, 每一块的下一个存在文件分配表中; 而ext2是树状结构</li>
+</ul>
+<h1 id="持久数据可靠性"><a href="#持久数据可靠性" class="headerlink" title="持久数据可靠性"></a>持久数据可靠性</h1><h2 id="RAID-创建副本"><a href="#RAID-创建副本" class="headerlink" title="RAID: 创建副本"></a>RAID: 创建副本</h2><ul>
+<li>廉价冗余磁盘阵列</li>
+<li><p>把多个磁盘虚拟成一块磁盘</p>
+</li>
+<li><p>用两块磁盘(redundancy)实现容错</p>
+<ul>
+<li><code>read(blk)</code> -&gt; 从任何一块盘读即可</li>
+<li><code>write(blk)</code> -&gt; 必须写入两块磁盘</li>
+<li>实现了2X读速度</li>
+<li>写速度不变</li>
+<li>可以抵抗一块盘损坏 (只要磁盘没有连续损坏，就能实现容错)</li>
+</ul>
+</li>
+<li>设计RAID，就是设计“如何把虚拟磁盘块映射到物理磁盘块”<ul>
+<li>允许一对多映射; redundancy冗余</li>
+<li>评价标准: capacity, reliablity, performance</li>
+</ul>
+</li>
+</ul>
+<h3 id="RAID-0-Striping-没有冗余"><a href="#RAID-0-Striping-没有冗余" class="headerlink" title="RAID-0(Striping) = 没有冗余"></a>RAID-0(Striping) = 没有冗余</h3><ul>
+<li>无冗余, 不容错, 性能2X、容量2倍, 连续的块轮流分布在不同的Disk上(加快连续读写速度)</li>
+<li>和chunk size有关, 小了读写的并行性增加, 但是跨越chunk读取可能性增加, 增加了access时间</li>
+</ul>
+<h3 id="RAID-1-mirror"><a href="#RAID-1-mirror" class="headerlink" title="RAID-1:(mirror)"></a>RAID-1:(mirror)</h3><ul>
+<li><p>维护两块数据完全一样的磁盘实现容错</p>
+</li>
+<li><p>纠错码:</p>
+<ul>
+<li>无论有多少bit，只要至多只有1位错，我们就可以用1bit来纠错<ul>
+<li>存储x, y, z, x\oplus y\oplus z<em>x</em>,<em>y</em>,<em>z</em>,<em>x</em>⊕<em>y</em>⊕<em>z</em></li>
+<li>任何一个数值丢失，都能恢复出剩下的</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="RAID-4-奇偶校验"><a href="#RAID-4-奇偶校验" class="headerlink" title="RAID-4(奇偶校验)"></a>RAID-4(奇偶校验)</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Block</th>
+<th style="text-align:center">磁盘1</th>
+<th style="text-align:center">磁盘2</th>
+<th style="text-align:center">磁盘3</th>
+<th style="text-align:center">磁盘4</th>
+<th style="text-align:center">磁盘P</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">#0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">0⊕1⊕2⊕3</td>
+</tr>
+<tr>
+<td style="text-align:center">#1</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">4⊕5⊕6⊕7</td>
+</tr>
+<tr>
+<td style="text-align:center">#2</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">11</td>
+<td style="text-align:center">8⊕9⊕10⊕11</td>
+</tr>
+<tr>
+<td style="text-align:center">#3</td>
+<td style="text-align:center">12</td>
+<td style="text-align:center">13</td>
+<td style="text-align:center">14</td>
+<td style="text-align:center">15</td>
+<td style="text-align:center">12⊕13⊕14⊕15</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>5块盘实现：</p>
+<ul>
+<li><p>顺序/随机读 4X加速</p>
+</li>
+<li><p>顺序写入依然可以4X</p>
+</li>
+<li><p>随机写入：</p>
+<p>P<em>′=</em>P⊕D′⊕D(1的个数奇偶)</p>
+<ul>
+<li>需要读出D和P；计算后再写入</li>
+<li>速度减半</li>
+</ul>
+</li>
+<li><p>恢复一块盘: 其他盘异或</p>
+</li>
+</ul>
+<h3 id="RAID-5"><a href="#RAID-5" class="headerlink" title="RAID-5"></a>RAID-5</h3><p>Parity盘是整个系统的瓶颈！因此将Party盘分散开.</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Block</th>
+<th style="text-align:center">磁盘1</th>
+<th style="text-align:center">磁盘2</th>
+<th style="text-align:center">磁盘3</th>
+<th style="text-align:center">磁盘4</th>
+<th style="text-align:center">磁盘P</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">#0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">P</td>
+</tr>
+<tr>
+<td style="text-align:center">#1</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">P</td>
+<td style="text-align:center">7</td>
+</tr>
+<tr>
+<td style="text-align:center">#2</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">P</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">11</td>
+</tr>
+<tr>
+<td style="text-align:center">#3</td>
+<td style="text-align:center">12</td>
+<td style="text-align:center">P</td>
+<td style="text-align:center">13</td>
+<td style="text-align:center">14</td>
+<td style="text-align:center">15</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><p>顺序/随机读 4X加速</p>
+</li>
+<li><p>顺序写入依然4X</p>
+</li>
+<li><p>随机写入：</p>
+<p><em>P</em>′=<em>P</em>⊕<em>D</em>′⊕<em>D</em></p>
+<ul>
+<li>依然需要2读2写</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>理论分析</p>
+<p>假设有n块组成RAID</p>
+<p>| RAID | 容量 |  容错  | 顺序读  | 随机读 | 顺序写 | 随机写 |<br>| :—: | :—: | :——: | :——-: | :——: | :——: | :——: |<br>|  0   |  n   |   0    |    n    |   n    |   n    |   n    |<br>|  1   | n/2  | 1..n/2 | $&gt;$ n/2 |   n    |  n/2   |  n/2   |<br>|  4   | n-1  |   1    |   n-1   |  n-1   |  n-1   |  1/2   |<br>|  5   | n-1  |   1    |   n-1   |   n    |  n-1   |  n/4   |</p>
+</li>
+</ul>
+<h2 id="崩溃恢复和日志"><a href="#崩溃恢复和日志" class="headerlink" title="崩溃恢复和日志"></a>崩溃恢复和日志</h2><h3 id="磁盘上的数据结构"><a href="#磁盘上的数据结构" class="headerlink" title="磁盘上的数据结构"></a>磁盘上的数据结构</h3><ul>
+<li>考虑在FAT上创建一个目录(mkdir)的Access Path：<ol>
+<li>b $\leftarrow$ balloc()，读取FAT</li>
+<li>FAT[b]$ \leftarrow$ EOF</li>
+<li>写入b<em>b</em>为初始数据</li>
+<li>追加写入目录文件 (假设目录文件需要一个额外的数据块)<ol>
+<li>b’$ \leftarrow$ balloc()</li>
+<li>写入目录文件</li>
+<li>FAT[b’] $\leftarrow$ EOF</li>
+<li>FAT[$d_{end}$] $\leftarrow$ b’</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="系统崩溃-原子性的丧失"><a href="#系统崩溃-原子性的丧失" class="headerlink" title="系统崩溃: 原子性的丧失"></a>系统崩溃: 原子性的丧失</h3><p>考虑更简单的例子：追加写(相当于写入目录文件)</p>
+<ol>
+<li>$FAT[b’] \leftarrow EOF$</li>
+<li>$data[b’] \leftarrow$ 数据</li>
+<li>$FAT[f_{end}] \leftarrow b’$</li>
+</ol>
+<p>等同于链表操作：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">block</span> *<span class="title">blk</span> = <span class="title">balloc</span>();</span> <span class="comment">// 找到某个blk-&gt;next == FREE</span></span><br><span class="line">blk-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">file_end-&gt;next = blk;</span><br><span class="line">write_data(blk);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>考虑所有可能崩溃的情况 (去除重复)<ul>
+<li>$data[b’] $→ ❌ (random writes)</li>
+<li>$FAT[f_{end}]$ → ❌ (corrupted FAT)</li>
+<li>$FAT[b’]$→ ❌ (dead block/leak)</li>
+<li>$data[b’]$ → $FAT[f_{end}]$ → ❌ (random writes + corrupted FAT)</li>
+<li>$FAT[b’]$→ $data[b’]$ → ❌ (dead block x 2)</li>
+<li>$FAT[b’] $→ $FAT[f_{end}]$ → ❌ (corrupted file)</li>
+<li>$FAT[f_{end}]$→ $FAT[b’]$ → $data[b’] $✅</li>
+</ul>
+</li>
+</ul>
+<p>对于ext2, 文件追加写(一块)，需要写入：</p>
+<ol>
+<li>inode (size、索引); 2. 数据bitmap; 3. 数据</li>
+</ol>
+<p>可能的崩溃情况：</p>
+<ul>
+<li>\{1\} - corrupted filesystem</li>
+<li>\{2\} - dead block</li>
+<li>\{3\} - random writes</li>
+<li>\{1,2\}- incorrect data</li>
+<li>\{1,3\} - corrupted filesystem</li>
+<li>\{2,3\} - dead block</li>
+</ul>
+<h3 id="fsck"><a href="#fsck" class="headerlink" title="fsck"></a>fsck</h3><ul>
+<li><p>功能: 发现不一致并修复</p>
+</li>
+<li><p>步骤:</p>
+<ul>
+<li>Superblock: <ul>
+<li>检查superblock是否合理; 找到可能崩溃的superblock, 决定是否使用其备份</li>
+</ul>
+</li>
+<li>Free blocks:<ul>
+<li>扫描inodes, (double)indirect blocks等, 找到已经分配过的块.</li>
+<li>如果allocation bitmaps和inodes不一致, 相信inodes</li>
+<li>对于inodes进行同样的检查</li>
+<li>inode state, inode links(计数), 备份, Bad blocks(指向非法区域的), 目录文件(尤其是.和..)</li>
+</ul>
+</li>
+</ul>
+<p>简略的为:</p>
+<p>在文件操作时不管崩溃一致性，但在崩溃后扫描磁盘进行补救</p>
+<ul>
+<li>扫描inodes里的所有数据块，检查bitmap的一致性</li>
+<li>检查inode数据是否“看起来合法”，否则删除</li>
+<li>检查链接情况 (没有链接的inode被移到lost+found目录中)</li>
+</ul>
+</li>
+</ul>
+<h3 id="日志-write-ahead-logging-journaling"><a href="#日志-write-ahead-logging-journaling" class="headerlink" title="日志(write-ahead logging, journaling)"></a>日志(write-ahead logging, journaling)</h3><ul>
+<li><p>更新磁盘前先记录所做操作</p>
+</li>
+<li><p>把操作以append only的方式记录下来</p>
+<ul>
+<li>先写入数据 (TXBegin和数据)；然后sync</li>
+<li>写入TXEnd；再次sync</li>
+</ul>
+</li>
+<li><p>用一个额外的指针维护journal完成的时刻</p>
+<ul>
+<li>journal write (写入TXBegin和数据)</li>
+<li>journal commit (TXEnd + sync)</li>
+<li>之后可以自由更新数据结构和指针 (完成后到达checkpoint)</li>
+<li>procfs中有jbd的统计信息</li>
+</ul>
+</li>
+<li><p>防止日志过长:</p>
+<ul>
+<li>circular log: 到达checkpoint后free</li>
+</ul>
+</li>
+<li><p>恢复崩溃:</p>
+<ul>
+<li><p>从指针开始，向后重做journal中记录的操作</p>
+<ul>
+<li>(redo logging)</li>
+<li>还有一种undo logging，记录操作的inverse (数据库中常用)</li>
+</ul>
+</li>
+<li><p>Journaling实现了文件系统操作的原子性</p>
+<ul>
+<li>若干个block writes，要么全部发生，要么一个都不发生</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/操作系统/" rel="tag"># 操作系统</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/01/大二下/操作系统/os虚拟化/" rel="next" title="OS虚拟化">
+                <i class="fa fa-chevron-left"></i> OS虚拟化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/01/大二下/操作系统/os并发/" rel="prev" title="OS并发">
+                OS并发 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">XY</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#存储介质"><span class="nav-number">1.</span> <span class="nav-text">存储介质</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#I-O设备与驱动"><span class="nav-number">2.</span> <span class="nav-text">I/O设备与驱动</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件系统"><span class="nav-number">3.</span> <span class="nav-text">文件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件系统概念"><span class="nav-number">3.1.</span> <span class="nav-text">文件系统概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件系统API"><span class="nav-number">3.2.</span> <span class="nav-text">文件系统API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#挂载"><span class="nav-number">3.2.1.</span> <span class="nav-text">挂载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目录管理"><span class="nav-number">3.2.2.</span> <span class="nav-text">目录管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件管理：打开文件"><span class="nav-number">3.2.3.</span> <span class="nav-text">文件管理：打开文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#打开目录"><span class="nav-number">3.2.4.</span> <span class="nav-text">打开目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件描述符"><span class="nav-number">3.2.5.</span> <span class="nav-text">文件描述符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#保存文件"><span class="nav-number">3.2.6.</span> <span class="nav-text">保存文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件系统实现"><span class="nav-number">3.3.</span> <span class="nav-text">文件系统实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#块设备"><span class="nav-number">3.3.1.</span> <span class="nav-text">块设备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现文件系统1-虚拟磁盘"><span class="nav-number">3.3.2.</span> <span class="nav-text">实现文件系统1: 虚拟磁盘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现文件系统2-目录文件"><span class="nav-number">3.3.3.</span> <span class="nav-text">实现文件系统2: 目录文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现文件系统3-元数据inode"><span class="nav-number">3.3.4.</span> <span class="nav-text">实现文件系统3: 元数据inode</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现文件系统"><span class="nav-number">3.4.</span> <span class="nav-text">实现文件系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FAT和ext2"><span class="nav-number">3.5.</span> <span class="nav-text">FAT和ext2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题分析"><span class="nav-number">3.5.1.</span> <span class="nav-text">问题分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FAT32"><span class="nav-number">3.5.2.</span> <span class="nav-text">FAT32</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ext2文件系统"><span class="nav-number">3.5.3.</span> <span class="nav-text">ext2文件系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#我理解的FAT和ext2的区别"><span class="nav-number">3.5.4.</span> <span class="nav-text">我理解的FAT和ext2的区别:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#持久数据可靠性"><span class="nav-number">4.</span> <span class="nav-text">持久数据可靠性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#RAID-创建副本"><span class="nav-number">4.1.</span> <span class="nav-text">RAID: 创建副本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RAID-0-Striping-没有冗余"><span class="nav-number">4.1.1.</span> <span class="nav-text">RAID-0(Striping) = 没有冗余</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RAID-1-mirror"><span class="nav-number">4.1.2.</span> <span class="nav-text">RAID-1:(mirror)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RAID-4-奇偶校验"><span class="nav-number">4.1.3.</span> <span class="nav-text">RAID-4(奇偶校验)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RAID-5"><span class="nav-number">4.1.4.</span> <span class="nav-text">RAID-5</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#崩溃恢复和日志"><span class="nav-number">4.2.</span> <span class="nav-text">崩溃恢复和日志</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#磁盘上的数据结构"><span class="nav-number">4.2.1.</span> <span class="nav-text">磁盘上的数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统崩溃-原子性的丧失"><span class="nav-number">4.2.2.</span> <span class="nav-text">系统崩溃: 原子性的丧失</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fsck"><span class="nav-number">4.2.3.</span> <span class="nav-text">fsck</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日志-write-ahead-logging-journaling"><span class="nav-number">4.2.4.</span> <span class="nav-text">日志(write-ahead logging, journaling)</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
